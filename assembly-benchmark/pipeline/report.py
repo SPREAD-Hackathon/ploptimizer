@@ -225,6 +225,8 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
             body += '</p>'
         score = row.get("evaluation")
         if score:
+            if row.get("sequence_review"):
+                body += '<p class="muted">Original exact assessment, preserved from the execution. Updated findings follow below.</p>'
             body += f'<p>Pass criterion: {e(score["endpoint"])}.</p><ul>'
             for r in score["replicons"]:
                 if row["tool"] == "plassembler" and r["molecule_type"] == "chromosome":
