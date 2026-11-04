@@ -150,6 +150,28 @@ class BenchmarkTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             plan(config)
 
+    def test_next_stages_cover_both_species_and_declared_ratios(self):
+        config = load(ROOT / "config/next-stages.json")
+        cases = plan(config)
+        self.assertEqual(sum(c["category"] == "S1" for c in cases), 22)
+        coverage = [c for c in cases if c["category"] == "S2"]
+        self.assertEqual(len(coverage), 10)
+        self.assertEqual({c["simulation"]["plasmid_relative_depth"] for c in coverage}, {0.8, 1, 1.2, 3, 5})
+        self.assertTrue(any(c["organism"].startswith("Klebsiella") for c in coverage))
+        self.assertTrue(any(c["organism"].startswith("Escherichia") for c in coverage))
+        self.assertEqual(config["simulation"]["plasmid_relative_depth"], 1)
+        self.assertEqual(len({c["fingerprint"] for c in cases}), 32)
+
+    def test_coverage_case_does_not_change_baseline_settings(self):
+        cases = plan(load(ROOT / "config/next-stages.json"))
+        self.assertTrue(all(c["simulation"]["plasmid_relative_depth"] == 1 for c in cases if c["category"] == "S1"))
+
+    def test_coverage_target_must_be_a_native_plasmid(self):
+        config = load(ROOT / "config/next-stages.json")
+        config["coverage_panel"]["targets"][0]["plasmid"] = "NC_000913.3"
+        with self.assertRaises(ValueError):
+            plan(config)
+
     def test_commands_do_not_receive_truth(self):
         config = load(ROOT / "config/pilot.json")
         for tool in config["tools"]:
@@ -171,7 +193,7 @@ class BenchmarkTests(unittest.TestCase):
     def test_report_rebuild_removes_stale_evidence(self):
         import shutil
         from pipeline.report import build
-        shutil.copytree(ROOT / "website", self.path / "website")
+        shutil.copytree(ROOT / "website", self.path / "website", ignore=shutil.ignore_patterns("node_modules"))
         stale = self.path / "dist/data/old-run.json"
         stale.parent.mkdir(parents=True)
         stale.write_text('{"status":"pass"}')
@@ -180,6 +202,22 @@ class BenchmarkTests(unittest.TestCase):
         self.assertFalse(stale.exists())
         data = load(self.path / "dist/data/results.json")
         self.assertEqual({r["status"] for r in data["results"]}, {"not_run"})
+
+    def test_follow_tracks_only_the_submitted_comparisons(self):
+        from pipeline.follow import selected_rows
+        document = {"results": [{"scenario_id": "submitted", "tool": "flye", "status": "pass"},
+                                {"scenario_id": "later", "tool": "flye", "status": "not_run"}]}
+        rows = selected_rows(document, [{"scenario": "submitted", "tool": "flye"}])
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["status"], "pass")
+
+    def test_publication_does_not_repeat_for_snapshot_time_only(self):
+        from pipeline.follow import progress_fingerprint
+        first = {"generated_at": "earlier", "results": [{"status": "running"}], "inputs": {}}
+        second = {**first, "generated_at": "later"}
+        self.assertEqual(progress_fingerprint(first), progress_fingerprint(second))
+        second["results"] = [{"status": "pass"}]
+        self.assertNotEqual(progress_fingerprint(first), progress_fingerprint(second))
 
 
 if __name__ == "__main__":

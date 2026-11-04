@@ -8,7 +8,7 @@ web
 
 ## Stack
 
-User-approved static results website hosted on Vercel. Python generates pages
+User-approved static results website hosted on Vercel. Actual @genomicx/ui components supply navigation, themes and status badges. Python generates pages
 from benchmark records. Python also automates BMRC Slurm jobs; Pixi provides
 isolated Linux software environments.
 
@@ -38,8 +38,7 @@ Broader read-error and scoring models follow later.
 
 ## Evidence on Hand
 
-Pinned RefSeq inventories and metadata exist in references/. They are candidates
-pending sequence checks and evidence review. No assembler result is implied by
+Pinned RefSeq inventories and metadata exist in references/. All 19 records in the five preferred references passed sequence-integrity checks; independent biological evidence review remains separate. No assembler result is implied by
 the design or by a generated website. Missing, running, invalid and failed jobs
 must remain distinct from completed scientific pass/fail results.
 

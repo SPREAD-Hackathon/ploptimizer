@@ -1,4 +1,4 @@
-# Run the first benchmark
+# Run the assembly benchmark
 
 Everything in this workflow lives under `assembly-benchmark/`. Run commands from
 that directory. Python 3.10+ runs the local controller; the pinned Pixi environments
@@ -90,7 +90,7 @@ Collection uses rsync/SSH and Slurm accounting. It retrieves small records, logs
 package provenance and the input manifests, leaving reads and assembly intermediates
 on BMRC. It then generates `dist/`: overview matrix, category index, one page per
 scenario, methods, JSON and TSV.
-The site is a snapshot and must be regenerated/redeployed to show later results.
+The site is static and must be regenerated/redeployed to show later results.
 `snapshot --batch BATCH_ID` saves the small public report in `published/` without
 deployment; `publish --batch BATCH_ID` saves it and deploys to the linked Vercel
 project. Commit publication snapshots so a fresh checkout can rebuild results:
@@ -119,6 +119,44 @@ claims are not yet scored. Unclassified extra contigs are retained. Job errors,
 timeouts and invalid inputs are separate from pass/fail counts. A killed Slurm task
 may lack a final execution record; collection uses accounting to expose that failure.
 
-The sequence audit checks input integrity, not independent biological truth. Complete
-reference validation, S2 coverage ratios, S3 repeat/thread panels, S4 length challenges,
+The sequence audit checks input integrity, not independent biological truth. Independent biological
+reference validation, S3 repeat/thread panels, S4 length challenges,
 S5 linear references, realistic error models and matched real reads remain later work.
+
+## Expanded S1/S2 panel and automatic updates
+
+```sh
+python3 benchmark.py --config config/next-stages.json plan
+python3 benchmark.py --config config/next-stages.json submit
+python3 benchmark.py follow --batch BATCH_ID --interval 60 --publish-interval 600 --max-hours 8
+```
+
+The expanded profile includes all five preferred references, 22 S1 cases and ten
+S2 cases (32 inputs, 128 comparisons). Chromosome depth, seed, read lengths, tools
+and resources match the pilot. Only plasmid depth changes in S2. Each versioned
+config remains frozen with its batch. `follow` collects once per minute, deploys
+changed results at most every ten minutes and publishes immediately when every
+selected task is terminal. It stops after the configured time limit, records
+its checkpoint in `runs/BATCH_ID/follow.json`, and retries collection/deployment
+errors. Run it on a persistent controller with SSH and Vercel access; it does not
+run assemblers locally or commit snapshots automatically. A stopped controller
+can restart the same command. Scheduler and scientific failures remain separate.
+
+## Website build
+
+The controller needs Node.js/npm for the shared `@genomicx/ui` React shell.
+`report` and `submit` install the exact declared frontend versions when needed
+and compile cached assets under `website/generated/`. These compiled assets
+are transferred to BMRC, where report generation needs only Python. Node modules
+and compiled bundles are ignored; their package versions, source hashes and
+asset hashes are included in the generated site's build metadata.
+
+```sh
+npm --prefix website run build
+npm --prefix website run test:e2e
+```
+
+The static site supports category/species filtering, shared GenomicX navigation,
+themes and status badges. Earlier versioned snapshots get their own pages under
+Earlier batches. Public snapshots must be committed separately after collection
+if they are to survive a fresh checkout.

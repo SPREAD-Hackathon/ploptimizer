@@ -1,6 +1,6 @@
 # Long-read plasmid assembly benchmark
 
-**Status:** first pilot implemented, 4 November 2026. Python automation generates
+**Status:** pilot complete; expanded S1/S2 batch started, 4 November 2026. Python automation generates
 error-free reads, submits BMRC Slurm jobs through Pixi environments and builds a
 static results website. See [RUNNING.md](RUNNING.md) for the explicit pilot settings
 and commands. Broader study choices remain in the [decision list](DECISIONS.md).
@@ -36,7 +36,7 @@ The [reference shortlist](references/README.md) contains accession versions and 
 - *K. pneumoniae* Ecl8: one plasmid, approximately 204.7 kb.
 - *K. pneumoniae* MGH 78578: five plasmids, approximately 3.5–175.9 kb.
 
-These are candidates pending sequence checks and an admission decision. Two alternatives with metadata-indicated ambiguous bases are held separately. The initial panel has no plasmids below 3,478 bp.
+All 19 sequence records in these five assemblies passed accession, length and ACGT checks for the S1/S2 run. This checks sequence integrity, not independent biological truth. Two alternatives with metadata-indicated ambiguous bases are held separately. The initial panel has no plasmids below 3,478 bp.
 
 ## Outputs and success measures
 
@@ -52,3 +52,14 @@ The [six decision groups](DECISIONS.md) guide the wider study; the first runnabl
 profile is in `config/pilot.json`. Supporting details and sources are in
 [METHODS.md](METHODS.md); accession inventories and metadata are in
 [references/](references/README.md).
+
+## Current expansion
+
+`config/next-stages.json` freezes 22 S1 cases across all five references and ten
+S2 cases: W/pRK2 and MGH78578/pKPN7 at relative depths 0.8, 1, 1.2, 3 and 5.
+Four tool configurations give 128 comparisons. Batch `20261104T190455` has been
+submitted to BMRC with four concurrent assembly tasks; completion is shown on
+the site. The earlier single-case pilot remains available under Earlier batches.
+The 1× S2 cases deliberately repeat baseline conditions; they are not independent
+biological replicates. S3 repeated/thread runs and S4 read-length challenges are
+the next implementation stages.

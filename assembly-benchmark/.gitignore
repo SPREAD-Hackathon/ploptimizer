@@ -10,3 +10,5 @@ runs/
 data/
 dist/
 config/cluster.local.json
+node_modules/
+website/generated/

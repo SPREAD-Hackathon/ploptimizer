@@ -24,7 +24,7 @@ def main(argv=None):
     parser.add_argument("--config", default=str(ROOT / "config/pilot.json"))
     commands = parser.add_subparsers(dest="action", required=True)
     commands.add_parser("plan")
-    for action in ("prepare", "simulate", "run", "task", "report", "collect", "snapshot", "publish"):
+    for action in ("prepare", "simulate", "run", "task", "report", "collect", "snapshot", "publish", "follow"):
         sub = commands.add_parser(action)
         sub.add_argument("--batch", required=action not in ("prepare", "report"))
         if action in ("simulate", "run"):
@@ -34,6 +34,10 @@ def main(argv=None):
         if action == "task":
             sub.add_argument("--kind", choices=("simulate", "assemble"), required=True)
             sub.add_argument("--index", required=True, type=int)
+        if action == "follow":
+            sub.add_argument("--interval", type=int, default=60)
+            sub.add_argument("--publish-interval", type=int, default=600)
+            sub.add_argument("--max-hours", type=float, default=8)
     sub = commands.add_parser("submit")
     sub.add_argument("--cluster", default=str(ROOT / "config/cluster.local.json"))
     sub.add_argument("--scenario", help="Limit the first pilot to one scenario")
@@ -98,19 +102,12 @@ def main(argv=None):
         from pipeline.report import build
         print(build(config, batch))
     elif args.action in ("snapshot", "publish"):
-        from pipeline.report import build
-        build(config, batch)
-        document = load(ROOT / "dist/data/results.json")
-        save(ROOT / "published" / (batch.name + ".json"), document)
-        save(ROOT / "published/latest.json", document)
+        from pipeline.publication import publish
+        publish(config, batch, deploy=args.action == "publish")
         print("Saved publication snapshot for " + batch.name)
-        if args.action == "publish":
-            # Bind the intended project explicitly; never auto-deploy a fresh checkout
-            # to an unrelated Vercel project named after the generated dist directory.
-            project = load(ROOT / "config/vercel-project.json")
-            save(ROOT / "dist/.vercel/project.json", project)
-            env = dict(os.environ, npm_config_cache=str(ROOT / ".cache/npm"))
-            subprocess.run(["npx", "--yes", "vercel@65.11.0", "deploy", "--prod", "--yes", "--cwd", str(ROOT / "dist")], cwd=ROOT, env=env, check=True)
+    elif args.action == "follow":
+        from pipeline.follow import follow
+        follow(batch, args.interval, args.publish_interval, args.max_hours)
     return 0
 
 

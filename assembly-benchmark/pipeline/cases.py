@@ -1,4 +1,6 @@
-"""Expand the pinned inventory into finite, named S1 scenarios."""
+"""Expand the pinned inventory into finite baseline and relative-depth scenarios."""
+
+import copy
 
 from .common import ROOT, fingerprint, load
 
@@ -48,6 +50,24 @@ def plan(config):
             }
             case["fingerprint"] = fingerprint(case)
             result.append(case)
+    for target in config.get("coverage_panel", {}).get("targets", []):
+        source = next((case for case in result if case["category"] == "S1" and case["assembly_accession"] == target["assembly"]
+                       and [r["refseq_accession"] for r in case["replicons"] if r["molecule_type"] == "plasmid"] == [target["plasmid"]]), None)
+        if source is None:
+            raise ValueError("Coverage targets must identify one native plasmid in a selected reference")
+        for ratio in config["coverage_panel"]["ratios"]:
+            if ratio <= 0:
+                raise ValueError("Coverage ratios must be positive")
+            case = copy.deepcopy(source)
+            label = format(ratio, "g")
+            case["id"] = source["id"].replace("s1-", "s2-", 1) + "-depth-" + label.replace(".", "p")
+            case["title"] = source["title"] + f" · {label}× relative depth"
+            case["category"] = "S2"
+            case["simulation"]["plasmid_relative_depth"] = ratio
+            case["fingerprint"] = fingerprint({key: value for key, value in case.items() if key != "fingerprint"})
+            result.append(case)
+    if len({case["id"] for case in result}) != len(result):
+        raise ValueError("The configuration produces duplicate scenario identifiers")
     return result
 
 

@@ -1,4 +1,4 @@
-# Decisions needed before implementation
+# Study decisions and implementation status
 
 Review date: 4 November 2026. The study question is defined. The previous specification left the following choices open, so it was not yet an executable experiment plan. Recommendations here are proposals, not approvals or completed work.
 
@@ -55,3 +55,5 @@ describes that limited pilot. Decisions below still apply to expansion beyond it
 **Recommendation:** start with a resumable batch workflow and static report backed by JSON/TSV. Capture provenance, failures, runtime and memory; leave interactive UI work for later.
 
 **Record:** storage/retrieval conventions and pilot acceptance criteria: validated references and reads, a frozen run matrix, a checked evaluator and one reproducible report. Later real-data ingestion must retain isolate/read linkage and reference uncertainty.
+
+**S1/S2 expansion update (4 November 2026):** `config/next-stages.json` now freezes the five-reference panel and relative-depth ratios, with 32 cases and 128 comparisons submitted. All 19 input records passed sequence-integrity checks. This does not settle independent biological validation, repeated/thread runs, realistic errors, partial-recovery scoring or linear-plasmid admission. GenomicX shared components now style the Vercel report; a bounded per-batch collector can publish progress automatically.

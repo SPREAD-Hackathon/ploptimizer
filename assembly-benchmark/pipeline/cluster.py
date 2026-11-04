@@ -7,11 +7,12 @@ import subprocess
 from pathlib import Path
 
 from .cases import plan
+from .assets import ensure_assets
 from .common import ROOT, load, save
 
 
 def ssh(host, argv):
-    return subprocess.check_output(["ssh", "-o", "BatchMode=yes", host, shlex.join(argv)], text=True).strip()
+    return subprocess.check_output(["ssh", "-o", "BatchMode=yes", "-o", "ConnectTimeout=15", host, shlex.join(argv)], text=True, timeout=180).strip()
 
 
 def transfer(host, remote_root):
@@ -19,7 +20,7 @@ def transfer(host, remote_root):
     if not re.fullmatch(r"[A-Za-z0-9_.@-]+", host) or not re.fullmatch(r"/[A-Za-z0-9_./-]+", remote_root):
         raise ValueError("Use a simple SSH destination and an absolute path without spaces")
     ssh(host, ["mkdir", "-p", remote_root])
-    excludes = [".pixi", ".cache", ".tools", ".t", ".vercel", "__pycache__", "*.pyc", "runs", "data", "dist", "config/cluster.local.json"]
+    excludes = [".pixi", ".cache", ".tools", ".t", ".vercel", ".env*", "node_modules", "__pycache__", "*.pyc", "runs", "data", "dist", "config/cluster.local.json"]
     argv = ["rsync", "-az"]
     for pattern in excludes:
         argv += ["--exclude", pattern]
@@ -27,6 +28,7 @@ def transfer(host, remote_root):
 
 
 def submit(config, cluster, scenario_id=None):
+    ensure_assets(ROOT)
     for key in ("host", "remote_root", "account", "pixi"):
         if not cluster.get(key) or "REPLACE" in cluster[key]:
             raise ValueError(f"Configure the cluster {key} before submitting")

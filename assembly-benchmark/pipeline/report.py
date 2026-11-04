@@ -6,10 +6,15 @@ import html
 import shutil
 
 from .cases import plan
+from .assets import ensure_assets
 from .common import ROOT, fingerprint, load, save
 
 LABELS = {"flye": "Flye", "flye-meta": "Flye · uneven coverage", "raven": "Raven", "plassembler": "Plassembler long"}
 STATUSES = {"pass": "Pass", "fail": "Fail", "not_run": "Not run", "pending": "Queued", "running": "Running", "error": "Job error", "timeout": "Timed out", "invalid_input": "Invalid input"}
+CATEGORIES = {
+    "S1": ("Error-free recovery", "Chromosome-only controls, individual native plasmids and complete deposited complements. These cases establish the baseline for each reference."),
+    "S2": ("Relative plasmid coverage", "Hold chromosome depth and read properties fixed, and vary plasmid depth at 0.8×, 1×, 1.2×, 3× and 5× relative to it. These are coverage ratios, not measured biological copy numbers."),
+}
 
 
 def e(value):
@@ -17,17 +22,18 @@ def e(value):
 
 
 def badge(status):
-    return f'<span class="status {e(status)}">{e(STATUSES[status])}</span>'
+    return f'<span class="status {e(status)}" data-benchmark-status="{e(status)}">{e(STATUSES[status])}</span>'
 
 
 def page(title, body, prefix="", active="overview"):
-    links = [("overview", "index.html", "Results"), ("scenarios", "scenarios/index.html", "Scenarios"), ("methods", "methods.html", "Methods")]
+    links = [("overview", "index.html", "Results"), ("scenarios", "scenarios/index.html", "Scenarios"), ("methods", "methods.html", "Methods"), ("history", "history.html", "Earlier batches")]
     nav = "".join(f'<a {"aria-current=page" if key == active else ""} href="{prefix}{url}">{label}</a>' for key, url, label in links)
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    return f'''<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)} · Ploptimizer</title><meta name="description" content="Long-read plasmid assembly benchmark: scenarios, exact recovery outcomes and execution evidence.">
-<link rel="stylesheet" href="{prefix}assets/site.css"></head><body><a class="skip" href="#main">Skip to content</a>
-<header><div class="header-inner"><a class="brand" href="{prefix}index.html">Ploptimizer<span>Assembly benchmark</span></a><nav aria-label="Main navigation">{nav}</nav></div></header>
-<main id="main">{body}</main><footer><span>Sequence recovery, one scenario at a time.</span><a href="https://github.com/SPREAD-Hackathon/ploptimizer/tree/main/assembly-benchmark">Source &amp; specification</a></footer></body></html>'''
+<script>try{{var theme=localStorage.getItem('gx-theme');if(theme==='light'||theme==='dark')document.documentElement.dataset.theme=theme;}}catch{{}}</script>
+<link rel="stylesheet" href="{prefix}assets/genomicx.css"><script defer src="{prefix}assets/genomicx.js"></script></head><body><a class="skip" href="#main">Skip to content</a>
+<div id="genomicx-nav"><header class="fallback-nav"><a href="{prefix}index.html">Ploptimizer</a><nav aria-label="Main navigation">{nav}</nav></header></div>
+<main id="main">{body}</main><footer class="benchmark-footer gx-footer"><div class="gx-footer-inner"><div class="gx-footer-content"><div class="gx-footer-text"><p class="gx-footer-text-title">Ploptimizer</p><p class="gx-footer-text-sub">Assemblies run on BMRC. Results and evidence are published here.</p></div><div class="gx-footer-links"><a class="gx-footer-link" href="https://genomicx.org">GenomicX</a><a class="gx-footer-link" href="https://github.com/SPREAD-Hackathon/ploptimizer/tree/main/assembly-benchmark">Source &amp; specification</a></div></div></div></footer></body></html>'''
 
 
 def result_status(record, scheduler_state):
@@ -75,8 +81,9 @@ def collect_records(config, batch):
     return output
 
 
-def build(config, batch=None):
-    output = ROOT / "dist"
+def build(config, batch=None, output=None, document=None, include_history=True):
+    output = output or ROOT / "dist"
+    generated_assets = ensure_assets(ROOT)
     # Rebuild generated content; preserve only the CLI's ignored project-link state.
     for name in ("assets", "scenarios", "data"):
         if (output / name).exists():
@@ -84,10 +91,10 @@ def build(config, batch=None):
     (output / "assets").mkdir(parents=True, exist_ok=True)
     (output / "scenarios").mkdir(exist_ok=True)
     (output / "data").mkdir(exist_ok=True)
-    shutil.copy2(ROOT / "website/site.css", output / "assets/site.css")
+    shutil.copytree(generated_assets, output / "assets", dirs_exist_ok=True)
     snapshot = ROOT / "published/latest.json"
-    if batch is None and snapshot.exists():
-        document = load(snapshot)
+    if document is not None or (batch is None and snapshot.exists()):
+        document = document or load(snapshot)
         config = document["config"]
         cases = document["scenarios"]
         results = document["results"]
@@ -121,36 +128,64 @@ def build(config, batch=None):
             writer.writerow([row["scenario_id"], row["tool"], row["status"], score.get("plasmid_passes"), score.get("plasmid_total"), row.get("elapsed_seconds"), row.get("peak_memory_kb")])
     counts = {tool: {status: sum(r["tool"] == tool and r["status"] == status for r in results) for status in STATUSES} for tool in config["tools"]}
     completed = sum(r["status"] in ("pass", "fail") for r in results)
-    headline = f'{completed} of {len(results)} comparisons scored · {len(cases)} scenarios · {len(config["tools"])} configurations'
-    body = f'<div class="page-heading"><h1>Can the assembler recover the plasmid?</h1><p>Error-free reads first. Each cell tests one assembler configuration against one known chromosome–plasmid combination.</p></div><p class="run-summary">{headline}</p>'
+    valid_inputs = sum(item["status"] == "valid" for item in document.get("inputs", {}).values())
+    headline = f'{completed} of {len(results)} comparisons scored · {len(cases)} scenarios · {valid_inputs} inputs ready'
+    body = f'<div class="page-heading"><h1>Can the assembler recover the plasmid?</h1><p>Error-free reads first. Each cell tests one assembler configuration against one known chromosome–plasmid combination.</p></div><p class="run-summary">Batch total: {headline}</p>'
     body += '<div class="notice"><strong>What counts as a pass?</strong> Every expected plasmid must appear exactly once as a complete, separate sequence. A circular sequence may start anywhere or be reverse-complemented. This first endpoint does not assess topology claims or classify partial recovery.</div>'
+    category_options = ''.join(f'<option value="{key}">{key} · {e(CATEGORIES[key][0])}</option>' for key in sorted({c["category"] for c in cases}))
+    body += f'<div class="filters"><label>Scenario category<select id="category-filter" disabled><option value="">All categories</option>{category_options}</select></label><label>Species<select id="species-filter" disabled><option value="">All species</option><option value="Escherichia">E. coli</option><option value="Klebsiella">K. pneumoniae</option></select></label><span id="filter-count" aria-live="polite">{len(cases)} scenarios shown</span></div>'
     body += '<div class="table-scroll" role="region" aria-label="Assembler result matrix" tabindex="0"><table class="matrix"><caption>Open a scenario or result to inspect its inputs and evidence. The chromosome-only control uses a separate endpoint.</caption><thead><tr><th scope="col">Scenario</th>'
     for tool in config["tools"]:
         c = counts[tool]
         unresolved = len(cases) - c["pass"] - c["fail"]
-        body += f'<th scope="col">{e(LABELS[tool])}<span class="column-summary">{c["pass"]} pass · {c["fail"]} fail · {unresolved} unscored</span></th>'
+        body += f'<th scope="col">{e(LABELS[tool])}<span class="column-summary" data-summary-tool="{tool}">{c["pass"]} pass · {c["fail"]} fail · {unresolved} unscored</span></th>'
     body += '</tr></thead><tbody>'
     for case in cases:
         plasmids = [r for r in case["replicons"] if r["molecule_type"] == "plasmid"]
         sizes = ", ".join(f'{r["length_bp"] / 1000:.1f} kb' for r in plasmids) or "Negative control"
         noun = "plasmid" if len(plasmids) == 1 else "plasmids"
-        body += f'<tr><th scope="row"><a href="scenarios/{e(case["id"])}.html">{e(case["title"])}</a><span class="row-summary">{len(plasmids)} {noun} · {e(sizes)}</span></th>'
+        body += f'<tr data-category="{case["category"]}" data-species="{case["organism"].split()[0]}"><th scope="row"><a href="scenarios/{e(case["id"])}.html">{e(case["title"])}</a><span class="row-summary"><span class="category-label">{case["category"]}</span> · {len(plasmids)} {noun} · {e(sizes)}</span></th>'
         for tool in config["tools"]:
             row = next(r for r in results if r["scenario_id"] == case["id"] and r["tool"] == tool)
-            body += f'<td><a class="result-link" href="scenarios/{e(case["id"])}.html#{tool}">{badge(row["status"])}</a></td>'
+            body += f'<td data-tool="{tool}" data-status="{row["status"]}"><a class="result-link" href="scenarios/{e(case["id"])}.html#{tool}">{badge(row["status"])}</a></td>'
         body += '</tr>'
     body += '</tbody></table></div><p class="legend">Pass and fail are completed sequence assessments. Queued, running, invalid inputs and job errors are unscored; they are never counted as scientific failures.</p>'
     body += f'<div class="downloads"><a href="data/results.json">Download JSON</a><a href="data/results.tsv">Download TSV</a><span>Updated {e(generated)} · Batch {e(document["batch"] or "not submitted")}</span></div>'
     (output / "index.html").write_text(page("Results", body))
-    category = '<h1>Scenarios</h1><p class="intro">Controlled cases with known reference molecules. Start with exact reads, then add complexity one factor at a time.</p><h2>S1 · Error-free recovery</h2><p>Test chromosome-only controls, individual plasmids and native multi-plasmid complements. Changing the molecule count helps expose whether a successful chromosome hides a missed plasmid.</p><ul class="scenario-list">'
+    category = '<h1>Scenarios</h1><p class="intro">Controlled cases with known reference molecules. Start with exact reads, then add complexity one factor at a time.</p>'
+    for key in sorted({case["category"] for case in cases}):
+        name, description = CATEGORIES[key]
+        category += f'<h2>{key} · {e(name)}</h2><p>{e(description)}</p><ul class="scenario-list">'
+        for case in (c for c in cases if c["category"] == key):
+            category += f'<li><a href="{case["id"]}.html">{e(case["title"])}</a><span>{e(case["truth_type"].replace("_", " "))}</span></li>'
+        category += '</ul>'
     for case in cases:
-        category += f'<li><a href="{case["id"]}.html">{e(case["title"])}</a><span>{e(case["truth_type"].replace("_", " "))}</span></li>'
         rows = [r for r in results if r["scenario_id"] == case["id"]]
-        (output / "scenarios" / (case["id"] + ".html")).write_text(page(case["title"], scenario_page(case, rows, batch, document.get("inputs", {}).get(case["id"])), "../", "scenarios"))
-    category += '</ul><h2>Next categories</h2><p>S2: relative coverage. S3: repeated runs and thread sensitivity. S4: small-plasmid/read-length challenges. S5: biologically linear plasmids. These are planned extensions, with no results implied.</p>'
+        (output / "scenarios" / (case["id"] + ".html")).write_text(page(case["title"], scenario_page(case, rows, batch, document.get("inputs", {}).get(case["id"]), output, document["batch"]), "../", "scenarios"))
+    category += '<h2>Next categories</h2><p>S3: repeated runs and thread sensitivity. S4: small-plasmid/read-length challenges. S5: biologically linear plasmids. These are planned extensions, with no results implied.</p>'
     (output / "scenarios/index.html").write_text(page("Scenarios", category, "../", "scenarios"))
     methods = (ROOT / "website/methods.html").read_text()
     (output / "methods.html").write_text(page("Methods", methods, active="methods"))
+    about = '<h1>About Ploptimizer</h1><p class="intro">A benchmark for the assembly problems that disappear inside whole-genome summary scores.</p><p>We assess whether long-read assembly workflows recover chromosomes and plasmids correctly, starting with E. coli and K. pneumoniae. Controlled reference subsets, coverage panels and explicit sequence endpoints make individual failures inspectable.</p><p>The results matrix links to the inputs, tool configuration, run evidence and limitations for each scenario. Runs execute on the BMRC cluster using Slurm and Pixi; this site presents static result snapshots.</p><p><a href="methods.html">Read the methods</a> or <a href="https://github.com/SPREAD-Hackathon/ploptimizer/tree/main/assembly-benchmark">inspect the source and brief</a>.</p>'
+    (output / "about.html").write_text(page("About", about, active="about"))
+    if include_history:
+        history = '<h1>Earlier batches</h1><p class="intro">Keep each batch separate: inputs, settings and scenario coverage can differ. Earlier results remain inspectable while the next stage runs.</p><ul class="scenario-list">'
+        for path in sorted((ROOT / "published").glob("*.json"), reverse=True):
+            if path.name == "latest.json":
+                continue
+            archived = load(path)
+            if archived["batch"] == document["batch"]:
+                continue
+            passes = sum(row["status"] == "pass" for row in archived["results"])
+            fails = sum(row["status"] == "fail" for row in archived["results"])
+            identifier = archived["batch"]
+            build(archived["config"], output=output / "batches" / identifier, document=archived, include_history=False)
+            history += f'<li><a href="batches/{identifier}/index.html">{identifier} · {e(archived["config"]["profile_id"])}</a><span>{passes} pass · {fails} fail</span></li>'
+        history += '</ul><p><a href="index.html">Return to the current batch</a></p>'
+        (output / "history.html").write_text(page("Earlier batches", history, active="history"))
+    else:
+        # Shared navigation on archive pages returns to the live report's history.
+        (output / "history.html").write_text(page("Earlier batches", '<h1>Batch archive</h1><p><a href="/history.html">Browse all earlier batches</a></p>', active="history"))
     save(output / "vercel.json", {"cleanUrls": True})
     (output / ".vercelignore").write_text(".env*\n.vercel\n.gitignore\n")
     if batch:
@@ -159,9 +194,12 @@ def build(config, batch=None):
     return output
 
 
-def scenario_page(case, rows, batch, manifest=None):
+def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
     settings = case["simulation"]
-    body = f'<a class="back" href="index.html">All scenarios</a><h1>{e(case["title"])}</h1><p class="intro">S1 · Error-free recovery · {e(case["organism"])}</p>'
+    category_name, category_description = CATEGORIES[case["category"]]
+    body = f'<a class="back" href="index.html">All scenarios</a><h1>{e(case["title"])}</h1><p class="intro">{case["category"]} · {e(category_name)} · {e(case["organism"])}</p><p>{e(category_description)}</p>'
+    if batch_id:
+        body += f'<p class="muted">Batch <code>{e(batch_id)}</code></p>'
     body += '<h2>What this case tests</h2><p>Can each expected plasmid be recovered once as an exact, dedicated molecule alongside the chromosome? For the chromosome-only control, the endpoint checks the expected chromosome/no-plasmid output instead.</p>'
     body += f'<p>Source: <a href="https://www.ncbi.nlm.nih.gov/datasets/genome/{case["assembly_accession"]}/">{case["assembly_accession"]}</a>. This case is a {e(case["truth_type"].replace("_", " "))}. The reference inventory is sequence-checked during preparation; independent biological validation remains a separate curation task.</p>'
     input_path = batch / "cases" / case["id"] / "input.json" if batch else None
@@ -202,7 +240,7 @@ def scenario_page(case, rows, batch, manifest=None):
             public = {k: row[k] for k in row if k not in ("host", "assembly_file", "command")}
             public["command"] = [str(x).replace(str(ROOT), "<workdir>") for x in row.get("command", [])]
             name = case["id"] + "-" + row["tool"] + ".json"
-            save(ROOT / "dist/data" / name, public)
+            save((output or ROOT / "dist") / "data" / name, public)
             body += f'<p><a href="../data/{name}">Execution and scoring record (JSON)</a></p>'
         body += '</section>'
     if manifest:

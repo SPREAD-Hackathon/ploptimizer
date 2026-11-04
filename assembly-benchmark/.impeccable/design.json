@@ -1,10 +1,22 @@
 {
   "schemaVersion": 1,
   "mode": "operate",
-  "authority": "User-prescribed simple assembler/scenario table and detail pages",
-  "source": "website/site.css",
-  "focus": "3px solid #075e63 with 5px offset",
-  "responsive": {"breakpoint": "700px", "matrix": "internal horizontal scrolling"},
-  "states": ["pass", "fail", "not_run", "pending", "running", "error", "timeout", "invalid_input"],
+  "authority": "User-requested GenomicX web styling via @genomicx/ui 0.10.1",
+  "source": "website/shell.jsx and website/site.css",
+  "focus": "Shared GenomicX focus styles",
+  "responsive": {
+    "breakpoint": "1050px navigation; narrow viewport matrix scroll",
+    "matrix": "internal horizontal scrolling"
+  },
+  "states": [
+    "pass",
+    "fail",
+    "not_run",
+    "pending",
+    "running",
+    "error",
+    "timeout",
+    "invalid_input"
+  ],
   "motion": "none; static report"
 }
