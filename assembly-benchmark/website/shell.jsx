@@ -6,9 +6,10 @@ import '@genomicx/ui/styles/tokens.css';
 import '@genomicx/ui/styles/components.css';
 import './site.css';
 
+const batchPrefix = window.location.pathname.match(/^\/batches\/[^/]+/)?.[0] ?? '';
 const address = (to) => {
   const href = typeof to === 'string' ? to : createPath(to);
-  return href === '/about' ? '/about.html' : href;
+  return href === '/about' ? `${batchPrefix}/about.html` : href;
 };
 const normalise = (path) => path.replace(/\/index(\.html)?$/, '/').replace(/\.html$/, '').replace(/\/$/, '') || '/';
 // Native GenomicX links navigate between real static pages, not an empty SPA route.
@@ -22,12 +23,12 @@ const links = [
   ['/index.html', 'Results'],
   ['/scenarios/index.html', 'Scenarios'],
   ['/methods.html', 'Methods'],
-  ['/history.html', 'Earlier batches'],
+  ['/history.html', 'All batches'],
 ];
 const actions = (mobile = false) => links.map(([href, label]) => (
-  <a key={href} href={href} className={mobile ? 'gx-nav-dropdown-link' : 'gx-nav-link'}
-    aria-current={normalise(window.location.pathname) === normalise(href)
-      || (label === 'Scenarios' && window.location.pathname.startsWith('/scenarios/')) ? 'page' : undefined}>
+  <a key={href} href={href === '/history.html' ? href : batchPrefix + href} className={mobile ? 'gx-nav-dropdown-link' : 'gx-nav-link'}
+    aria-current={normalise(window.location.pathname) === normalise(batchPrefix + href)
+      || (label === 'Scenarios' && window.location.pathname.startsWith(batchPrefix + '/scenarios/')) ? 'page' : undefined}>
     {label}
   </a>
 ));

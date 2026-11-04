@@ -53,7 +53,7 @@
       "plassembler"
     ]
   },
-  "generated_at": "2026-11-04T19:23:02+00:00",
+  "generated_at": "2026-11-04T19:41:16+00:00",
   "inputs": {
     "s1-ecl8-chromosome": {
       "case": {
@@ -9569,6 +9569,8 @@
       "version": "1.8.3"
     },
     {
+      "assembly_file": "results/s1-mg1655-chromosome/plassembler/output/benchmark_plasmids.fasta",
+      "assembly_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "batch_id": "20261104T190455",
       "command": [
         "plassembler",
@@ -9588,20 +9590,75 @@
         "1000000"
       ],
       "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 246.659,
+      "evaluation": {
+        "contig_count": 0,
+        "endpoint": "No plasmid sequence reported in the chromosome-only control",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 0,
+        "replicons": [
+          {
+            "accession": "NC_000913.3",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4641652,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:22:32.331934+00:00",
+      "initial_flye_evaluation": {
+        "contig_count": 1,
+        "endpoint": "Chromosome-only assembly contains exactly the expected chromosome",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 0,
+        "replicons": [
+          {
+            "accession": "NC_000913.3",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4641652,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "peak_memory_kb": 780344,
       "reads_sha256": "a312b340dc88dfe800b1af16f952951941badb25729a89b2303e6c1de9a1d98d",
+      "retained_chromosome_sha256": "bcafcf0fdb74396af1bb40d7bfee641263b95542066e5e03fd2f581997b64e80",
       "scenario_fingerprint": "bc626897d9554d50387c158c56100c743134dada81402b0a537ca7fdfc0cf5b4",
       "scenario_id": "s1-mg1655-chromosome",
-      "scheduler_state": "RUNNING",
+      "scheduler_state": "COMPLETED",
       "slurm_array_task_id": "3",
       "slurm_job_id": "34384312",
       "started_at": "2026-11-04T19:18:25.671990+00:00",
-      "status": "running",
+      "status": "pass",
       "threads": 4,
       "tool": "plassembler",
       "truth_sha256": "a0ca3984234be9bd174e1f4691f062cc2a1a7dc24fb5c76b7d2f523f79f0c27c",
       "version": "plassembler, version 1.9.0"
     },
     {
+      "assembly_file": "results/s1-w-chromosome/flye/output/assembly.fasta",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
       "batch_id": "20261104T190455",
       "command": [
         "flye",
@@ -9613,20 +9670,51 @@
         "4"
       ],
       "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 203.88,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "Chromosome-only assembly contains exactly the expected chromosome",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 0,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:23:17.546773+00:00",
+      "peak_memory_kb": 907084,
       "reads_sha256": "f4bfe24af5c23808d0928f0c91f46bac1b996dbfb8dc24c3ecbdd73a79a1fbf3",
       "scenario_fingerprint": "d5e66aa40f8d133cf7a365f17a5d530a01e81e2f906e174db07c33fcad68c467",
       "scenario_id": "s1-w-chromosome",
-      "scheduler_state": "RUNNING",
+      "scheduler_state": "COMPLETED",
       "slurm_array_task_id": "4",
       "slurm_job_id": "34384337",
       "started_at": "2026-11-04T19:19:53.666371+00:00",
-      "status": "running",
+      "status": "pass",
       "threads": 4,
       "tool": "flye",
       "truth_sha256": "ec97044ab83216a72220c6e2f9194cdcbdbb7f4c395c8f8326a87b475c428ba3",
       "version": "2.9.6-b1802"
     },
     {
+      "assembly_file": "results/s1-w-chromosome/flye-meta/output/assembly.fasta",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
       "batch_id": "20261104T190455",
       "command": [
         "flye",
@@ -9639,20 +9727,51 @@
         "--meta"
       ],
       "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 199.931,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "Chromosome-only assembly contains exactly the expected chromosome",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 0,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "contig_1"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:24:53.725209+00:00",
+      "peak_memory_kb": 901964,
       "reads_sha256": "f4bfe24af5c23808d0928f0c91f46bac1b996dbfb8dc24c3ecbdd73a79a1fbf3",
       "scenario_fingerprint": "d5e66aa40f8d133cf7a365f17a5d530a01e81e2f906e174db07c33fcad68c467",
       "scenario_id": "s1-w-chromosome",
-      "scheduler_state": "RUNNING",
+      "scheduler_state": "COMPLETED",
       "slurm_array_task_id": "5",
       "slurm_job_id": "34384424",
       "started_at": "2026-11-04T19:21:33.793107+00:00",
-      "status": "running",
+      "status": "fail",
       "threads": 4,
       "tool": "flye-meta",
       "truth_sha256": "ec97044ab83216a72220c6e2f9194cdcbdbb7f4c395c8f8326a87b475c428ba3",
       "version": "2.9.6-b1802"
     },
     {
+      "assembly_file": "results/s1-w-chromosome/raven/stdout.log",
+      "assembly_sha256": "82056afc2006cfc18240cf18410347b90a7df209e7c7841f16a2c75a85b3cd8b",
       "batch_id": "20261104T190455",
       "command": [
         "raven",
@@ -9661,151 +9780,1376 @@
         "<workdir>/runs/20261104T190455/cases/s1-w-chromosome/reads.fastq.gz"
       ],
       "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 103.119,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "Chromosome-only assembly contains exactly the expected chromosome",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 0,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "Utg2140"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:23:23.774434+00:00",
+      "peak_memory_kb": 1371904,
       "reads_sha256": "f4bfe24af5c23808d0928f0c91f46bac1b996dbfb8dc24c3ecbdd73a79a1fbf3",
       "scenario_fingerprint": "d5e66aa40f8d133cf7a365f17a5d530a01e81e2f906e174db07c33fcad68c467",
       "scenario_id": "s1-w-chromosome",
-      "scheduler_state": "RUNNING",
+      "scheduler_state": "COMPLETED",
       "slurm_array_task_id": "6",
       "slurm_job_id": "34384425",
       "started_at": "2026-11-04T19:21:40.654138+00:00",
-      "status": "running",
+      "status": "fail",
       "threads": 4,
       "tool": "raven",
       "truth_sha256": "ec97044ab83216a72220c6e2f9194cdcbdbb7f4c395c8f8326a87b475c428ba3",
       "version": "1.8.3"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-chromosome/plassembler/output/benchmark_plasmids.fasta",
+      "assembly_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "batch_id": "20261104T190455",
+      "command": [
+        "plassembler",
+        "long",
+        "--longreads",
+        "<workdir>/runs/20261104T190455/cases/s1-w-chromosome/reads.fastq.gz",
+        "--outdir",
+        "<workdir>/runs/20261104T190455/results/s1-w-chromosome/plassembler/output",
+        "--threads",
+        "4",
+        "--skip_qc",
+        "--skip_mash",
+        "--keep_chromosome",
+        "--prefix",
+        "benchmark",
+        "--chromosome",
+        "1000000"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 260.453,
+      "evaluation": {
+        "contig_count": 0,
+        "endpoint": "No plasmid sequence reported in the chromosome-only control",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 0,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:26:55.755731+00:00",
+      "initial_flye_evaluation": {
+        "contig_count": 1,
+        "endpoint": "Chromosome-only assembly contains exactly the expected chromosome",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 0,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "peak_memory_kb": 902132,
+      "reads_sha256": "f4bfe24af5c23808d0928f0c91f46bac1b996dbfb8dc24c3ecbdd73a79a1fbf3",
+      "retained_chromosome_sha256": "487e6ff5c327bb7e135a06b993756ba93cbb66a2079e95437e6a14b64debea9b",
+      "scenario_fingerprint": "d5e66aa40f8d133cf7a365f17a5d530a01e81e2f906e174db07c33fcad68c467",
       "scenario_id": "s1-w-chromosome",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "plassembler"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "7",
+      "slurm_job_id": "34384450",
+      "started_at": "2026-11-04T19:22:35.302102+00:00",
+      "status": "pass",
+      "threads": 4,
+      "tool": "plassembler",
+      "truth_sha256": "ec97044ab83216a72220c6e2f9194cdcbdbb7f4c395c8f8326a87b475c428ba3",
+      "version": "plassembler, version 1.9.0"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-prk1/flye/output/assembly.fasta",
+      "assembly_sha256": "f689bcc7845faa36f786773f162877d577ef70e839907c9a2567fb61ede6f130",
+      "batch_id": "20261104T190455",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T190455/cases/s1-w-prk1/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T190455/results/s1-w-prk1/flye/output",
+        "--threads",
+        "4"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 205.569,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017665.1",
+            "exact_contigs": [
+              "contig_2"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 102535,
+            "molecule_type": "plasmid",
+            "name": "pRK1",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:26:44.074204+00:00",
+      "peak_memory_kb": 899628,
+      "reads_sha256": "8ae7954d41474140e03b134a6a58a8ccce5eda85f0d87614577bc436b3615690",
+      "scenario_fingerprint": "45261d3ac57808f53d4716ca2c6ee5c2733e158eebcca918840c225ce64e5488",
       "scenario_id": "s1-w-prk1",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "8",
+      "slurm_job_id": "34384484",
+      "started_at": "2026-11-04T19:23:18.504418+00:00",
+      "status": "pass",
+      "threads": 4,
+      "tool": "flye",
+      "truth_sha256": "c9a43f416974c0ae9736f6ca387b491f4b973df24e1eaaee68daed799af783df",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-prk1/flye-meta/output/assembly.fasta",
+      "assembly_sha256": "4f2a0394fcbef803d66b1350b34b3aca7d2ba0efab9253b2e4662589258f516b",
+      "batch_id": "20261104T190455",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T190455/cases/s1-w-prk1/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T190455/results/s1-w-prk1/flye-meta/output",
+        "--threads",
+        "4",
+        "--meta"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 227.993,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017665.1",
+            "exact_contigs": [
+              "contig_2"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 102535,
+            "molecule_type": "plasmid",
+            "name": "pRK1",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": [
+          "contig_1"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:27:15.088978+00:00",
+      "peak_memory_kb": 899992,
+      "reads_sha256": "8ae7954d41474140e03b134a6a58a8ccce5eda85f0d87614577bc436b3615690",
+      "scenario_fingerprint": "45261d3ac57808f53d4716ca2c6ee5c2733e158eebcca918840c225ce64e5488",
       "scenario_id": "s1-w-prk1",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye-meta"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "9",
+      "slurm_job_id": "34384500",
+      "started_at": "2026-11-04T19:23:27.095083+00:00",
+      "status": "pass",
+      "threads": 4,
+      "tool": "flye-meta",
+      "truth_sha256": "c9a43f416974c0ae9736f6ca387b491f4b973df24e1eaaee68daed799af783df",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-prk1/raven/stdout.log",
+      "assembly_sha256": "dad80da697451483c2e885fc7025a590ba9c1db3e5117b56f99b0da208b10517",
+      "batch_id": "20261104T190455",
+      "command": [
+        "raven",
+        "-t",
+        "4",
+        "<workdir>/runs/20261104T190455/cases/s1-w-prk1/reads.fastq.gz"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 99.114,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017665.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 102535,
+            "molecule_type": "plasmid",
+            "name": "pRK1",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "Utg2180",
+          "Utg2182"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:26:36.827963+00:00",
+      "peak_memory_kb": 1372244,
+      "reads_sha256": "8ae7954d41474140e03b134a6a58a8ccce5eda85f0d87614577bc436b3615690",
+      "scenario_fingerprint": "45261d3ac57808f53d4716ca2c6ee5c2733e158eebcca918840c225ce64e5488",
       "scenario_id": "s1-w-prk1",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "raven"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "10",
+      "slurm_job_id": "34384530",
+      "started_at": "2026-11-04T19:24:57.712787+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tool": "raven",
+      "truth_sha256": "c9a43f416974c0ae9736f6ca387b491f4b973df24e1eaaee68daed799af783df",
+      "version": "1.8.3"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-prk1/plassembler/output/benchmark_plasmids.fasta",
+      "assembly_sha256": "a59922e63fc76d815cc7042a35d2addc6b71568e43678466e4520bddf5707618",
+      "batch_id": "20261104T190455",
+      "command": [
+        "plassembler",
+        "long",
+        "--longreads",
+        "<workdir>/runs/20261104T190455/cases/s1-w-prk1/reads.fastq.gz",
+        "--outdir",
+        "<workdir>/runs/20261104T190455/results/s1-w-prk1/plassembler/output",
+        "--threads",
+        "4",
+        "--skip_qc",
+        "--skip_mash",
+        "--keep_chromosome",
+        "--prefix",
+        "benchmark",
+        "--chromosome",
+        "1000000"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 449.326,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017665.1",
+            "exact_contigs": [
+              "1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 102535,
+            "molecule_type": "plasmid",
+            "name": "pRK1",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:34:09.537044+00:00",
+      "initial_flye_evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017665.1",
+            "exact_contigs": [
+              "contig_2"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 102535,
+            "molecule_type": "plasmid",
+            "name": "pRK1",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "peak_memory_kb": 898152,
+      "reads_sha256": "8ae7954d41474140e03b134a6a58a8ccce5eda85f0d87614577bc436b3615690",
+      "retained_chromosome_sha256": "487e6ff5c327bb7e135a06b993756ba93cbb66a2079e95437e6a14b64debea9b",
+      "scenario_fingerprint": "45261d3ac57808f53d4716ca2c6ee5c2733e158eebcca918840c225ce64e5488",
       "scenario_id": "s1-w-prk1",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "plassembler"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "11",
+      "slurm_job_id": "34384598",
+      "started_at": "2026-11-04T19:26:40.210819+00:00",
+      "status": "pass",
+      "threads": 4,
+      "tool": "plassembler",
+      "truth_sha256": "c9a43f416974c0ae9736f6ca387b491f4b973df24e1eaaee68daed799af783df",
+      "version": "plassembler, version 1.9.0"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-prk2/flye/output/assembly.fasta",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch_id": "20261104T190455",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T190455/cases/s1-w-prk2/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T190455/results/s1-w-prk2/flye/output",
+        "--threads",
+        "4"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 215.652,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:30:23.198795+00:00",
+      "peak_memory_kb": 907344,
+      "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
+      "scenario_fingerprint": "aa9241d835bebe0c3553f41021c5f0e1d84f59d550e01a7bf74dd4bd32400cbe",
       "scenario_id": "s1-w-prk2",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "12",
+      "slurm_job_id": "34384599",
+      "started_at": "2026-11-04T19:26:47.546230+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tool": "flye",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-prk2/flye-meta/output/assembly.fasta",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch_id": "20261104T190455",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T190455/cases/s1-w-prk2/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T190455/results/s1-w-prk2/flye-meta/output",
+        "--threads",
+        "4",
+        "--meta"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 205.073,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "contig_1"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:30:24.695434+00:00",
+      "peak_memory_kb": 898940,
+      "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
+      "scenario_fingerprint": "aa9241d835bebe0c3553f41021c5f0e1d84f59d550e01a7bf74dd4bd32400cbe",
       "scenario_id": "s1-w-prk2",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye-meta"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "13",
+      "slurm_job_id": "34384609",
+      "started_at": "2026-11-04T19:26:59.621711+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tool": "flye-meta",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-prk2/raven/stdout.log",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch_id": "20261104T190455",
+      "command": [
+        "raven",
+        "-t",
+        "4",
+        "<workdir>/runs/20261104T190455/cases/s1-w-prk2/reads.fastq.gz"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 104.389,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "Utg2196",
+          "Utg2198"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:29:02.278542+00:00",
+      "peak_memory_kb": 1364172,
+      "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
+      "scenario_fingerprint": "aa9241d835bebe0c3553f41021c5f0e1d84f59d550e01a7bf74dd4bd32400cbe",
       "scenario_id": "s1-w-prk2",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "raven"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "14",
+      "slurm_job_id": "34384610",
+      "started_at": "2026-11-04T19:27:17.888498+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tool": "raven",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "1.8.3"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-prk2/plassembler/output/benchmark_plasmids.fasta",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch_id": "20261104T190455",
+      "command": [
+        "plassembler",
+        "long",
+        "--longreads",
+        "<workdir>/runs/20261104T190455/cases/s1-w-prk2/reads.fastq.gz",
+        "--outdir",
+        "<workdir>/runs/20261104T190455/results/s1-w-prk2/plassembler/output",
+        "--threads",
+        "4",
+        "--skip_qc",
+        "--skip_mash",
+        "--keep_chromosome",
+        "--prefix",
+        "benchmark",
+        "--chromosome",
+        "1000000"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 308.294,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [
+              "1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:34:13.748637+00:00",
+      "initial_flye_evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": []
+      },
+      "peak_memory_kb": 907992,
+      "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
+      "retained_chromosome_sha256": "487e6ff5c327bb7e135a06b993756ba93cbb66a2079e95437e6a14b64debea9b",
+      "scenario_fingerprint": "aa9241d835bebe0c3553f41021c5f0e1d84f59d550e01a7bf74dd4bd32400cbe",
       "scenario_id": "s1-w-prk2",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "plassembler"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "15",
+      "slurm_job_id": "34384682",
+      "started_at": "2026-11-04T19:29:05.454412+00:00",
+      "status": "pass",
+      "threads": 4,
+      "tool": "plassembler",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "plassembler, version 1.9.0"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-native/flye/output/assembly.fasta",
+      "assembly_sha256": "f689bcc7845faa36f786773f162877d577ef70e839907c9a2567fb61ede6f130",
+      "batch_id": "20261104T190455",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T190455/cases/s1-w-native/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T190455/results/s1-w-native/flye/output",
+        "--threads",
+        "4"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 216.287,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 2,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017665.1",
+            "exact_contigs": [
+              "contig_2"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 102535,
+            "molecule_type": "plasmid",
+            "name": "pRK1",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:34:02.738714+00:00",
+      "peak_memory_kb": 898388,
+      "reads_sha256": "5c330b83b67cdda338a487c825e4210207153ae02f3a8b6f3de1c850083e3017",
+      "scenario_fingerprint": "caa872351ee4560145d409dd71355c4f4112eb0b592716db4750652b5141b09b",
       "scenario_id": "s1-w-native",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "16",
+      "slurm_job_id": "34384755",
+      "started_at": "2026-11-04T19:30:26.451179+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tool": "flye",
+      "truth_sha256": "2cb5d516a36181101a7a1629dfae72e568327ecaf77f17c9c05896a4fbc637ef",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-native/flye-meta/output/assembly.fasta",
+      "assembly_sha256": "4f2a0394fcbef803d66b1350b34b3aca7d2ba0efab9253b2e4662589258f516b",
+      "batch_id": "20261104T190455",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T190455/cases/s1-w-native/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T190455/results/s1-w-native/flye-meta/output",
+        "--threads",
+        "4",
+        "--meta"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 207.491,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 2,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017665.1",
+            "exact_contigs": [
+              "contig_2"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 102535,
+            "molecule_type": "plasmid",
+            "name": "pRK1",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "contig_1"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:33:56.275403+00:00",
+      "peak_memory_kb": 903244,
+      "reads_sha256": "5c330b83b67cdda338a487c825e4210207153ae02f3a8b6f3de1c850083e3017",
+      "scenario_fingerprint": "caa872351ee4560145d409dd71355c4f4112eb0b592716db4750652b5141b09b",
       "scenario_id": "s1-w-native",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye-meta"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "17",
+      "slurm_job_id": "34384756",
+      "started_at": "2026-11-04T19:30:28.783690+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tool": "flye-meta",
+      "truth_sha256": "2cb5d516a36181101a7a1629dfae72e568327ecaf77f17c9c05896a4fbc637ef",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-w-native/raven/stdout.log",
+      "assembly_sha256": "9b26b27eb58dab6466ffd8e4ce702eb7c242369d38083505802f5fbb62f28603",
+      "batch_id": "20261104T190455",
+      "command": [
+        "raven",
+        "-t",
+        "4",
+        "<workdir>/runs/20261104T190455/cases/s1-w-native/reads.fastq.gz"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 99.176,
+      "evaluation": {
+        "contig_count": 3,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 2,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017665.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 102535,
+            "molecule_type": "plasmid",
+            "name": "pRK1",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "Utg2236",
+          "Utg2238",
+          "Utg2240"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:35:42.660522+00:00",
+      "peak_memory_kb": 1407976,
+      "reads_sha256": "5c330b83b67cdda338a487c825e4210207153ae02f3a8b6f3de1c850083e3017",
+      "scenario_fingerprint": "caa872351ee4560145d409dd71355c4f4112eb0b592716db4750652b5141b09b",
       "scenario_id": "s1-w-native",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "raven"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "18",
+      "slurm_job_id": "34384956",
+      "started_at": "2026-11-04T19:34:03.484183+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tool": "raven",
+      "truth_sha256": "2cb5d516a36181101a7a1629dfae72e568327ecaf77f17c9c05896a4fbc637ef",
+      "version": "1.8.3"
     },
     {
-      "command": [],
+      "batch_id": "20261104T190455",
+      "command": [
+        "plassembler",
+        "long",
+        "--longreads",
+        "<workdir>/runs/20261104T190455/cases/s1-w-native/reads.fastq.gz",
+        "--outdir",
+        "<workdir>/runs/20261104T190455/results/s1-w-native/plassembler/output",
+        "--threads",
+        "4",
+        "--skip_qc",
+        "--skip_mash",
+        "--keep_chromosome",
+        "--prefix",
+        "benchmark",
+        "--chromosome",
+        "1000000"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "reads_sha256": "5c330b83b67cdda338a487c825e4210207153ae02f3a8b6f3de1c850083e3017",
+      "scenario_fingerprint": "caa872351ee4560145d409dd71355c4f4112eb0b592716db4750652b5141b09b",
       "scenario_id": "s1-w-native",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "plassembler"
+      "scheduler_state": "RUNNING",
+      "slurm_array_task_id": "19",
+      "slurm_job_id": "34384959",
+      "started_at": "2026-11-04T19:34:06.839719+00:00",
+      "status": "running",
+      "threads": 4,
+      "tool": "plassembler",
+      "truth_sha256": "2cb5d516a36181101a7a1629dfae72e568327ecaf77f17c9c05896a4fbc637ef",
+      "version": "plassembler, version 1.9.0"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-se11-chromosome/flye/output/assembly.fasta",
+      "assembly_sha256": "7f9dd1a973eb28e8401c44823ccfdb34d82f8d7987d7ac22f626bcdcc38fc69d",
+      "batch_id": "20261104T190455",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T190455/cases/s1-se11-chromosome/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T190455/results/s1-se11-chromosome/flye/output",
+        "--threads",
+        "4"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 259.946,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "Chromosome-only assembly contains exactly the expected chromosome",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 0,
+        "replicons": [
+          {
+            "accession": "NC_011415.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4887515,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:38:32.540266+00:00",
+      "peak_memory_kb": 896884,
+      "reads_sha256": "dda7b4339c65a5961e4a91c723d39d921b0e795a4627d428ed2bf35dfc4e96dd",
+      "scenario_fingerprint": "78a71c230eb5291eddef7875b6a69fdb583fbf661f13edc73562facc2d26f6f8",
       "scenario_id": "s1-se11-chromosome",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "20",
+      "slurm_job_id": "34384976",
+      "started_at": "2026-11-04T19:34:12.593662+00:00",
+      "status": "pass",
+      "threads": 4,
+      "tool": "flye",
+      "truth_sha256": "d7bdf468b93ba32ae9e74707b44b2ec1325115d65ccc6b8518f4361067de935b",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "assembly_file": "results/s1-se11-chromosome/flye-meta/output/assembly.fasta",
+      "assembly_sha256": "6b535212deb319fa39800d1eb401cbba6a48fb64a4cc59e996c69a9486e0630e",
+      "batch_id": "20261104T190455",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T190455/cases/s1-se11-chromosome/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T190455/results/s1-se11-chromosome/flye-meta/output",
+        "--threads",
+        "4",
+        "--meta"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 222.5,
+      "evaluation": {
+        "contig_count": 3,
+        "endpoint": "Chromosome-only assembly contains exactly the expected chromosome",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 0,
+        "replicons": [
+          {
+            "accession": "NC_011415.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4887515,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "contig_1",
+          "contig_2",
+          "contig_3"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:37:56.916099+00:00",
+      "peak_memory_kb": 907660,
+      "reads_sha256": "dda7b4339c65a5961e4a91c723d39d921b0e795a4627d428ed2bf35dfc4e96dd",
+      "scenario_fingerprint": "78a71c230eb5291eddef7875b6a69fdb583fbf661f13edc73562facc2d26f6f8",
       "scenario_id": "s1-se11-chromosome",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye-meta"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "21",
+      "slurm_job_id": "34384978",
+      "started_at": "2026-11-04T19:34:14.415846+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tool": "flye-meta",
+      "truth_sha256": "d7bdf468b93ba32ae9e74707b44b2ec1325115d65ccc6b8518f4361067de935b",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_file": "results/s1-se11-chromosome/raven/stdout.log",
+      "assembly_sha256": "309d7b149036f669ca467c23e27e47d526ffb0e920645de699fa5c15ff1672ff",
+      "batch_id": "20261104T190455",
+      "command": [
+        "raven",
+        "-t",
+        "4",
+        "<workdir>/runs/20261104T190455/cases/s1-se11-chromosome/reads.fastq.gz"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "elapsed_seconds": 98.38,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "Chromosome-only assembly contains exactly the expected chromosome",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 0,
+        "replicons": [
+          {
+            "accession": "NC_011415.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4887515,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "Utg2256"
+        ]
+      },
+      "exit_code": 0,
+      "finished_at": "2026-11-04T19:37:24.101350+00:00",
+      "peak_memory_kb": 1379896,
+      "reads_sha256": "dda7b4339c65a5961e4a91c723d39d921b0e795a4627d428ed2bf35dfc4e96dd",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "07db3166de4f4666155e70b20cd4784e49e5791560e8e8f38f75c4ff75a0cd24",
+        "pipeline/cluster.py": "2d655bb8def480af174283e06e3dd804957fd060ac809f236c4840472d79c5de",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "9413ee12b556359678e7390af267237f7701810b8ca5bef1cd96abc45967e3f0",
+        "pipeline/diagnostic_runs.py": "4b961ab87eca17e50ad56d0d7adb439c43cffc1c4870f28b733e23b2e367c2da",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "902f76033f4fb47e3eeff4f2f2db2e8299a266ae287b789c942717649acdacf5",
+        "pipeline/follow.py": "a035fa93f8af491c23e3af35a37a1aa959ac8a386dd16c8debe048761576331d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "7ac0c1dd697eaf6d785809476fe5098ca94ea700eea5d1ca0bcf3682c8df4223",
+        "pipeline/repeat_report.py": "1490b884ed671076a3b3ab03fa07953765b84222bbb8a8ce1734296790cd1ab0",
+        "pipeline/report.py": "536bb73cc2d11c985aaa6bee704c14446b9e9e224d69474813d3de96e3a762f5",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0"
+      },
+      "scenario_fingerprint": "78a71c230eb5291eddef7875b6a69fdb583fbf661f13edc73562facc2d26f6f8",
       "scenario_id": "s1-se11-chromosome",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "raven"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "22",
+      "slurm_job_id": "34385051",
+      "started_at": "2026-11-04T19:35:45.697167+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tool": "raven",
+      "truth_sha256": "d7bdf468b93ba32ae9e74707b44b2ec1325115d65ccc6b8518f4361067de935b",
+      "version": "1.8.3"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "batch_id": "20261104T190455",
+      "command": [
+        "plassembler",
+        "long",
+        "--longreads",
+        "<workdir>/runs/20261104T190455/cases/s1-se11-chromosome/reads.fastq.gz",
+        "--outdir",
+        "<workdir>/runs/20261104T190455/results/s1-se11-chromosome/plassembler/output",
+        "--threads",
+        "4",
+        "--skip_qc",
+        "--skip_mash",
+        "--keep_chromosome",
+        "--prefix",
+        "benchmark",
+        "--chromosome",
+        "1000000"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "reads_sha256": "dda7b4339c65a5961e4a91c723d39d921b0e795a4627d428ed2bf35dfc4e96dd",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "07db3166de4f4666155e70b20cd4784e49e5791560e8e8f38f75c4ff75a0cd24",
+        "pipeline/cluster.py": "2d655bb8def480af174283e06e3dd804957fd060ac809f236c4840472d79c5de",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "9413ee12b556359678e7390af267237f7701810b8ca5bef1cd96abc45967e3f0",
+        "pipeline/diagnostic_runs.py": "cdcd0c36094ca32b54008adac4d8375e4c46b739268567cb4351c75e7295bbb9",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "902f76033f4fb47e3eeff4f2f2db2e8299a266ae287b789c942717649acdacf5",
+        "pipeline/follow.py": "a035fa93f8af491c23e3af35a37a1aa959ac8a386dd16c8debe048761576331d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "7ac0c1dd697eaf6d785809476fe5098ca94ea700eea5d1ca0bcf3682c8df4223",
+        "pipeline/repeat_report.py": "1490b884ed671076a3b3ab03fa07953765b84222bbb8a8ce1734296790cd1ab0",
+        "pipeline/report.py": "536bb73cc2d11c985aaa6bee704c14446b9e9e224d69474813d3de96e3a762f5",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0"
+      },
+      "scenario_fingerprint": "78a71c230eb5291eddef7875b6a69fdb583fbf661f13edc73562facc2d26f6f8",
       "scenario_id": "s1-se11-chromosome",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "plassembler"
+      "scheduler_state": "RUNNING",
+      "slurm_array_task_id": "23",
+      "slurm_job_id": "34385185",
+      "started_at": "2026-11-04T19:37:28.647173+00:00",
+      "status": "running",
+      "threads": 4,
+      "tool": "plassembler",
+      "truth_sha256": "d7bdf468b93ba32ae9e74707b44b2ec1325115d65ccc6b8518f4361067de935b",
+      "version": "plassembler, version 1.9.0"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "batch_id": "20261104T190455",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T190455/cases/s1-se11-pse11-1/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T190455/results/s1-se11-pse11-1/flye/output",
+        "--threads",
+        "4"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "reads_sha256": "1123d59d51607ba335d300f977a4d16fe94d2c14b8f8272ca269021ea238f6ad",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "07db3166de4f4666155e70b20cd4784e49e5791560e8e8f38f75c4ff75a0cd24",
+        "pipeline/cluster.py": "2d655bb8def480af174283e06e3dd804957fd060ac809f236c4840472d79c5de",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "9413ee12b556359678e7390af267237f7701810b8ca5bef1cd96abc45967e3f0",
+        "pipeline/diagnostic_runs.py": "cdcd0c36094ca32b54008adac4d8375e4c46b739268567cb4351c75e7295bbb9",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "902f76033f4fb47e3eeff4f2f2db2e8299a266ae287b789c942717649acdacf5",
+        "pipeline/follow.py": "a035fa93f8af491c23e3af35a37a1aa959ac8a386dd16c8debe048761576331d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "7ac0c1dd697eaf6d785809476fe5098ca94ea700eea5d1ca0bcf3682c8df4223",
+        "pipeline/repeat_report.py": "1490b884ed671076a3b3ab03fa07953765b84222bbb8a8ce1734296790cd1ab0",
+        "pipeline/report.py": "536bb73cc2d11c985aaa6bee704c14446b9e9e224d69474813d3de96e3a762f5",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0"
+      },
+      "scenario_fingerprint": "c7d42b3ede8eade72f3d1f039fcc3d1c649959ee60ae5d2b2ec03bb5c9b5a2ba",
       "scenario_id": "s1-se11-pse11-1",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye"
+      "scheduler_state": "RUNNING",
+      "slurm_array_task_id": "24",
+      "slurm_job_id": "34385205",
+      "started_at": "2026-11-04T19:38:01.177427+00:00",
+      "status": "running",
+      "threads": 4,
+      "tool": "flye",
+      "truth_sha256": "c832da0cec8a590926fb24251cc56336d61bd9c453b2f8c3e89e6fe89a5418db",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "batch_id": "20261104T190455",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T190455/cases/s1-se11-pse11-1/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T190455/results/s1-se11-pse11-1/flye-meta/output",
+        "--threads",
+        "4",
+        "--meta"
+      ],
+      "config_fingerprint": "c96ae67fd342e391c9a432b9d561fa5e4b6a80f5c251b398e0e95b61fa259ab6",
+      "reads_sha256": "1123d59d51607ba335d300f977a4d16fe94d2c14b8f8272ca269021ea238f6ad",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "07db3166de4f4666155e70b20cd4784e49e5791560e8e8f38f75c4ff75a0cd24",
+        "pipeline/cluster.py": "2d655bb8def480af174283e06e3dd804957fd060ac809f236c4840472d79c5de",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "9413ee12b556359678e7390af267237f7701810b8ca5bef1cd96abc45967e3f0",
+        "pipeline/diagnostic_runs.py": "cdcd0c36094ca32b54008adac4d8375e4c46b739268567cb4351c75e7295bbb9",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "902f76033f4fb47e3eeff4f2f2db2e8299a266ae287b789c942717649acdacf5",
+        "pipeline/follow.py": "a035fa93f8af491c23e3af35a37a1aa959ac8a386dd16c8debe048761576331d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "7ac0c1dd697eaf6d785809476fe5098ca94ea700eea5d1ca0bcf3682c8df4223",
+        "pipeline/repeat_report.py": "1490b884ed671076a3b3ab03fa07953765b84222bbb8a8ce1734296790cd1ab0",
+        "pipeline/report.py": "536bb73cc2d11c985aaa6bee704c14446b9e9e224d69474813d3de96e3a762f5",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0"
+      },
+      "scenario_fingerprint": "c7d42b3ede8eade72f3d1f039fcc3d1c649959ee60ae5d2b2ec03bb5c9b5a2ba",
       "scenario_id": "s1-se11-pse11-1",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye-meta"
+      "scheduler_state": "RUNNING",
+      "slurm_array_task_id": "25",
+      "slurm_job_id": "34385261",
+      "started_at": "2026-11-04T19:38:37.762776+00:00",
+      "status": "running",
+      "threads": 4,
+      "tool": "flye-meta",
+      "truth_sha256": "c832da0cec8a590926fb24251cc56336d61bd9c453b2f8c3e89e6fe89a5418db",
+      "version": "2.9.6-b1802"
     },
     {
       "command": [],

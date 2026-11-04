@@ -61,5 +61,9 @@ Four tool configurations give 128 comparisons. Batch `20261104T190455` has been
 submitted to BMRC with four concurrent assembly tasks; completion is shown on
 the site. The earlier single-case pilot remains available under Earlier batches.
 The 1× S2 cases deliberately repeat baseline conditions; they are not independent
-biological replicates. S3 repeated/thread runs and S4 read-length challenges are
-the next implementation stages.
+biological replicates. S3 repeated/thread runs and S4 read-length challenges now have separate runnable
+profiles: `config/determinism.json` (80 executions) and
+`config/small-plasmids.json` (48 comparisons). They are queued sequentially after
+the S1/S2 panel so the assembly concurrency remains four. All batches are linked
+on the site. Supplementary alignment diagnostics explain strict failures without
+changing their scores; see [RECOVERY_DIAGNOSTICS.md](RECOVERY_DIAGNOSTICS.md).

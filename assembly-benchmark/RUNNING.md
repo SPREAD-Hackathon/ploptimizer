@@ -120,7 +120,7 @@ timeouts and invalid inputs are separate from pass/fail counts. A killed Slurm t
 may lack a final execution record; collection uses accounting to expose that failure.
 
 The sequence audit checks input integrity, not independent biological truth. Independent biological
-reference validation, S3 repeat/thread panels, S4 length challenges,
+reference validation, broader repeat/thread panels, further length challenges,
 S5 linear references, realistic error models and matched real reads remain later work.
 
 ## Expanded S1/S2 panel and automatic updates
@@ -160,3 +160,32 @@ The static site supports category/species filtering, shared GenomicX navigation,
 themes and status badges. Earlier versioned snapshots get their own pages under
 Earlier batches. Public snapshots must be committed separately after collection
 if they are to survive a fresh checkout.
+
+## Determinism, length challenges and diagnostics
+
+```sh
+python3 benchmark.py --config config/small-plasmids.json submit --after-job PREVIOUS_REPORT_JOB
+python3 benchmark.py --config config/determinism.json submit --after-job LENGTH_REPORT_JOB
+python3 benchmark.py diagnose-submit --batch BATCH_ID --after-job ASSEMBLY_JOB
+python3 benchmark.py follow --batch PRIMARY_BATCH --also-batch LENGTH_BATCH --also-batch REPEAT_BATCH --interval 60 --publish-interval 600 --max-hours 24
+```
+
+Dependencies serialize the experiment batches; each assembly array remains capped
+at four concurrent tasks. S3 uses five repeats at one and four tool threads, with
+four CPUs reserved per task in either setting. Repeats share a single checksummed
+read file and write isolated execution directories. Their report separates byte,
+normalised sequence and strict biological agreement; incomplete evidence is never
+called identical. See [S4_READ_LENGTHS.md](S4_READ_LENGTHS.md) for the length panel.
+
+`diagnose-submit` submits one CPU/4 GB/one-hour supplementary mapping work on the
+compute node; it does not rerun assemblers or modify execution.json. It records
+its job ID separately, and the follower waits for diagnostics before stopping.
+The collector copies small diagnostic JSON/PAF evidence while large assemblies
+remain on BMRC. Mapper failure is independent of a scientific pass or fail.
+
+One follower coordinates all companion batches serially, snapshots them without
+replacing the primary view, and deploys the primary report with linked batch pages.
+Only one follower should own a site at a time. Restarting forces a publication
+attempt so a failed previous deployment cannot masquerade as success. This is
+a bounded process on the controller; it requires that machine and its SSH/network
+connection to remain available. It records explicit retry and time-limit states.

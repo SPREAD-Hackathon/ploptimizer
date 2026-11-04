@@ -7,11 +7,15 @@ from .common import ROOT, load, save
 from .report import build
 
 
-def publish(config, batch, deploy=False):
-    build(config, batch)
-    document = load(ROOT / "dist/data/results.json")
+def publish(config, batch, deploy=False, make_latest=True):
+    if deploy and not make_latest:
+        raise ValueError("Only the primary report can deploy the site")
+    output = ROOT / "dist" if make_latest else batch / "publication"
+    build(config, batch, output=output, include_history=make_latest)
+    document = load(output / "data/results.json")
     save(ROOT / "published" / (batch.name + ".json"), document)
-    save(ROOT / "published/latest.json", document)
+    if make_latest:
+        save(ROOT / "published/latest.json", document)
     if deploy:
         project = load(ROOT / "config/vercel-project.json")
         save(ROOT / "dist/.vercel/project.json", project)

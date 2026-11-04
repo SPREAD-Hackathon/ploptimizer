@@ -7,12 +7,13 @@ import shutil
 
 from .cases import plan
 from .assets import ensure_assets
-from .common import ROOT, fingerprint, load, save
+from .common import ROOT, digest, fingerprint, load, save
 
 LABELS = {"flye": "Flye", "flye-meta": "Flye · uneven coverage", "raven": "Raven", "plassembler": "Plassembler long"}
 STATUSES = {"pass": "Pass", "fail": "Fail", "not_run": "Not run", "pending": "Queued", "running": "Running", "error": "Job error", "timeout": "Timed out", "invalid_input": "Invalid input"}
 CATEGORIES = {
     "S1": ("Error-free recovery", "Chromosome-only controls, individual native plasmids and complete deposited complements. These cases establish the baseline for each reference."),
+    "S4": ("Small plasmids and read length", "Compare short, baseline and long read-length targets for small plasmids individually and in their native complements. Achieved read lengths are capped to one molecule circumference; targets describe simulation settings, not nanopore chemistry."),
     "S2": ("Relative plasmid coverage", "Hold chromosome depth and read properties fixed, and vary plasmid depth at 0.8×, 1×, 1.2×, 3× and 5× relative to it. These are coverage ratios, not measured biological copy numbers."),
 }
 
@@ -26,7 +27,7 @@ def badge(status):
 
 
 def page(title, body, prefix="", active="overview"):
-    links = [("overview", "index.html", "Results"), ("scenarios", "scenarios/index.html", "Scenarios"), ("methods", "methods.html", "Methods"), ("history", "history.html", "Earlier batches")]
+    links = [("overview", "index.html", "Results"), ("scenarios", "scenarios/index.html", "Scenarios"), ("methods", "methods.html", "Methods"), ("history", "history.html", "All batches")]
     nav = "".join(f'<a {"aria-current=page" if key == active else ""} href="{prefix}{url}">{label}</a>' for key, url, label in links)
     return f'''<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)} · Ploptimizer</title><meta name="description" content="Long-read plasmid assembly benchmark: scenarios, exact recovery outcomes and execution evidence.">
@@ -75,6 +76,7 @@ def collect_records(config, batch):
                 state = accounting.get(f"{job}_{matches[0]}", accounting.get(job, ""))
                 if not state and not record:
                     state = "PENDING"
+            record = attach_diagnostics(record, path)
             status = result_status(record, state)
             output.append({**record, "scenario_id": case["id"], "tool": tool, "status": status,
                            "scheduler_state": state or None})
@@ -82,6 +84,11 @@ def collect_records(config, batch):
 
 
 def build(config, batch=None, output=None, document=None, include_history=True):
+    if batch is None and document is None and (ROOT / "published/latest.json").exists():
+        document = load(ROOT / "published/latest.json")
+    if config.get("determinism") or (document and document["config"].get("determinism")):
+        from .repeat_report import build_repeat
+        return build_repeat(config, batch, output, document, include_history)
     output = output or ROOT / "dist"
     generated_assets = ensure_assets(ROOT)
     # Rebuild generated content; preserve only the CLI's ignored project-link state.
@@ -162,34 +169,18 @@ def build(config, batch=None, output=None, document=None, include_history=True):
     for case in cases:
         rows = [r for r in results if r["scenario_id"] == case["id"]]
         (output / "scenarios" / (case["id"] + ".html")).write_text(page(case["title"], scenario_page(case, rows, batch, document.get("inputs", {}).get(case["id"]), output, document["batch"]), "../", "scenarios"))
-    category += '<h2>Next categories</h2><p>S3: repeated runs and thread sensitivity. S4: small-plasmid/read-length challenges. S5: biologically linear plasmids. These are planned extensions, with no results implied.</p>'
+    category += '<h2>Study extensions</h2><p>Repeated/thread runs (S3) and small-plasmid read-length challenges (S4) run as separate batches. See <a href="../history.html">all batches</a> for their settings and progress. Biologically linear plasmids (S5) remain a planned extension.</p>'
     (output / "scenarios/index.html").write_text(page("Scenarios", category, "../", "scenarios"))
     methods = (ROOT / "website/methods.html").read_text()
     (output / "methods.html").write_text(page("Methods", methods, active="methods"))
     about = '<h1>About Ploptimizer</h1><p class="intro">A benchmark for the assembly problems that disappear inside whole-genome summary scores.</p><p>We assess whether long-read assembly workflows recover chromosomes and plasmids correctly, starting with E. coli and K. pneumoniae. Controlled reference subsets, coverage panels and explicit sequence endpoints make individual failures inspectable.</p><p>The results matrix links to the inputs, tool configuration, run evidence and limitations for each scenario. Runs execute on the BMRC cluster using Slurm and Pixi; this site presents static result snapshots.</p><p><a href="methods.html">Read the methods</a> or <a href="https://github.com/SPREAD-Hackathon/ploptimizer/tree/main/assembly-benchmark">inspect the source and brief</a>.</p>'
     (output / "about.html").write_text(page("About", about, active="about"))
-    if include_history:
-        history = '<h1>Earlier batches</h1><p class="intro">Keep each batch separate: inputs, settings and scenario coverage can differ. Earlier results remain inspectable while the next stage runs.</p><ul class="scenario-list">'
-        for path in sorted((ROOT / "published").glob("*.json"), reverse=True):
-            if path.name == "latest.json":
-                continue
-            archived = load(path)
-            if archived["batch"] == document["batch"]:
-                continue
-            passes = sum(row["status"] == "pass" for row in archived["results"])
-            fails = sum(row["status"] == "fail" for row in archived["results"])
-            identifier = archived["batch"]
-            build(archived["config"], output=output / "batches" / identifier, document=archived, include_history=False)
-            history += f'<li><a href="batches/{identifier}/index.html">{identifier} · {e(archived["config"]["profile_id"])}</a><span>{passes} pass · {fails} fail</span></li>'
-        history += '</ul><p><a href="index.html">Return to the current batch</a></p>'
-        (output / "history.html").write_text(page("Earlier batches", history, active="history"))
-    else:
-        # Shared navigation on archive pages returns to the live report's history.
-        (output / "history.html").write_text(page("Earlier batches", '<h1>Batch archive</h1><p><a href="/history.html">Browse all earlier batches</a></p>', active="history"))
+    write_history(output, document, include_history)
     save(output / "vercel.json", {"cleanUrls": True})
     (output / ".vercelignore").write_text(".env*\n.vercel\n.gitignore\n")
     if batch:
         destination = batch / "site"
+        shutil.rmtree(destination, ignore_errors=True)
         shutil.copytree(output, destination, dirs_exist_ok=True, ignore=shutil.ignore_patterns(".vercel", ".env*", ".gitignore"))
     return output
 
@@ -207,12 +198,14 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
         manifest = load(input_path) if input_path and input_path.exists() else None
     stats = {r["accession"]: r for r in manifest["replicons"]} if manifest else {}
     body += f'<h2>Read generation</h2><p>Exact sequence sampling; lognormal length targets with mean {settings["length_mean"]:,} bp and SD {settings["length_sd"]:,} bp, clipped to {settings["length_min"]:,}–{settings["length_max"]:,} bp and one circumference. Random starts and both strands; no sequencing errors, adapters or chimeras. Q{settings["fastq_phred"]} is a synthetic FASTQ placeholder. Small molecules have a shorter achieved distribution.</p><p>Target chromosome depth {settings["chromosome_depth"]}×; plasmid relative depth {settings["plasmid_relative_depth"]}×. Seed {settings["seed"]}. Sampling stops after the target is reached, allowing up to one read of overshoot per molecule.</p>'
-    body += '<div class="table-scroll" tabindex="0" role="region" aria-label="Reference molecules"><table><thead><tr><th scope="col">Molecule</th><th scope="col">Accession</th><th scope="col">Size</th><th scope="col">Achieved depth</th><th scope="col">Breadth</th></tr></thead><tbody>'
+    body += '<div class="table-scroll" tabindex="0" role="region" aria-label="Reference molecules"><table><thead><tr><th scope="col">Molecule</th><th scope="col">Accession</th><th scope="col">Size</th><th scope="col">Achieved depth</th><th scope="col">Breadth</th><th scope="col">Read count</th><th scope="col">Read length mean / range</th></tr></thead><tbody>'
     for r in case["replicons"]:
         observed = stats.get(r["refseq_accession"])
         depth = f'{observed["achieved_depth"]:.2f}×' if observed else "Not generated"
         breadth = f'{observed["breadth"]:.2%}' if observed else "Not generated"
-        body += f'<tr><th scope="row">{e(r["replicon_name"])}</th><td><a href="https://www.ncbi.nlm.nih.gov/nuccore/{r["refseq_accession"]}">{r["refseq_accession"]}</a></td><td>{r["length_bp"]:,} bp</td><td>{depth}</td><td>{breadth}</td></tr>'
+        read_count = f'{observed["read_count"]:,}' if observed else "Not generated"
+        lengths = f'{observed["mean_read_length"]:,.0f} / {observed["minimum_read_length"]:,}–{observed["maximum_read_length"]:,} bp' if observed else "Not generated"
+        body += f'<tr><th scope="row">{e(r["replicon_name"])}</th><td><a href="https://www.ncbi.nlm.nih.gov/nuccore/{r["refseq_accession"]}">{r["refseq_accession"]}</a></td><td>{r["length_bp"]:,} bp</td><td>{depth}</td><td>{breadth}</td><td>{read_count}</td><td>{lengths}</td></tr>'
     body += '</tbody></table></div><h2>Assembler results</h2>'
     for row in rows:
         body += f'<section class="assembler-result" id="{row["tool"]}"><h3>{e(LABELS[row["tool"]])} {badge(row["status"])}</h3>'
@@ -236,6 +229,8 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
                 body += f'<p>Paired initial Flye result: {badge(initial["status"])} · {initial["plasmid_passes"]}/{initial["plasmid_total"]} exact plasmids.</p>'
         else:
             body += '<p>No completed sequence assessment is available for this configuration.</p>'
+        if row.get("diagnostics"):
+            body += diagnostic_table(row["diagnostics"], plasmid_only=row["tool"] == "plassembler")
         if row.get("started_at"):
             public = {k: row[k] for k in row if k not in ("host", "assembly_file", "command")}
             public["command"] = [str(x).replace(str(ROOT), "<workdir>") for x in row.get("command", [])]
@@ -247,3 +242,57 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
         body += f'<h2>Input evidence</h2><p>Input validation: <strong>{e(manifest["status"])}</strong>. Read-file SHA-256:</p><code class="checksum">{manifest["reads_sha256"]}</code>'
     body += '<p><a href="../methods.html">Read the scoring rules and limitations</a></p>'
     return body
+
+
+def write_history(output, document, include_history=True):
+    if include_history:
+        shutil.rmtree(output / "batches", ignore_errors=True)
+        history = '<h1>All batches</h1><p class="intro">Keep each batch separate: inputs, settings and scenario coverage can differ. Completed, running and queued batches remain separate. Open a batch to inspect its own settings and progress.</p><ul class="scenario-list">'
+        current_pass = sum(row["status"] == "pass" for row in document["results"])
+        current_fail = sum(row["status"] == "fail" for row in document["results"])
+        current_unscored = len(document["results"]) - current_pass - current_fail
+        history += f'<li><a href="index.html">Current · {e(document["config"]["profile_id"])}</a><span>{current_pass} pass · {current_fail} fail · {current_unscored} unscored</span></li>'
+        for path in sorted((ROOT / "published").glob("*.json"), reverse=True):
+            if path.name == "latest.json":
+                continue
+            archived = load(path)
+            if archived["batch"] == document["batch"]:
+                continue
+            passes = sum(row["status"] == "pass" for row in archived["results"])
+            fails = sum(row["status"] == "fail" for row in archived["results"])
+            identifier = archived["batch"]
+            build(archived["config"], output=output / "batches" / identifier, document=archived, include_history=False)
+            unscored = len(archived["results"]) - passes - fails
+            history += f'<li><a href="batches/{identifier}/index.html">{identifier} · {e(archived["config"]["profile_id"])}</a><span>{passes} pass · {fails} fail · {unscored} unscored</span></li>'
+        history += '</ul><p><a href="index.html">Return to the current batch</a></p>'
+        (output / "history.html").write_text(page("All batches", history, active="history"))
+    else:
+        # Shared navigation on archive pages returns to the live report's history.
+        (output / "history.html").write_text(page("All batches", '<h1>Batch archive</h1><p><a href="/history.html">Browse all earlier batches</a></p>', active="history"))
+
+
+def diagnostic_table(diagnostic, plasmid_only=False):
+    if diagnostic.get("status") != "complete":
+        return '<p>Supplementary recovery diagnostics are unavailable for this execution.</p>'
+    body = '<h4>Aligned recovery evidence</h4><p class="muted">Supplementary mapping evidence; the exact pass/fail score is unchanged. Candidate flags need review and do not establish topology or a structural error.</p><div class="table-scroll" role="region" aria-label="Aligned recovery evidence" tabindex="0"><table><thead><tr><th scope="col">Molecule</th><th scope="col">Aligned reference</th><th scope="col">Alignment identity</th><th scope="col">Supporting contigs</th><th scope="col">Candidate evidence</th></tr></thead><tbody>'
+    if plasmid_only:
+        body = body.replace('<div class="table-scroll"', '<p class="muted">Final plasmid output only; retained chromosome recovery is assessed separately.</p><div class="table-scroll"', 1)
+    for row in diagnostic["evidence"]["replicons"]:
+        if plasmid_only and row["molecule_type"] == "chromosome":
+            continue
+        identity = f'{row["alignment_identity"]:.3%}' if row["alignment_identity"] is not None else "Not estimated"
+        flags = ", ".join(key.replace("_", " ") for key, value in row["candidate_flags"].items() if value) or "No flags under this policy"
+        body += f'<tr><th scope="row">{e(row["name"])}</th><td>{row["recovered_fraction"]:.2%}</td><td>{identity}</td><td>{row["contig_count"]}</td><td>{e(flags)}</td></tr>'
+    body += '</tbody></table></div>'
+    body += f'<p class="muted">Mapper: {e(diagnostic.get("mapper_version", "unknown"))}. {e(diagnostic["evidence"]["limitations"])}</p>'
+    return body
+
+
+def attach_diagnostics(record, path):
+    diagnostic_path = path.parent / "diagnostics.json" if path else None
+    if record and diagnostic_path and diagnostic_path.exists():
+        diagnostic = load(diagnostic_path)
+        hashes = diagnostic.get("input_hashes", {})
+        if hashes.get("execution_sha256") == digest(path) and hashes.get("assembly_sha256") == record.get("assembly_sha256"):
+            record["diagnostics"] = {key: value for key, value in diagnostic.items() if key != "command"}
+    return record

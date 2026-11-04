@@ -1,6 +1,8 @@
 """Expand the pinned inventory into finite baseline and relative-depth scenarios."""
 
 import copy
+import math
+import re
 
 from .common import ROOT, fingerprint, load
 
@@ -66,8 +68,66 @@ def plan(config):
             case["simulation"]["plasmid_relative_depth"] = ratio
             case["fingerprint"] = fingerprint({key: value for key, value in case.items() if key != "fingerprint"})
             result.append(case)
+    result.extend(read_length_cases(config, result))
     if len({case["id"] for case in result}) != len(result):
         raise ValueError("The configuration produces duplicate scenario identifiers")
+    categories = config.get("scenario_categories")
+    if categories is not None:
+        if not categories or set(categories) - {"S1", "S2", "S4"}:
+            raise ValueError("Select supported nonempty scenario categories")
+        result = [case for case in result if case["category"] in categories]
+        if not result:
+            raise ValueError("The configuration selects no scenarios")
+    return result
+
+
+def read_length_cases(config, baseline):
+    """Vary whole-input read lengths for a small plasmid alone and in its complement."""
+    panel = config.get("read_length_panel")
+    if panel is None:
+        return []
+    profiles = panel.get("profiles", [])
+    if not panel.get("targets") or not profiles:
+        raise ValueError("Read-length panels require targets and profiles")
+    keys = {"length_mean", "length_sd", "length_min", "length_max"}
+    for profile in profiles:
+        if not re.fullmatch(r"[a-z][a-z0-9-]*", profile.get("id", "")):
+            raise ValueError("Read-length profiles require a simple lower-case identifier")
+        if set(profile) != keys | {"id", "title"}:
+            raise ValueError("Read-length profiles must declare all four length settings, id and title")
+        if any(isinstance(profile[k], bool) or not isinstance(profile[k], (int, float))
+               or not math.isfinite(profile[k]) or profile[k] < (0 if k == "length_sd" else 1) for k in keys):
+            raise ValueError("Read-length settings must be finite and positive; SD may be zero")
+        if any(not isinstance(profile[k], int) for k in ("length_min", "length_max")):
+            raise ValueError("Read-length bounds must be whole numbers of bases")
+        if not isinstance(profile["title"], str) or not profile["title"].strip():
+            raise ValueError("Read-length profiles require a readable title")
+        if profile["length_min"] > profile["length_max"]:
+            raise ValueError("Minimum read length must not exceed maximum read length")
+    result = []
+    for target in panel["targets"]:
+        candidates = [case for case in baseline if case["category"] == "S1"
+                      and case["assembly_accession"] == target["assembly"]]
+        source = next((case for case in candidates if [r["refseq_accession"] for r in case["replicons"]
+                       if r["molecule_type"] == "plasmid"] == [target["plasmid"]]), None)
+        native = next((case for case in candidates if case["truth_type"] == "native_complement"), None)
+        if source is None or native is None:
+            raise ValueError("Read-length targets must identify a native plasmid in a selected reference")
+        if config["simulation"]["circular_read_limit"] != "one_circumference":
+            raise ValueError("The S4 panel requires one-circumference clipping")
+        for mode in panel.get("contexts", ["individual", "native"]):
+            if mode not in {"individual", "native"}:
+                raise ValueError("Read-length context must be individual or native")
+            for profile in profiles:
+                case = copy.deepcopy(source if mode == "individual" else native)
+                case["id"] = case["id"].replace("s1-", "s4-", 1) + "-length-" + profile["id"]
+                case["title"] += " · " + profile["title"]
+                case["category"] = "S4"
+                case["read_length_profile"] = profile["id"]
+                case["small_plasmid_accession"] = target["plasmid"]
+                case["simulation"].update({key: profile[key] for key in keys})
+                case["fingerprint"] = fingerprint({key: value for key, value in case.items() if key != "fingerprint"})
+                result.append(case)
     return result
 
 

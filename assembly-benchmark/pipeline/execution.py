@@ -30,18 +30,34 @@ def command(tool, reads, output, config):
     raise ValueError(f"Unknown assembler: {tool}")
 
 
-def run(case, tool, batch, config):
+def run(case, tool, batch, config, threads=None, repeat=None):
+    from .determinism import biological_signature, execution_id, repeat_settings, sequence_signature
+    settings = dict(config)
+    settings["threads"] = config["threads"] if threads is None else threads
+    panel = repeat_settings(config)
+    if repeat is not None:
+        if not panel or settings["threads"] not in panel["threads"] or not 1 <= repeat <= panel["repeats"] or case["id"] not in panel["scenarios"]:
+            raise ValueError("Execution does not belong to the frozen determinism panel")
+    elif threads is not None or panel:
+        raise ValueError("Determinism runs require an explicit repeat and configured threads")
     directory = batch / "results" / case["id"] / tool
+    if repeat is not None:
+        directory = directory / "repeats" / execution_id(settings["threads"], repeat)
     directory.mkdir(parents=True, exist_ok=True)
     result_path = directory / "execution.json"
     if result_path.exists():
         raise ValueError("Execution already recorded; use a new batch for independent runs")
     record = {"batch_id": batch.name, "scenario_id": case["id"], "scenario_fingerprint": case["fingerprint"], "tool": tool,
-              "config_fingerprint": fingerprint(config), "threads": config["threads"],
+              "config_fingerprint": fingerprint(config), "threads": settings["threads"],
               "started_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
               "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
               "slurm_array_task_id": os.environ.get("SLURM_ARRAY_TASK_ID"),
+              "allocated_cpus": int(os.environ.get("SLURM_CPUS_PER_TASK", config["threads"])),
               "host": platform.node(), "status": "running"}
+    source_root = Path(__file__).resolve().parent
+    record["runtime_source_sha256"] = {"pipeline/" + path.name: digest(path) for path in source_root.glob("*.py")}
+    if repeat is not None:
+        record.update(repeat=repeat, run_id=execution_id(settings["threads"], repeat))
     save(result_path, record)
     start = time.monotonic()
     try:
@@ -67,7 +83,7 @@ def run(case, tool, batch, config):
             raise ValueError("Input checksum mismatch")
         record["reads_sha256"] = manifest["reads_sha256"]
         record["truth_sha256"] = manifest["truth_sha256"]
-        argv = command(tool, reads, directory / "output", config)
+        argv = command(tool, reads, directory / "output", settings)
         record["command"] = argv
         binary = "flye" if tool == "flye-meta" else tool
         version = subprocess.run([binary, "--version"], capture_output=True, text=True, timeout=30)
@@ -111,6 +127,11 @@ def run(case, tool, batch, config):
         record["assembly_sha256"] = digest(assembly)
         record["evaluation"] = evaluate(case, input_dir / "truth.fasta", assembly, tool == "plassembler")
         record["status"] = record["evaluation"]["status"]
+        if repeat is not None:
+            signature = sequence_signature(case, input_dir / "truth.fasta", assembly)
+            record["normalised_assembly_sha256"] = signature["sha256"]
+            record["sequence_normalisation"] = signature
+            record["biological_sha256"] = biological_signature(record["evaluation"])
         if tool == "plassembler":
             initial = directory / "output/flye_output/assembly.fasta"
             if initial.exists():

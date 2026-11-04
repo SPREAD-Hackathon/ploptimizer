@@ -1,0 +1,1176 @@
+{
+  "batch": "20261104T193551",
+  "config": {
+    "plassembler_chromosome_threshold": 1000000,
+    "profile_id": "s4-exact-lengths-v1",
+    "read_length_panel": {
+      "contexts": [
+        "individual",
+        "native"
+      ],
+      "profiles": [
+        {
+          "id": "short",
+          "length_max": 2500,
+          "length_mean": 1500,
+          "length_min": 500,
+          "length_sd": 500,
+          "title": "Short reads (1.5 kb target)"
+        },
+        {
+          "id": "baseline",
+          "length_max": 50000,
+          "length_mean": 10000,
+          "length_min": 500,
+          "length_sd": 5000,
+          "title": "Baseline reads (10 kb target)"
+        },
+        {
+          "id": "long",
+          "length_max": 100000,
+          "length_mean": 25000,
+          "length_min": 500,
+          "length_sd": 10000,
+          "title": "Long reads (25 kb target)"
+        }
+      ],
+      "targets": [
+        {
+          "assembly": "GCF_000258145.1",
+          "plasmid": "NC_017662.1"
+        },
+        {
+          "assembly": "GCF_000016305.1",
+          "plasmid": "NC_009653.1"
+        }
+      ]
+    },
+    "references": [
+      "GCF_000258145.1",
+      "GCF_000016305.1"
+    ],
+    "scenario_categories": [
+      "S4"
+    ],
+    "schema_version": 1,
+    "scoring": "exact-dedicated-molecule-v1",
+    "simulation": {
+      "chromosome_depth": 30,
+      "circular_read_limit": "one_circumference",
+      "fastq_phred": 40,
+      "length_max": 50000,
+      "length_mean": 10000,
+      "length_min": 500,
+      "length_sd": 5000,
+      "minimum_breadth": 0.99,
+      "model": "exact-lognormal-v1",
+      "plasmid_relative_depth": 1,
+      "seed": 20261104
+    },
+    "threads": 4,
+    "timeout_seconds": 14400,
+    "tools": [
+      "flye",
+      "flye-meta",
+      "raven",
+      "plassembler"
+    ]
+  },
+  "generated_at": "2026-11-04T19:38:43+00:00",
+  "inputs": {},
+  "provenance": {},
+  "results": [
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-prk2-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-w-native-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-pkpn7-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-short",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-baseline",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "flye-meta"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "raven"
+    },
+    {
+      "command": [],
+      "scenario_id": "s4-mgh78578-native-length-long",
+      "scheduler_state": "PENDING",
+      "status": "pending",
+      "tool": "plassembler"
+    }
+  ],
+  "scenarios": [
+    {
+      "assembly_accession": "GCF_000258145.1",
+      "category": "S4",
+      "fingerprint": "cf4839a13ffd220309e78d60b5a822e92ef98e89ed70d1b3987ba9bcca1d970e",
+      "id": "s4-w-prk2-length-short",
+      "organism": "Escherichia coli W",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "short",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002967.1",
+          "length_bp": 4897452,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017664.1",
+          "refseq_accession": "NC_017664.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002969.1",
+          "length_bp": 5360,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017662.1",
+          "refseq_accession": "NC_017662.1",
+          "replicon_name": "pRK2",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 2500,
+        "length_mean": 1500,
+        "length_min": 500,
+        "length_sd": 500,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_017662.1",
+      "title": "W \u00b7 Chromosome + pRK2 \u00b7 Short reads (1.5 kb target)",
+      "truth_type": "derived_subset"
+    },
+    {
+      "assembly_accession": "GCF_000258145.1",
+      "category": "S4",
+      "fingerprint": "1adf30d3f5c878a59476514d1b684a70f392487df4d92e339561c949e375f867",
+      "id": "s4-w-prk2-length-baseline",
+      "organism": "Escherichia coli W",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "baseline",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002967.1",
+          "length_bp": 4897452,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017664.1",
+          "refseq_accession": "NC_017664.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002969.1",
+          "length_bp": 5360,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017662.1",
+          "refseq_accession": "NC_017662.1",
+          "replicon_name": "pRK2",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 50000,
+        "length_mean": 10000,
+        "length_min": 500,
+        "length_sd": 5000,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_017662.1",
+      "title": "W \u00b7 Chromosome + pRK2 \u00b7 Baseline reads (10 kb target)",
+      "truth_type": "derived_subset"
+    },
+    {
+      "assembly_accession": "GCF_000258145.1",
+      "category": "S4",
+      "fingerprint": "b7f20bcc573d535022ab47803996094700e7ead920fd0431cc6bd3e06ed8e2a4",
+      "id": "s4-w-prk2-length-long",
+      "organism": "Escherichia coli W",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "long",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002967.1",
+          "length_bp": 4897452,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017664.1",
+          "refseq_accession": "NC_017664.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002969.1",
+          "length_bp": 5360,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017662.1",
+          "refseq_accession": "NC_017662.1",
+          "replicon_name": "pRK2",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 100000,
+        "length_mean": 25000,
+        "length_min": 500,
+        "length_sd": 10000,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_017662.1",
+      "title": "W \u00b7 Chromosome + pRK2 \u00b7 Long reads (25 kb target)",
+      "truth_type": "derived_subset"
+    },
+    {
+      "assembly_accession": "GCF_000258145.1",
+      "category": "S4",
+      "fingerprint": "7ec3c3ac4a839d4ee9f3e3ff1ff8cfe09bce4600664f701bdf016f8417a88664",
+      "id": "s4-w-native-length-short",
+      "organism": "Escherichia coli W",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "short",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002967.1",
+          "length_bp": 4897452,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017664.1",
+          "refseq_accession": "NC_017664.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002968.1",
+          "length_bp": 102535,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017665.1",
+          "refseq_accession": "NC_017665.1",
+          "replicon_name": "pRK1",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002969.1",
+          "length_bp": 5360,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017662.1",
+          "refseq_accession": "NC_017662.1",
+          "replicon_name": "pRK2",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 2500,
+        "length_mean": 1500,
+        "length_min": 500,
+        "length_sd": 500,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_017662.1",
+      "title": "W \u00b7 Chromosome + all native plasmids \u00b7 Short reads (1.5 kb target)",
+      "truth_type": "native_complement"
+    },
+    {
+      "assembly_accession": "GCF_000258145.1",
+      "category": "S4",
+      "fingerprint": "6ee3ef6791c6b1c20ac096156d4d46ee72dd9e4e8b36e862f702bfe3e52f0b0a",
+      "id": "s4-w-native-length-baseline",
+      "organism": "Escherichia coli W",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "baseline",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002967.1",
+          "length_bp": 4897452,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017664.1",
+          "refseq_accession": "NC_017664.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002968.1",
+          "length_bp": 102535,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017665.1",
+          "refseq_accession": "NC_017665.1",
+          "replicon_name": "pRK1",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002969.1",
+          "length_bp": 5360,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017662.1",
+          "refseq_accession": "NC_017662.1",
+          "replicon_name": "pRK2",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 50000,
+        "length_mean": 10000,
+        "length_min": 500,
+        "length_sd": 5000,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_017662.1",
+      "title": "W \u00b7 Chromosome + all native plasmids \u00b7 Baseline reads (10 kb target)",
+      "truth_type": "native_complement"
+    },
+    {
+      "assembly_accession": "GCF_000258145.1",
+      "category": "S4",
+      "fingerprint": "b0203ed5186567d3f18437732fbd43ec1a2597d99c2b1f84e457121ffa8b8917",
+      "id": "s4-w-native-length-long",
+      "organism": "Escherichia coli W",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "long",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002967.1",
+          "length_bp": 4897452,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017664.1",
+          "refseq_accession": "NC_017664.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002968.1",
+          "length_bp": 102535,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017665.1",
+          "refseq_accession": "NC_017665.1",
+          "replicon_name": "pRK1",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000258145.1",
+          "genbank_accession": "CP002969.1",
+          "length_bp": 5360,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_017662.1",
+          "refseq_accession": "NC_017662.1",
+          "replicon_name": "pRK2",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 100000,
+        "length_mean": 25000,
+        "length_min": 500,
+        "length_sd": 10000,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_017662.1",
+      "title": "W \u00b7 Chromosome + all native plasmids \u00b7 Long reads (25 kb target)",
+      "truth_type": "native_complement"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "category": "S4",
+      "fingerprint": "d3a9895d07bb3f63bc677e2c5ce7bea19986d869ed39967188beda829be0da9f",
+      "id": "s4-mgh78578-pkpn7-length-short",
+      "organism": "Klebsiella pneumoniae subsp. pneumoniae MGH 78578",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "short",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000647.1",
+          "length_bp": 5315120,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009648.1",
+          "refseq_accession": "NC_009648.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000652.1",
+          "length_bp": 3478,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009653.1",
+          "refseq_accession": "NC_009653.1",
+          "replicon_name": "pKPN7",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 2500,
+        "length_mean": 1500,
+        "length_min": 500,
+        "length_sd": 500,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_009653.1",
+      "title": "MGH78578 \u00b7 Chromosome + pKPN7 \u00b7 Short reads (1.5 kb target)",
+      "truth_type": "derived_subset"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "category": "S4",
+      "fingerprint": "146a548ddce25b35b07ef7a3d298df8cbbebee775b475f56e1b2e73a917d25ba",
+      "id": "s4-mgh78578-pkpn7-length-baseline",
+      "organism": "Klebsiella pneumoniae subsp. pneumoniae MGH 78578",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "baseline",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000647.1",
+          "length_bp": 5315120,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009648.1",
+          "refseq_accession": "NC_009648.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000652.1",
+          "length_bp": 3478,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009653.1",
+          "refseq_accession": "NC_009653.1",
+          "replicon_name": "pKPN7",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 50000,
+        "length_mean": 10000,
+        "length_min": 500,
+        "length_sd": 5000,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_009653.1",
+      "title": "MGH78578 \u00b7 Chromosome + pKPN7 \u00b7 Baseline reads (10 kb target)",
+      "truth_type": "derived_subset"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "category": "S4",
+      "fingerprint": "d177dfe0a50fb75d0ceb3046c90fe836bb0b92fb4d7996031f405029ed36a195",
+      "id": "s4-mgh78578-pkpn7-length-long",
+      "organism": "Klebsiella pneumoniae subsp. pneumoniae MGH 78578",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "long",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000647.1",
+          "length_bp": 5315120,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009648.1",
+          "refseq_accession": "NC_009648.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000652.1",
+          "length_bp": 3478,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009653.1",
+          "refseq_accession": "NC_009653.1",
+          "replicon_name": "pKPN7",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 100000,
+        "length_mean": 25000,
+        "length_min": 500,
+        "length_sd": 10000,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_009653.1",
+      "title": "MGH78578 \u00b7 Chromosome + pKPN7 \u00b7 Long reads (25 kb target)",
+      "truth_type": "derived_subset"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "category": "S4",
+      "fingerprint": "34c8bb7a9fb7fc515f606e216d046fed7d47d33fd20beb0e979f07c5b7c4e8f1",
+      "id": "s4-mgh78578-native-length-short",
+      "organism": "Klebsiella pneumoniae subsp. pneumoniae MGH 78578",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "short",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000647.1",
+          "length_bp": 5315120,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009648.1",
+          "refseq_accession": "NC_009648.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000648.1",
+          "length_bp": 175879,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009649.1",
+          "refseq_accession": "NC_009649.1",
+          "replicon_name": "pKPN3",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000649.1",
+          "length_bp": 107576,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009650.1",
+          "refseq_accession": "NC_009650.1",
+          "replicon_name": "pKPN4",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000650.1",
+          "length_bp": 88582,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009651.1",
+          "refseq_accession": "NC_009651.1",
+          "replicon_name": "pKPN5",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000651.1",
+          "length_bp": 4259,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009652.1",
+          "refseq_accession": "NC_009652.1",
+          "replicon_name": "pKPN6",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000652.1",
+          "length_bp": 3478,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009653.1",
+          "refseq_accession": "NC_009653.1",
+          "replicon_name": "pKPN7",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 2500,
+        "length_mean": 1500,
+        "length_min": 500,
+        "length_sd": 500,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_009653.1",
+      "title": "MGH78578 \u00b7 Chromosome + all native plasmids \u00b7 Short reads (1.5 kb target)",
+      "truth_type": "native_complement"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "category": "S4",
+      "fingerprint": "cd3f0b89eedcec222d5159483a5985e4f1830d24473d59a7b074a83b34ba12df",
+      "id": "s4-mgh78578-native-length-baseline",
+      "organism": "Klebsiella pneumoniae subsp. pneumoniae MGH 78578",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "baseline",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000647.1",
+          "length_bp": 5315120,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009648.1",
+          "refseq_accession": "NC_009648.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000648.1",
+          "length_bp": 175879,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009649.1",
+          "refseq_accession": "NC_009649.1",
+          "replicon_name": "pKPN3",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000649.1",
+          "length_bp": 107576,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009650.1",
+          "refseq_accession": "NC_009650.1",
+          "replicon_name": "pKPN4",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000650.1",
+          "length_bp": 88582,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009651.1",
+          "refseq_accession": "NC_009651.1",
+          "replicon_name": "pKPN5",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000651.1",
+          "length_bp": 4259,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009652.1",
+          "refseq_accession": "NC_009652.1",
+          "replicon_name": "pKPN6",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000652.1",
+          "length_bp": 3478,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009653.1",
+          "refseq_accession": "NC_009653.1",
+          "replicon_name": "pKPN7",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 50000,
+        "length_mean": 10000,
+        "length_min": 500,
+        "length_sd": 5000,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_009653.1",
+      "title": "MGH78578 \u00b7 Chromosome + all native plasmids \u00b7 Baseline reads (10 kb target)",
+      "truth_type": "native_complement"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "category": "S4",
+      "fingerprint": "c711dfe5b7c03034d5cf9b0b8e90fe735fad2f03b19fc6a9cd899558db412e35",
+      "id": "s4-mgh78578-native-length-long",
+      "organism": "Klebsiella pneumoniae subsp. pneumoniae MGH 78578",
+      "profile_id": "s4-exact-lengths-v1",
+      "read_length_profile": "long",
+      "replicons": [
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000647.1",
+          "length_bp": 5315120,
+          "molecule_type": "chromosome",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009648.1",
+          "refseq_accession": "NC_009648.1",
+          "replicon_name": "chromosome",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000648.1",
+          "length_bp": 175879,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009649.1",
+          "refseq_accession": "NC_009649.1",
+          "replicon_name": "pKPN3",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000649.1",
+          "length_bp": 107576,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009650.1",
+          "refseq_accession": "NC_009650.1",
+          "replicon_name": "pKPN4",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000650.1",
+          "length_bp": 88582,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009651.1",
+          "refseq_accession": "NC_009651.1",
+          "replicon_name": "pKPN5",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000651.1",
+          "length_bp": 4259,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009652.1",
+          "refseq_accession": "NC_009652.1",
+          "replicon_name": "pKPN6",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        },
+        {
+          "assembly_accession": "GCF_000016305.1",
+          "genbank_accession": "CP000652.1",
+          "length_bp": 3478,
+          "molecule_type": "plasmid",
+          "record_url": "https://www.ncbi.nlm.nih.gov/nuccore/NC_009653.1",
+          "refseq_accession": "NC_009653.1",
+          "replicon_name": "pKPN7",
+          "selection_status": "preferred_candidate",
+          "topology": "circular"
+        }
+      ],
+      "simulation": {
+        "chromosome_depth": 30,
+        "circular_read_limit": "one_circumference",
+        "fastq_phred": 40,
+        "length_max": 100000,
+        "length_mean": 25000,
+        "length_min": 500,
+        "length_sd": 10000,
+        "minimum_breadth": 0.99,
+        "model": "exact-lognormal-v1",
+        "plasmid_relative_depth": 1,
+        "seed": 20261104
+      },
+      "small_plasmid_accession": "NC_009653.1",
+      "title": "MGH78578 \u00b7 Chromosome + all native plasmids \u00b7 Long reads (25 kb target)",
+      "truth_type": "native_complement"
+    }
+  ],
+  "schema_version": 1
+}

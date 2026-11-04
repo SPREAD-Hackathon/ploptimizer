@@ -27,7 +27,13 @@ def transfer(host, remote_root):
     subprocess.run(argv + [str(ROOT) + "/", host + ":" + remote_root + "/"], check=True)
 
 
-def submit(config, cluster, scenario_id=None):
+def submit(config, cluster, scenario_id=None, after_job=None):
+    from .determinism import assembly_tasks, repeat_settings
+    panel = repeat_settings(config)
+    if after_job is not None and not re.fullmatch(r"[1-9][0-9]*", str(after_job)):
+        raise ValueError("Dependency job must be a numeric Slurm job ID")
+    if panel and max(panel["threads"]) > config["threads"]:
+        raise ValueError("Determinism thread settings exceed the reserved CPUs")
     ensure_assets(ROOT)
     for key in ("host", "remote_root", "account", "pixi"):
         if not cluster.get(key) or "REPLACE" in cluster[key]:
@@ -37,6 +43,11 @@ def submit(config, cluster, scenario_id=None):
     if config["threads"] != cluster["cpus"]:
         raise ValueError("Tool threads must equal requested Slurm CPUs")
     scenarios = [c for c in plan(config) if not scenario_id or c["id"] == scenario_id]
+    if panel:
+        available = {case["id"] for case in scenarios}
+        if not scenario_id and set(panel["scenarios"]) - available:
+            raise ValueError("Unknown determinism scenario in configuration")
+        scenarios = [case for case in scenarios if case["id"] in panel["scenarios"]]
     if not scenarios:
         raise ValueError("No scenarios selected")
     batch_id = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S")
@@ -44,7 +55,7 @@ def submit(config, cluster, scenario_id=None):
     batch.mkdir(parents=True, exist_ok=False)
     save(batch / "config.json", config)
     tasks = {"simulate": [c["id"] for c in scenarios],
-             "assemble": [{"scenario": c["id"], "tool": tool} for c in scenarios for tool in config["tools"]]}
+             "assemble": assembly_tasks(config, scenarios)}
     save(batch / "tasks.json", tasks)
     root = Path(cluster["remote_root"])
     remote_batch = root / "runs" / batch_id
@@ -65,7 +76,7 @@ def submit(config, cluster, scenario_id=None):
     }
     for role, body in roles.items():
         (scripts / (role + ".sh")).write_text(prefix + body)
-    submission = {"batch_id": batch_id, "cluster": cluster, "tasks": tasks, "jobs": {}, "status": "submitting"}
+    submission = {"batch_id": batch_id, "cluster": cluster, "tasks": tasks, "jobs": {}, "status": "submitting", "after_job": after_job}
     save(batch / "submission.json", submission)
     transfer(cluster["host"], cluster["remote_root"])
     ssh(cluster["host"], ["mkdir", "-p", str(remote_batch / "logs")])
@@ -81,6 +92,8 @@ def submit(config, cluster, scenario_id=None):
             argv += ["--cpus-per-task", "1", "--mem", "8G" if role == "prepare" else "2G", "--time", "01:00:00" if role == "prepare" else "00:30:00"]
         if role in tasks:
             argv += ["--array", f"0-{len(tasks[role]) - 1}%{cluster['array_concurrency']}"]
+        if role == "prepare" and after_job is not None:
+            argv += ["--dependency", "afterany:" + str(after_job), "--kill-on-invalid-dep=yes"]
         if role != "prepare":
             preceding = {"simulate": "prepare", "assemble": "simulate", "report": "assemble"}[role]
             condition = "afterany" if role == "report" else "afterok"
@@ -121,7 +134,51 @@ def collect(batch):
     # Copy small input manifests without the read files.
     if exists("cases"):
         subprocess.run(["rsync", "-az", "--include=*/", "--include=input.json", "--exclude=*", cluster["host"] + ":" + str(remote_batch / "cases") + "/", str(batch / "cases") + "/"], check=True)
-    accounting = ssh(cluster["host"], ["sacct", "--array", "-n", "-P", "-j", ",".join(submission["jobs"].values()),
+    job_ids = list(submission["jobs"].values())
+    diagnostics = batch / "diagnostic_submission.json"
+    if diagnostics.exists():
+        job_ids.append(load(diagnostics)["job_id"])
+    accounting = ssh(cluster["host"], ["sacct", "--array", "-n", "-P", "-j", ",".join(job_ids),
                                       "--format=JobID,State,ExitCode,Elapsed,MaxRSS"])
     (batch / "accounting.tsv").write_text(accounting + "\n")
     return accounting
+
+
+def submit_diagnostics(batch, after_job=None, rerun=False):
+    """Queue supplementary evidence separately, preserving strict executions."""
+    previous_path = batch / 'diagnostic_submission.json'
+    previous = load(previous_path) if previous_path.exists() else None
+    if previous and not rerun:
+        raise ValueError('Diagnostics already submitted; use --rerun for a new attempt')
+    submission = load(batch / 'submission.json')
+    cluster = submission['cluster']
+    if after_job is not None and not re.fullmatch(r'[1-9][0-9]*', str(after_job)):
+        raise ValueError('Dependency job must be a numeric Slurm job ID')
+    root = Path(cluster['remote_root'])
+    remote_batch = root / 'runs' / batch.name
+    pixi = shlex.quote(cluster['pixi'])
+    script = batch / 'slurm/diagnostics.sh'
+    script.parent.mkdir(exist_ok=True)
+    script.write_text('#!/usr/bin/env bash\nset -euo pipefail\n'
+                      + f'cd {shlex.quote(str(root))}\n'
+                      + f'export PATH={shlex.quote(str(Path(cluster["pixi"]).parent))}:"$PATH"\n'
+                      + 'export PIXI_CACHE_DIR="$PWD/.cache/pixi"\nexport XDG_CACHE_HOME="$PWD/.cache"\n'
+                      + f'{pixi} run --locked -e default python -m pipeline.diagnostic_runs --batch {batch.name}\n')
+    transfer(cluster['host'], cluster['remote_root'])
+    subprocess.run(['rsync', '-az', str(script), cluster['host'] + ':' + str(remote_batch / 'slurm') + '/'], check=True)
+    argv = ['sbatch', '--parsable', '--account', cluster['account'], '--partition', cluster['partition'],
+            '--chdir', str(root), '--job-name', 'ploptimizer-diagnostics', '--cpus-per-task', '1',
+            '--mem', '4G', '--time', '01:00:00',
+            '--output', str(remote_batch / 'logs/diagnostics-%j.out'),
+            '--error', str(remote_batch / 'logs/diagnostics-%j.err')]
+    if after_job:
+        argv += ['--dependency', 'afterany:' + str(after_job), '--kill-on-invalid-dep=yes']
+    argv += [str(remote_batch / 'slurm/diagnostics.sh')]
+    job = ssh(cluster['host'], argv).split(';')[0]
+    if not job.isdigit():
+        raise ValueError('Unexpected diagnostic job ID: ' + job)
+    record = {'batch_id': batch.name, 'job_id': job, 'after_job': after_job,
+              'previous_job_ids': ([*previous.get('previous_job_ids', []), previous['job_id']] if previous else [])}
+    save(batch / 'diagnostic_submission.json', record)
+    subprocess.run(['rsync', '-az', str(batch / 'diagnostic_submission.json'), cluster['host'] + ':' + str(remote_batch) + '/'], check=True)
+    return record

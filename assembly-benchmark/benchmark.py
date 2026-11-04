@@ -24,28 +24,40 @@ def main(argv=None):
     parser.add_argument("--config", default=str(ROOT / "config/pilot.json"))
     commands = parser.add_subparsers(dest="action", required=True)
     commands.add_parser("plan")
-    for action in ("prepare", "simulate", "run", "task", "report", "collect", "snapshot", "publish", "follow"):
+    for action in ("prepare", "simulate", "run", "task", "report", "collect", "snapshot", "publish", "follow", "diagnose-submit"):
         sub = commands.add_parser(action)
         sub.add_argument("--batch", required=action not in ("prepare", "report"))
         if action in ("simulate", "run"):
             sub.add_argument("--scenario", required=True)
         if action == "run":
             sub.add_argument("--tool", choices=("flye", "flye-meta", "raven", "plassembler"), required=True)
+            sub.add_argument("--threads", type=int)
+            sub.add_argument("--repeat", type=int)
         if action == "task":
             sub.add_argument("--kind", choices=("simulate", "assemble"), required=True)
             sub.add_argument("--index", required=True, type=int)
+        if action == "diagnose-submit":
+            sub.add_argument("--after-job")
+            sub.add_argument("--rerun", action="store_true")
         if action == "follow":
             sub.add_argument("--interval", type=int, default=60)
             sub.add_argument("--publish-interval", type=int, default=600)
             sub.add_argument("--max-hours", type=float, default=8)
+            sub.add_argument("--also-batch", action="append", default=[])
     sub = commands.add_parser("submit")
     sub.add_argument("--cluster", default=str(ROOT / "config/cluster.local.json"))
-    sub.add_argument("--scenario", help="Limit the first pilot to one scenario")
+    sub.add_argument("--scenario", help="Limit the submitted profile to one scenario")
+    sub.add_argument("--after-job", help="Queue preparation after this numeric Slurm job ID finishes")
     args = parser.parse_args(argv)
     batch = batch_path(args.batch) if getattr(args, "batch", None) else None
     config = load(batch / "config.json") if batch and (batch / "config.json").exists() else load(args.config)
     if args.action == "plan":
-        print(json.dumps(plan(config), indent=2))
+        cases = plan(config)
+        if config.get("determinism"):
+            from pipeline.determinism import repeat_settings
+            selected = repeat_settings(config)["scenarios"]
+            cases = [case for case in cases if case["id"] in selected]
+        print(json.dumps(cases, indent=2))
     elif args.action == "prepare":
         from pipeline.reads import prepare
         audit = prepare(config)
@@ -71,7 +83,7 @@ def main(argv=None):
         return 0 if result["status"] == "valid" else 1
     elif args.action == "run":
         from pipeline.execution import run
-        result = run(find_case(config, args.scenario), args.tool, batch, config)
+        result = run(find_case(config, args.scenario), args.tool, batch, config, args.threads, args.repeat)
         print(result["status"])
         # A scientific fail is completed work; execution/validation errors fail the job.
         return 0 if result["status"] in ("pass", "fail") else 1
@@ -85,14 +97,19 @@ def main(argv=None):
         from pipeline.execution import ENVIRONMENTS
         env = ENVIRONMENTS[selected["tool"]]
         allocated = int(os.environ.get("SLURM_CPUS_PER_TASK", config["threads"]))
-        if allocated != config["threads"]:
-            raise ValueError("Allocated Slurm CPUs do not match the frozen tool configuration")
+        requested = selected.get("threads", config["threads"])
+        if allocated != config["threads"] or requested > allocated:
+            raise ValueError("Allocated Slurm CPUs do not match the frozen reservation")
+        extra = ["--threads", str(requested), "--repeat", str(selected["repeat"])] if "repeat" in selected else []
         return subprocess.run(["pixi", "run", "--locked", "-e", env, "python", "benchmark.py", "run", "--batch", args.batch,
-                               "--scenario", selected["scenario"], "--tool", selected["tool"]], cwd=ROOT).returncode
+                               "--scenario", selected["scenario"], "--tool", selected["tool"]] + extra, cwd=ROOT).returncode
     elif args.action == "submit":
         from pipeline.cluster import submit
-        result = submit(config, load(args.cluster), args.scenario)
+        result = submit(config, load(args.cluster), args.scenario, args.after_job)
         print(json.dumps(result, indent=2))
+    elif args.action == "diagnose-submit":
+        from pipeline.cluster import submit_diagnostics
+        print(json.dumps(submit_diagnostics(batch, args.after_job, args.rerun), indent=2))
     elif args.action == "collect":
         from pipeline.cluster import collect
         print(collect(batch))
@@ -107,7 +124,7 @@ def main(argv=None):
         print("Saved publication snapshot for " + batch.name)
     elif args.action == "follow":
         from pipeline.follow import follow
-        follow(batch, args.interval, args.publish_interval, args.max_hours)
+        follow(batch, args.interval, args.publish_interval, args.max_hours, [batch_path(value) for value in args.also_batch])
     return 0
 
 

@@ -197,9 +197,13 @@ class BenchmarkTests(unittest.TestCase):
         stale = self.path / "dist/data/old-run.json"
         stale.parent.mkdir(parents=True)
         stale.write_text('{"status":"pass"}')
+        old_batch = self.path / "dist/batches/stale/data/results.json"
+        old_batch.parent.mkdir(parents=True)
+        old_batch.write_text('{"status":"pass"}')
         with patch("pipeline.report.ROOT", self.path):
             build(load(ROOT / "config/pilot.json"))
         self.assertFalse(stale.exists())
+        self.assertFalse(old_batch.exists())
         data = load(self.path / "dist/data/results.json")
         self.assertEqual({r["status"] for r in data["results"]}, {"not_run"})
 

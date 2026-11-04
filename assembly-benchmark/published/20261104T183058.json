@@ -30,7 +30,7 @@
       "plassembler"
     ]
   },
-  "generated_at": "2026-11-04T18:39:22+00:00",
+  "generated_at": "2026-11-04T19:40:26+00:00",
   "inputs": {
     "s1-w-prk2": {
       "case": {
@@ -6650,6 +6650,128 @@
         "4"
       ],
       "config_fingerprint": "e318a0edadacb9bd83135445419fc86d6e898221a353049e45bf97671b2bd5bb",
+      "diagnostics": {
+        "batch_id": "20261104T183058",
+        "cache_fingerprint": "b4e241d721c6ffe60acb2088846cd2e40fab97d90e83e6c5d16a9afa5d783d47",
+        "evidence": {
+          "accepted_alignment_count": 2,
+          "assembly_inventory_complete": true,
+          "candidate_joins": [],
+          "contigs_without_supported_alignment": [],
+          "excluded_alignment_counts": {},
+          "identity_method": "sum PAF matching bases / sum alignment block lengths of retained base alignments; overlapping alignments contribute repeatedly",
+          "limitations": "Alignment evidence only; strict scores unchanged. Conservative mapping filters may hide shared/repetitive or short sequence. Candidate flags are not confirmed structural errors. No circularity or topology claims. Circular-origin splits may be missed by alignment heuristics.",
+          "metric_version": "paf-recovery-evidence-v1",
+          "policy": {
+            "complete_fraction": 0.95,
+            "duplication_fraction": 0.2,
+            "fragmentation_gain_fraction": 0.05,
+            "maximum_query_overlap_fraction": 0.2,
+            "minimum_aligned_bp": 200,
+            "minimum_identity": 0.9,
+            "minimum_mapq": 20
+          },
+          "replicons": [
+            {
+              "accepted_alignment_count": 2,
+              "accession": "NC_017664.1",
+              "aligned_reference_bp": 4897452,
+              "alignment_identity": 1.0,
+              "best_contig_recovered_fraction": 1.0,
+              "candidate_flags": {
+                "duplicated": false,
+                "fragmented": false,
+                "joined": false,
+                "no_supported_alignment": false
+              },
+              "candidate_join_contigs": [],
+              "contig_count": 1,
+              "contigs": [
+                "contig_1"
+              ],
+              "duplicated_reference_fraction": 0.0,
+              "identity_alignment_bp": 4897452,
+              "length_bp": 4897452,
+              "molecule_type": "chromosome",
+              "name": "chromosome",
+              "per_contig_recovered_fraction": {
+                "contig_1": 1.0
+              },
+              "recovered_fraction": 1.0,
+              "topology_status": "not_assessed"
+            },
+            {
+              "accepted_alignment_count": 0,
+              "accession": "NC_017662.1",
+              "aligned_reference_bp": 0,
+              "alignment_identity": null,
+              "best_contig_recovered_fraction": 0,
+              "candidate_flags": {
+                "duplicated": false,
+                "fragmented": false,
+                "joined": false,
+                "no_supported_alignment": true
+              },
+              "candidate_join_contigs": [],
+              "contig_count": 0,
+              "contigs": [],
+              "duplicated_reference_fraction": 0.0,
+              "identity_alignment_bp": 0,
+              "length_bp": 5360,
+              "molecule_type": "plasmid",
+              "name": "pRK2",
+              "per_contig_recovered_fraction": {},
+              "recovered_fraction": 0.0,
+              "topology_status": "not_assessed"
+            }
+          ],
+          "schema_version": 1
+        },
+        "exit_code": 0,
+        "input_hashes": {
+          "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+          "batch_id_execution_available": false,
+          "config_sha256": "fcd28ebee82a54e4ad0f5caf25e6a5f9e62466a8d29e1aedc8f2c384b825a097",
+          "execution_sha256": "520e676797e322fc891fb97202203d40253b46af3cb7bc02db9dfd00f8f8d78f",
+          "input_manifest_sha256": "375bb7137ec826fda97a47770f2883dc324948e49145ab99a5df8d428256564a",
+          "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "mapper_invoked": true,
+        "mapper_version": "2.31-r1302",
+        "mapper_version_command": [
+          "pixi",
+          "run",
+          "--locked",
+          "-e",
+          "plassembler",
+          "minimap2",
+          "--version"
+        ],
+        "metric_version": "paf-recovery-evidence-v1",
+        "paf_file": "results/s1-w-prk2/flye/alignment.paf",
+        "paf_sha256": "57dd018cc92c8e28e6464d801be3ffa0ad731a6dcb82b5ee5b4d261007d25115",
+        "policy": {
+          "complete_fraction": 0.95,
+          "duplication_fraction": 0.2,
+          "fragmentation_gain_fraction": 0.05,
+          "maximum_query_overlap_fraction": 0.2,
+          "minimum_aligned_bp": 200,
+          "minimum_identity": 0.9,
+          "minimum_mapq": 20
+        },
+        "run_id": null,
+        "scenario_id": "s1-w-prk2",
+        "schema_version": 1,
+        "status": "complete",
+        "stderr_file": "results/s1-w-prk2/flye/alignment.stderr.log",
+        "stderr_sha256": "acefc84c0455e1d5210ba383b0bcc10894c3d0002744f7bc0079759583dc97da",
+        "strict_status": "fail",
+        "tool": "flye",
+        "updated_at": "2026-11-04T19:38:48.210551+00:00"
+      },
       "elapsed_seconds": 201.679,
       "evaluation": {
         "contig_count": 1,
@@ -6718,6 +6840,128 @@
         "--meta"
       ],
       "config_fingerprint": "e318a0edadacb9bd83135445419fc86d6e898221a353049e45bf97671b2bd5bb",
+      "diagnostics": {
+        "batch_id": "20261104T183058",
+        "cache_fingerprint": "4d79ca7bfddb5233a83f025f9da6d61b8a8507a043705a15dcbcf2124f93f3e0",
+        "evidence": {
+          "accepted_alignment_count": 2,
+          "assembly_inventory_complete": true,
+          "candidate_joins": [],
+          "contigs_without_supported_alignment": [],
+          "excluded_alignment_counts": {},
+          "identity_method": "sum PAF matching bases / sum alignment block lengths of retained base alignments; overlapping alignments contribute repeatedly",
+          "limitations": "Alignment evidence only; strict scores unchanged. Conservative mapping filters may hide shared/repetitive or short sequence. Candidate flags are not confirmed structural errors. No circularity or topology claims. Circular-origin splits may be missed by alignment heuristics.",
+          "metric_version": "paf-recovery-evidence-v1",
+          "policy": {
+            "complete_fraction": 0.95,
+            "duplication_fraction": 0.2,
+            "fragmentation_gain_fraction": 0.05,
+            "maximum_query_overlap_fraction": 0.2,
+            "minimum_aligned_bp": 200,
+            "minimum_identity": 0.9,
+            "minimum_mapq": 20
+          },
+          "replicons": [
+            {
+              "accepted_alignment_count": 2,
+              "accession": "NC_017664.1",
+              "aligned_reference_bp": 4897452,
+              "alignment_identity": 1.0,
+              "best_contig_recovered_fraction": 1.0,
+              "candidate_flags": {
+                "duplicated": false,
+                "fragmented": false,
+                "joined": false,
+                "no_supported_alignment": false
+              },
+              "candidate_join_contigs": [],
+              "contig_count": 1,
+              "contigs": [
+                "contig_1"
+              ],
+              "duplicated_reference_fraction": 2.6544415340875214e-06,
+              "identity_alignment_bp": 4897465,
+              "length_bp": 4897452,
+              "molecule_type": "chromosome",
+              "name": "chromosome",
+              "per_contig_recovered_fraction": {
+                "contig_1": 1.0
+              },
+              "recovered_fraction": 1.0,
+              "topology_status": "not_assessed"
+            },
+            {
+              "accepted_alignment_count": 0,
+              "accession": "NC_017662.1",
+              "aligned_reference_bp": 0,
+              "alignment_identity": null,
+              "best_contig_recovered_fraction": 0,
+              "candidate_flags": {
+                "duplicated": false,
+                "fragmented": false,
+                "joined": false,
+                "no_supported_alignment": true
+              },
+              "candidate_join_contigs": [],
+              "contig_count": 0,
+              "contigs": [],
+              "duplicated_reference_fraction": 0.0,
+              "identity_alignment_bp": 0,
+              "length_bp": 5360,
+              "molecule_type": "plasmid",
+              "name": "pRK2",
+              "per_contig_recovered_fraction": {},
+              "recovered_fraction": 0.0,
+              "topology_status": "not_assessed"
+            }
+          ],
+          "schema_version": 1
+        },
+        "exit_code": 0,
+        "input_hashes": {
+          "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+          "batch_id_execution_available": false,
+          "config_sha256": "fcd28ebee82a54e4ad0f5caf25e6a5f9e62466a8d29e1aedc8f2c384b825a097",
+          "execution_sha256": "4f8940eca33c40e2ebe66a111d211a5a67ef829548b398eceaa361ac8c7feab1",
+          "input_manifest_sha256": "375bb7137ec826fda97a47770f2883dc324948e49145ab99a5df8d428256564a",
+          "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "mapper_invoked": true,
+        "mapper_version": "2.31-r1302",
+        "mapper_version_command": [
+          "pixi",
+          "run",
+          "--locked",
+          "-e",
+          "plassembler",
+          "minimap2",
+          "--version"
+        ],
+        "metric_version": "paf-recovery-evidence-v1",
+        "paf_file": "results/s1-w-prk2/flye-meta/alignment.paf",
+        "paf_sha256": "a257404b422f0cad3c31d110fc8ddb346b13d88c081af49f1b9f4d7bab754c51",
+        "policy": {
+          "complete_fraction": 0.95,
+          "duplication_fraction": 0.2,
+          "fragmentation_gain_fraction": 0.05,
+          "maximum_query_overlap_fraction": 0.2,
+          "minimum_aligned_bp": 200,
+          "minimum_identity": 0.9,
+          "minimum_mapq": 20
+        },
+        "run_id": null,
+        "scenario_id": "s1-w-prk2",
+        "schema_version": 1,
+        "status": "complete",
+        "stderr_file": "results/s1-w-prk2/flye-meta/alignment.stderr.log",
+        "stderr_sha256": "d005ca74c24763e44d161e4b843bed3f23a786a44915533906eb42628cbb3b90",
+        "strict_status": "fail",
+        "tool": "flye-meta",
+        "updated_at": "2026-11-04T19:38:50.342215+00:00"
+      },
       "elapsed_seconds": 211.121,
       "evaluation": {
         "contig_count": 1,
@@ -6782,6 +7026,132 @@
         "<workdir>/runs/20261104T183058/cases/s1-w-prk2/reads.fastq.gz"
       ],
       "config_fingerprint": "e318a0edadacb9bd83135445419fc86d6e898221a353049e45bf97671b2bd5bb",
+      "diagnostics": {
+        "batch_id": "20261104T183058",
+        "cache_fingerprint": "d7850945ed5424c757638c5371b9c1f968f35aa33b8a3b3bd52f722b28df2921",
+        "evidence": {
+          "accepted_alignment_count": 3,
+          "assembly_inventory_complete": true,
+          "candidate_joins": [],
+          "contigs_without_supported_alignment": [],
+          "excluded_alignment_counts": {},
+          "identity_method": "sum PAF matching bases / sum alignment block lengths of retained base alignments; overlapping alignments contribute repeatedly",
+          "limitations": "Alignment evidence only; strict scores unchanged. Conservative mapping filters may hide shared/repetitive or short sequence. Candidate flags are not confirmed structural errors. No circularity or topology claims. Circular-origin splits may be missed by alignment heuristics.",
+          "metric_version": "paf-recovery-evidence-v1",
+          "policy": {
+            "complete_fraction": 0.95,
+            "duplication_fraction": 0.2,
+            "fragmentation_gain_fraction": 0.05,
+            "maximum_query_overlap_fraction": 0.2,
+            "minimum_aligned_bp": 200,
+            "minimum_identity": 0.9,
+            "minimum_mapq": 20
+          },
+          "replicons": [
+            {
+              "accepted_alignment_count": 2,
+              "accession": "NC_017664.1",
+              "aligned_reference_bp": 4897451,
+              "alignment_identity": 0.9999997958121897,
+              "best_contig_recovered_fraction": 0.9999997958121897,
+              "candidate_flags": {
+                "duplicated": false,
+                "fragmented": false,
+                "joined": false,
+                "no_supported_alignment": false
+              },
+              "candidate_join_contigs": [],
+              "contig_count": 1,
+              "contigs": [
+                "Utg2198"
+              ],
+              "duplicated_reference_fraction": 0.0,
+              "identity_alignment_bp": 4897452,
+              "length_bp": 4897452,
+              "molecule_type": "chromosome",
+              "name": "chromosome",
+              "per_contig_recovered_fraction": {
+                "Utg2198": 0.9999997958121897
+              },
+              "recovered_fraction": 0.9999997958121897,
+              "topology_status": "not_assessed"
+            },
+            {
+              "accepted_alignment_count": 1,
+              "accession": "NC_017662.1",
+              "aligned_reference_bp": 5200,
+              "alignment_identity": 0.9990393852065321,
+              "best_contig_recovered_fraction": 0.9701492537313433,
+              "candidate_flags": {
+                "duplicated": false,
+                "fragmented": false,
+                "joined": false,
+                "no_supported_alignment": false
+              },
+              "candidate_join_contigs": [],
+              "contig_count": 1,
+              "contigs": [
+                "Utg2196"
+              ],
+              "duplicated_reference_fraction": 0.0,
+              "identity_alignment_bp": 5205,
+              "length_bp": 5360,
+              "molecule_type": "plasmid",
+              "name": "pRK2",
+              "per_contig_recovered_fraction": {
+                "Utg2196": 0.9701492537313433
+              },
+              "recovered_fraction": 0.9701492537313433,
+              "topology_status": "not_assessed"
+            }
+          ],
+          "schema_version": 1
+        },
+        "exit_code": 0,
+        "input_hashes": {
+          "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+          "batch_id_execution_available": false,
+          "config_sha256": "fcd28ebee82a54e4ad0f5caf25e6a5f9e62466a8d29e1aedc8f2c384b825a097",
+          "execution_sha256": "fdffbac92ede99ee032b6a8e852aba9dd3434b8f6101cb2a430cf9837df4012d",
+          "input_manifest_sha256": "375bb7137ec826fda97a47770f2883dc324948e49145ab99a5df8d428256564a",
+          "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "mapper_invoked": true,
+        "mapper_version": "2.31-r1302",
+        "mapper_version_command": [
+          "pixi",
+          "run",
+          "--locked",
+          "-e",
+          "plassembler",
+          "minimap2",
+          "--version"
+        ],
+        "metric_version": "paf-recovery-evidence-v1",
+        "paf_file": "results/s1-w-prk2/raven/alignment.paf",
+        "paf_sha256": "290397f201bb6a1e00d96fe750379ee59e7dcd1d894eea2ce5494db909cb71b9",
+        "policy": {
+          "complete_fraction": 0.95,
+          "duplication_fraction": 0.2,
+          "fragmentation_gain_fraction": 0.05,
+          "maximum_query_overlap_fraction": 0.2,
+          "minimum_aligned_bp": 200,
+          "minimum_identity": 0.9,
+          "minimum_mapq": 20
+        },
+        "run_id": null,
+        "scenario_id": "s1-w-prk2",
+        "schema_version": 1,
+        "status": "complete",
+        "stderr_file": "results/s1-w-prk2/raven/alignment.stderr.log",
+        "stderr_sha256": "f9feea6be66b77e8c3c2a4ae77926dff3d1ffb54df7e7a622227216542a41e2f",
+        "strict_status": "fail",
+        "tool": "raven",
+        "updated_at": "2026-11-04T19:38:52.810259+00:00"
+      },
       "elapsed_seconds": 100.886,
       "evaluation": {
         "contig_count": 2,
@@ -6858,6 +7228,128 @@
         "1000000"
       ],
       "config_fingerprint": "e318a0edadacb9bd83135445419fc86d6e898221a353049e45bf97671b2bd5bb",
+      "diagnostics": {
+        "batch_id": "20261104T183058",
+        "cache_fingerprint": "f44ed2f8872e50403d1de8f6568adc95412db5ec2af3cd4fe4658d18bb00b1f5",
+        "evidence": {
+          "accepted_alignment_count": 2,
+          "assembly_inventory_complete": true,
+          "candidate_joins": [],
+          "contigs_without_supported_alignment": [],
+          "excluded_alignment_counts": {},
+          "identity_method": "sum PAF matching bases / sum alignment block lengths of retained base alignments; overlapping alignments contribute repeatedly",
+          "limitations": "Alignment evidence only; strict scores unchanged. Conservative mapping filters may hide shared/repetitive or short sequence. Candidate flags are not confirmed structural errors. No circularity or topology claims. Circular-origin splits may be missed by alignment heuristics.",
+          "metric_version": "paf-recovery-evidence-v1",
+          "policy": {
+            "complete_fraction": 0.95,
+            "duplication_fraction": 0.2,
+            "fragmentation_gain_fraction": 0.05,
+            "maximum_query_overlap_fraction": 0.2,
+            "minimum_aligned_bp": 200,
+            "minimum_identity": 0.9,
+            "minimum_mapq": 20
+          },
+          "replicons": [
+            {
+              "accepted_alignment_count": 0,
+              "accession": "NC_017664.1",
+              "aligned_reference_bp": 0,
+              "alignment_identity": null,
+              "best_contig_recovered_fraction": 0,
+              "candidate_flags": {
+                "duplicated": false,
+                "fragmented": false,
+                "joined": false,
+                "no_supported_alignment": true
+              },
+              "candidate_join_contigs": [],
+              "contig_count": 0,
+              "contigs": [],
+              "duplicated_reference_fraction": 0.0,
+              "identity_alignment_bp": 0,
+              "length_bp": 4897452,
+              "molecule_type": "chromosome",
+              "name": "chromosome",
+              "per_contig_recovered_fraction": {},
+              "recovered_fraction": 0.0,
+              "topology_status": "not_assessed"
+            },
+            {
+              "accepted_alignment_count": 2,
+              "accession": "NC_017662.1",
+              "aligned_reference_bp": 5360,
+              "alignment_identity": 1.0,
+              "best_contig_recovered_fraction": 1.0,
+              "candidate_flags": {
+                "duplicated": false,
+                "fragmented": false,
+                "joined": false,
+                "no_supported_alignment": false
+              },
+              "candidate_join_contigs": [],
+              "contig_count": 1,
+              "contigs": [
+                "1"
+              ],
+              "duplicated_reference_fraction": 0.0,
+              "identity_alignment_bp": 5360,
+              "length_bp": 5360,
+              "molecule_type": "plasmid",
+              "name": "pRK2",
+              "per_contig_recovered_fraction": {
+                "1": 1.0
+              },
+              "recovered_fraction": 1.0,
+              "topology_status": "not_assessed"
+            }
+          ],
+          "schema_version": 1
+        },
+        "exit_code": 0,
+        "input_hashes": {
+          "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+          "batch_id_execution_available": false,
+          "config_sha256": "fcd28ebee82a54e4ad0f5caf25e6a5f9e62466a8d29e1aedc8f2c384b825a097",
+          "execution_sha256": "37de891c2cf985225951d2ae310a2e771c807531137c288ed007f147bd070bc6",
+          "input_manifest_sha256": "375bb7137ec826fda97a47770f2883dc324948e49145ab99a5df8d428256564a",
+          "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "mapper_invoked": true,
+        "mapper_version": "2.31-r1302",
+        "mapper_version_command": [
+          "pixi",
+          "run",
+          "--locked",
+          "-e",
+          "plassembler",
+          "minimap2",
+          "--version"
+        ],
+        "metric_version": "paf-recovery-evidence-v1",
+        "paf_file": "results/s1-w-prk2/plassembler/alignment.paf",
+        "paf_sha256": "7ec55e2e962b8743fe5c039e9386cb371b7476cded60e8bd1799fa2cccde202c",
+        "policy": {
+          "complete_fraction": 0.95,
+          "duplication_fraction": 0.2,
+          "fragmentation_gain_fraction": 0.05,
+          "maximum_query_overlap_fraction": 0.2,
+          "minimum_aligned_bp": 200,
+          "minimum_identity": 0.9,
+          "minimum_mapq": 20
+        },
+        "run_id": null,
+        "scenario_id": "s1-w-prk2",
+        "schema_version": 1,
+        "status": "complete",
+        "stderr_file": "results/s1-w-prk2/plassembler/alignment.stderr.log",
+        "stderr_sha256": "dcfa57fb0798f6708f8a8606bbd6efa739eb7a9df782d4b3dc20898515e7de11",
+        "strict_status": "pass",
+        "tool": "plassembler",
+        "updated_at": "2026-11-04T19:38:50.718901+00:00"
+      },
       "elapsed_seconds": 341.34,
       "evaluation": {
         "contig_count": 1,
