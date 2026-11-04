@@ -39,6 +39,7 @@ def main(argv=None):
         if action == "diagnose-submit":
             sub.add_argument("--after-job")
             sub.add_argument("--rerun", action="store_true")
+            sub.add_argument("--interim", action="store_true", help="Inspect completed outputs now without replacing the final diagnostic job")
         if action == "follow":
             sub.add_argument("--interval", type=int, default=60)
             sub.add_argument("--publish-interval", type=int, default=600)
@@ -51,6 +52,8 @@ def main(argv=None):
     args = parser.parse_args(argv)
     batch = batch_path(args.batch) if getattr(args, "batch", None) else None
     config = load(batch / "config.json") if batch and (batch / "config.json").exists() else load(args.config)
+    if config.get("status") == "proposed":
+        raise ValueError("This profile is a design proposal and cannot run; see REALISTIC_READS.md for admission criteria")
     if args.action == "plan":
         cases = plan(config)
         if config.get("determinism"):
@@ -109,7 +112,7 @@ def main(argv=None):
         print(json.dumps(result, indent=2))
     elif args.action == "diagnose-submit":
         from pipeline.cluster import submit_diagnostics
-        print(json.dumps(submit_diagnostics(batch, args.after_job, args.rerun), indent=2))
+        print(json.dumps(submit_diagnostics(batch, args.after_job, args.rerun, args.interim), indent=2))
     elif args.action == "collect":
         from pipeline.cluster import collect
         print(collect(batch))

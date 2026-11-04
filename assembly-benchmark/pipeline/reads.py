@@ -58,6 +58,8 @@ def exact_reads(case, sequences, directory):
     """Random starts/strands; lognormal lengths clipped to one molecule traversal."""
     directory.mkdir(parents=True, exist_ok=True)
     settings = case["simulation"]
+    if settings.get("model") != "exact-lognormal-v1":
+        raise ValueError("Only exact-lognormal-v1 simulation is implemented; unknown models cannot fall back to exact reads")
     for key in ("chromosome_depth", "length_mean", "length_min", "length_max"):
         if settings[key] <= 0:
             raise ValueError(f"{key} must be positive")

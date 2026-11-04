@@ -67,3 +67,17 @@ profiles: `config/determinism.json` (80 executions) and
 the S1/S2 panel so the assembly concurrency remains four. All batches are linked
 on the site. Supplementary alignment diagnostics explain strict failures without
 changing their scores; see [RECOVERY_DIAGNOSTICS.md](RECOVERY_DIAGNOSTICS.md).
+
+## Interpreting the first failures
+
+The [provisional review](FAILURE_REVIEW.md) distinguishes exact sequence errors
+from missing supported mappings and chromosome-control failures. One checked
+Raven pilot contig has a five-base deletion; its 97% mapped fraction also reflects
+an omitted circular-origin alignment segment, rather than a 3% sequence loss.
+The site retains that observation only for its matching execution, assembly,
+truth and mapping hashes. Per-molecule mapping evidence is downloadable as TSV.
+
+The [next error-bearing read design](REALISTIC_READS.md) proposes matched controls,
+three simulation seeds and two error/quality packages. It has not been run:
+`config/realistic-reads.proposed.json` is explicitly non-executable until the
+simulator adapter, input checks and tolerant evaluator are validated and frozen.

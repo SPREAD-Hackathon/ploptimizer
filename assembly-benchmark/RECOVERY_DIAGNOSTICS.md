@@ -95,9 +95,10 @@ Fifteen synthetic PAF tests cover missing sequence, partial fragments, overlappi
 coverage, multiple full copies, a tandem, joined molecules, shared query sequence,
 reverse strands, circular-origin splits, CIGAR deletions, weighted identity,
 ambiguous/secondary mappings, duplicate records and invalid inventories. These
-validate the evidence parser; actual mapper behaviour still needs compute-node
-runs against the archived assemblies before these metrics are presented as run
-results.
+validate the evidence parser. Compute-node mapping has now been checked against
+the archived pilot outputs; the provisional review in FAILURE_REVIEW.md records
+representative findings and their limits. The expanded batch receives interim
+and final diagnostic jobs.
 
 The upstream formatter distinguishes primary inversion `I` from secondary
 inversion `i`, so the latter is excluded. Minimap2 excludes ambiguous bases from
@@ -134,3 +135,10 @@ and the frozen configuration/scenario and all available input/assembly hash
 checks pass. `input_hashes.batch_id_execution_available` records this limitation.
 A present batch ID must match; an absent field never overrides a contradictory
 configuration, scenario, input or assembly checksum.
+
+Checked sequence observations live in `reviews/` and are separate from automated
+mapping evidence. The report attaches an observation only when its batch, case,
+tool, strict status and execution/assembly/truth/PAF hashes match. This avoids
+applying a representative explanation to another run. The first annotation is
+specific to the archived Raven/pRK2 contig and its verified five-base discrepancy;
+it does not revise the archived mapping or generalise across tools or scenarios.

@@ -122,6 +122,16 @@ def collect(batch):
     if not re.fullmatch(r"[A-Za-z0-9_.@-]+", cluster["host"]) or not re.fullmatch(r"/[A-Za-z0-9_./-]+", cluster["remote_root"]):
         raise ValueError("Invalid SSH destination/path in submission record")
     remote_batch = Path(cluster["remote_root"]) / "runs" / batch.name
+    # Sample scheduler state before copying outputs, avoiding false terminal errors.
+    job_ids = list(submission["jobs"].values())
+    diagnostics = batch / "diagnostic_submission.json"
+    if diagnostics.exists():
+        job_ids.append(load(diagnostics)["job_id"])
+    review = batch / "diagnostic_review_submission.json"
+    if review.exists():
+        job_ids.append(load(review)["job_id"])
+    accounting = ssh(cluster["host"], ["sacct", "--array", "-n", "-P", "-j", ",".join(job_ids),
+                                      "--format=JobID,State,ExitCode,Elapsed,MaxRSS"])
     # Results and provenance only: avoid copying reads and large assembly intermediates.
     def exists(folder):
         return subprocess.run(["ssh", "-o", "BatchMode=yes", cluster["host"], shlex.join(["test", "-d", str(remote_batch / folder)])], capture_output=True).returncode == 0
@@ -134,19 +144,14 @@ def collect(batch):
     # Copy small input manifests without the read files.
     if exists("cases"):
         subprocess.run(["rsync", "-az", "--include=*/", "--include=input.json", "--exclude=*", cluster["host"] + ":" + str(remote_batch / "cases") + "/", str(batch / "cases") + "/"], check=True)
-    job_ids = list(submission["jobs"].values())
-    diagnostics = batch / "diagnostic_submission.json"
-    if diagnostics.exists():
-        job_ids.append(load(diagnostics)["job_id"])
-    accounting = ssh(cluster["host"], ["sacct", "--array", "-n", "-P", "-j", ",".join(job_ids),
-                                      "--format=JobID,State,ExitCode,Elapsed,MaxRSS"])
     (batch / "accounting.tsv").write_text(accounting + "\n")
     return accounting
 
 
-def submit_diagnostics(batch, after_job=None, rerun=False):
+def submit_diagnostics(batch, after_job=None, rerun=False, interim=False):
     """Queue supplementary evidence separately, preserving strict executions."""
-    previous_path = batch / 'diagnostic_submission.json'
+    record_name = 'diagnostic_review_submission.json' if interim else 'diagnostic_submission.json'
+    previous_path = batch / record_name
     previous = load(previous_path) if previous_path.exists() else None
     if previous and not rerun:
         raise ValueError('Diagnostics already submitted; use --rerun for a new attempt')
@@ -157,7 +162,8 @@ def submit_diagnostics(batch, after_job=None, rerun=False):
     root = Path(cluster['remote_root'])
     remote_batch = root / 'runs' / batch.name
     pixi = shlex.quote(cluster['pixi'])
-    script = batch / 'slurm/diagnostics.sh'
+    script_name = 'diagnostics-review.sh' if interim else 'diagnostics.sh'
+    script = batch / 'slurm' / script_name
     script.parent.mkdir(exist_ok=True)
     script.write_text('#!/usr/bin/env bash\nset -euo pipefail\n'
                       + f'cd {shlex.quote(str(root))}\n'
@@ -167,18 +173,18 @@ def submit_diagnostics(batch, after_job=None, rerun=False):
     transfer(cluster['host'], cluster['remote_root'])
     subprocess.run(['rsync', '-az', str(script), cluster['host'] + ':' + str(remote_batch / 'slurm') + '/'], check=True)
     argv = ['sbatch', '--parsable', '--account', cluster['account'], '--partition', cluster['partition'],
-            '--chdir', str(root), '--job-name', 'ploptimizer-diagnostics', '--cpus-per-task', '1',
+            '--chdir', str(root), '--job-name', 'ploptimizer-diagnostics-review' if interim else 'ploptimizer-diagnostics', '--cpus-per-task', '1',
             '--mem', '4G', '--time', '01:00:00',
-            '--output', str(remote_batch / 'logs/diagnostics-%j.out'),
-            '--error', str(remote_batch / 'logs/diagnostics-%j.err')]
+            '--output', str(remote_batch / ('logs/diagnostics-review-%j.out' if interim else 'logs/diagnostics-%j.out')),
+            '--error', str(remote_batch / ('logs/diagnostics-review-%j.err' if interim else 'logs/diagnostics-%j.err'))]
     if after_job:
         argv += ['--dependency', 'afterany:' + str(after_job), '--kill-on-invalid-dep=yes']
-    argv += [str(remote_batch / 'slurm/diagnostics.sh')]
+    argv += [str(remote_batch / 'slurm' / script_name)]
     job = ssh(cluster['host'], argv).split(';')[0]
     if not job.isdigit():
         raise ValueError('Unexpected diagnostic job ID: ' + job)
-    record = {'batch_id': batch.name, 'job_id': job, 'after_job': after_job,
+    record = {'batch_id': batch.name, 'job_id': job, 'after_job': after_job, 'interim': interim,
               'previous_job_ids': ([*previous.get('previous_job_ids', []), previous['job_id']] if previous else [])}
-    save(batch / 'diagnostic_submission.json', record)
-    subprocess.run(['rsync', '-az', str(batch / 'diagnostic_submission.json'), cluster['host'] + ':' + str(remote_batch) + '/'], check=True)
+    save(previous_path, record)
+    subprocess.run(['rsync', '-az', str(previous_path), cluster['host'] + ':' + str(remote_batch) + '/'], check=True)
     return record

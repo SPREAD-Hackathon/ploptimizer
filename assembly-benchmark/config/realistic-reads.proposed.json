@@ -1,0 +1,254 @@
+{
+  "document_schema": "ploptimizer.simulation-proposal/v1",
+  "status": "proposed",
+  "executable": false,
+  "warning": "Design record only. Do not pass to benchmark.py plan or submit. Simulator adapter and tolerant evaluator are not implemented.",
+  "proposed_profile_id": "error-stress-matched-fragments-v1",
+  "research_checked": "2026-11-04",
+  "interpretation": "Controlled generic and historical ONT-shaped error/quality packages; not calibrated to current Nanopore chemistry or basecaller.",
+  "cases": [
+    {
+      "baseline_scenario_id": "s1-w-prk2",
+      "assembly": "GCF_000258145.1",
+      "plasmid": "NC_017662.1",
+      "plasmid_length_bp": 5360,
+      "composition": "chromosome plus named native plasmid; derived subset"
+    },
+    {
+      "baseline_scenario_id": "s1-mgh78578-pkpn7",
+      "assembly": "GCF_000016305.1",
+      "plasmid": "NC_009653.1",
+      "plasmid_length_bp": 3478,
+      "composition": "chromosome plus named native plasmid; derived subset"
+    }
+  ],
+  "fragment_geometry": {
+    "sampler": "existing exact-lognormal-v1; clean fragments retained as truth",
+    "independent_seeds": [
+      20261105,
+      20261106,
+      20261107
+    ],
+    "chromosome_source_depth": 30,
+    "plasmid_relative_source_depth": 1,
+    "length_mean_bp": 10000,
+    "length_sd_bp": 5000,
+    "length_min_bp": 500,
+    "length_max_bp": 50000,
+    "circular_source_limit": "one_circumference",
+    "depth_stop": "clean source bases at target, allowing at most one-fragment overshoot",
+    "pairing": "same clean fragment sequence/origin per case and seed across error profiles",
+    "emitted_length_policy": "retain indel-altered output; no clipping or post-error length selection"
+  },
+  "simulator_proposal": {
+    "tool": "Badread",
+    "proposed_version": "0.4.2",
+    "execution_pin_status": "not installed or locked for this proposal; verify Pixi build and model assets before freezing",
+    "interface": "proposed version-pinned internal sequence_fragment adapter; no implementation yet",
+    "why_not_direct_cli": "Badread CLI samples gamma fragment lengths, unlike the existing lognormal sampler",
+    "rng": "initially serial manifest order; documented hash-derived independent identity/error streams per case, fragment seed, profile and read ID; validate repeatability before parallel generation",
+    "additional_problems": {
+      "adapters": false,
+      "chimeras": false,
+      "junk_reads": false,
+      "random_reads": false,
+      "glitches": false,
+      "small_plasmid_loss": false
+    },
+    "profiles": [
+      {
+        "id": "matched-exact",
+        "error_model": null,
+        "qscore_model": "existing Q40 placeholder",
+        "role": "geometry control"
+      },
+      {
+        "id": "generic-stress",
+        "error_model": "random",
+        "qscore_model": "ideal",
+        "identity_beta_percent": {
+          "mean": 98,
+          "maximum": 99.5,
+          "sd": 1
+        },
+        "role": "synthetic stress; qualities are deliberately informative"
+      },
+      {
+        "id": "ont2023-shaped",
+        "error_model": "nanopore2023",
+        "qscore_model": "nanopore2023",
+        "identity_beta_percent": {
+          "mean": 98,
+          "maximum": 99.5,
+          "sd": 1
+        },
+        "role": "historical R10.4.1-shaped package, not calibrated here"
+      }
+    ],
+    "quality_truth": "FASTQ qualities are model outputs. Independently compute final-read identity against its clean fragment after padding is trimmed.",
+    "assets_to_record": [
+      "Badread source/build",
+      "error and quality model file SHA256",
+      "Python/NumPy/Edlib versions",
+      "adapter source and RNG convention"
+    ],
+    "supported_models_verified_at_tag": {
+      "error": [
+        "nanopore2018",
+        "nanopore2020",
+        "nanopore2023",
+        "pacbio2016",
+        "pacbio2021",
+        "random",
+        "model filename"
+      ],
+      "quality": [
+        "nanopore2018",
+        "nanopore2020",
+        "nanopore2023",
+        "pacbio2016",
+        "pacbio2021",
+        "random",
+        "ideal",
+        "model filename"
+      ]
+    }
+  },
+  "input_admission_proposal": {
+    "minimum_source_breadth_each_replicon": 0.99,
+    "invalid_if": [
+      "truth/model/checksum mismatch",
+      "unknown origin",
+      "sequence/quality length mismatch",
+      "non-ACGT or empty generated read",
+      "source traversal/depth rule violated",
+      "source breadth below threshold"
+    ],
+    "identity_hold": "each noisy replicon: abs(achieved base-weighted mean identity percent - 98) > max(0.5, 4/sqrt(n_eff)); n_eff=(sum source lengths)^2/sum(source lengths squared)",
+    "hold_resolution": "simulator/input review before assembly; never select or replace a seed based on assembler outcome",
+    "per_replicon_stats": [
+      "source and emitted depth/bases",
+      "source breadth",
+      "read count",
+      "length min/mean/SD/N50/quantiles",
+      "actual identity distribution",
+      "substitution/insertion/deletion counts",
+      "quality distribution and calibration"
+    ],
+    "per_read_truth": [
+      "read ID/origin",
+      "clean fragment hash",
+      "source/emitted length",
+      "target/achieved identity",
+      "error stream provenance"
+    ],
+    "mapping_policy": "read-to-genome mapping is supplementary; known origins remain truth"
+  },
+  "assembler_policy_proposal": {
+    "new_profile_required": true,
+    "threads": 4,
+    "timeout_seconds": 14400,
+    "configurations": [
+      {
+        "id": "flye",
+        "version": "2.9.6",
+        "input_mode": "--nano-hq",
+        "extra": []
+      },
+      {
+        "id": "flye-meta",
+        "version": "2.9.6",
+        "input_mode": "--nano-hq",
+        "extra": [
+          "--meta"
+        ]
+      },
+      {
+        "id": "raven",
+        "version": "1.8.3",
+        "input_mode": "current long-read command"
+      },
+      {
+        "id": "plassembler",
+        "version": "1.9.0",
+        "input_mode": "long",
+        "extra": [
+          "--skip_qc",
+          "--skip_mash",
+          "--keep_chromosome"
+        ],
+        "chromosome_threshold_bp": 1000000
+      }
+    ],
+    "polishing": "existing internal defaults only; no external or truth-assisted polishing",
+    "freeze_before_comparison": [
+      "full tool/component argv",
+      "Pixi lock/component versions",
+      "new input/metric profile hashes"
+    ],
+    "old_configs_unchanged": true
+  },
+  "scoring_policy_proposal": {
+    "implementation_status": "not implemented; current supplementary PAF flags cannot produce this endpoint",
+    "exact_recovery": "retain as secondary endpoint, separate from tolerant recovery",
+    "tolerant_endpoint": {
+      "minimum_reference_coverage": 0.99,
+      "minimum_alignment_identity": 0.995,
+      "query_truth_length_ratio": [
+        0.98,
+        1.02
+      ],
+      "dedicated_contigs_required": 1,
+      "second_copy_recovery_threshold": 0.95,
+      "supported_nonhomologous_join_allowed": false
+    },
+    "ambiguity": "unscored when competing assignments or structural evidence cannot be resolved",
+    "chromosome": "report separately",
+    "topology": "not inferred from similarity; allow circular rotation/reverse complement, assess terminal duplication/tandems separately",
+    "evaluator_gates": [
+      "collinear base-level coverage/identity",
+      "competing-copy/dedicated-molecule checks",
+      "mutation/rotation/terminal-overlap/fragmentation/tandem/duplication/join/ambiguous-repeat fixtures",
+      "freeze thresholds/filtering before comparisons"
+    ],
+    "until_validated": "continuous evidence only; no tolerant pass/fail claim"
+  },
+  "budget": {
+    "cases": 2,
+    "simulation_seeds": 3,
+    "profiles_including_exact": 3,
+    "read_sets": 18,
+    "assembler_configurations": 4,
+    "assembler_executions": 72
+  },
+  "empirical_calibration_follow_up": {
+    "status": "requires real data and held-out validation",
+    "metadata": [
+      "isolate/reference linkage",
+      "raw-read accession",
+      "flowcell/pore",
+      "library kit",
+      "basecaller/model/version",
+      "simplex/duplex",
+      "filtering/adapters"
+    ],
+    "validation": "separate calibration and held-out reads/isolates; compare length/error/homopolymer/quality/per-plasmid coverage distributions"
+  },
+  "execution_gates": [
+    "validate current exact failures",
+    "pin Badread/verify model assets",
+    "implement/test matched-fragment error adapter and admissions",
+    "implement/test tolerant evaluator",
+    "freeze new profile before comparisons",
+    "submit through Slurm"
+  ],
+  "official_sources": [
+    "https://github.com/rrwick/Badread/tree/v0.4.2",
+    "https://github.com/rrwick/Badread/blob/v0.4.2/badread/__main__.py",
+    "https://github.com/rrwick/Badread/blob/v0.4.2/badread/fragment_lengths.py",
+    "https://github.com/rrwick/Badread/blob/v0.4.2/badread/simulate.py",
+    "https://github.com/rrwick/Badread/blob/v0.4.2/badread/identities.py",
+    "https://github.com/rrwick/Badread/blob/v0.4.2/badread/qscore_model.py",
+    "https://github.com/mikolmogorov/Flye/blob/2.9.6/docs/USAGE.md"
+  ]
+}

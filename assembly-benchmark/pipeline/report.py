@@ -7,7 +7,9 @@ import shutil
 
 from .cases import plan
 from .assets import ensure_assets
+from .reviews import attach_sequence_review
 from .common import ROOT, digest, fingerprint, load, save
+from .diagnostics import DEFAULT_POLICY
 
 LABELS = {"flye": "Flye", "flye-meta": "Flye · uneven coverage", "raven": "Raven", "plassembler": "Plassembler long"}
 STATUSES = {"pass": "Pass", "fail": "Fail", "not_run": "Not run", "pending": "Queued", "running": "Running", "error": "Job error", "timeout": "Timed out", "invalid_input": "Invalid input"}
@@ -76,7 +78,7 @@ def collect_records(config, batch):
                 state = accounting.get(f"{job}_{matches[0]}", accounting.get(job, ""))
                 if not state and not record:
                     state = "PENDING"
-            record = attach_diagnostics(record, path)
+            record = attach_sequence_review(attach_diagnostics(record, path), path, batch)
             status = result_status(record, state)
             output.append({**record, "scenario_id": case["id"], "tool": tool, "status": status,
                            "scheduler_state": state or None})
@@ -133,6 +135,7 @@ def build(config, batch=None, output=None, document=None, include_history=True):
         for row in results:
             score = row.get("evaluation", {})
             writer.writerow([row["scenario_id"], row["tool"], row["status"], score.get("plasmid_passes"), score.get("plasmid_total"), row.get("elapsed_seconds"), row.get("peak_memory_kb")])
+    write_diagnostic_tsv(output, cases, results)
     counts = {tool: {status: sum(r["tool"] == tool and r["status"] == status for r in results) for status in STATUSES} for tool in config["tools"]}
     completed = sum(r["status"] in ("pass", "fail") for r in results)
     valid_inputs = sum(item["status"] == "valid" for item in document.get("inputs", {}).values())
@@ -154,10 +157,10 @@ def build(config, batch=None, output=None, document=None, include_history=True):
         body += f'<tr data-category="{case["category"]}" data-species="{case["organism"].split()[0]}"><th scope="row"><a href="scenarios/{e(case["id"])}.html">{e(case["title"])}</a><span class="row-summary"><span class="category-label">{case["category"]}</span> · {len(plasmids)} {noun} · {e(sizes)}</span></th>'
         for tool in config["tools"]:
             row = next(r for r in results if r["scenario_id"] == case["id"] and r["tool"] == tool)
-            body += f'<td data-tool="{tool}" data-status="{row["status"]}"><a class="result-link" href="scenarios/{e(case["id"])}.html#{tool}">{badge(row["status"])}</a></td>'
+            body += f'<td data-tool="{tool}" data-status="{row["status"]}"><a class="result-link" href="scenarios/{e(case["id"])}.html#{tool}">{badge(row["status"])}</a><span class="row-summary">{e(diagnostic_summary(row, case))}</span></td>'
         body += '</tr>'
     body += '</tbody></table></div><p class="legend">Pass and fail are completed sequence assessments. Queued, running, invalid inputs and job errors are unscored; they are never counted as scientific failures.</p>'
-    body += f'<div class="downloads"><a href="data/results.json">Download JSON</a><a href="data/results.tsv">Download TSV</a><span>Updated {e(generated)} · Batch {e(document["batch"] or "not submitted")}</span></div>'
+    body += f'<div class="downloads"><a href="data/results.json">Download JSON</a><a href="data/results.tsv">Download TSV</a><a href="data/recovery-evidence.tsv">Recovery evidence TSV</a><span>Updated {e(generated)} · Batch {e(document["batch"] or "not submitted")}</span></div>'
     (output / "index.html").write_text(page("Results", body))
     category = '<h1>Scenarios</h1><p class="intro">Controlled cases with known reference molecules. Start with exact reads, then add complexity one factor at a time.</p>'
     for key in sorted({case["category"] for case in cases}):
@@ -218,19 +221,24 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
             body += '</p>'
         score = row.get("evaluation")
         if score:
-            body += f'<p>{e(score["endpoint"])}.</p><ul>'
+            body += f'<p>Pass criterion: {e(score["endpoint"])}.</p><ul>'
             for r in score["replicons"]:
                 if row["tool"] == "plassembler" and r["molecule_type"] == "chromosome":
                     continue
                 body += f'<li>{e(r["name"])}: {badge(r["status"])} · {e(r["reason"])}</li>'
-            body += '</ul><p class="muted">Topology claims are not scored. A failed exact endpoint does not identify whether recovery was partial or which error caused it.</p>'
+            body += '</ul><p class="muted">The strict endpoint is unchanged by supplementary mapping. Aligned recovery below can help explain a failure; topology claims are not scored.</p>'
             if row.get("initial_flye_evaluation"):
                 initial = row["initial_flye_evaluation"]
                 body += f'<p>Paired initial Flye result: {badge(initial["status"])} · {initial["plasmid_passes"]}/{initial["plasmid_total"]} exact plasmids.</p>'
         else:
             body += '<p>No completed sequence assessment is available for this configuration.</p>'
+        if row.get("sequence_review"):
+            review = row["sequence_review"]
+            body += f'<div class="notice"><strong>Checked sequence discrepancy</strong>{e(review["explanation"])} <a href="https://github.com/SPREAD-Hackathon/ploptimizer/blob/main/assembly-benchmark/FAILURE_REVIEW.md">Read the provisional review</a>.</div>'
         if row.get("diagnostics"):
-            body += diagnostic_table(row["diagnostics"], plasmid_only=row["tool"] == "plassembler")
+            body += diagnostic_table(row["diagnostics"], plasmid_only=row["tool"] == "plassembler", evaluation=score)
+        else:
+            body += f'<p class="muted">{e(diagnostic_summary(row, case))}.</p>'
         if row.get("started_at"):
             public = {k: row[k] for k in row if k not in ("host", "assembly_file", "command")}
             public["command"] = [str(x).replace(str(ROOT), "<workdir>") for x in row.get("command", [])]
@@ -271,19 +279,118 @@ def write_history(output, document, include_history=True):
         (output / "history.html").write_text(page("All batches", '<h1>Batch archive</h1><p><a href="/history.html">Browse all earlier batches</a></p>', active="history"))
 
 
-def diagnostic_table(diagnostic, plasmid_only=False):
+def diagnostic_policy(diagnostic):
+    return {**DEFAULT_POLICY, **diagnostic.get("policy", {}), **diagnostic.get("evidence", {}).get("policy", {})}
+
+
+def alignment_classification(row, policy):
+    fraction = row["recovered_fraction"]
+    if fraction <= 0 or row.get("candidate_flags", {}).get("no_supported_alignment"):
+        return "none", "No retained alignment"
+    if fraction >= 1 - 1e-9:
+        return "full", "Full aligned recovery"
+    if fraction >= policy["complete_fraction"]:
+        return "near_full", "Near-full aligned recovery"
+    return "partial", "Partial aligned recovery"
+
+
+def candidate_labels(row):
+    flags = row.get("candidate_flags", {})
+    return [label for key, label in (("fragmented", "fragmentation"), ("duplicated", "duplication"), ("joined", "join")) if flags.get(key)]
+
+
+def diagnostic_state(diagnostic):
+    if not diagnostic:
+        return "Recovery diagnostics not available"
+    status = diagnostic.get("status")
+    if status in ("running", "pending", "queued"):
+        return "Recovery mapping pending" if status != "running" else "Recovery mapping running"
+    if status == "error":
+        return "Mapper diagnostic error"
+    if status == "skipped":
+        return "Recovery mapping skipped"
+    return "Recovery diagnostics not available"
+
+
+def diagnostic_summary(record, case):
+    """A compact mapping explanation, never a replacement for strict pass/fail."""
+    if record.get("sequence_review"):
+        return record["sequence_review"]["summary"]
+    diagnostic = record.get("diagnostics")
+    if not diagnostic or diagnostic.get("status") != "complete":
+        if not diagnostic and record["status"] in ("not_run", "pending", "running"):
+            return "Awaiting assembly assessment"
+        return diagnostic_state(diagnostic)
+    plasmids = {row["refseq_accession"] for row in case["replicons"] if row["molecule_type"] == "plasmid"}
+    if not plasmids and record["tool"] == "plassembler":
+        return "Final plasmid output only; chromosome assessed separately"
+    expected = plasmids or {row["refseq_accession"] for row in case["replicons"]}
+    rows = [row for row in diagnostic["evidence"]["replicons"] if row["accession"] in expected]
+    failed = {row["accession"] for row in record.get("evaluation", {}).get("replicons", [])
+              if row["status"] == "fail" and row["accession"] in expected}
+    if failed:
+        rows = [row for row in rows if row["accession"] in failed]
+    if not rows:
+        return "No matching molecule evidence collected"
+    labels = list(dict.fromkeys(alignment_classification(row, diagnostic_policy(diagnostic))[1] for row in rows))
+    flags = list(dict.fromkeys(label for row in rows for label in candidate_labels(row)))
+    summary = "; ".join(labels)
+    if record["status"] == "fail" and any(alignment_classification(row, diagnostic_policy(diagnostic))[0] in ("full", "near_full") for row in rows):
+        summary += "; exact recovery failed"
+    if any(alignment_classification(row, diagnostic_policy(diagnostic))[0] == "none" for row in rows):
+        summary += "; absence not established"
+    if flags:
+        summary += "; candidate " + ", ".join(flags)
+    return summary
+
+
+def molecule_explanation(row, policy, strict=None):
+    kind, label = alignment_classification(row, policy)
+    if kind == "none":
+        molecule = "plasmid" if row["molecule_type"] == "plasmid" else "chromosome"
+        text = f"No retained alignment under this mapping policy. This is not evidence of {molecule} absence: filtering or alignment heuristics can hide short, shared or repetitive sequence."
+    else:
+        text = f'{label}: {row["aligned_reference_bp"]:,}/{row["length_bp"]:,} reference bases ({row["recovered_fraction"]:.2%}) are covered by retained alignments'
+        if row.get("alignment_identity") is not None:
+            text += f', with {row["alignment_identity"]:.3%} alignment identity'
+        text += "."
+        if strict and strict["status"] == "fail":
+            text += " The exact endpoint still fails; mapped coverage does not establish an exact, unique dedicated molecule."
+        elif strict and strict["status"] == "pass":
+            text += " The separate strict sequence endpoint passes."
+    labels = candidate_labels(row)
+    if labels:
+        text += " Candidate " + ", ".join(labels) + " evidence needs review; these flags can overlap and are not confirmed structural errors."
+    return text
+
+
+def diagnostic_table(diagnostic, plasmid_only=False, evaluation=None):
     if diagnostic.get("status") != "complete":
-        return '<p>Supplementary recovery diagnostics are unavailable for this execution.</p>'
-    body = '<h4>Aligned recovery evidence</h4><p class="muted">Supplementary mapping evidence; the exact pass/fail score is unchanged. Candidate flags need review and do not establish topology or a structural error.</p><div class="table-scroll" role="region" aria-label="Aligned recovery evidence" tabindex="0"><table><thead><tr><th scope="col">Molecule</th><th scope="col">Aligned reference</th><th scope="col">Alignment identity</th><th scope="col">Supporting contigs</th><th scope="col">Candidate evidence</th></tr></thead><tbody>'
+        body = f'<p>{e(diagnostic_state(diagnostic))}. Supplementary recovery evidence is unavailable; the strict score is unchanged.</p>'
+        if diagnostic.get("error") or diagnostic.get("reason"):
+            body += f'<p class="muted">{e(diagnostic.get("error") or diagnostic["reason"])}</p>'
+        return body
+    policy = diagnostic_policy(diagnostic)
+    body = '<h4>Aligned recovery evidence</h4><p class="muted">Supplementary mapping evidence; the exact pass/fail score is unchanged. Candidate flags need review and do not establish topology or a structural error.</p>'
     if plasmid_only:
-        body = body.replace('<div class="table-scroll"', '<p class="muted">Final plasmid output only; retained chromosome recovery is assessed separately.</p><div class="table-scroll"', 1)
-    for row in diagnostic["evidence"]["replicons"]:
-        if plasmid_only and row["molecule_type"] == "chromosome":
-            continue
+        body += '<p class="muted">Final plasmid output only; retained chromosome recovery is assessed separately.</p>'
+    rows = [row for row in diagnostic["evidence"]["replicons"] if not (plasmid_only and row["molecule_type"] == "chromosome")]
+    scores = {row["accession"]: row for row in (evaluation or {}).get("replicons", [])}
+    if rows:
+        body += '<ul>'
+        for row in rows:
+            body += f'<li><strong>{e(row["name"])}</strong>: {e(molecule_explanation(row, policy, scores.get(row["accession"])))}</li>'
+        body += '</ul>'
+    else:
+        body += '<p>No plasmids are expected in this control. The final plasmid output does not assess chromosome recovery.</p>' if plasmid_only else '<p>No molecule-level mapping evidence has been collected.</p>'
+    body += '<div class="table-scroll" role="region" aria-label="Aligned recovery evidence" tabindex="0"><table><thead><tr><th scope="col">Molecule</th><th scope="col">Aligned reference</th><th scope="col">Alignment identity</th><th scope="col">Supporting contigs</th><th scope="col">Candidate evidence</th></tr></thead><tbody>'
+    for row in rows:
         identity = f'{row["alignment_identity"]:.3%}' if row["alignment_identity"] is not None else "Not estimated"
-        flags = ", ".join(key.replace("_", " ") for key, value in row["candidate_flags"].items() if value) or "No flags under this policy"
-        body += f'<tr><th scope="row">{e(row["name"])}</th><td>{row["recovered_fraction"]:.2%}</td><td>{identity}</td><td>{row["contig_count"]}</td><td>{e(flags)}</td></tr>'
+        labels = candidate_labels(row)
+        flags = "Candidate " + ", ".join(labels) if labels else "No retained alignment" if alignment_classification(row, policy)[0] == "none" else "No flags under this policy"
+        body += f'<tr><th scope="row">{e(row["name"])}</th><td>{row["aligned_reference_bp"]:,}/{row["length_bp"]:,} bp ({row["recovered_fraction"]:.2%})</td><td>{identity}</td><td>{row["contig_count"]}</td><td>{e(flags)}</td></tr>'
     body += '</tbody></table></div>'
+    body += f'<p class="muted">Retained alignments require mapQ ≥{policy["minimum_mapq"]}, at least {policy["minimum_aligned_bp"]} aligned reference bases and identity ≥{policy["minimum_identity"]:.0%}; secondary, ambiguous-base and non-base-aligned records are excluded. Near-full means ≥{policy["complete_fraction"]:.0%} aligned reference coverage, not exact recovery. Candidate fragmentation requires multiple contigs, best-contig coverage below {policy["complete_fraction"]:.0%} and a union gain of at least {policy["fragmentation_gain_fraction"]:.0%}; candidate duplication requires overlapping reference coverage ≥{policy["duplication_fraction"]:.0%}; candidate joins use distinct reference molecules on query segments overlapping by at most {policy["maximum_query_overlap_fraction"]:.0%}. These flags do not establish a structural error.</p>'
     body += f'<p class="muted">Mapper: {e(diagnostic.get("mapper_version", "unknown"))}. {e(diagnostic["evidence"]["limitations"])}</p>'
     return body
 
@@ -296,3 +403,31 @@ def attach_diagnostics(record, path):
         if hashes.get("execution_sha256") == digest(path) and hashes.get("assembly_sha256") == record.get("assembly_sha256"):
             record["diagnostics"] = {key: value for key, value in diagnostic.items() if key != "command"}
     return record
+
+
+def write_diagnostic_tsv(output, cases, results):
+    """Export molecule-level mapping evidence with explicit unavailable states."""
+    by_id = {case["id"]: case for case in cases}
+    fields = ("scenario_id", "tool", "accession", "molecule_name", "molecule_type", "strict_status", "diagnostics_status",
+              "aligned_reference_fraction", "alignment_identity", "contig_count", "candidate_fragmentation", "candidate_duplication",
+              "candidate_join", "no_retained_alignment", "minimum_mapq", "minimum_aligned_bp", "minimum_identity", "near_full_fraction")
+    with (output / "data/recovery-evidence.tsv").open("w", newline="") as stream:
+        writer = csv.writer(stream, delimiter="\t")
+        writer.writerow(fields)
+        for record in results:
+            diagnostic = record.get("diagnostics") or {}
+            available = diagnostic.get("status") == "complete"
+            observed = {row["accession"]: row for row in diagnostic.get("evidence", {}).get("replicons", [])} if available else {}
+            scores = {row["accession"]: row["status"] for row in record.get("evaluation", {}).get("replicons", [])}
+            policy = diagnostic_policy(diagnostic)
+            for molecule in by_id[record["scenario_id"]]["replicons"]:
+                if record["tool"] == "plassembler" and molecule["molecule_type"] == "chromosome":
+                    continue
+                accession = molecule["refseq_accession"]
+                row = observed.get(accession, {})
+                flags = row.get("candidate_flags", {})
+                writer.writerow([record["scenario_id"], record["tool"], accession, molecule["replicon_name"], molecule["molecule_type"],
+                                 scores.get(accession), diagnostic.get("status", "not_available"), row.get("recovered_fraction"),
+                                 row.get("alignment_identity"), row.get("contig_count"), flags.get("fragmented"), flags.get("duplicated"),
+                                 flags.get("joined"), flags.get("no_supported_alignment"),
+                                 *[policy[key] if available else None for key in ("minimum_mapq", "minimum_aligned_bp", "minimum_identity", "complete_fraction")]])

@@ -59,3 +59,10 @@ describes that limited pilot. Decisions below still apply to expansion beyond it
 **S1/S2 expansion update (4 November 2026):** `config/next-stages.json` now freezes the five-reference panel and relative-depth ratios, with 32 cases and 128 comparisons submitted. All 19 input records passed sequence-integrity checks. This does not settle independent biological validation, repeated/thread runs, realistic errors, partial-recovery scoring or linear-plasmid admission. GenomicX shared components now style the Vercel report; a bounded per-batch collector can publish progress automatically.
 
 **S3/S4 implementation update (4 November 2026):** repeated fixed-input comparisons use five executions at one/four tool threads for two small-plasmid cases; the length panel uses three whole-input profiles in individual/native contexts. These configurations are operational choices, not realistic nanopore library models. Supplementary mapping reports continuous recovery and candidate flags under versioned thresholds, while exact scientific pass/fail remains unchanged. Broader repeated panels, topology scoring, realistic error models, sub-2-kb references and real-read admission remain open.
+
+**Failure-validation update:** interim mapping now supports inspection during an
+active batch. The checked pilot Raven result demonstrates both a real five-base
+sequence discrepancy and a circular-origin mapping omission; retain the strict
+score and the mapping limitation separately. `REALISTIC_READS.md` defines the
+next proposed panel and the validation work needed before noisy runs. Tolerant
+thresholds remain proposals, not applied scores.

@@ -189,3 +189,27 @@ Only one follower should own a site at a time. Restarting forces a publication
 attempt so a failed previous deployment cannot masquerade as success. This is
 a bounded process on the controller; it requires that machine and its SSH/network
 connection to remain available. It records explicit retry and time-limit states.
+
+## Reviewing failures before a batch finishes
+
+```sh
+python3 benchmark.py diagnose-submit --batch BATCH_ID --interim
+python3 benchmark.py collect --batch BATCH_ID
+```
+
+An interim diagnostic job inspects the execution records available when it runs.
+It has a separate script and submission record, preserving the queued final
+mapping job. Completed evidence is cached; unfinished assembler runs are skipped
+and revisited by the final job. Use `--interim --rerun` for another deliberate
+review pass. Scheduler state is sampled before copying output records so a newly
+completed task cannot appear as an error solely because collection raced its
+final write.
+
+The results pages distinguish strict recovery from supplementary mapping
+explanations. No retained mapping is evidence under the stated filtering policy,
+not proof that DNA is absent. The per-molecule recovery export preserves missing
+values and diagnostic errors separately from measured zero recovery.
+
+The next noisy-read design is in `REALISTIC_READS.md`. Its proposed configuration
+is deliberately non-executable: the controller rejects `status: proposed`, and
+the sampler refuses unknown models instead of silently generating exact reads.
