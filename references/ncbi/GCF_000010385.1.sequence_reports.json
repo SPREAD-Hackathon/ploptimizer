@@ -1,0 +1,102 @@
+{
+  "reports": [
+    {
+      "assembly_accession": "GCF_000010385.1",
+      "chr_name": "chromosome",
+      "assigned_molecule_location_type": "Chromosome",
+      "refseq_accession": "NC_011415.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 4887515,
+      "genbank_accession": "AP009240.1",
+      "gc_count": "2482689",
+      "gc_percent": 51,
+      "role": "assembled-molecule",
+      "sequence_name": "AP009240.1"
+    },
+    {
+      "assembly_accession": "GCF_000010385.1",
+      "chr_name": "pSE11-1",
+      "sort_order": 2,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_011419.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 100021,
+      "genbank_accession": "AP009241.1",
+      "gc_count": "50471",
+      "gc_percent": 50.5,
+      "role": "assembled-molecule",
+      "sequence_name": "pSE11-1"
+    },
+    {
+      "assembly_accession": "GCF_000010385.1",
+      "chr_name": "pSE11-2",
+      "sort_order": 3,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_011413.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 91158,
+      "genbank_accession": "AP009242.1",
+      "gc_count": "45795",
+      "gc_percent": 50,
+      "role": "assembled-molecule",
+      "sequence_name": "pSE11-2"
+    },
+    {
+      "assembly_accession": "GCF_000010385.1",
+      "chr_name": "pSE11-3",
+      "sort_order": 4,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_011416.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 60555,
+      "genbank_accession": "AP009243.1",
+      "gc_count": "29423",
+      "gc_percent": 48.5,
+      "role": "assembled-molecule",
+      "sequence_name": "pSE11-3"
+    },
+    {
+      "assembly_accession": "GCF_000010385.1",
+      "chr_name": "pSE11-4",
+      "sort_order": 5,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_011407.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 6929,
+      "genbank_accession": "AP009244.1",
+      "gc_count": "3326",
+      "gc_percent": 48,
+      "role": "assembled-molecule",
+      "sequence_name": "pSE11-4"
+    },
+    {
+      "assembly_accession": "GCF_000010385.1",
+      "chr_name": "pSE11-5",
+      "sort_order": 6,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_011408.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 5366,
+      "genbank_accession": "AP009245.1",
+      "gc_count": "2480",
+      "gc_percent": 46,
+      "role": "assembled-molecule",
+      "sequence_name": "pSE11-5"
+    },
+    {
+      "assembly_accession": "GCF_000010385.1",
+      "chr_name": "pSE11-6",
+      "sort_order": 7,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_011411.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 4082,
+      "genbank_accession": "AP009246.1",
+      "gc_count": "2018",
+      "gc_percent": 49.5,
+      "role": "assembled-molecule",
+      "sequence_name": "pSE11-6"
+    }
+  ],
+  "total_count": 7
+}

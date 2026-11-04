@@ -20,6 +20,11 @@ Start with controlled, error-free simulated reads from complete reference assemb
 
 ### Selecting references
 
+The [RefSeq reference shortlist](references/README.md) provides five preferred
+candidates for the initial two-species panel, two held alternatives, exact
+assembly/replicon accessions and metadata snapshots. It records the remaining
+checks required before benchmark admission; it is not a completed sequence audit.
+
 Build a versioned panel from public RefSeq or GenBank assemblies. Use complete assemblies with individually identified chromosome and plasmid records, confirmed species identity, documented topology and traceable provenance. Prefer references with accessible supporting reads and published validation. NCBI Datasets provides assembly metadata and sequence reports for recording these properties [1, 2].
 
 Treat “gold standard” as a project curation decision. A complete-genome label or RefSeq membership alone does not establish that every plasmid was recovered correctly. Review sequence gaps, ambiguous bases, excluded records, available validation and possible reference errors before admission. Freeze accession versions and checksums rather than resolving “latest” during a benchmark.

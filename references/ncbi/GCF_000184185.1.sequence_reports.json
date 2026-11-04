@@ -1,0 +1,46 @@
+{
+  "reports": [
+    {
+      "assembly_accession": "GCF_000184185.1",
+      "chr_name": "chromosome",
+      "assigned_molecule_location_type": "Chromosome",
+      "refseq_accession": "NC_017635.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 4900968,
+      "genbank_accession": "CP002185.1",
+      "gc_count": "2491829",
+      "gc_percent": 51,
+      "role": "assembled-molecule",
+      "sequence_name": "CP002185.1"
+    },
+    {
+      "assembly_accession": "GCF_000184185.1",
+      "chr_name": "pRK1",
+      "sort_order": 2,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_017637.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 102536,
+      "genbank_accession": "CP002186.1",
+      "gc_count": "51213",
+      "gc_percent": 50,
+      "role": "assembled-molecule",
+      "sequence_name": "pRK1"
+    },
+    {
+      "assembly_accession": "GCF_000184185.1",
+      "chr_name": "pRK2",
+      "sort_order": 3,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_017636.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 5360,
+      "genbank_accession": "CP002187.1",
+      "gc_count": "2467",
+      "gc_percent": 46,
+      "role": "assembled-molecule",
+      "sequence_name": "pRK2"
+    }
+  ],
+  "total_count": 3
+}

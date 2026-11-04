@@ -1,0 +1,32 @@
+{
+  "reports": [
+    {
+      "assembly_accession": "GCF_024397815.1",
+      "chr_name": "chromosome",
+      "assigned_molecule_location_type": "Chromosome",
+      "refseq_accession": "NZ_CP073076.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 5306902,
+      "genbank_accession": "CP073076.1",
+      "gc_count": "3051749",
+      "gc_percent": 57.5,
+      "role": "assembled-molecule",
+      "sequence_name": "CP073076.1"
+    },
+    {
+      "assembly_accession": "GCF_024397815.1",
+      "chr_name": "pEcl8",
+      "sort_order": 2,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NZ_CP073077.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 204698,
+      "genbank_accession": "CP073077.1",
+      "gc_count": "102647",
+      "gc_percent": 50,
+      "role": "assembled-molecule",
+      "sequence_name": "pEcl8"
+    }
+  ],
+  "total_count": 2
+}

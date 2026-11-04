@@ -1,0 +1,88 @@
+{
+  "reports": [
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "chr_name": "chromosome",
+      "assigned_molecule_location_type": "Chromosome",
+      "refseq_accession": "NC_009648.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 5315120,
+      "genbank_accession": "CP000647.1",
+      "gc_count": "3055055",
+      "gc_percent": 57.5,
+      "role": "assembled-molecule",
+      "sequence_name": "CP000647.1"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "chr_name": "pKPN3",
+      "sort_order": 2,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_009649.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 175879,
+      "genbank_accession": "CP000648.1",
+      "gc_count": "90913",
+      "gc_percent": 51.5,
+      "role": "assembled-molecule",
+      "sequence_name": "pKPN3"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "chr_name": "pKPN4",
+      "sort_order": 3,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_009650.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 107576,
+      "genbank_accession": "CP000649.1",
+      "gc_count": "57489",
+      "gc_percent": 53.5,
+      "role": "assembled-molecule",
+      "sequence_name": "pKPN4"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "chr_name": "pKPN5",
+      "sort_order": 4,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_009651.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 88582,
+      "genbank_accession": "CP000650.1",
+      "gc_count": "47672",
+      "gc_percent": 54,
+      "role": "assembled-molecule",
+      "sequence_name": "pKPN5"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "chr_name": "pKPN6",
+      "sort_order": 5,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_009652.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 4259,
+      "genbank_accession": "CP000651.1",
+      "gc_count": "1764",
+      "gc_percent": 41.5,
+      "role": "assembled-molecule",
+      "sequence_name": "pKPN6"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "chr_name": "pKPN7",
+      "sort_order": 6,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_009653.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 3478,
+      "genbank_accession": "CP000652.1",
+      "gc_count": "1588",
+      "gc_percent": 45.5,
+      "role": "assembled-molecule",
+      "sequence_name": "pKPN7"
+    }
+  ],
+  "total_count": 6
+}

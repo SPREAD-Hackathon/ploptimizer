@@ -1,0 +1,18 @@
+{
+  "reports": [
+    {
+      "assembly_accession": "GCF_000005845.2",
+      "chr_name": "chromosome",
+      "assigned_molecule_location_type": "Chromosome",
+      "refseq_accession": "NC_000913.3",
+      "assembly_unit": "Primary Assembly",
+      "length": 4641652,
+      "genbank_accession": "U00096.3",
+      "gc_count": "2357528",
+      "gc_percent": 51,
+      "role": "assembled-molecule",
+      "sequence_name": "U00096.3"
+    }
+  ],
+  "total_count": 1
+}

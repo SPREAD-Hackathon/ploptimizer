@@ -1,0 +1,165 @@
+{
+  "reports": [
+    {
+      "accession": "GCF_000010385.1",
+      "current_accession": "GCF_000010385.1",
+      "paired_accession": "GCA_000010385.1",
+      "source_database": "SOURCE_DATABASE_REFSEQ",
+      "organism": {
+        "tax_id": 409438,
+        "organism_name": "Escherichia coli SE11",
+        "infraspecific_names": {
+          "strain": "SE11"
+        }
+      },
+      "assembly_info": {
+        "assembly_level": "Complete Genome",
+        "assembly_status": "current",
+        "paired_assembly": {
+          "accession": "GCA_000010385.1",
+          "status": "current",
+          "annotation_name": "Annotation submitted by Kitasato Institute for Life Sciences"
+        },
+        "assembly_name": "ASM1038v1",
+        "assembly_type": "haploid",
+        "bioproject_lineage": [
+          {
+            "bioprojects": [
+              {
+                "accession": "PRJNA18057",
+                "title": "Reference sequence for Human Microbiome Project",
+                "parent_accessions": [
+                  "PRJNA28331"
+                ]
+              },
+              {
+                "accession": "PRJNA28331",
+                "title": "Genomes of microorganisms that have been isolated in and on the human body, to be used as Reference Genomes for the Human Microbiome Project (HMP)",
+                "parent_accessions": [
+                  "PRJNA43021"
+                ]
+              },
+              {
+                "accession": "PRJNA43021",
+                "title": "NIH Human Microbiome Project (HMP) Roadmap Project"
+              }
+            ]
+          }
+        ],
+        "bioproject_accession": "PRJNA18057",
+        "release_date": "2008-10-22",
+        "submitter": "Kitasato Institute for Life Sciences",
+        "biosample": {
+          "accession": "SAMD00061087",
+          "last_updated": "2016-09-26T20:10:59.000",
+          "publication_date": "2016-09-27T09:10:59.000",
+          "submission_date": "2016-09-28T01:02:39.829",
+          "description": {
+            "title": "Generic sample from Escherichia coli SE11",
+            "organism": {
+              "tax_id": 409438,
+              "organism_name": "Escherichia coli SE11"
+            }
+          },
+          "owner": {
+            "name": "DDBJ"
+          },
+          "models": [
+            "Generic"
+          ],
+          "bioprojects": [
+            {
+              "accession": "PRJNA18057"
+            }
+          ],
+          "package": "Generic.1.0",
+          "attributes": [
+            {
+              "name": "sample_name",
+              "value": "AP009240-AP009246"
+            },
+            {
+              "name": "strain",
+              "value": "SE11"
+            }
+          ],
+          "status": {
+            "status": "live",
+            "when": "2016-09-28T01:02:39.829"
+          },
+          "sample_name": "AP009240-AP009246",
+          "strain": "SE11"
+        }
+      },
+      "assembly_stats": {
+        "total_number_of_chromosomes": 7,
+        "total_sequence_length": "5155626",
+        "total_ungapped_length": "5155626",
+        "number_of_contigs": 7,
+        "contig_n50": 4887515,
+        "contig_l50": 1,
+        "number_of_scaffolds": 7,
+        "scaffold_n50": 4887515,
+        "scaffold_l50": 1,
+        "number_of_component_sequences": 7,
+        "atgc_count": "5155626",
+        "gc_count": "2616202",
+        "gc_percent": 50.5
+      },
+      "annotation_info": {
+        "name": "GCF_000010385.1-RS_2025_06_09",
+        "provider": "NCBI RefSeq",
+        "release_date": "2025-06-09",
+        "stats": {
+          "gene_counts": {
+            "total": 5106,
+            "protein_coding": 4822,
+            "non_coding": 118,
+            "pseudogene": 166
+          }
+        },
+        "method": "Best-placed reference protein set; GeneMarkS-2+",
+        "pipeline": "NCBI Prokaryotic Genome Annotation Pipeline (PGAP)",
+        "software_version": "6.10"
+      },
+      "type_material": {
+        "type_label": "TYPE_MATERIAL_CLADE",
+        "type_display_text": "assembly designated as clade exemplar"
+      },
+      "checkm_info": {
+        "checkm_marker_set": "Escherichia coli",
+        "checkm_species_tax_id": 562,
+        "checkm_marker_set_rank": "species",
+        "checkm_version": "v1.2.3",
+        "completeness": 99.52,
+        "contamination": 0.21,
+        "completeness_percentile": 92.8459
+      },
+      "average_nucleotide_identity": {
+        "taxonomy_check_status": "OK",
+        "match_status": "species_match",
+        "submitted_organism": "Escherichia coli SE11",
+        "submitted_species": "Escherichia coli",
+        "category": "claderef",
+        "submitted_ani_match": {
+          "assembly": "GCA_000263895.1",
+          "organism_name": "Escherichia coli O103:H25 str. CVM9340",
+          "category": "claderef",
+          "ani": 98.9,
+          "assembly_coverage": 86.71,
+          "type_assembly_coverage": 84.98
+        },
+        "best_ani_match": {
+          "assembly": "GCA_000263895.1",
+          "organism_name": "Escherichia coli",
+          "category": "claderef",
+          "ani": 98.9,
+          "assembly_coverage": 86.71,
+          "type_assembly_coverage": 84.98
+        },
+        "comment": "na"
+      }
+    }
+  ],
+  "total_count": 1
+}

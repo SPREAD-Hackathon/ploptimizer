@@ -1,0 +1,32 @@
+{
+  "reports": [
+    {
+      "assembly_accession": "GCF_000220485.1",
+      "chr_name": "chromosome",
+      "assigned_molecule_location_type": "Chromosome",
+      "refseq_accession": "NC_017540.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 5259571,
+      "genbank_accession": "CP002910.1",
+      "gc_count": "3026964",
+      "gc_percent": 57.5,
+      "role": "assembled-molecule",
+      "sequence_name": "CP002910.1"
+    },
+    {
+      "assembly_accession": "GCF_000220485.1",
+      "chr_name": "pKCTC2242",
+      "sort_order": 2,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NC_017541.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 202852,
+      "genbank_accession": "CP002911.1",
+      "gc_count": "101770",
+      "gc_percent": 50,
+      "role": "assembled-molecule",
+      "sequence_name": "pKCTC2242"
+    }
+  ],
+  "total_count": 2
+}
