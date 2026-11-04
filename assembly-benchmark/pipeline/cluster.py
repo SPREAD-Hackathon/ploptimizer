@@ -149,7 +149,7 @@ def collect(batch):
         if exists(folder):
             target = batch / folder
             target.mkdir(exist_ok=True)
-            excludes = ["--exclude=output", "--exclude=stdout.log"] if folder == "results" else []
+            excludes = ["--exclude=output", "--exclude=stdout.log", "--exclude=raven.cereal"] if folder == "results" else []
             subprocess.run(["rsync", "-az"] + excludes + [cluster["host"] + ":" + str(remote_batch / folder) + "/", str(target) + "/"], check=True)
     # Copy small input manifests without the read files.
     if exists("cases"):

@@ -27,6 +27,8 @@ class ClusterCollectionTests(unittest.TestCase):
             self.assertEqual(events[0][0], 'scheduler')
             self.assertIn('100,200,300', events[0][1])
             self.assertTrue(any(kind == 'rsync' for kind, _ in events))
+            results_copy=next(argv for kind,argv in events if kind=='rsync' and '--exclude=stdout.log' in argv)
+            self.assertIn('--exclude=raven.cereal', results_copy)
             self.assertIn('RUNNING', (batch/'accounting.tsv').read_text())
 
 
