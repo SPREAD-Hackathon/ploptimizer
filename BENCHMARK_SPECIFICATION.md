@@ -119,9 +119,26 @@ The workflow comprises reference validation, scenario expansion, simulation or r
 
 Assembler adapters must declare the executable/version, environment or container digest, supported input type, command/configuration, seed support, thread settings, resource limits and expected output files. Capture standard output/error, exit status, elapsed time and peak memory. Preserve FASTA and assembly graphs when emitted. Do not assume all assemblers expose the same options.
 
-Start with published recommended settings appropriate to the declared read type. Record any deviations. Treat tuned settings as a distinct benchmark entry and retain a held-out reference panel for final comparisons. Assembler selection and versions remain an implementation decision; this specification makes no performance recommendation.
+Start with published recommended settings appropriate to the declared read type. Record any deviations. Treat tuned settings as a distinct benchmark entry and retain a held-out reference panel for final comparisons. The proposed starting panel below selects comparison roles, not expected winners; versions remain to be pinned before execution.
 
 Cache by checksums and full configuration, support resumption, and distinguish success, crash, timeout, resource exhaustion, unsupported configuration, invalid input and evaluation failure. An empty assembly is an observed outcome, not a successful recovery. Retain unsuccessful runs in the report.
+
+## Recommended assembler panel
+
+Start with three tools and four benchmark entries:
+
+1. **Flye, standard isolate configuration.** Whole-genome baseline for chromosome and plasmid recovery [5].
+2. **Flye, uneven-coverage configuration.** A separate entry using its documented `--meta` mode. This tests whether handling uneven depth changes outcomes in the relative-coverage panel; it is a configuration comparison within Flye, not an independent assembler [5].
+3. **Plassembler, long-read-only mode.** Use `plassembler long` for the initial long-read track. Its workflow uses an initial Flye assembly and Unicycler-based plasmid reconstruction. Retain the initial assembly and final plasmid outputs to measure the change attributable to the workflow [6].
+4. **Raven.** A second standalone long-read assembler, providing a comparison beyond Flye and its downstream workflow. Assess it on the same frozen inputs and outcomes without assuming which tool will perform best [7].
+
+For Plassembler, evaluate final plasmids and the retained initial chromosome separately. Its plasmid FASTA alone is not a whole-genome assembly. If presenting a combined genome, define the reconciliation policy explicitly and check for duplicated or conflicting plasmid sequences. Use the exact internal Flye run for the paired before/after comparison; a separately configured standalone Flye run is a different comparison.
+
+Record all component versions, internal read filtering and database versions. Keep database-derived plasmid annotations separate from sequence-based recovery scores: a database hit is not benchmark truth. Declare any chromosome-size prior as a fixed, documented input policy rather than deriving per-case settings from hidden truth. Include chromosome-only controls and preserve legitimate empty plasmid outputs.
+
+After the core panel works, add **Autocycler** as a separate consensus-workflow comparison. It combines long-read assemblies and is the documented successor to Trycycler [8]. Record all constituent assemblers, subsampling/seeds and total resource use; its results are not independent of those inputs. **Myloasm** is a further exploratory candidate for modern long reads, with its metagenome-oriented scope stated explicitly [9].
+
+When matched short reads become available, open a separate hybrid track for Plassembler's hybrid mode and Unicycler [6]. Do not mix hybrid and long-read-only results in one ranking. Perfect simulated reads remain a diagnostic panel; validate input-mode compatibility before execution and report realistic nanopore data separately.
 
 ## Evaluation and outcome definitions
 
@@ -179,3 +196,8 @@ These sources support data provenance and candidate tool capabilities. The scena
 2. [NCBI Datasets: genome assembly report](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/reference-docs/data-reports/genome-assembly/) and [NCBI genome files and assembly reports](https://www.ncbi.nlm.nih.gov/datasets/docs/v2/data-processing/policies-annotation/genomeftp/).
 3. [Badread documentation](https://github.com/rrwick/Badread), including circular references, per-reference depth and small-plasmid bias. Defaults and high-quality presets should not be treated as an exact-read specification.
 4. [QUAST documentation and source](https://github.com/ablab/quast).
+5. [Flye usage and supported input modes](https://github.com/mikolmogorov/Flye/blob/flye/docs/USAGE.md), including the uneven-coverage mode.
+6. [Plassembler documentation](https://github.com/gbouras13/plassembler) and [long-read-only mode](https://plassembler.readthedocs.io/en/latest/long/).
+7. [Raven documentation and source](https://github.com/lbcb-sci/raven).
+8. [Autocycler documentation and source](https://github.com/rrwick/Autocycler).
+9. [Myloasm documentation](https://myloasm-docs.github.io/).
