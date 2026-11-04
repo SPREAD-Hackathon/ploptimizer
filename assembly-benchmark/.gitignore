@@ -1,0 +1,12 @@
+.pixi/
+.cache/
+.tools/
+.t/
+.vercel/
+.env*
+__pycache__/
+*.pyc
+runs/
+data/
+dist/
+config/cluster.local.json

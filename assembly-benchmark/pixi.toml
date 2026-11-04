@@ -1,0 +1,31 @@
+[workspace]
+name = "ploptimizer-assembly-benchmark"
+version = "0.1.0"
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = "3.11.*"
+
+[feature.flye.dependencies]
+flye = "==2.9.6"
+
+[feature.raven.dependencies]
+raven-assembler = "==1.8.3"
+
+[feature.plassembler.dependencies]
+plassembler = "==1.9.0"
+flye = "==2.9.6"
+raven-assembler = "==1.8.3"
+unicycler = "==0.5.1"
+
+[environments]
+default = []
+flye = ["flye"]
+raven = ["raven"]
+plassembler = ["plassembler"]
+
+[tasks]
+test = "python -m unittest discover -s tests -v"
+plan = "python benchmark.py plan"
+report = "python benchmark.py report"

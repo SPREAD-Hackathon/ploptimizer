@@ -1,0 +1,11 @@
+{
+  "host": "USER@cluster3.bmrc.ox.ac.uk",
+  "remote_root": "/PATH/TO/ploptimizer/assembly-benchmark",
+  "account": "REPLACE_WITH_BMRC_PROJECT",
+  "partition": "short",
+  "cpus": 4,
+  "memory": "16G",
+  "time": "04:00:00",
+  "array_concurrency": 4,
+  "pixi": "pixi"
+}

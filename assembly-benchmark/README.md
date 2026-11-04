@@ -1,6 +1,13 @@
 # Long-read plasmid assembly benchmark
 
-**Status:** design in progress, 4 November 2026. Reference metadata has been collected; sequence validation and benchmark runs have not started. Numerical settings remain proposals until recorded in the [decision list](DECISIONS.md).
+**Status:** first pilot implemented, 4 November 2026. Python automation generates
+error-free reads, submits BMRC Slurm jobs through Pixi environments and builds a
+static results website. See [RUNNING.md](RUNNING.md) for the explicit pilot settings
+and commands. Broader study choices remain in the [decision list](DECISIONS.md).
+
+**[Live results website](https://ploptimizer-assembly-benchmark.vercel.app)**:
+assembler/scenario matrix, scenario evidence and methods. Small publication
+snapshots are versioned in `published/`; large run artefacts stay on BMRC.
 
 ## Aim
 
@@ -41,4 +48,7 @@ Deliver a command-line workflow, a static report and JSON/TSV exports. Keep mani
 
 Add biologically linear plasmids (S5), realistic nanopore errors, coverage/read-length challenges, shared repeats, filtering effects, and matched real datasets. Autocycler, Myloasm and a hybrid track can follow. The order and admission of these extensions remain design choices.
 
-Before implementation, resolve the [six decision groups](DECISIONS.md). Supporting details and sources are in [METHODS.md](METHODS.md); exact accession inventories and metadata are in [references/](references/README.md).
+The [six decision groups](DECISIONS.md) guide the wider study; the first runnable
+profile is in `config/pilot.json`. Supporting details and sources are in
+[METHODS.md](METHODS.md); accession inventories and metadata are in
+[references/](references/README.md).

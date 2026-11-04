@@ -2,6 +2,12 @@
 
 Review date: 4 November 2026. The study question is defined. The previous specification left the following choices open, so it was not yet an executable experiment plan. Recommendations here are proposals, not approvals or completed work.
 
+**Pilot update:** the user requested an executable first case on BMRC, with Pixi,
+Python automation and a static site on Vercel. `config/pilot.json` now records the
+operational S1 choices: E. coli W, exact lognormal reads at 30×, seed 20261104,
+four tool entries/four threads and the strict sequence endpoint. [RUNNING.md](RUNNING.md)
+describes that limited pilot. Decisions below still apply to expansion beyond it.
+
 ## 1. Pilot scope and reference admission
 
 **Define:** which assemblies pass sequence/provenance checks; exact plasmid subsets; whether linear plasmids are in the first release or a follow-up; whether a <2 kb example is required before the pilot.

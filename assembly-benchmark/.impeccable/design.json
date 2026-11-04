@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "mode": "operate",
+  "authority": "User-prescribed simple assembler/scenario table and detail pages",
+  "source": "website/site.css",
+  "focus": "3px solid #075e63 with 5px offset",
+  "responsive": {"breakpoint": "700px", "matrix": "internal horizontal scrolling"},
+  "states": ["pass", "fail", "not_run", "pending", "running", "error", "timeout", "invalid_input"],
+  "motion": "none; static report"
+}
