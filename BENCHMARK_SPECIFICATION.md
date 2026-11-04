@@ -82,6 +82,23 @@ Test each selected small plasmid with its chromosome and, where available, withi
 
 Specify whether the simulator permits reads to traverse a circular molecule more than once. Such reads must be explicitly labelled; compare a model that limits reads to one circumference rather than silently using long artificial tandem copies. Badread supports circular references and a small-plasmid bias model, but those capabilities require validation against the intended scenario [3].
 
+### S5. Biologically linear plasmids
+
+Add a separate topology panel. A naturally linear plasmid is different from a circular plasmid represented by an unfinished linear contig. Linear truth must retain its physical ends: do not simulate circular wraparound, rotate sequences during equivalence checks or reward circularisation. Reverse-complement equivalence still applies. Basic sequence simulation does not model terminal proteins or library-specific behaviour at physical ends; document those limitations.
+
+Measure whole-molecule recovery, left/right terminal sequence recovery, terminal truncation, terminal repeat collapse, false end-to-end joins, inappropriate circularity claims, fragmentation and chromosome–plasmid merges. Report sequence correctness separately from topology: an unlabelled linear FASTA contig alone does not prove the biological topology. Use validated circular controls to detect an evaluator that simply favours one topology.
+
+Use a small *Streptomyces* extension panel before claiming broad performance on linear plasmids. These are candidate reference records, not an already curated gold-standard dataset. NCBI nucleotide metadata checked on 4 November 2026 identifies each record below as linear:
+
+- **Small:** *S. clavuligerus* ATCC 27064, León isolate, pSCL1, **NZ_CP045848.1**, **11,696 bp**. A useful candidate for small linear-plasmid recovery. The original pSCL1 sequence study independently describes its linear structure [10]. Review the modern record and its source assembly before admission; the validation study for the León assembly also discusses limitations in terminal-sequence representation [11].
+- **Small/medium:** *S. rochei* 7434AN4, pSLA2-S, **NC_024971.1**, **17,526 bp**. A RefSeq candidate for a native linear-plasmid complement [12].
+- **Medium:** *S. lividans* 1326, SLP2, **NC_004933.1**, **50,410 bp**. Its published characterisation makes it a candidate for a separate shared chromosome–plasmid sequence challenge [13].
+- **Larger:** *S. rochei* 7434AN4, pSLA2-L, **NC_004808.2**, **210,614 bp**. Its linear structure and complete sequence are described in the primary literature [12, 14].
+
+Start with pSCL1 and the pSLA2-S/pSLA2-L pair after curation, using their respective source-isolate complements. Keep these results separate from the initial *K. pneumoniae*/*E. coli* panel because species, GC composition and repeat structure also change. Never present cross-species computational mixtures as native complements.
+
+Linear plasmids have also been experimentally reported in *Klebsiella* and other Enterobacteriaceae [15]. Their presence in the target group justifies a later native-species panel, but this document does not yet nominate a validated target-species reference accession. Review evidence for complete termini and topology before selecting one. Neither RefSeq membership nor a complete-sequence label alone establishes gold-standard terminal accuracy.
+
 ## Additional scenarios, in priority order
 
 1. **Absolute coverage and sampling variation.** Compare selected low, medium and higher depths at fixed relative coverage, using independent simulated read sets. Record zero-read and incomplete-coverage cases rather than scoring them as unexplained assembler loss.
@@ -179,7 +196,7 @@ Prefer orthogonal validation and matched isolate material. A reference built onl
 The first milestone should deliver:
 
 1. Curated, pinned reference manifests for both species and a documented selection review.
-2. S1–S4 scenario manifests, including their controls and explicit unsupported combinations.
+2. S1–S4 scenario manifests, including their controls and explicit unsupported combinations; S5 is the proposed linear-plasmid extension after candidate-reference curation.
 3. Validated exact-read generation and per-replicon input checks.
 4. At least two assembler adapters, selected and versioned before execution.
 5. A circular-aware evaluator checked against simple computational fixtures: exact recovery, rotated/reverse-complemented circles, missing plasmids, fragments, false joins, duplicate contigs, tandem copies and ambiguous shared sequence.
@@ -201,3 +218,9 @@ These sources support data provenance and candidate tool capabilities. The scena
 7. [Raven documentation and source](https://github.com/lbcb-sci/raven).
 8. [Autocycler documentation and source](https://github.com/rrwick/Autocycler).
 9. [Myloasm documentation](https://myloasm-docs.github.io/).
+10. [Wu and Roy, 1993: complete sequence and linear structure of pSCL1](https://pubmed.ncbi.nlm.nih.gov/8416908/); candidate [RefSeq NZ_CP045848.1](https://www.ncbi.nlm.nih.gov/nuccore/NZ_CP045848.1).
+11. [Genome editing reveals that pSCL4 is required for chromosome linearity in Streptomyces clavuligerus](https://pmc.ncbi.nlm.nih.gov/articles/PMC8743545/), including reference-assembly and terminal-sequence limitations.
+12. [The genome sequence of Streptomyces rochei 7434AN4](https://pmc.ncbi.nlm.nih.gov/articles/PMC6662830/); candidate RefSeq records [pSLA2-S NC_024971.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_024971.1) and [pSLA2-L NC_004808.2](https://www.ncbi.nlm.nih.gov/nuccore/NC_004808.2).
+13. [Huang et al., 2003: linear plasmid SLP2](https://pubmed.ncbi.nlm.nih.gov/12622812/); candidate [RefSeq NC_004933.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_004933.1).
+14. [Mochizuki et al., 2003: complete sequence of pSLA2-L](https://pubmed.ncbi.nlm.nih.gov/12791134/).
+15. [Linear plasmids in Klebsiella and other Enterobacteriaceae](https://pmc.ncbi.nlm.nih.gov/articles/PMC9453081/).
