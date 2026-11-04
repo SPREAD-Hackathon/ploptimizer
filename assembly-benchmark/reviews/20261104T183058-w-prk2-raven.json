@@ -1,6 +1,6 @@
 {
   "batch_id": "20261104T183058",
-  "explanation": "A direct sequence check confirms this 5,355 bp contig equals the circularly rotated 5,360 bp pRK2 reference with a five-base deletion. Its unaligned 155 bp origin-crossing suffix is present. The 97.01% aligned fraction therefore does not mean 160 bp of sequence are missing. The strict exact-molecule assessment remains a fail.",
+  "explanation": "Controlled reruns from the same saved graph were exact at 5,360 bp with zero polishing rounds, including a zero-round resume control. One polishing round gave 5,356 bp; two rounds gave 5,355 bp and reproduced the entire historical output file exactly. This confirms polishing introduced the sequence loss in this case. End cropping is strongly implicated, but the specific internal trimming branch has not been instrumented. The older 97.01% mapped fraction also omitted a present 155 bp origin-crossing segment.",
   "hashes": {
     "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
     "execution_sha256": "fdffbac92ede99ee032b6a8e852aba9dd3434b8f6101cb2a430cf9837df4012d",
@@ -10,15 +10,17 @@
   "scenario_id": "s1-w-prk2",
   "schema_version": 1,
   "scope": "This archived contig only; does not establish the assembler-internal cause, topology or a general tool outcome.",
-  "source_document": "FAILURE_REVIEW.md",
+  "source_document": "RAVEN_CAUSE_REVIEW.md",
   "status": "verified",
   "strict_status": "fail",
-  "summary": "Five-base deletion verified; circular-origin mapping omission",
+  "summary": "Polishing introduced deletions; historical output reproduced",
   "tool": "raven",
   "validation": {
     "archived_file_hashes_verified": true,
     "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
     "circular_tail_155bp_matches_reference_origin": true,
+    "controlled_evidence_sha256": "12b3a90200bf641e363e619b529156adf6ba0c42cffdd5a3e51097b6fb85fb7c",
+    "controlled_study": "controlled-20261104T214341",
     "query_equals_reference_rotation_with_5bp_deletion": true,
     "query_length": 5355,
     "query_sequence_sha256": "d385421643d3c4ad1615d97acb3a43832f6f46997fc8194355c729860bcefedc",

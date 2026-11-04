@@ -1,0 +1,25 @@
+{
+  "batch_id": "20261104T183058",
+  "explanation": "The automatic minimum overlap was 6,000 bp. Flye uses that value as a hard read-length cutoff in its initial assembly module. All 31 pRK2 reads are only 3,463\u20135,360 bp, so none entered that stage. The total bases surviving this filter exactly match the initial assembly index in the recorded log. This explains initial plasmid loss; a lower-threshold rescue is being tested separately. The lower-threshold intervention was tested in ordinary Flye, not meta mode.",
+  "hashes": {
+    "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+    "execution_sha256": "4f8940eca33c40e2ebe66a111d211a5a67ef829548b398eceaa361ac8c7feab1",
+    "paf_sha256": "a257404b422f0cad3c31d110fc8ddb346b13d88c081af49f1b9f4d7bab754c51",
+    "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f"
+  },
+  "scenario_id": "s1-w-prk2",
+  "schema_version": 1,
+  "scope": "Initial assembly read filtering in this pilot; not a claim that lowering the cutoff guarantees final recovery.",
+  "source_document": "FLYE_HYPOTHESES.md",
+  "status": "verified",
+  "strict_status": "fail",
+  "summary": "All 31 plasmid reads excluded by the 6,000 bp assembly cutoff",
+  "tool": "flye-meta",
+  "validation": {
+    "controlled_study": "controlled-20261104T214341",
+    "eligible_plasmid_reads_3000": 31,
+    "eligible_plasmid_reads_6000": 0,
+    "normal_pilot_index_total_matches_filter": true,
+    "source_loader_verified": "Flye2.9.6"
+  }
+}

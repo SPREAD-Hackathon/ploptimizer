@@ -3,6 +3,10 @@
 Reviewed 4 November 2026 at 20:02 UTC. This is an inspection of individual
 completed runs, not a tool ranking. Strict scores remain unchanged.
 
+**Controlled follow-up:** Flye's initial read exclusion and Raven's polishing-stage
+sequence loss now have causal evidence. Read the [Flye review](FLYE_HYPOTHESES.md)
+and [Raven review](RAVEN_CAUSE_REVIEW.md) for the interventions and remaining limits.
+
 The local audit contained 44 scored executions out of 128 in S1/S2 batch
 `20261104T190455`: 25 strict passes and 19 strict failures, with four running and
 80 pending. The interim alignment job supplied 43 completed diagnostics. Some
@@ -39,7 +43,8 @@ reference fraction as an exhaustive deletion measurement.
 
 The input contained 31 pRK2 reads, achieved depth 30.411× and 100% reference
 breadth. Missing input reads are therefore not the explanation for this case.
-The observations do not establish which assembly step caused the deletion.
+At the initial review, these observations did not identify the causal stage.
+The controlled follow-up below now attributes the reproduced loss to polishing.
 
 The same distinction is visible in the expanded batch's Raven outputs for
 SE11/pSE11-1, pSE11-3 and pSE11-4. Their retained alignments cover respectively
@@ -125,3 +130,24 @@ the corresponding truth-file SHA256 is
 These large run artefacts stay on BMRC; the public snapshots retain small
 execution/diagnostic evidence. The audit records local source-file hashes and
 checks diagnostic execution/PAF hashes when those fields are available.
+
+## Follow-up: a confirmed Flye input-filter mechanism
+
+The initial no-mapping description now has a source- and runtime-backed cause
+for the pilot Flye cases. Their automatic minimum overlap was 6,000 bp, and the
+initial assembly loader excludes reads at or below that length. All 31 pRK2
+reads are 3,463–5,360 bp. None entered the initial assembly container. The sum of
+retained read bases exactly matches the recorded index total, 132,974,713 bp.
+See [the Flye cause review](FLYE_HYPOTHESES.md) for evidence and the controlled
+lower-threshold test. This identifies initial read exclusion, not a guarantee
+that every downstream graph/consensus issue is resolved by changing one flag.
+
+For Raven, controlled checkpoint-clone tests now reproduce the full historical
+output byte for byte: zero polishing rounds give the exact plasmid; one round
+loses four bases; two rounds reproduce the five-base loss. Zero-round resume
+controls exclude serialization as the explanation. Polishing is therefore the
+causal stage in this reproduced case. The specific Racon end-cropping branch is
+still a hypothesis awaiting direct intervention or tracing. The [Raven cause
+review](RAVEN_CAUSE_REVIEW.md) records source links and sequence checks. Future
+runs also isolate checkpoint files, correcting a provenance defect without
+claiming prior non-resume assemblies consumed shared checkpoints.

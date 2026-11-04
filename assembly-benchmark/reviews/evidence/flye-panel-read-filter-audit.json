@@ -1,0 +1,409 @@
+{
+  "batch_id": "20261104T190455",
+  "failed_plasmid_assessments_all_source_reads_below_cutoff": 40,
+  "failed_plasmid_assessments_with_logged_cutoff": 47,
+  "observations": [
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "cdac0196fdb38007d6614d4cf4d8a4fa1e2e1e0be238e1641115d23040a8816c",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-w-prk2-depth-1p2",
+      "source_read_count": 37,
+      "stderr_sha256": "a48f4a4468b1b492eaf9fa869257b1bdbfad7aab1c3a364167a5660a8c174de7",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "cf124aadec06321dd826a9b89f7bc8b0790d08c7c44bb32ea3b63054e9ff54d4",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-w-prk2-depth-1p2",
+      "source_read_count": 37,
+      "stderr_sha256": "45d035e7ee6e1e4dcdc01f932e9081c1ffb96053fad3701c2996ca33c2cbdcb0",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "b6afd60cf87399d50c756f676eff614fa33f571819310640cfe581e856d5666e",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1p2",
+      "source_read_count": 37,
+      "stderr_sha256": "db078bc248fcdaafb5ca52d989ed6cc90bf10b91bc4ea6de247eebd63789b82d",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "59339094071c2ad2638922946ddac9b0d1a06504305bdf4a15ee5ad06519178b",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1p2",
+      "source_read_count": 37,
+      "stderr_sha256": "f1bd9a389213e0e2185502e5b9ddf10d65c3777778f6c3650be34b860b3cdfb3",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "3c43387f51ddde8437abaf9634f97292fe367461f3d9da5bef37e7685346656a",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-mgh78578-pkpn7-depth-5",
+      "source_read_count": 152,
+      "stderr_sha256": "65d8a8f762a4ccd19be2b8e2d93d977b026c823179e6db56bc5c42408d98f1e1",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "cf8a14ab906509698d85066ed6662c6aa6000fa99ea5cbce04cd39872f87b8b2",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-mgh78578-pkpn7-depth-5",
+      "source_read_count": 152,
+      "stderr_sha256": "d10fe525cfeb926925f8839cfe0a53c541b9cb9d6cd709c0ffd9d21bd3a71e42",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_011408.1",
+      "execution_sha256": "5a7b961beac41158ae6e83208896d018ec83c556596427ce3894b291b31d6353",
+      "maximum_input_read_bp": 5366,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-se11-native",
+      "source_read_count": 31,
+      "stderr_sha256": "d006058d2d5458e5b2d4495e6db533f5936eedfeb647f0f806dcb593deae408c",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_011411.1",
+      "execution_sha256": "5a7b961beac41158ae6e83208896d018ec83c556596427ce3894b291b31d6353",
+      "maximum_input_read_bp": 4082,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-se11-native",
+      "source_read_count": 31,
+      "stderr_sha256": "d006058d2d5458e5b2d4495e6db533f5936eedfeb647f0f806dcb593deae408c",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_011408.1",
+      "execution_sha256": "f0d353d5fdb1d7e2ef160b2f7823f334295b518bc8ac19352ac98c68d6f7af42",
+      "maximum_input_read_bp": 5366,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-se11-native",
+      "source_read_count": 31,
+      "stderr_sha256": "fd0290566b07d51fc466329031c7439189b5dcd902bbae62bb962e459b0ab449",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_011411.1",
+      "execution_sha256": "f0d353d5fdb1d7e2ef160b2f7823f334295b518bc8ac19352ac98c68d6f7af42",
+      "maximum_input_read_bp": 4082,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-se11-native",
+      "source_read_count": 31,
+      "stderr_sha256": "fd0290566b07d51fc466329031c7439189b5dcd902bbae62bb962e459b0ab449",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "87c6442bfaa1b69a598e8a38e47e52eb05fbd4df9e9be4bbdb185b3577b043de",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-mgh78578-pkpn7-depth-3",
+      "source_read_count": 92,
+      "stderr_sha256": "eedfdf084c3a6545927da37a650bda86ed7051b9025583afb72e374dca0fb34a",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "f571e58b57390f7239147e477e7884d1d71a74343cc9a5e880d18171128c2d48",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-mgh78578-pkpn7-depth-3",
+      "source_read_count": 92,
+      "stderr_sha256": "fa8236658d2c23e0b0a8e17a555cc01785abca0471df837874a44de62331b59d",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "30d94a03b82a7a838e73a074891f8124f137316977bbe38900aea0c37cf94256",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-w-prk2-depth-0p8",
+      "source_read_count": 25,
+      "stderr_sha256": "d2d42beee2b497961d95140bf7863ed5822b5ed1a9243cfdb229d649568de2eb",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "0fb5d9338cc36fbfe156944a72f5eab82978c8ed86ad1ff72b9054bd2fcf246e",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-w-prk2-depth-0p8",
+      "source_read_count": 25,
+      "stderr_sha256": "15b4ea809f35e86add05e05eb310faeaa71cd057475f7d26a4f31990924500fc",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "7e48e8108321340d2c32b729d560e1c4527ad6383ec3f07b6c7f8810f58a8afe",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-mgh78578-pkpn7-depth-0p8",
+      "source_read_count": 24,
+      "stderr_sha256": "e4b14b6d825dd725474329b9f80e8b1a76d84f41d7b0c49b3880677aaba4d76d",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "9e9bcab29c18ab9ce27f5fa0cf7ff9b66b34011062574a7dd3b55034d875ce98",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-mgh78578-pkpn7-depth-0p8",
+      "source_read_count": 24,
+      "stderr_sha256": "933b77498f17fcb44a376942aee80625094181b636e6825d36bccf057f479ac9",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_011411.1",
+      "execution_sha256": "2f00e45ff01a5cdae927ec1a571a55d8caf5952165c83aabbbc31988ba8e24b6",
+      "maximum_input_read_bp": 4082,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-se11-pse11-6",
+      "source_read_count": 31,
+      "stderr_sha256": "3fdf2aeda7463ef34f62dbc5f8a7518cd3f8e34b182fce3a65efe089652428b9",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_011411.1",
+      "execution_sha256": "725c0ceed4e3665a3e064e508392a047ee3b90b7bcffe16c9f4ed9b49d2b26c8",
+      "maximum_input_read_bp": 4082,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-se11-pse11-6",
+      "source_read_count": 31,
+      "stderr_sha256": "f0aaa91a29c2f9a373f3d503f276361102a22fbf26b68efdf9848c8597e8c2ae",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "2a03eacb806dc6e84bad4aae5b132107c01debe0df287b8a48be73a8869e70e6",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-w-prk2-depth-1",
+      "source_read_count": 31,
+      "stderr_sha256": "94dce91382793601302834c7c96f348426a9d1a856f5a1ddc6e9f32e1c41bbbd",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "e3964c70125a05f6f8e9546d5c09708506f88a240fcdc8119cb1c89e20b22a93",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-w-prk2-depth-1",
+      "source_read_count": 31,
+      "stderr_sha256": "fc4d0d87cfc4896be13a754522eab5ee6a0ca93b4518754aaefcede7141245f6",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_009652.1",
+      "execution_sha256": "f3a59e23817058bf2a5ea31d48183e380b96e6c59df4d58c1b2f216ef6bf8ab8",
+      "maximum_input_read_bp": 4259,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-mgh78578-native",
+      "source_read_count": 31,
+      "stderr_sha256": "ddc25130db891c32a70dc90f9239b9a8717d41336798853c9ee9453f83190801",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "f3a59e23817058bf2a5ea31d48183e380b96e6c59df4d58c1b2f216ef6bf8ab8",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-mgh78578-native",
+      "source_read_count": 30,
+      "stderr_sha256": "ddc25130db891c32a70dc90f9239b9a8717d41336798853c9ee9453f83190801",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_009652.1",
+      "execution_sha256": "642b1e0cddb2e151d563106601fb4a52bf930463690e0b124d0b01895c40c845",
+      "maximum_input_read_bp": 4259,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-mgh78578-native",
+      "source_read_count": 31,
+      "stderr_sha256": "36aceef1e36e77e15139ee94514f68cda684df812658a873de66e1906a410864",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "642b1e0cddb2e151d563106601fb4a52bf930463690e0b124d0b01895c40c845",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-mgh78578-native",
+      "source_read_count": 30,
+      "stderr_sha256": "36aceef1e36e77e15139ee94514f68cda684df812658a873de66e1906a410864",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "dfb17a702609a092508468c547f5a6e423cd5b8df19b93f04c34e19d77d440f6",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-w-native",
+      "source_read_count": 31,
+      "stderr_sha256": "2e2a4e84715f393a45fcfc8eb1f21d080df5c74f07b99984415e73d67b1d9bed",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "4e60f09101e5e2d6281d20979ca164e71116d72a9960ec5948f90ddbe0c40fae",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-w-native",
+      "source_read_count": 31,
+      "stderr_sha256": "2d8e9b6d5b1223fb715f33b3d058e0d4285ff4560a1c99ab4a082c5210db23d7",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "4be4b734db785248954e9d081f7c69919aeee7811e787c3eea75e32315e75737",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1",
+      "source_read_count": 30,
+      "stderr_sha256": "37734db3ba1d0a189ff1699845cbe2ad9e90cd4d0d277f47c378bedaed21ef9a",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "130fce1dfd19bd17eae8197177fec36e07e17373c907115eb7fa5173b13595b8",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1",
+      "source_read_count": 30,
+      "stderr_sha256": "9530ef1779845a3166a7116aa48c63746f093756bf4e90719de2c949cb8bc0a6",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "4203e36971f1b656f9aca16729aa4c5219573fbe09e7bcfe338a2811796baf31",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "source_read_count": 30,
+      "stderr_sha256": "df93d7bfd6a5db53d0165ce6c44c6a109562fbff30cbb72262d1b1fecc41a471",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_009653.1",
+      "execution_sha256": "adefe67ce31dedb7c4b90a20ebb7e15af29d8048ba22cbcff6cf863337de77a6",
+      "maximum_input_read_bp": 3478,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "source_read_count": 30,
+      "stderr_sha256": "7f0a048e75b3353c4512ca1b07ef1cb2c4d3638b52ed5c6e8a48b846ff31ff6b",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_011408.1",
+      "execution_sha256": "9bc0dcc8d9b2f7f91c240fce1a32fb442a1cd776ec792b2ad3c6a4ddbc429b44",
+      "maximum_input_read_bp": 5366,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-se11-pse11-5",
+      "source_read_count": 31,
+      "stderr_sha256": "27f97ba69ad2098f0be0f459cb2095c45fac6788ee9095a495ce9ca1cc4d4346",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_011408.1",
+      "execution_sha256": "74a4c002e820c5188923a256780dbd6adeea53b7645b0df5c2840c411ea26eba",
+      "maximum_input_read_bp": 5366,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-se11-pse11-5",
+      "source_read_count": 31,
+      "stderr_sha256": "fd50671a865dafdfe7f66af050dff8315e68ba209eb918525a8bc68ecc76aeea",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_009652.1",
+      "execution_sha256": "bcaafa57a8da0332b6d804f13aae86506bdf9264dfcfa4c1488458879167ed67",
+      "maximum_input_read_bp": 4259,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-mgh78578-pkpn6",
+      "source_read_count": 31,
+      "stderr_sha256": "b5586dbb539bbc1a0d5fa21390ed70f03f6b52b160df3710bd3086874d5bbdb3",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_009652.1",
+      "execution_sha256": "d4d713548f409034547e90d7264b2829a9a5d5137e01e62ef83564cc6ab2fb9a",
+      "maximum_input_read_bp": 4259,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-mgh78578-pkpn6",
+      "source_read_count": 31,
+      "stderr_sha256": "1c349a6f5c223f8a41a7e4f865e755335bd2ef19445ffb6bff5f3e1c87536e98",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "9310214839d578bfbd97baae7f82c7ee59658873c71572182ae49afca30a3a84",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-w-prk2-depth-5",
+      "source_read_count": 153,
+      "stderr_sha256": "948edde4630d7ab2b2367cd6202833aa64251eb9c47e8287ac22fdcd6420681a",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "5b9ed0a92f61e56bd53d5be7f9cecbb1fc70a1e4f2a5f18c2c5079a4dc1a912b",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-w-prk2-depth-5",
+      "source_read_count": 153,
+      "stderr_sha256": "05baf387f079b64cead989e78572fd449af0a56efdf7d0cde958ec824d08217e",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "498b2f23d3f2565d991d5a11174007a77785b768567f5e4001177e86023d2956",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-w-prk2",
+      "source_read_count": 31,
+      "stderr_sha256": "2d513832b6efa2ddf66f75c194bda821f000a7f34bf21a230b007fb6ed69e945",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "69c64c07ff2e6b8623ddd71750cba3eff4fb1292d7040e2fe0d109c443ac70f3",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s1-w-prk2",
+      "source_read_count": 31,
+      "stderr_sha256": "07ead6c4fa541343c5a4225b32bd1be39af345950254554328db7954fb406ea0",
+      "tool": "flye"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "639ec5d818a0c3a8ea2cac41d68f548946335299cc170191e0b51639ac5db437",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-w-prk2-depth-3",
+      "source_read_count": 92,
+      "stderr_sha256": "66c2eb9f3b3f01f59464b68fd54731d40e3839c82300cc58352a04a34f47e0a4",
+      "tool": "flye-meta"
+    },
+    {
+      "accession": "NC_017662.1",
+      "execution_sha256": "cb3bfa9bb062d68e00d7ec2c0429b5e60f52fb38272a13e3d051873707511fb2",
+      "maximum_input_read_bp": 5360,
+      "minimum_overlap_bp": 6000,
+      "scenario_id": "s2-w-prk2-depth-3",
+      "source_read_count": 92,
+      "stderr_sha256": "3a5ae8431d70cd339d7d03b44145a522d7e82b2627448ced0bb063d42dc1f0cc",
+      "tool": "flye"
+    }
+  ],
+  "reviewed_at": "2026-11-04T21:54:20.392514+00:00",
+  "scope": "Read exclusion derived from admitted per-molecule maximum length plus recorded cutoff. This is not a stage-by-stage causal proof for every case; shared homologous molecules can affect later recovery. Pilot has separate runtime/index and intervention evidence."
+}

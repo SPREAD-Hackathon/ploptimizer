@@ -1,0 +1,27 @@
+{
+  "calculated_eligible_bases": 132974713,
+  "exact_index_total_matches_length_filter": true,
+  "flye_log_sha256": "5e8e9fd2189b61f9adb4a7e97cefbacf8d0cc98180e2fe998e04eea94c5ad83b",
+  "input_origin_sha256": "36105e2bb5efc0ede6adfb59d062966ae860cc302c73ed8011ba4906e7bea869",
+  "logged_initial_index_bases": 132974713,
+  "replicons": {
+    "NC_017662.1": {
+      "eligible_bases_6000": 0,
+      "eligible_reads_3000": 31,
+      "eligible_reads_6000": 0,
+      "maximum": 5360,
+      "minimum": 3463,
+      "read_count": 31,
+      "source_bases": 163002
+    },
+    "NC_017664.1": {
+      "eligible_bases_6000": 132974713,
+      "eligible_reads_3000": 14615,
+      "eligible_reads_6000": 11808,
+      "maximum": 50000,
+      "minimum": 1578,
+      "read_count": 14769,
+      "source_bases": 146927326
+    }
+  }
+}

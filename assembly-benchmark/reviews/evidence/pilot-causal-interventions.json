@@ -1,0 +1,875 @@
+{
+  "flye_draft_direct_check": {
+    "draft_length": 21440,
+    "draft_sha256": "2b9ba2174871610fabb00486ebcb7e69ed33c80d75abc3e20f25e7b077487295",
+    "exact_tandem_copies": 4,
+    "reference_length": 5360,
+    "scope": "Early disjointig contains plasmid sequence; not a final exact-molecule result.",
+    "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f"
+  },
+  "input_audit": {
+    "case_fingerprint": "d71f067d3adc2548aa1b793cbf2ba32e15536ffe406184db6ea16c5f4140bb0c",
+    "config_sha256": "fcd28ebee82a54e4ad0f5caf25e6a5f9e62466a8d29e1aedc8f2c384b825a097",
+    "manifest_sha256": "375bb7137ec826fda97a47770f2883dc324948e49145ab99a5df8d428256564a",
+    "origins_sha256": "36105e2bb5efc0ede6adfb59d062966ae860cc302c73ed8011ba4906e7bea869",
+    "per_replicon_read_lengths": {
+      "NC_017662.1": {
+        "maximum_length": 5360,
+        "minimum_length": 3463,
+        "read_count": 31,
+        "reads_gt_3000": 31,
+        "reads_gt_6000": 0,
+        "source_bases": 163002
+      },
+      "NC_017664.1": {
+        "maximum_length": 50000,
+        "minimum_length": 1578,
+        "read_count": 14769,
+        "reads_gt_3000": 14615,
+        "reads_gt_6000": 11808,
+        "source_bases": 146927326
+      }
+    },
+    "publication_sha256": "bf6709ac107a81d84cf6545acee367c7ae229ee2af9f3d5bc637a4dd7bdf32fa",
+    "read_N50": 11074,
+    "read_N90": 6053,
+    "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
+    "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f"
+  },
+  "maximum_parallel_chains": 2,
+  "phases": {
+    "flye_default_draft": {
+      "assembly_sha256": "436d9a45112d4f58b593a1a6f28b203bac426d32e5ebe67c997693f2a2a950b8",
+      "contig_lengths": {
+        "disjointig_1": 4912154
+      },
+      "elapsed_seconds": 59.035,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "disjointig_1"
+        ]
+      },
+      "small_contig_inspection": {
+        "candidate_length_ratio": [
+          0.7,
+          2.0
+        ],
+        "candidates": [],
+        "edlib_version": "1.3.9.post1",
+        "limitation": "Diagnostic only, not a new score or topology call. Window span can exceed one circumference; no-hit is limited by k=1000. Chromosome-sized contigs are excluded.",
+        "method": "HW to doubled truth in both orientations with k=1000, then NW to best optimal HW window"
+      },
+      "status": "complete",
+      "version": "2.9.6-b1802"
+    },
+    "flye_min3000_draft": {
+      "assembly_sha256": "2b9ba2174871610fabb00486ebcb7e69ed33c80d75abc3e20f25e7b077487295",
+      "contig_lengths": {
+        "disjointig_1": 4925109,
+        "disjointig_2": 21440
+      },
+      "elapsed_seconds": 66.932,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [
+              "disjointig_2"
+            ],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "Duplicate/embedded full copy",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "disjointig_1",
+          "disjointig_2"
+        ]
+      },
+      "small_contig_inspection": {
+        "candidate_length_ratio": [
+          0.7,
+          2.0
+        ],
+        "candidates": [],
+        "edlib_version": "1.3.9.post1",
+        "limitation": "Diagnostic only, not a new score or topology call. Window span can exceed one circumference; no-hit is limited by k=1000. Chromosome-sized contigs are excluded.",
+        "method": "HW to doubled truth in both orientations with k=1000, then NW to best optimal HW window"
+      },
+      "status": "complete",
+      "version": "2.9.6-b1802"
+    },
+    "flye_min3000_final": {
+      "assembly_sha256": "1b26a94f68a547ed25e08c5a3a3a5b318a4af71e34b904310631ffcd41aae66d",
+      "contig_lengths": {
+        "contig_1": 4897452,
+        "contig_2": 9769
+      },
+      "elapsed_seconds": 158.419,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "contig_2"
+        ]
+      },
+      "gfa": {
+        "file_sha256": "5d7ae96e6a84c3462f518113e157a28c2b000b3910d739d2395f5282a4ac1f39",
+        "link_count": 3,
+        "segments": [
+          {
+            "id": "edge_1",
+            "length_bp": 4897452
+          },
+          {
+            "id": "edge_2",
+            "length_bp": 9769
+          }
+        ],
+        "self_links": [
+          [
+            "edge_1",
+            "+",
+            "edge_1",
+            "+",
+            "0M"
+          ],
+          [
+            "edge_1",
+            "-",
+            "edge_1",
+            "-",
+            "0M"
+          ],
+          [
+            "edge_2",
+            "+",
+            "edge_2",
+            "+",
+            "0M"
+          ]
+        ]
+      },
+      "small_contig_inspection": {
+        "candidate_length_ratio": [
+          0.7,
+          2.0
+        ],
+        "candidates": [
+          {
+            "cigar": "9769=",
+            "contig": "contig_2",
+            "deletions": 0,
+            "doubled_reference_end_exclusive": 10691,
+            "doubled_reference_start": 922,
+            "edit_distance": 0,
+            "hw_attempts": [
+              {
+                "edit_distance": -1,
+                "location_count": 0,
+                "strand": "+"
+              },
+              {
+                "edit_distance": 0,
+                "location_count": 1,
+                "strand": "-"
+              }
+            ],
+            "identity": 1.0,
+            "insertions": 0,
+            "length_bp": 9769,
+            "matches": 9769,
+            "query_truth_length_ratio": 1.8225746268656717,
+            "reference_window_length_bp": 9769,
+            "reference_window_span_fraction": 1.8225746268656717,
+            "status": "aligned",
+            "strand": "-",
+            "substitutions": 0
+          }
+        ],
+        "edlib_version": "1.3.9.post1",
+        "limitation": "Diagnostic only, not a new score or topology call. Window span can exceed one circumference; no-hit is limited by k=1000. Chromosome-sized contigs are excluded.",
+        "method": "HW to doubled truth in both orientations with k=1000, then NW to best optimal HW window"
+      },
+      "status": "complete",
+      "version": "2.9.6-b1802"
+    },
+    "raven_p0": {
+      "assembly_sha256": "44984c26730b1e6a1154bfe73630cbc84d5175fc25fe0e3af1c551df5b0bf2ac",
+      "contig_lengths": {
+        "Utg2196": 5360,
+        "Utg2198": 4897452
+      },
+      "elapsed_seconds": 17.948,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "Utg2198"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [
+              "Utg2196"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "gfa": {
+        "file_sha256": "c57c33c7a1ba6260f881aeece1e44e29ee0153eaadff738185d1c71b4e7fa23f",
+        "link_count": 2,
+        "segments": [
+          {
+            "id": "Utg2196",
+            "length_bp": 5360
+          },
+          {
+            "id": "Utg2198",
+            "length_bp": 4897452
+          }
+        ],
+        "self_links": [
+          [
+            "Utg2196",
+            "+",
+            "Utg2196",
+            "+",
+            "0M"
+          ],
+          [
+            "Utg2198",
+            "+",
+            "Utg2198",
+            "+",
+            "0M"
+          ]
+        ]
+      },
+      "small_contig_inspection": {
+        "candidate_length_ratio": [
+          0.7,
+          2.0
+        ],
+        "candidates": [
+          {
+            "cigar": "5360=",
+            "contig": "Utg2196",
+            "deletions": 0,
+            "doubled_reference_end_exclusive": 6373,
+            "doubled_reference_start": 1013,
+            "edit_distance": 0,
+            "hw_attempts": [
+              {
+                "edit_distance": 0,
+                "location_count": 1,
+                "strand": "+"
+              },
+              {
+                "edit_distance": -1,
+                "location_count": 0,
+                "strand": "-"
+              }
+            ],
+            "identity": 1.0,
+            "insertions": 0,
+            "length_bp": 5360,
+            "matches": 5360,
+            "query_truth_length_ratio": 1.0,
+            "reference_window_length_bp": 5360,
+            "reference_window_span_fraction": 1.0,
+            "status": "aligned",
+            "strand": "+",
+            "substitutions": 0
+          }
+        ],
+        "edlib_version": "1.3.9.post1",
+        "limitation": "Diagnostic only, not a new score or topology call. Window span can exceed one circumference; no-hit is limited by k=1000. Chromosome-sized contigs are excluded.",
+        "method": "HW to doubled truth in both orientations with k=1000, then NW to best optimal HW window"
+      },
+      "status": "complete",
+      "version": "1.8.3"
+    },
+    "raven_p1": {
+      "assembly_sha256": "e8f0e20e90dded2284e55ca41c7af8bf4b7603665cc8ee0b2a493dd135399f4f",
+      "contig_lengths": {
+        "Utg2196": 5356,
+        "Utg2198": 4897451
+      },
+      "copied_checkpoint_sha256_before_resume": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b",
+      "elapsed_seconds": 43.974,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "Utg2196",
+          "Utg2198"
+        ]
+      },
+      "gfa": {
+        "file_sha256": "30ffd7461d7be6630a56d7ba6a5d1fc087d009649b98c26c87b941e87e93c5d5",
+        "link_count": 2,
+        "segments": [
+          {
+            "id": "Utg2196",
+            "length_bp": 5356
+          },
+          {
+            "id": "Utg2198",
+            "length_bp": 4897451
+          }
+        ],
+        "self_links": [
+          [
+            "Utg2196",
+            "+",
+            "Utg2196",
+            "+",
+            "0M"
+          ],
+          [
+            "Utg2198",
+            "+",
+            "Utg2198",
+            "+",
+            "0M"
+          ]
+        ]
+      },
+      "initial_checkpoint_sha256": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b",
+      "small_contig_inspection": {
+        "candidate_length_ratio": [
+          0.7,
+          2.0
+        ],
+        "candidates": [
+          {
+            "cigar": "3107=1D1=2D1=1D2247=",
+            "contig": "Utg2196",
+            "deletions": 4,
+            "doubled_reference_end_exclusive": 8624,
+            "doubled_reference_start": 3264,
+            "edit_distance": 4,
+            "hw_attempts": [
+              {
+                "edit_distance": 4,
+                "location_count": 1,
+                "strand": "+"
+              },
+              {
+                "edit_distance": -1,
+                "location_count": 0,
+                "strand": "-"
+              }
+            ],
+            "identity": 0.9992537313432835,
+            "insertions": 0,
+            "length_bp": 5356,
+            "matches": 5356,
+            "query_truth_length_ratio": 0.9992537313432835,
+            "reference_window_length_bp": 5360,
+            "reference_window_span_fraction": 1.0,
+            "status": "aligned",
+            "strand": "+",
+            "substitutions": 0
+          }
+        ],
+        "edlib_version": "1.3.9.post1",
+        "limitation": "Diagnostic only, not a new score or topology call. Window span can exceed one circumference; no-hit is limited by k=1000. Chromosome-sized contigs are excluded.",
+        "method": "HW to doubled truth in both orientations with k=1000, then NW to best optimal HW window"
+      },
+      "status": "complete",
+      "version": "1.8.3"
+    },
+    "raven_p2": {
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "contig_lengths": {
+        "Utg2196": 5355,
+        "Utg2198": 4897451
+      },
+      "copied_checkpoint_sha256_before_resume": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b",
+      "elapsed_seconds": 86.281,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "Utg2196",
+          "Utg2198"
+        ]
+      },
+      "gfa": {
+        "file_sha256": "77fabe4094daed1a298b4e068b5e708cfdb57a49c9dc40bb80182ef1f9dc6829",
+        "link_count": 2,
+        "segments": [
+          {
+            "id": "Utg2196",
+            "length_bp": 5355
+          },
+          {
+            "id": "Utg2198",
+            "length_bp": 4897451
+          }
+        ],
+        "self_links": [
+          [
+            "Utg2196",
+            "+",
+            "Utg2196",
+            "+",
+            "0M"
+          ],
+          [
+            "Utg2198",
+            "+",
+            "Utg2198",
+            "+",
+            "0M"
+          ]
+        ]
+      },
+      "initial_checkpoint_sha256": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b",
+      "small_contig_inspection": {
+        "candidate_length_ratio": [
+          0.7,
+          2.0
+        ],
+        "candidates": [
+          {
+            "cigar": "3106=2D1=1D2=2D2246=",
+            "contig": "Utg2196",
+            "deletions": 5,
+            "doubled_reference_end_exclusive": 5515,
+            "doubled_reference_start": 155,
+            "edit_distance": 5,
+            "hw_attempts": [
+              {
+                "edit_distance": 5,
+                "location_count": 1,
+                "strand": "+"
+              },
+              {
+                "edit_distance": -1,
+                "location_count": 0,
+                "strand": "-"
+              }
+            ],
+            "identity": 0.9990671641791045,
+            "insertions": 0,
+            "length_bp": 5355,
+            "matches": 5355,
+            "query_truth_length_ratio": 0.9990671641791045,
+            "reference_window_length_bp": 5360,
+            "reference_window_span_fraction": 1.0,
+            "status": "aligned",
+            "strand": "+",
+            "substitutions": 0
+          }
+        ],
+        "edlib_version": "1.3.9.post1",
+        "limitation": "Diagnostic only, not a new score or topology call. Window span can exceed one circumference; no-hit is limited by k=1000. Chromosome-sized contigs are excluded.",
+        "method": "HW to doubled truth in both orientations with k=1000, then NW to best optimal HW window"
+      },
+      "status": "complete",
+      "version": "1.8.3"
+    },
+    "raven_resume0": {
+      "assembly_sha256": "44984c26730b1e6a1154bfe73630cbc84d5175fc25fe0e3af1c551df5b0bf2ac",
+      "contig_lengths": {
+        "Utg2196": 5360,
+        "Utg2198": 4897452
+      },
+      "copied_checkpoint_sha256_before_resume": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b",
+      "elapsed_seconds": 0.503,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "Utg2198"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [
+              "Utg2196"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "gfa": {
+        "file_sha256": "c6247ab8b551615059e9830ecdfce7ce8fefd14ffea0bc070ad524ce5c0d54e1",
+        "link_count": 2,
+        "segments": [
+          {
+            "id": "Utg2196",
+            "length_bp": 5360
+          },
+          {
+            "id": "Utg2198",
+            "length_bp": 4897452
+          }
+        ],
+        "self_links": [
+          [
+            "Utg2196",
+            "+",
+            "Utg2196",
+            "+",
+            "0M"
+          ],
+          [
+            "Utg2198",
+            "+",
+            "Utg2198",
+            "+",
+            "0M"
+          ]
+        ]
+      },
+      "initial_checkpoint_sha256": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b",
+      "small_contig_inspection": {
+        "candidate_length_ratio": [
+          0.7,
+          2.0
+        ],
+        "candidates": [
+          {
+            "cigar": "5360=",
+            "contig": "Utg2196",
+            "deletions": 0,
+            "doubled_reference_end_exclusive": 6373,
+            "doubled_reference_start": 1013,
+            "edit_distance": 0,
+            "hw_attempts": [
+              {
+                "edit_distance": 0,
+                "location_count": 1,
+                "strand": "+"
+              },
+              {
+                "edit_distance": -1,
+                "location_count": 0,
+                "strand": "-"
+              }
+            ],
+            "identity": 1.0,
+            "insertions": 0,
+            "length_bp": 5360,
+            "matches": 5360,
+            "query_truth_length_ratio": 1.0,
+            "reference_window_length_bp": 5360,
+            "reference_window_span_fraction": 1.0,
+            "status": "aligned",
+            "strand": "+",
+            "substitutions": 0
+          }
+        ],
+        "edlib_version": "1.3.9.post1",
+        "limitation": "Diagnostic only, not a new score or topology call. Window span can exceed one circumference; no-hit is limited by k=1000. Chromosome-sized contigs are excluded.",
+        "method": "HW to doubled truth in both orientations with k=1000, then NW to best optimal HW window"
+      },
+      "status": "complete",
+      "version": "1.8.3"
+    }
+  },
+  "raven_direct_checks": {
+    "checkpoint_controls": {
+      "raven_p0": {
+        "checkpoint_source": null,
+        "copied_checkpoint_sha256_before_resume": null,
+        "initial_checkpoint_sha256": null
+      },
+      "raven_p1": {
+        "checkpoint_source": "raven/p0/raven.cereal",
+        "copied_checkpoint_sha256_before_resume": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b",
+        "initial_checkpoint_sha256": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b"
+      },
+      "raven_p2": {
+        "checkpoint_source": "raven/p0/raven.cereal",
+        "copied_checkpoint_sha256_before_resume": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b",
+        "initial_checkpoint_sha256": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b"
+      },
+      "raven_resume0": {
+        "checkpoint_source": "raven/p0/raven.cereal",
+        "copied_checkpoint_sha256_before_resume": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b",
+        "initial_checkpoint_sha256": "814859b0c676ff3dedfd37796a3bcb129e3d745c28f6091efc810c57ac85c08b"
+      }
+    },
+    "checks": {
+      "all_source_fasta_hashes_match_execution_metadata": true,
+      "p0_exact_reference_rotation_at_1013": true,
+      "p1_after_inverse_rotation_equals_p0_trim_2bp_each_end": true,
+      "p1_p2_resume0_copied_identical_prepolish_checkpoint": true,
+      "p2_equals_reference_rotation_with_historical_5bp_deletion": true,
+      "p2_full_fasta_hash_equals_historical_pilot": true,
+      "p2_sequence_identical_to_historical_pilot": true,
+      "resume0_sequence_identical_to_p0": true
+    },
+    "interpretation": "Polishing introduced the reproduced sequence loss from an exact pre-polish graph. First-round output is precisely two-base end trimming before rotation. Specific internal coverage-trimming branch remains a hypothesis until instrumented or controlled trim=false testing. No nucleotide sequences are included.",
+    "p1_rotation_inverse": {
+      "left_rotation_applied_by_raven_bp": 2249,
+      "method": "undo left rotation by floor(0.42*5356); compare whole sequence directly with p0[2:-2]"
+    },
+    "schema_version": 1,
+    "slurm_job_id": "34391225",
+    "source_files": {
+      "p0": {
+        "sequence_id": "Utg2196",
+        "sequence_length_bp": 5360,
+        "sequence_sha256": "fdabe137e264b6090d5b0be8d628c0332def0c70ced4e474771cb93456a86c30",
+        "source_fasta_sha256": "44984c26730b1e6a1154bfe73630cbc84d5175fc25fe0e3af1c551df5b0bf2ac",
+        "source_file": "investigations/controlled-20261104T214341/raven/p0/raven_p0.stdout.fasta",
+        "source_hash_matches_execution_metadata": true
+      },
+      "p1": {
+        "sequence_id": "Utg2196",
+        "sequence_length_bp": 5356,
+        "sequence_sha256": "3427a504c197c5c180636fdde3fb80dc9e79116aadfa01683cd1cd6c11eaec04",
+        "source_fasta_sha256": "e8f0e20e90dded2284e55ca41c7af8bf4b7603665cc8ee0b2a493dd135399f4f",
+        "source_file": "investigations/controlled-20261104T214341/raven/p1/raven_p1.stdout.fasta",
+        "source_hash_matches_execution_metadata": true
+      },
+      "p2": {
+        "sequence_id": "Utg2196",
+        "sequence_length_bp": 5355,
+        "sequence_sha256": "d385421643d3c4ad1615d97acb3a43832f6f46997fc8194355c729860bcefedc",
+        "source_fasta_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+        "source_file": "investigations/controlled-20261104T214341/raven/p2/raven_p2.stdout.fasta",
+        "source_hash_matches_execution_metadata": true
+      },
+      "pilot": {
+        "sequence_id": "Utg2196",
+        "sequence_length_bp": 5355,
+        "sequence_sha256": "d385421643d3c4ad1615d97acb3a43832f6f46997fc8194355c729860bcefedc",
+        "source_fasta_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+        "source_file": "results/s1-w-prk2/raven/stdout.log",
+        "source_hash_matches_execution_metadata": true
+      },
+      "resume0": {
+        "sequence_id": "Utg2196",
+        "sequence_length_bp": 5360,
+        "sequence_sha256": "fdabe137e264b6090d5b0be8d628c0332def0c70ced4e474771cb93456a86c30",
+        "source_fasta_sha256": "44984c26730b1e6a1154bfe73630cbc84d5175fc25fe0e3af1c551df5b0bf2ac",
+        "source_file": "investigations/controlled-20261104T214341/raven/resume0/raven_resume0.stdout.fasta",
+        "source_hash_matches_execution_metadata": true
+      },
+      "truth": {
+        "sequence_id": "NC_017662.1",
+        "sequence_length_bp": 5360,
+        "sequence_sha256": "3d09bcc77a69c606c27d78f490516a55009e4ae1648674298c06aa0bf2f45610",
+        "source_fasta_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+        "source_file": "cases/s1-w-prk2/truth.fasta",
+        "source_hash_matches_execution_metadata": true
+      }
+    },
+    "study_id": "controlled-20261104T214341",
+    "summary_updated_at": "2026-11-04T21:48:32.899488+00:00",
+    "target_accession": "NC_017662.1",
+    "verified_at": "2026-11-04T21:50:07+00:00"
+  },
+  "schema_version": 1,
+  "scope": "Controlled interventions on one frozen pilot. These are separate from historical benchmark execution scores.",
+  "slurm_job_id": "34391225",
+  "source_sha256": {
+    "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+    "pixi.lock": "aed7f1ac951717e6ee73545cf921500f6cecf555641683c189fa48c9f425203d",
+    "scripts/investigate_causes.py": "23c07878cd6a379feef100a47eebaf91f58e292f0a6148e87aafa1532575c3e9"
+  },
+  "status": "complete",
+  "study_id": "controlled-20261104T214341",
+  "tool_threads": 4
+}

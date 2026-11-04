@@ -1,0 +1,25 @@
+{
+  "batch_id": "20261104T183058",
+  "explanation": "The automatic minimum overlap was 6,000 bp. Flye uses that value as a hard read-length cutoff in its initial assembly module. All 31 pRK2 reads are only 3,463\u20135,360 bp, so none entered that stage. The total bases surviving this filter exactly match the initial assembly index in the recorded log. This explains initial plasmid loss; a lower-threshold rescue is being tested separately. In the controlled lower-threshold run, the draft gained four exact copies of pRK2, but the final sequence was 9,769 bp of periodic plasmid sequence rather than one 5,360 bp molecule. Thus the intervention restored sequence without producing an exact final molecule.",
+  "hashes": {
+    "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+    "execution_sha256": "520e676797e322fc891fb97202203d40253b46af3cb7bc02db9dfd00f8f8d78f",
+    "paf_sha256": "57dd018cc92c8e28e6464d801be3ffa0ad731a6dcb82b5ee5b4d261007d25115",
+    "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f"
+  },
+  "scenario_id": "s1-w-prk2",
+  "schema_version": 1,
+  "scope": "Initial assembly read filtering in this pilot; not a claim that lowering the cutoff guarantees final recovery.",
+  "source_document": "FLYE_HYPOTHESES.md",
+  "status": "verified",
+  "strict_status": "fail",
+  "summary": "All 31 plasmid reads excluded by the 6,000 bp assembly cutoff",
+  "tool": "flye",
+  "validation": {
+    "controlled_study": "controlled-20261104T214341",
+    "eligible_plasmid_reads_3000": 31,
+    "eligible_plasmid_reads_6000": 0,
+    "normal_pilot_index_total_matches_filter": true,
+    "source_loader_verified": "Flye2.9.6"
+  }
+}

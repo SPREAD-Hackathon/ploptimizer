@@ -30,7 +30,7 @@
       "plassembler"
     ]
   },
-  "generated_at": "2026-11-04T20:07:17+00:00",
+  "generated_at": "2026-11-04T21:57:09+00:00",
   "inputs": {
     "s1-w-prk2": {
       "case": {
@@ -6817,6 +6817,31 @@
       "scenario_fingerprint": "d71f067d3adc2548aa1b793cbf2ba32e15536ffe406184db6ea16c5f4140bb0c",
       "scenario_id": "s1-w-prk2",
       "scheduler_state": "COMPLETED",
+      "sequence_review": {
+        "batch_id": "20261104T183058",
+        "explanation": "The automatic minimum overlap was 6,000 bp. Flye uses that value as a hard read-length cutoff in its initial assembly module. All 31 pRK2 reads are only 3,463\u20135,360 bp, so none entered that stage. The total bases surviving this filter exactly match the initial assembly index in the recorded log. This explains initial plasmid loss; a lower-threshold rescue is being tested separately. In the controlled lower-threshold run, the draft gained four exact copies of pRK2, but the final sequence was 9,769 bp of periodic plasmid sequence rather than one 5,360 bp molecule. Thus the intervention restored sequence without producing an exact final molecule.",
+        "hashes": {
+          "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+          "execution_sha256": "520e676797e322fc891fb97202203d40253b46af3cb7bc02db9dfd00f8f8d78f",
+          "paf_sha256": "57dd018cc92c8e28e6464d801be3ffa0ad731a6dcb82b5ee5b4d261007d25115",
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f"
+        },
+        "scenario_id": "s1-w-prk2",
+        "schema_version": 1,
+        "scope": "Initial assembly read filtering in this pilot; not a claim that lowering the cutoff guarantees final recovery.",
+        "source_document": "FLYE_HYPOTHESES.md",
+        "status": "verified",
+        "strict_status": "fail",
+        "summary": "All 31 plasmid reads excluded by the 6,000 bp assembly cutoff",
+        "tool": "flye",
+        "validation": {
+          "controlled_study": "controlled-20261104T214341",
+          "eligible_plasmid_reads_3000": 31,
+          "eligible_plasmid_reads_6000": 0,
+          "normal_pilot_index_total_matches_filter": true,
+          "source_loader_verified": "Flye2.9.6"
+        }
+      },
       "slurm_array_task_id": "0",
       "slurm_job_id": "34382592",
       "started_at": "2026-11-04T18:32:34.517139+00:00",
@@ -7007,6 +7032,31 @@
       "scenario_fingerprint": "d71f067d3adc2548aa1b793cbf2ba32e15536ffe406184db6ea16c5f4140bb0c",
       "scenario_id": "s1-w-prk2",
       "scheduler_state": "COMPLETED",
+      "sequence_review": {
+        "batch_id": "20261104T183058",
+        "explanation": "The automatic minimum overlap was 6,000 bp. Flye uses that value as a hard read-length cutoff in its initial assembly module. All 31 pRK2 reads are only 3,463\u20135,360 bp, so none entered that stage. The total bases surviving this filter exactly match the initial assembly index in the recorded log. This explains initial plasmid loss; a lower-threshold rescue is being tested separately. The lower-threshold intervention was tested in ordinary Flye, not meta mode.",
+        "hashes": {
+          "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+          "execution_sha256": "4f8940eca33c40e2ebe66a111d211a5a67ef829548b398eceaa361ac8c7feab1",
+          "paf_sha256": "a257404b422f0cad3c31d110fc8ddb346b13d88c081af49f1b9f4d7bab754c51",
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f"
+        },
+        "scenario_id": "s1-w-prk2",
+        "schema_version": 1,
+        "scope": "Initial assembly read filtering in this pilot; not a claim that lowering the cutoff guarantees final recovery.",
+        "source_document": "FLYE_HYPOTHESES.md",
+        "status": "verified",
+        "strict_status": "fail",
+        "summary": "All 31 plasmid reads excluded by the 6,000 bp assembly cutoff",
+        "tool": "flye-meta",
+        "validation": {
+          "controlled_study": "controlled-20261104T214341",
+          "eligible_plasmid_reads_3000": 31,
+          "eligible_plasmid_reads_6000": 0,
+          "normal_pilot_index_total_matches_filter": true,
+          "source_loader_verified": "Flye2.9.6"
+        }
+      },
       "slurm_array_task_id": "1",
       "slurm_job_id": "34382593",
       "started_at": "2026-11-04T18:32:34.634918+00:00",
@@ -7200,7 +7250,7 @@
       "scheduler_state": "COMPLETED",
       "sequence_review": {
         "batch_id": "20261104T183058",
-        "explanation": "A direct sequence check confirms this 5,355 bp contig equals the circularly rotated 5,360 bp pRK2 reference with a five-base deletion. Its unaligned 155 bp origin-crossing suffix is present. The 97.01% aligned fraction therefore does not mean 160 bp of sequence are missing. The strict exact-molecule assessment remains a fail.",
+        "explanation": "Controlled reruns from the same saved graph were exact at 5,360 bp with zero polishing rounds, including a zero-round resume control. One polishing round gave 5,356 bp; two rounds gave 5,355 bp and reproduced the entire historical output file exactly. This confirms polishing introduced the sequence loss in this case. End cropping is strongly implicated, but the specific internal trimming branch has not been instrumented. The older 97.01% mapped fraction also omitted a present 155 bp origin-crossing segment.",
         "hashes": {
           "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
           "execution_sha256": "fdffbac92ede99ee032b6a8e852aba9dd3434b8f6101cb2a430cf9837df4012d",
@@ -7210,15 +7260,17 @@
         "scenario_id": "s1-w-prk2",
         "schema_version": 1,
         "scope": "This archived contig only; does not establish the assembler-internal cause, topology or a general tool outcome.",
-        "source_document": "FAILURE_REVIEW.md",
+        "source_document": "RAVEN_CAUSE_REVIEW.md",
         "status": "verified",
         "strict_status": "fail",
-        "summary": "Five-base deletion verified; circular-origin mapping omission",
+        "summary": "Polishing introduced deletions; historical output reproduced",
         "tool": "raven",
         "validation": {
           "archived_file_hashes_verified": true,
           "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
           "circular_tail_155bp_matches_reference_origin": true,
+          "controlled_evidence_sha256": "12b3a90200bf641e363e619b529156adf6ba0c42cffdd5a3e51097b6fb85fb7c",
+          "controlled_study": "controlled-20261104T214341",
           "query_equals_reference_rotation_with_5bp_deletion": true,
           "query_length": 5355,
           "query_sequence_sha256": "d385421643d3c4ad1615d97acb3a43832f6f46997fc8194355c729860bcefedc",

@@ -44,6 +44,7 @@ def run(case, tool, batch, config, threads=None, repeat=None):
     if repeat is not None:
         directory = directory / "repeats" / execution_id(settings["threads"], repeat)
     directory.mkdir(parents=True, exist_ok=True)
+    working_directory = directory if tool == "raven" else ROOT
     result_path = directory / "execution.json"
     if result_path.exists():
         raise ValueError("Execution already recorded; use a new batch for independent runs")
@@ -54,6 +55,9 @@ def run(case, tool, batch, config, threads=None, repeat=None):
               "slurm_array_task_id": os.environ.get("SLURM_ARRAY_TASK_ID"),
               "allocated_cpus": int(os.environ.get("SLURM_CPUS_PER_TASK", config["threads"])),
               "host": platform.node(), "status": "running"}
+    if tool == "raven":
+        record["working_directory"] = str(directory.relative_to(batch))
+        record["working_directory_base"] = "batch"
     source_root = Path(__file__).resolve().parent
     record["runtime_source_sha256"] = {"pipeline/" + path.name: digest(path) for path in source_root.glob("*.py")}
     if repeat is not None:
@@ -86,7 +90,8 @@ def run(case, tool, batch, config, threads=None, repeat=None):
         argv = command(tool, reads, directory / "output", settings)
         record["command"] = argv
         binary = "flye" if tool == "flye-meta" else tool
-        version = subprocess.run([binary, "--version"], capture_output=True, text=True, timeout=30)
+        version_cwd = {"cwd": working_directory} if tool == "raven" else {}
+        version = subprocess.run([binary, "--version"], capture_output=True, text=True, timeout=30, **version_cwd)
         record["version"] = (version.stdout + version.stderr).strip()
         if version.returncode:
             raise RuntimeError("Assembler version check failed")
@@ -95,7 +100,7 @@ def run(case, tool, batch, config, threads=None, repeat=None):
         metrics = directory / "resources.txt"
         timed_argv = ["/usr/bin/time", "-v", "-o", str(metrics)] + argv if platform.system() == "Linux" else argv
         with (directory / "stdout.log").open("w") as stdout, (directory / "stderr.log").open("w") as stderr:
-            process = subprocess.Popen(timed_argv, stdout=stdout, stderr=stderr, cwd=ROOT, start_new_session=True)
+            process = subprocess.Popen(timed_argv, stdout=stdout, stderr=stderr, cwd=working_directory, start_new_session=True)
             try:
                 returncode = process.wait(timeout=config["timeout_seconds"])
             except subprocess.TimeoutExpired:

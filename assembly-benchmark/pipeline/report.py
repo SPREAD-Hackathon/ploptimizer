@@ -238,7 +238,10 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
             body += '<p>No completed sequence assessment is available for this configuration.</p>'
         if row.get("sequence_review"):
             review = row["sequence_review"]
-            body += f'<div class="notice"><strong>Checked sequence discrepancy</strong>{e(review["explanation"])} <a href="https://github.com/SPREAD-Hackathon/ploptimizer/blob/main/assembly-benchmark/FAILURE_REVIEW.md">Read the provisional review</a>.</div>'
+            document = review.get("source_document", "FAILURE_REVIEW.md")
+            if document not in {"FAILURE_REVIEW.md", "FLYE_HYPOTHESES.md", "RAVEN_CAUSE_REVIEW.md"}:
+                document = "FAILURE_REVIEW.md"
+            body += f'<div class="notice"><strong>Checked finding</strong>{e(review["explanation"])} <a href="https://github.com/SPREAD-Hackathon/ploptimizer/blob/main/assembly-benchmark/{document}">Read the evidence review</a>.</div>'
         if row.get("diagnostics"):
             body += diagnostic_table(row["diagnostics"], plasmid_only=row["tool"] == "plassembler", evaluation=score)
         else:

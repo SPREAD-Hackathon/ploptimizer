@@ -241,3 +241,23 @@ batch as another `--also-batch` to the single result updater. The three-case smo
 is smaller than the proposed 18-read-set/72-comparison expansion; the latter needs
 smoke review before submission. This models controlled error packages, not a
 calibrated contemporary nanopore experiment.
+
+## Mechanistic pilot investigations
+
+In a Slurm job with eight CPUs and the existing environments installed:
+
+```sh
+pixi run --locked -e simulator python scripts/investigate_causes.py --study-id UNIQUE_ID --tool-threads 4 --timeout 1800
+```
+
+This runs two concurrent causal-test chains, each with four tool threads, against
+verified frozen pilot reads. Flye compares default and 3,000 bp overlap at the
+initial assembly stage, then completes the latter. Raven compares zero, one and
+two polishing rounds using independent copies of one fresh pre-polish checkpoint,
+including a zero-round resume control. Each command has its own working directory.
+
+Results go to `runs/20261104T183058/investigations/UNIQUE_ID/`, with incremental
+JSON, versions, commands, hashes, checkpoints and stage FASTA/GFA. They do not
+replace historical benchmark executions. The source-linked conclusions and limits
+are in `FLYE_HYPOTHESES.md` and `RAVEN_CAUSE_REVIEW.md`; compact reproducibility
+records are versioned under `reviews/evidence/`.
