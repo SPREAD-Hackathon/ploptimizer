@@ -1,11 +1,11 @@
 # ploptimizer
-surveillance of edge cases in plasmid assemblies. 
 
-See the [benchmark specification](BENCHMARK_SPECIFICATION.md) for the proposed
-long-read assembly assessment platform, initial *Klebsiella pneumoniae* and
-*Escherichia coli* scenarios, evaluation measures and plan for real datasets.
+Surveillance of edge cases in plasmid assemblies.
 
-The [RefSeq reference shortlist](references/README.md) records candidate assemblies,
-chromosome and plasmid accession versions, molecule sizes, supporting evidence and
-curation limitations. Machine-readable inventories and NCBI metadata snapshots are
-included in `references/`.
+## Work areas
+
+- **[Assembly benchmark](assembly-benchmark/README.md):** assess long-read assembly
+  tools for plasmid recovery in *Klebsiella pneumoniae* and *Escherichia coli*.
+  Includes the specification, open decisions, methods and reference accessions.
+
+Keep each new work area in its own directory and link it here.

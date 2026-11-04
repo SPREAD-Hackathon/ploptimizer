@@ -94,7 +94,7 @@ These are useful comparison records, but should not enter the exact-read panel w
 
 Use MG1655 as the chromosome-only control, Ecl8 for a native single-plasmid baseline, W for the small/large pair, and SE11 plus MGH 78578 for multiple-plasmid recovery. Controlled zero/one/multiple-plasmid subsets can be derived computationally from the same source assembly; label them as derived subsets, not additional natural isolates. Keep each assembly's chromosome and plasmids together when describing native complements.
 
-This shortlist does not cover plasmids below 3,478 bp, biologically linear plasmids, or every count between zero and six. It is a starting panel rather than a representative sample of either species. The separate linear-plasmid candidates remain in the [benchmark specification](../BENCHMARK_SPECIFICATION.md#s5-biologically-linear-plasmids).
+This shortlist does not cover plasmids below 3,478 bp, biologically linear plasmids, or every count between zero and six. It is a starting panel rather than a representative sample of either species. The separate linear-plasmid candidates are in the [methods notes](../METHODS.md#linear-plasmids-s5).
 
 Before admitting a candidate as benchmark truth:
 
