@@ -137,6 +137,15 @@ def simulate(case, batch):
         for filename, key in [("reads.fastq.gz", "reads_sha256"), ("truth.fasta", "truth_sha256"), ("read_origins.tsv.gz", "origins_sha256")]:
             if digest(directory / filename) != previous[key]:
                 raise ValueError("Cached input checksum changed; use a new batch")
+        if case["simulation"]["model"] == "matched-error-v1":
+            from .noisy_workflow import source_case
+            clean_manifest = load(directory / "clean/input.json")
+            if clean_manifest.get("case") != source_case(case) or clean_manifest.get("status") != "valid" or clean_manifest.get("model") != "exact-lognormal-v1":
+                raise ValueError("Cached clean source manifest provenance changed; use a new batch")
+            for filename,key in (("reads.fastq.gz","source_fragments_sha256"),("read_origins.tsv.gz","source_origins_sha256"),("truth.fasta","source_truth_sha256")):
+                clean_key = {"source_fragments_sha256":"reads_sha256", "source_origins_sha256":"origins_sha256", "source_truth_sha256":"truth_sha256"}[key]
+                if not previous.get(key) or clean_manifest.get(clean_key) != previous[key] or digest(directory / "clean" / filename) != previous[key]:
+                    raise ValueError("Cached clean source fragments changed; use a new batch")
         return previous
     sequences = {}
     audit = {r["refseq_accession"]: r for r in load(ROOT / "data/references/audit.json")["replicons"]}
@@ -146,4 +155,7 @@ def simulate(case, batch):
         if accession not in audit or digest(path) != audit[accession]["file_sha256"]:
             raise ValueError("Reference changed since preparation; repeat the source audit")
         sequences.update(fasta(path))
+    if case["simulation"]["model"] == "matched-error-v1":
+        from .noisy_workflow import simulate_noise
+        return simulate_noise(case, sequences, batch, directory)
     return exact_reads(case, sequences, directory)

@@ -8,6 +8,7 @@ import shutil
 from .cases import plan
 from .assets import ensure_assets
 from .reviews import attach_sequence_review
+from .assessments import attach_assessment
 from .common import ROOT, digest, fingerprint, load, save
 from .diagnostics import DEFAULT_POLICY
 
@@ -78,7 +79,7 @@ def collect_records(config, batch):
                 state = accounting.get(f"{job}_{matches[0]}", accounting.get(job, ""))
                 if not state and not record:
                     state = "PENDING"
-            record = attach_sequence_review(attach_diagnostics(record, path), path, batch)
+            record = attach_assessment(attach_sequence_review(attach_diagnostics(record, path), path, batch), path)
             status = result_status(record, state)
             output.append({**record, "scenario_id": case["id"], "tool": tool, "status": status,
                            "scheduler_state": state or None})
@@ -88,6 +89,9 @@ def collect_records(config, batch):
 def build(config, batch=None, output=None, document=None, include_history=True):
     if batch is None and document is None and (ROOT / "published/latest.json").exists():
         document = load(ROOT / "published/latest.json")
+    if config.get("noisy_panel") or (document and document["config"].get("noisy_panel")):
+        from .noisy_report import build_noisy
+        return build_noisy(config, batch, output, document, include_history)
     if config.get("determinism") or (document and document["config"].get("determinism")):
         from .repeat_report import build_repeat
         return build_repeat(config, batch, output, document, include_history)
@@ -255,7 +259,7 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
 def write_history(output, document, include_history=True):
     if include_history:
         shutil.rmtree(output / "batches", ignore_errors=True)
-        history = '<h1>All batches</h1><p class="intro">Keep each batch separate: inputs, settings and scenario coverage can differ. Completed, running and queued batches remain separate. Open a batch to inspect its own settings and progress.</p><ul class="scenario-list">'
+        history = '<h1>All batches</h1><p class="intro">Keep each batch separate: inputs, settings and scenario coverage can differ. Completed, running and queued batches remain separate. Counts below use strict exact recovery; noisy batches show tolerant outcomes on their own page. Open a batch to inspect its settings and progress.</p><ul class="scenario-list">'
         current_pass = sum(row["status"] == "pass" for row in document["results"])
         current_fail = sum(row["status"] == "fail" for row in document["results"])
         current_unscored = len(document["results"]) - current_pass - current_fail

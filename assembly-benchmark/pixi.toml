@@ -19,8 +19,13 @@ flye = "==2.9.6"
 raven-assembler = "==1.8.3"
 unicycler = "==0.5.1"
 
+[feature.simulator.dependencies]
+badread = "==0.4.2"
+python-edlib = "==1.3.9.post1"
+
 [environments]
 default = []
+simulator = ["simulator"]
 flye = ["flye"]
 raven = ["raven"]
 plassembler = ["plassembler"]

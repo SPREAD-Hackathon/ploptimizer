@@ -69,11 +69,12 @@ def plan(config):
             case["fingerprint"] = fingerprint({key: value for key, value in case.items() if key != "fingerprint"})
             result.append(case)
     result.extend(read_length_cases(config, result))
+    result.extend(noisy_cases(config, result))
     if len({case["id"] for case in result}) != len(result):
         raise ValueError("The configuration produces duplicate scenario identifiers")
     categories = config.get("scenario_categories")
     if categories is not None:
-        if not categories or set(categories) - {"S1", "S2", "S4"}:
+        if not categories or set(categories) - {"S1", "S2", "S4", "S6"}:
             raise ValueError("Select supported nonempty scenario categories")
         result = [case for case in result if case["category"] in categories]
         if not result:
@@ -137,3 +138,40 @@ def find_case(config, case_id):
 
 def _missing(case_id):
     raise ValueError(f"Unknown scenario: {case_id}")
+
+
+def noisy_cases(config, baseline):
+    panel = config.get("noisy_panel")
+    if not panel:
+        return []
+    targets, seeds, profiles = panel["targets"], panel["seeds"], panel["profiles"]
+    if not targets or len(set(targets)) != len(targets) or not seeds or len(set(seeds)) != len(seeds):
+        raise ValueError("Noisy panels require unique targets and seeds")
+    if any(type(seed) is not int or seed < 0 for seed in seeds):
+        raise ValueError("Fragment seeds must be nonnegative integers")
+    if not profiles or len({p["id"] for p in profiles}) != len(profiles):
+        raise ValueError("Noisy profiles must be nonempty and unique")
+    result = []
+    for target in targets:
+        source = next((case for case in baseline if case["id"] == target and case["category"] == "S1"), None)
+        if source is None:
+            raise ValueError("Noisy targets must identify a selected S1 reference subset")
+        for seed in seeds:
+            for profile in profiles:
+                if profile["id"] not in {"matched-exact", "generic-stress", "ont2023-shaped"}:
+                    raise ValueError("Unsupported noisy profile identifier")
+                expected={"matched-exact":(None,"placeholder-q40"), "generic-stress":("random","ideal"), "ont2023-shaped":("nanopore2023","nanopore2023")}[profile["id"]]
+                if (profile.get("error_model"),profile.get("qscore_model")) != expected:
+                    raise ValueError("Profile label does not match its frozen error/quality package")
+                if profile["id"] == "matched-exact" and ("identity_beta_percent" in profile or config["simulation"]["fastq_phred"] != 40):
+                    raise ValueError("Matched exact controls require the declared Q40 placeholder without an error distribution")
+                case = copy.deepcopy(source)
+                case["id"] = target.replace("s1-", "s6-", 1) + f'-seed-{seed}-' + profile["id"]
+                case["title"] += f' · {profile["id"]} · seed {seed}'
+                case["category"] = "S6"
+                case["source_case_id"] = source["id"]
+                case["simulation"].update(model="matched-error-v1", seed=seed)
+                case["error_profile"] = copy.deepcopy(profile)
+                case["fingerprint"] = fingerprint({key:value for key,value in case.items() if key != "fingerprint"})
+                result.append(case)
+    return result

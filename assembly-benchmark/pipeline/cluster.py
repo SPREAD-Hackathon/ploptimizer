@@ -27,11 +27,13 @@ def transfer(host, remote_root):
     subprocess.run(argv + [str(ROOT) + "/", host + ":" + remote_root + "/"], check=True)
 
 
-def submit(config, cluster, scenario_id=None, after_job=None):
+def submit(config, cluster, scenario_id=None, after_job=None, assembly_after_job=None):
     from .determinism import assembly_tasks, repeat_settings
     panel = repeat_settings(config)
     if after_job is not None and not re.fullmatch(r"[1-9][0-9]*", str(after_job)):
         raise ValueError("Dependency job must be a numeric Slurm job ID")
+    if assembly_after_job is not None and not re.fullmatch(r"[1-9][0-9]*", str(assembly_after_job)):
+        raise ValueError("Assembly dependency must be a numeric Slurm job ID")
     if panel and max(panel["threads"]) > config["threads"]:
         raise ValueError("Determinism thread settings exceed the reserved CPUs")
     ensure_assets(ROOT)
@@ -65,6 +67,7 @@ def submit(config, cluster, scenario_id=None, after_job=None):
     pixi = shlex.quote(cluster["pixi"])
     prefix = "#!/usr/bin/env bash\nset -euo pipefail\n"
     prefix += f"cd {shlex.quote(str(root))}\n"
+    prefix += f'export PATH={shlex.quote(str(Path(cluster["pixi"]).parent))}:"$PATH"\n'
     # Python multiprocessing uses Unix sockets with a short fixed path limit.
     prefix += 'export PIXI_CACHE_DIR="$PWD/.cache/pixi"\nexport XDG_CACHE_HOME="$PWD/.cache"\nexport TMPDIR="$PWD/.t/${SLURM_JOB_ID}"\nmkdir -p "$TMPDIR"\n'
     python = f"{pixi} run --locked -e default python benchmark.py"
@@ -74,14 +77,16 @@ def submit(config, cluster, scenario_id=None, after_job=None):
         "assemble": f'{python} task --batch {batch_id} --kind assemble --index "$SLURM_ARRAY_TASK_ID"\n',
         "report": f"{python} report --batch {batch_id}\n",
     }
+    if config.get("noisy_panel"):
+        roles["assessment"] = f"{pixi} run --locked -e simulator python -m pipeline.assessments --batch {batch_id}\n"
     for role, body in roles.items():
         (scripts / (role + ".sh")).write_text(prefix + body)
-    submission = {"batch_id": batch_id, "cluster": cluster, "tasks": tasks, "jobs": {}, "status": "submitting", "after_job": after_job}
+    submission = {"batch_id": batch_id, "cluster": cluster, "tasks": tasks, "jobs": {}, "status": "submitting", "after_job": after_job, "assembly_after_job": assembly_after_job}
     save(batch / "submission.json", submission)
     transfer(cluster["host"], cluster["remote_root"])
     ssh(cluster["host"], ["mkdir", "-p", str(remote_batch / "logs")])
     subprocess.run(["rsync", "-az", str(batch) + "/", cluster["host"] + ":" + str(remote_batch) + "/"], check=True)
-    for role in ("prepare", "simulate", "assemble", "report"):
+    for role in (("prepare", "simulate", "assemble", "assessment", "report") if config.get("noisy_panel") else ("prepare", "simulate", "assemble", "report")):
         argv = ["sbatch", "--parsable", "--account", cluster["account"], "--partition", cluster["partition"],
                 "--chdir", str(root), "--job-name", f"ploptimizer-{role}",
                 "--output", str(remote_batch / "logs" / (role + "-%A_%a.out")),
@@ -89,15 +94,20 @@ def submit(config, cluster, scenario_id=None, after_job=None):
         if role == "assemble":
             argv += ["--cpus-per-task", str(cluster["cpus"]), "--mem", cluster["memory"], "--time", cluster["time"]]
         else:
-            argv += ["--cpus-per-task", "1", "--mem", "8G" if role == "prepare" else "2G", "--time", "01:00:00" if role == "prepare" else "00:30:00"]
+            memory = "8G" if role == "prepare" else "4G" if config.get("noisy_panel") else "2G"
+            duration = "02:00:00" if role == "simulate" and config.get("noisy_panel") else "01:00:00" if role in ("prepare", "assessment") else "00:30:00"
+            argv += ["--cpus-per-task", "1", "--mem", memory, "--time", duration]
         if role in tasks:
             argv += ["--array", f"0-{len(tasks[role]) - 1}%{cluster['array_concurrency']}"]
         if role == "prepare" and after_job is not None:
             argv += ["--dependency", "afterany:" + str(after_job), "--kill-on-invalid-dep=yes"]
         if role != "prepare":
-            preceding = {"simulate": "prepare", "assemble": "simulate", "report": "assemble"}[role]
-            condition = "afterany" if role == "report" else "afterok"
-            argv += ["--dependency", condition + ":" + submission["jobs"][preceding], "--kill-on-invalid-dep=yes"]
+            preceding = {"simulate": "prepare", "assemble": "simulate", "assessment": "assemble", "report": "assessment" if config.get("noisy_panel") else "assemble"}[role]
+            condition = "afterany" if role in ("report", "assessment") else "afterok"
+            dependency = condition + ":" + submission["jobs"][preceding]
+            if role == "assemble" and assembly_after_job:
+                dependency += ",afterany:" + str(assembly_after_job)
+            argv += ["--dependency", dependency, "--kill-on-invalid-dep=yes"]
         argv += [str(remote_batch / "slurm" / (role + ".sh"))]
         try:
             job_id = ssh(cluster["host"], argv).split(";")[0]

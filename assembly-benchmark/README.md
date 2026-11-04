@@ -26,7 +26,7 @@ Use the same frozen reads for all tools. Keep simulation replicates separate fro
 
 ## Tools and references
 
-The proposed tool panel is **Flye**, **Flye uneven-coverage mode**, **Plassembler long-read-only mode**, and **Raven**. Compare Plassembler's final plasmids with its own initial Flye assembly as well as the standalone baselines. Record component versions and internal filtering; score its retained chromosome separately.
+The initial tool panel is **Flye**, **Flye uneven-coverage mode**, **Plassembler long-read-only mode**, and **Raven**. Compare Plassembler's final plasmids with its own initial Flye assembly as well as the standalone baselines. Record component versions and internal filtering; score its retained chromosome separately.
 
 The [reference shortlist](references/README.md) contains accession versions and supporting evidence for:
 
@@ -78,6 +78,10 @@ The site retains that observation only for its matching execution, assembly,
 truth and mapping hashes. Per-molecule mapping evidence is downloadable as TSV.
 
 The [next error-bearing read design](REALISTIC_READS.md) proposes matched controls,
-three simulation seeds and two error/quality packages. It has not been run:
-`config/realistic-reads.proposed.json` is explicitly non-executable until the
-simulator adapter, input checks and tolerant evaluator are validated and frozen.
+three simulation seeds and two error/quality packages. The expanded design remains non-executable in
+`config/realistic-reads.proposed.json`. The bounded implementation is now frozen
+in `config/noisy-smoke.json`: three W/pRK2 read sets and 12 assembler comparisons.
+Its source-paired Badread adapter, admission checks and separate tolerant endpoint
+passed Linux tests and real-reference controls. Read generation is running;
+assemblies are queued behind S3. See [NOISY_ADAPTER.md](NOISY_ADAPTER.md) and
+[TOLERANT_ENDPOINT.md](TOLERANT_ENDPOINT.md).

@@ -213,3 +213,31 @@ values and diagnostic errors separately from measured zero recovery.
 The next noisy-read design is in `REALISTIC_READS.md`. Its proposed configuration
 is deliberately non-executable: the controller rejects `status: proposed`, and
 the sampler refuses unknown models instead of silently generating exact reads.
+
+## Controlled-error smoke workflow (S6)
+
+```sh
+python3 benchmark.py --config config/noisy-smoke.json plan
+python3 benchmark.py --config config/noisy-smoke.json submit --assemble-after-job PREVIOUS_REPORT_JOB
+```
+
+The `simulator` Pixi environment pins Badread 0.4.2 and python-edlib1.3.9.post1.
+Preparation freezes installed source/model/RNG binary hashes and checks tolerant
+positive/negative controls on the actual references. It then generates identical
+clean fragments per case/seed across the three error conditions. Badread transforms
+those fragments without resampling geometry; independent final-read alignments
+measure actual identity, emitted length and quality calibration. Input holds stop
+assembly submission through the existing failed-dependency rule.
+
+S6 adds an assessment job between assembly and reporting. It writes provenance-
+matched `tolerant.json` without rewriting exact execution scores. Unresolved
+repeat/copy/structural assignment is unscored. The controller waits for this stage
+before completing publication. All four pre-existing tool environments retain
+the same locked package URLs.
+
+`--assemble-after-job` permits preparation and simulation now while deferring
+assemblies, maintaining the four-task assembly budget across studies. Add the new
+batch as another `--also-batch` to the single result updater. The three-case smoke
+is smaller than the proposed 18-read-set/72-comparison expansion; the latter needs
+smoke review before submission. This models controlled error packages, not a
+calibrated contemporary nanopore experiment.

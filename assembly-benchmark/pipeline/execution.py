@@ -74,7 +74,7 @@ def run(case, tool, batch, config, threads=None, repeat=None):
         manifest = load(input_dir / "input.json")
         if manifest["status"] != "valid":
             record["status"] = "invalid_input"
-            record["error"] = "Input breadth did not meet the configured minimum"
+            record["error"] = manifest.get("validation_summary", "Input admission did not pass; inspect input.json")
             return record
         if manifest["case"]["fingerprint"] != case["fingerprint"]:
             raise ValueError("Input scenario fingerprint does not match this run")

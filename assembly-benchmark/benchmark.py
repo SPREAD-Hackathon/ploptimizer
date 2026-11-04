@@ -49,6 +49,7 @@ def main(argv=None):
     sub.add_argument("--cluster", default=str(ROOT / "config/cluster.local.json"))
     sub.add_argument("--scenario", help="Limit the submitted profile to one scenario")
     sub.add_argument("--after-job", help="Queue preparation after this numeric Slurm job ID finishes")
+    sub.add_argument("--assemble-after-job", help="Generate inputs now but queue assemblies after this Slurm job")
     args = parser.parse_args(argv)
     batch = batch_path(args.batch) if getattr(args, "batch", None) else None
     config = load(batch / "config.json") if batch and (batch / "config.json").exists() else load(args.config)
@@ -69,7 +70,7 @@ def main(argv=None):
             provenance.mkdir(parents=True, exist_ok=True)
             save(provenance / "references.json", audit)
             shutil.copy2(ROOT / "pixi.lock", provenance / "pixi.lock")
-            for env in ("default", "flye", "raven", "plassembler"):
+            for env in ("default", "flye", "raven", "plassembler") + (("simulator",) if config.get("noisy_panel") else ()):
                 result = subprocess.check_output(["pixi", "list", "-e", env, "--json"], cwd=ROOT, text=True)
                 (provenance / (env + ".json")).write_text(result)
             sources = [ROOT / "benchmark.py", ROOT / "pixi.toml"] + list((ROOT / "pipeline").glob("*.py"))
@@ -78,6 +79,10 @@ def main(argv=None):
                 target = provenance / "source" / source.relative_to(ROOT)
                 target.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(source, target)
+        if config.get("noisy_panel"):
+            if not batch:
+                raise ValueError("Noisy preparation requires a frozen batch")
+            subprocess.run(["pixi", "run", "--locked", "-e", "simulator", "python", "-m", "pipeline.noisy_workflow", "freeze", "--batch", batch.name], cwd=ROOT, check=True)
         print(f"Audited {len(audit)} reference records")
     elif args.action == "simulate":
         from pipeline.reads import simulate
@@ -96,6 +101,8 @@ def main(argv=None):
             raise ValueError("Array task index is out of range")
         selected = tasks[args.index]
         if args.kind == "simulate":
+            if find_case(config, selected)["simulation"]["model"] == "matched-error-v1":
+                return subprocess.run(["pixi", "run", "--locked", "-e", "simulator", "python", "benchmark.py", "simulate", "--batch", args.batch, "--scenario", selected], cwd=ROOT).returncode
             return main(["simulate", "--batch", args.batch, "--scenario", selected])
         from pipeline.execution import ENVIRONMENTS
         env = ENVIRONMENTS[selected["tool"]]
@@ -108,7 +115,7 @@ def main(argv=None):
                                "--scenario", selected["scenario"], "--tool", selected["tool"]] + extra, cwd=ROOT).returncode
     elif args.action == "submit":
         from pipeline.cluster import submit
-        result = submit(config, load(args.cluster), args.scenario, args.after_job)
+        result = submit(config, load(args.cluster), args.scenario, args.after_job, args.assemble_after_job)
         print(json.dumps(result, indent=2))
     elif args.action == "diagnose-submit":
         from pipeline.cluster import submit_diagnostics

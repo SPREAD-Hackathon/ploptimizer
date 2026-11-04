@@ -2,7 +2,7 @@
   "document_schema": "ploptimizer.simulation-proposal/v1",
   "status": "proposed",
   "executable": false,
-  "warning": "Design record only. Do not pass to benchmark.py plan or submit. Simulator adapter and tolerant evaluator are not implemented.",
+  "warning": "Expanded design record only; do not pass to benchmark.py plan or submit. The implemented smoke uses config/noisy-smoke.json; the full 18-read-set matrix has not been submitted.",
   "proposed_profile_id": "error-stress-matched-fragments-v1",
   "research_checked": "2026-11-04",
   "interpretation": "Controlled generic and historical ONT-shaped error/quality packages; not calibrated to current Nanopore chemistry or basecaller.",
@@ -43,8 +43,8 @@
   "simulator_proposal": {
     "tool": "Badread",
     "proposed_version": "0.4.2",
-    "execution_pin_status": "not installed or locked for this proposal; verify Pixi build and model assets before freezing",
-    "interface": "proposed version-pinned internal sequence_fragment adapter; no implementation yet",
+    "execution_pin_status": "Badread0.4.2/python-edlib1.3.9.post1 are now locked in the simulator environment; source/model assets freeze during preparation",
+    "interface": "Implemented version-pinned internal sequence_fragment adapter, validated in the bounded smoke scope",
     "why_not_direct_cli": "Badread CLI samples gamma fragment lengths, unlike the existing lognormal sampler",
     "rng": "initially serial manifest order; documented hash-derived independent identity/error streams per case, fragment seed, profile and read ID; validate repeatability before parallel generation",
     "additional_problems": {
@@ -189,7 +189,7 @@
     "old_configs_unchanged": true
   },
   "scoring_policy_proposal": {
-    "implementation_status": "not implemented; current supplementary PAF flags cannot produce this endpoint",
+    "implementation_status": "Bounded small-plasmid-tolerant-v1 now implemented for circular pRK2/pKPN7, with synthetic and real-reference controls. Expanded-case admission remains separate.",
     "exact_recovery": "retain as secondary endpoint, separate from tolerant recovery",
     "tolerant_endpoint": {
       "minimum_reference_coverage": 0.99,

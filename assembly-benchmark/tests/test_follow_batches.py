@@ -100,6 +100,15 @@ class FollowBatchTests(unittest.TestCase):
         self.assertEqual(checkpoint["status"], "complete")
         self.assertEqual(checkpoint["diagnostic_jobs"]["primary"], "COMPLETED")
 
+    def test_completion_waits_for_tolerant_assessment_stage(self):
+        save(self.primary / "submission.json", {"jobs":{"assessment":"124"}})
+        checkpoint, _ = self.run_cycle([repeat_row(1, "pass"), repeat_row(2, "error")])
+        self.assertEqual(checkpoint["status"], "following")
+        (self.primary / "accounting.tsv").write_text("124|COMPLETED|0:0|\n")
+        checkpoint, _ = self.run_cycle([repeat_row(1, "pass"), repeat_row(2, "error")])
+        self.assertEqual(checkpoint["status"], "complete")
+        self.assertEqual(checkpoint["assessment_jobs"]["primary"], "COMPLETED")
+
     def test_repeat_selection_uses_run_identity_threads_and_repeat(self):
         wanted = repeat_row(1, "pass")
         document = {"results": [wanted, repeat_row(2, "running"), repeat_row(1, "pass", threads=4)]}

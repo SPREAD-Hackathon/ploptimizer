@@ -23,7 +23,7 @@ def selected_rows(document, tasks):
 
 def progress_fingerprint(document):
     return fingerprint({"results": document["results"], "inputs": document.get("inputs", {}),
-                        "determinism": document.get("determinism")})
+                        "determinism": document.get("determinism"), "assessment_stage": document.get("assessment_stage")})
 
 
 def follow(batch, interval=60, publish_interval=600, max_hours=8, companion_batches=None):
@@ -53,6 +53,8 @@ def follow(batch, interval=60, publish_interval=600, max_hours=8, companion_batc
                 rows = selected_rows(documents[item.name], tasks)
                 completed = completed and len(rows) == len(tasks) and all(row["status"] in TERMINAL for row in rows)
                 counts[item.name] = dict(collections.Counter(row["status"] for row in rows))
+            assessment_jobs = {item.name: assessment_state(item) for item in batches}
+            completed = completed and all(state is None or terminal_job(state) for state in assessment_jobs.values())
             diagnostic_jobs = {item.name: diagnostic_state(item) for item in batches}
             completed = completed and all(state is None or state.startswith(("COMPLETED", "FAILED", "CANCELLED", "TIMEOUT", "OUT_OF_MEMORY", "NODE_FAIL", "BOOT_FAIL", "DEADLINE", "PREEMPTED", "DEPENDENCY")) for state in diagnostic_jobs.values())
             signature = fingerprint({key: progress_fingerprint(value) for key, value in documents.items()}) if len(batches) > 1 else progress_fingerprint(documents[batch.name])
@@ -63,7 +65,7 @@ def follow(batch, interval=60, publish_interval=600, max_hours=8, companion_batc
                 last_publication = time.monotonic()
             save(batch / "follow.json", {"status": "complete" if completed else "following", "counts": counts,
                  "published_signature": published_signature, "batch_id": batch.name,
-                 "updated_at_unix": time.time(), "pid": os.getpid(), "diagnostic_jobs": diagnostic_jobs})
+                 "updated_at_unix": time.time(), "pid": os.getpid(), "diagnostic_jobs": diagnostic_jobs, "assessment_jobs": assessment_jobs})
             if counts != last_counts:
                 print(f"{batch.name}: {counts}", flush=True)
                 last_counts = counts
@@ -82,6 +84,27 @@ def diagnostic_state(batch):
     if not path.exists():
         return None
     job_id = load(path)["job_id"]
+    accounting = batch / "accounting.tsv"
+    if accounting.exists():
+        for line in accounting.read_text().splitlines():
+            fields = line.split("|")
+            if len(fields) > 1 and fields[0] == job_id:
+                return fields[1]
+    return "PENDING"
+
+
+def terminal_job(state):
+    return state.startswith(("COMPLETED", "FAILED", "CANCELLED", "TIMEOUT", "OUT_OF_MEMORY", "NODE_FAIL", "BOOT_FAIL", "DEADLINE", "PREEMPTED", "DEPENDENCY"))
+
+
+def assessment_state(batch):
+    path = batch / "submission.json"
+    if not path.exists():
+        return None
+    submission = load(path)
+    job_id = submission.get("jobs", {}).get("assessment")
+    if not job_id:
+        return None
     accounting = batch / "accounting.tsv"
     if accounting.exists():
         for line in accounting.read_text().splitlines():

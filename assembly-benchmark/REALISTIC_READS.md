@@ -1,10 +1,12 @@
 # Proposed error-bearing read panel
 
-Status: **proposed, not executable**. No noisy simulation or assembler jobs have
-been run for this proposal. `config/realistic-reads.proposed.json` is a design
-record, not a configuration for `benchmark.py plan/submit`. First validate the
-current exact-read failures, then freeze a runnable implementation and evaluator
-before inspecting comparative noisy-read results.
+Status: **expanded panel proposed; bounded smoke workflow implemented**.
+`config/realistic-reads.proposed.json` remains a non-executable design record for
+the expanded 18-read-set panel. `config/noisy-smoke.json` now freezes W/pRK2 at
+one fragment seed in three conditions (three read sets, 12 assembler executions).
+Read generation has been submitted; assembly waits behind S3. No noisy assembly
+performance conclusion is available yet. The adapter and bounded tolerant
+endpoint are documented in NOISY_ADAPTER.md and TOLERANT_ENDPOINT.md.
 
 ## Controlled stress before empirical calibration
 
@@ -56,8 +58,9 @@ circumference. Random starts and both strands match the exact sampler.
 
 A direct Badread CLI call with `--length 10000,5000` would change the distribution:
 Badread uses gamma lengths. Instead, propose feeding existing clean fragments to
-a version-pinned adapter around Badread's `sequence_fragment` routine. No adapter
-exists yet. This internal interface needs fixtures and frozen source/model hashes;
+a version-pinned adapter around Badread's `sequence_fragment` routine. The bounded
+adapter now exists and passed compute-node tests against Badread 0.4.2. This
+internal interface requires fixtures and frozen source/model hashes;
 it is not a stable public API.
 [Length source](https://github.com/rrwick/Badread/blob/v0.4.2/badread/fragment_lengths.py),
 [sequencing source](https://github.com/rrwick/Badread/blob/v0.4.2/badread/simulate.py)
@@ -124,11 +127,11 @@ reverse complement while keeping terminal duplication and tandem copies visible.
 Quality scores do not enter assembly-to-truth identity.
 
 These thresholds are proposed study choices, not biological cut-offs. Current
-supplementary PAF flags cannot implement this endpoint. First validate a dedicated
-evaluator with mutated, rotated, terminal-overlap, fragmented, tandem, duplicate,
+supplementary PAF flags cannot implement this endpoint. The separate bounded
+evaluator now handles pRK2/pKPN7 with conservative uncertainty; validate expansion with mutated, rotated, terminal-overlap, fragmented, tandem, duplicate,
 joined and ambiguous-repeat fixtures. Require collinear base-level alignment,
 competing-copy checks and unscored ambiguity when assignment cannot be resolved.
-Until validated, publish continuous evidence with **no tolerant pass/fail claim**.
+Outside the admitted bounded endpoint, publish continuous evidence with **no tolerant pass/fail claim**. The bounded implementation has passed synthetic fixtures and real-reference controls; unresolved assignments remain unscored.
 Freeze thresholds, alignment/filter policy and fixture results before comparing
 tools; later changes require a new metric/profile version.
 
@@ -143,8 +146,18 @@ error/quality models, but support does not establish fidelity to a new chemistry
 [Error-model source](https://github.com/rrwick/Badread/blob/v0.4.2/badread/error_model.py),
 [quality-model source](https://github.com/rrwick/Badread/blob/v0.4.2/badread/qscore_model.py)
 
-Gates: resolve exact failures; lock Badread/model assets; validate the adapter and
+Expansion gates: resolve exact failures; lock Badread/model assets; validate the adapter and
 admissions; validate the tolerant evaluator; freeze the new profile; submit via
 Slurm. The official tagged source reports Badread 0.4.2. Verify the actual Pixi
 build includes selected models before pinning it; a mutable branch is not a pin.
 [Version source](https://github.com/rrwick/Badread/blob/v0.4.2/badread/version.py)
+
+## Smoke validation record
+
+The pinned simulator environment passed 139 tests on BMRC in Slurm job34389631
+without skipped dependency tests. Real-reference controls for W/pRK2 then passed:
+exact truth and a five-base deletion meet the tolerant endpoint; duplicate and
+tandem controls fail. Their hashes and results are retained with smoke batch
+`20261104T210453`. This validates the bounded checks, not empirical read fidelity
+or whole-study assembler performance. The existing four assembler environments
+retained identical locked package URLs when the simulator environment was added.

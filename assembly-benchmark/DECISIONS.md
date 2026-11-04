@@ -66,3 +66,5 @@ sequence discrepancy and a circular-origin mapping omission; retain the strict
 score and the mapping limitation separately. `REALISTIC_READS.md` defines the
 next proposed panel and the validation work needed before noisy runs. Tolerant
 thresholds remain proposals, not applied scores.
+
+**Controlled-error smoke update:** one W/pRK2 seed and matched exact/generic/ONT-shaped profiles now have a pinned executable adapter and a separate conservative tolerant endpoint. Linux tests and actual-reference positive/negative controls passed before assembler comparisons. The full two-case/three-seed expansion remains proposed pending smoke review; empirical calibration and general topology/structural scoring remain open.
