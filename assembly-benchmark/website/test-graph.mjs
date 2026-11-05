@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { build } from 'esbuild';
 const { outputFiles } = await build({ entryPoints: [new URL('./graph.jsx', import.meta.url).pathname], bundle: true, write: false, format: 'esm', platform: 'browser', jsx: 'automatic', loader: { '.css': 'empty' }, define: { 'process.env.NODE_ENV': '"production"' } });
-const { parseLocalGfa, schematicLayout, forceLayout, coverageDescription, GRAPH_LIMITS, originEvidenceClass } = await import('data:text/javascript;base64,' + Buffer.from(outputFiles[0].contents).toString('base64'));
+const { parseLocalGfa, schematicLayout, forceLayout, coverageDescription, GRAPH_LIMITS, originEvidenceClass, nodeOriginChunks } = await import('data:text/javascript;base64,' + Buffer.from(outputFiles[0].contents).toString('base64'));
 assert.equal(coverageDescription([{tag:'KC',value:12,meaning:'kmer_count'}]), 'KC=12 (kmer count)');
 const sequence = 'AACCGGTTAACCGGTT';
 const graph = parseLocalGfa(`H\tVN:Z:1.0\nS\ta\t${sequence}\tdp:f:3.5\nS\tb\t*\tLN:i:24\nL\ta\t+\tb\t-\t0M\nL\tb\t+\tb\t+\t0M\nP\tpath1\ta+,b-\t0M\n`, { filename: 'synthetic-test.gfa', file_sha256: 'fixture-hash' });
@@ -52,3 +52,6 @@ assert.equal(originEvidenceClass({status:'ambiguous'}), 'ambiguous');
 assert.equal(originEvidenceClass({status:'supported',evidence:[]}), 'unresolved');
 assert.equal(originEvidenceClass({status:'supported',evidence:[{association_kind:'whole_segment_sequence_identity'}]}), 'verified_whole_segment');
 assert.equal(originEvidenceClass({status:'supported',evidence:[{path_id:'path',exact_source:'evaluation'}]}), 'path_inferred');
+
+assert.deepEqual(nodeOriginChunks('missing', {}), []);
+assert.equal(nodeOriginChunks('mixed', {node_intervals:{mixed:{intervals:[{node_interval:[0,100],status:'supported'},{node_interval:[100,200],status:'ambiguous'}]}}}).length, 2);

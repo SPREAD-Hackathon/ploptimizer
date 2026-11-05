@@ -13,7 +13,8 @@ export const originLabels = {verified_whole_segment: 'Verified whole-segment ide
 export const originShortLabels = {verified_whole_segment: 'Identity verified', path_inferred: 'Via contig path', ambiguous: 'Ambiguous', unresolved: 'Unresolved'};
 const spanLabel = span => Array.isArray(span) && span.length === 2 ? span.map(value => value.toLocaleString()).join('–') : 'Not recorded';
 
-export function OriginEvidence({ origin, node, origins }) {
+export function OriginEvidence({ origin, node, origins, selectedInterval, onSelectInterval }) {
+  if (nodeOriginChunks(node.id, origins).length) return <NodeIntervalEvidence node={node} origins={origins} selectedInterval={selectedInterval} onSelectInterval={onSelectInterval} />;
   const kind = originEvidenceClass(origin.match);
   const evidence = origin.match?.evidence ?? [];
   const identity = evidence.find(item => item.association_kind === 'whole_segment_sequence_identity');
@@ -46,4 +47,33 @@ export function OriginEvidence({ origin, node, origins }) {
       </li>;
     })}</ul>}
   </div>;
+}
+
+export function nodeOriginChunks(nodeId, origins) {
+  return origins?.node_intervals?.[nodeId]?.intervals ?? [];
+}
+
+export function NodeIntervalEvidence({ node, origins, selectedInterval = 0, onSelectInterval }) {
+  const saved = origins.node_intervals[node.id];
+  const index = Math.min(selectedInterval ?? 0, saved.intervals.length - 1);
+  const interval = saved.intervals[index];
+  const rows = saved.alignments.filter(row => interval.alignment_ids.includes(row.id));
+  const reference = id => origins.references.find(item => item.id === id);
+  const label = chunk => chunk.status === 'supported' ? reference(chunk.reference_id)?.name ?? chunk.reference_id : chunk.status === 'ambiguous' ? 'Ambiguous' : 'No recorded support';
+  return <section className="origin-evidence node-interval-evidence" aria-label="Recorded origin intervals">
+    <h4>Origin within segment</h4>
+    <p>Recorded node-to-reference matches. Positions are 0-based, with the end excluded. Boundaries mark alignment spans.</p>
+    <div className="node-interval-track" aria-label="Choose an origin interval">{saved.intervals.map((chunk, i) => {
+      const ref = chunk.status === 'supported' ? reference(chunk.reference_id) : null;
+      return <button key={i} type="button" className="node-interval-chunk" aria-pressed={index === i} aria-label={`${spanLabel(chunk.node_interval)} bp: ${label(chunk)}`} title={`${spanLabel(chunk.node_interval)} bp: ${label(chunk)}`} style={{flexGrow:chunk.node_interval[1]-chunk.node_interval[0], '--reference-colour':ref?.colour, '--reference-light':ref?.light_colour}} onClick={() => onSelectInterval(i)} />;
+    })}</div>
+    <div className="origin-axis"><span>0 bp</span><span>{saved.length_bp.toLocaleString()} bp</span></div>
+    <label className="node-interval-picker">Inspect interval<select className="gx-input" value={index} onChange={event => onSelectInterval(Number(event.target.value))}>{saved.intervals.map((chunk,i)=><option key={i} value={i}>{spanLabel(chunk.node_interval)} bp · {label(chunk)}</option>)}</select></label>
+    <h4>{spanLabel(interval.node_interval)} bp · {label(interval)}</h4>
+    {interval.status === 'ambiguous' && <p>Candidate origins: {interval.candidate_reference_ids.map(id => reference(id)?.name ?? id).join(', ')}. Matching evidence does not assign a unique origin.</p>}
+    {interval.status === 'unresolved' && <p>No saved node-to-reference match supports this interval.</p>}
+    {rows.length > 0 && <div className="table-scroll" role="region" aria-label="Matching interval evidence" tabIndex="0"><table><thead><tr><th scope="col">Reference</th><th scope="col">Node match (bp)</th><th scope="col">Reference match (bp)</th><th scope="col">Strand</th><th scope="col">Recorded quality</th></tr></thead><tbody>{rows.map(row=><tr key={row.id}><td>{reference(row.reference_id)?.name ?? row.reference_id}<small>{row.reference_id}</small></td><td>{spanLabel(row.node_interval)}</td><td>{spanLabel(row.reference_interval)}</td><td>{row.strand}</td><td>{Object.entries(row.match_quality).map(([key,value])=>`${key}: ${value}`).join('; ')}</td></tr>)}</tbody></table></div>}
+    {rows.length > 0 && <p className="muted">Rows retain their original spans; a selected chunk may be part of a longer match.</p>}
+    <details><summary>Interval evidence source</summary><p>{saved.source.name}</p><code className="checksum">{saved.source.sha256}</code></details>
+  </section>;
 }

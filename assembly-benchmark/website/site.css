@@ -186,3 +186,18 @@ tbody tr:hover > .overview-cell { background: var(--heat-surface); }
 .aggregate-figure figcaption { max-width: 75ch; margin-top: .75rem; font-size: .9rem; }
 .aggregate-figure > a { display: block; overflow-x: auto; scrollbar-color: var(--line) var(--paper); }
 .aggregate-figure img { min-width: 840px; }
+
+.table-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; margin-block: 20px 8px; }
+.table-controls label { display: grid; gap: 6px; min-width: 140px; flex: 1 1 140px; font-size: 13px; }
+.table-controls label:first-child { flex: 2 1 240px; }
+.table-controls .gx-input { width: 100%; min-width: 0; }
+.table-result-count { color: var(--gx-text-muted); font-size: 13px; margin-block: 8px 12px; font-variant-numeric: tabular-nums; }
+.table-sort { display: inline-flex; align-items: center; gap: 8px; padding: 6px 0; border: 0; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.table-sort svg { width: 12px; height: 14px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.5; opacity: .55; }
+th[aria-sort="ascending"] .table-sort svg, th[aria-sort="descending"] .table-sort svg { opacity: 1; color: var(--gx-accent); }
+.table-sort:focus-visible { outline: 2px solid var(--gx-accent); outline-offset: 3px; }
+tr[hidden], .table-empty[hidden] { display: none; }
+@media(max-width: 500px) { .table-controls label:first-child { flex-basis: 100%; } }
+
+th[aria-sort="ascending"] .table-sort svg path { d: path("M3 8 6 5 9 8"); }
+th[aria-sort="descending"] .table-sort svg path { d: path("M3 6 6 9 9 6"); }

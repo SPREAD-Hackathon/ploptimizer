@@ -535,3 +535,39 @@ CLI: more than 5,000; retry in 24 hours). A stalled archive attempt was removed;
 the old production remains live. Do not claim the compact build or new graph
 labels are live until deployment and byte-for-byte verification succeed. Evidence
 and the publishing checkpoint are in `evidence/storage-origin-v1/`.
+
+## Recorded node intervals and table navigation (5 November)
+
+Implemented locally; production publication remains blocked by Vercel's existing
+`api-upload-free` daily upload quota. No cluster jobs or sequence analyses were
+performed. All 300 original source records and scores remain unchanged.
+
+The metadata-only backend validates optional source-bound graph-node/reference
+interval records and exports partitioned display spans. Different-reference
+overlap and explicitly ambiguous support stay grey; uncovered spans have no
+recorded support. Original alignment rows remain intact without interpolating
+reference coordinates. The viewer exposes coloured portions by default, with
+direct selection, an accessible dropdown and source/quality evidence. Whole-node
+and path fallback remains when intervals are missing. **None of the frozen real
+records currently supplies direct node intervals.** Synthetic previews prove the
+interface only and are excluded from Vercel. See
+[NODE_INTERVAL_EVIDENCE.md](NODE_INTERVAL_EVIDENCE.md).
+
+Individual runs and case summaries have progressive search, relevant dropdown
+filters, natural/numeric header sorting, reset, live counts and empty results.
+Repeatability groups and long contig/length inventories also gain controls. Small
+headline matrices remain unchanged; no-JavaScript tables retain all their rows.
+
+Verification: 335 Python tests passed (11 optional skips), graph/table helper
+tests passed, and HTTP checks cover 398 routes / 300 result views. Browser checks
+verified combined filters, reset, sorting and all interval evidence states.
+A caught pointer-capture issue was fixed and direct portion clicks rechecked.
+Evidence: `evidence/node-intervals-tables-v1/local-verification.json`.
+
+[SCENARIO_ROADMAP.md](SCENARIO_ROADMAP.md) records revised S1/S2/S3 gaps and the
+bounded completed S5/S6 panels. This readiness review does not implement or submit
+a new biological scenario panel.
+
+Independent finish review: **ship** for the locally reviewed dark-mode desktop/phone
+UI. Documentation updated; no claim of light-theme visual verification or live
+publication is implied.

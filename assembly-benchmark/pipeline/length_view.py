@@ -27,7 +27,7 @@ def render_lengths(metrics):
         if source:
             body+=f'<p class="muted">{title} source: {e(source.get("filename",source.get("kind","recorded metadata")))} · {e(source.get("role","not recorded"))}.</p>'
         if group.get('items'):
-            body+=f'<details><summary>{title}: individual lengths</summary><div class="table-scroll"><table><thead><tr><th scope="col">Identifier</th><th scope="col">Length</th></tr></thead><tbody>'
+            body+=f'<details><summary>{title}: individual lengths</summary><div class="table-scroll"><table data-table-kind="lengths"><thead><tr><th scope="col">Identifier</th><th scope="col">Length</th></tr></thead><tbody>'
             for row in group['items']:
                 length=f'{row["length_bp"]:,} bp' if row.get('length_bp') is not None else 'Unknown'
                 body+=f'<tr><th scope="row">{e(row["id"])}</th><td>{length}</td></tr>'

@@ -57,7 +57,7 @@ def contig_section(record, artifact):
         collapsed = len(info.get("contigs", [])) > 20
         if collapsed:
             body += f'<details><summary>Show all {len(info["contigs"]):,} reported contigs</summary>'
-        body += '<div class="table-scroll" role="region" aria-label="Reported contig inventory" tabindex="0"><table><thead><tr><th scope="col">Reported contig</th><th scope="col">Reference origin</th><th scope="col">Length</th><th scope="col">Reported circularity</th><th scope="col">Reported coverage</th></tr></thead><tbody>'
+        body += '<div class="table-scroll" role="region" aria-label="Reported contig inventory" tabindex="0"><table data-table-kind="contigs"><thead><tr><th scope="col">Reported contig</th><th scope="col">Reference origin</th><th scope="col">Length</th><th scope="col">Reported circularity</th><th scope="col">Reported coverage</th></tr></thead><tbody>'
         for contig in info.get("contigs", []):
             length = f'{contig["length_bp"]:,} bp' if contig.get("length_bp") is not None else "Not reported"
             labels = {"circular": "Reported circular", "not_circular": "Not reported circular", "linear": "Reported linear", "unknown": "Unknown"}

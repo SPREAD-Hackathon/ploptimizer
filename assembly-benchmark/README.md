@@ -134,3 +134,5 @@ Bundle-rendered websites publish pages, plots, compact interactive graph models
 and table exports. Full evidence JSON and the backend ZIP remain outside the
 Vercel output. See [website packaging](WEB_DOWNLOADS.md) for the retained assets,
 separate backend archive and size audit.
+
+[Recorded node interval evidence](NODE_INTERVAL_EVIDENCE.md) · [Scenario readiness and remaining definitions](SCENARIO_ROADMAP.md).

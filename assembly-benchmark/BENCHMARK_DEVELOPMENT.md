@@ -44,10 +44,9 @@ version its reference representation and coordinate conversion explicitly.
    distributions, per-item lengths, complete/missing distinctions, source hashes,
    independent JSON/TSV/Markdown exports and result-page presentation. Existing
    FASTAs supply length metadata only; no assembly or alignment reruns.
-2. **Specified, not run:** linear terminal-repeat cases in
-   [LINEAR_TERMINAL_REPEATS.md](LINEAR_TERMINAL_REPEATS.md). Curate physical ends and
-   native reference complements before admission. Keep these separate from the
-   initial E. coli/Klebsiella cohort.
+2. **Bounded S5 batch completed:** see [S5_RUN_STATUS.md](S5_RUN_STATUS.md).
+   Broader linear-reference admission remains separate from these isolated
+   controls and from the initial E. coli/Klebsiella cohort.
 3. **Next evidence work:** a versioned circular-aware continuity measurement,
    separate from exact sequence and copy recovery; coordinate-level terminal
    excess/loss and indel events; explicit uncertainty for shared-repeat assignment.
@@ -61,3 +60,5 @@ version its reference representation and coordinate conversion explicitly.
 The intended contribution is a reproducible diagnostic regression suite focused
 on plasmid outcomes, with enough evidence to distinguish a measured discrepancy
 from a proposed software explanation.
+
+Current readiness and remaining definitions: [SCENARIO_ROADMAP.md](SCENARIO_ROADMAP.md).

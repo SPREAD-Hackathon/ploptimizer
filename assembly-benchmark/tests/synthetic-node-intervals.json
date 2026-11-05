@@ -1,0 +1,297 @@
+{
+  "graph": {
+    "status": "available",
+    "complete": true,
+    "nodes": [
+      {
+        "id": "single",
+        "length_bp": 1000
+      },
+      {
+        "id": "mixed",
+        "length_bp": 1000
+      },
+      {
+        "id": "shared",
+        "length_bp": 1000
+      },
+      {
+        "id": "unknown",
+        "length_bp": 1000
+      }
+    ],
+    "edges": [],
+    "source": {
+      "filename": "synthetic-metadata-fixture",
+      "role": "synthetic display test"
+    }
+  },
+  "reference_origins": {
+    "references": [
+      {
+        "id": "fixture-A",
+        "name": "Reference A",
+        "length_bp": 10000,
+        "colour": "#72a9e8",
+        "light_colour": "#326eae"
+      },
+      {
+        "id": "fixture-B",
+        "name": "Reference B",
+        "length_bp": 5000,
+        "colour": "#d8974e",
+        "light_colour": "#9c5a15"
+      }
+    ],
+    "nodes": {},
+    "node_intervals": {
+      "single": {
+        "length_bp": 1000,
+        "coordinate_system": "0-based half-open",
+        "intervals": [
+          {
+            "node_interval": [
+              0,
+              1000
+            ],
+            "status": "supported",
+            "reference_id": "fixture-A",
+            "candidate_reference_ids": [
+              "fixture-A"
+            ],
+            "alignment_ids": [
+              "single-a"
+            ]
+          }
+        ],
+        "alignments": [
+          {
+            "id": "single-a",
+            "node_id": "single",
+            "node_interval": [
+              0,
+              1000
+            ],
+            "reference_id": "fixture-A",
+            "reference_interval": [
+              100,
+              1100
+            ],
+            "strand": "+",
+            "assignment_status": "supported",
+            "match_quality": {
+              "identity_fraction": 1.0,
+              "mapping_quality": 60
+            }
+          }
+        ],
+        "source": {
+          "name": "Synthetic fixture; not a benchmark execution",
+          "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "input_hashes": {
+          "assembly_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "truth_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "gfa_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        }
+      },
+      "mixed": {
+        "length_bp": 1000,
+        "coordinate_system": "0-based half-open",
+        "intervals": [
+          {
+            "node_interval": [
+              0,
+              400
+            ],
+            "status": "supported",
+            "reference_id": "fixture-A",
+            "candidate_reference_ids": [
+              "fixture-A"
+            ],
+            "alignment_ids": [
+              "mixed-a"
+            ]
+          },
+          {
+            "node_interval": [
+              400,
+              750
+            ],
+            "status": "supported",
+            "reference_id": "fixture-B",
+            "candidate_reference_ids": [
+              "fixture-B"
+            ],
+            "alignment_ids": [
+              "mixed-b"
+            ]
+          },
+          {
+            "node_interval": [
+              750,
+              900
+            ],
+            "status": "ambiguous",
+            "reference_id": null,
+            "candidate_reference_ids": [
+              "fixture-A",
+              "fixture-B"
+            ],
+            "alignment_ids": [
+              "shared-a",
+              "shared-b"
+            ]
+          },
+          {
+            "node_interval": [
+              900,
+              1000
+            ],
+            "status": "unresolved",
+            "reference_id": null,
+            "candidate_reference_ids": [],
+            "alignment_ids": []
+          }
+        ],
+        "alignments": [
+          {
+            "id": "mixed-a",
+            "node_id": "mixed",
+            "node_interval": [
+              0,
+              400
+            ],
+            "reference_id": "fixture-A",
+            "reference_interval": [
+              100,
+              500
+            ],
+            "strand": "+",
+            "assignment_status": "supported",
+            "match_quality": {
+              "identity_fraction": 1.0,
+              "mapping_quality": 60
+            }
+          },
+          {
+            "id": "mixed-b",
+            "node_id": "mixed",
+            "node_interval": [
+              400,
+              750
+            ],
+            "reference_id": "fixture-B",
+            "reference_interval": [
+              500,
+              850
+            ],
+            "strand": "+",
+            "assignment_status": "supported",
+            "match_quality": {
+              "identity_fraction": 1.0,
+              "mapping_quality": 60
+            }
+          },
+          {
+            "id": "shared-a",
+            "node_id": "mixed",
+            "node_interval": [
+              750,
+              900
+            ],
+            "reference_id": "fixture-A",
+            "reference_interval": [
+              850,
+              1000
+            ],
+            "strand": "+",
+            "assignment_status": "supported",
+            "match_quality": {
+              "identity_fraction": 1.0,
+              "mapping_quality": 60
+            }
+          },
+          {
+            "id": "shared-b",
+            "node_id": "mixed",
+            "node_interval": [
+              750,
+              900
+            ],
+            "reference_id": "fixture-B",
+            "reference_interval": [
+              850,
+              1000
+            ],
+            "strand": "+",
+            "assignment_status": "supported",
+            "match_quality": {
+              "identity_fraction": 1.0,
+              "mapping_quality": 60
+            }
+          }
+        ],
+        "source": {
+          "name": "Synthetic fixture; not a benchmark execution",
+          "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "input_hashes": {
+          "assembly_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "truth_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "gfa_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        }
+      },
+      "shared": {
+        "length_bp": 1000,
+        "coordinate_system": "0-based half-open",
+        "intervals": [
+          {
+            "node_interval": [
+              0,
+              1000
+            ],
+            "status": "ambiguous",
+            "reference_id": null,
+            "candidate_reference_ids": [
+              "fixture-A"
+            ],
+            "alignment_ids": [
+              "ambiguous-a"
+            ]
+          }
+        ],
+        "alignments": [
+          {
+            "id": "ambiguous-a",
+            "node_id": "shared",
+            "node_interval": [
+              0,
+              1000
+            ],
+            "reference_id": "fixture-A",
+            "reference_interval": [
+              100,
+              1100
+            ],
+            "strand": "+",
+            "assignment_status": "ambiguous",
+            "match_quality": {
+              "identity_fraction": 1.0,
+              "mapping_quality": 60
+            }
+          }
+        ],
+        "source": {
+          "name": "Synthetic fixture; not a benchmark execution",
+          "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        },
+        "input_hashes": {
+          "assembly_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "truth_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "gfa_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        }
+      }
+    }
+  }
+}

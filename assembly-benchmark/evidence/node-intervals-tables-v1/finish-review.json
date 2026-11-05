@@ -1,0 +1,18 @@
+{
+  "disposition": "ship",
+  "scope": "Dark-mode graph interval fixture and table controls, desktop and phone; no scientific performance review",
+  "resolved": [
+    "Phone capture shows complete controls",
+    "Direct strip clicks select correct saved interval",
+    "Desktop screenshot recaptured from scrollY=0",
+    "DESIGN.md updated for approved features"
+  ],
+  "documentation": "DESIGN.md only; GenomicX tokens and sidecar preserved",
+  "limitations": [
+    "No new real node interval evidence",
+    "Synthetic preview excluded from deployment",
+    "Graph geometry schematic",
+    "Live publication blocked by existing Vercel daily upload quota"
+  ],
+  "screenshots_directory": ".cache/interval-tables-review"
+}

@@ -1,0 +1,39 @@
+{
+  "status": "local_verified_not_published",
+  "python_tests": 335,
+  "optional_skips": 11,
+  "graph_tests": "pass",
+  "table_helper_tests": "pass",
+  "http_routes": 398,
+  "result_views": 300,
+  "preserved_original_records": 300,
+  "actual_results_with_node_interval_evidence": 0,
+  "interval_fixture": "tests/synthetic-node-intervals.json",
+  "fixture_is_synthetic": true,
+  "fixture_deployed": false,
+  "website_bytes": 47105838,
+  "backend_bundle": ".cache/bundles/node-intervals-v1",
+  "new_cluster_jobs": 0,
+  "new_sequence_analyses": 0,
+  "production_blocker": "Existing Vercel daily upload quota (api-upload-free); compact build is not live",
+  "browser_checks": {
+    "combined_filters": "SE11 + Flye (default) + Pass = 4 of 52 rows",
+    "empty_search": "0 of 52; reset restores 52",
+    "sort": "Genome/case ascending tested",
+    "direct_strip_click": "Second portion selects 400\u2013750 / Reference B after pointer fix",
+    "ambiguous_interval": "750\u2013900; two original match rows, grey",
+    "unsupported_interval": "900\u20131000; no original match rows, grey",
+    "phone_nominal_viewport": [
+      390,
+      844
+    ],
+    "desktop_nominal_viewport": [
+      1440,
+      1000
+    ],
+    "phone_document_width": 380,
+    "screenshots_exclude_scrollbar": true
+  },
+  "design_detector": [],
+  "table_missing_value_tests": "Not recorded and Not reported stay last in either sort direction"
+}

@@ -51,3 +51,14 @@
 .origin-proof-list p { margin-bottom: .5rem; }
 .origin-coordinates { margin-block: .75rem; }
 .origin-coordinates .table-scroll { margin-top: .75rem; }
+
+.graph-node rect.node-origin-chunk { fill: var(--reference-colour); stroke: none; cursor: pointer; }
+[data-theme="light"] .graph-node rect.node-origin-chunk { fill: var(--reference-light); }
+.node-interval-track { display: flex; height: 32px; width: 100%; gap: 2px; }
+.node-interval-chunk { flex-basis: 0; min-width: 0; padding: 0; border: 0; background: var(--reference-colour, #92969d); cursor: pointer; }
+.node-interval-chunk[aria-pressed="true"] { outline: 2px solid var(--gx-text); outline-offset: 2px; }
+.node-interval-chunk:focus-visible { outline: 3px solid var(--gx-accent); outline-offset: 3px; }
+[data-theme="light"] .node-interval-chunk { background: var(--reference-light, #686c73); }
+.node-interval-picker { display: grid; gap: 6px; margin-block: 20px; }
+.node-interval-picker select { width: 100%; min-width: 0; }
+.node-interval-evidence td small { display: block; }

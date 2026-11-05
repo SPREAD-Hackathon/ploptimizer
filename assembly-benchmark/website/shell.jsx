@@ -91,3 +91,6 @@ for (const element of document.querySelectorAll('[data-assembly-graph]')) {
     element.textContent = 'The collected graph data could not be read. No topology view is available.';
   }
 }
+
+import { enhanceTables } from './table-controls.js';
+enhanceTables();

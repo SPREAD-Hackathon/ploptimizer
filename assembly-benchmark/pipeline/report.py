@@ -425,7 +425,7 @@ def explained_records(rows, cases):
 def run_summary(rows, case, prefix="../", output=None, show_tolerant=False):
     """Concise case view; narratives and topology stay on result pages."""
     heading = '<th scope="col">Tolerant status</th>' if show_tolerant else ''
-    body = '<div class="table-scroll" role="region" aria-label="Recorded run summary" tabindex="0"><table class="run-summary-table"><caption>Recorded execution outcomes. Open a result for its scoring, explanation, contigs and graph.</caption><thead><tr><th scope="col">Assembler / version</th><th scope="col">Threads / repeat</th><th scope="col">Exact status</th>' + heading + '<th scope="col">Elapsed</th><th scope="col">Result</th></tr></thead><tbody>'
+    body = '<div class="table-scroll" role="region" aria-label="Recorded run summary" tabindex="0"><table class="run-summary-table" data-table-kind="case"><caption>Recorded execution outcomes. Open a result for its scoring, explanation, contigs and graph.</caption><thead><tr><th scope="col">Assembler / version</th><th scope="col">Threads / repeat</th><th scope="col">Exact status</th>' + heading + '<th scope="col">Elapsed</th><th scope="col">Result</th></tr></thead><tbody>'
     seen = set()
     for row in rows:
         anchor = row["tool"] if row["tool"] not in seen else row["tool"] + "-" + row.get("run_id", str(len(seen)))

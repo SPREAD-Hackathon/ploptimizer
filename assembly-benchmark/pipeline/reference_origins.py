@@ -49,7 +49,7 @@ def build_reference_origins(case, record, artifact, segment_identities=None, rec
         colour, light = reference_colour(molecule)
         references.append({"id": molecule.get("refseq_accession"), "name": molecule.get("replicon_name", "Reference molecule"), "length_bp": molecule.get("length_bp"), "colour": colour, "light_colour": light})
     graph = artifact.get("graph") or {}
-    result = {"schema_version": 1, "method": "saved_exact_contig_gfa_association_v3", "references": references, "nodes": {}, "contig_alignments": {}, "internal_boundaries_status": "not_measured",
+    result = {"schema_version": 1, "method": "saved_exact_contig_gfa_association_v3", "references": references, "nodes": {}, "contig_alignments": {}, "node_intervals": {}, "internal_boundaries_status": "not_measured",
               "scope": "Whole-segment association through an exact contig and a recorded GFA path or verified whole-segment/contig sequence hash identity; not a within-node alignment map.",
               "unassigned_reason": "No saved exact-contig-to-GFA-path association is available for this segment.",
               "source_hashes": {"assembly_sha256": record.get("assembly_sha256"), "gfa_sha256": graph.get("source", {}).get("file_sha256")}}
@@ -57,6 +57,12 @@ def build_reference_origins(case, record, artifact, segment_identities=None, rec
     if not record.get("assembly_sha256") or attached_hash != record["assembly_sha256"] or artifact.get("failed_execution_provenance") or graph.get("source", {}).get("role") != "final" or graph.get("status") != "available" or graph.get("complete") is not True:
         result["unassigned_reason"] = "A complete final graph bound to the scored assembly is required; no final-reference colours are assigned here."
         return result
+    from .node_intervals import build_node_intervals
+    result['node_intervals'] = build_node_intervals(
+        artifact.get('reference_interval_evidence'), graph.get('nodes', []), references,
+        {**result['source_hashes'], 'truth_sha256': record.get('truth_sha256')})
+    if result['node_intervals']:
+        result['internal_boundaries_status'] = 'recorded_alignment_spans'
     node_ids = {n["id"] for n in graph.get("nodes", [])}
     paths, repeated_paths = {}, set()
     for path in graph.get("paths", []):

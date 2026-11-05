@@ -1,8 +1,8 @@
 import React, { useId, useMemo, useRef, useState } from 'react';
 import { Alert, StatusBadge } from '@genomicx/ui';
 import './graph.css';
-import { OriginEvidence, originEvidenceClass, originLabels, originShortLabels } from './origin-evidence.jsx';
-export { originEvidenceClass } from './origin-evidence.jsx';
+import { OriginEvidence, originEvidenceClass, originLabels, originShortLabels, nodeOriginChunks } from './origin-evidence.jsx';
+export { originEvidenceClass, nodeOriginChunks } from './origin-evidence.jsx';
 
 export const GRAPH_LIMITS = { segments: 5000, links: 5000, bytes: 20 * 1024 * 1024 };
 
@@ -113,6 +113,7 @@ function edgePath(edge, positions) {
 
 export function GraphViewer({ artifact = {} }) {
   const [selected, setSelected] = useState(''), [view, setView] = useState(null), [showLabels, setShowLabels] = useState(true);
+  const [selectedInterval, setSelectedInterval] = useState(0);
   const [movedNodes, setMovedNodes] = useState(new Map());
   const svg = useRef(null), pan = useRef(null), nodeDrag = useRef(null), suppressClick = useRef(false), marker = useId().replace(/:/g, '');
   const graph = artifact.graph ?? {}, nodes = graph.nodes ?? [], edges = graph.edges ?? [];
@@ -143,8 +144,8 @@ export function GraphViewer({ artifact = {} }) {
     const width = Math.min(layout.width * 20, Math.max(80, activeView.width * factor)), ratio = width / activeView.width;
     setView({ x: activeView.x + activeView.width * (1 - ratio) / 2, y: activeView.y + activeView.height * (1 - ratio) / 2, width, height: activeView.height * ratio });
   }
-  function select(id) {
-    setSelected(id);
+  function select(id, intervalIndex = 0) {
+    setSelected(id); setSelectedInterval(intervalIndex);
     if (!id) { setView(null); return; }
     const point = positions.get(id);
     if (point) {
@@ -196,7 +197,7 @@ export function GraphViewer({ artifact = {} }) {
       <p><StatusBadge variant="info">Recorded GFA</StatusBadge> {nodes.length.toLocaleString()} segments · {edges.length.toLocaleString()} link records. Source: {graph.source?.filename ?? 'not recorded'}; role: {graph.source?.role ?? 'not recorded'}.</p>
       {graph.complete === false && <Alert variant="warning">The source graph includes unsupported or omitted records. This view is not a complete representation of the source file.</Alert>}
       {graph.warnings?.length > 0 && <details><summary>Graph parsing notes</summary><ul>{graph.warnings.map((warning, index) => <li key={index}>{warning}</li>)}</ul></details>}
-      <><div className="origin-legend" aria-label="Reference colour key">{origins?.references?.map(reference => <span key={reference.id} style={{'--reference-colour':reference.colour,'--reference-light':reference.light_colour}}><i aria-hidden="true" />{reference.name}</span>)}<span><i aria-hidden="true" />Ambiguous / unassigned</span></div><p className="muted">Node labels distinguish verified sequence identity from association through a contig path. Grey nodes have no unique reference origin.</p></>
+      <><div className="origin-legend" aria-label="Reference colour key">{origins?.references?.map(reference => <span key={reference.id} style={{'--reference-colour':reference.colour,'--reference-light':reference.light_colour}}><i aria-hidden="true" />{reference.name}</span>)}<span><i aria-hidden="true" />Ambiguous / unassigned</span></div><p className="muted">Coloured portions show recorded reference support. Grey portions are ambiguous or have no recorded support; select a segment to inspect its evidence.</p></>
       <div className="graph-controls">
         <button className="gx-btn gx-btn-secondary gx-btn-sm" onClick={() => zoom(.8)}>Zoom in</button>
         <button className="gx-btn gx-btn-secondary gx-btn-sm" onClick={() => zoom(1.25)}>Zoom out</button>
@@ -209,18 +210,22 @@ export function GraphViewer({ artifact = {} }) {
       <svg ref={svg} className="graph-canvas" viewBox={`${activeView.x} ${activeView.y} ${activeView.width} ${activeView.height}`} role="group" aria-label="Schematic GFA topology" tabIndex="0" onKeyDown={keyboard} onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={endPointer} onPointerCancel={endPointer}>
         <defs><marker id={marker} markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="currentColor" /></marker></defs>
         {edges.map((edge, index) => <path key={index} className={`graph-edge ${selected && (edge.source === selected || edge.target === selected) ? 'selected' : ''}`} d={edgePath(edge, positions)} markerEnd={`url(#${marker})`}><title>{`${edge.source}${edge.source_orientation} → ${edge.target}${edge.target_orientation}; overlap ${edge.overlap}`}</title></path>)}
-        {nodes.map(node => { const point = positions.get(node.id); const origin = originFor(node.id); return <g key={node.id} className={`graph-node ${node.id === selected ? 'selected' : ''}`} style={{'--reference-colour':origin.reference?.colour,'--reference-light':origin.reference?.light_colour}} data-graph-node={node.id} role="button" tabIndex="0" aria-label={`Segment ${node.id}; ${node.length_bp == null ? 'length unknown' : `${node.length_bp} bases`}; ${origin.reference?.name ?? "origin unresolved"}; ${originLabels[origin.kind]}`} aria-pressed={node.id === selected} onPointerDown={event => dragNode(event, node.id)} onClick={() => { if (suppressClick.current) { suppressClick.current = false; return; } select(node.id); }} onKeyDown={event => { if (['Enter', ' '].includes(event.key)) { event.preventDefault(); event.stopPropagation(); select(node.id); } }}>
+        {nodes.map(node => { const point = positions.get(node.id); const origin = originFor(node.id); return <g key={node.id} className={`graph-node ${node.id === selected ? 'selected' : ''}`} style={{'--reference-colour':origin.reference?.colour,'--reference-light':origin.reference?.light_colour}} data-graph-node={node.id} role="button" tabIndex="0" aria-label={`Segment ${node.id}; ${node.length_bp == null ? 'length unknown' : `${node.length_bp} bases`}; ${nodeOriginChunks(node.id, origins).length ? "recorded internal origin intervals" : origin.reference?.name ?? "origin unresolved"}; ${nodeOriginChunks(node.id, origins).length ? "select a portion to inspect evidence" : originLabels[origin.kind]}`} aria-pressed={node.id === selected} onPointerDown={event => dragNode(event, node.id)} onClick={() => { if (suppressClick.current) { suppressClick.current = false; return; } select(node.id); }} onKeyDown={event => { if (['Enter', ' '].includes(event.key)) { event.preventDefault(); event.stopPropagation(); select(node.id); } }}>
           <rect x={point.x - 58} y={point.y - 30} width="116" height="64" rx="4" />
-          <rect className="origin-strip" x={point.x - 54} y={point.y + 24} width="108" height="6" rx="1" />
+          {nodeOriginChunks(node.id, origins).length ? nodeOriginChunks(node.id, origins).map((chunk, index) => {
+            const ref = chunk.status === 'supported' ? origins.references.find(r => r.id === chunk.reference_id) : null;
+            const length = origins.node_intervals[node.id].length_bp;
+            return <rect key={index} className="node-origin-chunk" x={point.x - 54 + 108 * chunk.node_interval[0] / length} y={point.y + 24} width={108 * (chunk.node_interval[1]-chunk.node_interval[0]) / length} height="6" style={{'--reference-colour':ref?.colour ?? '#92969d','--reference-light':ref?.light_colour ?? '#686c73'}} onPointerDown={event => {event.stopPropagation(); suppressClick.current=false;}} onClick={event => {event.stopPropagation(); if (suppressClick.current) {suppressClick.current=false; return;} select(node.id, index);}}><title>{`${chunk.node_interval.join('–')} bp · ${ref?.name ?? (chunk.status === 'ambiguous' ? 'Ambiguous' : 'No recorded support')}`}</title></rect>;
+          }) : <rect className="origin-strip" x={point.x - 54} y={point.y + 24} width="108" height="6" rx="1" />}
           {showLabels && <text x={point.x} y={point.y - 13} textAnchor="middle">{node.id.length > 16 ? node.id.slice(0, 14) + '…' : node.id}</text>}
-          {showLabels && <text className="origin-node-label" x={point.x} y={point.y + 1} textAnchor="middle">{(origin.reference?.name ?? "Unresolved").slice(0,18)}</text>}
-          {showLabels && <text className="origin-node-evidence" x={point.x} y={point.y + 15} textAnchor="middle">{originShortLabels[origin.kind]}</text>}
+          {showLabels && <text className="origin-node-label" x={point.x} y={point.y + 1} textAnchor="middle">{(nodeOriginChunks(node.id, origins).length ? "Recorded intervals" : origin.reference?.name ?? "Unresolved").slice(0,18)}</text>}
+          {showLabels && <text className="origin-node-evidence" x={point.x} y={point.y + 15} textAnchor="middle">{nodeOriginChunks(node.id, origins).length ? "Select a portion" : originShortLabels[origin.kind]}</text>}
           <title>{`${node.id}; ${node.length_bp == null ? 'length unknown' : node.length_bp + ' bp'}`}</title>
         </g>; })}
       </svg>
       <p className="muted">A self-link or closed GFA path is graph evidence, not confirmation of a physical circular molecule. Assembler-reported circularity and its source are listed separately on this result page.</p>
       {selectedNode && <div className="graph-selection" aria-live="polite"><h3>Segment {selectedNode.id}</h3><p>Length: {selectedNode.length_bp == null ? 'not reported' : `${selectedNode.length_bp.toLocaleString()} bp`}. Recorded GFA coverage/count tags: {coverageDescription(selectedNode.reported_coverage_tags) || 'none collected'}.</p>
-        <OriginEvidence origin={selectedOrigin} node={selectedNode} origins={origins} />
+        <OriginEvidence origin={selectedOrigin} node={selectedNode} origins={origins} selectedInterval={selectedInterval} onSelectInterval={setSelectedInterval} />
         <p>{graph.self_loop_segment_ids?.includes(selectedNode.id) ? 'An explicit GFA self-link was recorded for this segment.' : 'No explicit GFA self-link was recorded for this segment.'} This does not validate molecular topology.</p>
         <details open><summary>Incident link records ({related.length})</summary>{related.length ? <ul>{related.map((edge, index) => <li key={index}><code>{edge.source}{edge.source_orientation} → {edge.target}{edge.target_orientation}</code>; overlap {edge.overlap}</li>)}</ul> : <p>No incident link records.</p>}</details>
       </div>}

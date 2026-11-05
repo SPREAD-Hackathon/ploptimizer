@@ -58,7 +58,7 @@ def _repeatability_tables(item, tools):
     if only_supplementary:
         body += '<p>The revised larger-plasmid repeatability case has not been assessed.</p><details><summary>Supplementary repeatability comparisons</summary>'
     for kind, heading in (("within_thread", "Repeated runs at the same thread setting"), ("across_threads", "Agreement across thread settings")):
-        body += f'<h2>{heading}</h2><div class="table-scroll"><table><thead><tr><th scope="col">Input</th><th scope="col">Assembler</th><th scope="col">Mode</th><th scope="col">Threads</th><th scope="col">Completed / expected</th><th scope="col">File bytes</th><th scope="col">Normalised sequences</th><th scope="col">Reference-recovery outcomes</th></tr></thead><tbody>'
+        body += f'<h2>{heading}</h2><div class="table-scroll"><table data-table-kind="repeats"><thead><tr><th scope="col">Input</th><th scope="col">Assembler</th><th scope="col">Mode</th><th scope="col">Threads</th><th scope="col">Completed / expected</th><th scope="col">File bytes</th><th scope="col">Normalised sequences</th><th scope="col">Reference-recovery outcomes</th></tr></thead><tbody>'
         groups = [g for g in item.get("repeatability_groups", []) if g["comparison"] == kind]
         for g in groups:
             threads = ', '.join(map(str, g["threads"])) if isinstance(g.get("threads"), list) else str(g.get("threads", "Not recorded"))
@@ -133,7 +133,7 @@ def render_family(model, family, prefix="../"):
 
 
 def _run_table(rows, prefix):
-    body = '<div class="table-scroll"><table><thead><tr><th scope="col">Genome / case</th><th scope="col">Assembler / version</th><th scope="col">Threads / repeat</th><th scope="col">Exact status</th></tr></thead><tbody>'
+    body = '<div class="table-scroll"><table data-table-kind="runs"><thead><tr><th scope="col">Genome / case</th><th scope="col">Assembler / version</th><th scope="col">Threads / repeat</th><th scope="col">Exact status</th></tr></thead><tbody>'
     for row in rows:
         run = f'{row["threads"] if row["threads"] is not None else "Not recorded"} threads · {row["run_id"] or "Single run"}'
         body += f'<tr data-batch="{_e(row["batch"])}"><th scope="row">{_e(row["organism"])}<small>{_e(row["title"])}</small></th><td><a href="{_e(prefix + row["href"])}">{_e(TOOLS[row["tool"]])}<small>{_e(row["version"])}</small></a></td><td>{_e(run)}</td><td><span class="status {_e(row["status"])}">{_e(row["status"].replace("_", " ").title())}</span></td></tr>'
