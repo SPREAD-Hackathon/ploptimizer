@@ -94,3 +94,6 @@ for (const element of document.querySelectorAll('[data-assembly-graph]')) {
 
 import { enhanceTables } from './table-controls.js';
 enhanceTables();
+
+import { enhanceMobileMatrices } from './mobile-matrix.js';
+enhanceMobileMatrices();

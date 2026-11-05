@@ -208,3 +208,15 @@ th[aria-sort="descending"] .table-sort svg path { d: path("M3 6 6 9 9 6"); }
 .failure-facts > p { margin-bottom: 12px; }
 .failure-facts .result-facts { margin-block: 12px; }
 .failure-location { color: var(--gx-text-muted); font-size: 14px; }
+
+.overview-matrix-controls { display: none; }
+@media (max-width: 900px) {
+  .overview-matrix-controls { display: grid; gap: 6px; margin-block: 24px 12px; font-size: 14px; }
+  .overview-matrix-controls select { width: 100%; min-height: 44px; font-size: 16px; }
+  .table-scroll.matrix-mobile-ready { overflow: visible; }
+  .overview-heatmap.matrix-mobile-ready { width: 100%; min-width: 0; }
+  .overview-heatmap.matrix-mobile-ready th:first-child { width: 55%; position: static; }
+  .overview-heatmap.matrix-mobile-ready tr > :not(:first-child):not(.matrix-mobile-selected) { display: none; }
+  .overview-heatmap.matrix-mobile-ready .overview-cell strong,
+  .overview-heatmap.matrix-mobile-ready .overview-cell small { white-space: normal; overflow-wrap: anywhere; }
+}

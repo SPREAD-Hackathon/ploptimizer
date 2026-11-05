@@ -1,0 +1,42 @@
+{
+  "errors": [],
+  "html_pages": 399,
+  "local_links_checked": 8005,
+  "policy": {
+    "max_file_bytes": 5242880,
+    "max_files": 1500,
+    "max_total_bytes": 67108864
+  },
+  "preserved_source_records": 300,
+  "public_files": 1092,
+  "schema_version": 1,
+  "status": "local_verified_not_yet_deployed",
+  "total_files": 1103,
+  "website_bytes": 47280629,
+  "bundle_tests_passed": 6,
+  "http_routes_checked": 398,
+  "phone_widths_checked": [
+    320,
+    390
+  ],
+  "intermediate_width_checked": 800,
+  "desktop_width_checked": 1440,
+  "phone_layout": "Scenario plus complete selected assembler; no horizontal scrolling",
+  "phone_visible_cells_per_row": 2,
+  "assembler_choices_checked": [
+    "Flye (default)",
+    "Flye (--meta)",
+    "Raven",
+    "Plassembler long"
+  ],
+  "phone_scroller_content_equals_client": true,
+  "long_repeatability_counts_fit": true,
+  "desktop_visible_columns": 5,
+  "themes_checked": [
+    "dark",
+    "light"
+  ],
+  "reviewer_disposition": "SHIP, including <=900px breakpoint",
+  "documentation": "DESIGN.md updated; source counts and links unchanged",
+  "screenshots": ".cache/mobile-matrix-review"
+}

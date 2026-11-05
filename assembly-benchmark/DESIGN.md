@@ -17,10 +17,23 @@ counts. Blue/orange tones supplement explicit labels, with unscored outcomes
 separate. The table leads without lengthy interpretation or per-record diagnoses.
 Family pages list genome/tool/version records linking to individual evidence and
 graphs. Existing genome-case URLs remain concise input/result summaries. Use semantic table headers, visible status
-text and linked evidence. Prose, navigation and controls fit phone widths; the
-matrix scrolls within its labelled region. Shared mobile navigation appears
-below 1050 px. Scenario data remains readable if JavaScript is unavailable.
-The top-left Scenario family header stays pinned with its row labels while assembler columns scroll.
+text and linked evidence. Prose, navigation and controls fit phone widths. Shared
+mobile navigation appears below 1050 px.
+
+Above 900 px, the homepage matrix shows Scenario family and all four assembler
+columns. The full table scrolls within its labelled region when needed; its
+top-left Scenario family header stays pinned with its row labels while assembler
+columns scroll. At 900 px and below, JavaScript progressively presents two fully
+fitting columns: Scenario family and the selected assembler. A labelled native
+Assembler selector sits above and outside the table, uses the shared GenomicX
+input styling, and defaults to the first assembler. All four choices remain
+available. Scenario labels, assembler headings, counts and the complete caption
+must remain readable without horizontal swiping; allow long headings and counts,
+including repeated-run counts, to wrap on narrow phones. Keep the original
+semantic table and all four assembler results in the source HTML. Without
+JavaScript, retain the complete matrix in its labelled horizontal scrolling
+region. Choosing an assembler changes only the visible comparison column, never
+the results or scientific totals.
 
 Individual-run and case-run lists, repeatability groups, and long contig/length
 inventories progressively add table navigation. Keep the headline count matrix
