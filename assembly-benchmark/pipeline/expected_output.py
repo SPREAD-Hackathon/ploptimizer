@@ -50,15 +50,7 @@ def render_expected_output(case, record):
             dash = ' stroke-dasharray="5 4"' if topology != "linear" else ''
             body += f'<path d="M{x-radius:.2f} {y} H{x+radius:.2f}"{dash} />'
         body += f'<text x="{x}" y="{y+70}" text-anchor="middle">{e(name[:19] + "…" if len(name) > 20 else name)}</text><text class="expected-size" x="{x}" y="{y+89}" text-anchor="middle">{e(size)}</text></g>'
-    topologies = {m.get("topology", "unknown") for m in molecules}
-    legend = []
-    if "circular" in topologies:
-        legend.append("Circles show circular reference molecules.")
-    if "linear" in topologies:
-        legend.append("Lines show linear reference molecules.")
-    if topologies - {"circular", "linear"}:
-        legend.append("Dashed lines mean topology is unknown.")
-    body += '</svg><p class="muted">' + ' '.join(legend) + ' Sizes are schematic.</p>'
+    body += '</svg>'
     body += '<details><summary>Reference accessions</summary><ul>'
     for molecule in molecules:
         body += f'<li>{e(molecule.get("replicon_name", "Reference molecule"))}: <code>{e(molecule.get("refseq_accession", "Not recorded"))}</code> · {e(molecule.get("topology", "unknown"))}</li>'
