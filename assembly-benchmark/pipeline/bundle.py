@@ -276,8 +276,18 @@ def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False, ar
     write_tsv(output/'molecules.tsv',['batch','scenario','tool','run','accession','required_by_endpoint','exact_status','expected_length_bp','exact_contigs','aligned_reference_fraction','alignment_identity','aligned_contig_count'],molecules)
     write_tsv(output/'evidence-availability.tsv',['batch','scenario','tool','run','exact_status','plot_status','plot_source','recorded_alignment_rows','verified_empty_plot','reviewed_change_status','mechanism_confidence','plot_reason'],availability)
     save(output/'evidence-coverage.json',coverage_summary(documents,cohort.get('primary_batches',[])))
+    from .aggregate_data import aggregate_data
+    from .aggregate_plot import write_aggregate_plots
+    aggregates = aggregate_data(documents, overview)
+    save(output/'aggregates/data.json', aggregates)
+    for name in ('executions', 'molecules', 'inputs'):
+        rows = aggregates[name]
+        columns = list(rows[0]) if rows else []
+        write_tsv(output/'aggregates'/f'{name}.tsv', columns, [[row.get(column) for column in columns] for row in rows])
+    write_aggregate_plots(aggregates, output/'aggregates')
+    save(output/'aggregates/wick-figures.json', load(ROOT/'references/wick-figures.json'))
     counts=overview['counts']
-    (output/'README.md').write_text(f'# Benchmark results bundle\n\nSchema: {VERSION}. Primary batch: {primary_batch}.\n\nHeadline cohort: {counts["pass"]} pass; {counts["fail"]} fail; {counts["errors"]} execution errors; {counts["unscored"]} unscored.\n\nSee summary.tsv, molecules.tsv and reports/<batch>/<result>.md. Tables include all source batches; headline counts use only the declared manifest cohort.\n\nExport repackages existing recorded evidence; it does not run assemblies, alignments or new assessments. Missing measurements stay missing.\n')
+    (output/'README.md').write_text(f'# Benchmark results bundle\n\nSchema: {VERSION}. Primary batch: {primary_batch}.\n\nHeadline cohort: {counts["pass"]} pass; {counts["fail"]} fail; {counts["errors"]} execution errors; {counts["unscored"]} unscored.\n\nSee summary.tsv, molecules.tsv, reports/<batch>/<result>.md and aggregates/ for cohort-separated figures, source tables and metric definitions. Tables include all source batches; headline counts use only the declared manifest cohort.\n\nExport repackages existing recorded evidence; it does not run assemblies, alignments or new assessments. Missing measurements stay missing.\n')
     files={str(path.relative_to(output)):digest(path) for path in sorted(output.rglob('*')) if path.is_file()}
     save(output/'manifest.json',{'schema_version':VERSION,'kind':'ploptimizer-results-bundle','primary_batch':primary_batch,'batches':[d['batch'] for d in documents],
         'sources':sources,'cohort':cohort,'coordinate_conventions':{'saved_review':'0-based half-open','human_labels':'explicitly labelled per view'},

@@ -14,6 +14,15 @@ downloadable provenance. See [graph collection](GRAPH_COLLECTION.md) for source
 coverage and limits. Publication snapshots are versioned in `published/`; large
 run artefacts stay on BMRC.
 
+## Aggregate plots
+
+[Aggregate results](https://ploptimizer-assembly-benchmark.vercel.app/aggregate)
+add cohort-separated outcome composition, plasmid size/depth, mapped breadth,
+recorded identity, runtime/RAM, input distributions and repeatability figures.
+SVG/PNG figures and source tables are included in the backend ZIP.
+See [metric definitions and the Wick comparison](AGGREGATE_PLOTS.md). Original
+Wick figures are linked with attribution; their values are not our measurements.
+
 ## Rebuild reporting from frozen evidence
 
 Use the [backend bundle workflow](RESULTS_BUNDLE.md): `benchmark.py export`

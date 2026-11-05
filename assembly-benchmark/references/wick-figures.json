@@ -1,0 +1,53 @@
+{
+  "repository": "https://github.com/rrwick/Long-read-assembler-comparison",
+  "revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+  "study": "https://doi.org/10.12688/f1000research.21782.4",
+  "license": "CC BY 4.0",
+  "authors": "Ryan R. Wick and Kathryn E. Holt",
+  "figures": [
+    {
+      "title": "Fig 1 simulated read sets",
+      "url": "https://github.com/rrwick/Long-read-assembler-comparison/blob/4bc676c4a5b01602abf1143bfefcaab4cc0dde97/figures/Fig_1_simulated_read_sets.png"
+    },
+    {
+      "title": "Fig 2 real read sets",
+      "url": "https://github.com/rrwick/Long-read-assembler-comparison/blob/4bc676c4a5b01602abf1143bfefcaab4cc0dde97/figures/Fig_2_real_read_sets.png"
+    },
+    {
+      "title": "Fig S01 ref genome replicons",
+      "url": "https://github.com/rrwick/Long-read-assembler-comparison/blob/4bc676c4a5b01602abf1143bfefcaab4cc0dde97/figures/Fig_S01_ref_genome_replicons.png"
+    },
+    {
+      "title": "Fig S02 badread parameters",
+      "url": "https://github.com/rrwick/Long-read-assembler-comparison/blob/4bc676c4a5b01602abf1143bfefcaab4cc0dde97/figures/Fig_S02_badread_parameters.png"
+    },
+    {
+      "title": "Fig S03 replicon depths",
+      "url": "https://github.com/rrwick/Long-read-assembler-comparison/blob/4bc676c4a5b01602abf1143bfefcaab4cc0dde97/figures/Fig_S03_replicon_depths.png"
+    },
+    {
+      "title": "Fig S04 commands",
+      "url": "https://github.com/rrwick/Long-read-assembler-comparison/blob/4bc676c4a5b01602abf1143bfefcaab4cc0dde97/figures/Fig_S04_commands.png"
+    },
+    {
+      "title": "Fig S05 circularisation",
+      "url": "https://github.com/rrwick/Long-read-assembler-comparison/blob/4bc676c4a5b01602abf1143bfefcaab4cc0dde97/figures/Fig_S05_circularisation.png"
+    },
+    {
+      "title": "Fig S06 tripled reference",
+      "url": "https://github.com/rrwick/Long-read-assembler-comparison/blob/4bc676c4a5b01602abf1143bfefcaab4cc0dde97/figures/Fig_S06_tripled_reference.png"
+    },
+    {
+      "title": "Fig S07 problem plots",
+      "url": "https://github.com/rrwick/Long-read-assembler-comparison/blob/4bc676c4a5b01602abf1143bfefcaab4cc0dde97/figures/Fig_S07_problem_plots.png"
+    },
+    {
+      "title": "Fig S08 simulated plasmids",
+      "url": "https://github.com/rrwick/Long-read-assembler-comparison/blob/4bc676c4a5b01602abf1143bfefcaab4cc0dde97/figures/Fig_S08_simulated_plasmids.png"
+    },
+    {
+      "title": "Fig S09 real plasmids",
+      "url": "https://github.com/rrwick/Long-read-assembler-comparison/blob/4bc676c4a5b01602abf1143bfefcaab4cc0dde97/figures/Fig_S09_real_plasmids.png"
+    }
+  ]
+}

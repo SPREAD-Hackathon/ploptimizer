@@ -465,3 +465,31 @@ resolve and original source fields are preserved across all 300 result views.
 Production deployment `dpl_4WFGpYXj8HRTCMKNeh1FnfnobeLw` passed byte-for-byte
 checks for all 2,266 public files, including downloads. Evidence is saved in
 `evidence/baseline-v2/`. No reference replacement or new cluster job was performed.
+
+## Aggregate figure reporting (5 November)
+
+The metadata-only backend export now produces 37 aggregate figures across seven
+measured scenario/cohort groups: exact outcomes, plasmid size/achieved depth,
+recorded breadth and alignment-weighted identity, elapsed time/peak memory,
+input distributions, and separate S3 repeatability. SVG/PNG figures, measurement
+rows, missingness and original identities are packaged in the backend ZIP.
+The website consumes those products at `/aggregate`.
+
+Primary and supplementary groups stay separate; S3 repeats do not enter recovery
+or resource distributions. Wick longest-alignment contiguity, compatible terminal
+gap/overlap and maximum-indel distributions remain unmeasured. The page links all
+11 original Wick figure sets with attribution and a pinned repository revision.
+Dataset generation, references and all scientific scores remain unchanged.
+See [AGGREGATE_PLOTS.md](AGGREGATE_PLOTS.md) for metric definitions, the simulation
+design comparison and the proposed separate general-evaluation track.
+
+Verification: the 326-test suite passed with 11 optional skips; six focused bundle
+tests passed after the axis fixes. All 7,492 local links resolve, 74 plot-file hashes
+match their indexes, and all 300 frozen source records retain their original
+fields. Desktop/phone checks confirm contained figure scrolling; independent
+review scored both named axis fixes resolved. Evidence is in `evidence/aggregate-v1/`.
+
+Production deployment `dpl_ixNY2CitKwnNsCjEc1m9kb1PTpMY` passed byte-for-byte
+checks for all 2,347 public files. One initial DNS lookup failure passed a targeted
+retry; both initial and final verification records are retained. Live browser
+checks confirmed the aggregate navigation, baseline cohort and loaded figures.

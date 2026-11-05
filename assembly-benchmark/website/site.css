@@ -178,3 +178,11 @@ tbody tr:hover > .overview-cell { background: var(--heat-surface); }
 .contig-origin i { width: 10px; height: 10px; flex: none; background: var(--reference-colour); }
 .contig-match-label { display: block; color: var(--gx-text-muted); margin-top: 4px; }
 [data-theme="light"] .contig-origin i { background: var(--reference-light); }
+
+.aggregate-group { margin-block: var(--gx-space-5, 1.5rem); }
+.aggregate-group > summary { font-size: 1.1rem; font-weight: 600; padding-block: .6rem; }
+.aggregate-figure { margin: 2rem 0 3rem; }
+.aggregate-figure img { display: block; width: 100%; height: auto; background: white; }
+.aggregate-figure figcaption { max-width: 75ch; margin-top: .75rem; font-size: .9rem; }
+.aggregate-figure > a { display: block; overflow-x: auto; scrollbar-color: var(--line) var(--paper); }
+.aggregate-figure img { min-width: 840px; }

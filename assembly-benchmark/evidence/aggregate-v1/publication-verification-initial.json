@@ -1,0 +1,13 @@
+{
+  "status": "fail",
+  "base_url": "https://ploptimizer-assembly-benchmark.vercel.app/",
+  "batch": "20261104T190455",
+  "generated_at": "2026-11-05T07:43:04+00:00",
+  "checked_files": 2347,
+  "failures": [
+    {
+      "route": "data/results/s1-se11-pse11-3--flye-meta-report.md",
+      "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
+    }
+  ]
+}

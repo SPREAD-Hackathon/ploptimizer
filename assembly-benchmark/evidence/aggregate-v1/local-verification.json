@@ -1,0 +1,18 @@
+{
+  "status": "pass",
+  "local_links_checked": 7492,
+  "source_records_preserved": 300,
+  "selected_executions": 284,
+  "plots": 37,
+  "formats": [
+    "SVG",
+    "PNG"
+  ],
+  "tests_run": 326,
+  "optional_skips": 11,
+  "failures": 0,
+  "focused_bundle_tests": 6,
+  "plot_hashes_verified": 74,
+  "primary_and_supplementary_separate": true,
+  "deployment_id": "dpl_ixNY2CitKwnNsCjEc1m9kb1PTpMY"
+}

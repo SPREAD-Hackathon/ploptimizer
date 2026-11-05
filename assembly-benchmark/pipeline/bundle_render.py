@@ -37,6 +37,10 @@ def render_bundle(bundle, output):
     for name in ('summary.tsv','molecules.tsv','evidence-availability.tsv','evidence-coverage.json','length-metrics.tsv'):
         if (bundle/name).is_file():
             shutil.copy2(bundle/name,output/'data'/name)
+    if (bundle/'aggregates/index.json').is_file():
+        from .aggregate_page import aggregate_page
+        shutil.copytree(bundle/'aggregates', output/'data/aggregates', dirs_exist_ok=True)
+        (output/'aggregate.html').write_text(aggregate_page(load(bundle/'aggregates/index.json'), load(bundle/'aggregates/wick-figures.json')))
     home=output/'index.html'
     content=home.read_text().replace('</main>','<div class="downloads"><a href="data/results-bundle.zip">Backend results bundle (ZIP)</a><a href="data/summary.tsv">Execution summary TSV</a><a href="data/molecules.tsv">Molecule evidence TSV</a></div></main>')
     if (bundle/'evidence-availability.tsv').is_file():

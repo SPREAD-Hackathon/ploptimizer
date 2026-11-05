@@ -1,0 +1,24 @@
+{
+  "review_scope": "Ordinary GenomicX extension; final verdict scores the two named axis fixes only",
+  "initial_disposition": "fix",
+  "final_disposition": "ship",
+  "fixes": [
+    {
+      "item": "Show actual identity percentages without additive offsets",
+      "status": "resolved"
+    },
+    {
+      "item": "Label runtime and RAM ranges with readable numeric ticks",
+      "status": "resolved"
+    }
+  ],
+  "regressions_reported": [],
+  "captures": {
+    "desktop_width_px": 1280,
+    "phone_width_px": 390,
+    "phone_document_width_px": 380,
+    "phone_chart_width_px": 840,
+    "phone_chart_scroll_container_width_px": 348
+  },
+  "system_documentation": "Existing GenomicX system preserved; documenter found no required changes"
+}

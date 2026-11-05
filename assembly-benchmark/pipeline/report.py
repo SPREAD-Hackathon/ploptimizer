@@ -34,8 +34,8 @@ def badge(status):
 
 
 def page(title, body, prefix="", active="overview"):
-    links = [("overview", "index.html", "Results"), ("scenarios", "scenarios/index.html", "Scenarios"), ("methods", "methods.html", "Methods"), ("history", "history.html", "All batches")]
-    nav = "".join(f'<a {"aria-current=page" if key == active else ""} href="{prefix}{url}">{label}</a>' for key, url, label in links)
+    links = [("overview", "index.html", "Results"), ("scenarios", "scenarios/index.html", "Scenarios"), ("aggregate", "aggregate.html", "Aggregate plots"), ("methods", "methods.html", "Methods"), ("history", "history.html", "All batches")]
+    nav = "".join(f'<a {"aria-current=page" if key == active else ""} href="{'/aggregate.html' if key == 'aggregate' else prefix + url}">{label}</a>' for key, url, label in links)
     return f'''<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)} · Ploptimizer</title><meta name="description" content="Long-read plasmid assembly benchmark: scenarios, exact recovery outcomes and execution evidence.">
 <script>try{{var theme=localStorage.getItem('gx-theme');if(theme==='light'||theme==='dark')document.documentElement.dataset.theme=theme;}}catch{{}}</script>
