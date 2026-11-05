@@ -12,6 +12,7 @@ from .reviews import attach_sequence_review
 from .assessments import attach_assessment
 from .common import ROOT, digest, fingerprint, load, save
 from .diagnostics import DEFAULT_POLICY
+from .result_pages import enrich_graph_artifacts, result_href, write_result_pages
 
 LABELS = {"flye": "Flye", "flye-meta": "Flye · uneven coverage", "raven": "Raven", "plassembler": "Plassembler long"}
 STATUSES = {"pass": "Pass", "fail": "Fail", "not_run": "Not run", "pending": "Queued", "running": "Running", "error": "Job error", "timeout": "Timed out", "invalid_input": "Invalid input"}
@@ -136,6 +137,8 @@ def build(config, batch=None, output=None, document=None, include_history=True):
                     "provenance": provenance}
     results = explained_records(results, cases)
     document["results"] = results
+    document = enrich_graph_artifacts(document, batch)
+    results = document["results"]
     save(output / "data/results.json", document)
     with (output / "data/results.tsv").open("w", newline="") as stream:
         writer = csv.writer(stream, delimiter="\t")
@@ -144,6 +147,7 @@ def build(config, batch=None, output=None, document=None, include_history=True):
             score = row.get("evaluation", {})
             writer.writerow([row["scenario_id"], row["tool"], row["status"], score.get("plasmid_passes"), score.get("plasmid_total"), row.get("elapsed_seconds"), row.get("peak_memory_kb")])
     write_diagnostic_tsv(output, cases, results)
+    write_result_pages(document, output, batch)
     counts = {tool: {status: sum(r["tool"] == tool and r["status"] == status for r in results) for status in STATUSES} for tool in config["tools"]}
     completed = sum(r["status"] in ("pass", "fail") for r in results)
     valid_inputs = sum(item["status"] == "valid" for item in document.get("inputs", {}).values())
@@ -167,7 +171,7 @@ def build(config, batch=None, output=None, document=None, include_history=True):
         body += f'<tr data-category="{case["category"]}" data-species="{case["organism"].split()[0]}"><th scope="row"><a href="scenarios/{e(case["id"])}.html">{e(case["title"])}</a><span class="row-summary"><span class="category-label">{case["category"]}</span> · {len(plasmids)} {noun} · {e(sizes)}</span></th>'
         for tool in config["tools"]:
             row = next(r for r in results if r["scenario_id"] == case["id"] and r["tool"] == tool)
-            body += f'<td data-tool="{tool}" data-status="{row["status"]}"><a class="result-link" href="scenarios/{e(case["id"])}.html#{tool}">Exact: {badge(row["status"])}</a><span class="row-summary">{e(diagnostic_summary(row, case))}</span></td>'
+            body += f'<td data-tool="{tool}" data-status="{row["status"]}"><a class="result-link" href="{e(result_href(row))}">Exact: {badge(row["status"])}</a><span class="row-summary">{e(diagnostic_summary(row, case))}</span></td>'
         body += '</tr>'
     body += '</tbody></table></div><p class="legend">Pass and fail are completed sequence assessments. Queued, running, invalid inputs and job errors are unscored; they are never counted as scientific failures.</p>'
     body += f'<div class="downloads"><a href="data/results.json">Download JSON</a><a href="data/results.tsv">Download TSV</a><a href="data/recovery-evidence.tsv">Recovery evidence TSV</a><span>Updated {e(generated)} · Batch {e(document["batch"] or "not submitted")}</span></div>'
@@ -222,6 +226,7 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
     body += '</tbody></table></div><h2>Assembler results</h2>'
     for row in rows:
         body += f'<section class="assembler-result" id="{row["tool"]}"><h3>{e(LABELS[row["tool"]])} Exact: {badge(row["status"])}</h3>'
+        body += f'<p><a href="{e(result_href(row, "../"))}">Open result details, contigs and assembly graph</a></p>'
         body += finding_panel(row, case)
         if row.get("error"):
             body += f'<p>{e(row["error"])}</p>'
@@ -510,7 +515,8 @@ def finding_panel(record, case=None, compact=False):
 
 def execution_evidence(record, case=None):
     """Add a reproducible explanation to downloads without rewriting source records."""
-    public = {key: value for key, value in record.items() if key not in ("host", "assembly_file", "command")}
+    # Graphs have dedicated downloads; do not duplicate large topology payloads in legacy records.
+    public = {key: value for key, value in record.items() if key not in ("host", "assembly_file", "command", "graph_artifacts")}
     public["command"] = ["<workdir>" + str(value)[str(value).index("/runs/"):] if "/runs/" in str(value)
                          else str(value).replace(str(ROOT), "<workdir>") for value in record.get("command", [])]
     if not public.get("explanation"):

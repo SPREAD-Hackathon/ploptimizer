@@ -9,6 +9,7 @@ import shutil
 from .assets import ensure_assets
 from .cases import plan
 from .common import ROOT, load, save
+from .result_pages import enrich_graph_artifacts, result_href, write_result_pages
 from .determinism import assembly_tasks, collect_summary
 from .report import LABELS, badge, batch_progress, e, execution_evidence, explained_records, finding_panel, interpretation_guide, page, write_history
 
@@ -98,6 +99,8 @@ def build_repeat(config, batch=None, output=None, document=None, include_history
     results = explained_records(results, cases)
     document["results"] = results
     document["determinism"]["executions"] = results
+    document = enrich_graph_artifacts(document, batch)
+    results = document["results"]
     save(output / "data/results.json", document)
     fields = ("scenario_id", "tool", "threads", "repeat", "run_id", "status", "reads_sha256", "truth_sha256",
               "assembly_sha256", "normalised_assembly_sha256", "biological_sha256", "elapsed_seconds", "peak_memory_kb")
@@ -105,6 +108,7 @@ def build_repeat(config, batch=None, output=None, document=None, include_history
         writer = csv.writer(stream, delimiter="\t")
         writer.writerow(fields)
         writer.writerows([[row.get(field) for field in fields] for row in results])
+    write_result_pages(document, output, batch)
     scored = sum(row["status"] in ("pass", "fail") for row in results)
     counts = collections.Counter(row["status"] for row in results)
     panel = config["determinism"]
@@ -161,7 +165,7 @@ def repeat_scenario(case, document, output):
             save(output / "data" / name, execution_evidence(row, case))
             elapsed = f'{row["elapsed_seconds"]:.1f} s' if row.get("elapsed_seconds") is not None else "Not available"
             explanation = finding_panel(row, case, compact=True) if row["status"] not in ("pass", "pending", "running", "not_run") else ""
-            body += f'<tr><th scope="row">{row["threads"]} / {row["repeat"]}</th><td>{badge(row["status"])} · exact endpoint</td><td>{elapsed}</td><td><a href="../data/{e(name)}">Execution JSON</a>{explanation}</td></tr>'
+            body += f'<tr><th scope="row">{row["threads"]} / {row["repeat"]}</th><td>{badge(row["status"])} · exact endpoint</td><td>{elapsed}</td><td><a href="{e(result_href(row, "../"))}">Result details and graph</a> · <a href="../data/{e(name)}">Execution JSON</a>{explanation}</td></tr>'
             if row.get("error"):
                 body += f'<tr><td colspan="4">{e(row["error"])}</td></tr>'
         body += '</tbody></table></div></section>'

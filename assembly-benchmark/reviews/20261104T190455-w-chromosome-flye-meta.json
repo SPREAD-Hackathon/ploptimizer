@@ -1,0 +1,116 @@
+{
+  "batch_id": "20261104T190455",
+  "explanation": "The expected chromosome is 4,897,452 bp; contig_1 is 4,897,465 bp. Its first and last 13 bases are both GTCCTGTAGCGGG. Direct comparison of the saved FASTA files confirms that excluding either terminal copy gives exact circular reference equivalence. Saved zero-edit alignments place this segment at reference bases 2,324,990\u20132,325,002 and output positions 1\u201313 and 4,897,453\u20134,897,465 (one-based inclusive). Flye reports this contig as circular in assembly_info.txt. The original output still fails the exact-length criterion. A circularity claim and this observed boundary duplication do not establish the assembler-internal cause.",
+  "hashes": {
+    "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+    "execution_sha256": "c2f2be6c28fcdf3096b259a2c2a182453b858ec5c1bfe6b89d49b75a63c29015",
+    "paf_sha256": "a257404b422f0cad3c31d110fc8ddb346b13d88c081af49f1b9f4d7bab754c51",
+    "truth_sha256": "ec97044ab83216a72220c6e2f9194cdcbdbb7f4c395c8f8326a87b475c428ba3"
+  },
+  "scenario_id": "s1-w-chromosome",
+  "schema_version": 1,
+  "scope": "This saved W chromosome-only output; directly checked terminal duplication and overlap-normalised sequence equivalence. No general assembler or physical-topology claim.",
+  "source_document": "FAILURE_REVIEW.md",
+  "status": "verified",
+  "strict_status": "fail",
+  "summary": "13 bp duplicated terminal overlap; removing one copy restores exact chromosome sequence",
+  "tool": "flye-meta",
+  "validation": {
+    "alignment_records": [
+      {
+        "block_length": 2572463,
+        "cigar": "2572463M",
+        "edit_distance": 0,
+        "mapq": 60,
+        "matches": 2572463,
+        "query_interval": [
+          2325002,
+          4897465
+        ],
+        "query_length": 4897465,
+        "reference_interval": [
+          2324989,
+          4897452
+        ],
+        "reference_length": 4897452,
+        "strand": "-"
+      },
+      {
+        "block_length": 2325002,
+        "cigar": "2325002M",
+        "edit_distance": 0,
+        "mapq": 60,
+        "matches": 2325002,
+        "query_interval": [
+          0,
+          2325002
+        ],
+        "query_length": 4897465,
+        "reference_interval": [
+          0,
+          2325002
+        ],
+        "reference_length": 4897452,
+        "strand": "-"
+      }
+    ],
+    "all_query_bases_aligned": true,
+    "circularity_source": "output/assembly_info.txt",
+    "circularity_source_sha256": "08c95d2a3fa649baf3236e30b56f6aaaefefc0c3d9af0427dff68970546b513e",
+    "direct_trimmed_sequence_equality_checked": true,
+    "drop_first_overlap_exact_circular_equivalent": true,
+    "drop_last_overlap_exact_circular_equivalent": true,
+    "excess_bp": 13,
+    "final_graph": {
+      "interpretation_scope": "Reported final graph structure; self-links alone do not independently establish physical circularity",
+      "links": [
+        {
+          "from": "edge_1",
+          "from_orientation": "+",
+          "overlap": "0M",
+          "to": "edge_1",
+          "to_orientation": "+"
+        },
+        {
+          "from": "edge_1",
+          "from_orientation": "-",
+          "overlap": "0M",
+          "to": "edge_1",
+          "to_orientation": "-"
+        }
+      ],
+      "segment_count": 1,
+      "segments": [
+        {
+          "id": "edge_1",
+          "length_bp": 4897465
+        }
+      ],
+      "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79",
+      "source": "output/assembly_graph.gfa"
+    },
+    "method": "Saved PAF coordinate review and direct existing FASTA end/whole-sequence comparisons with matching assembly/truth hashes; no new assembly or alignment run",
+    "original_exact_score_unchanged": "fail",
+    "query_intervals_0based_half_open": [
+      [
+        0,
+        13
+      ],
+      [
+        4897452,
+        4897465
+      ]
+    ],
+    "query_length": 4897465,
+    "reference_interval_0based_half_open": [
+      2324989,
+      2325002
+    ],
+    "reference_interval_sequence_forward": "CCCGCTACAGGAC",
+    "reference_length": 4897452,
+    "sequence_letters_retrieved": true,
+    "terminal_sequence": "GTCCTGTAGCGGG",
+    "tool_reported_circularity": "Y",
+    "tool_reported_circularity_collected": true
+  }
+}

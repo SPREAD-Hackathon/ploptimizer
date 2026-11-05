@@ -73,7 +73,8 @@ biological or algorithmic cause.
 
 - Metadata gate: all four batches evidence-ready, with no blockers.
 - Reporting code: 181 Python tests ran with 11 optional-dependency skips and no
-  failures. No source-code changes followed that test run.
+  failures. This describes the original reporting build; the later graph follow-up
+  has separate checks below.
 - Final HTTP checks: 78 routes and 284 matrix cells across five published batches;
   all local links resolved. Matrix cells include the pilot's 12 unsubmitted cells.
 - Final repeatability and noisy-result headlines matched their saved outcomes.
@@ -95,3 +96,34 @@ ignored `runs/`. [RUNNING.md](RUNNING.md) describes collection/reproduction; sou
 configuration, package versions and checksums are retained. Large reads,
 assemblies, graphs and checkpoints remain on BMRC. The bounded publisher finished
 successfully and exited; it does not itself commit snapshots to Git.
+
+## Per-result graphs and circularity follow-up
+
+Every matrix result now opens an individual tool/execution page, linked from its
+scenario. These pages separate the exact score, assembler-reported circularity,
+contig inventory and interactive GFA topology. Repeated executions retain their
+thread/repeat identity. Source roles and checksums are visible; initial graphs
+from stopped jobs do not become final-assembly claims.
+
+All 272 submitted executions were checked for existing artefacts. There are 204
+collected GFAs, including five empty no-plasmid outputs; the 68 original Raven
+runs have no saved GFA. All four stopped Plassembler jobs retain their initial
+Flye graphs. Five empty final control summaries provide no circularity claims.
+Long inventories collapse so the graph stays findable; graphs can be panned,
+zoomed and inspected by segment. Local-file inspection is explicitly separate
+from benchmark provenance. No assemblies or alignments were rerun.
+
+The W chromosome-only Flye-meta finding is now directly checked against the saved
+FASTA files: `GTCCTGTAGCGGG` occurs at both ends, and excluding either terminal
+copy restores exact circular reference equivalence. The original exact fail is
+preserved. Flye reports `circ.=Y`; its final graph contains the same overlong
+single segment with self-links. This explains the mismatch, not the internal
+software mechanism. See [FAILURE_REVIEW.md](FAILURE_REVIEW.md).
+
+Follow-up verification: 228 Python tests ran with 11 optional-dependency skips
+and no failures; graph-model tests passed. HTTP checks covered 362 routes and
+284 matrix cells. Browser checks covered the real W result, selection/zoom,
+phone layout, a 2,102-segment stopped-run graph, and the collected-empty state.
+All original scientific status values were checked against the preceding
+version and remain unchanged. See [GRAPH_COLLECTION.md](GRAPH_COLLECTION.md)
+for collection/reproduction and bounds.

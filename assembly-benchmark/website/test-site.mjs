@@ -29,7 +29,7 @@ try {
     const factor = repeats ? repeats.repeats * repeats.threads.length : 1;
     assert.equal(data.results.length, data.scenarios.length * data.config.tools.length * factor);
     comparisons += data.results.length;
-    routes.push(...['/', '/methods.html', '/about.html', '/history.html', '/scenarios/index.html', ...data.scenarios.map(s => `/scenarios/${s.id}.html`)].map(route => prefix + route));
+    routes.push(...['/', '/methods.html', '/about.html', '/history.html', '/scenarios/index.html', ...data.scenarios.map(s => `/scenarios/${s.id}.html`), ...data.results.map(row => `/results/${[row.scenario_id, row.tool, row.run_id].filter(Boolean).join("--")}.html`)].map(route => prefix + route));
   }
   for (const route of routes) {
     const response = await fetch(base + route);

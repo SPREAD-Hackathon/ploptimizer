@@ -151,3 +151,13 @@ still a hypothesis awaiting direct intervention or tracing. The [Raven cause
 review](RAVEN_CAUSE_REVIEW.md) records source links and sequence checks. Future
 runs also isolate checkpoint files, correcting a provenance defect without
 claiming prior non-resume assemblies consumed shared checkpoints.
+
+## W chromosome-only: 13 bp boundary overlap
+
+For S1/S2 batch `20261104T190455`, scenario `s1-w-chromosome`, Flye uneven coverage produced one 4,897,465 bp contig against a 4,897,452 bp chromosome. The two retained alignments have zero reported edits and cover the entire query and reference. They represent the same 13 reference bases at both query ends: reference 2,324,990–2,325,002 maps to query 1–13 and 4,897,453–4,897,465 (one-based inclusive).
+
+Direct inspection of the saved FASTA files verifies that the first and last 13 bases are both `GTCCTGTAGCGGG` (reverse complement of reference `CCCGCTACAGGAC`). Excluding either terminal copy restores exact circular reference equivalence. This confirms a duplicated terminal overlap and explains the original exact-length failure; the saved score is unchanged. Flye reports `circ.=Y` for this 4,897,465 bp contig in `assembly_info.txt`. That is a tool claim, independent of exact sequence accuracy. Graph topology and the software-internal cause remain separate. Standard Flye on the same input passed the original exact comparison.
+
+The final GFA contains one segment, `edge_1`, of 4,897,465 bp, with forward and reverse self-links (`0M`). The 13 extra bases are therefore attached to the main assembled sequence, rather than residing in a separate extra contig. These graph links are distinct from the tool-reported circularity flag and do not independently prove physical topology.
+
+The curated JSON review binds these observations to the execution, assembly, truth and saved PAF hashes; it does not alter the exact score.

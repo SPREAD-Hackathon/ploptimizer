@@ -79,7 +79,7 @@
       "plassembler"
     ]
   },
-  "generated_at": "2026-11-05T01:31:51+00:00",
+  "generated_at": "2026-11-05T07:43:03+00:00",
   "inputs": {
     "s6-w-prk2-seed-20261105-generic-stress": {
       "case": {
@@ -12711,6 +12711,190 @@
         "sha256": "6a31a17bea6be9f3f7d397fecd22e75b083dff4059f210919df25bf7b016a2a4"
       },
       "finished_at": "2026-11-05T01:19:47.631317+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "seq_name",
+            "length",
+            "cov.",
+            "circ.",
+            "repeat",
+            "mult.",
+            "alt_group",
+            "graph_path"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Tool report only; N means not reported circular, not proven linear",
+              "id": "contig_1",
+              "length_bp": 4897452,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "Y",
+              "reported_coverage": 30.0,
+              "reported_graph_path": "1"
+            }
+          ],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 92,
+            "file_sha256": "d91190fa4db246aa0cc361fef58ae749f54be969daf171bf17e2765d1b735e99",
+            "filename": "assembly_info.txt",
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "b6ff577e9153173f19675ca642afab6bc4eb0a06c26271262e588a38151e5ffa"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "final",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:45+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-matched-exact/flye/execution.json",
+          "recorded_primary_assembly_sha256": "6dcc33ee50ad71ce0ad2bbc360aceb55f284d5801008e2b0b2ef771a07da8c2b",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "+",
+              "target": "edge_1",
+              "target_orientation": "+"
+            },
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "-",
+              "target": "edge_1",
+              "target_orientation": "-"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "edge_1",
+              "length_bp": 4897452,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "i",
+                  "value": 30
+                }
+              ]
+            }
+          ],
+          "paths": [
+            {
+              "id": "contig_1",
+              "overlaps": null,
+              "steps": [
+                {
+                  "orientation": "+",
+                  "segment": "edge_1"
+                }
+              ]
+            }
+          ],
+          "self_loop_segment_ids": [
+            "edge_1"
+          ],
+          "source": {
+            "bytes": 4897562,
+            "file_sha256": "9c3460ceffe100ebaa172db43cd65d76a511032860b74b10dcd573891a513d16",
+            "filename": "assembly_graph.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": "1.0"
+        },
+        "input_hashes": {
+          "assembly_sha256": "6dcc33ee50ad71ce0ad2bbc360aceb55f284d5801008e2b0b2ef771a07da8c2b",
+          "execution_sha256": "495bcfb2b04f2e9079824073d6d0dd8db8f19ece9108898ee15d7a9b97855795"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 911252,
       "reads_sha256": "b9d46d77d16709f892e67535e01c48b74928dfc74db58bb6b7c2f7dd5c789247",
       "runtime_source_sha256": {
@@ -12891,6 +13075,190 @@
         "sha256": "0395d8d789fe55ff4bd6cde2fa86e3df11c12f0f5e9339c99dcaee82e079258c"
       },
       "finished_at": "2026-11-05T01:20:02.320573+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "seq_name",
+            "length",
+            "cov.",
+            "circ.",
+            "repeat",
+            "mult.",
+            "alt_group",
+            "graph_path"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Tool report only; N means not reported circular, not proven linear",
+              "id": "contig_1",
+              "length_bp": 4897454,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "Y",
+              "reported_coverage": 30.0,
+              "reported_graph_path": "1"
+            }
+          ],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 92,
+            "file_sha256": "2fca3f42f070418657258f291b85263f191b0a311d75bbe50bf816dd65d8c3ec",
+            "filename": "assembly_info.txt",
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "e7889eae9d7d32e798f95a23040e1f18fda39de9e8624b2f7007b80e2aff3868"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "final",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:45+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-matched-exact/flye-meta/execution.json",
+          "recorded_primary_assembly_sha256": "fc357d63171cedd4d487b8e91120c1f342145b94ee087e315d891d5ec4a2b9e6",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "+",
+              "target": "edge_1",
+              "target_orientation": "+"
+            },
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "-",
+              "target": "edge_1",
+              "target_orientation": "-"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "edge_1",
+              "length_bp": 4897454,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "i",
+                  "value": 30
+                }
+              ]
+            }
+          ],
+          "paths": [
+            {
+              "id": "contig_1",
+              "overlaps": null,
+              "steps": [
+                {
+                  "orientation": "+",
+                  "segment": "edge_1"
+                }
+              ]
+            }
+          ],
+          "self_loop_segment_ids": [
+            "edge_1"
+          ],
+          "source": {
+            "bytes": 4897564,
+            "file_sha256": "375db4ece9a517f190a2a163b5eebdbd1b2eb2b424078f61f7c4880c50301039",
+            "filename": "assembly_graph.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": "1.0"
+        },
+        "input_hashes": {
+          "assembly_sha256": "fc357d63171cedd4d487b8e91120c1f342145b94ee087e315d891d5ec4a2b9e6",
+          "execution_sha256": "d9a243bcf9ae14427d37f2f1d91f4b88a96b7c4fd1e37847bb243cea97a70120"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 896576,
       "reads_sha256": "b9d46d77d16709f892e67535e01c48b74928dfc74db58bb6b7c2f7dd5c789247",
       "runtime_source_sha256": {
@@ -13073,6 +13441,128 @@
         "sha256": "9cc0ca79f11c6858673ff053e54557e393ecd6b4bf386b4633bee5a7f0be6848"
       },
       "finished_at": "2026-11-05T01:17:58.478655+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [],
+          "contigs": [],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "reason": "Source not collected",
+          "source": {
+            "file_sha256": null,
+            "filename": null,
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "missing"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "08dcedeb8285b34e6808732690bf24e7c19a473edc71622f5af984b6379bcb74"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "graph.gfa",
+              "role": "final",
+              "status": "missing"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "assembly_graph.gfa",
+              "role": "final",
+              "status": "missing"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:45+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-matched-exact/raven/execution.json",
+          "recorded_primary_assembly_sha256": "30edccfb9fd0b4eba56b2a081ed378476cf13a8c9973ea7a13f8cf838361956a",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": false,
+          "edges": [],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [],
+          "paths": [],
+          "reason": "Source not collected",
+          "self_loop_segment_ids": [],
+          "source": {
+            "file_sha256": null,
+            "filename": null,
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "missing",
+          "unsupported_record_counts": {},
+          "version": null
+        },
+        "input_hashes": {
+          "assembly_sha256": "30edccfb9fd0b4eba56b2a081ed378476cf13a8c9973ea7a13f8cf838361956a",
+          "execution_sha256": "46090649c954437f4e4ca9d31e328aef6966bf7d3b508f97e6b373b265709a65"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "missing",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 1385220,
       "reads_sha256": "b9d46d77d16709f892e67535e01c48b74928dfc74db58bb6b7c2f7dd5c789247",
       "runtime_source_sha256": {
@@ -13297,6 +13787,201 @@
         "sha256": "ee283e628958da23d4222757f04d85e51c1125156a061f5af92f1bb69e3a51e2"
       },
       "finished_at": "2026-11-05T01:21:49.121960+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "contig",
+            "length",
+            "circularity"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Final tool summary claim only; physical topology and sequence accuracy are not established",
+              "id": "chromosome",
+              "length_bp": 4897452,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "circular"
+            },
+            {
+              "claim_scope": "Final tool summary claim only; physical topology and sequence accuracy are not established",
+              "id": "1",
+              "length_bp": 5360,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "circular"
+            }
+          ],
+          "format": "Plassembler summary.tsv",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 197,
+            "file_sha256": "254d50d1adddf7cca734b3e6b86b382d0ef839f91c41af8370f01f7a9946ec40",
+            "filename": "benchmark_summary.tsv",
+            "kind": "plassembler_summary",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "6808bcfd89d05d179ac83b74c42eb283b6b3f94dfeff3fb479434da7f75f27d8"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/benchmark_plasmids.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/benchmark_summary.tsv",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/flye_output/assembly_graph.gfa",
+              "role": "initial_flye",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/flye_output/assembly_info.txt",
+              "role": "initial_flye",
+              "status": "available"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "initial_flye",
+              "status": "missing"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "initial_flye",
+              "status": "missing"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/unicycler_output/assembly.gfa",
+              "role": "unicycler_component",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:45+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-matched-exact/plassembler/execution.json",
+          "recorded_primary_assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "1",
+              "source_orientation": "+",
+              "target": "1",
+              "target_orientation": "+"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "1",
+              "length_bp": 5360,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "f",
+                  "value": 1.0
+                }
+              ]
+            }
+          ],
+          "paths": [],
+          "self_loop_segment_ids": [
+            "1"
+          ],
+          "source": {
+            "bytes": 5397,
+            "file_sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db",
+            "filename": "benchmark_plasmids.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": null
+        },
+        "input_hashes": {
+          "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+          "execution_sha256": "014284567724dc1afb78644a49e23de0be32b21d3bb7a0ee7fb8e92ac2262a69"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "initial_flye_evaluation": {
         "contig_count": 1,
         "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
@@ -13549,6 +14234,190 @@
         "sha256": "910ec0f33435d7f03fe8344f221a15825cdc79142a6a357b2aa0350adb04858f"
       },
       "finished_at": "2026-11-05T01:22:36.181911+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "seq_name",
+            "length",
+            "cov.",
+            "circ.",
+            "repeat",
+            "mult.",
+            "alt_group",
+            "graph_path"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Tool report only; N means not reported circular, not proven linear",
+              "id": "contig_1",
+              "length_bp": 4897452,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "Y",
+              "reported_coverage": 30.0,
+              "reported_graph_path": "1"
+            }
+          ],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 92,
+            "file_sha256": "d91190fa4db246aa0cc361fef58ae749f54be969daf171bf17e2765d1b735e99",
+            "filename": "assembly_info.txt",
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "7f723ff5385eb69d46453a4279d0b9dbbfe84d6f26e0c156d94164397ad94291"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "final",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:45+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-generic-stress/flye/execution.json",
+          "recorded_primary_assembly_sha256": "feabb96e9464ad1d221e79d3fed9bc26e416deba1485564c4b9fe4897d5eca92",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "+",
+              "target": "edge_1",
+              "target_orientation": "+"
+            },
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "-",
+              "target": "edge_1",
+              "target_orientation": "-"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "edge_1",
+              "length_bp": 4897452,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "i",
+                  "value": 30
+                }
+              ]
+            }
+          ],
+          "paths": [
+            {
+              "id": "contig_1",
+              "overlaps": null,
+              "steps": [
+                {
+                  "orientation": "+",
+                  "segment": "edge_1"
+                }
+              ]
+            }
+          ],
+          "self_loop_segment_ids": [
+            "edge_1"
+          ],
+          "source": {
+            "bytes": 4897562,
+            "file_sha256": "072410e5b727ffa63bc789722e03865f6e6eee8d8bf8c4353b9bec0adfee03be",
+            "filename": "assembly_graph.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": "1.0"
+        },
+        "input_hashes": {
+          "assembly_sha256": "feabb96e9464ad1d221e79d3fed9bc26e416deba1485564c4b9fe4897d5eca92",
+          "execution_sha256": "aa36d9efe53c1e61f440b0fc2c78dfc2fbc10a91496df993dc509579b94207c6"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 958972,
       "reads_sha256": "7facc665b6f6956dad0c3b7dcc2e6e369ea4df7ba976eb3c043821dfb4aa7e7c",
       "runtime_source_sha256": {
@@ -13729,6 +14598,190 @@
         "sha256": "f903b8103e4044094a662307b30f2c4060d326518eca6c098d5d7ce57896a1de"
       },
       "finished_at": "2026-11-05T01:23:42.864022+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "seq_name",
+            "length",
+            "cov.",
+            "circ.",
+            "repeat",
+            "mult.",
+            "alt_group",
+            "graph_path"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Tool report only; N means not reported circular, not proven linear",
+              "id": "contig_1",
+              "length_bp": 4897476,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "Y",
+              "reported_coverage": 30.0,
+              "reported_graph_path": "1"
+            }
+          ],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 92,
+            "file_sha256": "5b433b150d890c5f54e7f7fe857b9a6be7e0f0cc760d969a7bc1bbd09855cf80",
+            "filename": "assembly_info.txt",
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "a2eec57affadc2400fb461b96395688adaeabbd53dca598b2c55ebbb344ca064"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "final",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:45+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-generic-stress/flye-meta/execution.json",
+          "recorded_primary_assembly_sha256": "ce19ad8bcdb405dc8722576f984af21df4dac42b8cb1dbaffbc825fe63b7ea6a",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "+",
+              "target": "edge_1",
+              "target_orientation": "+"
+            },
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "-",
+              "target": "edge_1",
+              "target_orientation": "-"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "edge_1",
+              "length_bp": 4897476,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "i",
+                  "value": 30
+                }
+              ]
+            }
+          ],
+          "paths": [
+            {
+              "id": "contig_1",
+              "overlaps": null,
+              "steps": [
+                {
+                  "orientation": "+",
+                  "segment": "edge_1"
+                }
+              ]
+            }
+          ],
+          "self_loop_segment_ids": [
+            "edge_1"
+          ],
+          "source": {
+            "bytes": 4897586,
+            "file_sha256": "a6310ccf070d5c90a05fc3820d276ed3eb0b436a4bd5e0bd1e19173d87882b94",
+            "filename": "assembly_graph.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": "1.0"
+        },
+        "input_hashes": {
+          "assembly_sha256": "ce19ad8bcdb405dc8722576f984af21df4dac42b8cb1dbaffbc825fe63b7ea6a",
+          "execution_sha256": "85a2a204430ec116ff1995982ab7f36b137695229f5f55d788f3564a50cdea3a"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 963284,
       "reads_sha256": "7facc665b6f6956dad0c3b7dcc2e6e369ea4df7ba976eb3c043821dfb4aa7e7c",
       "runtime_source_sha256": {
@@ -13911,6 +14964,128 @@
         "sha256": "3f6a60066335b08b2fb21e84897d12f147f4dd450b5b17c0a61236e0f026a4f8"
       },
       "finished_at": "2026-11-05T01:21:44.469240+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [],
+          "contigs": [],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "reason": "Source not collected",
+          "source": {
+            "file_sha256": null,
+            "filename": null,
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "missing"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "a7772aa6b17108bf5c49eab946b4bbdffbb4f0c928d5cbfe61f6849f68249a05"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "graph.gfa",
+              "role": "final",
+              "status": "missing"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "assembly_graph.gfa",
+              "role": "final",
+              "status": "missing"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:46+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-generic-stress/raven/execution.json",
+          "recorded_primary_assembly_sha256": "57b2b986f3efa49e576e6e1e82e022daf52c8bcb72487bd13e21107e7b5db411",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": false,
+          "edges": [],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [],
+          "paths": [],
+          "reason": "Source not collected",
+          "self_loop_segment_ids": [],
+          "source": {
+            "file_sha256": null,
+            "filename": null,
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "missing",
+          "unsupported_record_counts": {},
+          "version": null
+        },
+        "input_hashes": {
+          "assembly_sha256": "57b2b986f3efa49e576e6e1e82e022daf52c8bcb72487bd13e21107e7b5db411",
+          "execution_sha256": "97078c2e56da3f9d7049a58403a7430fd485ec24ce0f69c22dbde15ce1270b0c"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "missing",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 1448976,
       "reads_sha256": "7facc665b6f6956dad0c3b7dcc2e6e369ea4df7ba976eb3c043821dfb4aa7e7c",
       "runtime_source_sha256": {
@@ -14135,6 +15310,201 @@
         "sha256": "93a52faa08d9a5c17f7f412ddefe07ecf56f00a879f908a1fff782da865b8838"
       },
       "finished_at": "2026-11-05T01:27:20.349618+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "contig",
+            "length",
+            "circularity"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Final tool summary claim only; physical topology and sequence accuracy are not established",
+              "id": "chromosome",
+              "length_bp": 4897452,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "circular"
+            },
+            {
+              "claim_scope": "Final tool summary claim only; physical topology and sequence accuracy are not established",
+              "id": "1",
+              "length_bp": 5360,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "circular"
+            }
+          ],
+          "format": "Plassembler summary.tsv",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 197,
+            "file_sha256": "0bdc51d700fa8b816d9c9f5b3862162b34b7f0897b990e98b1d4a34cc00cecf1",
+            "filename": "benchmark_summary.tsv",
+            "kind": "plassembler_summary",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "1363bda46e6140c6d586194b136da41da16669f478576c410ffddf384af28e9a"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/benchmark_plasmids.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/benchmark_summary.tsv",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/flye_output/assembly_graph.gfa",
+              "role": "initial_flye",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/flye_output/assembly_info.txt",
+              "role": "initial_flye",
+              "status": "available"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "initial_flye",
+              "status": "missing"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "initial_flye",
+              "status": "missing"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/unicycler_output/assembly.gfa",
+              "role": "unicycler_component",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:46+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-generic-stress/plassembler/execution.json",
+          "recorded_primary_assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "1",
+              "source_orientation": "+",
+              "target": "1",
+              "target_orientation": "+"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "1",
+              "length_bp": 5360,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "f",
+                  "value": 1.0
+                }
+              ]
+            }
+          ],
+          "paths": [],
+          "self_loop_segment_ids": [
+            "1"
+          ],
+          "source": {
+            "bytes": 5397,
+            "file_sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db",
+            "filename": "benchmark_plasmids.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": null
+        },
+        "input_hashes": {
+          "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+          "execution_sha256": "1173e070327ca9922e514da2cb6eafd230ed179b6896c82c01d9d362995206dd"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "initial_flye_evaluation": {
         "contig_count": 1,
         "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
@@ -14387,6 +15757,190 @@
         "sha256": "e5169418c62ef7b3bf1a52949a813645b2b66dc22fc30e3e41373344b99835a5"
       },
       "finished_at": "2026-11-05T01:26:09.230778+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "seq_name",
+            "length",
+            "cov.",
+            "circ.",
+            "repeat",
+            "mult.",
+            "alt_group",
+            "graph_path"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Tool report only; N means not reported circular, not proven linear",
+              "id": "contig_1",
+              "length_bp": 4897452,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "Y",
+              "reported_coverage": 30.0,
+              "reported_graph_path": "1"
+            }
+          ],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 92,
+            "file_sha256": "d91190fa4db246aa0cc361fef58ae749f54be969daf171bf17e2765d1b735e99",
+            "filename": "assembly_info.txt",
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "49c605b4a04b2449d75bd32eb8de6854fe2b511f5221ebf7e86ce1a69aa2181d"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "final",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:46+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-ont2023-shaped/flye/execution.json",
+          "recorded_primary_assembly_sha256": "62dcc071f73cea7db7128ae82ed10c0ec1117afc07d407f5e77fc31c3316e044",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "+",
+              "target": "edge_1",
+              "target_orientation": "+"
+            },
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "-",
+              "target": "edge_1",
+              "target_orientation": "-"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "edge_1",
+              "length_bp": 4897452,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "i",
+                  "value": 30
+                }
+              ]
+            }
+          ],
+          "paths": [
+            {
+              "id": "contig_1",
+              "overlaps": null,
+              "steps": [
+                {
+                  "orientation": "+",
+                  "segment": "edge_1"
+                }
+              ]
+            }
+          ],
+          "self_loop_segment_ids": [
+            "edge_1"
+          ],
+          "source": {
+            "bytes": 4897562,
+            "file_sha256": "e2309e40318dbee25b90a27d739e5cda25ab497e6ab9b873be6ab74f19e13e50",
+            "filename": "assembly_graph.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": "1.0"
+        },
+        "input_hashes": {
+          "assembly_sha256": "62dcc071f73cea7db7128ae82ed10c0ec1117afc07d407f5e77fc31c3316e044",
+          "execution_sha256": "9d2f4f604e2d89459b198e5e59d7e081275ed2df724f6e72f79f5b425cb1a69b"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 961376,
       "reads_sha256": "ae03b9de6556f4ade6bee399618707a5f0480b122068e283c73b891e5952c7e8",
       "runtime_source_sha256": {
@@ -14567,6 +16121,190 @@
         "sha256": "4612efb034e60001b6079c400664d3c593be9adbd518875ed7dc6313332a0c2c"
       },
       "finished_at": "2026-11-05T01:26:56.688991+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "seq_name",
+            "length",
+            "cov.",
+            "circ.",
+            "repeat",
+            "mult.",
+            "alt_group",
+            "graph_path"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Tool report only; N means not reported circular, not proven linear",
+              "id": "contig_1",
+              "length_bp": 4897462,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "Y",
+              "reported_coverage": 30.0,
+              "reported_graph_path": "1"
+            }
+          ],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 92,
+            "file_sha256": "1031161e9d3a2c08aac574e29234c6b803145daacaf8fa2c3f72b14b9890fc40",
+            "filename": "assembly_info.txt",
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "1bda5e8c71f7b113711654fd6fdc6504bf8317385dad832b3a4da738b160d584"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "final",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:46+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-ont2023-shaped/flye-meta/execution.json",
+          "recorded_primary_assembly_sha256": "fa2530a95b551dbc9a8a78a045a3d556d77258b77b9b290fb21cc485938eed05",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "+",
+              "target": "edge_1",
+              "target_orientation": "+"
+            },
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "-",
+              "target": "edge_1",
+              "target_orientation": "-"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "edge_1",
+              "length_bp": 4897462,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "i",
+                  "value": 30
+                }
+              ]
+            }
+          ],
+          "paths": [
+            {
+              "id": "contig_1",
+              "overlaps": null,
+              "steps": [
+                {
+                  "orientation": "+",
+                  "segment": "edge_1"
+                }
+              ]
+            }
+          ],
+          "self_loop_segment_ids": [
+            "edge_1"
+          ],
+          "source": {
+            "bytes": 4897572,
+            "file_sha256": "9436b97199009b51319b64d0e9b72e550a807507bec74eaf4c972570d8c9bb8f",
+            "filename": "assembly_graph.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": "1.0"
+        },
+        "input_hashes": {
+          "assembly_sha256": "fa2530a95b551dbc9a8a78a045a3d556d77258b77b9b290fb21cc485938eed05",
+          "execution_sha256": "3ec5aa0f9cc3e94dac719939623572e86857488c5b7054b0a1245caa05ffd15c"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 959324,
       "reads_sha256": "ae03b9de6556f4ade6bee399618707a5f0480b122068e283c73b891e5952c7e8",
       "runtime_source_sha256": {
@@ -14749,6 +16487,128 @@
         "sha256": "d55095028c8796443bb9a39a47ebb21becb8a2fb91f1858cbd1f1daf4ed5a5dd"
       },
       "finished_at": "2026-11-05T01:25:07.187453+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [],
+          "contigs": [],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "reason": "Source not collected",
+          "source": {
+            "file_sha256": null,
+            "filename": null,
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "missing"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "532a915d4b3f06d1888ec26437b6d0e1538d49b654644538e254ff2d0ce18d48"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "graph.gfa",
+              "role": "final",
+              "status": "missing"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "assembly_graph.gfa",
+              "role": "final",
+              "status": "missing"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:46+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-ont2023-shaped/raven/execution.json",
+          "recorded_primary_assembly_sha256": "f4b7953fb87089317c026cd79067f199d33cedd3a3aedfc6e9e15525e6912f43",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": false,
+          "edges": [],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [],
+          "paths": [],
+          "reason": "Source not collected",
+          "self_loop_segment_ids": [],
+          "source": {
+            "file_sha256": null,
+            "filename": null,
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "missing",
+          "unsupported_record_counts": {},
+          "version": null
+        },
+        "input_hashes": {
+          "assembly_sha256": "f4b7953fb87089317c026cd79067f199d33cedd3a3aedfc6e9e15525e6912f43",
+          "execution_sha256": "f3c717a92af35373866ef10d8145de71a89632c765a39a6b8ce06b8b8ed2f5db"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "missing",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 1442388,
       "reads_sha256": "ae03b9de6556f4ade6bee399618707a5f0480b122068e283c73b891e5952c7e8",
       "runtime_source_sha256": {
@@ -14973,6 +16833,201 @@
         "sha256": "737a68ca7dc05e4615afe2dccbd4332e4b111f88954a6c43e0970d1d703bb8be"
       },
       "finished_at": "2026-11-05T01:30:53.381238+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "contig",
+            "length",
+            "circularity"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Final tool summary claim only; physical topology and sequence accuracy are not established",
+              "id": "chromosome",
+              "length_bp": 4897452,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "circular"
+            },
+            {
+              "claim_scope": "Final tool summary claim only; physical topology and sequence accuracy are not established",
+              "id": "1",
+              "length_bp": 5360,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "circular"
+            }
+          ],
+          "format": "Plassembler summary.tsv",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 198,
+            "file_sha256": "09039cdd0991dbab82b86c9d9afbcdf9a88ad6c06333887373fee990f93a470f",
+            "filename": "benchmark_summary.tsv",
+            "kind": "plassembler_summary",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "b8d5252fa0a44e72af2fc295a9b99906dc0052aac3d7132dcd2273548fa8b326"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T210453",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/benchmark_plasmids.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/benchmark_summary.tsv",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/flye_output/assembly_graph.gfa",
+              "role": "initial_flye",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/flye_output/assembly_info.txt",
+              "role": "initial_flye",
+              "status": "available"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "initial_flye",
+              "status": "missing"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "initial_flye",
+              "status": "missing"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/unicycler_output/assembly.gfa",
+              "role": "unicycler_component",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:10:46+00:00",
+          "execution_relative_path": "results/s6-w-prk2-seed-20261105-ont2023-shaped/plassembler/execution.json",
+          "recorded_primary_assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "1",
+              "source_orientation": "+",
+              "target": "1",
+              "target_orientation": "+"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "1",
+              "length_bp": 5360,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "f",
+                  "value": 1.0
+                }
+              ]
+            }
+          ],
+          "paths": [],
+          "self_loop_segment_ids": [
+            "1"
+          ],
+          "source": {
+            "bytes": 5397,
+            "file_sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db",
+            "filename": "benchmark_plasmids.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": null
+        },
+        "input_hashes": {
+          "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+          "execution_sha256": "0615fd3441adeb678d2867829e0429903d91e2f28cd5521da1bd3a60e65c7673"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "initial_flye_evaluation": {
         "contig_count": 1,
         "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",

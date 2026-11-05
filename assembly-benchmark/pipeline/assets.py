@@ -11,7 +11,7 @@ def ensure_assets(root):
     website = root / "website"
     generated = website / "generated"
     manifest = generated / "build.json"
-    sources = ("package.json", "shell.jsx", "site.css", "build.mjs")
+    sources = ("package.json", "shell.jsx", "site.css", "graph.jsx", "graph.css", "build.mjs")
     expected = {name: digest(website / name) for name in sources}
     if manifest.exists():
         info = load(manifest)

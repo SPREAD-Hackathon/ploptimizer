@@ -80,6 +80,8 @@ class NoisyReportTests(unittest.TestCase):
         for row in rebuilt["results"]:
             self.assertIn("explanation", row)
             row.pop("explanation")
+            self.assertIn("graph_artifacts", row)
+            row.pop("graph_artifacts")
         self.assertEqual(rebuilt, self.document)
         for path in ("index.html", "scenarios/index.html", "scenarios/s6-fixture.html", "methods.html", "about.html", "history.html", "data/results.tsv", "assets/genomicx.js"):
             self.assertTrue((output / path).exists(), path)

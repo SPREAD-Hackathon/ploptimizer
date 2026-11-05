@@ -5,6 +5,7 @@ import { NavBar, StatusBadge } from '@genomicx/ui';
 import '@genomicx/ui/styles/tokens.css';
 import '@genomicx/ui/styles/components.css';
 import './site.css';
+import { GraphViewer } from './graph.jsx';
 
 const batchPrefix = window.location.pathname.match(/^\/batches\/[^/]+/)?.[0] ?? '';
 const address = (to) => {
@@ -80,3 +81,13 @@ if (species) species.disabled = false;
 category?.addEventListener('change', filterRows);
 species?.addEventListener('change', filterRows);
 if (category || species) filterRows();
+
+for (const element of document.querySelectorAll('[data-assembly-graph]')) {
+  const source = document.getElementById(element.dataset.assemblyGraph);
+  try {
+    const artifact = source ? JSON.parse(source.textContent) : {};
+    createRoot(element).render(<GraphViewer artifact={artifact} />);
+  } catch {
+    element.textContent = 'The collected graph data could not be read. No topology view is available.';
+  }
+}

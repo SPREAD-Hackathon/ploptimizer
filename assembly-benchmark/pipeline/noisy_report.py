@@ -11,6 +11,7 @@ import shutil
 from .assets import ensure_assets
 from .cases import plan
 from .common import ROOT, load, save
+from .result_pages import enrich_graph_artifacts, result_href, write_result_pages
 from .report import LABELS, STATUSES, badge, batch_progress, collect_records, e, execution_evidence, explained_records, finding_panel, interpretation_guide, page, write_history
 
 
@@ -86,11 +87,14 @@ def build_noisy(config, batch=None, output=None, document=None, include_history=
     config, cases, rows = document["config"], document["scenarios"], document["results"]
     rows = explained_records(rows, cases)
     document["results"] = rows
+    document = enrich_graph_artifacts(document, batch)
+    rows = document["results"]
     save(output / "data/results.json", document)
     with (output / "data/results.tsv").open("w", newline="") as stream:
         writer = csv.writer(stream, delimiter="\t")
         writer.writerow(["scenario", "tool", "status", "exact_status", "tolerant_status", "tolerant_metrics_json"])
         writer.writerows([[row["scenario_id"], row["tool"], row["status"], row["status"], tolerant_status(row), json.dumps({key: (row.get("tolerant_assessment") or {})[key] for key in ("metrics", "replicons") if key in (row.get("tolerant_assessment") or {})}, sort_keys=True)] for row in rows])
+    write_result_pages(document, output, batch)
     exact = collections.Counter(row["status"] for row in rows)
     tolerant = collections.Counter(tolerant_status(row) for row in rows)
     body = '<div class="page-heading"><h1>Can assemblers recover plasmids from noisy reads?</h1><p>S6 compares matched error-free controls and simulated error profiles using separate exact and tolerant assessments.</p></div>'
@@ -102,7 +106,7 @@ def build_noisy(config, batch=None, output=None, document=None, include_history=
         body += f'<tr><th scope="row"><a href="scenarios/{e(case["id"])}.html">{e(display_title(case))}</a><span class="row-summary">S6 · {e(case["organism"])}</span></th>'
         for tool in config["tools"]:
             row = next(row for row in rows if row["scenario_id"] == case["id"] and row["tool"] == tool)
-            body += f'<td data-tool="{e(tool)}" data-status="{e(row["status"])}"><a class="result-link" href="scenarios/{e(case["id"])}.html#{e(tool)}">Exact: {badge(row["status"])}</a><span class="row-summary">Tolerant: {tolerant_badge(row)}</span></td>'
+            body += f'<td data-tool="{e(tool)}" data-status="{e(row["status"])}"><a class="result-link" href="{e(result_href(row))}">Exact: {badge(row["status"])}</a><span class="row-summary">Tolerant: {tolerant_badge(row)}</span></td>'
         body += '</tr>'
     body += f'</tbody></table></div><div class="downloads"><a href="data/results.json">Download JSON</a><a href="data/results.tsv">Download TSV</a><span>Updated {e(document["generated_at"])} · Batch {e(document["batch"] or "not submitted")}</span></div>'
     if document.get("assessment_stage") is not None:
@@ -145,6 +149,7 @@ def noisy_scenario(case, document, output):
     for row in (row for row in document["results"] if row["scenario_id"] == case["id"]):
         assessment = row.get("tolerant_assessment") or {}
         body += f'<section class="assembler-result" id="{e(row["tool"])}"><h2>{e(LABELS[row["tool"]])}</h2><p>Exact endpoint: {badge(row["status"])} · Tolerant endpoint: {tolerant_badge(row)}</p><p>Recorded stages: simulation {e(manifest.get("status", "not collected"))}; assembly {e(STATUSES[row["status"]])}; tolerant evaluation {e(assessment.get("status", "awaiting evaluator"))}.</p>'
+        body += f'<p><a href="{e(result_href(row, "../"))}">Open result details, contigs and assembly graph</a></p>'
         body += finding_panel(row, case)
         for key in ("started_at", "finished_at"):
             if row.get(key):

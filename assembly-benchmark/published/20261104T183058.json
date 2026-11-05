@@ -30,7 +30,7 @@
       "plassembler"
     ]
   },
-  "generated_at": "2026-11-04T21:57:09+00:00",
+  "generated_at": "2026-11-05T07:42:53+00:00",
   "inputs": {
     "s1-w-prk2": {
       "case": {
@@ -6583,6 +6583,29 @@
   "results": [
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-chromosome",
       "scheduler_state": null,
       "status": "not_run",
@@ -6590,6 +6613,29 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-chromosome",
       "scheduler_state": null,
       "status": "not_run",
@@ -6597,6 +6643,29 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-chromosome",
       "scheduler_state": null,
       "status": "not_run",
@@ -6604,6 +6673,29 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-chromosome",
       "scheduler_state": null,
       "status": "not_run",
@@ -6611,6 +6703,29 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-prk1",
       "scheduler_state": null,
       "status": "not_run",
@@ -6618,6 +6733,29 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-prk1",
       "scheduler_state": null,
       "status": "not_run",
@@ -6625,6 +6763,29 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-prk1",
       "scheduler_state": null,
       "status": "not_run",
@@ -6632,6 +6793,29 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-prk1",
       "scheduler_state": null,
       "status": "not_run",
@@ -6811,7 +6995,219 @@
         "unclassified_contigs": []
       },
       "exit_code": 0,
+      "explanation": {
+        "authority": "Existing checked review; no additional mechanistic claim is inferred",
+        "confidence": "confirmed",
+        "confidence_scope": "Checked finding for the exact reviewed artefacts and stated scope",
+        "evidence": [
+          {
+            "source": "sequence_review.explanation",
+            "text": "The automatic minimum overlap was 6,000 bp. Flye uses that value as a hard read-length cutoff in its initial assembly module. All 31 pRK2 reads are only 3,463\u20135,360 bp, so none entered that stage. The total bases surviving this filter exactly match the initial assembly index in the recorded log. This explains initial plasmid loss; a lower-threshold rescue is being tested separately. In the controlled lower-threshold run, the draft gained four exact copies of pRK2, but the final sequence was 9,769 bp of periodic plasmid sequence rather than one 5,360 bp molecule. Thus the intervention restored sequence without producing an exact final molecule.",
+            "type": "curated_review"
+          }
+        ],
+        "interpretation": "The automatic minimum overlap was 6,000 bp. Flye uses that value as a hard read-length cutoff in its initial assembly module. All 31 pRK2 reads are only 3,463\u20135,360 bp, so none entered that stage. The total bases surviving this filter exactly match the initial assembly index in the recorded log. This explains initial plasmid loss; a lower-threshold rescue is being tested separately. In the controlled lower-threshold run, the draft gained four exact copies of pRK2, but the final sequence was 9,769 bp of periodic plasmid sequence rather than one 5,360 bp molecule. Thus the intervention restored sequence without producing an exact final molecule.",
+        "kind": "reviewed_finding",
+        "mechanism_confidence": null,
+        "schema_version": 1,
+        "scope": "Initial assembly read filtering in this pilot; not a claim that lowering the cutoff guarantees final recovery.",
+        "source": "curated_review",
+        "source_document": "FLYE_HYPOTHESES.md",
+        "summary": "All 31 plasmid reads excluded by the 6,000 bp assembly cutoff",
+        "symptom": "All 31 plasmid reads excluded by the 6,000 bp assembly cutoff"
+      },
+      "explanation_log": {
+        "bytes": 2989,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "e06ee853a9cdd2922b29740c262b8d237ce595b71d4cf84781abbba69c3f89e1"
+      },
       "finished_at": "2026-11-04T18:35:56.196454+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "seq_name",
+            "length",
+            "cov.",
+            "circ.",
+            "repeat",
+            "mult.",
+            "alt_group",
+            "graph_path"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Tool report only; N means not reported circular, not proven linear",
+              "id": "contig_1",
+              "length_bp": 4897452,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "Y",
+              "reported_coverage": 30.0,
+              "reported_graph_path": "1"
+            }
+          ],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 92,
+            "file_sha256": "d91190fa4db246aa0cc361fef58ae749f54be969daf171bf17e2765d1b735e99",
+            "filename": "assembly_info.txt",
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "02b7c64b39770d28623698b1160e539e566e31d37a9ea348346735884fc00489"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T183058",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "final",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:09:54+00:00",
+          "execution_relative_path": "results/s1-w-prk2/flye/execution.json",
+          "recorded_primary_assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "+",
+              "target": "edge_1",
+              "target_orientation": "+"
+            },
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "-",
+              "target": "edge_1",
+              "target_orientation": "-"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "edge_1",
+              "length_bp": 4897452,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "i",
+                  "value": 30
+                }
+              ]
+            }
+          ],
+          "paths": [
+            {
+              "id": "contig_1",
+              "overlaps": null,
+              "steps": [
+                {
+                  "orientation": "+",
+                  "segment": "edge_1"
+                }
+              ]
+            }
+          ],
+          "self_loop_segment_ids": [
+            "edge_1"
+          ],
+          "source": {
+            "bytes": 4897562,
+            "file_sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99",
+            "filename": "assembly_graph.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": "1.0"
+        },
+        "input_hashes": {
+          "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+          "execution_sha256": "520e676797e322fc891fb97202203d40253b46af3cb7bc02db9dfd00f8f8d78f"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 899816,
       "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
       "scenario_fingerprint": "d71f067d3adc2548aa1b793cbf2ba32e15536ffe406184db6ea16c5f4140bb0c",
@@ -7026,7 +7422,219 @@
         ]
       },
       "exit_code": 0,
+      "explanation": {
+        "authority": "Existing checked review; no additional mechanistic claim is inferred",
+        "confidence": "confirmed",
+        "confidence_scope": "Checked finding for the exact reviewed artefacts and stated scope",
+        "evidence": [
+          {
+            "source": "sequence_review.explanation",
+            "text": "The automatic minimum overlap was 6,000 bp. Flye uses that value as a hard read-length cutoff in its initial assembly module. All 31 pRK2 reads are only 3,463\u20135,360 bp, so none entered that stage. The total bases surviving this filter exactly match the initial assembly index in the recorded log. This explains initial plasmid loss; a lower-threshold rescue is being tested separately. The lower-threshold intervention was tested in ordinary Flye, not meta mode.",
+            "type": "curated_review"
+          }
+        ],
+        "interpretation": "The automatic minimum overlap was 6,000 bp. Flye uses that value as a hard read-length cutoff in its initial assembly module. All 31 pRK2 reads are only 3,463\u20135,360 bp, so none entered that stage. The total bases surviving this filter exactly match the initial assembly index in the recorded log. This explains initial plasmid loss; a lower-threshold rescue is being tested separately. The lower-threshold intervention was tested in ordinary Flye, not meta mode.",
+        "kind": "reviewed_finding",
+        "mechanism_confidence": null,
+        "schema_version": 1,
+        "scope": "Initial assembly read filtering in this pilot; not a claim that lowering the cutoff guarantees final recovery.",
+        "source": "curated_review",
+        "source_document": "FLYE_HYPOTHESES.md",
+        "summary": "All 31 plasmid reads excluded by the 6,000 bp assembly cutoff",
+        "symptom": "All 31 plasmid reads excluded by the 6,000 bp assembly cutoff"
+      },
+      "explanation_log": {
+        "bytes": 2994,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "37b63315912cf9297770d9bc101db9febe0c791909c7b3c5b15d19a42c9d7748"
+      },
       "finished_at": "2026-11-04T18:36:05.756670+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "seq_name",
+            "length",
+            "cov.",
+            "circ.",
+            "repeat",
+            "mult.",
+            "alt_group",
+            "graph_path"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Tool report only; N means not reported circular, not proven linear",
+              "id": "contig_1",
+              "length_bp": 4897465,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "Y",
+              "reported_coverage": 30.0,
+              "reported_graph_path": "1"
+            }
+          ],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 92,
+            "file_sha256": "08c95d2a3fa649baf3236e30b56f6aaaefefc0c3d9af0427dff68970546b513e",
+            "filename": "assembly_info.txt",
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "4b889ca85ba98e633d97e46670408b3cf6d661aab6150248de2d6edd1b308305"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T183058",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "final",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:09:55+00:00",
+          "execution_relative_path": "results/s1-w-prk2/flye-meta/execution.json",
+          "recorded_primary_assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "+",
+              "target": "edge_1",
+              "target_orientation": "+"
+            },
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "edge_1",
+              "source_orientation": "-",
+              "target": "edge_1",
+              "target_orientation": "-"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "edge_1",
+              "length_bp": 4897465,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "i",
+                  "value": 30
+                }
+              ]
+            }
+          ],
+          "paths": [
+            {
+              "id": "contig_1",
+              "overlaps": null,
+              "steps": [
+                {
+                  "orientation": "+",
+                  "segment": "edge_1"
+                }
+              ]
+            }
+          ],
+          "self_loop_segment_ids": [
+            "edge_1"
+          ],
+          "source": {
+            "bytes": 4897575,
+            "file_sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79",
+            "filename": "assembly_graph.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": "1.0"
+        },
+        "input_hashes": {
+          "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+          "execution_sha256": "4f8940eca33c40e2ebe66a111d211a5a67ef829548b398eceaa361ac8c7feab1"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 898472,
       "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
       "scenario_fingerprint": "d71f067d3adc2548aa1b793cbf2ba32e15536ffe406184db6ea16c5f4140bb0c",
@@ -7242,7 +7850,157 @@
         ]
       },
       "exit_code": 0,
+      "explanation": {
+        "authority": "Existing checked review; no additional mechanistic claim is inferred",
+        "confidence": "confirmed",
+        "confidence_scope": "Checked finding for the exact reviewed artefacts and stated scope",
+        "evidence": [
+          {
+            "source": "sequence_review.explanation",
+            "text": "Controlled reruns from the same saved graph were exact at 5,360 bp with zero polishing rounds, including a zero-round resume control. One polishing round gave 5,356 bp; two rounds gave 5,355 bp and reproduced the entire historical output file exactly. This confirms polishing introduced the sequence loss in this case. End cropping is strongly implicated, but the specific internal trimming branch has not been instrumented. The older 97.01% mapped fraction also omitted a present 155 bp origin-crossing segment.",
+            "type": "curated_review"
+          }
+        ],
+        "interpretation": "Controlled reruns from the same saved graph were exact at 5,360 bp with zero polishing rounds, including a zero-round resume control. One polishing round gave 5,356 bp; two rounds gave 5,355 bp and reproduced the entire historical output file exactly. This confirms polishing introduced the sequence loss in this case. End cropping is strongly implicated, but the specific internal trimming branch has not been instrumented. The older 97.01% mapped fraction also omitted a present 155 bp origin-crossing segment.",
+        "kind": "reviewed_finding",
+        "mechanism_confidence": null,
+        "schema_version": 1,
+        "scope": "This archived contig only; does not establish the assembler-internal cause, topology or a general tool outcome.",
+        "source": "curated_review",
+        "source_document": "RAVEN_CAUSE_REVIEW.md",
+        "summary": "Polishing introduced deletions; historical output reproduced",
+        "symptom": "Polishing introduced deletions; historical output reproduced"
+      },
+      "explanation_log": {
+        "bytes": 7829,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "d4f4bb3dfed27fd286e6ec8143746b8cb811a661ed1483656d142ed5f4c8e4d9"
+      },
       "finished_at": "2026-11-04T18:34:14.560107+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [],
+          "contigs": [],
+          "format": "Flye assembly_info.txt",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "reason": "Source not collected",
+          "source": {
+            "file_sha256": null,
+            "filename": null,
+            "kind": "flye_assembly_info",
+            "role": "final"
+          },
+          "status": "missing"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "8bc4ecd3ea319cddbb06e0ea538482939304e332260cc59556d6275859af1e2f"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T183058",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "graph.gfa",
+              "role": "final",
+              "status": "missing"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "assembly_graph.gfa",
+              "role": "final",
+              "status": "missing"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:09:55+00:00",
+          "execution_relative_path": "results/s1-w-prk2/raven/execution.json",
+          "recorded_primary_assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": false,
+          "edges": [],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [],
+          "paths": [],
+          "reason": "Source not collected",
+          "self_loop_segment_ids": [],
+          "source": {
+            "file_sha256": null,
+            "filename": null,
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "missing",
+          "unsupported_record_counts": {},
+          "version": null
+        },
+        "input_hashes": {
+          "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+          "execution_sha256": "fdffbac92ede99ee032b6a8e852aba9dd3434b8f6101cb2a430cf9837df4012d"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "missing",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "peak_memory_kb": 1369404,
       "reads_sha256": "413d35b3a80025998af4fb8d19aaa9774747e89c916205f6172f0b737b7ee039",
       "scenario_fingerprint": "d71f067d3adc2548aa1b793cbf2ba32e15536ffe406184db6ea16c5f4140bb0c",
@@ -7477,7 +8235,232 @@
         "unclassified_contigs": []
       },
       "exit_code": 0,
+      "explanation": {
+        "confidence": "confirmed",
+        "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pass.",
+            "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
+          }
+        ],
+        "interpretation": "This finding applies to the stated endpoint and this input; topology remains separate.",
+        "kind": "exact_pass",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "strict_assessment",
+        "summary": "Recorded exact endpoint passes",
+        "symptom": "The recorded exact sequence endpoint passes."
+      },
+      "explanation_log": {
+        "bytes": 11907,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "58adf4b54d8f7f007aab1394e8cd2da0978d5af62ad7642997edbbe009173199"
+      },
       "finished_at": "2026-11-04T18:38:16.103685+00:00",
+      "graph_artifacts": {
+        "assembly_info": {
+          "columns": [
+            "contig",
+            "length",
+            "circularity"
+          ],
+          "contigs": [
+            {
+              "claim_scope": "Final tool summary claim only; physical topology and sequence accuracy are not established",
+              "id": "chromosome",
+              "length_bp": 4897452,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "circular"
+            },
+            {
+              "claim_scope": "Final tool summary claim only; physical topology and sequence accuracy are not established",
+              "id": "1",
+              "length_bp": 5360,
+              "reported_circularity": "circular",
+              "reported_circularity_raw": "circular"
+            }
+          ],
+          "format": "Plassembler summary.tsv",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "source": {
+            "bytes": 197,
+            "file_sha256": "c6b10e31c0d44ffe5ada2fd6abeaa41480abc5e59690e28bb9abeee37ec95606",
+            "filename": "benchmark_summary.tsv",
+            "kind": "plassembler_summary",
+            "role": "final"
+          },
+          "status": "available"
+        },
+        "attachment": {
+          "assembly_record_hash_verified": true,
+          "execution_hash_verified": true,
+          "sidecar_sha256": "c772dfb7158e811c69dfcc1579289e598d606907d76c42de8c6c46346d923d5e"
+        },
+        "collection": {
+          "assembly_hash_verified": true,
+          "batch_id": "20261104T183058",
+          "candidate_files": [
+            {
+              "kind": "gfa",
+              "relative_path": "output/benchmark_plasmids.gfa",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/benchmark_summary.tsv",
+              "role": "final",
+              "status": "available"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/flye_output/assembly_graph.gfa",
+              "role": "initial_flye",
+              "status": "available"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/flye_output/assembly_info.txt",
+              "role": "initial_flye",
+              "status": "available"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/assembly_graph.gfa",
+              "role": "initial_flye",
+              "status": "missing"
+            },
+            {
+              "kind": "assembly_info",
+              "relative_path": "output/assembly_info.txt",
+              "role": "initial_flye",
+              "status": "missing"
+            },
+            {
+              "kind": "gfa",
+              "relative_path": "output/unicycler_output/assembly.gfa",
+              "role": "unicycler_component",
+              "status": "available"
+            }
+          ],
+          "checkpoint_policy": "Opaque raven.cereal is not opened or exported.",
+          "collected_at": "2026-11-05T07:09:55+00:00",
+          "execution_relative_path": "results/s1-w-prk2/plassembler/execution.json",
+          "recorded_primary_assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+          "sequence_exported": false,
+          "source_reads_modified": false,
+          "source_role": "final"
+        },
+        "graph": {
+          "complete": true,
+          "edges": [
+            {
+              "is_self_link": true,
+              "overlap": "0M",
+              "source": "1",
+              "source_orientation": "+",
+              "target": "1",
+              "target_orientation": "+"
+            }
+          ],
+          "format": "GFA1 S/L/P",
+          "limitations": [
+            "Segment sequences and arbitrary optional tags are never exported.",
+            "A GFA self-link is a graph observation, not proof of a circular molecule.",
+            "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+          ],
+          "limits": {
+            "max_edges": 20000,
+            "max_identifier_chars": 256,
+            "max_line_bytes": 16777216,
+            "max_nodes": 10000,
+            "max_overlap_chars": 1024,
+            "max_path_steps": 50000,
+            "max_paths": 1000,
+            "max_sidecar_bytes": 8388608,
+            "max_source_bytes": 67108864
+          },
+          "nodes": [
+            {
+              "id": "1",
+              "length_bp": 5360,
+              "reported_coverage_tags": [
+                {
+                  "meaning": "tool_specific_coverage_tag",
+                  "tag": "dp",
+                  "type": "f",
+                  "value": 1.0
+                }
+              ]
+            }
+          ],
+          "paths": [],
+          "self_loop_segment_ids": [
+            "1"
+          ],
+          "source": {
+            "bytes": 5397,
+            "file_sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db",
+            "filename": "benchmark_plasmids.gfa",
+            "kind": "gfa",
+            "role": "final"
+          },
+          "status": "available",
+          "unsupported_record_counts": {},
+          "version": null
+        },
+        "input_hashes": {
+          "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+          "execution_sha256": "37de891c2cf985225951d2ae310a2e771c807531137c288ed007f147bd070bc6"
+        },
+        "limitations": [
+          "Segment sequences and arbitrary optional tags are never exported.",
+          "A GFA self-link is a graph observation, not proof of a circular molecule.",
+          "Tool-reported circularity is an assembly-info claim; sequence accuracy and physical topology are not assessed."
+        ],
+        "limits": {
+          "max_edges": 20000,
+          "max_identifier_chars": 256,
+          "max_line_bytes": 16777216,
+          "max_nodes": 10000,
+          "max_overlap_chars": 1024,
+          "max_path_steps": 50000,
+          "max_paths": 1000,
+          "max_sidecar_bytes": 8388608,
+          "max_source_bytes": 67108864
+        },
+        "schema_version": 1,
+        "source_relationship": "Artefacts from this execution; graph segment IDs need not equal final FASTA contig IDs",
+        "status": "available",
+        "validation": {
+          "assembly_bytes_verified": true,
+          "execution_record_verified": true
+        }
+      },
       "initial_flye_evaluation": {
         "contig_count": 1,
         "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
@@ -7532,6 +8515,29 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-native",
       "scheduler_state": null,
       "status": "not_run",
@@ -7539,6 +8545,29 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-native",
       "scheduler_state": null,
       "status": "not_run",
@@ -7546,6 +8575,29 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-native",
       "scheduler_state": null,
       "status": "not_run",
@@ -7553,6 +8605,29 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: not_run.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
+      "graph_artifacts": {
+        "reason": "No assembly graph or assembler circularity report was collected for this result. Missing metadata do not establish a linear molecule or a graph with no links.",
+        "schema_version": 1,
+        "status": "not_collected"
+      },
       "scenario_id": "s1-w-native",
       "scheduler_state": null,
       "status": "not_run",

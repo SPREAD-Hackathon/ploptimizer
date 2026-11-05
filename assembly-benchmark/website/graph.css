@@ -1,0 +1,31 @@
+/* Assembly-graph geometry uses GenomicX tokens and shared controls. */
+.assembly-graph { margin-block: 24px; }
+.assembly-graph > * + * { margin-top: 16px; }
+.graph-controls { display: flex; flex-wrap: wrap; align-items: end; gap: 12px; }
+.graph-controls label { display: grid; gap: 4px; font-size: 13px; }
+.graph-controls select { max-width: min(300px, 100%); }
+.graph-controls input[type="checkbox"] { accent-color: var(--gx-accent); }
+.graph-controls .graph-checkbox { display: flex; align-items: center; gap: 8px; padding-block: 8px; }
+.graph-canvas { display: block; width: 100%; height: clamp(300px, 55vh, 560px); border: 1px solid var(--gx-border); background: var(--gx-bg-alt); color: var(--gx-text-muted); touch-action: none; cursor: grab; }
+.graph-canvas:active { cursor: grabbing; }
+.graph-canvas:focus-visible { outline: 3px solid var(--gx-accent); outline-offset: 4px; }
+.graph-edge { fill: none; stroke: var(--gx-text-muted); stroke-width: 1.5; color: var(--gx-text-muted); }
+.graph-edge.selected { stroke: var(--gx-accent); stroke-width: 2.5; color: var(--gx-accent); }
+.graph-node { cursor: pointer; }
+.graph-node rect { fill: var(--gx-surface); stroke: var(--gx-text-muted); stroke-width: 2; }
+.graph-node:hover rect, .graph-node:focus-visible rect { stroke: var(--gx-accent); stroke-width: 3; }
+.graph-node.selected rect { fill: var(--gx-accent-dim); stroke: var(--gx-accent); }
+.graph-node text { fill: var(--gx-text); font: 13px var(--gx-font-sans); pointer-events: none; }
+.graph-selection { padding-block: 12px; border-block: 1px solid var(--gx-border); }
+.assembly-graph p, .graph-selection h3 { overflow-wrap: anywhere; }
+.graph-selection h3 { margin-bottom: 12px; }
+.graph-local { margin-top: 28px; }
+.result-facts { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 8px 20px; max-width: 85ch; margin-block: 20px 28px; }
+.result-facts dt { color: var(--gx-text-muted); }
+.result-facts dd { margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 700px) {
+  .graph-controls label { width: 100%; }
+  .graph-controls .graph-checkbox { width: auto; }
+  .result-facts { grid-template-columns: 1fr; gap: 2px; }
+  .result-facts dd { margin-bottom: 10px; }
+}
