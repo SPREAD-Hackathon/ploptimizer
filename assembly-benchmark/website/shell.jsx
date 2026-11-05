@@ -6,7 +6,6 @@ import '@genomicx/ui/styles/tokens.css';
 import '@genomicx/ui/styles/components.css';
 import './site.css';
 import { GraphViewer } from './graph.jsx';
-import { NucmerDotPlot } from './dotplot.jsx';
 
 const batchPrefix = window.location.pathname.match(/^\/batches\/[^/]+/)?.[0] ?? '';
 const address = (to) => {
@@ -92,5 +91,3 @@ for (const element of document.querySelectorAll('[data-assembly-graph]')) {
     element.textContent = 'The collected graph data could not be read. No topology view is available.';
   }
 }
-
-for (const element of document.querySelectorAll("[data-nucmer-dotplot]")) createRoot(element).render(<NucmerDotPlot />);

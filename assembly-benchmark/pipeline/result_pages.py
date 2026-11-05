@@ -97,9 +97,11 @@ def result_body(case, record, artifact, output, family=None):
     family_link = f'<a href="../scenarios/{e(family.lower())}.html">{e(family)} results</a> · ' if family else ''
     body = f'<nav class="result-breadcrumb" aria-label="Result navigation">{family_link}<a href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Input details</a></nav><h1>{e(LABELS[record["tool"]])}</h1><p class="result-subtitle">{e(case["title"])}</p><p>Exact endpoint: {badge(record["status"])}</p>'
     body += outcome_section(record)
-    body += '<nav class="result-jumps" aria-label="Result evidence"><a href="#command-used">Command used</a> · <a href="#contigs">Output contigs</a> · <a href="#assembly-graph">Assembly graph</a> · <a href="#nucmer-dotplot">NUCmer dot plot</a> · <a href="#assessment-audit">Assessment details</a></nav>'
+    links = [("#command-used", "Command used"), ("#contigs", "Output contigs"), ("#assembly-graph", "Assembly graph")]
     if (record.get("report_evidence") or {}).get("dotplot", {}).get("status") == "available":
-        body = body.replace('href="#nucmer-dotplot">NUCmer dot plot', 'href="#saved-alignment-plot">Alignment dot plot')
+        links.append(("#saved-alignment-plot", "Alignment dot plot"))
+    links.append(("#assessment-audit", "Assessment details"))
+    body += '<nav class="result-jumps" aria-label="Result evidence">' + ' · '.join(f'<a href="{href}">{label}</a>' for href, label in links) + '</nav>'
     body += render_command(record, case)
     if record.get("tolerant_assessment"):
         from .noisy_report import tolerant_badge
@@ -142,7 +144,6 @@ def result_body(case, record, artifact, output, family=None):
         else:
             body += f'<p>{e(plot["reason"])}</p>'
         body += f'<p><a href="../data/results/{e(slug)}-report.md">Standalone detailed report (Markdown)</a></p>'
-    body += '<details id="nucmer-dotplot" class="nucmer-panel"><summary>NUCmer dot plot · benchmark coordinates not collected</summary><div data-nucmer-dotplot><p>No NUCmer coordinate file has been collected for this result.</p></div></details>'
     body += contig_section(record, artifact)
     public = execution_evidence(record, case)
     public["graph_artifacts"] = artifact

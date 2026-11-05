@@ -45,9 +45,9 @@ evidence stay grey. The selected segment exposes its exact-match/path evidence.
 These are whole-segment path associations, not measured internal alignment
 boundaries. The illustrative mixed-origin mock-up is not published as evidence.
 
-The NUCmer disclosure explicitly states that benchmark coordinates are not
-collected. Its optional local coordinate preview is labelled separately from
-benchmark evidence. Synthetic viewer tests must never appear as benchmark plots.
+Result pages show only saved alignment plots supplied by the backend bundle.
+Local file-upload previews do not belong on benchmark result pages. Missing
+coordinate evidence remains explicit; synthetic viewer tests are not results.
 
 ## Truthful interface
 
