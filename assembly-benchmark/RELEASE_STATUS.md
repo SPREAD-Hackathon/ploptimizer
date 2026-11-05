@@ -1,5 +1,20 @@
 # First reporting release: results and limits
 
+## Current production — live and verified
+
+The compact build is now live at https://ploptimizer-assembly-benchmark.vercel.app
+from source `14db8ea`, deployment `dpl_Am3MNaXNNdDMhRCaN839Bbgh9ez3`.
+The guarded archive deployment succeeded. All 1,086 published pages/assets/downloads
+passed byte-for-byte verification with zero failures. Browser checks confirmed
+recorded-difference facts and functioning scenario search/status filters. The
+47.3 MB local build replaces the earlier bulky production output. Live plus two
+previous READY versions are retained; exact team-billed storage is not claimed.
+
+Earlier quota-blocked notes below are historical and have been superseded by this
+successful deployment. See `CURRENT_RELEASE.json` and `evidence/compact-live-v1/`.
+This publishes reporting improvements; it does not add new node interval
+measurements, new assemblies, or software-internal failure explanations.
+
 **Final evidence audit: 5 November 2026, 01:58 UTC (02:58 CET).** All existing
 submitted batches, required diagnostics and tolerant assessments have finished.
 The metadata completion gate passes for all four release batches. This completes
