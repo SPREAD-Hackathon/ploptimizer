@@ -145,13 +145,13 @@ def _run_table(rows, prefix):
 
 def write_overview(documents, output, *, cohort=None, archived_batch=None, root_batch=None, model=None):
     """Write navigation views and separate derived JSON; preserve scientific files."""
-    from .report import page
+    from .report import page, site_root
     output = Path(output)
     (output / "scenarios").mkdir(parents=True, exist_ok=True)
     (output / "data").mkdir(parents=True, exist_ok=True)
     if model is None:
         model = build_overview(documents, cohort=cohort, archived_batch=archived_batch, root_batch=root_batch)
-    (output / "index.html").write_text(page("Results", render_home(model)))
+    (output / "index.html").write_text(page("Results", render_home(model), base_href=site_root(output)))
     for family in model["families"]:
         (output / family["href"]).write_text(page(family["title"], render_family(model, family["id"]), prefix="../", active="scenarios"))
     save(output / "data/overview.json", model)

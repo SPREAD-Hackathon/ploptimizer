@@ -5,6 +5,7 @@ import csv
 import datetime
 import html
 import shutil
+from pathlib import Path
 
 from .cases import plan
 from .assets import ensure_assets
@@ -33,11 +34,18 @@ def badge(status):
     return f'<span class="status {e(status)}" data-benchmark-status="{e(status)}">{e(STATUSES[status])}</span>'
 
 
-def page(title, body, prefix="", active="overview"):
+def site_root(output):
+    """Public base for root and batch directories, including slashless index URLs."""
+    output = Path(output)
+    return f'/batches/{output.name}/' if output.parent.name == 'batches' else '/'
+
+
+def page(title, body, prefix="", active="overview", base_href=None):
     links = [("overview", "index.html", "Results"), ("scenarios", "scenarios/index.html", "Scenarios"), ("aggregate", "aggregate.html", "Aggregate plots"), ("methods", "methods.html", "Methods")]
+    base = f'<base href="{e(base_href)}">' if base_href is not None else ""
     nav = "".join(f'<a {"aria-current=page" if key == active else ""} href="{'/aggregate.html' if key == 'aggregate' else prefix + url}">{label}</a>' for key, url, label in links)
     return f'''<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{e(title)} · Ploptimizer</title><meta name="description" content="Long-read plasmid assembly benchmark: scenarios, exact recovery outcomes and execution evidence.">
+{base}<title>{e(title)} · Ploptimizer</title><meta name="description" content="Long-read plasmid assembly benchmark: scenarios, exact recovery outcomes and execution evidence.">
 <script>try{{var theme=localStorage.getItem('gx-theme');if(theme==='light'||theme==='dark')document.documentElement.dataset.theme=theme;}}catch{{}}</script>
 <link rel="stylesheet" href="{prefix}assets/genomicx.css"><script defer src="{prefix}assets/genomicx.js"></script></head><body><a class="skip" href="#main">Skip to content</a>
 <div id="genomicx-nav"><header class="fallback-nav"><a href="{prefix}index.html">Ploptimizer</a><nav aria-label="Main navigation">{nav}</nav></header></div>
@@ -189,7 +197,7 @@ def build(config, batch=None, output=None, document=None, include_history=True, 
         rows = [r for r in results if r["scenario_id"] == case["id"]]
         (output / "scenarios" / (case["id"] + ".html")).write_text(page(case["title"], scenario_page(case, rows, batch, document.get("inputs", {}).get(case["id"]), output, document["batch"]), "../", "scenarios"))
     category += '<p><a href="../index.html">Return to the results overview</a> to explore all scenario families.</p>'
-    (output / "scenarios/index.html").write_text(page("Scenarios", category, "../", "scenarios"))
+    (output / "scenarios/index.html").write_text(page("Scenarios", category, "../", "scenarios", base_href=site_root(output) + "scenarios/"))
     methods = (ROOT / "website/methods.html").read_text()
     (output / "methods.html").write_text(page("Methods", methods, active="methods"))
     about = '<h1>About Ploptimizer</h1><p class="intro">A benchmark for the assembly problems that disappear inside whole-genome summary scores.</p><p>We assess whether long-read assembly workflows recover chromosomes and plasmids correctly, starting with E. coli and K. pneumoniae. Controlled reference subsets, coverage panels and explicit sequence endpoints make individual failures inspectable.</p><p>The results matrix links to the inputs, tool configuration, run evidence and limitations for each scenario. Runs execute on the BMRC cluster using Slurm and Pixi; this site presents static result snapshots.</p><p><a href="methods.html">Read the methods</a> or <a href="https://github.com/SPREAD-Hackathon/ploptimizer/tree/main/assembly-benchmark">inspect the source and brief</a>.</p>'
@@ -469,5 +477,5 @@ def write_release_overview(output, document, include_history=True, render_contex
     if document["scenarios"]:
         catalog += '<details><summary>Individual input cases in this batch</summary><ul class="scenario-list">'
         catalog += ''.join(f'<li><a href="{e(case["id"])}.html">{e(case["title"])}</a></li>' for case in document["scenarios"]) + '</ul></details>'
-    (output / "scenarios/index.html").write_text(page("Scenario families", catalog, "../", "scenarios"))
+    (output / "scenarios/index.html").write_text(page("Scenario families", catalog, "../", "scenarios", base_href=site_root(output) + "scenarios/"))
     return model
