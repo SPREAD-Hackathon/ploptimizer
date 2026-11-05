@@ -27,6 +27,10 @@ coverage bars do not depict genomic coordinates. Keep chromosomes outside a
 plasmid endpoint as folded supporting context. State an unresolved software cause
 plainly on failures, without implying that successful runs need a failure cause.
 Run metadata and the original assessment remain available in disclosures.
+Each result also exposes its saved command and descriptions of only the flags
+present in that invocation. Command links open the disclosure directly. Preserve
+argument order and values, use shell-safe display quoting, and retain the public
+work-directory placeholder. Never infer an invocation from a tool label.
 
 The graph section pairs expected reference molecules with the recorded GFA.
 Reference circles/lines use declared topology and labelled lengths; their sizes

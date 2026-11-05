@@ -208,3 +208,18 @@ comparison and local toy-file rendering. Production deployment:
 `dpl_A68vNQs7S6igPLrT2CEoM6CpsWJQ`.
 All published HTML, shared CSS/JS and six example result/graph downloads matched
 the reviewed build byte-for-byte: 392 files, no failures.
+
+## Recorded commands
+
+Each result now exposes its saved invocation, recorded tool version and brief
+descriptions of the flags actually present. The command link opens this section
+directly; paths retain the public `<workdir>` placeholder. Descriptions cite
+Flye 2.9.6, Plassembler 1.9.0 and Raven documentation. No defaults or extra flags
+are inserted into the saved command.
+
+All 272 recorded commands matched their published execution metadata. The 12
+unsubmitted cells explicitly have no recorded command. Four command-view tests
+and the 376-route/284-result HTTP checks passed; desktop and phone layouts were
+checked. Six representative live pages/assets matched the reviewed build,
+including the one-thread repeat view. Deployment:
+`dpl_EP1BReR9bBggUEX84DjngiQLtyFb`. Scientific snapshots remain unchanged.

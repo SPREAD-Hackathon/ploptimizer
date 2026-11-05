@@ -134,6 +134,15 @@ tbody tr:hover > .overview-cell { background: var(--heat-surface); }
 .cause-status strong { display: block; margin-bottom: 4px; }
 .result-jumps { font-size: 14px; margin-bottom: 18px; }
 .result-metadata, .assessment-audit { margin-block: 20px; }
+.command-used { margin-block: 20px; }
+#command-used { scroll-margin-top: 84px; padding-top: 14px; }
+.recorded-command { max-width: 100%; padding: 16px; background: var(--gx-bg-alt); border: 1px solid var(--gx-border); white-space: pre-wrap; overflow-wrap: anywhere; }
+.command-options { display: grid; grid-template-columns: minmax(130px, max-content) minmax(0, 1fr); gap: 10px 24px; max-width: 80ch; font-size: 14px; }
+.command-options dd { margin: 0; }
+@media (max-width: 600px) {
+  .command-options { grid-template-columns: 1fr; gap: 3px; }
+  .command-options dd { margin-bottom: 10px; }
+}
 .assessment-audit > .notice { margin-top: 18px; }
 .graph-comparison { display: grid; grid-template-columns: minmax(260px, .8fr) minmax(0, 1.6fr); gap: 32px; align-items: start; margin-block: 24px; }
 .graph-comparison > section { min-width: 0; }

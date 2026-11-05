@@ -103,11 +103,13 @@ def result_body(case, record, artifact, output, family=None):
     from .report import LABELS, badge, diagnostic_table, e, execution_evidence, finding_panel
     from .result_summary import outcome_section
     from .expected_output import render_expected_output
+    from .command_view import render_command
     slug = result_slug(record)
     family_link = f'<a href="../scenarios/{e(family.lower())}.html">{e(family)} results</a> · ' if family else ''
     body = f'<nav class="result-breadcrumb" aria-label="Result navigation">{family_link}<a href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Input details</a></nav><h1>{e(LABELS[record["tool"]])}</h1><p class="result-subtitle">{e(case["title"])}</p><p>Exact endpoint: {badge(record["status"])}</p>'
     body += outcome_section(record)
-    body += '<nav class="result-jumps" aria-label="Result evidence"><a href="#contigs">Output contigs</a> · <a href="#assembly-graph">Assembly graph</a> · <a href="#nucmer-dotplot">NUCmer dot plot</a> · <a href="#assessment-audit">Assessment details</a></nav>'
+    body += '<nav class="result-jumps" aria-label="Result evidence"><a href="#command-used">Command used</a> · <a href="#contigs">Output contigs</a> · <a href="#assembly-graph">Assembly graph</a> · <a href="#nucmer-dotplot">NUCmer dot plot</a> · <a href="#assessment-audit">Assessment details</a></nav>'
+    body += render_command(record, case)
     if record.get("tolerant_assessment"):
         from .noisy_report import tolerant_badge
         body += f'<p>Separate tolerant endpoint: {tolerant_badge(record)}. Exact and tolerant outcomes retain their own definitions.</p>'
