@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "batch_id": "20261105T161510",
+  "checked_at": "2026-11-05T16:38:36.456039+00:00",
+  "scope": "Saved metadata and publication verification; no further sequence analysis",
+  "snapshot_sha256": "76e8a32d29ec079b98325f86076a647894511dfe918875c4a896251f2850c470",
+  "config_sha256": "915c66c0208f3241cac836cebb4af1a1f869c38bcac252fd6dc55d3081dcbfa4",
+  "scheduler_query": [
+    "ssh",
+    "-o",
+    "BatchMode=yes",
+    "-o",
+    "ConnectTimeout=10",
+    "rva470@cluster3.bmrc.ox.ac.uk",
+    "sacct -j 34425490,34425491,34425492,34425764,34425848,34425493 --format=JobID,State,ExitCode --noheader --parsable2"
+  ],
+  "accounting_sha256": "210d3b34c10397528e0e31264614682550271c6c4d4be2f14843ca8c8e58c2cd",
+  "metadata_collection": {
+    "batch_id": "20261105T161510",
+    "graph_sidecars": 16,
+    "identity_inventories": {
+      "identity_pairs": 17,
+      "inventories": 16
+    },
+    "schema_version": 1,
+    "scored_length_inventories": 16,
+    "slurm_job_id": "34425848",
+    "source_sha256": {
+      "collect_graph_artifacts.py": "7eb6dd5484f2ca335146c497e8c14d4a7f4ddacae332c62e9a2afec2d750546e",
+      "collect_graph_contig_identities.py": "151f9ae3ece80b994f9aba3bc7f5823799fa86f53fa6695afcf094c8230247d9",
+      "collect_length_inventories.py": "a110ceeaf142cd9e04ca966d252eb2680c344ee5465b58dcebba8b02ecdfc181"
+    }
+  },
+  "strict_counts": {
+    "pass": 0,
+    "fail": 16,
+    "errors": 0
+  },
+  "deployment_id": "dpl_Egjp23QfLZTYyYtQPXtCbNsqm6hQ"
+}

@@ -430,18 +430,23 @@ Verification: 316 Python tests ran, 11 optional skips, no failures; graph tests
 passed. All 284 original result records remain unchanged outside derived report
 fields. Audit plan and producer hashes were checked against the committed sources.
 
-## S5 backend started (5 November)
+## S5 backend completed (5 November)
 
-The linear controls are implemented in the main Python entry point, with versioned
-reference curation, fixed-end simulation, strict linear equivalence and standalone
-reporting. The local full suite ran 320 tests with 11 optional skips and no failures,
-followed by the additional terminal-curation check. Successful cluster preparation
-ran the expanded suite after the Matplotlib/Pixi dependency fix. All four generated
-inputs passed complete-breadth and terminal-read admission.
+The main Python entry point now runs the isolated linear reference controls,
+including pinned terminal curation, no-wrap reads with explicit end coverage,
+strict linear equivalence, diagnostics and standalone reporting. The successful
+cluster batch **20261105T161510** completed all four simulations, 16 assembly
+executions, diagnostics, graph/length/identity metadata and report generation.
+All required Slurm stages completed with exit 0. All 16 strict sequence outcomes
+failed; none are process errors. These are isolated reference-record controls,
+not native chromosome/plasmid complements or validated physical-end standards.
 
-Batch **20261105T161510** has started its 16 assembly tasks. At the recorded
-checkpoint, 15 strict sequence outcomes were failures and one execution remained
-active; diagnostic conclusions and final publication are pending. Follow-on
-alignment, graph/length/identity collection and final report jobs are queued.
-See [S5_RUN_STATUS.md](S5_RUN_STATUS.md) for job IDs, scope and the preserved failed
-setup attempt. These results are not yet part of the public headline cohort.
+See [S5_RUN_STATUS.md](S5_RUN_STATUS.md) for exact observed differences, job IDs,
+limitations and reproduction commands. The public cohort adds these 16 records
+without changing earlier execution scores. New totals: 284 primary executions,
+84 pass, 196 fail, four errors (280 scored), plus the unchanged historical pilot.
+
+S5 publication: deployment `dpl_Egjp23QfLZTYyYtQPXtCbNsqm6hQ`; all 2,266
+public files passed byte-for-byte verification, with no failed downloads. The
+321-test suite passed with 11 optional skips; eight cohort tests and 6,923 local
+links passed. All 300 source records retain their original fields.
