@@ -11,7 +11,7 @@ import shutil
 from .assets import ensure_assets
 from .cases import plan
 from .common import ROOT, load, save
-from .report import LABELS, STATUSES, badge, collect_records, e, page, write_history
+from .report import LABELS, STATUSES, badge, batch_progress, collect_records, e, execution_evidence, explained_records, finding_panel, interpretation_guide, page, write_history
 
 
 CAUTION = 'An exact sequence failure alone does not show that a plasmid was lost. Residual sequence errors can prevent exact equality; tolerant recovery is assessed separately.'
@@ -56,6 +56,7 @@ def metrics_table(value, label):
 
 
 def build_noisy(config, batch=None, output=None, document=None, include_history=True):
+    document = copy.deepcopy(document) if document is not None else None
     output = output or ROOT / "dist"
     generated = ensure_assets(ROOT)
     for name in ("assets", "scenarios", "data"):
@@ -83,6 +84,8 @@ def build_noisy(config, batch=None, output=None, document=None, include_history=
         from .follow import assessment_state
         document["assessment_stage"] = {"scheduler_state": assessment_state(batch) or "Not submitted"}
     config, cases, rows = document["config"], document["scenarios"], document["results"]
+    rows = explained_records(rows, cases)
+    document["results"] = rows
     save(output / "data/results.json", document)
     with (output / "data/results.tsv").open("w", newline="") as stream:
         writer = csv.writer(stream, delimiter="\t")
@@ -92,6 +95,7 @@ def build_noisy(config, batch=None, output=None, document=None, include_history=
     tolerant = collections.Counter(tolerant_status(row) for row in rows)
     body = '<div class="page-heading"><h1>Can assemblers recover plasmids from noisy reads?</h1><p>S6 compares matched error-free controls and simulated error profiles using separate exact and tolerant assessments.</p></div>'
     body += f'<p class="run-summary">{len(cases)} scenarios · {len(rows)} assembler comparisons. Exact: {exact["pass"]} pass · {exact["fail"]} fail · {len(rows)-exact["pass"]-exact["fail"]} unscored. Tolerant: {tolerant["pass"]} pass · {tolerant["fail"]} fail · {len(rows)-tolerant["pass"]-tolerant["fail"]} unscored.</p>'
+    body += f'<p class="run-summary">Assembly stage: {e(batch_progress(rows))}</p>' + interpretation_guide()
     body += f'<div class="notice"><strong>Two separate endpoints</strong>{CAUTION} Pending or failed evaluators do not count as tolerant assembly failures.</div><div class="table-scroll" role="region" aria-label="Noisy-read result matrix" tabindex="0"><table class="matrix"><caption>Each cell retains the exact endpoint and the tolerant endpoint. Open the scenario for measurements, policies and recorded stage status.</caption><thead><tr><th scope="col">Scenario</th>'
     body += ''.join(f'<th scope="col">{e(LABELS[tool])}</th>' for tool in config["tools"]) + '</tr></thead><tbody>'
     for case in cases:
@@ -141,6 +145,7 @@ def noisy_scenario(case, document, output):
     for row in (row for row in document["results"] if row["scenario_id"] == case["id"]):
         assessment = row.get("tolerant_assessment") or {}
         body += f'<section class="assembler-result" id="{e(row["tool"])}"><h2>{e(LABELS[row["tool"]])}</h2><p>Exact endpoint: {badge(row["status"])} · Tolerant endpoint: {tolerant_badge(row)}</p><p>Recorded stages: simulation {e(manifest.get("status", "not collected"))}; assembly {e(STATUSES[row["status"]])}; tolerant evaluation {e(assessment.get("status", "awaiting evaluator"))}.</p>'
+        body += finding_panel(row, case)
         for key in ("started_at", "finished_at"):
             if row.get(key):
                 body += f'<p>{e(key)}: {e(row[key])}</p>'
@@ -166,6 +171,6 @@ def noisy_scenario(case, document, output):
         if row.get("error"):
             body += f'<p>{e(row["error"])}</p>'
         name = f'{case["id"]}-{row["tool"]}.json'
-        save(output / "data" / name, {key: value for key, value in row.items() if key not in ("host", "assembly_file")})
+        save(output / "data" / name, execution_evidence(row, case))
         body += f'<p><a href="../data/{e(name)}">Execution and assessment JSON</a></p></section>'
     return body + '<p><a href="../methods.html">Methods and endpoint limits</a></p>'

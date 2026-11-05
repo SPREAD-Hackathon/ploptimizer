@@ -10,7 +10,7 @@ from .assets import ensure_assets
 from .cases import plan
 from .common import ROOT, load, save
 from .determinism import assembly_tasks, collect_summary
-from .report import LABELS, badge, e, page, write_history
+from .report import LABELS, badge, batch_progress, e, execution_evidence, explained_records, finding_panel, interpretation_guide, page, write_history
 
 
 METRICS = (("byte", "File bytes"), ("normalised_sequence", "Normalised sequences"), ("biological", "Biological outcomes"))
@@ -55,6 +55,7 @@ def unrun_summary(config, cases):
 
 
 def build_repeat(config, batch=None, output=None, document=None, include_history=True):
+    document = copy.deepcopy(document) if document is not None else None
     output = output or ROOT / "dist"
     generated_assets = ensure_assets(ROOT)
     for name in ("assets", "scenarios", "data"):
@@ -75,6 +76,12 @@ def build_repeat(config, batch=None, output=None, document=None, include_history
             row.pop("host", None)
             row["command"] = ["<workdir>" + str(value)[str(value).index("/runs/"):] if "/runs/" in str(value)
                               else str(value) for value in row.get("command", [])]
+        from .explanations import attach_explanation
+        by_id = {case["id"]: case for case in cases}
+        summary["executions"] = [attach_explanation(row,
+            execution_path=batch / "results" / row["scenario_id"] / row["tool"] / "repeats" / row["run_id"] / "execution.json" if batch else None,
+            case=by_id[row["scenario_id"]]) if row["status"] not in ("pending", "running", "not_run") else row
+            for row in summary["executions"]]
         inputs, provenance = {}, {}
         if batch:
             for case in cases:
@@ -88,6 +95,9 @@ def build_repeat(config, batch=None, output=None, document=None, include_history
                     "results": summary["executions"], "determinism": summary, "inputs": inputs, "provenance": provenance}
     config, cases = document["config"], document["scenarios"]
     summary, results = document["determinism"], document["results"]
+    results = explained_records(results, cases)
+    document["results"] = results
+    document["determinism"]["executions"] = results
     save(output / "data/results.json", document)
     fields = ("scenario_id", "tool", "threads", "repeat", "run_id", "status", "reads_sha256", "truth_sha256",
               "assembly_sha256", "normalised_assembly_sha256", "biological_sha256", "elapsed_seconds", "peak_memory_kb")
@@ -100,6 +110,7 @@ def build_repeat(config, batch=None, output=None, document=None, include_history
     panel = config["determinism"]
     intro = '<div class="page-heading"><h1>Does the assembler repeat its result?</h1><p>S3 runs the same frozen input repeatedly at each thread setting. File identity, normalised sequence identity and biological outcomes answer separate questions.</p></div>'
     body = intro + f'<p class="run-summary">{scored} of {len(results)} executions assessed · {len(cases)} frozen read sets · {panel["repeats"]} repeats per thread setting</p>'
+    body += f'<p class="run-summary">{e(batch_progress(results, "executions"))}</p>' + interpretation_guide()
     body += '<div class="notice"><strong>Repeatable can still be wrong.</strong> Pass/fail describes exact dedicated-plasmid recovery. Identical/different describes agreement between executions. Incomplete groups and unequal or unverified inputs receive no repeatability conclusion.</div>'
     body += '<p>' + ' · '.join(f'{count} {e(status.replace("_", " "))}' for status, count in sorted(counts.items())) + '</p>'
     body += summary_table(summary["within_thread"], cases)
@@ -147,9 +158,10 @@ def repeat_scenario(case, document, output):
         body += f'<section class="assembler-result" id="{e(tool)}"><h2>{e(LABELS[tool])} · individual executions</h2><p>Pass/fail below describes biological correctness; an identical signature can occur for either outcome.</p><div class="table-scroll" role="region" aria-label="{e(LABELS[tool])} repeated executions" tabindex="0"><table><thead><tr><th scope="col">Threads / repeat</th><th scope="col">Sequence assessment</th><th scope="col">Elapsed</th><th scope="col">Evidence</th></tr></thead><tbody>'
         for row in selected:
             name = f'{case["id"]}-{tool}-{row["run_id"]}.json'
-            save(output / "data" / name, {key: value for key, value in row.items() if key not in ("host", "assembly_file")})
+            save(output / "data" / name, execution_evidence(row, case))
             elapsed = f'{row["elapsed_seconds"]:.1f} s' if row.get("elapsed_seconds") is not None else "Not available"
-            body += f'<tr><th scope="row">{row["threads"]} / {row["repeat"]}</th><td>{badge(row["status"])}</td><td>{elapsed}</td><td><a href="../data/{e(name)}">Execution JSON</a></td></tr>'
+            explanation = finding_panel(row, case, compact=True) if row["status"] not in ("pass", "pending", "running", "not_run") else ""
+            body += f'<tr><th scope="row">{row["threads"]} / {row["repeat"]}</th><td>{badge(row["status"])} · exact endpoint</td><td>{elapsed}</td><td><a href="../data/{e(name)}">Execution JSON</a>{explanation}</td></tr>'
             if row.get("error"):
                 body += f'<tr><td colspan="4">{e(row["error"])}</td></tr>'
         body += '</tbody></table></div></section>'

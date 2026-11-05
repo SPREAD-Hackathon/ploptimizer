@@ -1,6 +1,7 @@
 # Long-read plasmid assembly benchmark
 
-**Status:** pilot complete; expanded S1/S2 batch started, 4 November 2026. Python automation generates
+**Status:** S1/S2 and S4 executions are terminal; S3 is running and S6 inputs are ready.
+See the dated [release status and completion checklist](RELEASE_STATUS.md). Python automation generates
 error-free reads, submits BMRC Slurm jobs through Pixi environments and builds a
 static results website. See [RUNNING.md](RUNNING.md) for the explicit pilot settings
 and commands. Broader study choices remain in the [decision list](DECISIONS.md).
@@ -57,14 +58,15 @@ profile is in `config/pilot.json`. Supporting details and sources are in
 
 `config/next-stages.json` freezes 22 S1 cases across all five references and ten
 S2 cases: W/pRK2 and MGH78578/pKPN7 at relative depths 0.8, 1, 1.2, 3 and 5.
-Four tool configurations give 128 comparisons. Batch `20261104T190455` has been
-submitted to BMRC with four concurrent assembly tasks; completion is shown on
+Four tool configurations give 128 comparisons. Batch `20261104T190455` has
+completed its comparisons and supplementary diagnostics; outcomes are shown on
 the site. The earlier single-case pilot remains available under Earlier batches.
 The 1× S2 cases deliberately repeat baseline conditions; they are not independent
 biological replicates. S3 repeated/thread runs and S4 read-length challenges now have separate runnable
 profiles: `config/determinism.json` (80 executions) and
-`config/small-plasmids.json` (48 comparisons). They are queued sequentially after
-the S1/S2 panel so the assembly concurrency remains four. All batches are linked
+`config/small-plasmids.json` (48 comparisons). They were submitted sequentially
+after S1/S2 to keep assembly concurrency at four. S4 is terminal, including four
+separately recorded tool errors; S3 remains in progress at the release audit. All batches are linked
 on the site. Supplementary alignment diagnostics explain strict failures without
 changing their scores; see [RECOVERY_DIAGNOSTICS.md](RECOVERY_DIAGNOSTICS.md).
 
@@ -82,6 +84,6 @@ three simulation seeds and two error/quality packages. The expanded design remai
 `config/realistic-reads.proposed.json`. The bounded implementation is now frozen
 in `config/noisy-smoke.json`: three W/pRK2 read sets and 12 assembler comparisons.
 Its source-paired Badread adapter, admission checks and separate tolerant endpoint
-passed Linux tests and real-reference controls. Read generation is running;
-assemblies are queued behind S3. See [NOISY_ADAPTER.md](NOISY_ADAPTER.md) and
+passed Linux tests and real-reference controls. All three read sets passed
+admission; assemblies are queued behind S3 at the release audit. See [NOISY_ADAPTER.md](NOISY_ADAPTER.md) and
 [TOLERANT_ENDPOINT.md](TOLERANT_ENDPOINT.md).

@@ -76,7 +76,11 @@ class NoisyReportTests(unittest.TestCase):
     def test_snapshot_rebuild_needs_no_cluster_and_provides_all_routes(self):
         with patch("pipeline.noisy_report.collect_records", side_effect=AssertionError("No collection for snapshot")):
             output = self.render(self.document, folder="archive")
-        self.assertEqual(load(output / "data/results.json"), self.document)
+        rebuilt = load(output / "data/results.json")
+        for row in rebuilt["results"]:
+            self.assertIn("explanation", row)
+            row.pop("explanation")
+        self.assertEqual(rebuilt, self.document)
         for path in ("index.html", "scenarios/index.html", "scenarios/s6-fixture.html", "methods.html", "about.html", "history.html", "data/results.tsv", "assets/genomicx.js"):
             self.assertTrue((output / path).exists(), path)
         self.assertIn('href="/history.html"', (output / "history.html").read_text())

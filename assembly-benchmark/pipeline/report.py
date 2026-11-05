@@ -1,5 +1,6 @@
 """Generate a static, evidence-backed result matrix and scenario pages."""
 
+import copy
 import csv
 import datetime
 import html
@@ -81,8 +82,9 @@ def collect_records(config, batch):
                     state = "PENDING"
             record = attach_assessment(attach_sequence_review(attach_diagnostics(record, path), path, batch), path)
             status = result_status(record, state)
-            output.append({**record, "scenario_id": case["id"], "tool": tool, "status": status,
-                           "scheduler_state": state or None})
+            from .explanations import attach_explanation
+            output.append(attach_explanation({**record, "scenario_id": case["id"], "tool": tool, "status": status,
+                           "scheduler_state": state or None}, execution_path=path, case=case))
     return output
 
 
@@ -107,7 +109,7 @@ def build(config, batch=None, output=None, document=None, include_history=True):
     shutil.copytree(generated_assets, output / "assets", dirs_exist_ok=True)
     snapshot = ROOT / "published/latest.json"
     if document is not None or (batch is None and snapshot.exists()):
-        document = document or load(snapshot)
+        document = copy.deepcopy(document or load(snapshot))
         config = document["config"]
         cases = document["scenarios"]
         results = document["results"]
@@ -132,6 +134,8 @@ def build(config, batch=None, output=None, document=None, include_history=True):
         document = {"schema_version": 1, "generated_at": generated, "batch": batch.name if batch else None,
                     "config": config, "scenarios": cases, "results": results, "inputs": inputs,
                     "provenance": provenance}
+    results = explained_records(results, cases)
+    document["results"] = results
     save(output / "data/results.json", document)
     with (output / "data/results.tsv").open("w", newline="") as stream:
         writer = csv.writer(stream, delimiter="\t")
@@ -144,11 +148,13 @@ def build(config, batch=None, output=None, document=None, include_history=True):
     completed = sum(r["status"] in ("pass", "fail") for r in results)
     valid_inputs = sum(item["status"] == "valid" for item in document.get("inputs", {}).values())
     headline = f'{completed} of {len(results)} comparisons scored · {len(cases)} scenarios · {valid_inputs} inputs ready'
-    body = f'<div class="page-heading"><h1>Can the assembler recover the plasmid?</h1><p>Error-free reads first. Each cell tests one assembler configuration against one known chromosome–plasmid combination.</p></div><p class="run-summary">Batch total: {headline}</p>'
-    body += '<div class="notice"><strong>What counts as a pass?</strong> Every expected plasmid must appear exactly once as a complete, separate sequence. A circular sequence may start anywhere or be reverse-complemented. This first endpoint does not assess topology claims or classify partial recovery.</div>'
+    body = f'<div class="page-heading"><h1>Assembly benchmark results</h1><p>Whole-scenario exact recovery under error-free reads. Chromosome-only controls use their declared endpoints; these counts describe this batch, not a general assembler ranking.</p></div><p class="run-summary">Batch total: {headline}</p>'
+    body += f'<p class="run-summary">{e(batch_progress(results))}</p>'
+    body += interpretation_guide()
+    body += '<div class="notice"><strong>What counts as an exact pass?</strong> In plasmid-containing cases, every expected plasmid must appear exactly once as a complete, separate sequence. A circular sequence may start anywhere or be reverse-complemented. An exact fail means no unique, complete reference-equivalent molecule; it does not mean no plasmid sequence. Recovery evidence and possible explanations are separate from the score.</div>'
     category_options = ''.join(f'<option value="{key}">{key} · {e(CATEGORIES[key][0])}</option>' for key in sorted({c["category"] for c in cases}))
     body += f'<div class="filters"><label>Scenario category<select id="category-filter" disabled><option value="">All categories</option>{category_options}</select></label><label>Species<select id="species-filter" disabled><option value="">All species</option><option value="Escherichia">E. coli</option><option value="Klebsiella">K. pneumoniae</option></select></label><span id="filter-count" aria-live="polite">{len(cases)} scenarios shown</span></div>'
-    body += '<div class="table-scroll" role="region" aria-label="Assembler result matrix" tabindex="0"><table class="matrix"><caption>Open a scenario or result to inspect its inputs and evidence. The chromosome-only control uses a separate endpoint.</caption><thead><tr><th scope="col">Scenario</th>'
+    body += '<div class="table-scroll" role="region" aria-label="Assembler result matrix" tabindex="0"><table class="matrix"><caption>Pass/fail counts use the exact endpoint. Text below each result describes supporting evidence, not a second score. Open a result to inspect its measurements and explanation. The chromosome-only control uses a separate endpoint.</caption><thead><tr><th scope="col">Scenario</th>'
     for tool in config["tools"]:
         c = counts[tool]
         unresolved = len(cases) - c["pass"] - c["fail"]
@@ -161,7 +167,7 @@ def build(config, batch=None, output=None, document=None, include_history=True):
         body += f'<tr data-category="{case["category"]}" data-species="{case["organism"].split()[0]}"><th scope="row"><a href="scenarios/{e(case["id"])}.html">{e(case["title"])}</a><span class="row-summary"><span class="category-label">{case["category"]}</span> · {len(plasmids)} {noun} · {e(sizes)}</span></th>'
         for tool in config["tools"]:
             row = next(r for r in results if r["scenario_id"] == case["id"] and r["tool"] == tool)
-            body += f'<td data-tool="{tool}" data-status="{row["status"]}"><a class="result-link" href="scenarios/{e(case["id"])}.html#{tool}">{badge(row["status"])}</a><span class="row-summary">{e(diagnostic_summary(row, case))}</span></td>'
+            body += f'<td data-tool="{tool}" data-status="{row["status"]}"><a class="result-link" href="scenarios/{e(case["id"])}.html#{tool}">Exact: {badge(row["status"])}</a><span class="row-summary">{e(diagnostic_summary(row, case))}</span></td>'
         body += '</tr>'
     body += '</tbody></table></div><p class="legend">Pass and fail are completed sequence assessments. Queued, running, invalid inputs and job errors are unscored; they are never counted as scientific failures.</p>'
     body += f'<div class="downloads"><a href="data/results.json">Download JSON</a><a href="data/results.tsv">Download TSV</a><a href="data/recovery-evidence.tsv">Recovery evidence TSV</a><span>Updated {e(generated)} · Batch {e(document["batch"] or "not submitted")}</span></div>'
@@ -215,7 +221,8 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
         body += f'<tr><th scope="row">{e(r["replicon_name"])}</th><td><a href="https://www.ncbi.nlm.nih.gov/nuccore/{r["refseq_accession"]}">{r["refseq_accession"]}</a></td><td>{r["length_bp"]:,} bp</td><td>{depth}</td><td>{breadth}</td><td>{read_count}</td><td>{lengths}</td></tr>'
     body += '</tbody></table></div><h2>Assembler results</h2>'
     for row in rows:
-        body += f'<section class="assembler-result" id="{row["tool"]}"><h3>{e(LABELS[row["tool"]])} {badge(row["status"])}</h3>'
+        body += f'<section class="assembler-result" id="{row["tool"]}"><h3>{e(LABELS[row["tool"]])} Exact: {badge(row["status"])}</h3>'
+        body += finding_panel(row, case)
         if row.get("error"):
             body += f'<p>{e(row["error"])}</p>'
         if row.get("version"):
@@ -225,8 +232,7 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
             body += '</p>'
         score = row.get("evaluation")
         if score:
-            if row.get("sequence_review"):
-                body += '<p class="muted">Original exact assessment, preserved from the execution. Updated findings follow below.</p>'
+            body += '<details><summary>Original exact-sequence assessment</summary><p class="muted">The recorded endpoint is preserved. Supporting evidence explains the outcome without rewriting it.</p>'
             body += f'<p>Pass criterion: {e(score["endpoint"])}.</p><ul>'
             for r in score["replicons"]:
                 if row["tool"] == "plassembler" and r["molecule_type"] == "chromosome":
@@ -236,21 +242,19 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
             if row.get("initial_flye_evaluation"):
                 initial = row["initial_flye_evaluation"]
                 body += f'<p>Paired initial Flye result: {badge(initial["status"])} · {initial["plasmid_passes"]}/{initial["plasmid_total"]} exact plasmids.</p>'
+            body += '</details>'
         else:
             body += '<p>No completed sequence assessment is available for this configuration.</p>'
-        if row.get("sequence_review"):
-            review = row["sequence_review"]
-            document = review.get("source_document", "FAILURE_REVIEW.md")
-            if document not in {"FAILURE_REVIEW.md", "FLYE_HYPOTHESES.md", "RAVEN_CAUSE_REVIEW.md"}:
-                document = "FAILURE_REVIEW.md"
-            body += f'<div class="notice"><strong>Checked finding</strong>{e(review["explanation"])} <a href="https://github.com/SPREAD-Hackathon/ploptimizer/blob/main/assembly-benchmark/{document}">Read the evidence review</a>.</div>'
         if row.get("diagnostics"):
+            if row.get("sequence_review"):
+                body += '<details><summary>Original mapping evidence retained for audit</summary><p class="muted">The checked observation above may resolve sequence that the original mapping filters missed. These recorded mapping measurements are preserved, rather than substituted for direct sequence evidence.</p>'
             body += diagnostic_table(row["diagnostics"], plasmid_only=row["tool"] == "plassembler", evaluation=score)
+            if row.get("sequence_review"):
+                body += '</details>'
         else:
             body += f'<p class="muted">{e(diagnostic_summary(row, case))}.</p>'
         if row.get("started_at"):
-            public = {k: row[k] for k in row if k not in ("host", "assembly_file", "command")}
-            public["command"] = [str(x).replace(str(ROOT), "<workdir>") for x in row.get("command", [])]
+            public = execution_evidence(row, case)
             name = case["id"] + "-" + row["tool"] + ".json"
             save((output or ROOT / "dist") / "data" / name, public)
             body += f'<p><a href="../data/{name}">Execution and scoring record (JSON)</a></p>'
@@ -324,7 +328,11 @@ def diagnostic_state(diagnostic):
 def diagnostic_summary(record, case):
     """A compact mapping explanation, never a replacement for strict pass/fail."""
     if record.get("sequence_review"):
-        return record["sequence_review"]["summary"]
+        return "Verified: " + record["sequence_review"]["summary"]
+    finding = record.get("explanation") or {}
+    if finding.get("summary") and finding.get("source") != "mapping_diagnostics":
+        prefix = {"confirmed": "Observed", "suspected": "Suspected", "unresolved": "Unresolved"}.get(finding.get("confidence"), "Unresolved")
+        return prefix + ": " + finding["summary"]
     diagnostic = record.get("diagnostics")
     if not diagnostic or diagnostic.get("status") != "complete":
         if not diagnostic and record["status"] in ("not_run", "pending", "running"):
@@ -350,6 +358,9 @@ def diagnostic_summary(record, case):
         summary += "; absence not established"
     if flags:
         summary += "; candidate " + ", ".join(flags)
+    if finding:
+        prefix = {"confirmed": "Observed", "suspected": "Suspected", "unresolved": "Unresolved"}.get(finding.get("confidence"), "Unresolved")
+        summary = prefix + ": " + summary
     return summary
 
 
@@ -392,7 +403,7 @@ def diagnostic_table(diagnostic, plasmid_only=False, evaluation=None):
         body += '</ul>'
     else:
         body += '<p>No plasmids are expected in this control. The final plasmid output does not assess chromosome recovery.</p>' if plasmid_only else '<p>No molecule-level mapping evidence has been collected.</p>'
-    body += '<div class="table-scroll" role="region" aria-label="Aligned recovery evidence" tabindex="0"><table><thead><tr><th scope="col">Molecule</th><th scope="col">Aligned reference</th><th scope="col">Alignment identity</th><th scope="col">Supporting contigs</th><th scope="col">Candidate evidence</th></tr></thead><tbody>'
+    body += '<details><summary>Alignment measurements, thresholds and limitations</summary><div class="table-scroll" role="region" aria-label="Aligned recovery evidence" tabindex="0"><table><thead><tr><th scope="col">Molecule</th><th scope="col">Aligned reference</th><th scope="col">Alignment identity</th><th scope="col">Supporting contigs</th><th scope="col">Candidate evidence</th></tr></thead><tbody>'
     for row in rows:
         identity = f'{row["alignment_identity"]:.3%}' if row["alignment_identity"] is not None else "Not estimated"
         labels = candidate_labels(row)
@@ -400,7 +411,7 @@ def diagnostic_table(diagnostic, plasmid_only=False, evaluation=None):
         body += f'<tr><th scope="row">{e(row["name"])}</th><td>{row["aligned_reference_bp"]:,}/{row["length_bp"]:,} bp ({row["recovered_fraction"]:.2%})</td><td>{identity}</td><td>{row["contig_count"]}</td><td>{e(flags)}</td></tr>'
     body += '</tbody></table></div>'
     body += f'<p class="muted">Retained alignments require mapQ ≥{policy["minimum_mapq"]}, at least {policy["minimum_aligned_bp"]} aligned reference bases and identity ≥{policy["minimum_identity"]:.0%}; secondary, ambiguous-base and non-base-aligned records are excluded. Near-full means ≥{policy["complete_fraction"]:.0%} aligned reference coverage, not exact recovery. Candidate fragmentation requires multiple contigs, best-contig coverage below {policy["complete_fraction"]:.0%} and a union gain of at least {policy["fragmentation_gain_fraction"]:.0%}; candidate duplication requires overlapping reference coverage ≥{policy["duplication_fraction"]:.0%}; candidate joins use distinct reference molecules on query segments overlapping by at most {policy["maximum_query_overlap_fraction"]:.0%}. These flags do not establish a structural error.</p>'
-    body += f'<p class="muted">Mapper: {e(diagnostic.get("mapper_version", "unknown"))}. {e(diagnostic["evidence"]["limitations"])}</p>'
+    body += f'<p class="muted">Mapper: {e(diagnostic.get("mapper_version", "unknown"))}. {e(diagnostic["evidence"]["limitations"])}</p></details>'
     return body
 
 
@@ -440,3 +451,83 @@ def write_diagnostic_tsv(output, cases, results):
                                  row.get("alignment_identity"), row.get("contig_count"), flags.get("fragmented"), flags.get("duplicated"),
                                  flags.get("joined"), flags.get("no_supported_alignment"),
                                  *[policy[key] if available else None for key in ("minimum_mapq", "minimum_aligned_bp", "minimum_identity", "complete_fraction")]])
+
+
+def batch_progress(rows, noun="comparisons"):
+    """Describe execution completeness without counting infrastructure errors as fails."""
+    if not rows:
+        return "No comparisons recorded."
+    scored = sum(row["status"] in ("pass", "fail") for row in rows)
+    active = sum(row["status"] in ("pending", "running") for row in rows)
+    unrun = sum(row["status"] == "not_run" for row in rows)
+    errors = len(rows) - scored - active - unrun
+    if scored == len(rows):
+        return f"Complete: all {len(rows)} {noun} have a sequence assessment."
+    if active:
+        return f"In progress: {scored} assessed; {active} queued or running; {errors} unscored execution outcomes; {unrun} not run."
+    if unrun:
+        return f"{scored} assessed; {unrun} not run; {errors} unscored execution outcomes."
+    return f"Runs finished: {scored} sequence assessments; {errors} execution errors, timeouts or invalid inputs remain unscored."
+
+
+def interpretation_guide():
+    return '<details><summary>How to read exact scores, recovery evidence and explanations</summary><ul><li><strong>Exact pass/fail:</strong> whether the saved output meets the declared sequence endpoint. A fail can still contain most or all plasmid sequence.</li><li><strong>Full or near-full aligned recovery:</strong> mapping supports retained sequence; errors, extra copies or joins can still prevent an exact dedicated molecule.</li><li><strong>No retained alignment:</strong> the mapper found no alignment passing this policy. Short or repeated sequence can be filtered; absence is not established.</li><li><strong>Candidate fragmentation, duplication or join:</strong> a mapping pattern to review, not a confirmed structural error. More than one flag can apply.</li><li><strong>Verified observation, suspected explanation or unresolved:</strong> how strongly the saved evidence supports the explanation. A verified sequence observation does not automatically establish its software-internal cause.</li></ul><p>Job errors, invalid inputs and missing assessments are unscored. Open the scenario for input checks, individual molecules and downloadable evidence.</p></details>'
+
+
+def finding_panel(record, case=None, compact=False):
+    """Present evidence certainty separately from the immutable scientific endpoint."""
+    if record["status"] in ("not_run", "pending", "running"):
+        return '<p class="muted">No completed result to explain yet.</p>'
+    finding = record.get("explanation")
+    if not finding:
+        from .explanations import explain_result
+        finding = explain_result(record, case=case)
+    labels = {"confirmed": "Verified observation", "suspected": "Suspected explanation", "unresolved": "Unresolved explanation"}
+    label = labels.get(finding.get("confidence"), "Unresolved explanation")
+    body = f'<p><strong>{e(label)}:</strong> {e(finding.get("symptom", "No recorded explanation"))}</p>'
+    if finding.get("interpretation"):
+        body += f'<p>{e(finding["interpretation"])}</p>'
+    evidence = finding.get("evidence") or []
+    if evidence:
+        body += '<details><summary>Supporting evidence</summary><ul>'
+        for item in evidence:
+            text = item.get("text", "") if isinstance(item, dict) else str(item)
+            source = item.get("source") if isinstance(item, dict) else None
+            body += f'<li>{e(text)}' + (f' <span class="muted">Source: {e(source)}</span>' if source else '') + '</li>'
+        body += '</ul></details>'
+    if finding.get("confidence_scope"):
+        body += f'<p class="muted">Evidence scope: {e(finding["confidence_scope"])}</p>'
+    if finding.get("mechanism_confidence") == "unresolved":
+        body += '<p class="muted">The software-internal cause remains unresolved.</p>'
+    review = record.get("sequence_review") or {}
+    source = review.get("source_document")
+    if source in {"FAILURE_REVIEW.md", "FLYE_HYPOTHESES.md", "RAVEN_CAUSE_REVIEW.md"}:
+        body += f'<p><a href="https://github.com/SPREAD-Hackathon/ploptimizer/blob/main/assembly-benchmark/{source}">Read the checked evidence review</a>. {e(review.get("scope", "This observation applies to the matching saved artefact."))}</p>'
+    if compact:
+        return f'<details><summary>{e(label)}: inspect this execution</summary>{body}</details>'
+    return '<div class="notice"><strong>What this result shows</strong>' + body + '</div>'
+
+
+def execution_evidence(record, case=None):
+    """Add a reproducible explanation to downloads without rewriting source records."""
+    public = {key: value for key, value in record.items() if key not in ("host", "assembly_file", "command")}
+    public["command"] = ["<workdir>" + str(value)[str(value).index("/runs/"):] if "/runs/" in str(value)
+                         else str(value).replace(str(ROOT), "<workdir>") for value in record.get("command", [])]
+    if not public.get("explanation"):
+        from .explanations import explain_result
+        public["explanation"] = explain_result(record, case=case)
+    return public
+
+
+def explained_records(rows, cases):
+    """Fill missing presentation metadata; retain existing log-backed explanations."""
+    by_id = {case["id"]: case for case in cases}
+    result = []
+    for row in rows:
+        reviewed = row.get("sequence_review", {}).get("status") == "verified"
+        if row.get("explanation") and not (reviewed and row["explanation"].get("source") != "curated_review"):
+            result.append(row)
+        else:
+            from .explanations import attach_explanation
+            result.append(attach_explanation(row, case=by_id.get(row["scenario_id"])))
+    return result

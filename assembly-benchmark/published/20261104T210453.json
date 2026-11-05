@@ -79,7 +79,7 @@
       "plassembler"
     ]
   },
-  "generated_at": "2026-11-04T21:55:13+00:00",
+  "generated_at": "2026-11-05T00:09:41+00:00",
   "inputs": {
     "s6-w-prk2-seed-20261105-generic-stress": {
       "case": {
@@ -12629,6 +12629,24 @@
   "results": [
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
       "scheduler_state": "PENDING",
       "status": "pending",
@@ -12636,6 +12654,24 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
       "scheduler_state": "PENDING",
       "status": "pending",
@@ -12643,6 +12679,24 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
       "scheduler_state": "PENDING",
       "status": "pending",
@@ -12650,6 +12704,24 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
       "scheduler_state": "PENDING",
       "status": "pending",
@@ -12657,6 +12729,24 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
       "scheduler_state": "PENDING",
       "status": "pending",
@@ -12664,6 +12754,24 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
       "scheduler_state": "PENDING",
       "status": "pending",
@@ -12671,6 +12779,24 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
       "scheduler_state": "PENDING",
       "status": "pending",
@@ -12678,6 +12804,24 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
       "scheduler_state": "PENDING",
       "status": "pending",
@@ -12685,6 +12829,24 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
       "scheduler_state": "PENDING",
       "status": "pending",
@@ -12692,6 +12854,24 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
       "scheduler_state": "PENDING",
       "status": "pending",
@@ -12699,6 +12879,24 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
       "scheduler_state": "PENDING",
       "status": "pending",
@@ -12706,6 +12904,24 @@
     },
     {
       "command": [],
+      "explanation": {
+        "confidence": "unresolved",
+        "confidence_scope": "Available evidence does not resolve the explanation",
+        "evidence": [
+          {
+            "source": "status",
+            "text": "Recorded outcome: pending.",
+            "type": "execution"
+          }
+        ],
+        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
+        "kind": "awaiting_assessment",
+        "mechanism_confidence": "unresolved",
+        "schema_version": 1,
+        "source": "execution_state",
+        "summary": "Awaiting completed assessment",
+        "symptom": "No completed assembly assessment is available."
+      },
       "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
       "scheduler_state": "PENDING",
       "status": "pending",
