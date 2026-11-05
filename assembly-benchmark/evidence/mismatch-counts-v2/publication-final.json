@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "base_url": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "batch": "20261104T190455",
+  "generated_at": null,
+  "checked_files": 1086,
+  "failures": [],
+  "initial_failure_count": 1,
+  "targeted_retries": 1,
+  "verification_note": "Initial record retained; failed files retried individually with exact byte comparison."
+}

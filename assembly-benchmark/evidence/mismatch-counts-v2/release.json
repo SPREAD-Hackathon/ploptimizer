@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "status": "live_verified",
+  "verified_at": "2026-11-05T20:40:29.966624+00:00",
+  "url": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "deployment_id": "dpl_7oQGUyEYZKfFeLyHsk2AjQTB6RCg",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-fd71vtawj-happykhans-projects.vercel.app",
+  "source_commit": "5d39bf6",
+  "bundle": ".cache/bundles/mismatch-report-v2",
+  "build_bytes": 47327419,
+  "public_files_verified": 1086,
+  "verification_failures": 0,
+  "original_source_records_preserved": 300,
+  "retained_ready_deployments": 3,
+  "retained_deployments": [
+    "ploptimizer-assembly-benchmark-fd71vtawj-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-bfd2urvha-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-6mteyhyxk-happykhans-projects.vercel.app"
+  ],
+  "browser_checks": [
+    "Live390px scenario+Raven headers only",
+    "Six complete rows; no cell-content clipping",
+    "Matrix scrollWidth equals clientWidth348px",
+    "All4 assembler choices checked locally at390px",
+    "320px,800px and1440px layouts checked",
+    "Live pKPN5: 2 base mismatches, equal88582bp lengths, initial Flye exact, positions/base changes unknown"
+  ],
+  "limitations": [
+    "Real node-internal reference intervals remain unmeasured",
+    "Many exact failures still lack reviewed mismatch locations",
+    "Software-internal causes remain unresolved"
+  ],
+  "cluster_jobs_submitted": 0,
+  "mobile_matrix": "Native assembler selector and two complete columns at <=900px; full comparison on desktop",
+  "verification_retries": 1,
+  "reporting_update": "Allowlisted saved alignment edit counts; no new sequences processed or alignments run"
+}

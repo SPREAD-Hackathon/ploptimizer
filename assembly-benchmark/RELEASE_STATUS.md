@@ -3,7 +3,7 @@
 ## Current production — live and verified
 
 The compact build is now live at https://ploptimizer-assembly-benchmark.vercel.app
-from source `e56654d`, deployment `dpl_2wpnqUZHbQKVYmJ9aRhsTtb3PLsZ`.
+from source `5d39bf6`, deployment `dpl_7oQGUyEYZKfFeLyHsk2AjQTB6RCg`.
 The guarded archive deployment succeeded. All 1,086 published pages/assets/downloads
 passed byte-for-byte verification with zero failures. Browser checks confirmed
 recorded-difference facts and functioning scenario search/status filters. The
@@ -644,3 +644,24 @@ Reviewed at 320/390 px in dark/light themes, 800 px and1440 px; all four choices
 were exercised at390 px. Production verification passed all1086 published files,
 and browser checks confirmed the new selector and no clipped cells. Current plus
 two previous READY deployments remain. Evidence: `evidence/mobile-matrix-v2/`.
+
+## Saved mismatch counts — published and verified
+
+The pKPN5/Plassembler page now explicitly reports two base mismatches from its
+saved alignment, equal 88,582 bp reference/output lengths, no gap operations in
+those saved rows and an exact initial Flye assessment. Mismatch positions, from/to
+bases and assembler-internal cause remain unknown. The same scalar-count summary
+is exported in JSON/Markdown; coordinate TSV edit counts are retained. No new
+alignment or sequence analysis was performed, and original scores are unchanged.
+
+Metadata eligibility requires matching input/PAF hashes, a single failed required
+molecule/pair, full disjoint spans, consistent gap-free count fields, and no exact
+copy/assignment-failure ambiguity. Arbitrary sequence-bearing tags remain ignored.
+See [RECORDED_MISMATCH_COUNTS.md](RECORDED_MISMATCH_COUNTS.md).
+
+Verification: 352 Python tests passed (11 optional skips); 22 focused checks and
+HTTP checks of 398 routes/300 results passed. Production byte checks covered all
+1,086 published files. One initial DNS lookup failure passed an exact-byte retry;
+both initial and final evidence are retained. Desktop/phone UI review approved
+the reporting scope. Current plus two previous READY deployments are retained.
+Evidence: `evidence/mismatch-counts-v2/`.

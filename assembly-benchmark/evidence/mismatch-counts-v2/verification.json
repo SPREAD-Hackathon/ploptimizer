@@ -10,7 +10,7 @@
   "preserved_source_records": 300,
   "public_files": 1092,
   "schema_version": 1,
-  "status": "local_verified_pending_deploy",
+  "status": "live_verified",
   "total_files": 1103,
   "website_bytes": 47327419,
   "python_tests": 352,
@@ -23,5 +23,8 @@
   "sequence_letters_processed": false,
   "reviewer_disposition": "SHIP",
   "documentation": "DESIGN.md and RECORDED_MISMATCH_COUNTS.md",
-  "screenshots": ".cache/mismatch-report-review"
+  "screenshots": ".cache/mismatch-report-review",
+  "publication_files_verified": 1086,
+  "targeted_retry_count": 1,
+  "retry_reason": "One initial DNS resolution error; exact-byte targeted retry passed."
 }

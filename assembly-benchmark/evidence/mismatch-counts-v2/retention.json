@@ -1,0 +1,6 @@
+{
+  "removed_id": "dpl_88jLqrtApY8UA4WHC6Q314RFnuRB",
+  "exit_code": 0,
+  "stderr": "npm warn Unknown user config \"config\". This will stop working in the next major version of npm.\nnpm warn Unknown user config \"/opt/homebrew/Cellar/node/21.7.1/\". This will stop working in the next major version of npm.\nnpm warn Unknown user config \"/opt/homebrew/Cellar/node/21.7.1/lib/node_modules\". This will stop working in the next major version of npm.\nnpm warn Unknown user config \"prefic\". This will stop working in the next major version of npm.\nVercel CLI 65.11.0\n> Found 1 deployment for removal in happykhans-projects [1s]\n> Success! Removed 1 deployment [553ms]\n- ploptimizer-assembly-benchmark-kxkinas84-happykhans-projects.vercel.app\n",
+  "policy": "Current production plus two previous READY versions"
+}

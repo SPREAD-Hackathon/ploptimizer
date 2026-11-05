@@ -1,0 +1,9 @@
+[
+  {
+    "route": "results/s1-mgh78578-pkpn4--plassembler.html",
+    "status": "pass",
+    "http_status": 200,
+    "expected_sha256": "5672aa04e089a8f305fcaa813ba64f84ce8f0223e885ac3b9dd5c0fe94326703",
+    "received_sha256": "5672aa04e089a8f305fcaa813ba64f84ce8f0223e885ac3b9dd5c0fe94326703"
+  }
+]
