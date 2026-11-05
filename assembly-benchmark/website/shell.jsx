@@ -25,10 +25,9 @@ const links = [
   ['/scenarios/index.html', 'Scenarios'],
   ['/aggregate.html', 'Aggregate plots'],
   ['/methods.html', 'Methods'],
-  ['/history.html', 'All batches'],
 ];
 const actions = (mobile = false) => links.map(([href, label]) => (
-  <a key={href} href={href === '/history.html' || href === '/aggregate.html' ? href : batchPrefix + href} className={mobile ? 'gx-nav-dropdown-link' : 'gx-nav-link'}
+  <a key={href} href={href === '/aggregate.html' ? href : batchPrefix + href} className={mobile ? 'gx-nav-dropdown-link' : 'gx-nav-link'}
     aria-current={normalise(window.location.pathname) === normalise(batchPrefix + href)
       || (label === 'Scenarios' && window.location.pathname.startsWith(batchPrefix + '/scenarios/')) ? 'page' : undefined}>
     {label}

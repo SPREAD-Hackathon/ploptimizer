@@ -92,9 +92,10 @@ class NoisyReportTests(unittest.TestCase):
             self.assertIn("graph_artifacts", row)
             row.pop("graph_artifacts")
         self.assertEqual(rebuilt, self.document)
-        for path in ("index.html", "scenarios/index.html", "scenarios/s6-fixture.html", "methods.html", "about.html", "history.html", "data/results.tsv", "assets/genomicx.js"):
+        for path in ("index.html", "scenarios/index.html", "scenarios/s6-fixture.html", "methods.html", "about.html", "data/results.tsv", "assets/genomicx.js"):
             self.assertTrue((output / path).exists(), path)
-        self.assertIn('href="/history.html"', (output / "history.html").read_text())
+        self.assertFalse((output / 'history.html').exists())
+        self.assertNotIn('All batches', (output / 'index.html').read_text())
         self.assertIn("verified chemistry/basecaller", (output / "methods.html").read_text())
 
     def test_per_replicon_tolerant_contract_and_stage_counts_render_without_metrics_wrapper(self):

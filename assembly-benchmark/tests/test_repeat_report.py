@@ -97,10 +97,11 @@ class RepeatReportTests(unittest.TestCase):
         with patch("pipeline.repeat_report.collect_summary", side_effect=AssertionError("Snapshot must not collect")):
             output = self.render(batch=False, document=document, folder="archive")
         self.assertEqual(load(output / "data/results.json"), document)
-        for path in ("index.html", "scenarios/index.html", "methods.html", "about.html", "history.html", "assets/genomicx.js"):
+        for path in ("index.html", "scenarios/index.html", "methods.html", "about.html", "assets/genomicx.js"):
             self.assertTrue((output / path).exists(), path)
         self.assertIn("fixed-reads-s1-w-prk2", (output / "scenarios/s1-w-prk2.html").read_text())
-        self.assertIn('href="/history.html"', (output / "history.html").read_text())
+        self.assertFalse((output / 'history.html').exists())
+        self.assertNotIn('All batches', (output / 'index.html').read_text())
 
 
 if __name__ == "__main__":

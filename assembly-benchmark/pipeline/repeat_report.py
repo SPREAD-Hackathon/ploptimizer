@@ -11,7 +11,7 @@ from .cases import plan
 from .common import ROOT, load, save
 from .result_pages import enrich_graph_artifacts, result_href, write_result_pages
 from .determinism import assembly_tasks, collect_summary
-from .report import LABELS, badge, batch_progress, e, execution_evidence, explained_records, finding_panel, interpretation_guide, page, run_summary, write_history, write_release_overview
+from .report import LABELS, badge, batch_progress, e, execution_evidence, explained_records, finding_panel, interpretation_guide, page, run_summary, write_archives, write_release_overview
 
 
 METRICS = (("byte", "File bytes"), ("normalised_sequence", "Normalised sequences"), ("biological", "Reference-recovery outcomes"))
@@ -132,8 +132,8 @@ def build_repeat(config, batch=None, output=None, document=None, include_history
     methods = (ROOT / "website/methods.html").read_text()
     methods += '<h2>Reading S3 repeatability</h2><p>File bytes preserve headers and output ordering. Normalised sequences ignore names, order and strand; rotation is ignored only for exact matches to known circular truth molecules. Other contig ends are preserved and duplicates remain present. Biological signatures compare the strict endpoint and molecule counts. Input hashes must agree before a repeatability conclusion is shown.</p>'
     (output / "methods.html").write_text(page("Methods", methods, active="methods"))
-    (output / "about.html").write_text(page("About", '<h1>About this repeatability panel</h1><p>Ploptimizer compares plasmid assembly outcomes using frozen simulated reads and recorded execution evidence. These S3 results assess observed repeatability, with BMRC Slurm execution and Pixi environments.</p><p><a href="methods.html">Methods and limitations</a> · <a href="history.html">All batches</a></p>', active="about"))
-    write_history(output, document, include_history, render_context)
+    (output / "about.html").write_text(page("About", '<h1>About this repeatability panel</h1><p>Ploptimizer compares plasmid assembly outcomes using frozen simulated reads and recorded execution evidence. These S3 results assess observed repeatability, with BMRC Slurm execution and Pixi environments.</p><p><a href="methods.html">Methods and limitations</a></p>', active="about"))
+    write_archives(output, document, include_history, render_context)
     write_release_overview(output, document, include_history, render_context)
     save(output / "vercel.json", {"cleanUrls": True})
     (output / ".vercelignore").write_text(".env*\n.vercel\n.gitignore\n")

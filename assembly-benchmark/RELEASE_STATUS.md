@@ -493,3 +493,10 @@ Production deployment `dpl_ixNY2CitKwnNsCjEc1m9kb1PTpMY` passed byte-for-byte
 checks for all 2,347 public files. One initial DNS lookup failure passed a targeted
 retry; both initial and final verification records are retained. Live browser
 checks confirmed the aggregate navigation, baseline cohort and loaded figures.
+
+## History page removed (5 November)
+
+Removed the history index and its navigation/about/scenario references. Old root
+and archived history URLs redirect to the results overview. Archived result
+routes and downloads remain generated; all 300 result pages remain present.
+Eight focused report tests passed and 7,031 local links resolve.

@@ -34,7 +34,7 @@ def badge(status):
 
 
 def page(title, body, prefix="", active="overview"):
-    links = [("overview", "index.html", "Results"), ("scenarios", "scenarios/index.html", "Scenarios"), ("aggregate", "aggregate.html", "Aggregate plots"), ("methods", "methods.html", "Methods"), ("history", "history.html", "All batches")]
+    links = [("overview", "index.html", "Results"), ("scenarios", "scenarios/index.html", "Scenarios"), ("aggregate", "aggregate.html", "Aggregate plots"), ("methods", "methods.html", "Methods")]
     nav = "".join(f'<a {"aria-current=page" if key == active else ""} href="{'/aggregate.html' if key == 'aggregate' else prefix + url}">{label}</a>' for key, url, label in links)
     return f'''<!doctype html><html lang="en" data-theme="dark"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{e(title)} · Ploptimizer</title><meta name="description" content="Long-read plasmid assembly benchmark: scenarios, exact recovery outcomes and execution evidence.">
@@ -188,15 +188,17 @@ def build(config, batch=None, output=None, document=None, include_history=True, 
     for case in cases:
         rows = [r for r in results if r["scenario_id"] == case["id"]]
         (output / "scenarios" / (case["id"] + ".html")).write_text(page(case["title"], scenario_page(case, rows, batch, document.get("inputs", {}).get(case["id"]), output, document["batch"]), "../", "scenarios"))
-    category += '<h2>Study extensions</h2><p>Repeated/thread runs (S3) and small-plasmid read-length challenges (S4) run as separate batches. See <a href="../history.html">all batches</a> for their settings and progress. Biologically linear plasmids (S5) remain a planned extension.</p>'
+    category += '<p><a href="../index.html">Return to the results overview</a> to explore all scenario families.</p>'
     (output / "scenarios/index.html").write_text(page("Scenarios", category, "../", "scenarios"))
     methods = (ROOT / "website/methods.html").read_text()
     (output / "methods.html").write_text(page("Methods", methods, active="methods"))
     about = '<h1>About Ploptimizer</h1><p class="intro">A benchmark for the assembly problems that disappear inside whole-genome summary scores.</p><p>We assess whether long-read assembly workflows recover chromosomes and plasmids correctly, starting with E. coli and K. pneumoniae. Controlled reference subsets, coverage panels and explicit sequence endpoints make individual failures inspectable.</p><p>The results matrix links to the inputs, tool configuration, run evidence and limitations for each scenario. Runs execute on the BMRC cluster using Slurm and Pixi; this site presents static result snapshots.</p><p><a href="methods.html">Read the methods</a> or <a href="https://github.com/SPREAD-Hackathon/ploptimizer/tree/main/assembly-benchmark">inspect the source and brief</a>.</p>'
     (output / "about.html").write_text(page("About", about, active="about"))
-    write_history(output, document, include_history, render_context)
+    write_archives(output, document, include_history, render_context)
     write_release_overview(output, document, include_history, render_context)
-    save(output / "vercel.json", {"cleanUrls": True})
+    save(output / "vercel.json", {"cleanUrls": True, "redirects": [
+        {"source": source, "destination": "/", "permanent": True}
+        for source in ("/history", "/history.html", "/batches/:batch/history", "/batches/:batch/history.html")]})
     (output / ".vercelignore").write_text(".env*\n.vercel\n.gitignore\n")
     if batch:
         destination = batch / "site"
@@ -243,29 +245,17 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
     return body
 
 
-def write_history(output, document, include_history=True, render_context=None):
-    if include_history:
-        shutil.rmtree(output / "batches", ignore_errors=True)
-        history = '<h1>All batches</h1><p class="intro">Keep each batch separate: inputs, settings and scenario coverage can differ. Completed, running and queued batches remain separate. Counts below use strict exact recovery; noisy batches show tolerant outcomes on their own page. Open a batch to inspect its settings and progress.</p><ul class="scenario-list">'
-        current_pass = sum(row["status"] == "pass" for row in document["results"])
-        current_fail = sum(row["status"] == "fail" for row in document["results"])
-        current_unscored = len(document["results"]) - current_pass - current_fail
-        history += f'<li><a href="batch-details.html">Current source batch · {e(document["config"]["profile_id"])}</a><span>{current_pass} pass · {current_fail} fail · {current_unscored} unscored</span></li>'
-        archives = render_context["documents"].values() if render_context is not None else (load(path) for path in sorted((ROOT / "published").glob("*.json"), reverse=True) if path.name != "latest.json")
-        for archived in archives:
-            if archived["batch"] == document["batch"]:
-                continue
-            passes = sum(row["status"] == "pass" for row in archived["results"])
-            fails = sum(row["status"] == "fail" for row in archived["results"])
-            identifier = archived["batch"]
-            build(archived["config"], output=output / "batches" / identifier, document=archived, include_history=False, render_context=render_context)
-            unscored = len(archived["results"]) - passes - fails
-            history += f'<li><a href="batches/{identifier}/index.html">{identifier} · {e(archived["config"]["profile_id"])}</a><span>{passes} pass · {fails} fail · {unscored} unscored</span></li>'
-        history += '</ul><p><a href="index.html">Return to the release overview</a></p>'
-        (output / "history.html").write_text(page("All batches", history, active="history"))
-    else:
-        # Shared navigation on archive pages returns to the live report's history.
-        (output / "history.html").write_text(page("All batches", '<h1>Batch archive</h1><p><a href="/history.html">Browse all earlier batches</a></p>', active="history"))
+def write_archives(output, document, include_history=True, render_context=None):
+    """Keep source result routes without publishing a batch-history index."""
+    (output / "history.html").unlink(missing_ok=True)
+    if not include_history:
+        return
+    shutil.rmtree(output / "batches", ignore_errors=True)
+    archives = render_context["documents"].values() if render_context is not None else (load(path) for path in sorted((ROOT / "published").glob("*.json"), reverse=True) if path.name != "latest.json")
+    for archived in archives:
+        if archived["batch"] == document["batch"]:
+            continue
+        build(archived["config"], output=output / "batches" / archived["batch"], document=archived, include_history=False, render_context=render_context)
 
 
 def diagnostic_table(diagnostic, plasmid_only=False, evaluation=None, prepared=None):
