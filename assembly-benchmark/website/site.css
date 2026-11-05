@@ -68,8 +68,6 @@ tbody tr:hover > * { background: var(--gx-surface-hover); }
 .back { display: inline-block; margin-bottom: 24px; font-size: 14px; }
 code { font: 12px/1.6 ui-monospace, SFMono-Regular, monospace; overflow-wrap: anywhere; }
 .checksum { display: block; margin-bottom: 30px; }
- .benchmark-footer .gx-footer-inner { max-width: 1280px; }
-.benchmark-footer p { margin: 0; }
 .filters { display: flex; gap: 20px; flex-wrap: wrap; align-items: end; margin-top: 28px; }
 .filters label { display: grid; gap: 6px; font-size: 13px; }
 .filters select { min-width: 170px; background: var(--gx-surface); color: var(--gx-text); border: 1px solid var(--gx-border); border-radius: var(--gx-radius-sm); padding: 8px 12px; font: inherit; }
@@ -113,7 +111,6 @@ tbody tr:hover > .overview-cell { background: var(--heat-surface); }
 .overview-legend { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 12px; color: var(--gx-text-muted); }
 .overview-legend span:first-child::before, .overview-legend span:nth-child(2)::before { content: ''; display: inline-block; width: 10px; height: 10px; margin-right: 7px; background: #cf7a22; }
 .overview-legend span:nth-child(2)::before { background: #3478cf; }
-.overview-scope { margin-top: 22px; font-size: 13px; }
 .run-summary-table { min-width: 720px; }
 .run-summary-table th, .run-summary-table td { padding: 13px 16px; }
 .table-scroll th small, .table-scroll td a small { display: block; margin-top: 4px; color: var(--gx-text-muted); font-size: 12px; font-weight: 400; overflow-wrap: anywhere; }

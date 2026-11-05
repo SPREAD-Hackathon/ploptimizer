@@ -118,22 +118,11 @@ def _cell(counts, href=None):
     return f'<td class="overview-cell {tone}{heat}" data-pass="{counts["pass"]}" data-fail="{counts["fail"]}" data-denominator="{counts["denominator"]}">{text}</td>'
 
 
-def _scope(model):
-    kind = "This archived batch only" if model["scope"] == "archived_batch" else "Primary cohort"
-    body = f'<p class="muted">{kind}: {_e(", ".join(model["included_batches"]) or "No batches available")}.</p>'
-    body += '<p>Counts describe exact run outcomes. The scored denominator is pass + fail; errors and unscored runs are separate. A neutral cell has no scored runs. Counts pool executions, including repeats, and are not percentages of unique genomes.</p>'
-    if model["scope"] == "primary_cohort":
-        body += '<p class="muted">Historical pilot 20261104T183058 is excluded from these headline counts.</p>'
-    if model["missing_batches"]:
-        body += f'<p class="notice">Selected batches unavailable: {_e(", ".join(model["missing_batches"]))}. Counts are incomplete.</p>'
-    return body
-
-
 def render_home(model, prefix=""):
     """Body fragment; caller retains its existing page shell and assets."""
     body = f'<h1>Assembly benchmark</h1><p class="overview-intro">Exact recovery · {model["counts"]["total"]} run records · {len(model["tools"])} assembler configurations</p>'
     if model["missing_batches"]:
-        body += '<p class="notice">Some selected batches are unavailable; these counts are incomplete.</p>'
+        body += '<p class="notice">Some selected batches are unavailable. Counts are incomplete.</p>'
     body += '<div class="table-scroll" role="region" aria-label="Scenario family outcomes" tabindex="0"><table class="overview-heatmap"><caption>Exact pass/fail counts by scenario family and assembler</caption><thead><tr><th scope="col">Scenario family</th>'
     body += ''.join(f'<th scope="col">{_e(t["label"])}</th>' for t in model["tools"]) + '</tr></thead><tbody>'
     for family in model["families"]:
@@ -142,7 +131,7 @@ def render_home(model, prefix=""):
         href = prefix + family["href"]
         body += f'<tr><th scope="row"><a href="{_e(href)}">{family["id"]} · {_e(family["title"])}</a></th>'
         body += ''.join(_cell(tool, href) for tool in family["tools"]) + '</tr>'
-    return body + '</tbody></table></div><p class="overview-legend"><span>Orange: more failures</span><span>Blue: more passes</span><span>Counts use assessed exact outcomes; errors are separate.</span></p><details class="overview-scope"><summary>Cohort and counting rules</summary>' + _scope(model) + '<p>Repeatability (S3) and tolerant recovery (S6) are separate assessments.</p></details>'
+    return body + '</tbody></table></div><p class="overview-legend"><span>Orange: more failures</span><span>Blue: more passes</span></p>'
 
 
 def render_family(model, family, prefix="../"):
@@ -165,7 +154,7 @@ def render_family(model, family, prefix="../"):
         body += f'<tr data-batch="{_e(row["batch"])}"><th scope="row">{_e(row["organism"])}<small>{_e(row["title"])}</small></th><td><a href="{_e(prefix + row["href"])}">{_e(TOOLS[row["tool"]])}<small>{_e(row["version"])}</small></a></td><td>{_e(run)}</td><td><span class="status {_e(row["status"])}">{_e(row["status"].replace("_", " ").title())}</span></td></tr>'
     if not item["records"]:
         body += '<tr><td colspan="4">No runs in this selected cohort.</td></tr>'
-    return body + '</tbody></table></div><details class="overview-scope"><summary>Cohort and counting rules</summary>' + _scope(model) + '</details>'
+    return body + '</tbody></table></div>'
 
 
 def write_overview(documents, output, *, cohort=None, archived_batch=None, root_batch=None):

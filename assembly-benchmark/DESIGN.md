@@ -24,6 +24,6 @@ below 1050 px. Scenario data remains readable if JavaScript is unavailable.
 ## Truthful interface
 
 Queued, running, invalid and failed executions remain distinct from scientific
-pass/fail. The footer uses shared footer styles with accurate BMRC wording; the
-package's browser-processing/WASM claim would be incorrect for this platform.
+pass/fail. Summary pages show the table and colour key without a counting-rules
+block or repeated site footer. Source cohort metadata remains in the downloads.
 Past batch results remain accessible without implying that pending runs finished.

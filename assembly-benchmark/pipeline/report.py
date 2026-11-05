@@ -39,7 +39,7 @@ def page(title, body, prefix="", active="overview"):
 <script>try{{var theme=localStorage.getItem('gx-theme');if(theme==='light'||theme==='dark')document.documentElement.dataset.theme=theme;}}catch{{}}</script>
 <link rel="stylesheet" href="{prefix}assets/genomicx.css"><script defer src="{prefix}assets/genomicx.js"></script></head><body><a class="skip" href="#main">Skip to content</a>
 <div id="genomicx-nav"><header class="fallback-nav"><a href="{prefix}index.html">Ploptimizer</a><nav aria-label="Main navigation">{nav}</nav></header></div>
-<main id="main">{body}</main><footer class="benchmark-footer gx-footer"><div class="gx-footer-inner"><div class="gx-footer-content"><div class="gx-footer-text"><p class="gx-footer-text-title">Ploptimizer</p><p class="gx-footer-text-sub">Assemblies run on BMRC. Results and evidence are published here.</p></div><div class="gx-footer-links"><a class="gx-footer-link" href="https://genomicx.org">GenomicX</a><a class="gx-footer-link" href="https://github.com/SPREAD-Hackathon/ploptimizer/tree/main/assembly-benchmark">Source &amp; specification</a></div></div></div></footer></body></html>'''
+<main id="main">{body}</main></body></html>'''
 
 
 def result_status(record, scheduler_state):
@@ -538,7 +538,7 @@ def write_release_overview(output, document, include_history=True):
         shutil.copy2(output / "index.html", output / "batch-details.html")
     else:
         local_model = build_overview([document], cohort=local, archived_batch=document["batch"])
-        (output / "batch-details.html").write_text(page("Batch summary", render_home(local_model).replace("This archived batch only", "This batch only")))
+        (output / "batch-details.html").write_text(page("Batch summary", render_home(local_model)))
     documents = {document["batch"]: document}
     if include_history:
         for path in sorted((ROOT / "published").glob("*.json")):
