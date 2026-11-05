@@ -1,5 +1,5 @@
 import React, { useId, useMemo, useRef, useState } from 'react';
-import { Alert, FileUpload, StatusBadge } from '@genomicx/ui';
+import { Alert, StatusBadge } from '@genomicx/ui';
 import './graph.css';
 
 export const GRAPH_LIMITS = { segments: 5000, links: 5000, bytes: 20 * 1024 * 1024 };
@@ -110,15 +110,14 @@ function edgePath(edge, positions) {
 }
 
 export function GraphViewer({ artifact = {} }) {
-  const [local, setLocal] = useState(null), [files, setFiles] = useState([]), [error, setError] = useState(''), [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState(''), [view, setView] = useState(null), [showLabels, setShowLabels] = useState(true);
   const [movedNodes, setMovedNodes] = useState(new Map());
   const svg = useRef(null), pan = useRef(null), nodeDrag = useRef(null), suppressClick = useRef(false), marker = useId().replace(/:/g, '');
-  const graph = local ?? artifact.graph ?? {}, nodes = graph.nodes ?? [], edges = graph.edges ?? [];
+  const graph = artifact.graph ?? {}, nodes = graph.nodes ?? [], edges = graph.edges ?? [];
   const layout = useMemo(() => forceLayout(nodes, edges), [nodes, edges]);
   const positions = useMemo(() => new Map([...layout.positions, ...[...movedNodes].filter(([id]) => layout.positions.has(id))]), [layout, movedNodes]);
   const activeView = view ?? { x: 0, y: 0, width: layout.width, height: layout.height };
-  const origins = local ? null : artifact.reference_origins;
+  const origins = artifact.reference_origins;
   const originFor = id => {
     const match = origins?.nodes?.[id];
     const reference = match?.status === "supported" ? origins.references.find(r => r.id === match.reference_id) : null;
@@ -150,19 +149,6 @@ export function GraphViewer({ artifact = {} }) {
       const height = width * 360 / 560;
       setView({ x: point.x - width / 2, y: point.y - height / 2, width, height });
     }
-  }
-  async function openFiles(next) {
-    setFiles(next); setError(''); setLocal(null);
-    if (!next.length) { setLocal(null); reset(); return; }
-    const file = next[0];
-    if (file.size > GRAPH_LIMITS.bytes) { setError('The local file exceeds 20 MiB. Nothing was loaded.'); return; }
-    setLoading(true);
-    try {
-      const bytes = await file.arrayBuffer();
-      const hash = [...new Uint8Array(await crypto.subtle.digest('SHA-256', bytes))].map(value => value.toString(16).padStart(2, '0')).join('');
-      setLocal(parseLocalGfa(new TextDecoder('utf-8', { fatal: true }).decode(bytes), { filename: file.name, file_sha256: hash })); reset();
-    } catch (failure) { setLocal(null); setError(failure.message); }
-    finally { setLoading(false); }
   }
   function pointerDown(event) {
     if (event.button !== 0 || event.target.closest('[data-graph-node]')) return;
@@ -202,16 +188,12 @@ export function GraphViewer({ artifact = {} }) {
     if (shifts[event.key]) { event.preventDefault(); const [x, y] = shifts[event.key]; setView({ ...activeView, x: activeView.x + x * activeView.width / 10, y: activeView.y + y * activeView.height / 10 }); }
   }
   return <div className="assembly-graph" role="region" aria-label="Assembly graph viewer">
-    {local ? <Alert variant="warning">Local inspection: {graph.source?.filename}. This file is not attached to the benchmark result. Its contents stay in this browser.</Alert>
-      : !ready && <Alert variant="info">{tooLarge ? 'This graph exceeds the interactive display limit; no partial graph is drawn.' : graph.status === 'available' && !nodes.length ? 'The collected GFA contains no segment records. This is an empty recorded graph, not missing graph data.' : artifact.reason || graph.reason || 'No assembly graph was collected for this result. Missing graph data do not imply a graph with no links or a linear molecule.'}</Alert>}
-    {local && <button className="gx-btn gx-btn-secondary gx-btn-sm" onClick={() => { setLocal(null); setFiles([]); setError(''); reset(); }}>Return to benchmark graph</button>}
-    {error && <Alert variant="error">{error}</Alert>}
-    {loading && <p role="status">Reading the local GFA…</p>}
+    {!ready && <Alert variant="info">{tooLarge ? 'This graph exceeds the interactive display limit; no partial graph is drawn.' : graph.status === 'available' && !nodes.length ? 'The collected GFA contains no segment records. This is an empty recorded graph, not missing graph data.' : artifact.reason || graph.reason || 'No assembly graph was collected for this result. Missing graph data do not imply a graph with no links or a linear molecule.'}</Alert>}
     {ready && <>
-      <p><StatusBadge variant="info">{local ? 'Local file' : 'Recorded GFA'}</StatusBadge> {nodes.length.toLocaleString()} segments · {edges.length.toLocaleString()} link records. Source: {graph.source?.filename ?? 'not recorded'}; role: {graph.source?.role ?? 'not recorded'}.</p>
+      <p><StatusBadge variant="info">Recorded GFA</StatusBadge> {nodes.length.toLocaleString()} segments · {edges.length.toLocaleString()} link records. Source: {graph.source?.filename ?? 'not recorded'}; role: {graph.source?.role ?? 'not recorded'}.</p>
       {graph.complete === false && <Alert variant="warning">The source graph includes unsupported or omitted records. This view is not a complete representation of the source file.</Alert>}
       {graph.warnings?.length > 0 && <details><summary>Graph parsing notes</summary><ul>{graph.warnings.map((warning, index) => <li key={index}>{warning}</li>)}</ul></details>}
-      {!local && <><div className="origin-legend" aria-label="Reference colour key">{origins?.references?.map(reference => <span key={reference.id} style={{'--reference-colour':reference.colour,'--reference-light':reference.light_colour}}><i aria-hidden="true" />{reference.name}</span>)}<span><i aria-hidden="true" />Ambiguous / unassigned</span></div><p className="muted">Origin strips are shown inside nodes. Colour means a saved exact contig includes this segment in its recorded GFA path. Internal alignment boundaries have not been collected; grey means unresolved, not absent.</p></>}
+      <><div className="origin-legend" aria-label="Reference colour key">{origins?.references?.map(reference => <span key={reference.id} style={{'--reference-colour':reference.colour,'--reference-light':reference.light_colour}}><i aria-hidden="true" />{reference.name}</span>)}<span><i aria-hidden="true" />Ambiguous / unassigned</span></div><p className="muted">Origin strips are shown inside nodes. Colour means a saved exact contig includes this segment in its recorded GFA path. Internal alignment boundaries have not been collected; grey means unresolved, not absent.</p></>
       <div className="graph-controls">
         <button className="gx-btn gx-btn-secondary gx-btn-sm" onClick={() => zoom(.8)}>Zoom in</button>
         <button className="gx-btn gx-btn-secondary gx-btn-sm" onClick={() => zoom(1.25)}>Zoom out</button>
@@ -233,14 +215,13 @@ export function GraphViewer({ artifact = {} }) {
           <title>{`${node.id}; ${node.length_bp == null ? 'length unknown' : node.length_bp + ' bp'}`}</title>
         </g>; })}
       </svg>
-      <p className="muted">A self-link or closed GFA path is graph evidence, not confirmation of a physical circular molecule. {local ? "The benchmark contig claims above do not apply to this local file." : "Assembler-reported circularity and its source are listed separately on this result page."}</p>
+      <p className="muted">A self-link or closed GFA path is graph evidence, not confirmation of a physical circular molecule. Assembler-reported circularity and its source are listed separately on this result page.</p>
       {selectedNode && <div className="graph-selection" aria-live="polite"><h3>Segment {selectedNode.id}</h3><p>Length: {selectedNode.length_bp == null ? 'not reported' : `${selectedNode.length_bp.toLocaleString()} bp`}. Recorded GFA coverage/count tags: {coverageDescription(selectedNode.reported_coverage_tags) || 'none collected'}.</p>
-        {!local && <div className="origin-evidence" style={{'--reference-colour':selectedOrigin.reference?.colour,'--reference-light':selectedOrigin.reference?.light_colour}}><h4>Reference origin: {selectedOrigin.reference?.name ?? 'Unresolved'}</h4><div className="origin-track">{selectedOrigin.reference?.name ?? 'Ambiguous / unassigned'}</div><div className="origin-axis"><span>0 bp</span><span>{selectedNode.length_bp == null ? 'Length unknown' : `${selectedNode.length_bp.toLocaleString()} bp`}</span></div>{selectedOrigin.reference ? <><p><strong>{selectedOrigin.reference.id}</strong> · whole-segment path association. This strip does not locate individual mismatches or internal origin boundaries.</p><ul>{selectedOrigin.match.evidence.map((item,index)=><li key={index}>Saved exact match: <code>{item.contig_id}</code> → {item.reference_id}. GFA path <code>{item.path_id}</code> includes <code>{selectedNode.id}{item.orientation}</code>.</li>)}</ul></> : <p>{selectedOrigin.match?.status === 'ambiguous' ? 'Saved paths associate this segment with multiple references; no unique origin is assigned.' : origins?.unassigned_reason ?? 'No saved reference association is available.'}</p>}</div>}
+        <div className="origin-evidence" style={{'--reference-colour':selectedOrigin.reference?.colour,'--reference-light':selectedOrigin.reference?.light_colour}}><h4>Reference origin: {selectedOrigin.reference?.name ?? 'Unresolved'}</h4><div className="origin-track">{selectedOrigin.reference?.name ?? 'Ambiguous / unassigned'}</div><div className="origin-axis"><span>0 bp</span><span>{selectedNode.length_bp == null ? 'Length unknown' : `${selectedNode.length_bp.toLocaleString()} bp`}</span></div>{selectedOrigin.reference ? <><p><strong>{selectedOrigin.reference.id}</strong> · whole-segment path association. This strip does not locate individual mismatches or internal origin boundaries.</p><ul>{selectedOrigin.match.evidence.map((item,index)=><li key={index}>Saved exact match: <code>{item.contig_id}</code> → {item.reference_id}. GFA path <code>{item.path_id}</code> includes <code>{selectedNode.id}{item.orientation}</code>.</li>)}</ul></> : <p>{selectedOrigin.match?.status === 'ambiguous' ? 'Saved paths associate this segment with multiple references; no unique origin is assigned.' : origins?.unassigned_reason ?? 'No saved reference association is available.'}</p>}</div>
         <p>{graph.self_loop_segment_ids?.includes(selectedNode.id) ? 'An explicit GFA self-link was recorded for this segment.' : 'No explicit GFA self-link was recorded for this segment.'} This does not validate molecular topology.</p>
         <details open><summary>Incident link records ({related.length})</summary>{related.length ? <ul>{related.map((edge, index) => <li key={index}><code>{edge.source}{edge.source_orientation} → {edge.target}{edge.target_orientation}</code>; overlap {edge.overlap}</li>)}</ul> : <p>No incident link records.</p>}</details>
       </div>}
       {graph.paths?.length > 0 && <details><summary>Recorded GFA paths ({graph.paths.length})</summary><ul>{graph.paths.map((path, index) => <li key={index}><strong>{path.id}</strong>: <code>{path.steps.map(step => step.segment + step.orientation).join(', ')}</code></li>)}</ul></details>}
     </>}
-    <details className="graph-local"><summary>Inspect a local GFA separately</summary><p>This optional inspection does not change the benchmark result or its evidence. The selected file is processed only in this browser; it is never uploaded.</p><FileUpload files={files} onFilesChange={openFiles} multiple={false} accept=".gfa,.gfa1,text/plain" label="Choose a local GFA1 file" hint="Up to 20 MiB. Segment bases are not displayed or retained in the parsed graph." disabled={loading} /></details>
   </div>;
 }
