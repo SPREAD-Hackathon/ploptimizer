@@ -112,7 +112,7 @@ def coordinate_panel_svg(plot):
             if not alignments:
                 axis.set_yticks([])
                 axis.set_ylabel('No query coordinates recorded',labelpad=7)
-                axis.text(.5,.5,f'No rows for this reference in the saved {source_name}\nThis does not establish sequence absence.',
+                axis.text(.5,.5,f'No rows for this reference in the saved {source_name}',
                           transform=axis.transAxes,ha='center',va='center',fontsize=9)
             elif len(query_ids)<=4:
                 axis.text(.01,.99,'Queries: '+', '.join(query_ids),transform=axis.transAxes,va='top',fontsize=7,
