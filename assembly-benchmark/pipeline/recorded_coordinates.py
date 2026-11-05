@@ -1,12 +1,13 @@
 """Package already-produced PAF coordinate columns with frozen input provenance.
 
-No alignment software is invoked. Optional tags, including sequence-bearing tags,
-are neither decoded nor exported. Every saved row is retained for display; the
+No alignment software is invoked. Only numeric NM and gap-free CIGAR-count metadata are retained from optional
+tags; sequence-bearing tags are never decoded or exported. Every saved row is retained for display; the
 original filtered measurements and exact outcomes remain separate.
 """
 import hashlib
 import re
 from pathlib import Path
+from .recorded_mismatches import recorded_edit_fields
 
 MAX_BYTES = 20 * 1024 * 1024
 MAX_ROWS = 50_000
@@ -30,7 +31,7 @@ def _safe_path(root, relative):
 
 
 def parse_coordinate_columns(data, references):
-    """Read only PAF's twelve mandatory fields; never decode optional tags."""
+    """Read mandatory fields and allowlisted scalar edit metadata; never sequence tags."""
     rows, queries = [], {}
     expected = {reference['id']:reference['length_bp'] for reference in references}
     for line_number, line in enumerate(data.splitlines(), 1):
@@ -38,7 +39,8 @@ def parse_coordinate_columns(data, references):
             continue
         if len(line) > MAX_LINE_BYTES:
             raise ValueError('A recorded PAF line exceeds the metadata limit')
-        fields = line.split(b'\t', 12)[:12]
+        columns = line.split(b'\t')
+        fields = columns[:12]
         if len(fields) != 12:
             raise ValueError(f'Invalid PAF coordinate columns on line {line_number}')
         try:
@@ -58,6 +60,7 @@ def parse_coordinate_columns(data, references):
         rows.append({'query_id':query,'query_length':qlength,'query_interval':[qstart,qend],
                      'reference_id':reference,'reference_length':rlength,'reference_interval':[rstart,rend],
                      'strand':strand,'matches':matches,'block_length':block,'mapq':mapq})
+        rows[-1].update(recorded_edit_fields(columns[12:], qend-qstart, rend-rstart, matches, block))
         if len(rows)>MAX_ROWS:
             raise ValueError('Recorded coordinates exceed the display limit; no rows were sampled')
     return rows,[{'id':name,'length_bp':length} for name,length in queries.items()]
@@ -113,7 +116,7 @@ def recorded_paf_plot(case, record, batch, artifact_root):
             'coordinate_system':'0-based half-open intervals','nucmer_status':'not_collected',
             'difference_events_status':'not_collected','references':references,'queries':queries,
             'alignments':rows,'alignment_count':len(rows),'empty':not rows,
-            'display_scope':'All mandatory coordinate rows in the saved PAF, including rows that may be excluded from the saved scoring filters. No optional tags are exported.',
+            'display_scope':'All mandatory coordinate rows in the saved PAF, including rows that may be excluded from the saved scoring filters. Only scalar NM and gap-free CIGAR-count metadata are retained from optional tags; sequence-bearing tags are not exported.',
             'query_inventory_scope':'Query identifiers present in the saved PAF only; unaligned output contigs are not inferred.',
             'input_hashes':{'assembly_sha256':record['assembly_sha256'],'truth_sha256':record['truth_sha256'],
                             'paf_sha256':paf_hash,'execution_sha256':execution_hash},

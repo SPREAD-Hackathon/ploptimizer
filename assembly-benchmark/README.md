@@ -138,3 +138,5 @@ separate backend archive and size audit.
 [Recorded node interval evidence](NODE_INTERVAL_EVIDENCE.md) · [Scenario readiness and remaining definitions](SCENARIO_ROADMAP.md).
 
 [Static release safeguards and guarded deployment](STATIC_RELEASE.md).
+
+[Reporting saved base-mismatch counts](RECORDED_MISMATCH_COUNTS.md).

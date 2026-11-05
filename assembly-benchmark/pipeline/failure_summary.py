@@ -9,7 +9,7 @@ def review_matches_execution(record):
              all(record.get(key) and (review.get('hashes') or {}).get(key) == record[key] for key in ('assembly_sha256', 'truth_sha256')))
 
 
-def failure_summary(record):
+def failure_summary(record, plot=None):
     if record.get('status') != 'fail':
         return None
     review = record.get('sequence_review') or {}
@@ -19,7 +19,8 @@ def failure_summary(record):
               'summary':'The exact endpoint failed; the sequence difference has not been localised in a source-bound review.',
               'mechanism_confidence':'unresolved'}
     if not bound:
-        return result
+        from .recorded_mismatches import mismatch_summary
+        return mismatch_summary(record, plot) or result
     result.update(summary=review.get('summary') or 'A saved sequence review is available.', source=review.get('source_document') or 'sequence_review')
     validation = review.get('validation') or {}
     fields = [('excess_bp','Recorded excess','bp'), ('reference_length','Reference length','bp'),

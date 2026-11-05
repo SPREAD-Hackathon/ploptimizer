@@ -1,0 +1,44 @@
+{
+  "base_changes_status": "not_recorded",
+  "evidence_kind": "saved_alignment_counts",
+  "facts": [
+    {
+      "kind": "count",
+      "label": "Base mismatches",
+      "source": "run_artifacts/20261104T190455/results/s1-mgh78578-pkpn5/plassembler/alignment.paf \u00b7 NM counts and gap-free CIGAR metadata",
+      "value": 2
+    },
+    {
+      "kind": "bp",
+      "label": "Reference length",
+      "source": "run_artifacts/20261104T190455/results/s1-mgh78578-pkpn5/plassembler/alignment.paf \u00b7 reference_length",
+      "value": 88582
+    },
+    {
+      "kind": "bp",
+      "label": "Final output length",
+      "source": "run_artifacts/20261104T190455/results/s1-mgh78578-pkpn5/plassembler/alignment.paf \u00b7 query_length",
+      "value": 88582
+    },
+    {
+      "kind": "text",
+      "label": "Insertions / deletions",
+      "source": "run_artifacts/20261104T190455/results/s1-mgh78578-pkpn5/plassembler/alignment.paf \u00b7 gap-free CIGAR metadata",
+      "value": "None in the saved gap-free alignments"
+    },
+    {
+      "kind": "text",
+      "label": "Initial Flye stage",
+      "source": "initial_flye_evaluation.replicons",
+      "value": "Exact match recorded"
+    }
+  ],
+  "location_status": "not_recorded",
+  "mechanism_confidence": "unresolved",
+  "observation_confidence": "confirmed",
+  "schema_version": 1,
+  "scope": "Recorded counts across complete non-overlapping query/reference spans; no per-base positions or sequence changes extracted.",
+  "source": "run_artifacts/20261104T190455/results/s1-mgh78578-pkpn5/plassembler/alignment.paf",
+  "source_sha256": "82dc500019e0aacb829a8738362b7a8e425a2d87121830b24e029d23a604c63a",
+  "summary": "Full-length contig with 2 base mismatches reported in the saved alignment."
+}

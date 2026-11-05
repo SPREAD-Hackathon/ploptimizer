@@ -142,7 +142,10 @@ def prepare_document(source, artifact_root=None, coordinate_roots=(), snapshot_h
             'length_metrics':lengths, 'graph_availability':graph_availability(record,graph),
             'failure_details':detail_record(record,molecules,plot,coordinate_plot,sidecar_plot)}
         from .failure_summary import failure_summary
-        record['report_evidence']['failure_summary'] = failure_summary(record)
+        record['report_evidence']['failure_summary'] = failure_summary(record, plot)
+        summary = record['report_evidence']['failure_summary']
+        if summary and summary.get('evidence_kind') == 'saved_alignment_counts':
+            record['report_evidence']['description'] = summary['summary']
         record['report_evidence']['failure_details']['reported_circularity']['reference_origins']=contig_origins
     if document.get('determinism'):
         document['determinism']['executions'] = document['results']
@@ -157,6 +160,15 @@ def markdown_report(case, record, batch):
              f'- Batch: `{batch}`', f'- Scenario: `{record["scenario_id"]}`',
              f'- Version: {record.get("version", "Not recorded")}',
              f'- Endpoint: {(record.get("evaluation") or {}).get("endpoint", "Not recorded")}', '']
+    count_summary = evidence.get('failure_summary') or {}
+    if count_summary.get('evidence_kind') == 'saved_alignment_counts':
+        lines += ['## Saved alignment counts', '']
+        for fact in count_summary['facts']:
+            value = f"{fact['value']:,} bp" if fact['kind'] == 'bp' else str(fact['value'])
+            lines.append(f"- {fact['label']}: {value} · source `{fact['source']}`")
+        lines += ['- Mismatch positions and base changes: not recorded.',
+                  '- Assembler-internal cause: unresolved.',
+                  f"- Saved PAF SHA-256: `{count_summary['source_sha256']}`", '']
     for molecule in evidence['molecules']:
         score, mapping = molecule['exact'], molecule['mapping']
         lines += [f'### {score.get("name", score["accession"])} · {score["accession"]}', '',
@@ -187,7 +199,7 @@ def markdown_report(case, record, batch):
     if plot['status']=='available':
         lines += ['![Saved alignment coordinate spans](./'+result_id(record)+'-alignment.svg)', '',
                   f'Source: `{plot["source"]}`. {plot["method"]}. Coordinates: {plot["coordinate_system"]}.', '',
-                  ('All saved mandatory PAF coordinate rows are displayed. The saved filtered measurements and exact score are separate; optional tags and individual changed bases are not shown.' if plot.get('source_kind')=='recorded_paf' else plot['display_scope'] if plot.get('source_kind')=='recorded_show_coords' else 'The full-scale plot cannot resolve a few bases. The separate interval panels show only terminal intervals already recorded in the review.'), '']
+                  ('All saved mandatory PAF coordinate rows are displayed. The saved filtered measurements and exact score are separate; only allowlisted scalar edit counts are retained from optional tags, and individual changed bases are not shown.' if plot.get('source_kind')=='recorded_paf' else plot['display_scope'] if plot.get('source_kind')=='recorded_show_coords' else 'The full-scale plot cannot resolve a few bases. The separate interval panels show only terminal intervals already recorded in the review.'), '']
     else:
         lines += [plot['reason'], '']
     if plot.get('nucmer_status')=='available':

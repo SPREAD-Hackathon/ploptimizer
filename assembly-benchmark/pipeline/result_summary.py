@@ -19,10 +19,13 @@ def failure_facts(record):
         return ''
     if not summary['facts']:
         return '<p class="failure-location">Difference location: not recorded in the saved evidence.</p>'
-    body = '<div class="failure-facts"><h3>Recorded difference</h3><p>Confirmed by the saved review.</p><dl class="result-facts">'
+    caption = 'Recorded in the saved alignment metadata.' if summary.get('evidence_kind') == 'saved_alignment_counts' else 'Confirmed by the saved review.'
+    body = '<div class="failure-facts"><h3>Recorded difference</h3><p>' + caption + '</p><dl class="result-facts">'
     for fact in summary['facts']:
         if fact['kind'] == 'bp':
             value = f"{fact['value']:,} bp"
+        elif fact['kind'] in ('count','text'):
+            value = str(fact['value'])
         else:
             spans = [fact['value']] if fact['kind'] == 'interval' else fact['value']
             value = '; '.join(f'{a:,}–{b:,} bp' for a,b in spans)
@@ -30,9 +33,14 @@ def failure_facts(record):
     body += '</dl>'
     if summary['location_status'] == 'recorded':
         body += '<p class="muted">Coordinates are 0-based; the end is excluded.</p>'
+    if summary.get('base_changes_status') == 'not_recorded':
+        body += '<p>Mismatch positions and base changes: not recorded.</p>'
     body += '<details><summary>Difference evidence source</summary><p>' + e(summary['source']) + '</p><ul>'
     body += ''.join('<li>' + e(fact['label']) + ': <code>' + e(fact['source']) + '</code></li>' for fact in summary['facts'])
-    return body + '</ul></details></div>'
+    body += '</ul>'
+    if summary.get('source_sha256'):
+        body += '<p>Saved PAF SHA-256</p><code class="checksum">' + e(summary['source_sha256']) + '</code>'
+    return body + '</details></div>'
 
 
 def outcome_section(record):

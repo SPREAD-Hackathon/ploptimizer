@@ -1,0 +1,27 @@
+{
+  "errors": [],
+  "html_pages": 399,
+  "local_links_checked": 8005,
+  "policy": {
+    "max_file_bytes": 5242880,
+    "max_files": 1500,
+    "max_total_bytes": 67108864
+  },
+  "preserved_source_records": 300,
+  "public_files": 1092,
+  "schema_version": 1,
+  "status": "local_verified_pending_deploy",
+  "total_files": 1103,
+  "website_bytes": 47327419,
+  "python_tests": 352,
+  "optional_skips": 11,
+  "focused_tests": 22,
+  "http_routes_checked": 398,
+  "source_records_preserved": 300,
+  "cluster_jobs_submitted": 0,
+  "new_alignments": 0,
+  "sequence_letters_processed": false,
+  "reviewer_disposition": "SHIP",
+  "documentation": "DESIGN.md and RECORDED_MISMATCH_COUNTS.md",
+  "screenshots": ".cache/mismatch-report-review"
+}

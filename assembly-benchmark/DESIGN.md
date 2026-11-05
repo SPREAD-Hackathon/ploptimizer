@@ -61,11 +61,21 @@ Run metadata and the original assessment remain available in disclosures.
 
 For failed results, place a compact “Recorded difference” fact list near the
 verdict using semantic labels and values, with stacked pairs on phones. Show
-only saved review facts bound to the same scenario, tool, scientific status,
-assembly checksum and truth checksum. Include recorded excess, reference/output
-lengths and existing intervals when available; state that coordinates are
-0-based with the end excluded. Keep the source document and individual evidence
-fields in a folded “Difference evidence source” disclosure. Use the existing
+only source-bound saved facts. Distinguish a reviewed, located change event
+(“Confirmed by the saved review”) from a scalar alignment-count summary
+(“Recorded in the saved alignment metadata”). Reviews must match the scenario,
+tool, scientific status, assembly checksum and truth checksum; alignment-count
+summaries additionally require matching saved PAF provenance and complete,
+non-overlapping query/reference spans. Include recorded excess, mismatch counts,
+reference/output lengths and existing reviewed intervals when available; state
+that coordinates are 0-based with the end excluded. A whole alignment span does
+not locate a mismatch. For count-only evidence, explicitly leave positions and
+from/to bases unrecorded, and scope any absence of gap operations to the saved
+alignments. Do not label mismatch counts as biological SNP events. A saved exact
+initial-stage result is a recorded assessment comparison, not evidence of which
+later substep caused a difference. Keep the source document or path, saved
+checksum when available, and individual evidence fields in a folded “Difference
+evidence source” disclosure. Use the existing
 GenomicX typography, spacing and muted text rather than a separate card or new
 visual identity. If no bound review supplies facts, say “Difference location:
 not recorded in the saved evidence.” Never invent positions or infer an
