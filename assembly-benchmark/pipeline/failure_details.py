@@ -137,9 +137,12 @@ def markdown_detail_sections(details):
     if source:
         lines += [f'Source: `{source.get("filename","not recorded")}` · workflow role: `{source.get("role","not recorded")}`.', '']
     if circularity['contigs']:
-        lines += ['| Reported contig | Length (bp) | Circularity claim | Graph path |','| --- | ---: | --- | --- |']
+        lines += ['| Reported contig | Reference origin | Length (bp) | Circularity claim | Graph path |','| --- | --- | ---: | --- | --- |']
         for row in circularity['contigs']:
-            lines.append(f'| {row["id"]} | {row.get("length_bp","Not recorded")} | {row.get("reported_circularity","unknown")} ({row.get("reported_circularity_raw","source token unavailable")}) | {row.get("reported_graph_path","Not recorded")} |')
+            origin=circularity.get('reference_origins',{}).get(row['id'],{})
+            names=' / '.join(ref['name'] for ref in origin.get('references',[])) or 'Unassigned'
+            description=names+' ('+origin.get('status','unassigned')+')'
+            lines.append(f'| {row["id"]} | {description} | {row.get("length_bp","Not recorded")} | {row.get("reported_circularity","unknown")} ({row.get("reported_circularity_raw","source token unavailable")}) | {row.get("reported_graph_path","Not recorded")} |')
         lines.append('')
     lines += ['### Evidence availability', '', '| Evidence | Recorded status | Source / reason |','| --- | --- | --- |']
     for name,item in details['availability'].items():

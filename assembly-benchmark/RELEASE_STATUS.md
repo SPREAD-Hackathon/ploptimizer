@@ -331,3 +331,17 @@ SVG plots and 12 representative pages/assets/downloads matched the reviewed buil
 byte-for-byte. Every file in the downloaded backend ZIP matched its manifest.
 Vercel's individual-file upload quota rejected the first attempt; its supported
 `--archive=tgz` deployment completed successfully and should be used for this site.
+
+## Reference origin in contig inventories
+
+Contig tables now include accession-coloured chromosome/plasmid names, exact
+versus alignment-only labels and expandable source pointers. Ambiguous and
+unsupported rows stay grey; final-assembly associations are not applied to
+intermediate reports. The same backend metadata is retained in result JSON and
+standalone tables. Six focused association tests, existing bundle/result-page
+tests and all 376 routes/284 result views passed. Every original source field
+across 284 records remained unchanged. Desktop and phone table layouts and
+matching-evidence expansion were checked.
+
+Production: `dpl_4mzUBjWMXMxSXFMiwwUCLSvWhdTq`. The live SE11 inventory and its
+JSON, standalone report and shared styles matched the reviewed build.

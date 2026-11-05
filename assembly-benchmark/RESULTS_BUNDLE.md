@@ -188,3 +188,15 @@ repository root:
 npx --yes vercel@65.11.0 deploy --prod --yes --archive=tgz \
   --cwd assembly-benchmark/dist
 ```
+
+## Contig reference associations
+
+`report_evidence.contig_origins` supplies the reference-origin column in the web
+and standalone contig tables. It joins literal contig identifiers in a final,
+assembly-hash-bound tool inventory to saved exact-contig checks and accepted
+mapping summaries, with verified coordinate rows as a fallback. It does not match
+by name suffix or sequence length. Exact matches take precedence; additional
+alignment candidates remain in the evidence. A unique alignment association is
+labelled alignment-only, multiple unresolved references stay ambiguous/grey, and
+intermediate or unsupported inventories remain unassigned. Reference colours use
+the same accession catalogue as the graph and expected-molecule displays.

@@ -57,7 +57,7 @@ def contig_section(record, artifact):
         collapsed = len(info.get("contigs", [])) > 20
         if collapsed:
             body += f'<details><summary>Show all {len(info["contigs"]):,} reported contigs</summary>'
-        body += '<div class="table-scroll" role="region" aria-label="Reported contig inventory" tabindex="0"><table><thead><tr><th scope="col">Reported contig</th><th scope="col">Length</th><th scope="col">Reported circularity</th><th scope="col">Reported coverage</th></tr></thead><tbody>'
+        body += '<div class="table-scroll" role="region" aria-label="Reported contig inventory" tabindex="0"><table><thead><tr><th scope="col">Reported contig</th><th scope="col">Reference origin</th><th scope="col">Length</th><th scope="col">Reported circularity</th><th scope="col">Reported coverage</th></tr></thead><tbody>'
         for contig in info.get("contigs", []):
             length = f'{contig["length_bp"]:,} bp' if contig.get("length_bp") is not None else "Not reported"
             labels = {"circular": "Reported circular", "not_circular": "Not reported circular", "linear": "Reported linear", "unknown": "Unknown"}
@@ -66,7 +66,20 @@ def contig_section(record, artifact):
                 claim += " (source value: " + str(contig["reported_circularity_raw"]) + ")"
             coverage = contig.get("reported_coverage")
             coverage = "Not reported" if coverage is None else str(coverage)
-            body += f'<tr><th scope="row">{e(contig["id"])}</th><td>{e(length)}</td><td>{e(claim)}</td><td>{e(coverage)}</td></tr>'
+            origin=(record.get("report_evidence") or {}).get("contig_origins",{}).get(contig["id"],{})
+            status=origin.get("status","unassigned")
+            supported=status in {"exact","aligned"}
+            reference=(origin.get("references") or [{}])[0]
+            names=" / ".join(row["name"] for row in origin.get("references",[])) or "Unassigned"
+            label={"exact":"Exact sequence match","aligned":"Alignment only","ambiguous":"Ambiguous; multiple references","unassigned":"No supported assignment"}[status]
+            colour=reference.get("colour","#92969d") if supported else "#92969d"
+            light=reference.get("light_colour","#686c73") if supported else "#686c73"
+            cell=f'<span class="contig-origin" style="--reference-colour:{colour};--reference-light:{light}"><i aria-hidden="true"></i>{e(names)}</span><small class="contig-match-label">{e(label)}</small>'
+            if origin.get("evidence"):
+                cell+='<details><summary>Matching evidence</summary><ul>'
+                cell+=''.join(f'<li>{e(item["reference_id"])} · {e(item["kind"].replace("_"," "))} · <code>{e(item["source"])}</code></li>' for item in origin["evidence"])
+                cell+='</ul></details>'
+            body += f'<tr><th scope="row">{e(contig["id"])}</th><td>{cell}</td><td>{e(length)}</td><td>{e(claim)}</td><td>{e(coverage)}</td></tr>'
         body += '</tbody></table></div>'
         if collapsed:
             body += '</details>'

@@ -14,6 +14,7 @@ from .common import ROOT, digest, load, save
 from .evidence_model import diagnostic_summary, diagnostic_policy, molecule_explanation, alignment_classification, candidate_labels
 from .explanations import explain_result
 from .reference_origins import build_reference_origins
+from .contig_origins import build_contig_origins
 from .result_model import assessed_molecules, verdict
 from .identities import result_slug as result_id
 from .recorded_coordinates import recorded_paf_plot
@@ -128,10 +129,12 @@ def prepare_document(source, artifact_root=None, coordinate_roots=(), snapshot_h
             sidecar_plot=completed_sidecar_plot(case,record,document['batch'],coordinate_roots,artifact_root,snapshot_hash)
             if sidecar_plot['status']!='not_applicable':
                 plot=sidecar_plot
+        contig_origins=build_contig_origins(case,record,graph,plot)
         record['report_evidence'] = {'schema_version':VERSION, 'heading':heading, 'description':description,
             'summary':diagnostic_summary(record,case), 'required_accessions':relevant, 'molecules':molecules,
-            'reference_origins':build_reference_origins(case,record,graph), 'dotplot':plot, 'checked_facts':checked_facts(record),
+            'reference_origins':build_reference_origins(case,record,graph), 'contig_origins':contig_origins, 'dotplot':plot, 'checked_facts':checked_facts(record),
             'failure_details':detail_record(record,molecules,plot,coordinate_plot,sidecar_plot)}
+        record['report_evidence']['failure_details']['reported_circularity']['reference_origins']=contig_origins
     if document.get('determinism'):
         document['determinism']['executions'] = document['results']
     document['report_bundle_version'] = VERSION

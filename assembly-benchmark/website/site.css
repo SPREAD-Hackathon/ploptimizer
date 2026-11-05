@@ -173,3 +173,8 @@ tbody tr:hover > .overview-cell { background: var(--heat-surface); }
 @media (max-width: 700px) { .overview-heatmap { min-width: 760px; } .overview-heatmap th:first-child { width: 190px; } .overview-heatmap th, .overview-heatmap td { padding: 12px 10px; } }
 
 .saved-alignment-plot { display: block; width: 100%; height: auto; background: #fff; }
+
+.contig-origin { display: inline-flex; align-items: center; gap: 8px; }
+.contig-origin i { width: 10px; height: 10px; flex: none; background: var(--reference-colour); }
+.contig-match-label { display: block; color: var(--gx-text-muted); margin-top: 4px; }
+[data-theme="light"] .contig-origin i { background: var(--reference-light); }
