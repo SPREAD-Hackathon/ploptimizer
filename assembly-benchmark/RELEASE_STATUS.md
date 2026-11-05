@@ -571,3 +571,13 @@ a new biological scenario panel.
 Independent finish review: **ship** for the locally reviewed dark-mode desktop/phone
 UI. Documentation updated; no claim of light-theme visual verification or live
 publication is implied.
+
+## Horizontal matrix scrolling (5 November)
+
+Fixed the top-left Scenario family header so it stays pinned with the scenario
+row labels while assembler columns scroll horizontally. It uses the existing
+opaque header surface and a higher stacking order. No result, count or score
+changed. Browser checks at 390 px verified aligned header/body positions at a
+partial swipe and the far-right end, in dark and light themes; desktop was also
+checked at 1440 px. See `evidence/heatmap-scroll-v1/local-verification.json`.
+This fix remains in the local build pending the previously quota-blocked publish.

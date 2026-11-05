@@ -95,6 +95,7 @@ code { font: 12px/1.6 ui-monospace, SFMono-Regular, monospace; overflow-wrap: an
 .overview-heatmap { min-width: 800px; table-layout: fixed; }
 .overview-heatmap th, .overview-heatmap td { padding: 14px 12px; }
 .overview-heatmap th:first-child { width: 210px; }
+.overview-heatmap thead th:first-child { position: sticky; left: 0; z-index: 2; border-right: 1px solid var(--gx-border); }
 .overview-heatmap tbody th { position: sticky; left: 0; z-index: 1; background: var(--gx-bg-alt); border-right: 1px solid var(--gx-border); }
 .overview-cell { --heat-surface: var(--gx-surface); background: var(--heat-surface); text-align: center; }
 .overview-cell.heat-0 { --heat-surface: color-mix(in srgb, #cf7a22 30%, var(--gx-surface)); }

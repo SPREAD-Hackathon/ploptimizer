@@ -1,0 +1,39 @@
+{
+  "status": "local_verified_not_live",
+  "change": "Pin Scenario family header at the same left offset as scenario row labels",
+  "stylesheet": "website/site.css",
+  "viewport_width": 390,
+  "document_width": 380,
+  "partial_scroll_left": 175,
+  "far_right_scroll_left": 402,
+  "corner_x": 16,
+  "row_label_x": 16,
+  "heading_result_x_pairs": [
+    [
+      31,
+      31
+    ],
+    [
+      173.5,
+      173.5
+    ],
+    [
+      316,
+      316
+    ],
+    [
+      458.5,
+      458.5
+    ]
+  ],
+  "themes_checked": [
+    "dark",
+    "light"
+  ],
+  "desktop_width_checked": 1440,
+  "mechanical_detector": [],
+  "data_or_score_changes": false,
+  "screenshots": ".cache/heatmap-scroll-review",
+  "independent_review": "Pass for scoped fix; documentation updated",
+  "publication": "Pending alongside prior changes; last production attempt blocked by Vercel daily upload quota"
+}

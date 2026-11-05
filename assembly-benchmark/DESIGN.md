@@ -20,6 +20,7 @@ graphs. Existing genome-case URLs remain concise input/result summaries. Use sem
 text and linked evidence. Prose, navigation and controls fit phone widths; the
 matrix scrolls within its labelled region. Shared mobile navigation appears
 below 1050 px. Scenario data remains readable if JavaScript is unavailable.
+The top-left Scenario family header stays pinned with its row labels while assembler columns scroll.
 
 Individual-run and case-run lists, repeatability groups, and long contig/length
 inventories progressively add table navigation. Keep the headline count matrix
