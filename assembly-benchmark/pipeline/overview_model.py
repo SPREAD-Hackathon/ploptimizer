@@ -5,13 +5,13 @@ from .common import ROOT, load
 from .identities import result_href
 
 FAMILIES = {
-    "S1": ("Error-free recovery", "Baseline recovery with error-free simulated reads."),
+    "S1": ("Error-free recovery", "Baseline recovery with error-free simulated reads. Flye (default) is the primary Flye configuration; Flye (--meta) is a parameter comparison."),
     "S2": ("Relative plasmid coverage", "Recovery across plasmid-to-chromosome coverage ratios."),
     "S3": ("Repeated runs", "Agreement between repeated executions on the same frozen input, grouped by mode and thread setting."),
     "S4": ("Small plasmids and read length", "Small-plasmid recovery across read-length targets."),
     "S6": ("Simulated read errors", "Matched controls and simulated error profiles."),
 }
-TOOLS = {"flye": "Flye", "flye-meta": "Flye · uneven coverage", "raven": "Raven", "plassembler": "Plassembler long"}
+TOOLS = {"flye": "Flye (default)", "flye-meta": "Flye (--meta)", "raven": "Raven", "plassembler": "Plassembler long"}
 ERRORS = {"error", "timeout", "invalid_input"}
 
 

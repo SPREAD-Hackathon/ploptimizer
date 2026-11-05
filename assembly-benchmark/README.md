@@ -39,7 +39,7 @@ Use the same frozen reads for all tools. Keep simulation replicates separate fro
 
 ## Tools and references
 
-The initial tool panel is **Flye**, **Flye uneven-coverage mode**, **Plassembler long-read-only mode**, and **Raven**. Compare Plassembler's final plasmids with its own initial Flye assembly as well as the standalone baselines. Record component versions and internal filtering; score its retained chromosome separately.
+The initial tool panel is **Flye (default)**, **Flye (`--meta`)**, **Plassembler long-read-only mode**, and **Raven**. For the clean baseline, Flye (default) is the primary Flye configuration; `--meta` is an explicit parameter comparison, not a separate assembler. Compare Plassembler's final plasmids with its own initial Flye assembly as well as the standalone baselines. Record component versions and internal filtering; score its retained chromosome separately.
 
 The [reference shortlist](references/README.md) contains accession versions and supporting evidence for:
 

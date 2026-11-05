@@ -68,3 +68,8 @@ next proposed panel and the validation work needed before noisy runs. Tolerant
 thresholds remain proposals, not applied scores.
 
 **Controlled-error smoke update:** one W/pRK2 seed and matched exact/generic/ONT-shaped profiles now have a pinned executable adapter and a separate conservative tolerant endpoint. Linux tests and actual-reference positive/negative controls passed before assembler comparisons. The full two-case/three-seed expansion remains proposed pending smoke review; empirical calibration and general topology/structural scoring remain open.
+
+**Flye configuration labels (5 November 2026):** use “Flye (default)” and
+“Flye (`--meta`)”. Default Flye is primary for the clean baseline; `--meta` is
+an explicit parameter comparison. Stable tool IDs, historical commands and
+scientific outcomes remain unchanged.

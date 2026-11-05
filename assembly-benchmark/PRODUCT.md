@@ -35,7 +35,7 @@ Compute runs on Cluster3/BMRC via Slurm; the website consumes completed records.
 All source, configuration, environments, generated data and website work must
 remain within assembly-benchmark/. Keep the rest of the repository clear for
 other work. First implement error-free reads and exact plasmid recovery using
-Flye, its uneven-coverage mode, Raven and Plassembler long-read-only mode.
+Flye (default), Flye (`--meta`), Raven and Plassembler long-read-only mode. Default Flye is primary for the clean baseline; `--meta` is an explicit parameter comparison.
 Broader read-error and scoring models follow later.
 
 ## Evidence on Hand

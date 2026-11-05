@@ -15,7 +15,7 @@ from .evidence_model import (diagnostic_policy, alignment_classification, candid
                              diagnostic_state, diagnostic_summary, molecule_explanation)
 from .result_pages import enrich_graph_artifacts, result_href, write_result_pages
 
-LABELS = {"flye": "Flye", "flye-meta": "Flye · uneven coverage", "raven": "Raven", "plassembler": "Plassembler long"}
+LABELS = {"flye": "Flye (default)", "flye-meta": "Flye (--meta)", "raven": "Raven", "plassembler": "Plassembler long"}
 STATUSES = {"pass": "Pass", "fail": "Fail", "not_run": "Not run", "pending": "Queued", "running": "Running", "error": "Job error", "timeout": "Timed out", "invalid_input": "Invalid input"}
 CATEGORIES = {
     "S1": ("Error-free recovery", "Chromosome-only controls, individual native plasmids and complete deposited complements. These cases establish the baseline for each reference."),
