@@ -23,10 +23,12 @@ scenario, and let readers inspect the evidence behind a pass or fail.
 
 ## Operating Context
 
-The headline is a simple assembler-by-scenario table with pass/fail counts.
-Readers open a scenario page for its purpose, inputs and assembler outcomes,
-then a methods page for further explanation. Compute runs on Cluster3/BMRC via
-Slurm; the website consumes completed records rather than running assemblies.
+The homepage is a compact scenario-family-by-assembler matrix with exact pass/fail
+counts. Unscored outcomes remain separate. Family rows aggregate the explicit
+active release cohort; historical pilots are excluded. A family page contains
+all genome, tool/version and execution summaries. Each record links to its
+individual result with explanations, measurements, circularity and graph.
+Compute runs on Cluster3/BMRC via Slurm; the website consumes completed records.
 
 ## Capabilities and Constraints
 
@@ -44,7 +46,8 @@ must remain distinct from completed scientific pass/fail results.
 
 ## Product Principles
 
-- Make the outcome table the main content.
+- Make the family-level count matrix the homepage content; keep diagnostic prose out of its cells.
+- Use three levels: family overview, genome/tool summaries, individual execution evidence.
 - Keep every outcome traceable to its scenario and execution record.
 - Explain the scoring endpoint and its limits.
 - Never fill missing results with demonstrations or assumed passes.

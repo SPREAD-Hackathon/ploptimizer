@@ -193,6 +193,7 @@ def build(config, batch=None, output=None, document=None, include_history=True):
     about = '<h1>About Ploptimizer</h1><p class="intro">A benchmark for the assembly problems that disappear inside whole-genome summary scores.</p><p>We assess whether long-read assembly workflows recover chromosomes and plasmids correctly, starting with E. coli and K. pneumoniae. Controlled reference subsets, coverage panels and explicit sequence endpoints make individual failures inspectable.</p><p>The results matrix links to the inputs, tool configuration, run evidence and limitations for each scenario. Runs execute on the BMRC cluster using Slurm and Pixi; this site presents static result snapshots.</p><p><a href="methods.html">Read the methods</a> or <a href="https://github.com/SPREAD-Hackathon/ploptimizer/tree/main/assembly-benchmark">inspect the source and brief</a>.</p>'
     (output / "about.html").write_text(page("About", about, active="about"))
     write_history(output, document, include_history)
+    write_release_overview(output, document, include_history)
     save(output / "vercel.json", {"cleanUrls": True})
     (output / ".vercelignore").write_text(".env*\n.vercel\n.gitignore\n")
     if batch:
@@ -205,7 +206,7 @@ def build(config, batch=None, output=None, document=None, include_history=True):
 def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
     settings = case["simulation"]
     category_name, category_description = CATEGORIES[case["category"]]
-    body = f'<a class="back" href="index.html">All scenarios</a><h1>{e(case["title"])}</h1><p class="intro">{case["category"]} · {e(category_name)} · {e(case["organism"])}</p><p>{e(category_description)}</p>'
+    body = f'<a class="back" href="{case["category"].lower()}.html">{case["category"]} family results</a><h1>{e(case["title"])}</h1><p class="intro">{case["category"]} · {e(category_name)} · {e(case["organism"])}</p><p>{e(category_description)}</p>'
     if batch_id:
         body += f'<p class="muted">Batch <code>{e(batch_id)}</code></p>'
     body += '<h2>What this case tests</h2><p>Can each expected plasmid be recovered once as an exact, dedicated molecule alongside the chromosome? For the chromosome-only control, the endpoint checks the expected chromosome/no-plasmid output instead.</p>'
@@ -223,47 +224,8 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
         read_count = f'{observed["read_count"]:,}' if observed else "Not generated"
         lengths = f'{observed["mean_read_length"]:,.0f} / {observed["minimum_read_length"]:,}–{observed["maximum_read_length"]:,} bp' if observed else "Not generated"
         body += f'<tr><th scope="row">{e(r["replicon_name"])}</th><td><a href="https://www.ncbi.nlm.nih.gov/nuccore/{r["refseq_accession"]}">{r["refseq_accession"]}</a></td><td>{r["length_bp"]:,} bp</td><td>{depth}</td><td>{breadth}</td><td>{read_count}</td><td>{lengths}</td></tr>'
-    body += '</tbody></table></div><h2>Assembler results</h2>'
-    for row in rows:
-        body += f'<section class="assembler-result" id="{row["tool"]}"><h3>{e(LABELS[row["tool"]])} Exact: {badge(row["status"])}</h3>'
-        body += f'<p><a href="{e(result_href(row, "../"))}">Open result details, contigs and assembly graph</a></p>'
-        body += finding_panel(row, case)
-        if row.get("error"):
-            body += f'<p>{e(row["error"])}</p>'
-        if row.get("version"):
-            body += f'<p>Version: <code>{e(row["version"])}</code> · {row.get("threads")} threads · {row.get("elapsed_seconds", 0):.1f} seconds'
-            if row.get("peak_memory_kb") is not None:
-                body += f' · {row["peak_memory_kb"] / 1024:.1f} MiB peak memory'
-            body += '</p>'
-        score = row.get("evaluation")
-        if score:
-            body += '<details><summary>Original exact-sequence assessment</summary><p class="muted">The recorded endpoint is preserved. Supporting evidence explains the outcome without rewriting it.</p>'
-            body += f'<p>Pass criterion: {e(score["endpoint"])}.</p><ul>'
-            for r in score["replicons"]:
-                if row["tool"] == "plassembler" and r["molecule_type"] == "chromosome":
-                    continue
-                body += f'<li>{e(r["name"])}: {badge(r["status"])} · {e(r["reason"])}</li>'
-            body += '</ul><p class="muted">The strict endpoint is unchanged by supplementary mapping. Aligned recovery below can help explain a failure; topology claims are not scored.</p>'
-            if row.get("initial_flye_evaluation"):
-                initial = row["initial_flye_evaluation"]
-                body += f'<p>Paired initial Flye result: {badge(initial["status"])} · {initial["plasmid_passes"]}/{initial["plasmid_total"]} exact plasmids.</p>'
-            body += '</details>'
-        else:
-            body += '<p>No completed sequence assessment is available for this configuration.</p>'
-        if row.get("diagnostics"):
-            if row.get("sequence_review"):
-                body += '<details><summary>Original mapping evidence retained for audit</summary><p class="muted">The checked observation above may resolve sequence that the original mapping filters missed. These recorded mapping measurements are preserved, rather than substituted for direct sequence evidence.</p>'
-            body += diagnostic_table(row["diagnostics"], plasmid_only=row["tool"] == "plassembler", evaluation=score)
-            if row.get("sequence_review"):
-                body += '</details>'
-        else:
-            body += f'<p class="muted">{e(diagnostic_summary(row, case))}.</p>'
-        if row.get("started_at"):
-            public = execution_evidence(row, case)
-            name = case["id"] + "-" + row["tool"] + ".json"
-            save((output or ROOT / "dist") / "data" / name, public)
-            body += f'<p><a href="../data/{name}">Execution and scoring record (JSON)</a></p>'
-        body += '</section>'
+    body += '</tbody></table></div><h2>Recorded runs</h2>'
+    body += run_summary(rows, case, output=output)
     if manifest:
         body += f'<h2>Input evidence</h2><p>Input validation: <strong>{e(manifest["status"])}</strong>. Read-file SHA-256:</p><code class="checksum">{manifest["reads_sha256"]}</code>'
     body += '<p><a href="../methods.html">Read the scoring rules and limitations</a></p>'
@@ -277,7 +239,7 @@ def write_history(output, document, include_history=True):
         current_pass = sum(row["status"] == "pass" for row in document["results"])
         current_fail = sum(row["status"] == "fail" for row in document["results"])
         current_unscored = len(document["results"]) - current_pass - current_fail
-        history += f'<li><a href="index.html">Current · {e(document["config"]["profile_id"])}</a><span>{current_pass} pass · {current_fail} fail · {current_unscored} unscored</span></li>'
+        history += f'<li><a href="batch-details.html">Current source batch · {e(document["config"]["profile_id"])}</a><span>{current_pass} pass · {current_fail} fail · {current_unscored} unscored</span></li>'
         for path in sorted((ROOT / "published").glob("*.json"), reverse=True):
             if path.name == "latest.json":
                 continue
@@ -290,7 +252,7 @@ def write_history(output, document, include_history=True):
             build(archived["config"], output=output / "batches" / identifier, document=archived, include_history=False)
             unscored = len(archived["results"]) - passes - fails
             history += f'<li><a href="batches/{identifier}/index.html">{identifier} · {e(archived["config"]["profile_id"])}</a><span>{passes} pass · {fails} fail · {unscored} unscored</span></li>'
-        history += '</ul><p><a href="index.html">Return to the current batch</a></p>'
+        history += '</ul><p><a href="index.html">Return to the release overview</a></p>'
         (output / "history.html").write_text(page("All batches", history, active="history"))
     else:
         # Shared navigation on archive pages returns to the live report's history.
@@ -537,3 +499,63 @@ def explained_records(rows, cases):
             from .explanations import attach_explanation
             result.append(attach_explanation(row, case=by_id.get(row["scenario_id"])))
     return result
+
+
+def run_summary(rows, case, prefix="../", output=None, show_tolerant=False):
+    """Concise case view; narratives and topology stay on result pages."""
+    heading = '<th scope="col">Tolerant status</th>' if show_tolerant else ''
+    body = '<div class="table-scroll" role="region" aria-label="Recorded run summary" tabindex="0"><table class="run-summary-table"><caption>Recorded execution outcomes. Open a result for its scoring, explanation, contigs and graph.</caption><thead><tr><th scope="col">Assembler / version</th><th scope="col">Threads / repeat</th><th scope="col">Exact status</th>' + heading + '<th scope="col">Elapsed</th><th scope="col">Result</th></tr></thead><tbody>'
+    seen = set()
+    for row in rows:
+        anchor = row["tool"] if row["tool"] not in seen else row["tool"] + "-" + row.get("run_id", str(len(seen)))
+        seen.add(row["tool"])
+        threads = str(row["threads"]) + " threads" if row.get("threads") is not None else "Not recorded"
+        if row.get("repeat") is not None:
+            threads += " · repeat " + str(row["repeat"])
+        elapsed = f'{row["elapsed_seconds"]:.1f} s' if row.get("elapsed_seconds") is not None else "Not recorded"
+        body += f'<tr id="{e(anchor)}"><th scope="row">{e(LABELS[row["tool"]])}<small>{e(row.get("version") or "Version not recorded")}</small></th><td>{e(threads)}</td><td>{badge(row["status"])}</td>'
+        if show_tolerant:
+            from .noisy_report import tolerant_badge
+            body += '<td>' + tolerant_badge(row) + '</td>'
+        body += f'<td>{elapsed}</td><td><a href="{e(result_href(row, prefix))}">Result details</a>'
+        if output is not None:
+            suffix = "-" + row["run_id"] if row.get("run_id") else ""
+            name = case["id"] + "-" + row["tool"] + suffix + ".json"
+            save(output / "data" / name, execution_evidence(row, case))
+            body += f' · <a href="{e(prefix)}data/{e(name)}">JSON</a>'
+        body += '</td></tr>'
+    return body + '</tbody></table></div>'
+
+
+def write_release_overview(output, document, include_history=True):
+    """Replace navigation pages, preserving scientific files and individual results."""
+    if not document.get("batch"):
+        return None
+    from .overview import FAMILIES, build_overview, render_home, write_overview
+    families = ["S3"] if document["config"].get("determinism") else [key for key in FAMILIES if any(case.get("category") == key for case in document["scenarios"])]
+    local = {"schema_version": 1, "primary_batches": [document["batch"]], "families": families, "tools": document["config"]["tools"]}
+    if document["config"].get("determinism") or document["config"].get("noisy_panel"):
+        shutil.copy2(output / "index.html", output / "batch-details.html")
+    else:
+        local_model = build_overview([document], cohort=local, archived_batch=document["batch"])
+        (output / "batch-details.html").write_text(page("Batch summary", render_home(local_model).replace("This archived batch only", "This batch only")))
+    documents = {document["batch"]: document}
+    if include_history:
+        for path in sorted((ROOT / "published").glob("*.json")):
+            if path.name == "latest.json":
+                continue
+            archived = load(path)
+            if archived["batch"] not in documents:
+                documents[archived["batch"]] = archived
+    model = write_overview(list(documents.values()), output, cohort=None if include_history else local,
+                           archived_batch=None if include_history else document["batch"])
+    catalog = '<h1>Scenario families</h1><p>Choose a family for genome, assembler and execution summaries.</p><ul class="scenario-list">'
+    for family in model["families"]:
+        href = family["href"].removeprefix("scenarios/")
+        catalog += f'<li><a href="{e(href)}">{family["id"]} · {e(family["title"])}</a><span>{family["counts"]["total"]} runs</span></li>'
+    catalog += '</ul>'
+    if document["scenarios"]:
+        catalog += '<details><summary>Individual input cases in this batch</summary><ul class="scenario-list">'
+        catalog += ''.join(f'<li><a href="{e(case["id"])}.html">{e(case["title"])}</a></li>' for case in document["scenarios"]) + '</ul></details>'
+    (output / "scenarios/index.html").write_text(page("Scenario families", catalog, "../", "scenarios"))
+    return model

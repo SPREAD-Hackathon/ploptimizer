@@ -130,3 +130,31 @@ for collection/reproduction and bounds.
 
 The production build generated at `2026-11-05T07:43:04+00:00` was verified
 byte-for-byte across all 1,260 public files, with no mismatches.
+
+## Compact release overview — 5 November
+
+The homepage now has five scenario-family rows and four assembler columns, with
+labelled exact pass/fail counts and a blue–orange heat scale. Job errors remain
+separate. Family pages contain genome summaries and individual tool/version/run
+links; explanations, circularity and graphs stay on the individual result pages.
+Existing case URLs and downloads remain available. S3 repeatability and S6
+tolerant assessments retain their separate batch summaries and detailed evidence.
+
+The explicit cohort in `config/overview.json` contains 268 executions: 84 pass,
+180 fail and 4 job errors. The scored denominator is 264. The historical pilot is
+excluded from the release overview and remains accessible in the archive. Counts
+include repeated executions and are not percentages of unique genomes.
+
+This was a presentation-only rebuild from the saved snapshots. No source snapshot,
+exact score, evaluation measurement or configuration changed; no compute or
+sequence analysis was run. Verification covered 241 Python tests (11 optional
+skips, no failures), graph-model checks, 376 local routes and 284 result views
+including the pilot's unsubmitted cells. Browser checks covered the overview,
+scenario-to-result navigation, saved graph selection and phone layouts in both
+themes. The design detector reported no findings.
+
+Production deployment `dpl_6Wcyk4xszi9V359Yn6qRqhG18fpb` is live at
+<https://ploptimizer-assembly-benchmark.vercel.app/>. All 1,291 public files,
+including downloads, matched the reviewed build byte-for-byte. One transient DNS
+lookup failure passed a targeted retry. The source snapshot timestamp remains
+`2026-11-05T07:43:04+00:00`; the presentation rebuild does not imply newer runs.

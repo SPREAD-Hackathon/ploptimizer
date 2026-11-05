@@ -99,20 +99,28 @@ def contig_section(record, artifact):
     return body
 
 
-def result_body(case, record, artifact, output):
+def result_body(case, record, artifact, output, family=None):
     from .report import LABELS, badge, diagnostic_table, e, execution_evidence, finding_panel
     slug = result_slug(record)
     body = f'<a class="back" href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Back to this scenario and assembler</a><h1>{e(LABELS[record["tool"]])} · {e(case["title"])}</h1><p>Exact endpoint: {badge(record["status"])}</p>'
     body += '<nav aria-label="Result evidence"><a href="#contigs">Contigs and circularity</a> · <a href="#assembly-graph">Assembly graph</a></nav>'
+    if family:
+        body = f'<a class="back" href="../scenarios/{family.lower()}.html">{family} family results</a> · ' + body
     if record.get("tolerant_assessment"):
         from .noisy_report import tolerant_badge
         body += f'<p>Separate tolerant endpoint: {tolerant_badge(record)}. Exact and tolerant outcomes retain their own definitions.</p>'
     facts = [("Scenario", case["id"]), ("Execution", record.get("run_id", "Single execution")),
              ("Tool version", record.get("version", "Not collected")), ("Tool threads", record.get("threads", "Not collected"))]
+    for key, label in (("started_at", "Started"), ("finished_at", "Finished")):
+        if record.get(key):
+            facts.append((label, record[key]))
     if record.get("elapsed_seconds") is not None:
         facts.append(("Elapsed", f'{record["elapsed_seconds"]:.1f} seconds'))
     body += '<dl class="result-facts">' + ''.join(f'<dt>{e(key)}</dt><dd>{e(value)}</dd>' for key, value in facts) + '</dl>'
     body += finding_panel(record, case)
+    if family == "S6" or record.get("tolerant_assessment"):
+        from .noisy_report import tolerant_details
+        body += '<h2>Tolerant recovery measurements</h2>' + tolerant_details(record)
     if artifact.get("failed_execution_provenance"):
         body += '<div class="notice"><strong>Retained intermediate output</strong><p>This graph and its tool claims come from a stopped run. No completed primary assembly was verified; the original execution error remains unchanged.</p></div>'
     body += contig_section(record, artifact)
@@ -148,7 +156,8 @@ def write_result_pages(document, output, batch=None):
     for record in document["results"]:
         case = cases[record["scenario_id"]]
         artifact = graph_artifact(record, execution_path(batch, record))
-        body = result_body(case, record, artifact, output)
+        family = "S3" if document.get("config", {}).get("determinism") else case.get("category")
+        body = result_body(case, record, artifact, output, family=family)
         (directory / (result_slug(record) + ".html")).write_text(page(LABELS[record["tool"]] + " · result", body, "../", "scenarios"))
 
 

@@ -63,7 +63,7 @@ class RepeatReportTests(unittest.TestCase):
         self.assertEqual(len(document["scenarios"]), 2)
         self.assertEqual(document["results"], document["determinism"]["executions"])
         self.assertEqual({row["status"] for row in document["results"]}, {"pending"})
-        html = (output / "index.html").read_text()
+        html = (output / "batch-details.html").read_text()
         self.assertIn("0 of 80 executions assessed", html)
         self.assertIn("Not assessed", html)
         self.assertNotIn(">Identical<", html)
@@ -78,7 +78,7 @@ class RepeatReportTests(unittest.TestCase):
     def test_repeatability_and_biological_failure_are_separate(self):
         self.write_terminal_records()
         output = self.render()
-        html = (output / "index.html").read_text()
+        html = (output / "batch-details.html").read_text()
         self.assertIn("80 of 80 executions assessed", html)
         self.assertIn("80 fail", html)
         self.assertIn(">Identical<", html)

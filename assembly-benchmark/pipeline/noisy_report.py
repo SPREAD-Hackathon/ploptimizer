@@ -12,7 +12,7 @@ from .assets import ensure_assets
 from .cases import plan
 from .common import ROOT, load, save
 from .result_pages import enrich_graph_artifacts, result_href, write_result_pages
-from .report import LABELS, STATUSES, badge, batch_progress, collect_records, e, execution_evidence, explained_records, finding_panel, interpretation_guide, page, write_history
+from .report import LABELS, STATUSES, badge, batch_progress, collect_records, e, execution_evidence, explained_records, finding_panel, interpretation_guide, page, run_summary, write_history, write_release_overview
 
 
 CAUTION = 'An exact sequence failure alone does not show that a plasmid was lost. Residual sequence errors can prevent exact equality; tolerant recovery is assessed separately.'
@@ -125,6 +125,7 @@ def build_noisy(config, batch=None, output=None, document=None, include_history=
     (output / "methods.html").write_text(page("Noisy-read methods", methods, active="methods"))
     (output / "about.html").write_text(page("About", '<h1>About the noisy-read panel</h1><p>Ploptimizer runs controlled assembly comparisons on BMRC through Slurm and Pixi. This static report preserves the recorded exact and tolerant assessments.</p><p><a href="methods.html">Methods</a> · <a href="history.html">All batches</a></p>', active="about"))
     write_history(output, document, include_history)
+    write_release_overview(output, document, include_history)
     save(output / "vercel.json", {"cleanUrls": True})
     (output / ".vercelignore").write_text(".env*\n.vercel\n.gitignore\n")
     if batch:
@@ -135,7 +136,7 @@ def build_noisy(config, batch=None, output=None, document=None, include_history=
 
 def noisy_scenario(case, document, output):
     manifest = document.get("inputs", {}).get(case["id"], {})
-    body = f'<a class="back" href="index.html">All noisy-read scenarios</a><h1>{e(display_title(case))}</h1><p class="intro">S6 · Controlled read errors · {e(case["organism"])}</p><p>Simulation model: <code>{e(case["simulation"]["model"])}</code>. Batch <code>{e(document["batch"] or "not submitted")}</code>.</p><div class="notice">{CAUTION}</div><h2>Input evidence</h2>'
+    body = f'<a class="back" href="s6.html">S6 family results</a><h1>{e(display_title(case))}</h1><p class="intro">S6 · Controlled read errors · {e(case["organism"])}</p><p>Simulation model: <code>{e(case["simulation"]["model"])}</code>. Batch <code>{e(document["batch"] or "not submitted")}</code>.</p><div class="notice">{CAUTION}</div><h2>Input evidence</h2>'
     settings = {"simulation": case["simulation"], "error_profile": case.get("error_profile")}
     body += '<details><summary>Frozen simulation settings</summary><div class="table-scroll" role="region" aria-label="Frozen simulation settings" tabindex="0"><pre><code>' + e(json.dumps(settings, indent=2, sort_keys=True)) + '</code></pre></div></details>'
     body += f'<p>Recorded simulation status: {e(manifest.get("status", "not collected"))}.</p>'
@@ -146,36 +147,31 @@ def noisy_scenario(case, document, output):
         if manifest.get(key):
             body += f'<p>{e(key)}:</p><code class="checksum">{e(manifest[key])}</code>'
     body += metrics_table({key: value for key, value in manifest.items() if key not in ("case", "simulation")}, "Recorded input measurements")
-    for row in (row for row in document["results"] if row["scenario_id"] == case["id"]):
-        assessment = row.get("tolerant_assessment") or {}
-        body += f'<section class="assembler-result" id="{e(row["tool"])}"><h2>{e(LABELS[row["tool"]])}</h2><p>Exact endpoint: {badge(row["status"])} · Tolerant endpoint: {tolerant_badge(row)}</p><p>Recorded stages: simulation {e(manifest.get("status", "not collected"))}; assembly {e(STATUSES[row["status"]])}; tolerant evaluation {e(assessment.get("status", "awaiting evaluator"))}.</p>'
-        body += f'<p><a href="{e(result_href(row, "../"))}">Open result details, contigs and assembly graph</a></p>'
-        body += finding_panel(row, case)
-        for key in ("started_at", "finished_at"):
-            if row.get(key):
-                body += f'<p>{e(key)}: {e(row[key])}</p>'
-        if assessment:
-            fallback = "Tolerant evaluation failed; no tolerant recovery conclusion is available." if tolerant_status(row) == "error" else "Tolerant assessment is not complete; no tolerant recovery conclusion is available." if tolerant_status(row) == "unscored" else "Separate tolerant assessment; inspect its policy and measurements below."
-            body += f'<p>{e(assessment.get("endpoint") or assessment.get("reason") or fallback)}</p>'
-            if assessment.get("error"):
-                body += f'<p>{e(assessment["error"])}</p>'
-            molecules = assessment.get("replicons", [])
-            if molecules:
-                body += '<h3>Tolerant molecule assessments</h3><ul>'
-                for molecule in molecules:
-                    status = tolerant_badge({"tolerant_assessment": molecule})
-                    body += f'<li>{e(molecule.get("name") or molecule.get("accession") or "Reference molecule")}: {status} · {e(molecule.get("reason", "Inspect recorded molecule measurements."))}</li>'
-                body += '</ul>'
-            body += metrics_table({key: assessment[key] for key in ("metrics", "replicons") if key in assessment}, "Tolerant recovery measurements")
-            if assessment.get("endpoint_version") or assessment.get("limitations"):
-                body += f'<p class="muted">{e(assessment.get("endpoint_version", ""))} {e(assessment.get("limitations", ""))}</p>'
-            if assessment.get("policy"):
-                body += '<details><summary>Tolerant assessment policy</summary><div class="table-scroll" role="region" aria-label="Tolerant assessment policy" tabindex="0"><pre><code>' + e(json.dumps(assessment["policy"], indent=2, sort_keys=True)) + '</code></pre></div></details>'
-        else:
-            body += '<p>Awaiting tolerant evaluator. No tolerant recovery conclusion is available.</p>'
-        if row.get("error"):
-            body += f'<p>{e(row["error"])}</p>'
-        name = f'{case["id"]}-{row["tool"]}.json'
-        save(output / "data" / name, execution_evidence(row, case))
-        body += f'<p><a href="../data/{e(name)}">Execution and assessment JSON</a></p></section>'
+    rows = [row for row in document["results"] if row["scenario_id"] == case["id"]]
+    body += '<h2>Recorded runs</h2>' + run_summary(rows, case, output=output, show_tolerant=True)
     return body + '<p><a href="../methods.html">Methods and endpoint limits</a></p>'
+
+
+def tolerant_details(row):
+    assessment = row.get("tolerant_assessment") or {}
+    body = ""
+    if assessment:
+        fallback = "Tolerant evaluation failed; no tolerant recovery conclusion is available." if tolerant_status(row) == "error" else "Tolerant assessment is not complete; no tolerant recovery conclusion is available." if tolerant_status(row) == "unscored" else "Separate tolerant assessment; inspect its policy and measurements below."
+        body += f'<p>{e(assessment.get("endpoint") or assessment.get("reason") or fallback)}</p>'
+        if assessment.get("error"):
+            body += f'<p>{e(assessment["error"])}</p>'
+        molecules = assessment.get("replicons", [])
+        if molecules:
+            body += '<h3>Tolerant molecule assessments</h3><ul>'
+            for molecule in molecules:
+                status = tolerant_badge({"tolerant_assessment": molecule})
+                body += f'<li>{e(molecule.get("name") or molecule.get("accession") or "Reference molecule")}: {status} · {e(molecule.get("reason", "Inspect recorded molecule measurements."))}</li>'
+            body += '</ul>'
+        body += metrics_table({key: assessment[key] for key in ("metrics", "replicons") if key in assessment}, "Tolerant recovery measurements")
+        if assessment.get("endpoint_version") or assessment.get("limitations"):
+            body += f'<p class="muted">{e(assessment.get("endpoint_version", ""))} {e(assessment.get("limitations", ""))}</p>'
+        if assessment.get("policy"):
+            body += '<details><summary>Tolerant assessment policy</summary><div class="table-scroll" role="region" aria-label="Tolerant assessment policy" tabindex="0"><pre><code>' + e(json.dumps(assessment["policy"], indent=2, sort_keys=True)) + '</code></pre></div></details>'
+    else:
+        body += '<p>Awaiting tolerant evaluator. No tolerant recovery conclusion is available.</p>'
+    return body

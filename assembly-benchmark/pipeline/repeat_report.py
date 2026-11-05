@@ -11,7 +11,7 @@ from .cases import plan
 from .common import ROOT, load, save
 from .result_pages import enrich_graph_artifacts, result_href, write_result_pages
 from .determinism import assembly_tasks, collect_summary
-from .report import LABELS, badge, batch_progress, e, execution_evidence, explained_records, finding_panel, interpretation_guide, page, write_history
+from .report import LABELS, badge, batch_progress, e, execution_evidence, explained_records, finding_panel, interpretation_guide, page, run_summary, write_history, write_release_overview
 
 
 METRICS = (("byte", "File bytes"), ("normalised_sequence", "Normalised sequences"), ("biological", "Biological outcomes"))
@@ -132,6 +132,7 @@ def build_repeat(config, batch=None, output=None, document=None, include_history
     (output / "methods.html").write_text(page("Methods", methods, active="methods"))
     (output / "about.html").write_text(page("About", '<h1>About this repeatability panel</h1><p>Ploptimizer compares plasmid assembly outcomes using frozen simulated reads and recorded execution evidence. These S3 results assess observed repeatability, with BMRC Slurm execution and Pixi environments.</p><p><a href="methods.html">Methods and limitations</a> · <a href="history.html">All batches</a></p>', active="about"))
     write_history(output, document, include_history)
+    write_release_overview(output, document, include_history)
     save(output / "vercel.json", {"cleanUrls": True})
     (output / ".vercelignore").write_text(".env*\n.vercel\n.gitignore\n")
     if batch:
@@ -143,7 +144,7 @@ def build_repeat(config, batch=None, output=None, document=None, include_history
 def repeat_scenario(case, document, output):
     summary, config = document["determinism"], document["config"]
     rows = [row for row in document["results"] if row["scenario_id"] == case["id"]]
-    body = f'<a class="back" href="index.html">All repeated-run scenarios</a><h1>{e(case["title"])}</h1><p class="intro">S3 · Fixed-input repeats and thread sensitivity</p><p>Batch <code>{e(document["batch"] or "not submitted")}</code> · {e(case["organism"])}</p>'
+    body = f'<a class="back" href="s3.html">S3 family results</a><h1>{e(case["title"])}</h1><p class="intro">S3 · Fixed-input repeats and thread sensitivity</p><p>Batch <code>{e(document["batch"] or "not submitted")}</code> · {e(case["organism"])}</p>'
     body += f'<p>Source assembly: <a href="https://www.ncbi.nlm.nih.gov/datasets/genome/{case["assembly_accession"]}/">{e(case["assembly_accession"])}</a>. The same error-free input is reused for {config["determinism"]["repeats"]} executions at each of {e(config["determinism"]["threads"])} threads. Input sampling is not repeated.</p>'
     manifest = document.get("inputs", {}).get(case["id"])
     body += '<h2>Frozen input evidence</h2>'
@@ -155,18 +156,8 @@ def repeat_scenario(case, document, output):
         body += '</tbody></table></div>'
     else:
         body += '<p>No frozen input has been collected yet. No repeatability conclusion is available.</p>'
+    body += '<details><summary>Repeatability summary for this input</summary>'
     body += summary_table([row for row in summary["within_thread"] if row["scenario_id"] == case["id"]], [case], prefix="")
     body += summary_table([row for row in summary["across_threads"] if row["scenario_id"] == case["id"]], [case], across=True, prefix="")
-    for tool in config["tools"]:
-        selected = [row for row in rows if row["tool"] == tool]
-        body += f'<section class="assembler-result" id="{e(tool)}"><h2>{e(LABELS[tool])} · individual executions</h2><p>Pass/fail below describes biological correctness; an identical signature can occur for either outcome.</p><div class="table-scroll" role="region" aria-label="{e(LABELS[tool])} repeated executions" tabindex="0"><table><thead><tr><th scope="col">Threads / repeat</th><th scope="col">Sequence assessment</th><th scope="col">Elapsed</th><th scope="col">Evidence</th></tr></thead><tbody>'
-        for row in selected:
-            name = f'{case["id"]}-{tool}-{row["run_id"]}.json'
-            save(output / "data" / name, execution_evidence(row, case))
-            elapsed = f'{row["elapsed_seconds"]:.1f} s' if row.get("elapsed_seconds") is not None else "Not available"
-            explanation = finding_panel(row, case, compact=True) if row["status"] not in ("pass", "pending", "running", "not_run") else ""
-            body += f'<tr><th scope="row">{row["threads"]} / {row["repeat"]}</th><td>{badge(row["status"])} · exact endpoint</td><td>{elapsed}</td><td><a href="{e(result_href(row, "../"))}">Result details and graph</a> · <a href="../data/{e(name)}">Execution JSON</a>{explanation}</td></tr>'
-            if row.get("error"):
-                body += f'<tr><td colspan="4">{e(row["error"])}</td></tr>'
-        body += '</tbody></table></div></section>'
+    body += '</details><h2>Recorded runs</h2>' + run_summary(rows, case, output=output)
     return body + '<p><a href="../methods.html">Methods and normalisation limits</a></p>'
