@@ -1,132 +1,97 @@
-# Release status and completion checklist
+# First reporting release: results and limits
 
-Audit: **5 November 2026, 00:07 UTC** (01:07 CET). Counts below are
-a dated snapshot, not a claim that the whole study has finished. This QA used
-existing metadata, logs and tests; no new sequence analysis or experiment ran.
+**Final evidence audit: 5 November 2026, 01:58 UTC (02:58 CET).** All existing
+submitted batches, required diagnostics and tolerant assessments have finished.
+The metadata completion gate passes for all four release batches. This completes
+the bounded run/report delivery; it does **not** establish a mechanism for every
+assembly failure. Unresolved causes remain explicitly unresolved.
 
-## Completed and pending
+[Published results](https://ploptimizer-assembly-benchmark.vercel.app/) ·
+[All batches](https://ploptimizer-assembly-benchmark.vercel.app/history.html)
 
-1. **Pilot — `20261104T183058`: complete.** Four submitted comparisons: one strict
-   pass, three strict fails and four completed diagnostics. Twelve additional
-   `not_run` snapshot cells were never submitted and are excluded.
-2. **S1/S2 — `20261104T190455`: complete.** All 128 comparisons scored: 55 strict
-   passes and 73 strict fails, with 128 completed diagnostics. Final report and
-   diagnostic jobs completed successfully. Totals include chromosome controls;
-   they are not a tool ranking or a plasmid-only recovery rate.
-3. **S4 — `20261104T193551`: terminal.** Six passes, 38 strict fails and four
-   execution errors across 48 comparisons. All 44 scored executions have completed
-   diagnostics. Report and diagnostic jobs completed successfully.
-4. **S3 — `20261104T193612`: running.** Audited local snapshot: 40/80 executions
-   scored, four running and 36 pending. Final diagnostics wait for assembly.
-5. **S6 — `20261104T210453`: inputs ready.** Three read sets passed admission.
-   Twelve comparisons wait behind S3; tolerant assessment/reporting must follow.
-   No noisy-read comparison or tolerant outcome was available at this audit.
+## Final outcomes
 
-The S4 errors are Plassembler's short-length cases: W/pRK2, W/native,
-MGH78578/pKPN7 and MGH78578/native. Logs show initial Flye completion followed by
-“No chromosome was identified”. This establishes the exit condition, not the
-underlying cause. Keep these unscored errors visible; do not silently alter
-parameters or count them as strict fails.
+- **S1/S2 — `20261104T190455`:** 128 comparisons; 55 exact passes, 73 exact fails.
+  All 128 diagnostics completed. Totals include chromosome-only controls with
+  separate endpoints; they are not a general assembler ranking.
+- **S4 — `20261104T193551`:** 48 comparisons; six exact passes, 38 exact fails and
+  four unscored tool errors. All 44 scored outputs have completed diagnostics.
+- **S3 — `20261104T193612`:** all 80 executions and final diagnostics completed;
+  20 exact passes and 60 exact fails. All 16 within-thread and eight across-thread
+  comparison groups have complete, identical-input evidence.
+- **S6 smoke — `20261104T210453`:** all three inputs admitted and 12 comparisons
+  assessed. Exact endpoint: three passes, nine fails. Separate tolerant endpoint:
+  six passes, six fails. These endpoints must not be combined.
 
-Live JSON endpoints were accessible. S1/S2 and S4 matched terminal counts; live
-S3 showed a one-cycle publication lag during the audit. Collected scheduler metadata
-confirmed S3 running and S6 waiting. The bounded publisher reported `following`.
-Later snapshots can legitimately differ from this dated audit.
+The four release batches contain **268 submitted executions**: 84 exact passes,
+180 exact fails and four unscored errors. The historical pilot adds four submitted
+comparisons (one pass, three fails); its 12 never-submitted cells remain `not_run`
+and are excluded from execution totals.
 
-## What the scores establish
+## Failure explanations and remaining uncertainty
 
-- Strict pass means every expected plasmid is recovered exactly once as a
-  dedicated molecule, allowing circular rotation/reverse complement.
-  Chromosome-only controls use separate endpoints.
-- Strict fail is an assessed sequence outcome, not necessarily complete plasmid
-  loss. Errors, timeouts, invalid inputs and unfinished jobs remain unscored.
-- Alignment diagnostics are supplementary, with mapping/repeat/origin limits;
-  their thresholds do not define tolerant recovery or establish physical topology.
-- Tolerant recovery is separate, bounded to supported small pRK2/pKPN7 cases;
-  ambiguous assignments remain unscored and exact scores are preserved.
+Every terminal non-pass has a structured symptom, interpretation, confidence,
+scope and supporting evidence in downloadable JSON. The original exact score
+remains unchanged. A mapping description is an observation, not a proven cause.
 
-See [RECOVERY_DIAGNOSTICS.md](RECOVERY_DIAGNOSTICS.md),
-[TOLERANT_ENDPOINT.md](TOLERANT_ENDPOINT.md),
-[RAVEN_CAUSE_REVIEW.md](RAVEN_CAUSE_REVIEW.md) and
-[FLYE_HYPOTHESES.md](FLYE_HYPOTHESES.md). Pilot causal evidence does not establish
-general real-read or linear-plasmid performance.
+The four S4 Plassembler errors report “No chromosome was identified”. This is an
+observed stopping condition, not proof of insufficient depth or missing chromosome
+sequence. Their underlying mechanisms remain unresolved, and they stay outside
+scientific pass/fail counts.
 
-## Partial repeatability findings
+Existing controlled pilot findings are documented in [FLYE_HYPOTHESES.md](FLYE_HYPOTHESES.md)
+and [RAVEN_CAUSE_REVIEW.md](RAVEN_CAUSE_REVIEW.md). Those findings apply to their
+reviewed artefacts; they do not establish causes for every Klebsiella or other
+panel failure. No new sequence analysis or scientific experiment was run during
+this release finalisation.
 
-At the audit, eight of 16 within-thread groups had all five executions scored on
-identical inputs; all eight agreed at byte, normalised-sequence and strict-outcome
-levels. Four of eight across-thread groups were complete, all W/pRK2:
+Other limits remain material:
 
-- Flye: bytes differed; normalised sequence and strict outcome agreed.
-- Flye uneven coverage: bytes and normalised sequence differed; strict outcome
-  agreed.
-- Raven and Plassembler: all three signatures agreed.
+- Exact failure can reflect a small sequence difference, copy ambiguity or loss;
+  the label alone does not distinguish them.
+- Mapping can miss short, repeated or circular-origin sequence. No retained
+  alignment does not prove physical absence. Candidate structural flags need review.
+- Tolerant assessment is bounded to the supported small-plasmid cases. It does
+  not establish chromosome recovery or physical topology.
+- This release does not establish real-read, chemistry-specific or linear-plasmid
+  performance. The larger proposed panels remain unsubmitted.
 
-Incomplete agreement flags remain null. Repeatability can mean consistent failure;
-one fixed read set does not establish guaranteed determinism. Only exact
-truth-matched circles receive rotation normalisation, so differing normalised
-hashes are not automatically classified biological errors.
+## Observed repeatability
 
-## Machine-readable completion gate
+All 16 within-thread groups agreed in normalised sequence and strict outcome
+across five repeats. Fifteen also agreed byte-for-byte; one had differing file
+bytes with matching normalised sequences.
+
+Across one and four threads, all eight groups agreed in strict outcome. Seven
+agreed in normalised sequence; W/pRK2 Flye-meta differed. File-byte agreement is
+reported separately. A consistent failure remains a failure, and these runs do
+not prove determinism for other inputs. Only exact truth-matched circles receive
+rotation normalisation; a differing normalised hash alone does not identify a
+biological or algorithmic cause.
+
+## Verification and reproduction
+
+- Metadata gate: all four batches evidence-ready, with no blockers.
+- Reporting code: 181 Python tests ran with 11 optional-dependency skips and no
+  failures. No source-code changes followed that test run.
+- Final HTTP checks: 78 routes and 284 matrix cells across five published batches;
+  all local links resolved. Matrix cells include the pilot's 12 unsubmitted cells.
+- Final repeatability and noisy-result headlines matched their saved outcomes.
+- Production build generated at `2026-11-05T01:32:05+00:00`: all 408 public files
+  matched the local build byte-for-byte. Earlier browser QA checked explanation
+  wording and narrow-screen overflow; the finalisation changed results and docs.
 
 ```sh
 python3 scripts/check_release.py \
   --batch 20261104T190455 --batch 20261104T193551 \
-  --batch 20261104T193612 --batch 20261104T210453 \
-  --output .cache/release/status-check.json
-```
-
-This reads fixed `runs/BATCH/tasks.json`, publication snapshots and collected
-accounting only. It does not collect, rerun, build, commit or deploy. Exit 0 means
-evidence-ready; exit 1 means pending or blocked. `jobs_finished` is separate from
-`release_ready`: completed jobs with missing diagnostics/assessments are not ready.
-Task matching includes repeat identity, threads and repeat number. Planned but
-unsubmitted `not_run` rows are excluded. Terminal tool errors retain their exit
-explanations and review items; they are never converted into strict fails.
-Unscored tolerant outcomes can be reported with a reason and matching provenance.
-
-The current check reports S1/S2 and S4 ready, S3/S6 in progress. It checks input
-admission, required stage completion, evidence availability/provenance, repeat
-summary completeness and recorded failure explanations. A recorded endpoint/exit
-explanation is not automatically a confirmed biological cause. Evidence-ready
-also does not mean frontend QA, publication or a source commit has completed.
-Each terminal non-pass also requires a structured symptom, interpretation,
-confidence/scope and supporting evidence. Repeating the exact-pass criterion alone
-does not satisfy the failure-explanation gate; an explicitly unresolved cause does.
-
-## Remaining release work
-
-- [x] S1/S2 and S4 terminal records/diagnostics collected, with four S4 errors
-  preserved outside strict pass/fail counts.
-- [x] S6 input admission complete; pending results remain explicitly pending.
-- [x] Reporting integration: 181 Python tests pass, with 11 explicit skips for
-  unavailable optional dependencies; eight metadata-only release-gate tests pass.
-  HTTP checks cover 78 routes and 284 comparison cells across five batches.
-  The live build generated at `2026-11-05T00:09:42+00:00` matched all 408 public
-  files byte-for-byte. Browser checks confirmed failure explanations and no page
-  overflow in the narrow results pane. This verifies that reporting build, not
-  the unfinished S3/S6 scientific outcomes.
-- [ ] Complete S3, final diagnostics and every repeatability group.
-- [ ] Complete S6 assembly and provenance-matched tolerant assessment; preserve
-  uncertainty and separate strict/tolerant outcomes.
-- [ ] Recollect, freeze final snapshots and pass the evidence gate above.
-- [ ] Run integration/frontend/browser QA, publish, then verify every served
-  public file against the chosen static build:
-
-```sh
+  --batch 20261104T193612 --batch 20261104T210453
+npm --prefix website run test:e2e
 python3 scripts/verify_publication.py \
-  https://ploptimizer-assembly-benchmark.vercel.app \
-  --output .cache/release/live-verification.json
+  https://ploptimizer-assembly-benchmark.vercel.app
 ```
 
-- [ ] Commit the intended source, docs and small snapshots after final review.
-  The publisher collects/snapshots/deploys; it does **not** commit source itself.
-
-One bounded publisher owns this site and requires the controller's SSH/network
-session. A separate 30-minute completion heartbeat checks meaningful progress
-and final reporting/QA, staying quiet while pending state is unchanged; it is
-not permission to start new scientific experiments. [RUNNING.md](RUNNING.md)
-describes restart and collection. Large reads/assemblies remain on BMRC;
-configuration, package/source provenance and hashes retain the reproducibility
-trail. Final completion requires both evidence readiness and verified publication,
-not simply an empty scheduler queue or a successful local build.
+The metadata gate requires the frozen task lists and collected accounting under
+ignored `runs/`. [RUNNING.md](RUNNING.md) describes collection/reproduction; source,
+configuration, package versions and checksums are retained. Large reads,
+assemblies, graphs and checkpoints remain on BMRC. The bounded publisher finished
+successfully and exited; it does not itself commit snapshots to Git.

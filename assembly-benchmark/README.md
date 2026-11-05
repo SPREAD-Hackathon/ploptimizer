@@ -1,7 +1,8 @@
 # Long-read plasmid assembly benchmark
 
-**Status:** S1/S2 and S4 executions are terminal; S3 is running and S6 inputs are ready.
-See the dated [release status and completion checklist](RELEASE_STATUS.md). Python automation generates
+**Status:** the first benchmark reporting release is complete. S1/S2, S3, S4 and
+the bounded S6 smoke batch have finished; documented uncertainties remain.
+See the [release results and limitations](RELEASE_STATUS.md). Python automation generates
 error-free reads, submits BMRC Slurm jobs through Pixi environments and builds a
 static results website. See [RUNNING.md](RUNNING.md) for the explicit pilot settings
 and commands. Broader study choices remain in the [decision list](DECISIONS.md).
@@ -65,8 +66,8 @@ The 1× S2 cases deliberately repeat baseline conditions; they are not independe
 biological replicates. S3 repeated/thread runs and S4 read-length challenges now have separate runnable
 profiles: `config/determinism.json` (80 executions) and
 `config/small-plasmids.json` (48 comparisons). They were submitted sequentially
-after S1/S2 to keep assembly concurrency at four. S4 is terminal, including four
-separately recorded tool errors; S3 remains in progress at the release audit. All batches are linked
+after S1/S2 to keep assembly concurrency at four. S4 finished with four separately
+recorded tool errors; all 80 S3 executions and final diagnostics completed. All batches are linked
 on the site. Supplementary alignment diagnostics explain strict failures without
 changing their scores; see [RECOVERY_DIAGNOSTICS.md](RECOVERY_DIAGNOSTICS.md).
 
@@ -85,5 +86,7 @@ three simulation seeds and two error/quality packages. The expanded design remai
 in `config/noisy-smoke.json`: three W/pRK2 read sets and 12 assembler comparisons.
 Its source-paired Badread adapter, admission checks and separate tolerant endpoint
 passed Linux tests and real-reference controls. All three read sets passed
-admission; assemblies are queued behind S3 at the release audit. See [NOISY_ADAPTER.md](NOISY_ADAPTER.md) and
+admission; all 12 assembly comparisons and separate tolerant assessments completed.
+Exact outcomes were three passes and nine fails; tolerant outcomes were six passes
+and six fails. These endpoints are reported separately. See [NOISY_ADAPTER.md](NOISY_ADAPTER.md) and
 [TOLERANT_ENDPOINT.md](TOLERANT_ENDPOINT.md).

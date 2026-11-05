@@ -1,6 +1,6 @@
 {
   "assessment_stage": {
-    "scheduler_state": "PENDING"
+    "scheduler_state": "COMPLETED"
   },
   "batch": "20261104T210453",
   "config": {
@@ -79,7 +79,7 @@
       "plassembler"
     ]
   },
-  "generated_at": "2026-11-05T00:09:41+00:00",
+  "generated_at": "2026-11-05T01:31:51+00:00",
   "inputs": {
     "s6-w-prk2-seed-20261105-generic-stress": {
       "case": {
@@ -12628,304 +12628,2518 @@
   },
   "results": [
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "6dcc33ee50ad71ce0ad2bbc360aceb55f284d5801008e2b0b2ef771a07da8c2b",
+      "batch_id": "20261104T210453",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-matched-exact/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T210453/results/s6-w-prk2-seed-20261105-matched-exact/flye/output",
+        "--threads",
+        "4"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 212.194,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
       "explanation": {
         "confidence": "unresolved",
         "confidence_scope": "Available evidence does not resolve the explanation",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: fail.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "The strict failure remains recorded. Missing, unavailable or failed supplementary diagnostics do not establish an additional sequence or mechanistic finding.",
+        "kind": "unresolved_exact_failure",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "strict_assessment",
+        "summary": "Exact failure; explanation unresolved",
+        "symptom": "The recorded exact endpoint fails, with no sufficient explanation in the available evidence."
       },
+      "explanation_log": {
+        "bytes": 3017,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "6a31a17bea6be9f3f7d397fecd22e75b083dff4059f210919df25bf7b016a2a4"
+      },
+      "finished_at": "2026-11-05T01:19:47.631317+00:00",
+      "peak_memory_kb": 911252,
+      "reads_sha256": "b9d46d77d16709f892e67535e01c48b74928dfc74db58bb6b7c2f7dd5c789247",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "5105c8aa3688550cb3d5e939dc82e29065b4082683c26c035a7fb1cf26c5a48e",
       "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "0",
+      "slurm_job_id": "34401746",
+      "started_at": "2026-11-05T01:16:15.193709+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "206a734bbc0a9f8560812d96e6e0c5d171e7cc7cdf9bda73a48bd5f572bccfdf",
+        "contig_count": 1,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "6dcc33ee50ad71ce0ad2bbc360aceb55f284d5801008e2b0b2ef771a07da8c2b",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "495bcfb2b04f2e9079824073d6d0dd8db8f19ece9108898ee15d7a9b97855795",
+          "input_manifest_sha256": "4c4c97de0053732d76c63c76986bc6cb4f08db5018b960d4abc324a4055f6220",
+          "reads_sha256": "b9d46d77d16709f892e67535e01c48b74928dfc74db58bb6b7c2f7dd5c789247",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": false,
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "See per-plasmid evidence and uncertainty",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [],
+            "length_bp": 5360,
+            "name": "pRK2",
+            "reason": "No dedicated whole-contig recovery meets thresholds",
+            "second_copy_evidence": [],
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "fail"
+      },
+      "tool": "flye",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "fc357d63171cedd4d487b8e91120c1f342145b94ee087e315d891d5ec4a2b9e6",
+      "batch_id": "20261104T210453",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-matched-exact/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T210453/results/s6-w-prk2-seed-20261105-matched-exact/flye-meta/output",
+        "--threads",
+        "4",
+        "--meta"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 226.881,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "contig_1"
+        ]
+      },
+      "exit_code": 0,
       "explanation": {
         "confidence": "unresolved",
         "confidence_scope": "Available evidence does not resolve the explanation",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: fail.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "The strict failure remains recorded. Missing, unavailable or failed supplementary diagnostics do not establish an additional sequence or mechanistic finding.",
+        "kind": "unresolved_exact_failure",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "strict_assessment",
+        "summary": "Exact failure; explanation unresolved",
+        "symptom": "The recorded exact endpoint fails, with no sufficient explanation in the available evidence."
       },
+      "explanation_log": {
+        "bytes": 3022,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "0395d8d789fe55ff4bd6cde2fa86e3df11c12f0f5e9339c99dcaee82e079258c"
+      },
+      "finished_at": "2026-11-05T01:20:02.320573+00:00",
+      "peak_memory_kb": 896576,
+      "reads_sha256": "b9d46d77d16709f892e67535e01c48b74928dfc74db58bb6b7c2f7dd5c789247",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "5105c8aa3688550cb3d5e939dc82e29065b4082683c26c035a7fb1cf26c5a48e",
       "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye-meta"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "1",
+      "slurm_job_id": "34401747",
+      "started_at": "2026-11-05T01:16:15.191015+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "0b994667003740ec8876979a7c4c9e63ab56d2a475a8bca3f95187b90980a4c0",
+        "contig_count": 1,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "fc357d63171cedd4d487b8e91120c1f342145b94ee087e315d891d5ec4a2b9e6",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "d9a243bcf9ae14427d37f2f1d91f4b88a96b7c4fd1e37847bb243cea97a70120",
+          "input_manifest_sha256": "4c4c97de0053732d76c63c76986bc6cb4f08db5018b960d4abc324a4055f6220",
+          "reads_sha256": "b9d46d77d16709f892e67535e01c48b74928dfc74db58bb6b7c2f7dd5c789247",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": false,
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "See per-plasmid evidence and uncertainty",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [],
+            "length_bp": 5360,
+            "name": "pRK2",
+            "reason": "No dedicated whole-contig recovery meets thresholds",
+            "second_copy_evidence": [],
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "fail"
+      },
+      "tool": "flye-meta",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "30edccfb9fd0b4eba56b2a081ed378476cf13a8c9973ea7a13f8cf838361956a",
+      "batch_id": "20261104T210453",
+      "command": [
+        "raven",
+        "-t",
+        "4",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-matched-exact/reads.fastq.gz"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 102.697,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "Utg2210",
+          "Utg2212"
+        ]
+      },
+      "exit_code": 0,
       "explanation": {
-        "confidence": "unresolved",
-        "confidence_scope": "Available evidence does not resolve the explanation",
+        "confidence": "confirmed",
+        "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: fail.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
+          },
+          {
+            "source": "tolerant_assessment.replicons[NC_017662.1]",
+            "text": "pRK2: tolerant endpoint passes; recorded aligned-window edit distance 3.",
+            "type": "tolerant_assessment"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "A small sequence or boundary difference can fail exact recovery. Use the recorded alignment measurements; this result does not establish how the difference arose.",
+        "kind": "non_exact_tolerant_recovery",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "supplementary_assessment",
+        "summary": "Exact match fails; tolerant recovery passes",
+        "symptom": "The output meets the separately recorded tolerant endpoint but is not an exact recovery."
       },
+      "explanation_log": {
+        "bytes": 7828,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "9cc0ca79f11c6858673ff053e54557e393ecd6b4bf386b4633bee5a7f0be6848"
+      },
+      "finished_at": "2026-11-05T01:17:58.478655+00:00",
+      "peak_memory_kb": 1385220,
+      "reads_sha256": "b9d46d77d16709f892e67535e01c48b74928dfc74db58bb6b7c2f7dd5c789247",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "5105c8aa3688550cb3d5e939dc82e29065b4082683c26c035a7fb1cf26c5a48e",
       "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "raven"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "2",
+      "slurm_job_id": "34401748",
+      "started_at": "2026-11-05T01:16:15.763275+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "b5f8ec9968129b17d5f02b7f6a507cfa32a277cecee9c79f442f0e91f386b113",
+        "contig_count": 2,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "30edccfb9fd0b4eba56b2a081ed378476cf13a8c9973ea7a13f8cf838361956a",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "46090649c954437f4e4ca9d31e328aef6966bf7d3b508f97e6b373b265709a65",
+          "input_manifest_sha256": "4c4c97de0053732d76c63c76986bc6cb4f08db5018b960d4abc324a4055f6220",
+          "reads_sha256": "b9d46d77d16709f892e67535e01c48b74928dfc74db58bb6b7c2f7dd5c789247",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": false,
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "All supported plasmids pass",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "alignment_identity": 0.9994402985074626,
+            "alignment_identity_lower_bound": 0.9994402985074626,
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [
+              {
+                "alignment_identity": 0.9994402985074626,
+                "alignment_identity_lower_bound": 0.9994402985074626,
+                "contig": "Utg2212",
+                "length_ratio": 0.9994402985074626,
+                "placements": [
+                  {
+                    "aligned_reference_bp": 5357,
+                    "alignment_columns": 5360,
+                    "alignment_identity": 0.9994402985074626,
+                    "alignment_identity_lower_bound": 0.9994402985074626,
+                    "cigar": "3108=1D1=2D2248=",
+                    "deletions": 3,
+                    "edit_distance": 3,
+                    "insertions": 0,
+                    "matches": 5357,
+                    "reference_coverage": 0.9994402985074626,
+                    "reference_coverage_lower_bound": 0.9994402985074626,
+                    "reference_span_bp": 5360,
+                    "reference_start_0based": 4306,
+                    "strand": "+",
+                    "substitutions": 0
+                  }
+                ],
+                "reason": "Whole-contig collinear alignment",
+                "reference_coverage": 0.9994402985074626,
+                "reference_coverage_lower_bound": 0.9994402985074626,
+                "status": "match"
+              }
+            ],
+            "length_bp": 5360,
+            "length_ratio": 0.9994402985074626,
+            "name": "pRK2",
+            "reason": "One certified collinear dedicated contig; no competing copy screen triggered",
+            "reference_coverage": 0.9994402985074626,
+            "reference_coverage_lower_bound": 0.9994402985074626,
+            "second_copy_evidence": [],
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "pass"
+      },
+      "tool": "raven",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "1.8.3",
+      "working_directory": "results/s6-w-prk2-seed-20261105-matched-exact/raven",
+      "working_directory_base": "batch"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+      "batch_id": "20261104T210453",
+      "command": [
+        "plassembler",
+        "long",
+        "--longreads",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-matched-exact/reads.fastq.gz",
+        "--outdir",
+        "<workdir>/runs/20261104T210453/results/s6-w-prk2-seed-20261105-matched-exact/plassembler/output",
+        "--threads",
+        "4",
+        "--skip_qc",
+        "--skip_mash",
+        "--keep_chromosome",
+        "--prefix",
+        "benchmark",
+        "--chromosome",
+        "1000000"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 333.46,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [
+              "1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
       "explanation": {
-        "confidence": "unresolved",
-        "confidence_scope": "Available evidence does not resolve the explanation",
+        "confidence": "confirmed",
+        "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: pass.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "This finding applies to the stated endpoint and this input; topology remains separate.",
+        "kind": "exact_pass",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "strict_assessment",
+        "summary": "Recorded exact endpoint passes",
+        "symptom": "The recorded exact sequence endpoint passes."
       },
+      "explanation_log": {
+        "bytes": 12718,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "ee283e628958da23d4222757f04d85e51c1125156a061f5af92f1bb69e3a51e2"
+      },
+      "finished_at": "2026-11-05T01:21:49.121960+00:00",
+      "initial_flye_evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": []
+      },
+      "peak_memory_kb": 896596,
+      "reads_sha256": "b9d46d77d16709f892e67535e01c48b74928dfc74db58bb6b7c2f7dd5c789247",
+      "retained_chromosome_sha256": "a90ede5f8a12c79479e2cc5b4115f21e1eda8007a097a0a3a8e7bb1aec973e91",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "5105c8aa3688550cb3d5e939dc82e29065b4082683c26c035a7fb1cf26c5a48e",
       "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "plassembler"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "3",
+      "slurm_job_id": "34401749",
+      "started_at": "2026-11-05T01:16:15.643342+00:00",
+      "status": "pass",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "5aab5e4c3cc2b92200afc750e5916ac2553b289c02906e2e12b75012c3b58b49",
+        "contig_count": 1,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "014284567724dc1afb78644a49e23de0be32b21d3bb7a0ee7fb8e92ac2262a69",
+          "input_manifest_sha256": "4c4c97de0053732d76c63c76986bc6cb4f08db5018b960d4abc324a4055f6220",
+          "reads_sha256": "b9d46d77d16709f892e67535e01c48b74928dfc74db58bb6b7c2f7dd5c789247",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": true,
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "All supported plasmids pass",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "alignment_identity": 1.0,
+            "alignment_identity_lower_bound": 1.0,
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [
+              {
+                "alignment_identity": 1.0,
+                "alignment_identity_lower_bound": 1.0,
+                "contig": "1",
+                "length_ratio": 1.0,
+                "placements": [
+                  {
+                    "aligned_reference_bp": 5360,
+                    "alignment_columns": 5360,
+                    "alignment_identity": 1.0,
+                    "alignment_identity_lower_bound": 1.0,
+                    "cigar": "5360=",
+                    "deletions": 0,
+                    "edit_distance": 0,
+                    "insertions": 0,
+                    "matches": 5360,
+                    "reference_coverage": 1.0,
+                    "reference_coverage_lower_bound": 1.0,
+                    "reference_span_bp": 5360,
+                    "reference_start_0based": 1109,
+                    "strand": "-",
+                    "substitutions": 0
+                  }
+                ],
+                "reason": "Whole-contig collinear alignment",
+                "reference_coverage": 1.0,
+                "reference_coverage_lower_bound": 1.0,
+                "status": "match"
+              }
+            ],
+            "length_bp": 5360,
+            "length_ratio": 1.0,
+            "name": "pRK2",
+            "reason": "One certified collinear dedicated contig; no competing copy screen triggered",
+            "reference_coverage": 1.0,
+            "reference_coverage_lower_bound": 1.0,
+            "second_copy_evidence": [],
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "pass"
+      },
+      "tool": "plassembler",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "plassembler, version 1.9.0"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "feabb96e9464ad1d221e79d3fed9bc26e416deba1485564c4b9fe4897d5eca92",
+      "batch_id": "20261104T210453",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-generic-stress/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T210453/results/s6-w-prk2-seed-20261105-generic-stress/flye/output",
+        "--threads",
+        "4"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 275.024,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
       "explanation": {
         "confidence": "unresolved",
         "confidence_scope": "Available evidence does not resolve the explanation",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: fail.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "The strict failure remains recorded. Missing, unavailable or failed supplementary diagnostics do not establish an additional sequence or mechanistic finding.",
+        "kind": "unresolved_exact_failure",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "strict_assessment",
+        "summary": "Exact failure; explanation unresolved",
+        "symptom": "The recorded exact endpoint fails, with no sufficient explanation in the available evidence."
       },
+      "explanation_log": {
+        "bytes": 3033,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "910ec0f33435d7f03fe8344f221a15825cdc79142a6a357b2aa0350adb04858f"
+      },
+      "finished_at": "2026-11-05T01:22:36.181911+00:00",
+      "peak_memory_kb": 958972,
+      "reads_sha256": "7facc665b6f6956dad0c3b7dcc2e6e369ea4df7ba976eb3c043821dfb4aa7e7c",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "bc16390cd595fd2fa924e56363bf56b044ff3dbf531c7f865fb0e4116e63e1d7",
       "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "4",
+      "slurm_job_id": "34401781",
+      "started_at": "2026-11-05T01:18:01.155121+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "e095a759fe4a57f75c4122b463553bd7808c725bbf35b019eebb198d20c280fa",
+        "contig_count": 1,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "feabb96e9464ad1d221e79d3fed9bc26e416deba1485564c4b9fe4897d5eca92",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "aa36d9efe53c1e61f440b0fc2c78dfc2fbc10a91496df993dc509579b94207c6",
+          "input_manifest_sha256": "ca9a95a1f6755b49bd7a1828109f1f3d70ccf5d663adb0da26fc60bf173c94cb",
+          "reads_sha256": "7facc665b6f6956dad0c3b7dcc2e6e369ea4df7ba976eb3c043821dfb4aa7e7c",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": false,
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "See per-plasmid evidence and uncertainty",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [],
+            "length_bp": 5360,
+            "name": "pRK2",
+            "reason": "No dedicated whole-contig recovery meets thresholds",
+            "second_copy_evidence": [],
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "fail"
+      },
+      "tool": "flye",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "ce19ad8bcdb405dc8722576f984af21df4dac42b8cb1dbaffbc825fe63b7ea6a",
+      "batch_id": "20261104T210453",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-generic-stress/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T210453/results/s6-w-prk2-seed-20261105-generic-stress/flye-meta/output",
+        "--threads",
+        "4",
+        "--meta"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 232.291,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "contig_1"
+        ]
+      },
+      "exit_code": 0,
       "explanation": {
         "confidence": "unresolved",
         "confidence_scope": "Available evidence does not resolve the explanation",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: fail.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "The strict failure remains recorded. Missing, unavailable or failed supplementary diagnostics do not establish an additional sequence or mechanistic finding.",
+        "kind": "unresolved_exact_failure",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "strict_assessment",
+        "summary": "Exact failure; explanation unresolved",
+        "symptom": "The recorded exact endpoint fails, with no sufficient explanation in the available evidence."
       },
+      "explanation_log": {
+        "bytes": 3038,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "f903b8103e4044094a662307b30f2c4060d326518eca6c098d5d7ce57896a1de"
+      },
+      "finished_at": "2026-11-05T01:23:42.864022+00:00",
+      "peak_memory_kb": 963284,
+      "reads_sha256": "7facc665b6f6956dad0c3b7dcc2e6e369ea4df7ba976eb3c043821dfb4aa7e7c",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "bc16390cd595fd2fa924e56363bf56b044ff3dbf531c7f865fb0e4116e63e1d7",
       "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye-meta"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "5",
+      "slurm_job_id": "34401797",
+      "started_at": "2026-11-05T01:19:50.319545+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "20d7990579e2dfb74d1b4ddaa88cfa13f94fdb2cd958e35fb7c7c8e53a5e9124",
+        "contig_count": 1,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "ce19ad8bcdb405dc8722576f984af21df4dac42b8cb1dbaffbc825fe63b7ea6a",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "85a2a204430ec116ff1995982ab7f36b137695229f5f55d788f3564a50cdea3a",
+          "input_manifest_sha256": "ca9a95a1f6755b49bd7a1828109f1f3d70ccf5d663adb0da26fc60bf173c94cb",
+          "reads_sha256": "7facc665b6f6956dad0c3b7dcc2e6e369ea4df7ba976eb3c043821dfb4aa7e7c",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": false,
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "See per-plasmid evidence and uncertainty",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [],
+            "length_bp": 5360,
+            "name": "pRK2",
+            "reason": "No dedicated whole-contig recovery meets thresholds",
+            "second_copy_evidence": [],
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "fail"
+      },
+      "tool": "flye-meta",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "57b2b986f3efa49e576e6e1e82e022daf52c8bcb72487bd13e21107e7b5db411",
+      "batch_id": "20261104T210453",
+      "command": [
+        "raven",
+        "-t",
+        "4",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-generic-stress/reads.fastq.gz"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 99.263,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "Utg2206",
+          "Utg2208"
+        ]
+      },
+      "exit_code": 0,
       "explanation": {
-        "confidence": "unresolved",
-        "confidence_scope": "Available evidence does not resolve the explanation",
+        "confidence": "confirmed",
+        "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: fail.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
+          },
+          {
+            "source": "tolerant_assessment.replicons[NC_017662.1]",
+            "text": "pRK2: tolerant endpoint passes; recorded aligned-window edit distance 3.",
+            "type": "tolerant_assessment"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "A small sequence or boundary difference can fail exact recovery. Use the recorded alignment measurements; this result does not establish how the difference arose.",
+        "kind": "non_exact_tolerant_recovery",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "supplementary_assessment",
+        "summary": "Exact match fails; tolerant recovery passes",
+        "symptom": "The output meets the separately recorded tolerant endpoint but is not an exact recovery."
       },
+      "explanation_log": {
+        "bytes": 7830,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "3f6a60066335b08b2fb21e84897d12f147f4dd450b5b17c0a61236e0f026a4f8"
+      },
+      "finished_at": "2026-11-05T01:21:44.469240+00:00",
+      "peak_memory_kb": 1448976,
+      "reads_sha256": "7facc665b6f6956dad0c3b7dcc2e6e369ea4df7ba976eb3c043821dfb4aa7e7c",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "bc16390cd595fd2fa924e56363bf56b044ff3dbf531c7f865fb0e4116e63e1d7",
       "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "raven"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "6",
+      "slurm_job_id": "34401801",
+      "started_at": "2026-11-05T01:20:05.028797+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "15ddaf8d387cc6a0f453f74f081c4ef8e2048d737ac06faa945dc8c39bb666c1",
+        "contig_count": 2,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "57b2b986f3efa49e576e6e1e82e022daf52c8bcb72487bd13e21107e7b5db411",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "97078c2e56da3f9d7049a58403a7430fd485ec24ce0f69c22dbde15ce1270b0c",
+          "input_manifest_sha256": "ca9a95a1f6755b49bd7a1828109f1f3d70ccf5d663adb0da26fc60bf173c94cb",
+          "reads_sha256": "7facc665b6f6956dad0c3b7dcc2e6e369ea4df7ba976eb3c043821dfb4aa7e7c",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": false,
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "All supported plasmids pass",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "alignment_identity": 0.9994402985074626,
+            "alignment_identity_lower_bound": 0.9994402985074626,
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [
+              {
+                "alignment_identity": 0.9994402985074626,
+                "alignment_identity_lower_bound": 0.9994402985074626,
+                "contig": "Utg2206",
+                "length_ratio": 0.9994402985074626,
+                "placements": [
+                  {
+                    "aligned_reference_bp": 5357,
+                    "alignment_columns": 5360,
+                    "alignment_identity": 0.9994402985074626,
+                    "alignment_identity_lower_bound": 0.9994402985074626,
+                    "cigar": "3108=1D1=2D2248=",
+                    "deletions": 3,
+                    "edit_distance": 3,
+                    "insertions": 0,
+                    "matches": 5357,
+                    "reference_coverage": 0.9994402985074626,
+                    "reference_coverage_lower_bound": 0.9994402985074626,
+                    "reference_span_bp": 5360,
+                    "reference_start_0based": 4306,
+                    "strand": "+",
+                    "substitutions": 0
+                  }
+                ],
+                "reason": "Whole-contig collinear alignment",
+                "reference_coverage": 0.9994402985074626,
+                "reference_coverage_lower_bound": 0.9994402985074626,
+                "status": "match"
+              }
+            ],
+            "length_bp": 5360,
+            "length_ratio": 0.9994402985074626,
+            "name": "pRK2",
+            "reason": "One certified collinear dedicated contig; no competing copy screen triggered",
+            "reference_coverage": 0.9994402985074626,
+            "reference_coverage_lower_bound": 0.9994402985074626,
+            "second_copy_evidence": [],
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "pass"
+      },
+      "tool": "raven",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "1.8.3",
+      "working_directory": "results/s6-w-prk2-seed-20261105-generic-stress/raven",
+      "working_directory_base": "batch"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+      "batch_id": "20261104T210453",
+      "command": [
+        "plassembler",
+        "long",
+        "--longreads",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-generic-stress/reads.fastq.gz",
+        "--outdir",
+        "<workdir>/runs/20261104T210453/results/s6-w-prk2-seed-20261105-generic-stress/plassembler/output",
+        "--threads",
+        "4",
+        "--skip_qc",
+        "--skip_mash",
+        "--keep_chromosome",
+        "--prefix",
+        "benchmark",
+        "--chromosome",
+        "1000000"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 334.301,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [
+              "1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
       "explanation": {
-        "confidence": "unresolved",
-        "confidence_scope": "Available evidence does not resolve the explanation",
+        "confidence": "confirmed",
+        "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: pass.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "This finding applies to the stated endpoint and this input; topology remains separate.",
+        "kind": "exact_pass",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "strict_assessment",
+        "summary": "Recorded exact endpoint passes",
+        "symptom": "The recorded exact sequence endpoint passes."
       },
+      "explanation_log": {
+        "bytes": 12748,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "93a52faa08d9a5c17f7f412ddefe07ecf56f00a879f908a1fff782da865b8838"
+      },
+      "finished_at": "2026-11-05T01:27:20.349618+00:00",
+      "initial_flye_evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": []
+      },
+      "peak_memory_kb": 963408,
+      "reads_sha256": "7facc665b6f6956dad0c3b7dcc2e6e369ea4df7ba976eb3c043821dfb4aa7e7c",
+      "retained_chromosome_sha256": "ea8751bcc95c79987c51d2094ba9063efb9942aec3626646ad203b790d0b38eb",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "bc16390cd595fd2fa924e56363bf56b044ff3dbf531c7f865fb0e4116e63e1d7",
       "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "plassembler"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "7",
+      "slurm_job_id": "34401813",
+      "started_at": "2026-11-05T01:21:46.046341+00:00",
+      "status": "pass",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "87f9623e147ec31d8601c2deeb0aaf49724efba5bacb08ceaebdbd34114b4879",
+        "contig_count": 1,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "1173e070327ca9922e514da2cb6eafd230ed179b6896c82c01d9d362995206dd",
+          "input_manifest_sha256": "ca9a95a1f6755b49bd7a1828109f1f3d70ccf5d663adb0da26fc60bf173c94cb",
+          "reads_sha256": "7facc665b6f6956dad0c3b7dcc2e6e369ea4df7ba976eb3c043821dfb4aa7e7c",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": true,
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "All supported plasmids pass",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "alignment_identity": 1.0,
+            "alignment_identity_lower_bound": 1.0,
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [
+              {
+                "alignment_identity": 1.0,
+                "alignment_identity_lower_bound": 1.0,
+                "contig": "1",
+                "length_ratio": 1.0,
+                "placements": [
+                  {
+                    "aligned_reference_bp": 5360,
+                    "alignment_columns": 5360,
+                    "alignment_identity": 1.0,
+                    "alignment_identity_lower_bound": 1.0,
+                    "cigar": "5360=",
+                    "deletions": 0,
+                    "edit_distance": 0,
+                    "insertions": 0,
+                    "matches": 5360,
+                    "reference_coverage": 1.0,
+                    "reference_coverage_lower_bound": 1.0,
+                    "reference_span_bp": 5360,
+                    "reference_start_0based": 1109,
+                    "strand": "-",
+                    "substitutions": 0
+                  }
+                ],
+                "reason": "Whole-contig collinear alignment",
+                "reference_coverage": 1.0,
+                "reference_coverage_lower_bound": 1.0,
+                "status": "match"
+              }
+            ],
+            "length_bp": 5360,
+            "length_ratio": 1.0,
+            "name": "pRK2",
+            "reason": "One certified collinear dedicated contig; no competing copy screen triggered",
+            "reference_coverage": 1.0,
+            "reference_coverage_lower_bound": 1.0,
+            "second_copy_evidence": [],
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "pass"
+      },
+      "tool": "plassembler",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "plassembler, version 1.9.0"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "62dcc071f73cea7db7128ae82ed10c0ec1117afc07d407f5e77fc31c3316e044",
+      "batch_id": "20261104T210453",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-ont2023-shaped/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T210453/results/s6-w-prk2-seed-20261105-ont2023-shaped/flye/output",
+        "--threads",
+        "4"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 257.398,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
       "explanation": {
         "confidence": "unresolved",
         "confidence_scope": "Available evidence does not resolve the explanation",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: fail.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "The strict failure remains recorded. Missing, unavailable or failed supplementary diagnostics do not establish an additional sequence or mechanistic finding.",
+        "kind": "unresolved_exact_failure",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "strict_assessment",
+        "summary": "Exact failure; explanation unresolved",
+        "symptom": "The recorded exact endpoint fails, with no sufficient explanation in the available evidence."
       },
+      "explanation_log": {
+        "bytes": 3034,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "e5169418c62ef7b3bf1a52949a813645b2b66dc22fc30e3e41373344b99835a5"
+      },
+      "finished_at": "2026-11-05T01:26:09.230778+00:00",
+      "peak_memory_kb": 961376,
+      "reads_sha256": "ae03b9de6556f4ade6bee399618707a5f0480b122068e283c73b891e5952c7e8",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "dc422e6582cd1060ea8487dd8df0eab4b312afe6faef0f8093f83599cd01d60e",
       "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "8",
+      "slurm_job_id": "34401816",
+      "started_at": "2026-11-05T01:21:51.647591+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "ec0cfbed1d2ba5a010f21386a866df91568878def5c7fb5d7984a982f5e169cd",
+        "contig_count": 1,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "62dcc071f73cea7db7128ae82ed10c0ec1117afc07d407f5e77fc31c3316e044",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "9d2f4f604e2d89459b198e5e59d7e081275ed2df724f6e72f79f5b425cb1a69b",
+          "input_manifest_sha256": "d43db2b36f820b9476d0c9fae85f6e5a3e78f4890b9679c420516f53259192da",
+          "reads_sha256": "ae03b9de6556f4ade6bee399618707a5f0480b122068e283c73b891e5952c7e8",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": false,
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "See per-plasmid evidence and uncertainty",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [],
+            "length_bp": 5360,
+            "name": "pRK2",
+            "reason": "No dedicated whole-contig recovery meets thresholds",
+            "second_copy_evidence": [],
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "fail"
+      },
+      "tool": "flye",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "fa2530a95b551dbc9a8a78a045a3d556d77258b77b9b290fb21cc485938eed05",
+      "batch_id": "20261104T210453",
+      "command": [
+        "flye",
+        "--nano-hq",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-ont2023-shaped/reads.fastq.gz",
+        "--out-dir",
+        "<workdir>/runs/20261104T210453/results/s6-w-prk2-seed-20261105-ont2023-shaped/flye-meta/output",
+        "--threads",
+        "4",
+        "--meta"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 256.258,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "contig_1"
+        ]
+      },
+      "exit_code": 0,
       "explanation": {
         "confidence": "unresolved",
         "confidence_scope": "Available evidence does not resolve the explanation",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: fail.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "The strict failure remains recorded. Missing, unavailable or failed supplementary diagnostics do not establish an additional sequence or mechanistic finding.",
+        "kind": "unresolved_exact_failure",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "strict_assessment",
+        "summary": "Exact failure; explanation unresolved",
+        "symptom": "The recorded exact endpoint fails, with no sufficient explanation in the available evidence."
       },
+      "explanation_log": {
+        "bytes": 3039,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "4612efb034e60001b6079c400664d3c593be9adbd518875ed7dc6313332a0c2c"
+      },
+      "finished_at": "2026-11-05T01:26:56.688991+00:00",
+      "peak_memory_kb": 959324,
+      "reads_sha256": "ae03b9de6556f4ade6bee399618707a5f0480b122068e283c73b891e5952c7e8",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "dc422e6582cd1060ea8487dd8df0eab4b312afe6faef0f8093f83599cd01d60e",
       "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "flye-meta"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "9",
+      "slurm_job_id": "34401822",
+      "started_at": "2026-11-05T01:22:40.428296+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "80ef63ff3aeab262b122bb60492ec449fa1529b492d3759881fe961b9e367d49",
+        "contig_count": 1,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "fa2530a95b551dbc9a8a78a045a3d556d77258b77b9b290fb21cc485938eed05",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "3ec5aa0f9cc3e94dac719939623572e86857488c5b7054b0a1245caa05ffd15c",
+          "input_manifest_sha256": "d43db2b36f820b9476d0c9fae85f6e5a3e78f4890b9679c420516f53259192da",
+          "reads_sha256": "ae03b9de6556f4ade6bee399618707a5f0480b122068e283c73b891e5952c7e8",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": false,
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "See per-plasmid evidence and uncertainty",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [],
+            "length_bp": 5360,
+            "name": "pRK2",
+            "reason": "No dedicated whole-contig recovery meets thresholds",
+            "second_copy_evidence": [],
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "fail"
+      },
+      "tool": "flye-meta",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "2.9.6-b1802"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "f4b7953fb87089317c026cd79067f199d33cedd3a3aedfc6e9e15525e6912f43",
+      "batch_id": "20261104T210453",
+      "command": [
+        "raven",
+        "-t",
+        "4",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-ont2023-shaped/reads.fastq.gz"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 81.663,
+      "evaluation": {
+        "contig_count": 2,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": [
+          "Utg2218",
+          "Utg2220"
+        ]
+      },
+      "exit_code": 0,
       "explanation": {
-        "confidence": "unresolved",
-        "confidence_scope": "Available evidence does not resolve the explanation",
+        "confidence": "confirmed",
+        "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: fail.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
+          },
+          {
+            "source": "tolerant_assessment.replicons[NC_017662.1]",
+            "text": "pRK2: tolerant endpoint passes; recorded aligned-window edit distance 3.",
+            "type": "tolerant_assessment"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "A small sequence or boundary difference can fail exact recovery. Use the recorded alignment measurements; this result does not establish how the difference arose.",
+        "kind": "non_exact_tolerant_recovery",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "supplementary_assessment",
+        "summary": "Exact match fails; tolerant recovery passes",
+        "symptom": "The output meets the separately recorded tolerant endpoint but is not an exact recovery."
       },
+      "explanation_log": {
+        "bytes": 7826,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "d55095028c8796443bb9a39a47ebb21becb8a2fb91f1858cbd1f1daf4ed5a5dd"
+      },
+      "finished_at": "2026-11-05T01:25:07.187453+00:00",
+      "peak_memory_kb": 1442388,
+      "reads_sha256": "ae03b9de6556f4ade6bee399618707a5f0480b122068e283c73b891e5952c7e8",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "dc422e6582cd1060ea8487dd8df0eab4b312afe6faef0f8093f83599cd01d60e",
       "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "raven"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "10",
+      "slurm_job_id": "34401905",
+      "started_at": "2026-11-05T01:23:45.300846+00:00",
+      "status": "fail",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "7c6928b5d9031ea91c2ed40587a1d14a2cf8e18e6c87693d8c4936646784c6e0",
+        "contig_count": 2,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "f4b7953fb87089317c026cd79067f199d33cedd3a3aedfc6e9e15525e6912f43",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "f3c717a92af35373866ef10d8145de71a89632c765a39a6b8ce06b8b8ed2f5db",
+          "input_manifest_sha256": "d43db2b36f820b9476d0c9fae85f6e5a3e78f4890b9679c420516f53259192da",
+          "reads_sha256": "ae03b9de6556f4ade6bee399618707a5f0480b122068e283c73b891e5952c7e8",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": false,
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "All supported plasmids pass",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "alignment_identity": 0.9994402985074626,
+            "alignment_identity_lower_bound": 0.9994402985074626,
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [
+              {
+                "alignment_identity": 0.9994402985074626,
+                "alignment_identity_lower_bound": 0.9994402985074626,
+                "contig": "Utg2218",
+                "length_ratio": 0.9994402985074626,
+                "placements": [
+                  {
+                    "aligned_reference_bp": 5357,
+                    "alignment_columns": 5360,
+                    "alignment_identity": 0.9994402985074626,
+                    "alignment_identity_lower_bound": 0.9994402985074626,
+                    "cigar": "3108=1D1=2D2248=",
+                    "deletions": 3,
+                    "edit_distance": 3,
+                    "insertions": 0,
+                    "matches": 5357,
+                    "reference_coverage": 0.9994402985074626,
+                    "reference_coverage_lower_bound": 0.9994402985074626,
+                    "reference_span_bp": 5360,
+                    "reference_start_0based": 4306,
+                    "strand": "+",
+                    "substitutions": 0
+                  }
+                ],
+                "reason": "Whole-contig collinear alignment",
+                "reference_coverage": 0.9994402985074626,
+                "reference_coverage_lower_bound": 0.9994402985074626,
+                "status": "match"
+              }
+            ],
+            "length_bp": 5360,
+            "length_ratio": 0.9994402985074626,
+            "name": "pRK2",
+            "reason": "One certified collinear dedicated contig; no competing copy screen triggered",
+            "reference_coverage": 0.9994402985074626,
+            "reference_coverage_lower_bound": 0.9994402985074626,
+            "second_copy_evidence": [],
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "pass"
+      },
+      "tool": "raven",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "1.8.3",
+      "working_directory": "results/s6-w-prk2-seed-20261105-ont2023-shaped/raven",
+      "working_directory_base": "batch"
     },
     {
-      "command": [],
+      "allocated_cpus": 4,
+      "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+      "batch_id": "20261104T210453",
+      "command": [
+        "plassembler",
+        "long",
+        "--longreads",
+        "<workdir>/runs/20261104T210453/cases/s6-w-prk2-seed-20261105-ont2023-shaped/reads.fastq.gz",
+        "--outdir",
+        "<workdir>/runs/20261104T210453/results/s6-w-prk2-seed-20261105-ont2023-shaped/plassembler/output",
+        "--threads",
+        "4",
+        "--skip_qc",
+        "--skip_mash",
+        "--keep_chromosome",
+        "--prefix",
+        "benchmark",
+        "--chromosome",
+        "1000000"
+      ],
+      "config_fingerprint": "ca530ec2e86298eb159ebdb86efdb169ef34a9bdab945160a4b2cde49afca5d8",
+      "elapsed_seconds": 342.314,
+      "evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [
+              "1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "pass",
+        "unclassified_contigs": []
+      },
+      "exit_code": 0,
       "explanation": {
-        "confidence": "unresolved",
-        "confidence_scope": "Available evidence does not resolve the explanation",
+        "confidence": "confirmed",
+        "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
         "evidence": [
           {
             "source": "status",
-            "text": "Recorded outcome: pending.",
+            "text": "Recorded outcome: pass.",
             "type": "execution"
+          },
+          {
+            "source": "scheduler_state",
+            "text": "Scheduler state: COMPLETED.",
+            "type": "scheduler"
           }
         ],
-        "interpretation": "An unfinished or unsubmitted run has no scientific recovery outcome yet.",
-        "kind": "awaiting_assessment",
+        "interpretation": "This finding applies to the stated endpoint and this input; topology remains separate.",
+        "kind": "exact_pass",
         "mechanism_confidence": "unresolved",
         "schema_version": 1,
-        "source": "execution_state",
-        "summary": "Awaiting completed assessment",
-        "symptom": "No completed assembly assessment is available."
+        "source": "strict_assessment",
+        "summary": "Recorded exact endpoint passes",
+        "symptom": "The recorded exact sequence endpoint passes."
       },
+      "explanation_log": {
+        "bytes": 12748,
+        "file": "stderr.log",
+        "observations": [],
+        "sample_policy": "first and last 32 KiB when larger than 64 KiB; otherwise complete",
+        "sha256": "737a68ca7dc05e4615afe2dccbd4332e4b111f88954a6c43e0970d1d703bb8be"
+      },
+      "finished_at": "2026-11-05T01:30:53.381238+00:00",
+      "initial_flye_evaluation": {
+        "contig_count": 1,
+        "endpoint": "All expected plasmids recovered exactly once as dedicated molecules",
+        "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+        "plasmid_passes": 0,
+        "plasmid_total": 1,
+        "replicons": [
+          {
+            "accession": "NC_017664.1",
+            "exact_contigs": [
+              "contig_1"
+            ],
+            "extra_full_copy_contigs": [],
+            "length_bp": 4897452,
+            "molecule_type": "chromosome",
+            "name": "chromosome",
+            "reason": "One exact dedicated molecule",
+            "recovered_fraction": 1.0,
+            "status": "pass",
+            "topology_status": "not_assessed"
+          },
+          {
+            "accession": "NC_017662.1",
+            "exact_contigs": [],
+            "extra_full_copy_contigs": [],
+            "length_bp": 5360,
+            "molecule_type": "plasmid",
+            "name": "pRK2",
+            "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+            "recovered_fraction": null,
+            "status": "fail",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "status": "fail",
+        "unclassified_contigs": []
+      },
+      "peak_memory_kb": 959764,
+      "reads_sha256": "ae03b9de6556f4ade6bee399618707a5f0480b122068e283c73b891e5952c7e8",
+      "retained_chromosome_sha256": "1f7cf77dc3b7a077387967f1c88cea123a5f19616ce3638d2ebd2b805f55b12a",
+      "runtime_source_sha256": {
+        "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+        "pipeline/assessments.py": "b7cf297913c7a7d19e3afa4f4fb06f61f3dd853d4d01bb05bae21df4380b168e",
+        "pipeline/assets.py": "2b68141eb1630a663ff873f801b4f0f23ad16e3567fc5065936cef05c7506e13",
+        "pipeline/cases.py": "563a5fa189abe73b874ee44f8fe6acf3f538287d4b7522527394f9a58545febe",
+        "pipeline/cluster.py": "20eab796d446d33a6491fd284e756e81076bb8f12003abaf7a9f9cea53f8b4ae",
+        "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+        "pipeline/determinism.py": "26162333fcba639d4afbec14a52f7eba70c707936b31ea16216d7c47af8aaa55",
+        "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+        "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+        "pipeline/execution.py": "05b2c09233d0eb61903fc04b0489a0d4a3e12d75e3a7c208bba0483690e74dfa",
+        "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+        "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+        "pipeline/noisy_report.py": "83b12ad500e77e280e0b7c466fa59b73d2ba04f5182683f7dce423dc6f506d5c",
+        "pipeline/noisy_workflow.py": "791525f6800e6293054db601096f50b332f5d12aa1633b17f28ac84da07f964d",
+        "pipeline/publication.py": "36e6782ce6230c879834a6fa1abb4f3aedab809803fedb1ad64ba3f76c825d60",
+        "pipeline/reads.py": "cec689194d85fbabfda0982d15efe94cdda9f084140d7d5c2c992f23a81be408",
+        "pipeline/repeat_report.py": "9949693197512d322661c97037acd29136c1123e297c951010d23c40e54848f6",
+        "pipeline/report.py": "31c55e9833f44b7ca093103ae7b81ed440f5595dd6e346dd98d56c8998e62f65",
+        "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+        "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+        "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+      },
+      "scenario_fingerprint": "dc422e6582cd1060ea8487dd8df0eab4b312afe6faef0f8093f83599cd01d60e",
       "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
-      "scheduler_state": "PENDING",
-      "status": "pending",
-      "tool": "plassembler"
+      "scheduler_state": "COMPLETED",
+      "slurm_array_task_id": "11",
+      "slurm_job_id": "34389683",
+      "started_at": "2026-11-05T01:25:11.064397+00:00",
+      "status": "pass",
+      "threads": 4,
+      "tolerant_assessment": {
+        "cache_fingerprint": "7cf2512e56034e5ee6a6eb1b5f22807bae0050b4be0a09eabb1703203974566c",
+        "contig_count": 1,
+        "edlib_version": "1.3.9.post1",
+        "endpoint_version": "small-plasmid-tolerant-v1",
+        "input_hashes": {
+          "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+          "batch_id_execution_available": true,
+          "config_sha256": "bc6ac65cb4b6447c3f8ca6be4563d25b5f17a6075b857b113bbd968ca0b15031",
+          "execution_sha256": "0615fd3441adeb678d2867829e0429903d91e2f28cd5521da1bd3a60e65c7673",
+          "input_manifest_sha256": "d43db2b36f820b9476d0c9fae85f6e5a3e78f4890b9679c420516f53259192da",
+          "reads_sha256": "ae03b9de6556f4ade6bee399618707a5f0480b122068e283c73b891e5952c7e8",
+          "reads_sha256_execution_hash_available": true,
+          "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+          "truth_sha256_execution_hash_available": true
+        },
+        "limitations": "Sequence-only endpoint for pRK2/pKPN7; strict scores are unchanged. No physical topology or circularity claim. Repeats, possible embedded copies and unresolved structural assignments are unscored. Copy exclusion is conservative at the stated identity threshold, not an exhaustive low-identity homology search.",
+        "plasmid_only_output": true,
+        "plasmid_passes": 1,
+        "plasmid_total": 1,
+        "policy": {
+          "maximum_assembly_bases": 20000000,
+          "maximum_contig_count": 256,
+          "maximum_length_ratio": 1.02,
+          "maximum_reference_length": 10000,
+          "minimum_alignment_identity": 0.995,
+          "minimum_length_ratio": 0.98,
+          "minimum_reference_coverage": 0.99,
+          "second_copy_recovery_threshold": 0.95
+        },
+        "policy_fingerprint": "b7076bcf56d8affdfc878a9125fafb93d972c28cfb44d421ce3c97d41b6bffd3",
+        "reason": "All supported plasmids pass",
+        "replicons": [
+          {
+            "accession": "NC_017662.1",
+            "alignment_identity": 1.0,
+            "alignment_identity_lower_bound": 1.0,
+            "ambiguous_evidence": [],
+            "copy_screen": {
+              "anchor_count": 64,
+              "anchor_length_bp": 32,
+              "possible_copy_guard": 16,
+              "scope": "Conservative screen for contiguous collinear near-copies at the stated identity; positive screens need assignment, never become passes."
+            },
+            "dedicated_candidates": [
+              {
+                "alignment_identity": 1.0,
+                "alignment_identity_lower_bound": 1.0,
+                "contig": "1",
+                "length_ratio": 1.0,
+                "placements": [
+                  {
+                    "aligned_reference_bp": 5360,
+                    "alignment_columns": 5360,
+                    "alignment_identity": 1.0,
+                    "alignment_identity_lower_bound": 1.0,
+                    "cigar": "5360=",
+                    "deletions": 0,
+                    "edit_distance": 0,
+                    "insertions": 0,
+                    "matches": 5360,
+                    "reference_coverage": 1.0,
+                    "reference_coverage_lower_bound": 1.0,
+                    "reference_span_bp": 5360,
+                    "reference_start_0based": 1109,
+                    "strand": "-",
+                    "substitutions": 0
+                  }
+                ],
+                "reason": "Whole-contig collinear alignment",
+                "reference_coverage": 1.0,
+                "reference_coverage_lower_bound": 1.0,
+                "status": "match"
+              }
+            ],
+            "length_bp": 5360,
+            "length_ratio": 1.0,
+            "name": "pRK2",
+            "reason": "One certified collinear dedicated contig; no competing copy screen triggered",
+            "reference_coverage": 1.0,
+            "reference_coverage_lower_bound": 1.0,
+            "second_copy_evidence": [],
+            "status": "pass",
+            "topology_status": "not_assessed"
+          }
+        ],
+        "runtime": {
+          "edlib": "1.3.9.post1",
+          "evaluator_sha256": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58"
+        },
+        "schema_version": 1,
+        "status": "pass"
+      },
+      "tool": "plassembler",
+      "truth_sha256": "2c1270532b4c5acf9b8cab877fd6a0c3f949f579e2ceae2e160face2811a189f",
+      "version": "plassembler, version 1.9.0"
     }
   ],
   "scenarios": [
