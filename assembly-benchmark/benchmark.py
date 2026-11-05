@@ -33,6 +33,7 @@ def main(argv=None):
             sub.add_argument("--tool", choices=("flye", "flye-meta", "raven", "plassembler"), required=True)
             sub.add_argument("--threads", type=int)
             sub.add_argument("--repeat", type=int)
+            sub.add_argument("--mode", choices=("default", "deterministic"))
         if action == "task":
             sub.add_argument("--kind", choices=("simulate", "assemble"), required=True)
             sub.add_argument("--index", required=True, type=int)
@@ -121,7 +122,7 @@ def main(argv=None):
         return 0 if result["status"] == "valid" else 1
     elif args.action == "run":
         from pipeline.execution import run
-        result = run(find_case(config, args.scenario), args.tool, batch, config, args.threads, args.repeat)
+        result = run(find_case(config, args.scenario), args.tool, batch, config, args.threads, args.repeat, args.mode)
         print(result["status"])
         # A scientific fail is completed work; execution/validation errors fail the job.
         return 0 if result["status"] in ("pass", "fail") else 1
@@ -141,6 +142,8 @@ def main(argv=None):
         if allocated != config["threads"] or requested > allocated:
             raise ValueError("Allocated Slurm CPUs do not match the frozen reservation")
         extra = ["--threads", str(requested), "--repeat", str(selected["repeat"])] if "repeat" in selected else []
+        if "mode" in selected:
+            extra += ["--mode", selected["mode"]]
         return subprocess.run(["pixi", "run", "--locked", "-e", env, "python", "benchmark.py", "run", "--batch", args.batch,
                                "--scenario", selected["scenario"], "--tool", selected["tool"]] + extra, cwd=ROOT).returncode
     elif args.action == "submit":

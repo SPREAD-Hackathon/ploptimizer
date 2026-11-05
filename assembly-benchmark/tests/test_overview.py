@@ -48,7 +48,8 @@ class OverviewTests(unittest.TestCase):
         self.assertEqual(family["id"], "S3")
         self.assertEqual(family["counts"]["fail"], 4)
         self.assertEqual(len({r["href"] for r in family["records"]}), 4)
-        self.assertIn('separate endpoint', render_family(model, "S3"))
+        self.assertIn('Reference recovery for individual runs', render_family(model, "S3"))
+        self.assertEqual(family['repeatability']['not_assessed'], 2)
 
     def test_duplicate_and_unknown_inputs_rejected(self):
         with self.assertRaises(ValueError):

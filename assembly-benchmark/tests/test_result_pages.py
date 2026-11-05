@@ -53,6 +53,10 @@ class ResultPageTests(unittest.TestCase):
     def test_missing_graph_and_circularity_are_unknown_not_manufactured(self):
         write_result_pages(self.document, self.output)
         html = (self.output / result_href(self.record)).read_text()
+        self.assertNotIn("Exact endpoint:", html)
+        self.assertIn("Run details, command and provenance</summary>", html)
+        self.assertNotIn('<details class="command-used">', html)
+        self.assertIn('data-exact-status="fail"', html)
         self.assertIn("Graph unavailable", html)
         self.assertIn("Circularity is <strong>unknown</strong>", html)
         self.assertIn("not labelled linear", html)

@@ -177,6 +177,10 @@ read file and write isolated execution directories. Their report separates byte,
 normalised sequence and strict biological agreement; incomplete evidence is never
 called identical. See [S4_READ_LENGTHS.md](S4_READ_LENGTHS.md) for the length panel.
 
+The new `config/determinism-modes.json` adds Flye deterministic modes at both
+thread counts (120 tasks, not submitted). Existing S3 runs used default mode only.
+See [S3_REPEATABILITY.md](S3_REPEATABILITY.md).
+
 `diagnose-submit` submits one CPU/4 GB/one-hour supplementary mapping work on the
 compute node; it does not rerun assemblers or modify execution.json. It records
 its job ID separately, and the follower waits for diagnostics before stopping.

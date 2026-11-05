@@ -12,7 +12,7 @@ def e(value):
 
 def outcome_section(record):
     heading, explanation = verdict(record)
-    body = f'<section class="result-outcome" aria-labelledby="outcome-title"><h2 id="outcome-title">{e(heading)}</h2><p>{e(explanation)}</p>'
+    body = f'<section class="result-outcome" data-exact-status="{e(record["status"])}" aria-labelledby="outcome-title"><h2 id="outcome-title">{e(heading)}</h2><p>{e(explanation)}</p>'
     if record["status"] not in {"pass", "fail"}:
         return body + '</section>'
     evaluation = record.get("evaluation") or {}

@@ -10,6 +10,8 @@ def _e(value):
 
 
 def _cell(counts, href=None):
+    if "repeatability" in counts:
+        return _repeatability_cell(counts["repeatability"], href)
     tone = "neutral" if counts["denominator"] == 0 else "pass" if counts["fail"] == 0 else "fail" if counts["pass"] == 0 else "mixed"
     text = f'<strong>{counts["pass"]} pass · {counts["fail"]} fail</strong>'
     if href:
@@ -21,20 +23,69 @@ def _cell(counts, href=None):
     return f'<td class="overview-cell {tone}{heat}" data-pass="{counts["pass"]}" data-fail="{counts["fail"]}" data-denominator="{counts["denominator"]}">{text}</td>'
 
 
+
+def _repeatability_cell(counts, href=None):
+    same, different = counts["identical"], counts["different"]
+    denominator = same + different
+    tone = "neutral" if not denominator else "pass" if not different else "fail" if not same else "mixed"
+    text = f'<strong>{same} identical · {different} different</strong>'
+    if href:
+        text = f'<a href="{_e(href)}">{text}</a>'
+    if counts["not_assessed"]:
+        text += f'<small>{counts["not_assessed"]} not assessed</small>'
+    heat = f' heat-{min(4, int(same / denominator * 5))}' if denominator else ""
+    return f'<td class="overview-cell {tone}{heat}" data-identical="{same}" data-different="{different}" data-denominator="{denominator}">{text}</td>'
+
+
+def _agreement(group, metric):
+    value = group.get(metric + "_identical")
+    if group.get("complete") is not True or group.get("inputs_identical") is not True or type(value) is not bool:
+        return "Not assessed"
+    return "Identical" if value else "Different"
+
+
+def _repeatability_tables(item, tools):
+    body = '<p>Counts compare normalised sequences within each input, assembler, mode and thread setting. Reference recovery is shown separately below.</p>'
+    if item.get("repeatability_groups") and all(g["mode"] == "default" for g in item["repeatability_groups"]):
+        body += '<p>Saved comparisons use default mode. Deterministic-mode results have not been collected.</p>'
+    body += '<div class="table-scroll"><table><caption>Repeatability by reference genome</caption><thead><tr><th scope="col">Genome</th>'
+    body += ''.join(f'<th scope="col">{_e(t["label"])}</th>' for t in tools) + '</tr></thead><tbody>'
+    for genome in item["genomes"]:
+        body += f'<tr><th scope="row">{_e(genome["organism"])}<small>{_e(genome["assembly_accession"] or "Accession not recorded")}</small></th>'
+        body += ''.join(_cell(t) for t in genome["tools"]) + '</tr>'
+    body += '</tbody></table></div>'
+    for kind, heading in (("within_thread", "Repeated runs at the same thread setting"), ("across_threads", "Agreement across thread settings")):
+        body += f'<h2>{heading}</h2><div class="table-scroll"><table><thead><tr><th scope="col">Input</th><th scope="col">Assembler</th><th scope="col">Mode</th><th scope="col">Threads</th><th scope="col">Completed / expected</th><th scope="col">File bytes</th><th scope="col">Normalised sequences</th><th scope="col">Reference-recovery outcomes</th></tr></thead><tbody>'
+        groups = [g for g in item.get("repeatability_groups", []) if g["comparison"] == kind]
+        for g in groups:
+            threads = ', '.join(map(str, g["threads"])) if isinstance(g.get("threads"), list) else str(g.get("threads", "Not recorded"))
+            runs = f'{g.get("scored_runs", "—")} / {g.get("expected_runs", "—")}' if kind == "within_thread" else "All saved repeats" if g.get("complete") else "Incomplete"
+            body += f'<tr><th scope="row">{_e(g["title"])}</th><td>{_e(TOOLS[g["tool"]])}</td><td>{_e(g["mode"].replace("_", " ").title())}</td><td>{_e(threads)}</td><td>{_e(runs)}</td>'
+            body += ''.join(f'<td>{_agreement(g, key)}</td>' for key in ("byte", "normalised_sequence", "biological")) + '</tr>'
+        if not groups:
+            body += '<tr><td colspan="8">No saved comparisons.</td></tr>'
+        body += '</tbody></table></div>'
+    body += '<p class="muted">Normalisation ignores contig names, order and strand. Circular rotation is ignored only for exact reference-matched circles; other contig ends and duplicates are retained. Different normalised signatures therefore do not establish a particular sequence change. Incomplete groups or unverified inputs are not assessed. Identical observations do not guarantee determinism.</p>'
+    return body
+
+
 def render_home(model, prefix=""):
     """Body fragment; caller retains its existing page shell and assets."""
-    body = f'<h1>Assembly benchmark</h1><p class="overview-intro">Exact recovery · {model["counts"]["total"]} run records · {len(model["tools"])} assembler configurations</p>'
+    body = f'<h1>Assembly benchmark</h1><p class="overview-intro">Recovery and repeatability · {model["counts"]["total"]} run records · {len(model["tools"])} assembler configurations</p>'
     if model["missing_batches"]:
         body += '<p class="notice">Some selected batches are unavailable. Counts are incomplete.</p>'
-    body += '<div class="table-scroll" role="region" aria-label="Scenario family outcomes" tabindex="0"><table class="overview-heatmap"><caption>Exact pass/fail counts by scenario family and assembler</caption><thead><tr><th scope="col">Scenario family</th>'
+    body += '<div class="table-scroll" role="region" aria-label="Scenario family outcomes" tabindex="0"><table class="overview-heatmap"><caption>Recovery counts by scenario family; S3 counts repeated-run agreement</caption><thead><tr><th scope="col">Scenario family</th>'
     body += ''.join(f'<th scope="col">{_e(t["label"])}</th>' for t in model["tools"]) + '</tr></thead><tbody>'
     for family in model["families"]:
         if model["scope"] == "archived_batch" and not family["counts"]["total"]:
             continue
         href = prefix + family["href"]
-        body += f'<tr><th scope="row"><a href="{_e(href)}">{family["id"]} · {_e(family["title"])}</a></th>'
+        body += f'<tr><th scope="row"><a href="{_e(href)}">{family["id"]} · {_e(family["title"])}</a>'
+        if family["id"] == "S3":
+            body += '<small>Repeatability · normalised sequences</small>'
+        body += '</th>'
         body += ''.join(_cell(tool, href) for tool in family["tools"]) + '</tr>'
-    return body + '</tbody></table></div><p class="overview-legend"><span>Orange: more failures</span><span>Blue: more passes</span></p>'
+    return body + '</tbody></table></div><p class="overview-legend"><span>Orange: more failures or differences</span><span>Blue: more passes or identical groups</span></p>'
 
 
 def render_family(model, family, prefix="../"):
@@ -43,21 +94,26 @@ def render_family(model, family, prefix="../"):
     if item is None:
         raise ValueError("Unknown scenario family")
     body = f'<p><a href="{_e(prefix)}index.html">All scenario families</a></p><h1>{family} · {_e(item["title"])}</h1><p>{_e(item["description"])}</p>'
-    if family in {"S3", "S6"}:
+    if family == "S6":
         metric = "Repeatability" if family == "S3" else "Tolerant recovery"
         body += f'<p>{metric} is a separate endpoint. The tables below show exact status only; individual result links retain the detailed evidence.</p>'
-    body += '<div class="table-scroll"><table><caption>Exact outcomes for each reference genome</caption><thead><tr><th scope="col">Genome</th>'
-    body += ''.join(f'<th scope="col">{_e(t["label"])}</th>' for t in model["tools"]) + '</tr></thead><tbody>'
-    for genome in item["genomes"]:
-        body += f'<tr><th scope="row">{_e(genome["organism"])}<small>{_e(genome["assembly_accession"] or "Accession not recorded")}</small></th>'
-        body += ''.join(_cell(t) for t in genome["tools"]) + '</tr>'
-    body += '</tbody></table></div><h2>Individual runs</h2><div class="table-scroll"><table><thead><tr><th scope="col">Genome / case</th><th scope="col">Assembler / version</th><th scope="col">Threads / repeat</th><th scope="col">Exact status</th></tr></thead><tbody>'
+    if family == "S3":
+        body += _repeatability_tables(item, model["tools"])
+        body += '<details><summary>Reference recovery for individual runs</summary>'
+    else:
+        body += '<div class="table-scroll"><table><caption>Exact outcomes for each reference genome</caption><thead><tr><th scope="col">Genome</th>'
+        body += ''.join(f'<th scope="col">{_e(t["label"])}</th>' for t in model["tools"]) + '</tr></thead><tbody>'
+        for genome in item["genomes"]:
+            body += f'<tr><th scope="row">{_e(genome["organism"])}<small>{_e(genome["assembly_accession"] or "Accession not recorded")}</small></th>'
+            body += ''.join(_cell(t) for t in genome["tools"]) + '</tr>'
+        body += '</tbody></table></div>'
+    body += '<h2>Individual runs</h2><div class="table-scroll"><table><thead><tr><th scope="col">Genome / case</th><th scope="col">Assembler / version</th><th scope="col">Threads / repeat</th><th scope="col">Exact status</th></tr></thead><tbody>'
     for row in item["records"]:
         run = f'{row["threads"] if row["threads"] is not None else "Not recorded"} threads · {row["run_id"] or "Single run"}'
         body += f'<tr data-batch="{_e(row["batch"])}"><th scope="row">{_e(row["organism"])}<small>{_e(row["title"])}</small></th><td><a href="{_e(prefix + row["href"])}">{_e(TOOLS[row["tool"]])}<small>{_e(row["version"])}</small></a></td><td>{_e(run)}</td><td><span class="status {_e(row["status"])}">{_e(row["status"].replace("_", " ").title())}</span></td></tr>'
     if not item["records"]:
         body += '<tr><td colspan="4">No runs in this selected cohort.</td></tr>'
-    return body + '</tbody></table></div>'
+    return body + '</tbody></table></div>' + ('</details>' if family == 'S3' else '')
 
 
 def write_overview(documents, output, *, cohort=None, archived_batch=None, root_batch=None, model=None):

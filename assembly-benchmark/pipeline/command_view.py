@@ -15,6 +15,7 @@ FLAGS = {
         "--out-dir": "Directory for assembly output.",
         "--threads": "Number of parallel threads requested.",
         "--meta": "Enable the metagenome / uneven-coverage mode.",
+        "--deterministic": "Run the initial disjointig assembly stage single-threaded; later stages can still use the requested threads. This flag is tested for repeatability, not treated as a guarantee.",
     },
     "raven": {"-t": "Number of threads requested."},
     "plassembler": {
@@ -30,16 +31,19 @@ FLAGS = {
 }
 
 
-def render_command(record, case=None):
+def render_command(record, case=None, collapsed=True):
     from .report import execution_evidence
     e = lambda value: html.escape(str(value), quote=True)
     command = record.get("command", [])
     if not isinstance(command, list) or not command or not all(isinstance(arg, str) for arg in command):
-        return '<details class="command-used"><summary>Command used and flags</summary><p id="command-used">No command was recorded for this execution.</p></details>'
+        if collapsed:
+            return '<details class="command-used"><summary>Command used and flags</summary><p id="command-used">No command was recorded for this execution.</p></details>'
+        return '<h3 id="command-used">Command used and flags</h3><p>No command was recorded for this execution.</p>'
     command = execution_evidence(record, case)["command"]
     tool = record.get("tool")
     definitions = FLAGS.get("flye" if tool == "flye-meta" else tool, {})
-    body = '<details class="command-used"><summary>Command used and flags</summary><div id="command-used">'
+    body = ('<details class="command-used"><summary>Command used and flags</summary><div id="command-used">'
+            if collapsed else '<h3 id="command-used">Command used and flags</h3><div>')
     body += f'<p class="muted">Recorded tool version: {e(record.get("version") or "not recorded")}</p><pre class="recorded-command"><code>{e(shlex.join(command))}</code></pre>'
     if any("<workdir>" in arg for arg in command):
         body += '<p class="muted"><code>&lt;workdir&gt;</code> marks the benchmark work directory.</p>'
@@ -54,4 +58,4 @@ def render_command(record, case=None):
     if tool in SOURCES:
         title, url = SOURCES[tool]
         body += f'<p class="muted">Flag descriptions: <a href="{e(url)}">{e(title)}</a>.</p>'
-    return body + '</div></details>'
+    return body + ('</div></details>' if collapsed else '</div>')

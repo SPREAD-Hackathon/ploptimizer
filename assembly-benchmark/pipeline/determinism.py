@@ -20,13 +20,24 @@ def repeat_settings(config):
     scenarios = panel.get('scenarios', [])
     if not scenarios or len(set(scenarios)) != len(scenarios):
         raise ValueError('Determinism requires unique scenario identifiers')
+    modes = panel.get('modes')
+    if modes is not None:
+        if not isinstance(modes, dict) or set(modes) != set(config['tools']):
+            raise ValueError('Determinism modes must list each configured tool exactly once')
+        for tool, selected in modes.items():
+            allowed = {'default', 'deterministic'} if tool in ('flye', 'flye-meta') else {'default'}
+            if not isinstance(selected, list) or not selected or any(not isinstance(mode, str) or mode not in allowed for mode in selected) or len(set(selected)) != len(selected):
+                raise ValueError(f'Unsupported or duplicate determinism mode for {tool}')
     return panel
 
 
-def execution_id(threads, repeat):
+def execution_id(threads, repeat, mode=None):
     if type(threads) is not int or threads < 1 or type(repeat) is not int or repeat < 1:
         raise ValueError('Execution threads and repeat must be positive integers')
-    return f'threads-{threads}-repeat-{repeat}'
+    if mode is not None and mode not in ('default', 'deterministic'):
+        raise ValueError('Unknown execution mode')
+    prefix = f'mode-{mode}-' if mode is not None else ''
+    return prefix + f'threads-{threads}-repeat-{repeat}'
 
 
 def assembly_tasks(config, scenarios):
@@ -34,8 +45,10 @@ def assembly_tasks(config, scenarios):
     if not panel:
         return [{'scenario': case['id'], 'tool': tool} for case in scenarios for tool in config['tools']]
     return [{'scenario': case['id'], 'tool': tool, 'threads': threads, 'repeat': repeat,
-             'run_id': execution_id(threads, repeat)}
-            for case in scenarios for tool in config['tools'] for threads in panel['threads']
+             **({'mode': mode} if mode is not None else {}),
+             'run_id': execution_id(threads, repeat, mode)}
+            for case in scenarios for tool in config['tools']
+            for mode in panel.get('modes', {}).get(tool, [None]) for threads in panel['threads']
             for repeat in range(1, panel['repeats'] + 1)]
 
 
@@ -94,7 +107,8 @@ def collect_records(config, batch):
         record = load(path) if path.exists() else {}
         if record and (record.get('config_fingerprint') != fingerprint(config)
                        or record.get('scenario_fingerprint') != cases[task['scenario']]['fingerprint']
-                       or record.get('threads') != task['threads'] or record.get('repeat') != task['repeat']):
+                       or record.get('threads') != task['threads'] or record.get('repeat') != task['repeat']
+                       or record.get('mode', 'default') != task.get('mode', 'default')):
             record = {'status': 'error', 'error': 'Result provenance does not match this repeat task'}
         record = attach_diagnostics(record, path)
         state = accounting.get(f'{job}_{index}', accounting.get(job, ''))
@@ -116,9 +130,9 @@ def collect_summary(config, batch):
     records = collect_records(config, batch)
     groups = collections.defaultdict(list)
     for row in records:
-        groups[(row['scenario_id'], row['tool'], row['threads'])].append(row)
+        groups[(row['scenario_id'], row['tool'], row.get('mode', 'default'), row['threads'])].append(row)
     within = []
-    for (scenario, tool, threads), rows in groups.items():
+    for (scenario, tool, mode, threads), rows in groups.items():
         valid = [row for row in rows if row['status'] in ('pass', 'fail')]
         complete = len(valid) == panel['repeats']
         inputs_identical = complete and all(row.get('reads_sha256') and row.get('truth_sha256') for row in valid) and len({(row['reads_sha256'], row['truth_sha256']) for row in valid}) == 1
@@ -128,15 +142,15 @@ def collect_summary(config, batch):
             observed = set(value for value in hashes if value)
             metrics[label + '_variants'] = len(observed)
             metrics[label + '_identical'] = len(observed) == 1 if inputs_identical and all(hashes) else None
-        within.append({'scenario_id': scenario, 'tool': tool, 'threads': threads, 'expected_runs': panel['repeats'],
+        within.append({'scenario_id': scenario, 'tool': tool, **({'mode': mode} if panel.get('modes') else {}), 'threads': threads, 'expected_runs': panel['repeats'],
                        'scored_runs': len(valid), 'complete': complete, 'inputs_identical': inputs_identical if complete else None, 'status_counts': dict(collections.Counter(row['status'] for row in rows)), **metrics})
     between = []
-    for scenario, tool in sorted({(row['scenario_id'], row['tool']) for row in within}):
-        selected = [row for row in records if row['scenario_id'] == scenario and row['tool'] == tool]
+    for scenario, tool, mode in sorted({(row['scenario_id'], row['tool'], row.get('mode', 'default')) for row in within}):
+        selected = [row for row in records if row['scenario_id'] == scenario and row['tool'] == tool and row.get('mode', 'default') == mode]
         valid = [row for row in selected if row['status'] in ('pass', 'fail')]
         complete = len(valid) == panel['repeats'] * len(panel['threads'])
         inputs_identical = complete and all(row.get('reads_sha256') and row.get('truth_sha256') for row in valid) and len({(row['reads_sha256'], row['truth_sha256']) for row in valid}) == 1
-        between.append({'scenario_id': scenario, 'tool': tool, 'threads': panel['threads'], 'complete': complete, 'inputs_identical': inputs_identical if complete else None,
+        between.append({'scenario_id': scenario, 'tool': tool, **({'mode': mode} if panel.get('modes') else {}), 'threads': panel['threads'], 'complete': complete, 'inputs_identical': inputs_identical if complete else None,
                         **{label + '_identical': len({row[field] for row in valid}) == 1
                            if inputs_identical and all(row.get(field) for row in valid) else None for label, field in METRICS}})
     return {'schema_version': 1, 'batch_id': batch.name, 'category': 'S3', 'expected_runs': len(records),

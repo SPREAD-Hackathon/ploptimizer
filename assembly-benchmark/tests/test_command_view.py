@@ -15,6 +15,19 @@ class CommandViewTests(unittest.TestCase):
         self.assertIn('uneven-coverage mode', body)
         self.assertEqual(row, original)
 
+    def test_command_content_can_share_a_provenance_disclosure(self):
+        row = {"tool": "flye", "status": "pass", "command": ["flye", "--threads", "4", "--deterministic"]}
+        body = render_command(row, collapsed=False)
+        self.assertIn('<h3 id="command-used">', body)
+        self.assertNotIn('<details', body)
+        self.assertNotIn('<summary', body)
+        self.assertIn('initial disjointig assembly stage single-threaded', body)
+        self.assertIn('4 --deterministic', body)
+        self.assertIn('<details', render_command(row))
+        missing = render_command({}, collapsed=False)
+        self.assertIn('No command was recorded', missing)
+        self.assertNotIn('<details', missing)
+
     def test_mode_name_does_not_invent_a_flag(self):
         body = render_command({"tool": "flye-meta", "status": "pass", "command": ["flye", "--threads", "4"]})
         self.assertNotIn('<code>--meta</code>', body)

@@ -108,14 +108,13 @@ def result_body(case, record, artifact, output, family=None):
     from .command_view import render_command
     slug = result_slug(record)
     family_link = f'<a href="../scenarios/{e(family.lower())}.html">{e(family)} results</a> · ' if family else ''
-    body = f'<nav class="result-breadcrumb" aria-label="Result navigation">{family_link}<a href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Input details</a></nav><h1>{e(LABELS[record["tool"]])}</h1><p class="result-subtitle">{e(case["title"])}</p><p>Exact endpoint: {badge(record["status"])}</p>'
+    body = f'<nav class="result-breadcrumb" aria-label="Result navigation">{family_link}<a href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Input details</a></nav><h1>{e(LABELS[record["tool"]])}</h1><p class="result-subtitle">{e(case["title"])}</p>'
     body += outcome_section(record)
-    links = [("#command-used", "Command used"), ("#contigs", "Output contigs"), ("#assembly-graph", "Assembly graph")]
+    links = [("#run-details", "Run details"), ("#contigs", "Output contigs"), ("#assembly-graph", "Assembly graph")]
     if (record.get("report_evidence") or {}).get("dotplot", {}).get("status") == "available":
         links.append(("#saved-alignment-plot", "Alignment dot plot"))
     links.append(("#assessment-audit", "Assessment details"))
     body += '<nav class="result-jumps" aria-label="Result evidence">' + ' · '.join(f'<a href="{href}">{label}</a>' for href, label in links) + '</nav>'
-    body += render_command(record, case)
     if record.get("tolerant_assessment"):
         from .noisy_report import tolerant_badge
         body += f'<p>Separate tolerant endpoint: {tolerant_badge(record)}. Exact and tolerant outcomes retain their own definitions.</p>'
@@ -126,7 +125,7 @@ def result_body(case, record, artifact, output, family=None):
             facts.append((label, record[key]))
     if record.get("elapsed_seconds") is not None:
         facts.append(("Elapsed", f'{record["elapsed_seconds"]:.1f} seconds'))
-    body += '<details class="result-metadata"><summary>Run details and provenance</summary><dl class="result-facts">' + ''.join(f'<dt>{e(key)}</dt><dd>{e(value)}</dd>' for key, value in facts) + '</dl></details>'
+    body += '<details class="result-metadata" id="run-details"><summary>Run details, command and provenance</summary>' + render_command(record, case, collapsed=False) + '<h3>Run details and provenance</h3><dl class="result-facts">' + ''.join(f'<dt>{e(key)}</dt><dd>{e(value)}</dd>' for key, value in facts) + '</dl></details>'
     if family == "S6" or record.get("tolerant_assessment"):
         from .noisy_report import tolerant_details
         body += '<h2>Tolerant recovery measurements</h2>' + tolerant_details(record)

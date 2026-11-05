@@ -118,7 +118,7 @@ class PresentationTests(unittest.TestCase):
             self.assertIn("One exact dedicated plasmid", details)
             self.assertNotIn("Suspected explanation", overview)
             self.assertIn("Suspected explanation", details)
-            self.assertIn('data-benchmark-status="fail"', details)
+            self.assertIn('data-exact-status="fail"', details)
             saved = load(output / "data" / (case["id"] + "-flye.json"))
             self.assertEqual(saved["status"], "fail")
             self.assertEqual(saved["explanation"]["confidence"], "suspected")

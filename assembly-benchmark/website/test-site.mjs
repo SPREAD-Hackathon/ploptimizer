@@ -85,13 +85,22 @@ async function checkOverview(prefix) {
   for (const family of overview.families) {
     for (const tool of (displayedFamilies.includes(family) ? family.tools : [])) {
       const cell = cells[index++];
-      for (const key of ['pass', 'fail', 'denominator']) assert.ok(cell[0].includes(`data-${key}="${tool[key]}"`), `${prefix}/${family.id}/${tool.id}: ${key}`);
-      if (tool.errors) assert.ok(compact(cell[0]).includes(`${tool.errors} errors`));
-      if (tool.unscored) assert.ok(compact(cell[0]).includes(`${tool.unscored} unscored`));
-      assert.equal(cell[1].split(/\s+/).includes('neutral'), tool.denominator === 0, 'All-unscored cells must be neutral');
-      if (tool.denominator > 0) {
-        const heat = Math.min(4, Math.floor(tool.pass / tool.denominator * 5));
-        assert.ok(cell[1].split(/\s+/).includes(`heat-${heat}`), 'Heat bin must use the assessed pass fraction');
+      const repeat = tool.repeatability;
+      const numerator = repeat ? repeat.identical : tool.pass;
+      const denominator = repeat ? repeat.identical + repeat.different : tool.denominator;
+      const fields = repeat ? {identical: repeat.identical, different: repeat.different, denominator} : {pass: tool.pass, fail: tool.fail, denominator};
+      for (const [key, value] of Object.entries(fields)) assert.ok(cell[0].includes(`data-${key}="${value}"`), `${prefix}/${family.id}/${tool.id}: ${key}`);
+      if (repeat) {
+        assert.ok(cell[0].includes(`${repeat.identical} identical · ${repeat.different} different`));
+        if (repeat.not_assessed) assert.ok(compact(cell[0]).includes(`${repeat.not_assessed} not assessed`));
+      } else {
+        if (tool.errors) assert.ok(compact(cell[0]).includes(`${tool.errors} errors`));
+        if (tool.unscored) assert.ok(compact(cell[0]).includes(`${tool.unscored} unscored`));
+      }
+      assert.equal(cell[1].split(/\s+/).includes('neutral'), denominator === 0, 'Unassessed cells must be neutral');
+      if (denominator > 0) {
+        const heat = Math.min(4, Math.floor(numerator / denominator * 5));
+        assert.ok(cell[1].split(/\s+/).includes(`heat-${heat}`), 'Heat bin must use its assessed endpoint');
       }
     }
     const route = prefix + '/' + family.href;

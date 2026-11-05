@@ -345,3 +345,22 @@ matching-evidence expansion were checked.
 
 Production: `dpl_4mzUBjWMXMxSXFMiwwUCLSvWhdTq`. The live SE11 inventory and its
 JSON, standalone report and shared styles matched the reviewed build.
+
+## S3 repeatability and result-page simplification (5 November)
+
+S3 overview cells now count identical/different/not-assessed repeat groups using
+saved normalised-sequence comparisons, rather than reference-recovery scores.
+Within-setting and across-thread comparisons are separate, with mode labels;
+reference recovery remains available under its own disclosure. Original exact
+scores and source fields are unchanged for all 284 historical/current views.
+
+`config/determinism-modes.json` adds the requested default/explicit-deterministic
+matrix at one/four threads, with five repeats per setting (120 tasks). Only direct
+Flye configurations receive the verified `--deterministic` flag. No new jobs were
+submitted: published S3 evidence still covers default mode only. See
+[S3_REPEATABILITY.md](S3_REPEATABILITY.md) for definitions and capability sources.
+
+Result pages now show a single outcome headline, without the duplicate exact
+status badge. Command, flag descriptions and run provenance share one collapsed
+section. Reporting verification: 301 Python tests ran with 11 optional-dependency
+skips and no failures; HTTP checks passed for 376 routes and 284 result views.

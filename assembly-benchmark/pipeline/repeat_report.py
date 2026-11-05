@@ -14,7 +14,7 @@ from .determinism import assembly_tasks, collect_summary
 from .report import LABELS, badge, batch_progress, e, execution_evidence, explained_records, finding_panel, interpretation_guide, page, run_summary, write_history, write_release_overview
 
 
-METRICS = (("byte", "File bytes"), ("normalised_sequence", "Normalised sequences"), ("biological", "Biological outcomes"))
+METRICS = (("byte", "File bytes"), ("normalised_sequence", "Normalised sequences"), ("biological", "Reference-recovery outcomes"))
 
 
 def comparison(value):
@@ -32,11 +32,11 @@ def summary_table(groups, cases, across=False, prefix="scenarios/"):
     for group in groups:
         case_id = group["scenario_id"]
         threads = ', '.join(map(str, group["threads"])) if across else str(group["threads"])
-        body += f'<tr><th scope="row"><a href="{prefix}{e(case_id)}.html#{e(group["tool"])}">{e(titles[case_id])}</a></th><td>{e(LABELS[group["tool"]])}</td><td>{threads}</td>'
+        body += f'<tr><th scope="row"><a href="{prefix}{e(case_id)}.html#{e(group["tool"])}">{e(titles[case_id])}</a></th><td>{e(LABELS[group["tool"]])}<small>{e(group.get("mode", "default").title())} mode</small></td><td>{threads}</td>'
         if not across:
             body += f'<td>{group["scored_runs"]} / {group["expected_runs"]}</td>'
         body += f'<td>{comparison(group.get("inputs_identical"))}</td>'
-        body += ''.join(f'<td>{comparison(group.get(key + "_identical"))}</td>' for key, _ in METRICS) + '</tr>'
+        body += ''.join(f'<td>{comparison(group.get(key + "_identical") if group.get("complete") is True and group.get("inputs_identical") is True else None)}</td>' for key, _ in METRICS) + '</tr>'
     return body + '</tbody></table></div>'
 
 
@@ -44,12 +44,14 @@ def unrun_summary(config, cases):
     """A plan preview has no evidence of repeatability or sequence correctness."""
     tasks = assembly_tasks(config, cases)
     executions = [{**task, "scenario_id": task["scenario"], "status": "not_run"} for task in tasks]
-    within = [{"scenario_id": case["id"], "tool": tool, "threads": threads,
+    keys = sorted({(t["scenario"], t["tool"], t.get("mode", "default"), t["threads"]) for t in tasks})
+    within = [{"scenario_id": case, "tool": tool, "mode": mode, "threads": threads,
                "expected_runs": config["determinism"]["repeats"], "scored_runs": 0,
                "complete": False, "inputs_identical": None}
-              for case in cases for tool in config["tools"] for threads in config["determinism"]["threads"]]
-    across = [{"scenario_id": case["id"], "tool": tool, "threads": config["determinism"]["threads"],
-               "complete": False, "inputs_identical": None} for case in cases for tool in config["tools"]]
+              for case, tool, mode, threads in keys]
+    across = [{"scenario_id": case, "tool": tool, "mode": mode, "threads": config["determinism"]["threads"],
+               "complete": False, "inputs_identical": None}
+              for case, tool, mode in sorted({key[:3] for key in keys})]
     return {"category": "S3", "expected_runs": len(executions), "executions": executions,
             "within_thread": within, "across_threads": across, "status_counts": {"not_run": len(executions)},
             "limitations": "Observed repeatability on one frozen read set is not a guarantee of determinism."}
@@ -102,12 +104,12 @@ def build_repeat(config, batch=None, output=None, document=None, include_history
     document = enrich_graph_artifacts(document, batch)
     results = document["results"]
     save(output / "data/results.json", document)
-    fields = ("scenario_id", "tool", "threads", "repeat", "run_id", "status", "reads_sha256", "truth_sha256",
+    fields = ("scenario_id", "tool", "mode", "threads", "repeat", "run_id", "status", "reads_sha256", "truth_sha256",
               "assembly_sha256", "normalised_assembly_sha256", "biological_sha256", "elapsed_seconds", "peak_memory_kb")
     with (output / "data/results.tsv").open("w", newline="") as stream:
         writer = csv.writer(stream, delimiter="\t")
         writer.writerow(fields)
-        writer.writerows([[row.get(field) for field in fields] for row in results])
+        writer.writerows([[(row.get(field, "default") if field == "mode" else row.get(field)) for field in fields] for row in results])
     write_result_pages(document, output, batch)
     scored = sum(row["status"] in ("pass", "fail") for row in results)
     counts = collections.Counter(row["status"] for row in results)
@@ -156,8 +158,8 @@ def repeat_scenario(case, document, output):
         body += '</tbody></table></div>'
     else:
         body += '<p>No frozen input has been collected yet. No repeatability conclusion is available.</p>'
-    body += '<details><summary>Repeatability summary for this input</summary>'
+    body += '<h2>Repeatability for this input</h2>'
     body += summary_table([row for row in summary["within_thread"] if row["scenario_id"] == case["id"]], [case], prefix="")
     body += summary_table([row for row in summary["across_threads"] if row["scenario_id"] == case["id"]], [case], across=True, prefix="")
-    body += '</details><h2>Recorded runs</h2>' + run_summary(rows, case, output=output)
+    body += '<details><summary>Reference recovery for individual runs</summary><h2>Recorded runs</h2>' + run_summary(rows, case, output=output) + '</details>'
     return body + '<p><a href="../methods.html">Methods and normalisation limits</a></p>'

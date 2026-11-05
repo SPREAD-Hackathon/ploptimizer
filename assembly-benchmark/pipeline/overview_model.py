@@ -7,7 +7,7 @@ from .identities import result_href
 FAMILIES = {
     "S1": ("Error-free recovery", "Baseline recovery with error-free simulated reads."),
     "S2": ("Relative plasmid coverage", "Recovery across plasmid-to-chromosome coverage ratios."),
-    "S3": ("Repeated runs", "Recovery on repeated frozen inputs and different thread settings; repeatability is assessed separately."),
+    "S3": ("Repeated runs", "Agreement between repeated executions on the same frozen input, grouped by mode and thread setting."),
     "S4": ("Small plasmids and read length", "Small-plasmid recovery across read-length targets."),
     "S6": ("Simulated read errors", "Matched controls and simulated error profiles."),
 }
@@ -31,6 +31,41 @@ def _counts(rows):
     counts["denominator"] = counts["pass"] + counts["fail"]
     counts["pass_fraction"] = counts["pass"] / counts["denominator"] if counts["denominator"] else None
     return counts
+
+
+
+def _repeatability_counts(groups):
+    counts = {"identical": 0, "different": 0, "not_assessed": 0, "total": len(groups)}
+    for group in groups:
+        value = group.get("normalised_sequence_identical")
+        assessed = group.get("complete") is True and group.get("inputs_identical") is True
+        key = "identical" if assessed and value is True else "different" if assessed and value is False else "not_assessed"
+        counts[key] += 1
+    return counts
+
+
+def _repeatability_groups(document, cases):
+    """Use saved comparisons only; never infer repeatability from exact scores."""
+    summary = document.get("determinism", {})
+    within = summary.get("within_thread", [])
+    across = summary.get("across_threads", [])
+    if not within:
+        # Missing summary still exposes expected execution groups as unassessed.
+        keys = {(r["scenario_id"], r["tool"], r.get("mode", "default"), r.get("threads"))
+                for r in document["results"]}
+        within = [{"scenario_id": c, "tool": t, "mode": m, "threads": n}
+                  for c, t, m, n in sorted(keys, key=str)]
+    result = []
+    for kind, groups in (("within_thread", within), ("across_threads", across)):
+        for group in groups:
+            case = cases.get(group["scenario_id"])
+            if case is None:
+                raise ValueError("Repeatability comparison references an unknown scenario")
+            result.append({**copy.deepcopy(group), "comparison": kind, "batch": document["batch"],
+                           "mode": group.get("mode", "default"), "title": case.get("title", case["id"]),
+                           "organism": case.get("organism", "Not recorded"),
+                           "assembly_accession": case.get("assembly_accession")})
+    return result
 
 
 def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=None):
@@ -59,12 +94,14 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
         if batch in by_batch:
             raise ValueError("Duplicate batch report; refusing to pool duplicate results")
         by_batch[batch] = document
-    rows, seen = [], set()
+    rows, seen, repeatability = [], set(), []
     for batch in selected:
         document = by_batch.get(batch)
         if document is None:
             continue
         cases = {case["id"]: case for case in document["scenarios"]}
+        if document.get("config", {}).get("determinism"):
+            repeatability.extend(_repeatability_groups(document, cases))
         for record in document["results"]:
             case = cases.get(record["scenario_id"])
             if case is None:
@@ -93,6 +130,17 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
                               "genomes": [{"organism": organism, "assembly_accession": accession or None,
                                            "tools": [{"id": tool, "label": TOOLS[tool], **_counts([r for r in selected_rows if r["organism"] == organism and (r["assembly_accession"] or "") == accession and r["tool"] == tool])} for tool in tools]} for organism, accession in genomes],
                               "records": selected_rows})
+        if family == "S3":
+            item = family_models[-1]
+            item["repeatability_groups"] = repeatability
+            within = [g for g in repeatability if g["comparison"] == "within_thread"]
+            item["repeatability"] = _repeatability_counts(within)
+            for tool in item["tools"]:
+                tool["repeatability"] = _repeatability_counts([g for g in within if g["tool"] == tool["id"]])
+            for genome in item["genomes"]:
+                for tool in genome["tools"]:
+                    tool["repeatability"] = _repeatability_counts([g for g in within if g["tool"] == tool["id"]
+                        and g["organism"] == genome["organism"] and g["assembly_accession"] == genome["assembly_accession"]])
     return {"schema_version": 1, "scope": "archived_batch" if archived_batch is not None else "primary_cohort",
             "selected_batches": selected, "included_batches": [b for b in selected if b in by_batch],
             "missing_batches": [b for b in selected if b not in by_batch], "excluded_batches": sorted(set(by_batch) - set(selected)),

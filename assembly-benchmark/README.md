@@ -32,7 +32,7 @@ Use error-free simulated long reads from curated complete references. Test four 
 
 1. **Plasmid count (S1):** chromosome alone, chromosome plus one native plasmid, and chromosome plus multiple native plasmids.
 2. **Relative coverage (S2):** plasmid depth at 0.8×, 1×, 1.2×, 3× and 5× chromosome depth. Fix chromosome depth; these ratios describe read coverage, not measured biological copy number.
-3. **Reproducibility (S3):** repeat the same input/configuration at one thread and selected multi-thread settings. Compare file identity, normalised sequences and biological outcomes separately.
+3. **Reproducibility (S3):** repeat frozen inputs five times at one and four threads, with default and supported deterministic modes. Headline output agreement and show recovery separately. See [S3 repeatability](S3_REPEATABILITY.md).
 4. **Small plasmids (S4):** test small plasmids with their chromosome and within their native complement. Check that reads were present before calling an assembly failure.
 
 Use the same frozen reads for all tools. Keep simulation replicates separate from repeated executions on identical reads. Label computational subsets as derived cases rather than natural plasmid complements.

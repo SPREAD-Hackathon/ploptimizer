@@ -17,10 +17,12 @@ from .scoring import evaluate
 ENVIRONMENTS = {"flye": "flye", "flye-meta": "flye", "raven": "raven", "plassembler": "plassembler"}
 
 
-def command(tool, reads, output, config):
+def command(tool, reads, output, config, mode="default"):
+    if mode not in ("default", "deterministic") or mode == "deterministic" and tool not in ("flye", "flye-meta"):
+        raise ValueError("This tool has no supported deterministic mode")
     threads = str(config["threads"])
     if tool in ("flye", "flye-meta"):
-        return ["flye", "--nano-hq", str(reads), "--out-dir", str(output), "--threads", threads] + (["--meta"] if tool == "flye-meta" else [])
+        return ["flye", "--nano-hq", str(reads), "--out-dir", str(output), "--threads", threads] + (["--meta"] if tool == "flye-meta" else []) + (["--deterministic"] if mode == "deterministic" else [])
     if tool == "raven":
         return ["raven", "-t", threads, str(reads)]
     if tool == "plassembler":
@@ -30,11 +32,15 @@ def command(tool, reads, output, config):
     raise ValueError(f"Unknown assembler: {tool}")
 
 
-def run(case, tool, batch, config, threads=None, repeat=None):
+def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
     from .determinism import biological_signature, execution_id, repeat_settings, sequence_signature
     settings = dict(config)
     settings["threads"] = config["threads"] if threads is None else threads
     panel = repeat_settings(config)
+    if mode is not None and (not panel or mode not in panel.get("modes", {}).get(tool, [])):
+        raise ValueError("Execution mode does not belong to the frozen determinism panel")
+    if panel and panel.get("modes") and mode is None:
+        raise ValueError("This determinism panel requires an explicit execution mode")
     if repeat is not None:
         if not panel or settings["threads"] not in panel["threads"] or not 1 <= repeat <= panel["repeats"] or case["id"] not in panel["scenarios"]:
             raise ValueError("Execution does not belong to the frozen determinism panel")
@@ -42,7 +48,7 @@ def run(case, tool, batch, config, threads=None, repeat=None):
         raise ValueError("Determinism runs require an explicit repeat and configured threads")
     directory = batch / "results" / case["id"] / tool
     if repeat is not None:
-        directory = directory / "repeats" / execution_id(settings["threads"], repeat)
+        directory = directory / "repeats" / execution_id(settings["threads"], repeat, mode)
     directory.mkdir(parents=True, exist_ok=True)
     working_directory = directory if tool == "raven" else ROOT
     result_path = directory / "execution.json"
@@ -55,13 +61,15 @@ def run(case, tool, batch, config, threads=None, repeat=None):
               "slurm_array_task_id": os.environ.get("SLURM_ARRAY_TASK_ID"),
               "allocated_cpus": int(os.environ.get("SLURM_CPUS_PER_TASK", config["threads"])),
               "host": platform.node(), "status": "running"}
+    if mode is not None:
+        record["mode"] = mode
     if tool == "raven":
         record["working_directory"] = str(directory.relative_to(batch))
         record["working_directory_base"] = "batch"
     source_root = Path(__file__).resolve().parent
     record["runtime_source_sha256"] = {"pipeline/" + path.name: digest(path) for path in source_root.glob("*.py")}
     if repeat is not None:
-        record.update(repeat=repeat, run_id=execution_id(settings["threads"], repeat))
+        record.update(repeat=repeat, run_id=execution_id(settings["threads"], repeat, mode))
     save(result_path, record)
     start = time.monotonic()
     try:
@@ -87,7 +95,7 @@ def run(case, tool, batch, config, threads=None, repeat=None):
             raise ValueError("Input checksum mismatch")
         record["reads_sha256"] = manifest["reads_sha256"]
         record["truth_sha256"] = manifest["truth_sha256"]
-        argv = command(tool, reads, directory / "output", settings)
+        argv = command(tool, reads, directory / "output", settings, mode or "default")
         record["command"] = argv
         binary = "flye" if tool == "flye-meta" else tool
         version_cwd = {"cwd": working_directory} if tool == "raven" else {}

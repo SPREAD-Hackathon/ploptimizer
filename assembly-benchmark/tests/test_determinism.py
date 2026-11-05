@@ -29,6 +29,98 @@ class DeterminismTests(unittest.TestCase):
         self.assertEqual(len({(task['scenario'], task['tool'], task['run_id']) for task in tasks}), 80)
         self.assertEqual(len(assembly_tasks(load(ROOT / 'config/pilot.json'), cases)), 8)
 
+    def test_mode_panel_has_distinct_supported_execution_identities(self):
+        self.config = load(ROOT / 'config/determinism-modes.json')
+        cases = [case for case in plan(self.config) if case['id'] in self.config['determinism']['scenarios']]
+        tasks = assembly_tasks(self.config, cases)
+        self.assertEqual(len(tasks), 120)
+        self.assertEqual(len({(row['scenario'], row['tool'], row['run_id']) for row in tasks}), 120)
+        for tool in self.config['tools']:
+            selected = [row for row in tasks if row['tool'] == tool]
+            self.assertEqual({row['mode'] for row in selected},
+                             {'default', 'deterministic'} if tool in ('flye', 'flye-meta') else {'default'})
+        self.assertEqual(execution_id(1, 1), 'threads-1-repeat-1')
+        self.assertEqual(execution_id(1, 1, 'default'), 'mode-default-threads-1-repeat-1')
+        self.assertNotEqual(execution_id(1, 1, 'default'), execution_id(1, 1, 'deterministic'))
+
+    def test_mode_validation_rejects_unsupported_and_incomplete_capabilities(self):
+        base = load(ROOT / 'config/determinism-modes.json')
+        for tool, modes in [('raven', ['deterministic']), ('plassembler', ['deterministic']),
+                            ('flye', ['default', 'default']), ('flye', ['unknown'])]:
+            config = copy.deepcopy(base)
+            config['determinism']['modes'][tool] = modes
+            with self.assertRaises(ValueError):
+                repeat_settings(config)
+        del base['determinism']['modes']['raven']
+        with self.assertRaises(ValueError):
+            repeat_settings(base)
+        with self.assertRaises(ValueError):
+            execution_id(1, 1, 'unknown')
+
+    def test_deterministic_command_is_explicit_and_limited_to_direct_flye(self):
+        from pipeline.execution import command
+        for tool in ('flye', 'flye-meta'):
+            default = command(tool, 'reads', 'out', self.config)
+            deterministic = command(tool, 'reads', 'out', self.config, mode='deterministic')
+            self.assertNotIn('--deterministic', default)
+            self.assertEqual(deterministic, default + ['--deterministic'])
+            self.assertEqual(deterministic[deterministic.index('--threads') + 1], '4')
+        for tool in ('raven', 'plassembler'):
+            with self.assertRaises(ValueError):
+                command(tool, 'reads', 'out', self.config, mode='deterministic')
+
+    def test_mode_task_dispatch_preserves_mode_and_thread_request(self):
+        import benchmark
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        self.config = load(ROOT / 'config/determinism-modes.json')
+        save(self.path / 'config.json', self.config)
+        save(self.path / 'tasks.json', {'assemble': [{'scenario': 's1-w-prk2', 'tool': 'flye',
+             'threads': 4, 'repeat': 2, 'mode': 'deterministic',
+             'run_id': execution_id(4, 2, 'deterministic')}]})
+        with patch.object(benchmark, 'batch_path', return_value=self.path), \
+             patch.object(benchmark.subprocess, 'run', return_value=SimpleNamespace(returncode=0)) as invoked, \
+             patch.dict('os.environ', {'SLURM_CPUS_PER_TASK': '4'}):
+            self.assertEqual(benchmark.main(['task', '--batch', 'fixture', '--kind', 'assemble', '--index', '0']), 0)
+        argv = invoked.call_args.args[0]
+        self.assertEqual(argv[argv.index('--mode') + 1], 'deterministic')
+        self.assertEqual(argv[argv.index('--threads') + 1], '4')
+        self.assertEqual(argv[argv.index('--repeat') + 1], '2')
+
+    def test_mode_runs_require_explicit_supported_configuration_before_writing(self):
+        from pipeline.execution import run
+        self.config = load(ROOT / 'config/determinism-modes.json')
+        case = next(case for case in plan(self.config) if case['id'] == 's1-w-prk2')
+        for tool, mode in [('flye', None), ('raven', 'deterministic'), ('plassembler', 'deterministic')]:
+            with self.assertRaises(ValueError):
+                run(case, tool, self.path, self.config, threads=4, repeat=1, mode=mode)
+        self.assertFalse((self.path / 'results').exists())
+
+    def test_modes_are_compared_separately_and_wrong_mode_provenance_is_rejected(self):
+        self.config = load(ROOT / 'config/determinism-modes.json')
+        tasks = self.write_repeat_panel()
+        for task in tasks:
+            if task['mode'] == 'deterministic':
+                path = self.path / 'results' / task['scenario'] / task['tool'] / 'repeats' / task['run_id'] / 'execution.json'
+                record = load(path)
+                record['normalised_assembly_sha256'] = 'different-from-default-but-stable'
+                save(path, record)
+        summary = collect_summary(self.config, self.path)
+        self.assertEqual(len(summary['within_thread']), 24)
+        self.assertEqual(len(summary['across_threads']), 12)
+        self.assertTrue(all(row['normalised_sequence_identical'] for row in summary['within_thread']))
+        self.assertTrue(all(row['normalised_sequence_identical'] for row in summary['across_threads']))
+        task = next(row for row in tasks if row['mode'] == 'deterministic')
+        path = self.path / 'results' / task['scenario'] / task['tool'] / 'repeats' / task['run_id'] / 'execution.json'
+        record = load(path)
+        record['mode'] = 'default'
+        save(path, record)
+        summary = collect_summary(self.config, self.path)
+        affected = next(row for row in summary['within_thread'] if row['scenario_id'] == task['scenario'] and row['tool'] == task['tool'] and row['threads'] == task['threads'] and row['mode'] == 'deterministic')
+        self.assertFalse(affected['complete'])
+        self.assertIsNone(affected['normalised_sequence_identical'])
+        self.assertEqual(affected['status_counts']['error'], 1)
+
     def test_invalid_repeat_settings_are_rejected(self):
         for settings in ({'threads': [1, 1]}, {'threads': [0, 4]}, {'repeats': 1}, {'repeats': True}):
             config = copy.deepcopy(self.config)
@@ -81,7 +173,8 @@ class DeterminismTests(unittest.TestCase):
                       'threads': task['threads'], 'repeat': task['repeat'],
                       'reads_sha256': 'frozen-reads', 'truth_sha256': 'frozen-truth',
                       'assembly_sha256': 'same-bytes', 'normalised_assembly_sha256': 'same-sequence',
-                      'biological_sha256': 'same-outcome'}
+                      'biological_sha256': 'same-outcome',
+                      **({'mode': task['mode']} if 'mode' in task else {})}
             save(self.path / 'results' / task['scenario'] / task['tool'] / 'repeats' / task['run_id'] / 'execution.json', record)
         return tasks
 
