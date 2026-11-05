@@ -1,0 +1,41 @@
+{
+  "status": "ok",
+  "deployment": {
+    "id": "dpl_2wpnqUZHbQKVYmJ9aRhsTtb3PLsZ",
+    "url": "https://ploptimizer-assembly-benchmark-bfd2urvha-happykhans-projects.vercel.app",
+    "productionUrl": "https://ploptimizer-assembly-benchmark.vercel.app",
+    "inspectorUrl": "https://vercel.com/happykhans-projects/ploptimizer-assembly-benchmark/2wpnqUZHbQKVYmJ9aRhsTtb3PLsZ",
+    "readyState": "READY",
+    "target": "production",
+    "deploymentApiUrl": "https://api.vercel.com/v13/deployments/dpl_2wpnqUZHbQKVYmJ9aRhsTtb3PLsZ",
+    "buildMachine": {
+      "cores": 2,
+      "memory": 8192,
+      "machine": "basic",
+      "selectionType": "fixed",
+      "selectionSource": "plan-default"
+    },
+    "deploymentProtection": [
+      "vercel_authentication"
+    ]
+  },
+  "message": "Deployment ploptimizer-assembly-benchmark-bfd2urvha-happykhans-projects.vercel.app ready. Production URL: https://ploptimizer-assembly-benchmark.vercel.app",
+  "next": [
+    {
+      "command": "vercel git connect --cwd /Users/nfareed/Documents/ChatGPT/spread/ploptimizer/assembly-benchmark/dist",
+      "when": "Automatically deploy changes on every push"
+    },
+    {
+      "command": "vercel curl https://ploptimizer-assembly-benchmark.vercel.app",
+      "when": "Verify deployment, including when Deployment Protection is enabled"
+    },
+    {
+      "command": "vercel inspect ploptimizer-assembly-benchmark-bfd2urvha-happykhans-projects.vercel.app --cwd /Users/nfareed/Documents/ChatGPT/spread/ploptimizer/assembly-benchmark/dist",
+      "when": "Inspect deployment"
+    },
+    {
+      "command": "vercel deploy --prod --cwd /Users/nfareed/Documents/ChatGPT/spread/ploptimizer/assembly-benchmark/dist",
+      "when": "Promote to production"
+    }
+  ]
+}

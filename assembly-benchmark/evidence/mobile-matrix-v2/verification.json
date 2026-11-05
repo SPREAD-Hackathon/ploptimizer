@@ -10,7 +10,7 @@
   "preserved_source_records": 300,
   "public_files": 1092,
   "schema_version": 1,
-  "status": "local_verified_not_yet_deployed",
+  "status": "live_verified",
   "total_files": 1103,
   "website_bytes": 47280629,
   "bundle_tests_passed": 6,
@@ -38,5 +38,17 @@
   ],
   "reviewer_disposition": "SHIP, including <=900px breakpoint",
   "documentation": "DESIGN.md updated; source counts and links unchanged",
-  "screenshots": ".cache/mobile-matrix-review"
+  "screenshots": ".cache/mobile-matrix-review",
+  "live_browser": {
+    "width": 390,
+    "headers": [
+      "Scenario family",
+      "Raven"
+    ],
+    "first_result": "1 pass \u00b7 12 fail",
+    "scroller_content": 348,
+    "scroller_client": 348,
+    "visible_cells_each_row": 2,
+    "all_visible_cells_fit": true
+  }
 }

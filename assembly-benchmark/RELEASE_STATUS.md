@@ -3,12 +3,17 @@
 ## Current production — live and verified
 
 The compact build is now live at https://ploptimizer-assembly-benchmark.vercel.app
-from source `14db8ea`, deployment `dpl_Am3MNaXNNdDMhRCaN839Bbgh9ez3`.
+from source `e56654d`, deployment `dpl_2wpnqUZHbQKVYmJ9aRhsTtb3PLsZ`.
 The guarded archive deployment succeeded. All 1,086 published pages/assets/downloads
 passed byte-for-byte verification with zero failures. Browser checks confirmed
 recorded-difference facts and functioning scenario search/status filters. The
 47.3 MB local build replaces the earlier bulky production output. Live plus two
 previous READY versions are retained; exact team-billed storage is not claimed.
+
+Phone/tablet matrices now show Scenario family plus one complete selected
+assembler column, with a native selector at widths up to 900 px. Desktop retains
+the full comparison. The live390px Raven view has two complete cells per row and
+zero horizontal overflow.
 
 Earlier quota-blocked notes below are historical and have been superseded by this
 successful deployment. See `CURRENT_RELEASE.json` and `evidence/compact-live-v1/`.
@@ -626,3 +631,16 @@ checked 8,005 links/anchors, preserved all 300 source records, and passed at
 47,278,887 bytes against a 64 MiB budget. Negative tests cover broken links, large
 files, changed scores, stale evidence, changed HTML/ignore rules and blocked
 deployment. Evidence: `evidence/failure-release-v2/`.
+
+## Phone matrix replacement — published and verified
+
+The earlier sticky-corner fix did not solve partial-column clipping. It has been
+replaced on narrow screens with an assembler selector and two fitting columns.
+All original assembler cells, values and evidence links remain in the source;
+desktop keeps the full matrix. The caption and long repeatability counts wrap
+without being chopped. Source data and scores are unchanged.
+
+Reviewed at 320/390 px in dark/light themes, 800 px and1440 px; all four choices
+were exercised at390 px. Production verification passed all1086 published files,
+and browser checks confirmed the new selector and no clipped cells. Current plus
+two previous READY deployments remain. Evidence: `evidence/mobile-matrix-v2/`.

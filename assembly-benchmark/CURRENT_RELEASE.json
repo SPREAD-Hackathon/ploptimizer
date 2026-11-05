@@ -1,30 +1,34 @@
 {
   "schema_version": 1,
   "status": "live_verified",
-  "verified_at": "2026-11-05T19:39:42.372201+00:00",
+  "verified_at": "2026-11-05T19:55:01.650891+00:00",
   "url": "https://ploptimizer-assembly-benchmark.vercel.app",
-  "deployment_id": "dpl_Am3MNaXNNdDMhRCaN839Bbgh9ez3",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-6mteyhyxk-happykhans-projects.vercel.app",
-  "source_commit": "14db8ea",
+  "deployment_id": "dpl_2wpnqUZHbQKVYmJ9aRhsTtb3PLsZ",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-bfd2urvha-happykhans-projects.vercel.app",
+  "source_commit": "e56654d",
   "bundle": ".cache/bundles/failure-release-v2",
-  "build_bytes": 47278887,
+  "build_bytes": 47280629,
   "public_files_verified": 1086,
   "verification_failures": 0,
   "original_source_records_preserved": 300,
   "retained_ready_deployments": 3,
   "retained_deployments": [
+    "ploptimizer-assembly-benchmark-bfd2urvha-happykhans-projects.vercel.app",
     "ploptimizer-assembly-benchmark-6mteyhyxk-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-kxkinas84-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-bsn5sxpcy-happykhans-projects.vercel.app"
+    "ploptimizer-assembly-benchmark-kxkinas84-happykhans-projects.vercel.app"
   ],
   "browser_checks": [
-    "Live W recorded-difference facts render",
-    "Live scenario table SE11 + Fail gives 4 of 52 rows"
+    "Live390px scenario+Raven headers only",
+    "Six complete rows; no cell-content clipping",
+    "Matrix scrollWidth equals clientWidth348px",
+    "All4 assembler choices checked locally at390px",
+    "320px,800px and1440px layouts checked"
   ],
   "limitations": [
     "Real node-internal reference intervals remain unmeasured",
     "Many exact failures still lack reviewed mismatch locations",
     "Software-internal causes remain unresolved"
   ],
-  "cluster_jobs_submitted": 0
+  "cluster_jobs_submitted": 0,
+  "mobile_matrix": "Native assembler selector and two complete columns at <=900px; full comparison on desktop"
 }
