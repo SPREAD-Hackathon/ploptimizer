@@ -160,7 +160,7 @@ def main(argv=None):
         build(config, batch)
     elif args.action == "report":
         from pipeline.report import build
-        print(build(config, batch))
+        print(build(config, batch, include_history=config.get("report_scope") != "single_batch"))
     elif args.action in ("snapshot", "publish"):
         from pipeline.publication import publish
         publish(config, batch, deploy=args.action == "publish")

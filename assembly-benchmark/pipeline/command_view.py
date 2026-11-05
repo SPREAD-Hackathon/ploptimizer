@@ -24,6 +24,7 @@ FLAGS = {
         "--threads": "Number of threads requested.",
         "--skip_qc": "Skip the workflow’s read-QC filtering step.",
         "--skip_mash": "Skip the Mash comparison against PLSDB.",
+        "--no_chromosome": "Use the plasmid-only workflow without an input chromosome; this skips the initial Flye stage in Plassembler.",
         "--keep_chromosome": "Retain the chromosome assembly file during cleanup.",
         "--prefix": "Prefix for output filenames.",
         "--chromosome": "Lower-bound chromosome-length threshold, in base pairs.",

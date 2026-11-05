@@ -30,7 +30,7 @@ class OverviewCohortTests(unittest.TestCase):
         self.assertIn('20261104T183058', self.model['excluded_batches'])
         self.assertNotIn('20261104T183058', self.model['selected_batches'])
         expected = {'S1': (88, 45, 43, 0), 'S2': (40, 10, 30, 0), 'S3': (80, 20, 60, 0),
-                    'S4': (48, 6, 38, 4), 'S6': (12, 3, 9, 0)}
+                    'S4': (48, 6, 38, 4), 'S5': (0, 0, 0, 0), 'S6': (12, 3, 9, 0)}
         for family in self.model['families']:
             row = family['counts']
             self.assertEqual(tuple(row[key] for key in ('total', 'pass', 'fail', 'errors')), expected[family['id']])

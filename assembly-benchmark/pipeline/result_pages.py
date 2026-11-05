@@ -80,7 +80,7 @@ def contig_section(record, artifact):
                 cell+=''.join(f'<li>{e(item["reference_id"])} · {e(item["kind"].replace("_"," "))} · <code>{e(item["source"])}</code></li>' for item in origin["evidence"])
                 cell+='</ul></details>'
             if record.get('tool') == 'plassembler' and contig['id'] == 'chromosome' and info.get('source', {}).get('kind') == 'plassembler_summary':
-                cell = '<span class="contig-origin-name">Chromosome (tool label)</span><small>Separate output · outside plasmid score</small>'
+                cell = ('<span class="contig-origin-name">Artificial workflow placeholder</span><small>Plassembler no-chromosome mode; not an input molecule</small>' if record.get('workflow_mode') == 'plasmid_only_no_chromosome' else '<span class="contig-origin-name">Chromosome (tool label)</span><small>Separate output · outside plasmid score</small>')
             body += f'<tr><th scope="row">{e(contig["id"])}</th><td>{cell}</td><td>{e(length)}</td><td>{e(claim)}</td><td>{e(coverage)}</td></tr>'
         body += '</tbody></table></div>'
         if collapsed:

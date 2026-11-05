@@ -9,6 +9,7 @@ FAMILIES = {
     "S2": ("Relative plasmid coverage", "Recovery across plasmid-to-chromosome coverage ratios."),
     "S3": ("Repeated runs", "Agreement between repeated executions on the same frozen input, grouped by mode and thread setting."),
     "S4": ("Small plasmids and read length", "Small-plasmid recovery across read-length targets."),
+    "S5": ("Linear plasmids and terminal repeats", "Isolated linear-reference controls with explicit terminal reads; chromosome context is not included."),
     "S6": ("Simulated read errors", "Matched controls and simulated error profiles."),
 }
 TOOLS = {"flye": "Flye (default)", "flye-meta": "Flye (--meta)", "raven": "Raven", "plassembler": "Plassembler long"}
@@ -116,7 +117,7 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
             link = result_href(record, "" if archived_batch is not None or batch == root_batch else f"batches/{batch}/")
             rows.append({"batch": batch, "family": family, "scenario_id": record["scenario_id"],
                          "title": case.get("title", case["id"]), "organism": case.get("organism", "Not recorded"),
-                         "assembly_accession": case.get("assembly_accession"), "tool": record["tool"],
+                         "assembly_accession": case.get("assembly_accession") or case.get("reference_accession"), "tool": record["tool"],
                          "version": record.get("version") or "Version not recorded", "threads": record.get("threads"),
                          "run_id": record.get("run_id"), "status": record.get("status", "not_run"), "href": link})
     rows.sort(key=lambda r: (families.index(r["family"]), r["organism"], r["assembly_accession"] or "", r["scenario_id"], tools.index(r["tool"]), r["batch"], r["run_id"] or ""))

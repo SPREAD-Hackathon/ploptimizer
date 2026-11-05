@@ -110,3 +110,7 @@ and six fails. These endpoints are reported separately. See [NOISY_ADAPTER.md](N
 
 [Existing-run integrity audit and missing Raven graphs](INTEGRITY_AUDIT.md): all
 audited source checksums matched; historic Raven runs did not request GFA output.
+
+The first runnable S5 profile is `config/linear-plasmids.json`: four isolated
+linear-plasmid controls, 16 assembly tasks, with explicit terminal anchors and
+standard/spanning read profiles. See [the S5 execution details](LINEAR_TERMINAL_REPEATS.md#first-executable-backend-profile).

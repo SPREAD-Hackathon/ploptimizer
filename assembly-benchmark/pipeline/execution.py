@@ -27,7 +27,7 @@ def command(tool, reads, output, config, mode="default"):
         return ["raven", "-t", threads, "-F", str(output.parent / "assembly_graph.gfa"), str(reads)]
     if tool == "plassembler":
         return ["plassembler", "long", "--longreads", str(reads), "--outdir", str(output),
-                "--threads", threads, "--skip_qc", "--skip_mash", "--keep_chromosome",
+                "--threads", threads, "--skip_qc", "--skip_mash", *( ["--no_chromosome"] if config.get("plassembler_no_chromosome") else ["--keep_chromosome"] ),
                 "--prefix", "benchmark", "--chromosome", str(config["plassembler_chromosome_threshold"])]
     raise ValueError(f"Unknown assembler: {tool}")
 
@@ -35,6 +35,8 @@ def command(tool, reads, output, config, mode="default"):
 def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
     from .determinism import biological_signature, execution_id, repeat_settings, sequence_signature
     settings = dict(config)
+    if config.get("plassembler_no_chromosome") and any(r.get("molecule_type") == "chromosome" for r in case["replicons"]):
+        raise ValueError("No-chromosome mode requires an input without a chromosome")
     settings["threads"] = config["threads"] if threads is None else threads
     panel = repeat_settings(config)
     if mode is not None and (not panel or mode not in panel.get("modes", {}).get(tool, [])):
@@ -61,6 +63,8 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
               "slurm_array_task_id": os.environ.get("SLURM_ARRAY_TASK_ID"),
               "allocated_cpus": int(os.environ.get("SLURM_CPUS_PER_TASK", config["threads"])),
               "host": platform.node(), "status": "running"}
+    if tool == "plassembler" and config.get("plassembler_no_chromosome"):
+        record["workflow_mode"] = "plasmid_only_no_chromosome"
     if mode is not None:
         record["mode"] = mode
     if tool == "raven":
@@ -150,7 +154,7 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
             if initial.exists():
                 record["initial_flye_evaluation"] = evaluate(case, input_dir / "truth.fasta", initial)
             chromosome = directory / "output/chromosome.fasta"
-            if chromosome.exists():
+            if chromosome.exists() and not config.get("plassembler_no_chromosome"):
                 record["retained_chromosome_sha256"] = digest(chromosome)
     except Exception as error:
         record.update(status="error", error=f"{type(error).__name__}: {error}")

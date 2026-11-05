@@ -1,10 +1,29 @@
 {
   "schema_version": 1,
   "root_batch": "20261104T190455",
-  "primary_batches": ["20261104T190455", "20261104T193551", "20261104T193612", "20261104T210453"],
-  "excluded_historical_batches": ["20261104T183058"],
-  "families": ["S1", "S2", "S3", "S4", "S6"],
-  "tools": ["flye", "flye-meta", "raven", "plassembler"],
+  "primary_batches": [
+    "20261104T190455",
+    "20261104T193551",
+    "20261104T193612",
+    "20261104T210453"
+  ],
+  "excluded_historical_batches": [
+    "20261104T183058"
+  ],
+  "families": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5",
+    "S6"
+  ],
+  "tools": [
+    "flye",
+    "flye-meta",
+    "raven",
+    "plassembler"
+  ],
   "headline_endpoint": "recorded_exact_status",
   "denominator": "pass + fail",
   "notes": "Explicit first-release cohort. Historical pilot excluded. Archived overview includes only its batch. Repeatability and tolerant recovery are separate endpoints."

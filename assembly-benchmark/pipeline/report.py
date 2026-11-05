@@ -18,6 +18,7 @@ from .result_pages import enrich_graph_artifacts, result_href, write_result_page
 LABELS = {"flye": "Flye (default)", "flye-meta": "Flye (--meta)", "raven": "Raven", "plassembler": "Plassembler long"}
 STATUSES = {"pass": "Pass", "fail": "Fail", "not_run": "Not run", "pending": "Queued", "running": "Running", "error": "Job error", "timeout": "Timed out", "invalid_input": "Invalid input"}
 CATEGORIES = {
+    "S5": ("Linear plasmids and terminal repeats", "Isolated linear-plasmid reference controls with standard and repeat-spanning reads. Physical ends are retained; terminal anchors are a declared ideal-data control, not a library model."),
     "S1": ("Error-free recovery", "Chromosome-only controls, individual native plasmids and complete deposited complements. These cases establish the baseline for each reference."),
     "S4": ("Small plasmids and read length", "Compare short, baseline and long read-length targets for small plasmids individually and in their native complements. Achieved read lengths are capped to one molecule circumference; targets describe simulation settings, not nanopore chemistry."),
     "S2": ("Relative plasmid coverage", "Hold chromosome depth and read properties fixed, and vary plasmid depth at 0.8×, 1×, 1.2×, 3× and 5× relative to it. These are coverage ratios, not measured biological copy numbers."),
@@ -210,13 +211,22 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
     body = f'<a class="back" href="{case["category"].lower()}.html">{case["category"]} family results</a><h1>{e(case["title"])}</h1><p class="intro">{case["category"]} · {e(category_name)} · {e(case["organism"])}</p><p>{e(category_description)}</p>'
     if batch_id:
         body += f'<p class="muted">Batch <code>{e(batch_id)}</code></p>'
-    body += '<h2>What this case tests</h2><p>Can each expected plasmid be recovered once as an exact, dedicated molecule alongside the chromosome? For the chromosome-only control, the endpoint checks the expected chromosome/no-plasmid output instead.</p>'
-    body += f'<p>Source: <a href="https://www.ncbi.nlm.nih.gov/datasets/genome/{case["assembly_accession"]}/">{case["assembly_accession"]}</a>. This case is a {e(case["truth_type"].replace("_", " "))}. The reference inventory is sequence-checked during preparation; independent biological validation remains a separate curation task.</p>'
+    if case['category'] == 'S5':
+        body += '<h2>What this case tests</h2><p>Can the isolated linear plasmid be recovered as one exact sequence with both physical ends intact? This input has no chromosome and does not represent a native host complement. Circular rotation is not accepted.</p>'
+    else:
+        body += '<h2>What this case tests</h2><p>Can each expected plasmid be recovered once as an exact, dedicated molecule alongside the chromosome? For the chromosome-only control, the endpoint checks the expected chromosome/no-plasmid output instead.</p>'
+    source_url = case.get('reference_url') or f'https://www.ncbi.nlm.nih.gov/datasets/genome/{case["assembly_accession"]}/'
+    source_label = case.get('reference_accession') or case['assembly_accession']
+    body += f'<p>Source: <a href="{e(source_url)}">{e(source_label)}</a>. This case is a {e(case["truth_type"].replace("_", " "))}. The reference inventory is sequence-checked during preparation; independent biological validation remains a separate curation task.</p>'
     input_path = batch / "cases" / case["id"] / "input.json" if batch else None
     if manifest is None:
         manifest = load(input_path) if input_path and input_path.exists() else None
     stats = {r["accession"]: r for r in manifest["replicons"]} if manifest else {}
-    body += f'<h2>Read generation</h2><p>Exact sequence sampling; lognormal length targets with mean {settings["length_mean"]:,} bp and SD {settings["length_sd"]:,} bp, clipped to {settings["length_min"]:,}–{settings["length_max"]:,} bp and one circumference. Random starts and both strands; no sequencing errors, adapters or chimeras. Q{settings["fastq_phred"]} is a synthetic FASTQ placeholder. Small molecules have a shorter achieved distribution.</p><p>Target chromosome depth {settings["chromosome_depth"]}×; plasmid relative depth {settings["plasmid_relative_depth"]}×. Seed {settings["seed"]}. Sampling stops after the target is reached, allowing up to one read of overshoot per molecule.</p>'
+    if case['category'] == 'S5':
+        anchor = min(case['replicons'][0]['length_bp'], settings['linear_terminal_read_length'])
+        body += f'<h2>Read generation</h2><p>Error-free linear sampling with lognormal length target {settings["length_mean"]:,} bp (SD {settings["length_sd"]:,} bp), clipped to {settings["length_min"]:,}–{settings["length_max"]:,} bp and molecule length. Two declared {anchor:,} bp reads anchor each physical end, one per orientation; remaining starts and strands are random. Reads never wrap across ends. Target depth is {settings["chromosome_depth"] * settings["plasmid_relative_depth"]}×; complete input breadth and both terminal anchors are required. Seed {settings["seed"]}. These terminal reads define an ideal-data control, not a library-preparation model.</p>'
+    else:
+        body += f'<h2>Read generation</h2><p>Exact sequence sampling; lognormal length targets with mean {settings["length_mean"]:,} bp and SD {settings["length_sd"]:,} bp, clipped to {settings["length_min"]:,}–{settings["length_max"]:,} bp and one circumference. Random starts and both strands; no sequencing errors, adapters or chimeras. Q{settings["fastq_phred"]} is a synthetic FASTQ placeholder. Small molecules have a shorter achieved distribution.</p><p>Target chromosome depth {settings["chromosome_depth"]}×; plasmid relative depth {settings["plasmid_relative_depth"]}×. Seed {settings["seed"]}. Sampling stops after the target is reached, allowing up to one read of overshoot per molecule.</p>'
     body += '<div class="table-scroll" tabindex="0" role="region" aria-label="Reference molecules"><table><thead><tr><th scope="col">Molecule</th><th scope="col">Accession</th><th scope="col">Size</th><th scope="col">Achieved depth</th><th scope="col">Breadth</th><th scope="col">Read count</th><th scope="col">Read length mean / range</th></tr></thead><tbody>'
     for r in case["replicons"]:
         observed = stats.get(r["refseq_accession"])

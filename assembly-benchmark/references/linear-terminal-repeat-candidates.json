@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "checked_on": "2026-11-05",
-  "admission_status": "candidate_not_admitted",
+  "admission_status": "admitted_for_isolated_reference_controls_only",
   "scenario_family": "S5",
   "repeat_type": "terminal_inverted_repeat",
   "not_tandem_repeat": true,
@@ -13,8 +13,9 @@
       "length_bp": 356023,
       "topology": "linear",
       "literature_repeat_length_bp_approx": 81000,
-      "repeat_coordinates_status": "not_verified_for_this_version",
-      "literature_source": "https://doi.org/10.1016/0147-619X(91)90052-X"
+      "repeat_coordinates_status": "literal_terminal_windows_reviewed_see_linear_panel",
+      "literature_source": "https://doi.org/10.1016/0147-619X(91)90052-X",
+      "native_context_admission": "pending"
     },
     {
       "accession": "NC_004933.1",
@@ -23,9 +24,11 @@
       "length_bp": 50410,
       "topology": "linear",
       "literature_repeat_length_bp_approx": 44,
-      "repeat_coordinates_status": "not_verified_for_this_version",
-      "literature_source": "https://pubmed.ncbi.nlm.nih.gov/12622812/"
+      "repeat_coordinates_status": "literal_terminal_windows_reviewed_see_linear_panel",
+      "literature_source": "https://pubmed.ncbi.nlm.nih.gov/12622812/",
+      "native_context_admission": "pending"
     }
   ],
-  "metadata_source": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=nuccore&id=NC_003903.1,NC_004933.1&retmode=json"
+  "metadata_source": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=nuccore&id=NC_003903.1,NC_004933.1&retmode=json",
+  "curated_panel": "linear-panel.json"
 }

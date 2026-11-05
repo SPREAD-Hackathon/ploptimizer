@@ -16,6 +16,9 @@ LABELS = {
 
 
 def plan(config):
+    if config.get("linear_panel"):
+        from .linear_cases import plan_linear
+        return plan_linear(config)
     inventory = load(ROOT / "references/panel.json")["assemblies"]
     selected = config["references"]
     known = {entry["assembly"]["assembly_accession"] for entry in inventory}

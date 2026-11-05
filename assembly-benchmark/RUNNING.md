@@ -265,3 +265,12 @@ JSON, versions, commands, hashes, checkpoints and stage FASTA/GFA. They do not
 replace historical benchmark executions. The source-linked conclusions and limits
 are in `FLYE_HYPOTHESES.md` and `RAVEN_CAUSE_REVIEW.md`; compact reproducibility
 records are versioned under `reviews/evidence/`.
+
+## Linear plasmid controls (S5)
+
+`python benchmark.py --config config/linear-plasmids.json submit` uses the existing
+Pixi/Slurm backend for four isolated reference controls (16 assembly tasks).
+The linear-only model requires full breadth and explicit terminal read support;
+Plassembler uses declared no-chromosome mode. Reports stay batch-scoped.
+See [LINEAR_TERMINAL_REPEATS.md](LINEAR_TERMINAL_REPEATS.md) for sequence hashes,
+terminal-repeat curation, read models and interpretation limits.
