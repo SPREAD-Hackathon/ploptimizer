@@ -127,3 +127,6 @@ phone layout, a 2,102-segment stopped-run graph, and the collected-empty state.
 All original scientific status values were checked against the preceding
 version and remain unchanged. See [GRAPH_COLLECTION.md](GRAPH_COLLECTION.md)
 for collection/reproduction and bounds.
+
+The production build generated at `2026-11-05T07:43:04+00:00` was verified
+byte-for-byte across all 1,260 public files, with no mismatches.
