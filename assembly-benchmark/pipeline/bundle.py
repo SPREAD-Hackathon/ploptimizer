@@ -16,6 +16,9 @@ from .explanations import explain_result
 from .reference_origins import build_reference_origins
 from .result_model import assessed_molecules, verdict
 from .identities import result_slug as result_id
+from .recorded_coordinates import recorded_paf_plot
+from .recorded_sidecars import completed_sidecar_plot
+from .failure_details import detail_record, coverage_summary, markdown_detail_sections
 
 VERSION = 1
 IDENTIFIER = re.compile(r'[A-Za-z0-9][A-Za-z0-9_.-]*\Z')
@@ -96,7 +99,7 @@ def checked_facts(record):
     return [{'label':label,'value':copy.deepcopy(validation[key]),'source':'sequence_review.validation.'+key} for key,label in labels if key in validation]
 
 
-def prepare_document(source):
+def prepare_document(source, artifact_root=None, coordinate_roots=(), snapshot_hash=None):
     document = copy.deepcopy(checked_document(source))
     cases = {case['id']:case for case in document['scenarios']}
     for record in document['results']:
@@ -117,9 +120,18 @@ def prepare_document(source):
                               'mapping_description':molecule_explanation(mapping,policy,score) if mapping else 'Mapping not collected.',
                               'mapping_kind':alignment_classification(mapping,policy)[0] if mapping else None,
                               'candidate_labels':candidate_labels(mapping) if mapping else []})
+        reviewed_plot=saved_plot(record)
+        coordinate_plot=recorded_paf_plot(case,record,document['batch'],artifact_root) if artifact_root is not None else None
+        plot=reviewed_plot if reviewed_plot['status']=='available' or coordinate_plot is None else coordinate_plot
+        sidecar_plot=None
+        if plot['status']!='available' and coordinate_roots:
+            sidecar_plot=completed_sidecar_plot(case,record,document['batch'],coordinate_roots,artifact_root,snapshot_hash)
+            if sidecar_plot['status']!='not_applicable':
+                plot=sidecar_plot
         record['report_evidence'] = {'schema_version':VERSION, 'heading':heading, 'description':description,
             'summary':diagnostic_summary(record,case), 'required_accessions':relevant, 'molecules':molecules,
-            'reference_origins':build_reference_origins(case,record,graph), 'dotplot':saved_plot(record), 'checked_facts':checked_facts(record)}
+            'reference_origins':build_reference_origins(case,record,graph), 'dotplot':plot, 'checked_facts':checked_facts(record),
+            'failure_details':detail_record(record,molecules,plot,coordinate_plot,sidecar_plot)}
     if document.get('determinism'):
         document['determinism']['executions'] = document['results']
     document['report_bundle_version'] = VERSION
@@ -149,20 +161,20 @@ def markdown_report(case, record, batch):
         for fact in evidence['checked_facts']:
             lines.append(f'- {fact["label"]}: `{fact["value"]}`')
         lines.append('')
-    finding = record.get('explanation') or {}
-    lines += ['## Findings and limits', '', f'- Observation confidence: {finding.get("confidence", "unresolved")}',
-              f'- Recorded observation: {finding.get("symptom", "Not recorded")}',
-              f'- Interpretation: {finding.get("interpretation", "Unresolved")}',
-              '- Software-internal cause: unresolved unless separately evidenced; a checked sequence observation does not establish the cause.', '']
+    lines += markdown_detail_sections(evidence['failure_details'])
     plot=evidence['dotplot']
     lines += ['## Alignment dot plot', '']
     if plot['status']=='available':
-        lines += ['![Saved reviewed alignment coordinates](./'+result_id(record)+'-alignment.svg)', '',
+        lines += ['![Saved alignment coordinate spans](./'+result_id(record)+'-alignment.svg)', '',
                   f'Source: `{plot["source"]}`. {plot["method"]}. Coordinates: {plot["coordinate_system"]}.', '',
-                  'The full-scale plot cannot resolve a few bases. The separate interval panel shows only the terminal intervals already recorded in the review.', '']
+                  ('All saved mandatory PAF coordinate rows are displayed. The saved filtered measurements and exact score are separate; optional tags and individual changed bases are not shown.' if plot.get('source_kind')=='recorded_paf' else plot['display_scope'] if plot.get('source_kind')=='recorded_show_coords' else 'The full-scale plot cannot resolve a few bases. The separate interval panels show only terminal intervals already recorded in the review.'), '']
     else:
         lines += [plot['reason'], '']
-    lines += ['NUCmer coordinates and a general per-base difference-event table have not been collected.', '', '## Command', '', '```text',
+    if plot.get('nucmer_status')=='available':
+        lines += ['[Original NUCmer table: 1-based inclusive endpoints](./'+result_id(record)+'-original-show-coords.tsv)', '']
+    else:
+        lines += ['No NUCmer coordinate source is recorded for this result.', '']
+    lines += ['A general per-base difference-event table has not been collected.', '', '## Command', '', '```text',
               shlex.join(str(arg) for arg in record.get('command',[])) or 'Not recorded', '```', '', '## Source provenance', '',
               f'- Source result: `../../batches/{batch}.json`', f'- Record identity: `{result_id(record)}`']
     for key in ('assembly_sha256','truth_sha256','reads_sha256'):
@@ -178,7 +190,7 @@ def write_tsv(path, columns, rows):
         writer=csv.writer(stream,delimiter='\t');writer.writerow(columns);writer.writerows(rows)
 
 
-def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False):
+def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False, artifact_root=None, coordinate_roots=()):
     """Rebuild metadata products into a new directory; never overwrite arbitrary files."""
     from .bundle_plot import alignment_svg
     from .overview_model import build_overview
@@ -189,7 +201,7 @@ def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False):
         load_bundle(output)
         with tempfile.TemporaryDirectory(dir=output.parent, prefix='.bundle-staging-') as temporary:
             staging=Path(temporary)
-            replacement=export_bundle(snapshots,staging/'next',primary_batch=primary_batch,cohort=cohort)
+            replacement=export_bundle(snapshots,staging/'next',primary_batch=primary_batch,cohort=cohort,artifact_root=artifact_root,coordinate_roots=coordinate_roots)
             previous=staging/'previous';output.rename(previous)
             try:
                 replacement.rename(output)
@@ -201,7 +213,7 @@ def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False):
     for path in snapshots:
         path=Path(path);source=checked_document(load(path))
         sources.append({'filename':path.name,'sha256':digest(path),'batch':source['batch']})
-        documents.append(prepare_document(source))
+        documents.append(prepare_document(source,artifact_root=artifact_root,coordinate_roots=coordinate_roots,snapshot_hash=digest(path)))
     if len({d['batch'] for d in documents})!=len(documents) or primary_batch not in {d['batch'] for d in documents}:
         raise ValueError('Bundle needs unique batches and its declared primary batch')
     # Build before writing: invalid cohorts/duplicate identities leave no partial bundle.
@@ -212,7 +224,7 @@ def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False):
         local={'schema_version':1,'primary_batches':[document['batch']],'families':families,'tools':document['config']['tools']}
         models[document['batch']]=build_overview([document],cohort=local,archived_batch=document['batch'])
     output.mkdir(parents=True,exist_ok=True)
-    summary=[]; molecules=[]
+    summary=[]; molecules=[]; availability=[]
     for document in documents:
         batch=document['batch'];save(output/'batches'/f'{batch}.json',document)
         save(output/'models'/f'{batch}.json',models[batch])
@@ -227,8 +239,11 @@ def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False):
             (base/f'{slug}.md').write_text(markdown_report(cases[record['scenario_id']],record,batch))
             if evidence['dotplot']['status']=='available':
                 (base/f'{slug}-alignment.svg').write_text(alignment_svg(evidence['dotplot']))
-                write_tsv(base/f'{slug}-alignments.tsv',['reference_start_0based','reference_end_exclusive','query_start_0based','query_end_exclusive','strand','matches','block_length','edit_distance','mapq'],
-                    [[*row['reference_interval'],*row['query_interval'],row['strand'],row.get('matches'),row.get('block_length'),row.get('edit_distance'),row.get('mapq')] for row in evidence['dotplot']['alignments']])
+                write_tsv(base/f'{slug}-alignments.tsv',['reference_id','reference_length_bp','reference_start_0based','reference_end_exclusive','query_id','query_length_bp','query_start_0based','query_end_exclusive','strand','identity_percent_recorded','matches_recorded','block_length_recorded','edit_distance_recorded','mapq_recorded'],
+                    [[row.get('reference_id','reviewed_reference'),row['reference_length'],*row['reference_interval'],row.get('query_id','reviewed_output'),row['query_length'],*row['query_interval'],row['strand'],row.get('identity_percent'),row.get('matches'),row.get('block_length'),row.get('edit_distance'),row.get('mapq')] for row in evidence['dotplot']['alignments']])
+                if evidence['dotplot'].get('nucmer_status')=='available':
+                    (base/f'{slug}-original-show-coords.tsv').write_bytes(evidence['dotplot']['original_coordinates_tsv'].encode('ascii'))
+            availability.append([batch,record['scenario_id'],record['tool'],record.get('run_id',''),record['status'],evidence['dotplot']['status'],evidence['dotplot'].get('source_kind','reviewed_coordinates') if evidence['dotplot']['status']=='available' else '',evidence['dotplot'].get('alignment_count',len(evidence['dotplot'].get('alignments',[]))),evidence['dotplot'].get('empty',False),evidence['failure_details']['recorded_change']['status'],evidence['failure_details']['mechanism']['confidence'],evidence['dotplot'].get('reason','')])
             summary.append([batch,record['scenario_id'],record['tool'],record.get('run_id',''),record['status'],record.get('version',''),record.get('elapsed_seconds',''),evidence['summary']])
             for row in evidence['molecules']:
                 score=row['exact'];mapping=row['mapping'] or {}
@@ -236,6 +251,8 @@ def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False):
     save(output/'overview.json',overview)
     write_tsv(output/'summary.tsv',['batch','scenario','tool','run','exact_status','version','elapsed_seconds','recorded_summary'],summary)
     write_tsv(output/'molecules.tsv',['batch','scenario','tool','run','accession','required_by_endpoint','exact_status','expected_length_bp','exact_contigs','aligned_reference_fraction','alignment_identity','aligned_contig_count'],molecules)
+    write_tsv(output/'evidence-availability.tsv',['batch','scenario','tool','run','exact_status','plot_status','plot_source','recorded_alignment_rows','verified_empty_plot','reviewed_change_status','mechanism_confidence','plot_reason'],availability)
+    save(output/'evidence-coverage.json',coverage_summary(documents,cohort.get('primary_batches',[])))
     counts=overview['counts']
     (output/'README.md').write_text(f'# Benchmark results bundle\n\nSchema: {VERSION}. Primary batch: {primary_batch}.\n\nHeadline cohort: {counts["pass"]} pass; {counts["fail"]} fail; {counts["errors"]} execution errors; {counts["unscored"]} unscored.\n\nSee summary.tsv, molecules.tsv and reports/<batch>/<result>.md. Tables include all source batches; headline counts use only the declared manifest cohort.\n\nExport repackages existing recorded evidence; it does not run assemblies, alignments or new assessments. Missing measurements stay missing.\n')
     files={str(path.relative_to(output)):digest(path) for path in sorted(output.rglob('*')) if path.is_file()}
@@ -281,6 +298,8 @@ def load_bundle(path):
             required={f'reports/{batch}/{slug}.json',f'reports/{batch}/{slug}.md'}
             if record['report_evidence']['dotplot']['status']=='available':
                 required.update({f'reports/{batch}/{slug}-alignment.svg',f'reports/{batch}/{slug}-alignments.tsv'})
+                if record['report_evidence']['dotplot'].get('nucmer_status')=='available':
+                    required.add(f'reports/{batch}/{slug}-original-show-coords.tsv')
             if not required <= set(manifest['files']):
                 raise ValueError('Bundle omits a result report or plot')
     return manifest,documents

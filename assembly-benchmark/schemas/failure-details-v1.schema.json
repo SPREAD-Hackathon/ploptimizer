@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Saved failure/evidence detail record v1",
+  "type": "object",
+  "required": ["schema_version", "outcome", "recorded_change", "interpretation", "supporting_evidence", "mechanism", "reported_circularity", "availability"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "outcome": {
+      "type": "object",
+      "required": ["execution_status", "endpoint", "failed_required_accessions", "source"],
+      "properties": {
+        "execution_status": {"type": "string"},
+        "endpoint": {"type": ["string", "null"]},
+        "failed_required_accessions": {"type": "array", "items": {"type": "string"}},
+        "source": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "recorded_change": {
+      "type": "object",
+      "required": ["status", "description", "source", "confidence", "type", "length_bp", "reference_intervals", "output_intervals", "coordinate_system", "difference_event_table"],
+      "properties": {
+        "status": {"enum": ["not_recorded", "reviewed"]},
+        "description": {"type": ["string", "null"]},
+        "source": {"type": ["string", "null"]},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "type": {"$ref": "#/$defs/sourcedField"},
+        "length_bp": {"$ref": "#/$defs/sourcedField"},
+        "reference_intervals": {"$ref": "#/$defs/sourcedField"},
+        "output_intervals": {"$ref": "#/$defs/sourcedField"},
+        "coordinate_system": {"const": "0-based half-open intervals"},
+        "difference_event_table": {"type": "object", "properties": {"status": {"const": "not_collected"}, "records": {"type": "null"}}, "required": ["status", "records"], "additionalProperties": false}
+      },
+      "additionalProperties": false
+    },
+    "interpretation": {"type": "object", "required": ["confidence", "summary", "text", "source", "scope"], "properties": {"confidence": {"$ref": "#/$defs/confidence"}, "summary": {"type": ["string", "null"]}, "text": {"type": ["string", "null"]}, "source": {"type": "string"}, "scope": {"type": ["string", "null"]}}, "additionalProperties": false},
+    "supporting_evidence": {"type": "array"},
+    "mechanism": {"type": "object", "required": ["confidence", "source", "scope"], "properties": {"confidence": {"$ref": "#/$defs/confidence"}, "source": {"type": "string"}, "scope": {"type": "string"}}, "additionalProperties": false},
+    "reported_circularity": {"type": "object", "required": ["status", "source", "contigs", "scope"], "properties": {"status": {"type": "string"}, "source": {"type": ["object", "null"]}, "contigs": {"type": "array"}, "scope": {"type": "string"}}, "additionalProperties": false},
+    "availability": {"type": "object", "additionalProperties": {"type": "object", "required": ["status", "source"], "properties": {"status": {"type": "string"}, "source": {"type": ["string", "null"]}, "reason": {"type": ["string", "null"]}}, "additionalProperties": false}}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "confidence": {"enum": ["confirmed", "suspected", "unresolved"]},
+    "sourcedField": {"type": "object", "required": ["status", "value", "source"], "properties": {"status": {"enum": ["not_recorded", "reported", "reported_excess", "recorded"]}, "value": {}, "source": {"type": ["string", "null"]}}, "additionalProperties": false}
+  }
+}

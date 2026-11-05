@@ -5,6 +5,8 @@ from .common import ROOT
 
 
 def alignment_svg(plot):
+    if plot.get('source_kind') in ('recorded_paf','recorded_show_coords'):
+        return coordinate_panel_svg(plot)
     if plot.get('status') != 'available':
         raise ValueError('A plot requires saved coordinates')
     os.environ.setdefault('MPLCONFIGDIR',str(ROOT/'.cache/matplotlib'))
@@ -59,4 +61,69 @@ def alignment_svg(plot):
         buffer=io.StringIO()
         figure.savefig(buffer,format='svg',metadata={'Date':None,'Creator':'Ploptimizer saved-coordinate renderer',
             'Title':'Saved reviewed alignment coordinates','Description':'Recorded reference/output alignment intervals with separate terminal windows; no new alignment performed.'})
+        return buffer.getvalue()
+
+
+def coordinate_panel_svg(plot):
+    """Draw existing coordinate spans, separating references so small ones stay visible."""
+    if plot.get('status')!='available':
+        raise ValueError('A coordinate panel needs verified saved records')
+    os.environ.setdefault('MPLCONFIGDIR',str(ROOT/'.cache/matplotlib'))
+    try:
+        from matplotlib import rc_context
+        from matplotlib.figure import Figure
+        from matplotlib.ticker import FuncFormatter, MaxNLocator
+    except ImportError as error:
+        raise ValueError('Saved-coordinate plots require requirements-reporting.txt') from error
+    references=plot['references']
+    source_name='PAF' if plot.get('source_kind')=='recorded_paf' else 'show-coords table'
+    columns=min(2,max(1,len(references)));rows=max(1,(len(references)+columns-1)//columns)
+    height=rows*3.1+1.9
+    with rc_context({'svg.hashsalt':'ploptimizer-recorded-spans-v1','svg.fonttype':'none',
+                     'font.family':['DejaVu Sans','sans-serif'],'font.size':9}):
+        figure=Figure(figsize=(12,height),facecolor='white')
+        grid=figure.add_gridspec(rows,columns,hspace=.65,wspace=.36)
+        figure.subplots_adjust(top=1-1.2/height,bottom=1.2/height,left=.10,right=.97)
+        figure.suptitle('Recorded alignment spans',fontsize=18,y=1-.18/height,x=.10,ha='left')
+        figure.text(.10,1-.52/height,plot['method'],fontsize=9)
+        figure.text(.10,1-.80/height,f'0-based interval boundaries · all saved {source_name} rows · exact checks and filtered measurements remain separate',fontsize=9)
+        for index,reference in enumerate(references):
+            axis=figure.add_subplot(grid[index//columns,index%columns])
+            alignments=[r for r in plot['alignments'] if r['reference_id']==reference['id']]
+            query_ids=list(dict.fromkeys(r['query_id'] for r in alignments))
+            lengths={q['id']:q['length_bp'] for q in plot['queries']}
+            offsets={};total=0
+            for query in query_ids:offsets[query]=total;total+=lengths[query]
+            axis.set_facecolor('#f8fafc');axis.grid(color='#e0e5ec',linewidth=.7);axis.set_axisbelow(True)
+            for row in alignments:
+                query=row['query_interval']
+                if row['strand']=='-':query=list(reversed(query))
+                axis.plot(row['reference_interval'],[value+offsets[row['query_id']] for value in query],
+                          color='#326eae' if row['strand']=='+' else '#b97121',linewidth=1.1)
+            for query in query_ids[1:]:axis.axhline(offsets[query],color='#8a94a3',linewidth=.6)
+            axis.set_xlim(0,reference['length_bp']);axis.set_ylim(0,total or 1)
+            axis.set_title(reference['name']+' · '+reference['id'],loc='left',fontsize=10,pad=10)
+            axis.set_xlabel('Reference boundary (bp)',labelpad=7)
+            axis.set_ylabel('Query boundary (cumulative bp)',labelpad=7)
+            for coordinate in (axis.xaxis,axis.yaxis):
+                coordinate.set_major_locator(MaxNLocator(4,integer=True))
+                coordinate.set_major_formatter(FuncFormatter(lambda value,_:f'{value:,.0f}'))
+            axis.tick_params(labelsize=7)
+            if not alignments:
+                axis.set_yticks([])
+                axis.set_ylabel('No query coordinates recorded',labelpad=7)
+                axis.text(.5,.5,f'No rows for this reference in the saved {source_name}\nThis does not establish sequence absence.',
+                          transform=axis.transAxes,ha='center',va='center',fontsize=9)
+            elif len(query_ids)<=4:
+                axis.text(.01,.99,'Queries: '+', '.join(query_ids),transform=axis.transAxes,va='top',fontsize=7,
+                          bbox={'facecolor':'white','edgecolor':'none','alpha':.8})
+            for spine in axis.spines.values():spine.set_edgecolor('#8a94a3')
+        if not references:
+            axis=figure.add_subplot(grid[0,0]);axis.set_axis_off()
+            axis.text(.5,.5,'No expected reference inventory was recorded.',ha='center',va='center')
+        figure.text(.10,.42/height,'Blue: + strand · orange: − strand. Query axes include only identifiers present in the saved coordinate rows.',fontsize=9)
+        figure.text(.10,.15/height,'Plots do not identify individual changed bases or establish an assembly-internal cause.',fontsize=9)
+        buffer=io.StringIO()
+        figure.savefig(buffer,format='svg',metadata={'Date':None,'Creator':'Ploptimizer recorded-coordinate renderer',
+            'Title':'Recorded alignment spans','Description':'Existing source-bound alignment coordinate columns, separated by expected reference; no new alignment or sequence analysis.'})
         return buffer.getvalue()

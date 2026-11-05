@@ -32,10 +32,15 @@ def render_bundle(bundle, output):
             if record['report_evidence']['dotplot']['status']=='available':
                 shutil.copy2(source/f'{slug}-alignment.svg',target/f'{slug}-alignment.svg')
                 shutil.copy2(source/f'{slug}-alignments.tsv',target/f'{slug}-alignments.tsv')
-    for name in ('summary.tsv','molecules.tsv'):
-        shutil.copy2(bundle/name,output/'data'/name)
+                if record['report_evidence']['dotplot'].get('nucmer_status')=='available':
+                    shutil.copy2(source/f'{slug}-original-show-coords.tsv',target/f'{slug}-original-show-coords.tsv')
+    for name in ('summary.tsv','molecules.tsv','evidence-availability.tsv','evidence-coverage.json'):
+        if (bundle/name).is_file():
+            shutil.copy2(bundle/name,output/'data'/name)
     home=output/'index.html'
     content=home.read_text().replace('</main>','<div class="downloads"><a href="data/results-bundle.zip">Backend results bundle (ZIP)</a><a href="data/summary.tsv">Execution summary TSV</a><a href="data/molecules.tsv">Molecule evidence TSV</a></div></main>')
+    if (bundle/'evidence-availability.tsv').is_file():
+        content=content.replace('Molecule evidence TSV</a>','Molecule evidence TSV</a><a href="data/evidence-availability.tsv">Evidence availability TSV</a>')
     home.write_text(content)
     from .common import save, digest
     save(output/'.results-render.json',{'schema_version':1,'bundle_manifest_sha256':digest(bundle/'manifest.json')})

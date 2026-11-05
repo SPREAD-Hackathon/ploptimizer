@@ -49,6 +49,8 @@ def main(argv=None):
     sub.add_argument("--batch", required=True)
     sub.add_argument("--output", required=True)
     sub.add_argument("--single-batch", action="store_true")
+    sub.add_argument("--coordinate-sidecars", action="append", default=[], help="Explicit completed coordinate-sidecar root; metadata ingestion only")
+    sub.add_argument("--recorded-artifacts", help="Explicit local run-metadata root for importing already-produced, hash-bound PAF coordinate columns")
     sub.add_argument("--replace", action="store_true", help="Atomically replace an existing validated generated bundle")
     sub = commands.add_parser("render", help="Render a validated results bundle")
     sub.add_argument("--bundle", required=True)
@@ -74,7 +76,7 @@ def main(argv=None):
             if args.single_batch:
                 document = load(source)
                 cohort = {"schema_version":1,"primary_batches":[args.batch],"families":["S3"] if document["config"].get("determinism") else list(dict.fromkeys(c["category"] for c in document["scenarios"])),"tools":document["config"]["tools"]}
-            print(export_bundle(snapshots, scoped(args.output), primary_batch=args.batch, cohort=cohort, replace=args.replace))
+            print(export_bundle(snapshots, scoped(args.output), primary_batch=args.batch, cohort=cohort, replace=args.replace, artifact_root=scoped(args.recorded_artifacts) if args.recorded_artifacts else None, coordinate_roots=[scoped(path) for path in args.coordinate_sidecars]))
         else:
             from pipeline.bundle_render import render_bundle
             print(render_bundle(scoped(args.bundle), scoped(args.output)))

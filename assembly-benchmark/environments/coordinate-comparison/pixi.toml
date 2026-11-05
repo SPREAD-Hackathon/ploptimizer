@@ -1,0 +1,9 @@
+[workspace]
+name = "ploptimizer-coordinate-comparison"
+version = "0.1.0"
+channels = ["conda-forge", "bioconda"]
+platforms = ["linux-64"]
+
+[dependencies]
+python = "3.11.*"
+mummer4 = "==4.0.1"

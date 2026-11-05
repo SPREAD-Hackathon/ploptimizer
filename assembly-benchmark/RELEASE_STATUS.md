@@ -290,3 +290,44 @@ passed; desktop/phone layouts and live example/downloads were checked. The
 primary cohort remains 84 pass, 180 fail and 4 errors. Fourteen live pages/assets/
 downloads matched the build, and every file inside the downloaded bundle ZIP
 matched its manifest. Production: `dpl_HBPT58p33o3TNYmzg5SffPHS7nnM`.
+
+## Alignment plots and detailed reports across completed outputs
+
+The combined backend bundle now includes source-bound plots for every completed
+scored output: 264/268 current-cohort executions, including all 180 scientific
+failures. Across the historical plus active views, 268/284 have plots. The other
+16 views are 12 historical unsubmitted cells and four execution errors.
+Five verified empty coordinate files produce explicitly empty plots, rather than
+an inferred claim that the biological sequence is absent.
+
+Sources are labelled separately: 255 saved minimap2 PAF displays, one existing
+reviewed-coordinate display, and 12 completed NUCmer 4.0.1 show-coords displays.
+The NUCmer comparison stage used the existing S6 reference/assembly outputs and
+retained its isolated Pixi environment, input/source/output hashes and logs.
+Its 966 coordinate rows and all 12 original inclusive TSV downloads verified.
+No original assembly, endpoint, execution record or source snapshot was changed.
+
+Generic metadata import checks frozen input identities, execution/input-manifest
+hashes, task/snapshot binding, worker/environment hashes, coordinate files and
+small logs. It normalizes only recorded coordinates, keeps source metrics in
+their original units and sanitizes public command paths. Canonical tables are
+0-based half-open; original show-coords downloads remain 1-based inclusive.
+Plot panels separate references so small molecules remain visible. The site
+consumes the sealed bundle and offers standalone detailed reports and downloads.
+
+Detailed records now separate saved exact outcomes, reported changes and their
+confidence/source pointers, circularity claims, supporting evidence and software
+cause. General per-base difference-event tables and most software-internal causes
+remain unresolved; coordinate spans do not supply those conclusions.
+
+Validation: 285 Python tests (11 skips), 376 routes/284 result views, all original
+fields across 284 records unchanged, zero coordinate provenance/hash/parse errors,
+and desktop/phone inspection of a newly supplied NUCmer report. The primary
+headline remains 84 pass, 180 fail and four errors. See RESULTS_BUNDLE.md and
+COMPARISON_BACKEND.md for the separate metadata-export and comparison stages.
+
+Production deployment: `dpl_5yn337MbfX2wkmVVq4ipaGAZGnCW`. All 268 published
+SVG plots and 12 representative pages/assets/downloads matched the reviewed build
+byte-for-byte. Every file in the downloaded backend ZIP matched its manifest.
+Vercel's individual-file upload quota rejected the first attempt; its supported
+`--archive=tgz` deployment completed successfully and should be used for this site.

@@ -140,7 +140,10 @@ def result_body(case, record, artifact, output, family=None):
         if plot["status"] == "available":
             if prepared.get("checked_facts"):
                 body += '<dl class="result-facts">' + ''.join(f'<dt>{e(fact["label"])}</dt><dd>{e(fact["value"])}</dd>' for fact in prepared["checked_facts"]) + '</dl>'
-            body += f'<p>{e(plot["method"])}. The lower panels show the terminal intervals already recorded in the review. Individual base differences and assembler-internal causes are separate evidence.</p><figure><img class="saved-alignment-plot" src="../data/results/{e(slug)}-alignment.svg" alt="Saved alignment dot plot with separate terminal coordinate windows" /></figure><p><a href="../data/results/{e(slug)}-alignments.tsv">Saved alignment coordinates (TSV)</a> · <a href="../data/results/{e(slug)}-alignment.svg">Open full-size plot (SVG)</a></p>'
+            scope = plot.get("display_scope") or "The lower panels show only the terminal intervals already recorded in the review."
+            body += f'<p>{e(plot["method"])}. {e(scope)} Individual changed bases and assembler-internal causes are separate evidence.</p><figure><img class="saved-alignment-plot" src="../data/results/{e(slug)}-alignment.svg" alt="Saved alignment coordinate plot" /></figure><p><a href="../data/results/{e(slug)}-alignments.tsv">Saved alignment coordinates (TSV)</a> · <a href="../data/results/{e(slug)}-alignment.svg">Open full-size plot (SVG)</a></p>'
+            if plot.get('nucmer_status')=='available':
+                body += f'<p><a href="../data/results/{e(slug)}-original-show-coords.tsv">Original show-coords table (1-based inclusive)</a></p>'
         else:
             body += f'<p>{e(plot["reason"])}</p>'
         body += f'<p><a href="../data/results/{e(slug)}-report.md">Standalone detailed report (Markdown)</a></p>'
