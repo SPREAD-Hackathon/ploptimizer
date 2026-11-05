@@ -429,3 +429,19 @@ rerun. Existing historical Raven graphs remain unavailable.
 Verification: 316 Python tests ran, 11 optional skips, no failures; graph tests
 passed. All 284 original result records remain unchanged outside derived report
 fields. Audit plan and producer hashes were checked against the committed sources.
+
+## S5 backend started (5 November)
+
+The linear controls are implemented in the main Python entry point, with versioned
+reference curation, fixed-end simulation, strict linear equivalence and standalone
+reporting. The local full suite ran 320 tests with 11 optional skips and no failures,
+followed by the additional terminal-curation check. Successful cluster preparation
+ran the expanded suite after the Matplotlib/Pixi dependency fix. All four generated
+inputs passed complete-breadth and terminal-read admission.
+
+Batch **20261105T161510** has started its 16 assembly tasks. At the recorded
+checkpoint, 15 strict sequence outcomes were failures and one execution remained
+active; diagnostic conclusions and final publication are pending. Follow-on
+alignment, graph/length/identity collection and final report jobs are queued.
+See [S5_RUN_STATUS.md](S5_RUN_STATUS.md) for job IDs, scope and the preserved failed
+setup attempt. These results are not yet part of the public headline cohort.
