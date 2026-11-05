@@ -409,3 +409,23 @@ complete Python suite ran 310 tests with 11 optional skips and no failures, foll
 by expanded focused identity/scope tests. Graph-model checks and HTTP checks for
 376 routes/284 result views passed. Browser checks verified the reviewed node
 label and selectable whole-segment identity evidence.
+
+## Missing-graph integrity audit (5 November)
+
+Read-only Slurm job 34423949 audited 894 distinct existing files across 272
+submitted executions, with zero integrity issues. All 50 input manifests/read
+files/truth FASTAs, 268 scored assembly FASTAs and 204 saved graphs matched their
+recorded hashes. All 68 completed Raven execution directories contain no GFA;
+their recorded commands did not request graph output. The 12 historical unrun
+cells are classified separately. See [INTEGRITY_AUDIT.md](INTEGRITY_AUDIT.md) and
+its committed machine-readable plan/results/provenance.
+
+The site distinguishes graph output not requested from missing, invalid,
+unsupported or unrun evidence, and removes the duplicate generic missing-source
+message. Future Raven commands request an isolated `assembly_graph.gfa`; no
+historic execution, input, output or score was overwritten, and no assembly was
+rerun. Existing historical Raven graphs remain unavailable.
+
+Verification: 316 Python tests ran, 11 optional skips, no failures; graph tests
+passed. All 284 original result records remain unchanged outside derived report
+fields. Audit plan and producer hashes were checked against the committed sources.

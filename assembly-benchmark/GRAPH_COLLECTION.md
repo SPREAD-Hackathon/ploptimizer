@@ -144,3 +144,10 @@ probe job 34423537 found no colocated graph sidecars and produced zero inventori
 only the explicitly supplied frozen graph metadata were used by the successful
 collection. No assembly or alignment was rerun. Original graph downloads and
 scientific scores remain unchanged.
+
+## Missing Raven graph audit
+
+[INTEGRITY_AUDIT.md](INTEGRITY_AUDIT.md) records the complete checksum and file
+inventory audit. The 68 completed Raven executions did not request graph output
+and have no GFA files. Future commands request `assembly_graph.gfa` explicitly;
+historical graph gaps are labelled independently of sequence recovery.

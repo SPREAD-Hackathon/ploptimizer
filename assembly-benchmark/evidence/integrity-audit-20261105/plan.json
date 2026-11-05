@@ -1,0 +1,3541 @@
+{
+  "schema_version": 1,
+  "executions": [
+    {
+      "scenario_id": "s4-w-prk2-length-short",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "a9d9663a1bb503b8cab48e9a0ab4b6415129a9475b0db719678b262edb6b7fe3",
+      "batch": "20261104T193551",
+      "execution_sha256": "cca3860c228c2a0ad37a958fe48be43921531da306382f2fb7c9790142ac6e88",
+      "input_manifest_sha256": "4e65180c48e8bb1449724c99da8fc0109fab3eee03d397959156eb52b7eb55de",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "64b0d96bba5c5a91c2961513c02307db90001ddf8155a49e4d001fe2b6a9bcd1"
+      }
+    },
+    {
+      "scenario_id": "s4-w-prk2-length-short",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "af389ec61b455ecd805bb45bbb5186ee53ef56d322c3a41dfb5e53b7d9b6deae",
+      "batch": "20261104T193551",
+      "execution_sha256": "74dc4841fc5f360a7f7909261c8ff91c70c60b9aaacbdb525d0589e3b78c7a75",
+      "input_manifest_sha256": "4e65180c48e8bb1449724c99da8fc0109fab3eee03d397959156eb52b7eb55de",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "dac3af25dd82c3e1098e78240261b8a95d23e3d5f27488dc012720494733f29e"
+      }
+    },
+    {
+      "scenario_id": "s4-w-prk2-length-short",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "eeaacb620200b238ef5b9fcffe6fe8c875c105093bdee8ceb52002206dc4365e",
+      "batch": "20261104T193551",
+      "execution_sha256": "1577642c728ea1ce4b48d8756deeaae3201138d917d726f7921a0891637e7b43",
+      "input_manifest_sha256": "4e65180c48e8bb1449724c99da8fc0109fab3eee03d397959156eb52b7eb55de"
+    },
+    {
+      "scenario_id": "s4-w-prk2-length-short",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "error",
+      "assembly_sha256": null,
+      "batch": "20261104T193551",
+      "execution_sha256": "3a1b9889bb9356b94ea3f1ddd664f767114dec3b7068de4d1646dba1d441c42c",
+      "input_manifest_sha256": "4e65180c48e8bb1449724c99da8fc0109fab3eee03d397959156eb52b7eb55de",
+      "graph": {
+        "relative_path": "output/flye_output/assembly_graph.gfa",
+        "sha256": "7159d41094ab647e4453a9db275707889a3c9fd56ec3238244eb349dd57d27aa"
+      }
+    },
+    {
+      "scenario_id": "s4-w-prk2-length-baseline",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T193551",
+      "execution_sha256": "629542f85fa9a289ebedb49d212a58172d3252f7d36b4d879343fc5cadfb0f16",
+      "input_manifest_sha256": "e26e840c604aad8d9fa02e672c51e9e02192cfd00b802bf7db760cae332e8ad4",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s4-w-prk2-length-baseline",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T193551",
+      "execution_sha256": "b064653ffd39d73439558ffd64d3e47c380eea26901483f5f58dc6f59c7d7e49",
+      "input_manifest_sha256": "e26e840c604aad8d9fa02e672c51e9e02192cfd00b802bf7db760cae332e8ad4",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s4-w-prk2-length-baseline",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T193551",
+      "execution_sha256": "a5e9f0abb07f1cb0a4c84f7e0fc2c5ba5d327bfc6d001c0d5b92d8ce32a4926c",
+      "input_manifest_sha256": "e26e840c604aad8d9fa02e672c51e9e02192cfd00b802bf7db760cae332e8ad4"
+    },
+    {
+      "scenario_id": "s4-w-prk2-length-baseline",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T193551",
+      "execution_sha256": "da601796397ccc4fa19e9dbdf02401664e7aed9b8ff6891c1cf703495a9b8e98",
+      "input_manifest_sha256": "e26e840c604aad8d9fa02e672c51e9e02192cfd00b802bf7db760cae332e8ad4",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s4-w-prk2-length-long",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "115c666e7453b225edf3615d66e835bc140c43dd234dff8ea0f28b48e794cac6",
+      "batch": "20261104T193551",
+      "execution_sha256": "d2333ca4ef156b815e899f66ae7cfc0c3f793bd4ed1529ec1c13c242e1a0073e",
+      "input_manifest_sha256": "722c8979614d07e0169addfe488f093e56dac6735ef0f3f1579312d82b36dabf",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "7b06f62f878e9c2910fd217dd4813cb2a55517fa857e91c0b39cfe5304ccd4c2"
+      }
+    },
+    {
+      "scenario_id": "s4-w-prk2-length-long",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "b687071dc311802e6bca8a1abcbe5f03256672dd01811b0774119cc8c740ec4c",
+      "batch": "20261104T193551",
+      "execution_sha256": "7973ed5802f5a6b7de74cd9cccdbc640fb8c9f9f1bbaf2b056f5b84a32defa9f",
+      "input_manifest_sha256": "722c8979614d07e0169addfe488f093e56dac6735ef0f3f1579312d82b36dabf",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "e40096f5f7a07f1cae7f964c11911537b8e1b0514b69f3f7ade9ff388f47d3de"
+      }
+    },
+    {
+      "scenario_id": "s4-w-prk2-length-long",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "247ece554582491241ab033886c7e31bfd48fffe7038da7019b659ef1cd1335d",
+      "batch": "20261104T193551",
+      "execution_sha256": "473aa49e5510950b04ed2c593179e0b2630e283e9217de9bb1ea88851e2ffba7",
+      "input_manifest_sha256": "722c8979614d07e0169addfe488f093e56dac6735ef0f3f1579312d82b36dabf"
+    },
+    {
+      "scenario_id": "s4-w-prk2-length-long",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "40876f01638aa9e06c3e0b89b263a607633e1568757dfdbb9b3cfdeb52368fb5",
+      "batch": "20261104T193551",
+      "execution_sha256": "6871169ac49ec1d4ebdaf38afe7b6eb8f744d7a07fd6601b653cdf59a3abf604",
+      "input_manifest_sha256": "722c8979614d07e0169addfe488f093e56dac6735ef0f3f1579312d82b36dabf",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s4-w-native-length-short",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "5d9abda0860aa695eb6c0e219ef8737647098c7ce76024ea756ac969eaab538b",
+      "batch": "20261104T193551",
+      "execution_sha256": "79e16c3edd1ec76f6bb71bcef48a37bfa44007369176dc0660d0461af88734a1",
+      "input_manifest_sha256": "149ef3326915d113dd65c44692390324140defdceda2f165b86410fa486a7609",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "d6eaad35c317ec52227c96b0d97142ff9fc51167ce7b156719604140f6df8eca"
+      }
+    },
+    {
+      "scenario_id": "s4-w-native-length-short",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "38079094f08d274b05bfae319f12a8a01f1e61235995c7b385e8d6f337e1f633",
+      "batch": "20261104T193551",
+      "execution_sha256": "6999b8ebb6622db3d366133b316c80145e00200a59ab5cab265656453bd6354a",
+      "input_manifest_sha256": "149ef3326915d113dd65c44692390324140defdceda2f165b86410fa486a7609",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "6acab6b26de522aac17dbd3319cc99f2641dd19751c9fbe855a6ab8e83d2adda"
+      }
+    },
+    {
+      "scenario_id": "s4-w-native-length-short",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "91ba510ba897b7a5f74d7b44e4b119b2a317b973b0a44a4db46cdab05c7c67f4",
+      "batch": "20261104T193551",
+      "execution_sha256": "7b51289265f2220915bf3edcd434994d5f65b9354a25eebac8548c5be6e33d95",
+      "input_manifest_sha256": "149ef3326915d113dd65c44692390324140defdceda2f165b86410fa486a7609"
+    },
+    {
+      "scenario_id": "s4-w-native-length-short",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "error",
+      "assembly_sha256": null,
+      "batch": "20261104T193551",
+      "execution_sha256": "82421031f2afdc8885dd3fcb8e734c16e08e52a776489c09b74b259769f48aad",
+      "input_manifest_sha256": "149ef3326915d113dd65c44692390324140defdceda2f165b86410fa486a7609",
+      "graph": {
+        "relative_path": "output/flye_output/assembly_graph.gfa",
+        "sha256": "15251cd2eb1be5ce375055d8ae9cf86b7343d3a5a7e5d0a0de8025398acf1c65"
+      }
+    },
+    {
+      "scenario_id": "s4-w-native-length-baseline",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "f689bcc7845faa36f786773f162877d577ef70e839907c9a2567fb61ede6f130",
+      "batch": "20261104T193551",
+      "execution_sha256": "836c38c7d363b1d7f435f234f685a8328526a9cbdeeafe8cacbb1fb3ec30bded",
+      "input_manifest_sha256": "7906d777d41afd0171226b7fbb422f29344b3700947eb2ea9dcd3c94893efa0d",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "dc8042520b4eb521ba93c94b77adb490ea3a2c8c669b1bbc1905d2217a620618"
+      }
+    },
+    {
+      "scenario_id": "s4-w-native-length-baseline",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "4f2a0394fcbef803d66b1350b34b3aca7d2ba0efab9253b2e4662589258f516b",
+      "batch": "20261104T193551",
+      "execution_sha256": "da8db27a2d91b20a0e5642c7d6e643fd28220e4971f1690086f0c832d962a42a",
+      "input_manifest_sha256": "7906d777d41afd0171226b7fbb422f29344b3700947eb2ea9dcd3c94893efa0d",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "a2592fab2bf4f14fc0d0777836465b32a42d05530fa3c0a7608517bf17b87c93"
+      }
+    },
+    {
+      "scenario_id": "s4-w-native-length-baseline",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "9b26b27eb58dab6466ffd8e4ce702eb7c242369d38083505802f5fbb62f28603",
+      "batch": "20261104T193551",
+      "execution_sha256": "e4c91d304449a88b7165568ceb35259f8c0cbdfc0f78d909a0f7c5c2149fc3cb",
+      "input_manifest_sha256": "7906d777d41afd0171226b7fbb422f29344b3700947eb2ea9dcd3c94893efa0d"
+    },
+    {
+      "scenario_id": "s4-w-native-length-baseline",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "8bc9bb221db4fca68b857f3bcd10b9824dd36a0c36cea06dd96e0b2a9aa443de",
+      "batch": "20261104T193551",
+      "execution_sha256": "a1cfc555d3bf01e3df05095af87a7faf1cf39f47efa7c05d5fb48d69527bb9f8",
+      "input_manifest_sha256": "7906d777d41afd0171226b7fbb422f29344b3700947eb2ea9dcd3c94893efa0d",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a0e8277c9725c56539242d6bc9616b2b20dcd6e825096e085f26816e951b4953"
+      }
+    },
+    {
+      "scenario_id": "s4-w-native-length-long",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "52b25486773763f586e4686567817594a17885b5ca1d02744fc8274e6577439e",
+      "batch": "20261104T193551",
+      "execution_sha256": "28eda31da5a76dfd2f2547873762505615bad9acc2f97683a479ef7918b4f178",
+      "input_manifest_sha256": "e02ebd94627e891d3639b68bb58fc4875466971e4b0d51d03b8cb52625471a73",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "d2fb1e731f572d377c9a992b97363f6288e8dd9585c721fc2a7fa413d01a280b"
+      }
+    },
+    {
+      "scenario_id": "s4-w-native-length-long",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "745c2030627ec8cac66a1fe5e9357fdeb08692f0091f4b80b5313902283a8b23",
+      "batch": "20261104T193551",
+      "execution_sha256": "98281355258f6c743190a561378bb1bbfada5c0dad225b102751f2a020db170c",
+      "input_manifest_sha256": "e02ebd94627e891d3639b68bb58fc4875466971e4b0d51d03b8cb52625471a73",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "2f762783ffba0c0db6d175d1b976fa594c974d28419a6b652f924639008ae08a"
+      }
+    },
+    {
+      "scenario_id": "s4-w-native-length-long",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "ad893b950e6908006faaf7f9677ba0254435fac15e6a69999f05c6492c3323de",
+      "batch": "20261104T193551",
+      "execution_sha256": "b953bd67869d3c46b6a856b571a10cc812cac3fcda7f9fd22a8bafcff6bab9f3",
+      "input_manifest_sha256": "e02ebd94627e891d3639b68bb58fc4875466971e4b0d51d03b8cb52625471a73"
+    },
+    {
+      "scenario_id": "s4-w-native-length-long",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "66abf7b4dbf4c7dbc67c1bee1e39d84ac734591d0560f4027c46217a7dad4c4a",
+      "batch": "20261104T193551",
+      "execution_sha256": "10fd4ce74bc9ac860a5b400ff68a7e6729762a303515b1d6c2a605f93c009263",
+      "input_manifest_sha256": "e02ebd94627e891d3639b68bb58fc4875466971e4b0d51d03b8cb52625471a73",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "78e1a6b7fb5561872696ccdb3d34f0cb321df85031ae1bcde07c9f08a9fe1538"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-short",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "da175003642945e58c74599f35a73658bc94a9b27ef9a4dbf93f5cf958a3c5df",
+      "batch": "20261104T193551",
+      "execution_sha256": "da9caf34631f4f7897a6ad2d0083801908417424320ebc366424fb8902794bad",
+      "input_manifest_sha256": "37212337987f2be32ba1ad251195716a533a565bb528461b208b327b4ca6a0a7",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "af81ca5d2c3b630a42c5e13a4620fb901a8f66a162ccfe473e2e807d54e17eb7"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-short",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "b8a7b7880496666884843bc9740ce81c0e43bf6b8a4ed84cb3d001231c6c7315",
+      "batch": "20261104T193551",
+      "execution_sha256": "711ae52a9b385a038c5c214b35ca4e9a487b7d0b51355b2194833ff79c08e5d9",
+      "input_manifest_sha256": "37212337987f2be32ba1ad251195716a533a565bb528461b208b327b4ca6a0a7",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "f232d5336730b2b777de1485b2b0bec6d605432d967359634797c3bebec5d612"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-short",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "ae07cb13c30af98df35df62246d7e55461c480fe48c029eb9dfc0dfa9352426d",
+      "batch": "20261104T193551",
+      "execution_sha256": "eda2579079011e3ccc89ff33c409a496e9637c93e4452a2d4e86f139135639a3",
+      "input_manifest_sha256": "37212337987f2be32ba1ad251195716a533a565bb528461b208b327b4ca6a0a7"
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-short",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "error",
+      "assembly_sha256": null,
+      "batch": "20261104T193551",
+      "execution_sha256": "30785962002cba2a687ba504a50859965c0c5546c07cd3d81198edcc635fb0dd",
+      "input_manifest_sha256": "37212337987f2be32ba1ad251195716a533a565bb528461b208b327b4ca6a0a7",
+      "graph": {
+        "relative_path": "output/flye_output/assembly_graph.gfa",
+        "sha256": "a0ed64b6ef99f8aea0fdd6a31843916934a0c29b3c1cb88e8af7a7a13d45e02a"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-baseline",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T193551",
+      "execution_sha256": "b73240f17cb87c7bc86a7ece5ba9aa6c151edbaf6b4b06bf3a624fa43f6f6e20",
+      "input_manifest_sha256": "a5a0d7e560891bd449dfb9d225daaedfabff13c88ac052328ef4c8208f91349e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-baseline",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T193551",
+      "execution_sha256": "0d79b4734cfd439f589248eb2765106dafffeb7c9ba883b05b630a8ffd58a24e",
+      "input_manifest_sha256": "a5a0d7e560891bd449dfb9d225daaedfabff13c88ac052328ef4c8208f91349e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-baseline",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T193551",
+      "execution_sha256": "f0018a286192b5d4aca164d51ee87ae4b8bf7d879e5437977a32e13ddf0fb9d9",
+      "input_manifest_sha256": "a5a0d7e560891bd449dfb9d225daaedfabff13c88ac052328ef4c8208f91349e"
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-baseline",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193551",
+      "execution_sha256": "8558ed5887e78dd8ba8994314f0e0f2ebc786b8c1f8aa4ba8b48c10104970034",
+      "input_manifest_sha256": "a5a0d7e560891bd449dfb9d225daaedfabff13c88ac052328ef4c8208f91349e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-long",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "c13d209c5abba2c5e61e2917b7cd91dbdaf1a063f28a0c6ed644f64e502ccd7f",
+      "batch": "20261104T193551",
+      "execution_sha256": "860c371c03053e8bf7c83a7ef5e65e6285ef0b911b5ef182b3479cbb5a7624da",
+      "input_manifest_sha256": "154280e0ad1fd87bf9c32ca896453346ecb268a1816f5e64324bd1246d9c5780",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "c55ba029e85a146a2ac7552c25764ab1065703aaa579d8bedc9b17d14f8dad20"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-long",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "c13d209c5abba2c5e61e2917b7cd91dbdaf1a063f28a0c6ed644f64e502ccd7f",
+      "batch": "20261104T193551",
+      "execution_sha256": "76851208bc5d27d4860897e44e14fe8e1687e4211cf4b93267c528641692741d",
+      "input_manifest_sha256": "154280e0ad1fd87bf9c32ca896453346ecb268a1816f5e64324bd1246d9c5780",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "c55ba029e85a146a2ac7552c25764ab1065703aaa579d8bedc9b17d14f8dad20"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-long",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "3dfb84b406269ad86295801120f437bf3f45e7e8797976707afbb430e3cb1127",
+      "batch": "20261104T193551",
+      "execution_sha256": "382dd6e38d287bf61c60a8be8bbd24a650b3b70cdc0984417f28092301675b14",
+      "input_manifest_sha256": "154280e0ad1fd87bf9c32ca896453346ecb268a1816f5e64324bd1246d9c5780"
+    },
+    {
+      "scenario_id": "s4-mgh78578-pkpn7-length-long",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193551",
+      "execution_sha256": "6bc888107d0c2f0f4b486058f1b21f2ae4becb88e6101ef71796974c023436e7",
+      "input_manifest_sha256": "154280e0ad1fd87bf9c32ca896453346ecb268a1816f5e64324bd1246d9c5780",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-short",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "e2cfce22fc2e527154537d7e640cf624d21da2162b67f387d42df778044feded",
+      "batch": "20261104T193551",
+      "execution_sha256": "573c2b36d77070fbdfbed84a3255b8b2fb2a2d68b4d7299b5b121e90369fd284",
+      "input_manifest_sha256": "311dc747892b1513519ac1f4211f83412e834ca4801bd6c4bde12c13e541a0a2",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "51d574770b050a35b4281ef4e4d1c2ca154001ca5ea6ac632364f48d836f49ab"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-short",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "2b12d6d9b3ab338e3aaaa85aea6344d5bde5370c5227dc0bae3bba2d8a9e9bd2",
+      "batch": "20261104T193551",
+      "execution_sha256": "0675380379790e719ed29d1b95d5657b362784f72372f11dc3a5b3757c47e9bf",
+      "input_manifest_sha256": "311dc747892b1513519ac1f4211f83412e834ca4801bd6c4bde12c13e541a0a2",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "0cfe79c5266be065ec4c7c5233fd19b6d6ae808e42d8e639d26986e929270b90"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-short",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "cb594b9c97de5c66f57b1fe1d5898968a439206e709841eddd2c1610357ea05e",
+      "batch": "20261104T193551",
+      "execution_sha256": "189990188faf935d71cbf81fdacd37515dbc5442ed3c979865c1086f72ce8d08",
+      "input_manifest_sha256": "311dc747892b1513519ac1f4211f83412e834ca4801bd6c4bde12c13e541a0a2"
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-short",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "error",
+      "assembly_sha256": null,
+      "batch": "20261104T193551",
+      "execution_sha256": "34c4e2f30b824e6883de2ef41452df3031bd49d207d4c06e4b748da5a2aa8d07",
+      "input_manifest_sha256": "311dc747892b1513519ac1f4211f83412e834ca4801bd6c4bde12c13e541a0a2",
+      "graph": {
+        "relative_path": "output/flye_output/assembly_graph.gfa",
+        "sha256": "f91b6ed920a3678efcb702e4f22dc3014c6cefa367e0510fe4fc3bb0e9e00317"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-baseline",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "052851e505a250d64bf59c0dd95ede18a0682c6b6d7b3e809d65e004dac250a0",
+      "batch": "20261104T193551",
+      "execution_sha256": "755eb6ca1e1e468030c7d08179cdeba420311c5bab7aad5a85752e5a59b21476",
+      "input_manifest_sha256": "7a97a371e75240c20528f17acfe877ea77de4210a2445f5b0a5569b5963d715a",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "eeff9df5b54d949192b4c2e9f59d92365b7f184d7b43219b09e71b18f55f431a"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-baseline",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "052851e505a250d64bf59c0dd95ede18a0682c6b6d7b3e809d65e004dac250a0",
+      "batch": "20261104T193551",
+      "execution_sha256": "f97106737862e9a56d198197f756ead6e88449a3d80d27d0858c461b4e77a2de",
+      "input_manifest_sha256": "7a97a371e75240c20528f17acfe877ea77de4210a2445f5b0a5569b5963d715a",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "d476edef611537643082ff16457bf66e136e1acbb43c1ce8b5f3a5426d0e59b6"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-baseline",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "75b54b0ef8f959c99e7c5de188ca74fd7d4e2ecb48a8ba2e827735d6730f4e5b",
+      "batch": "20261104T193551",
+      "execution_sha256": "a3fd5e6f493436863ad8058745da1201de03bb2bb3f47d408addcfd3a08503c3",
+      "input_manifest_sha256": "7a97a371e75240c20528f17acfe877ea77de4210a2445f5b0a5569b5963d715a"
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-baseline",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "a35c0a7a1c600d720dc5ae8f7028247c74cd2a3164925335bba1e12938239ee7",
+      "batch": "20261104T193551",
+      "execution_sha256": "7294d08c21eec2c6fd28c33df0bece11e8516679b65d3cdf32d1974239298b8b",
+      "input_manifest_sha256": "7a97a371e75240c20528f17acfe877ea77de4210a2445f5b0a5569b5963d715a",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "2552f16e8a64f5e9403fcb109306646fcb18cf566868a47c5db1e3bdf6066765"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-long",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "229a08f82d99897d64149350da3c03a3b303b28053a1f0d984ce76596a29337e",
+      "batch": "20261104T193551",
+      "execution_sha256": "2c49215a3e39920b3bdade92c9efb9031308dc0d24333c9a7af7f66695a2ae8a",
+      "input_manifest_sha256": "b769cdd6f9b2b82a92210c062d75b9223d0cc4dce4d1a5e254a3c758d9f6e38f",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "954a1a14bcfa204287d33c2f622bd8cca8fc0fa4c704ab85be0c0a5a7ae9b573"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-long",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "229a08f82d99897d64149350da3c03a3b303b28053a1f0d984ce76596a29337e",
+      "batch": "20261104T193551",
+      "execution_sha256": "7ce960ed9a79baa1674a2ea25ef316d964dcf652d94d5909dfadb739d82419df",
+      "input_manifest_sha256": "b769cdd6f9b2b82a92210c062d75b9223d0cc4dce4d1a5e254a3c758d9f6e38f",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "954a1a14bcfa204287d33c2f622bd8cca8fc0fa4c704ab85be0c0a5a7ae9b573"
+      }
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-long",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "9be99ddab414cc4a0ade0ca3a1b124737ef949bb23f9dba9af2d76b5e601fcba",
+      "batch": "20261104T193551",
+      "execution_sha256": "a6846c194e9ca56a19df05c0ddd923c65d82c84cc5703836342839edf881d798",
+      "input_manifest_sha256": "b769cdd6f9b2b82a92210c062d75b9223d0cc4dce4d1a5e254a3c758d9f6e38f"
+    },
+    {
+      "scenario_id": "s4-mgh78578-native-length-long",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "99d4c1f9f687563315ea4c15a488bb8874a3914c534d7af5f3e2bafbe10c07a3",
+      "batch": "20261104T193551",
+      "execution_sha256": "0f9455c44a097e60172d93efb8326e3e9596147a3256d13f3e3c3a12d4230c19",
+      "input_manifest_sha256": "b769cdd6f9b2b82a92210c062d75b9223d0cc4dce4d1a5e254a3c758d9f6e38f",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "366f4a8fe50d9e2f60597ea65c513c04cd934123e2f545c847878409ad31378c"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": "threads-1-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "feabb96e9464ad1d221e79d3fed9bc26e416deba1485564c4b9fe4897d5eca92",
+      "batch": "20261104T193612",
+      "execution_sha256": "a7828b4815836ca95387f34a34c48315dd8aa3ad4a76a7871c05f986733ccff7",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "072410e5b727ffa63bc789722e03865f6e6eee8d8bf8c4353b9bec0adfee03be"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": "threads-1-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "feabb96e9464ad1d221e79d3fed9bc26e416deba1485564c4b9fe4897d5eca92",
+      "batch": "20261104T193612",
+      "execution_sha256": "68183dc7b9573c584cca050ebdae51af8381ec0216f4dae6127b4b45ed8349f8",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "072410e5b727ffa63bc789722e03865f6e6eee8d8bf8c4353b9bec0adfee03be"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": "threads-1-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "feabb96e9464ad1d221e79d3fed9bc26e416deba1485564c4b9fe4897d5eca92",
+      "batch": "20261104T193612",
+      "execution_sha256": "51efad2e138714551647a6e5581941e4bffdc0f1578ba2c8a3c3a64736a018e2",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "072410e5b727ffa63bc789722e03865f6e6eee8d8bf8c4353b9bec0adfee03be"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": "threads-1-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "feabb96e9464ad1d221e79d3fed9bc26e416deba1485564c4b9fe4897d5eca92",
+      "batch": "20261104T193612",
+      "execution_sha256": "b3930e3d4ad75e14098c33c5692b7bf7c2b4b53b5190210123bf218baf553585",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "072410e5b727ffa63bc789722e03865f6e6eee8d8bf8c4353b9bec0adfee03be"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": "threads-1-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "feabb96e9464ad1d221e79d3fed9bc26e416deba1485564c4b9fe4897d5eca92",
+      "batch": "20261104T193612",
+      "execution_sha256": "c07f677ab692ede6af71a586d6e7cef1e231960bec7ba9f13269ad792f2e1d50",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "072410e5b727ffa63bc789722e03865f6e6eee8d8bf8c4353b9bec0adfee03be"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": "threads-4-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T193612",
+      "execution_sha256": "7a1b98197e8d8bda8bfc26e64013b21258fa7ba86323b2af0f4a77556a96b330",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": "threads-4-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T193612",
+      "execution_sha256": "501691275f0e25e48bbe8011ba39651973b0d10eeaa8858f7365f497cf1abd0b",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": "threads-4-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T193612",
+      "execution_sha256": "90e1ea6b621297454c63b7928987cecc0f1092dc8bbe02b2bf40cc7ade273a21",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": "threads-4-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T193612",
+      "execution_sha256": "ea9368731e7179b29c3f46f83114deec505b07d786e47211ee64560c29e3b54c",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": "threads-4-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T193612",
+      "execution_sha256": "fb33d5937e3810cdf37aa4d42871d4b496dbb6f45d39db2c839d06e0356b6664",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": "threads-1-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "b687071dc311802e6bca8a1abcbe5f03256672dd01811b0774119cc8c740ec4c",
+      "batch": "20261104T193612",
+      "execution_sha256": "5cd57ab9e04bffc11b18369b4f64cfa3417f031ccb060fdcf95fd26d2c462a27",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "1a64863bc2d896ac1a91b11df5db4e2ed74bc9f31271354716a55faee5a071aa"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": "threads-1-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "b687071dc311802e6bca8a1abcbe5f03256672dd01811b0774119cc8c740ec4c",
+      "batch": "20261104T193612",
+      "execution_sha256": "b6f707eda883c8d7aa07577db6865c363a05fcb853eeb5bb9dff9cdf8a1613ff",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "1a64863bc2d896ac1a91b11df5db4e2ed74bc9f31271354716a55faee5a071aa"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": "threads-1-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "b687071dc311802e6bca8a1abcbe5f03256672dd01811b0774119cc8c740ec4c",
+      "batch": "20261104T193612",
+      "execution_sha256": "4e49331539a57d627abc017f09a4e0d2d4d6362dab1a86bbbed6009ee5540030",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "1a64863bc2d896ac1a91b11df5db4e2ed74bc9f31271354716a55faee5a071aa"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": "threads-1-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "b687071dc311802e6bca8a1abcbe5f03256672dd01811b0774119cc8c740ec4c",
+      "batch": "20261104T193612",
+      "execution_sha256": "9c3f1cd23840ab8d13d9497d0aeb35b9a6f334b6be4a2d90cf3271c72fcac2c4",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "1a64863bc2d896ac1a91b11df5db4e2ed74bc9f31271354716a55faee5a071aa"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": "threads-1-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "b687071dc311802e6bca8a1abcbe5f03256672dd01811b0774119cc8c740ec4c",
+      "batch": "20261104T193612",
+      "execution_sha256": "f34dc057f41d0df1c092f3eabcbcb48a5602ab1d9aff8a3e8e6a3152baf2764a",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "1a64863bc2d896ac1a91b11df5db4e2ed74bc9f31271354716a55faee5a071aa"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": "threads-4-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T193612",
+      "execution_sha256": "fef4256732b5accd85a7fc4c431afd3e38fdd64fb9a7583b88e35045238649cb",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": "threads-4-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T193612",
+      "execution_sha256": "710b1f70e0b82a387ce916e971bb4ac0ba5b2d885cafc87d4668cba93548f4c9",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": "threads-4-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T193612",
+      "execution_sha256": "afc0e2069e125f5f4b45d97b3810a59834cb98b0afcb2245a318842bc7c76764",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": "threads-4-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T193612",
+      "execution_sha256": "952b5ae9b2ec98329b09f694a5dd84aa266a41984067c2625431e9cbc722b027",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": "threads-4-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T193612",
+      "execution_sha256": "42e334671090f8023dc7bc85af734bc3e2c89029d441ba4c560252655c2da6be",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": "threads-1-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T193612",
+      "execution_sha256": "654044bcb0f2cb6fd99c387946a22bcf221422a5d7541a8b1c3c65fc8a62357b",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": "threads-1-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T193612",
+      "execution_sha256": "cb0b9b6acfd0638db1c9cc8041a617cb629179938e5088f34ee65b774f4615fe",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": "threads-1-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T193612",
+      "execution_sha256": "9240fa3dd4da4b817de81396185f276ae331c563948bd40b3a5847a4596ad8cb",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": "threads-1-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T193612",
+      "execution_sha256": "e60abb9c9971656f80934bef69044ed2e62439ede7f953798b9f3bbc1b3a0587",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": "threads-1-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T193612",
+      "execution_sha256": "f617d92481645d8e0bff679e99cf9fcc3f5a5720540b8895277e2993c23acce5",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": "threads-4-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T193612",
+      "execution_sha256": "9b4a7b965168d6b73556dc7dbf4a4d9f8d845d439d049587f9433a4e34a6dc1f",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": "threads-4-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T193612",
+      "execution_sha256": "787ac749cd856dd261123c0cc252580446574f835eaab322464382883d82efab",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": "threads-4-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T193612",
+      "execution_sha256": "fc49e2737ca505f9ed7d737029e0dfceef1975abf864f7f1d07099da104af6c5",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": "threads-4-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T193612",
+      "execution_sha256": "cd581ac4272de8c4f345ad88912437e85117a5c8fb3ca2387036322f16ec6d42",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": "threads-4-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T193612",
+      "execution_sha256": "d3ee48c25a17ee5f0e69fa6adc29981a557b57dffc18ce64c539b3d65fa010b7",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": "threads-1-repeat-1",
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T193612",
+      "execution_sha256": "583d1dc0db1b6690f5ee7f328ae1a0c39f54dc3886ba5389f3202c52039ce5aa",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": "threads-1-repeat-2",
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T193612",
+      "execution_sha256": "bb597a8b0ac6787c7a9a0ebe2adf5bd59412d86f9c5abd15ae3fdfd84e9ce337",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": "threads-1-repeat-3",
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T193612",
+      "execution_sha256": "99f6cc291dad77896fcbb560b800f92f1a71b1d8589b4bbf537a6d3024021191",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": "threads-1-repeat-4",
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T193612",
+      "execution_sha256": "17ff92f1c165f4073ce966cb28065c8328552e9f995f5c08bb0781dd757b0184",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": "threads-1-repeat-5",
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T193612",
+      "execution_sha256": "abc4c579e41bb119ae85dd78c262e56e8a129e4e297aa8f67bf200f589842b6d",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": "threads-4-repeat-1",
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T193612",
+      "execution_sha256": "d8882d07418b8dfdcbff18bbcf3c297aa492be46f4128d38f40e4f02108d4a88",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": "threads-4-repeat-2",
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T193612",
+      "execution_sha256": "1b6e00fd1c9157549a28f0dd9a7ea8eeb11f480fc2ab2ed2f8d50e70766ba35c",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": "threads-4-repeat-3",
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T193612",
+      "execution_sha256": "dc1767d3f5090495b1e788c5ad4c1a75b430bf235c79eae1dc1c3ceafe5e57d5",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": "threads-4-repeat-4",
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T193612",
+      "execution_sha256": "1100fd2298462adf02e27e7776c5994bac20b7768251b3eb36ff8d737f6ed685",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": "threads-4-repeat-5",
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T193612",
+      "execution_sha256": "25f0d6765a7ea0283890e83545b6b2ffeacf2b9835e6d0bab9d34e0d28a355f3",
+      "input_manifest_sha256": "8535aecf838a2cbabca4ef2e9bef473bfdae36d136d565ff3b8eadf0007c756e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye",
+      "run_id": "threads-1-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "9350088406b5130203acf73c51f3ccb0ccb5f3b5321ac063f4bd4a1b526de5d1",
+      "batch": "20261104T193612",
+      "execution_sha256": "6c95f33801584de1480a139ed996c83f509e5284c8341ea4bfd9757ce6871753",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "7804c50c62516d9c4b15b0d6cdba038033c506e4dcbc57a9027a27f2c8af1182"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye",
+      "run_id": "threads-1-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "9350088406b5130203acf73c51f3ccb0ccb5f3b5321ac063f4bd4a1b526de5d1",
+      "batch": "20261104T193612",
+      "execution_sha256": "4fd40c656c91eb24ad3a851c4d73b5b866715eb7758eedfaed878994412171f5",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "7804c50c62516d9c4b15b0d6cdba038033c506e4dcbc57a9027a27f2c8af1182"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye",
+      "run_id": "threads-1-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "9350088406b5130203acf73c51f3ccb0ccb5f3b5321ac063f4bd4a1b526de5d1",
+      "batch": "20261104T193612",
+      "execution_sha256": "6e62e30d97d5a57f38843423a2544f448aa8d93e3155a9c029cd60080285267f",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "7804c50c62516d9c4b15b0d6cdba038033c506e4dcbc57a9027a27f2c8af1182"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye",
+      "run_id": "threads-1-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "9350088406b5130203acf73c51f3ccb0ccb5f3b5321ac063f4bd4a1b526de5d1",
+      "batch": "20261104T193612",
+      "execution_sha256": "cb3ed6d6078a3b848a3a31b7f4b5ac5c8ddf2228da9667a6f4044e1c8e1e1729",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "7804c50c62516d9c4b15b0d6cdba038033c506e4dcbc57a9027a27f2c8af1182"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye",
+      "run_id": "threads-1-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "9350088406b5130203acf73c51f3ccb0ccb5f3b5321ac063f4bd4a1b526de5d1",
+      "batch": "20261104T193612",
+      "execution_sha256": "c7ba39b5c0d779029fd46070b70622b412a91d8f8845ede75f85e09fbec91f40",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "7804c50c62516d9c4b15b0d6cdba038033c506e4dcbc57a9027a27f2c8af1182"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye",
+      "run_id": "threads-4-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T193612",
+      "execution_sha256": "72102ce90dc247f56deb3a983b7fcb8babc06b0557ee09671427558c77916165",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye",
+      "run_id": "threads-4-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T193612",
+      "execution_sha256": "016e8e6f1cfa64f1501cfaf8fb1e12a9d74820b5957c016c1e3c4d2c66aacd53",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye",
+      "run_id": "threads-4-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T193612",
+      "execution_sha256": "00f8ba48ed07215c57c9690b9fb010330a6c7fbe1b99cac1fc273b39a0f39396",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye",
+      "run_id": "threads-4-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T193612",
+      "execution_sha256": "dfaa77eaa32134c89691aed95e61df17328b81368efc0e0a0ba3243a905ff005",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye",
+      "run_id": "threads-4-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T193612",
+      "execution_sha256": "184fb25946f7b4f9f95917e9556796a86b77d233289bdab2719927403f87a57c",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye-meta",
+      "run_id": "threads-1-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "9350088406b5130203acf73c51f3ccb0ccb5f3b5321ac063f4bd4a1b526de5d1",
+      "batch": "20261104T193612",
+      "execution_sha256": "259ac5a6c92d74a0acb3db735126c4e6778579bff6c307bd8ecf3342ddd65d05",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "7804c50c62516d9c4b15b0d6cdba038033c506e4dcbc57a9027a27f2c8af1182"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye-meta",
+      "run_id": "threads-1-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "9350088406b5130203acf73c51f3ccb0ccb5f3b5321ac063f4bd4a1b526de5d1",
+      "batch": "20261104T193612",
+      "execution_sha256": "c31b8b97fdc169ccc9c530573efd0fe21fa55db16c0020a6a8f56b04bb844b4a",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "7804c50c62516d9c4b15b0d6cdba038033c506e4dcbc57a9027a27f2c8af1182"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye-meta",
+      "run_id": "threads-1-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "9350088406b5130203acf73c51f3ccb0ccb5f3b5321ac063f4bd4a1b526de5d1",
+      "batch": "20261104T193612",
+      "execution_sha256": "0bef5b62ff55f5a1fcff657f60e188505d9b04397a67643ce735126e4df32608",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "7804c50c62516d9c4b15b0d6cdba038033c506e4dcbc57a9027a27f2c8af1182"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye-meta",
+      "run_id": "threads-1-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "9350088406b5130203acf73c51f3ccb0ccb5f3b5321ac063f4bd4a1b526de5d1",
+      "batch": "20261104T193612",
+      "execution_sha256": "08e3be0962bb7b6b01cdeeeabddf004a32e3f427e20d8bc8a408de529c5ed27f",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "7804c50c62516d9c4b15b0d6cdba038033c506e4dcbc57a9027a27f2c8af1182"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye-meta",
+      "run_id": "threads-1-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "9350088406b5130203acf73c51f3ccb0ccb5f3b5321ac063f4bd4a1b526de5d1",
+      "batch": "20261104T193612",
+      "execution_sha256": "440c74949430469e87f6023c6993834ae79b12f6955c048c05d16ef3546e2637",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "7804c50c62516d9c4b15b0d6cdba038033c506e4dcbc57a9027a27f2c8af1182"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye-meta",
+      "run_id": "threads-4-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T193612",
+      "execution_sha256": "fcaf737663355d18fbaf069982af58da199bf4e87e1a8de462f141555811c240",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye-meta",
+      "run_id": "threads-4-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T193612",
+      "execution_sha256": "27e0cd42a5aad123d95add26e3437759a68d8ca1273d333158e926124a240485",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye-meta",
+      "run_id": "threads-4-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T193612",
+      "execution_sha256": "944495636d956c44fb14adabdde98650bffff911d0a913d0f3f187623dfc60ec",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye-meta",
+      "run_id": "threads-4-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "2b6972148dc44dd65d8b9878d9d3f6188cba562a2363889823fdcc94d921238d",
+      "batch": "20261104T193612",
+      "execution_sha256": "28b2735552781223b79475ad581579e0520dfc804ef0d4e483bf8b993d8c566f",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "848ee4cf8415295a242167066b3bdae03bdc702a2bcd1a70b0b5ac71e697bdf6"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye-meta",
+      "run_id": "threads-4-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T193612",
+      "execution_sha256": "1c659543caff5b9a85e41425da880a85822dee0b1e473a107dde819296aa28e3",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "raven",
+      "run_id": "threads-1-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T193612",
+      "execution_sha256": "9543bfe7e23446574bb42da37e5a3c42f457cadf888bdb1121a5fc22cbfbd1c6",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "raven",
+      "run_id": "threads-1-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T193612",
+      "execution_sha256": "683765d4e27f0be03573db5822a1758b4a548f7a45603e0d0c04798408204bae",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "raven",
+      "run_id": "threads-1-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T193612",
+      "execution_sha256": "f91d642ece7700acda4655dabc4be8348e1a1fee8c78a7210f0709a5c7b22f92",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "raven",
+      "run_id": "threads-1-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T193612",
+      "execution_sha256": "28878f185cb72663b9cf1d130a46419fdd324f030d5a3bc24902122ab7da02ee",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "raven",
+      "run_id": "threads-1-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T193612",
+      "execution_sha256": "e80ad5fd3c5170d11eb83f670be943136a95654276da469d643f77aee4912fc5",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "raven",
+      "run_id": "threads-4-repeat-1",
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T193612",
+      "execution_sha256": "19618c10a1a2c5e0ac3d41a9bed1b668fa9dc0977b9ebd298e3f195693b2ec24",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "raven",
+      "run_id": "threads-4-repeat-2",
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T193612",
+      "execution_sha256": "fec39442d98e442cccff791cec2d52fbeaeaf8bdc07f33d3f13f2d478f8250fb",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "raven",
+      "run_id": "threads-4-repeat-3",
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T193612",
+      "execution_sha256": "bb972cdd88bdfbf956729c4c6fe49015a4a8838bc7ea85459c9c61df801b8c26",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "raven",
+      "run_id": "threads-4-repeat-4",
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T193612",
+      "execution_sha256": "e14fe4ef2678065226da0efaca1e219cfc085a68b5ac60fe26a14844f626ae44",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "raven",
+      "run_id": "threads-4-repeat-5",
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T193612",
+      "execution_sha256": "8fc37d96ac282592151d8d64b8e15c1e26c1450b0fd92b7d27811d325924380b",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "plassembler",
+      "run_id": "threads-1-repeat-1",
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193612",
+      "execution_sha256": "76d37924aed0c38e6f8d1442b78a52804e6b99128acbfa2d55f6dd9c99c154a9",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "plassembler",
+      "run_id": "threads-1-repeat-2",
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193612",
+      "execution_sha256": "8486850cfe9c62a0824f7e0b37e0725e2ca4eee88a132802a7a3336c684ef4b8",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "plassembler",
+      "run_id": "threads-1-repeat-3",
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193612",
+      "execution_sha256": "e25823676574756b37b49012de93f202378ad50b408c2ed8ce7c547a815f3bd0",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "plassembler",
+      "run_id": "threads-1-repeat-4",
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193612",
+      "execution_sha256": "5fd41464b5f1313b089efa5c6df48a12a06ebce9fd1c31ea67c0d16060dae0be",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "plassembler",
+      "run_id": "threads-1-repeat-5",
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193612",
+      "execution_sha256": "b68c77ad3e5b9c984dfa61c21d268a0080de8d0bd73c87c851e2f9b734651dd8",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "plassembler",
+      "run_id": "threads-4-repeat-1",
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193612",
+      "execution_sha256": "d583c51804de9204ad7d26050c9c9ef08428d3109c3d463329769cbf8e5ae93d",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "plassembler",
+      "run_id": "threads-4-repeat-2",
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193612",
+      "execution_sha256": "6971b715f79486d590797baa36db63e0aabfe0fb27a92d3a73e98339a15ca837",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "plassembler",
+      "run_id": "threads-4-repeat-3",
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193612",
+      "execution_sha256": "4fb5905d56335e7cc5f188e155bc797f5f567f4ee44d3e5d6272de792ebbfde3",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "plassembler",
+      "run_id": "threads-4-repeat-4",
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193612",
+      "execution_sha256": "436beaa83cf7a466831053e6c98f5689c00bd04261cfdc8d1d805474b280a717",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "plassembler",
+      "run_id": "threads-4-repeat-5",
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T193612",
+      "execution_sha256": "9cd29e23ce9b8925606f99685ba4bde8ecebffae738cff10ad994d2f9b531486",
+      "input_manifest_sha256": "9f3a67480ece155bbefe579b6b45f8bace79b9aa0b359dc758c994bf7ff3c5d3",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "6dcc33ee50ad71ce0ad2bbc360aceb55f284d5801008e2b0b2ef771a07da8c2b",
+      "batch": "20261104T210453",
+      "execution_sha256": "495bcfb2b04f2e9079824073d6d0dd8db8f19ece9108898ee15d7a9b97855795",
+      "input_manifest_sha256": "4c4c97de0053732d76c63c76986bc6cb4f08db5018b960d4abc324a4055f6220",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "9c3460ceffe100ebaa172db43cd65d76a511032860b74b10dcd573891a513d16"
+      }
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "fc357d63171cedd4d487b8e91120c1f342145b94ee087e315d891d5ec4a2b9e6",
+      "batch": "20261104T210453",
+      "execution_sha256": "d9a243bcf9ae14427d37f2f1d91f4b88a96b7c4fd1e37847bb243cea97a70120",
+      "input_manifest_sha256": "4c4c97de0053732d76c63c76986bc6cb4f08db5018b960d4abc324a4055f6220",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "375db4ece9a517f190a2a163b5eebdbd1b2eb2b424078f61f7c4880c50301039"
+      }
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "30edccfb9fd0b4eba56b2a081ed378476cf13a8c9973ea7a13f8cf838361956a",
+      "batch": "20261104T210453",
+      "execution_sha256": "46090649c954437f4e4ca9d31e328aef6966bf7d3b508f97e6b373b265709a65",
+      "input_manifest_sha256": "4c4c97de0053732d76c63c76986bc6cb4f08db5018b960d4abc324a4055f6220"
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-matched-exact",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+      "batch": "20261104T210453",
+      "execution_sha256": "014284567724dc1afb78644a49e23de0be32b21d3bb7a0ee7fb8e92ac2262a69",
+      "input_manifest_sha256": "4c4c97de0053732d76c63c76986bc6cb4f08db5018b960d4abc324a4055f6220",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "feabb96e9464ad1d221e79d3fed9bc26e416deba1485564c4b9fe4897d5eca92",
+      "batch": "20261104T210453",
+      "execution_sha256": "aa36d9efe53c1e61f440b0fc2c78dfc2fbc10a91496df993dc509579b94207c6",
+      "input_manifest_sha256": "ca9a95a1f6755b49bd7a1828109f1f3d70ccf5d663adb0da26fc60bf173c94cb",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "072410e5b727ffa63bc789722e03865f6e6eee8d8bf8c4353b9bec0adfee03be"
+      }
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "ce19ad8bcdb405dc8722576f984af21df4dac42b8cb1dbaffbc825fe63b7ea6a",
+      "batch": "20261104T210453",
+      "execution_sha256": "85a2a204430ec116ff1995982ab7f36b137695229f5f55d788f3564a50cdea3a",
+      "input_manifest_sha256": "ca9a95a1f6755b49bd7a1828109f1f3d70ccf5d663adb0da26fc60bf173c94cb",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "a6310ccf070d5c90a05fc3820d276ed3eb0b436a4bd5e0bd1e19173d87882b94"
+      }
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "57b2b986f3efa49e576e6e1e82e022daf52c8bcb72487bd13e21107e7b5db411",
+      "batch": "20261104T210453",
+      "execution_sha256": "97078c2e56da3f9d7049a58403a7430fd485ec24ce0f69c22dbde15ce1270b0c",
+      "input_manifest_sha256": "ca9a95a1f6755b49bd7a1828109f1f3d70ccf5d663adb0da26fc60bf173c94cb"
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-generic-stress",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+      "batch": "20261104T210453",
+      "execution_sha256": "1173e070327ca9922e514da2cb6eafd230ed179b6896c82c01d9d362995206dd",
+      "input_manifest_sha256": "ca9a95a1f6755b49bd7a1828109f1f3d70ccf5d663adb0da26fc60bf173c94cb",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "62dcc071f73cea7db7128ae82ed10c0ec1117afc07d407f5e77fc31c3316e044",
+      "batch": "20261104T210453",
+      "execution_sha256": "9d2f4f604e2d89459b198e5e59d7e081275ed2df724f6e72f79f5b425cb1a69b",
+      "input_manifest_sha256": "d43db2b36f820b9476d0c9fae85f6e5a3e78f4890b9679c420516f53259192da",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "e2309e40318dbee25b90a27d739e5cda25ab497e6ab9b873be6ab74f19e13e50"
+      }
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "fa2530a95b551dbc9a8a78a045a3d556d77258b77b9b290fb21cc485938eed05",
+      "batch": "20261104T210453",
+      "execution_sha256": "3ec5aa0f9cc3e94dac719939623572e86857488c5b7054b0a1245caa05ffd15c",
+      "input_manifest_sha256": "d43db2b36f820b9476d0c9fae85f6e5a3e78f4890b9679c420516f53259192da",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "9436b97199009b51319b64d0e9b72e550a807507bec74eaf4c972570d8c9bb8f"
+      }
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "f4b7953fb87089317c026cd79067f199d33cedd3a3aedfc6e9e15525e6912f43",
+      "batch": "20261104T210453",
+      "execution_sha256": "f3c717a92af35373866ef10d8145de71a89632c765a39a6b8ce06b8b8ed2f5db",
+      "input_manifest_sha256": "d43db2b36f820b9476d0c9fae85f6e5a3e78f4890b9679c420516f53259192da"
+    },
+    {
+      "scenario_id": "s6-w-prk2-seed-20261105-ont2023-shaped",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "99e0d206f60f116fdcb86b65e80e1be6aae320a43521e0291accf7c5e3b791a4",
+      "batch": "20261104T210453",
+      "execution_sha256": "0615fd3441adeb678d2867829e0429903d91e2f28cd5521da1bd3a60e65c7673",
+      "input_manifest_sha256": "d43db2b36f820b9476d0c9fae85f6e5a3e78f4890b9679c420516f53259192da",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T183058",
+      "execution_sha256": "520e676797e322fc891fb97202203d40253b46af3cb7bc02db9dfd00f8f8d78f",
+      "input_manifest_sha256": "375bb7137ec826fda97a47770f2883dc324948e49145ab99a5df8d428256564a",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T183058",
+      "execution_sha256": "4f8940eca33c40e2ebe66a111d211a5a67ef829548b398eceaa361ac8c7feab1",
+      "input_manifest_sha256": "375bb7137ec826fda97a47770f2883dc324948e49145ab99a5df8d428256564a",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T183058",
+      "execution_sha256": "fdffbac92ede99ee032b6a8e852aba9dd3434b8f6101cb2a430cf9837df4012d",
+      "input_manifest_sha256": "375bb7137ec826fda97a47770f2883dc324948e49145ab99a5df8d428256564a"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T183058",
+      "execution_sha256": "37de891c2cf985225951d2ae310a2e771c807531137c288ed007f147bd070bc6",
+      "input_manifest_sha256": "375bb7137ec826fda97a47770f2883dc324948e49145ab99a5df8d428256564a",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-mg1655-chromosome",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "43631f649153413267f2bb5766be60b8db5fbf0f3297c51cd7a27de65cd6ab1d",
+      "batch": "20261104T190455",
+      "execution_sha256": "1f4bf3dbccbb7a37d6567d40d646bec29e212354867f33df0c1761b9c0a6a1ee",
+      "input_manifest_sha256": "c890a421cdc37545dd5236676964cf110197614a2fa8061032382482c1fd6106",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "a27baf47dd94d74ca6436061b9238eecd2053660101cb314a28ffb6c2b819104"
+      }
+    },
+    {
+      "scenario_id": "s1-mg1655-chromosome",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "43631f649153413267f2bb5766be60b8db5fbf0f3297c51cd7a27de65cd6ab1d",
+      "batch": "20261104T190455",
+      "execution_sha256": "de3d8007c0a155132955b94c95f2a2baea1c629163f09bd964aaeee25c26d1e7",
+      "input_manifest_sha256": "c890a421cdc37545dd5236676964cf110197614a2fa8061032382482c1fd6106",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "a27baf47dd94d74ca6436061b9238eecd2053660101cb314a28ffb6c2b819104"
+      }
+    },
+    {
+      "scenario_id": "s1-mg1655-chromosome",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "7aada9857d09d5f69750320b8f60b9dfff12f4864a0811fa40ece45252de72af",
+      "batch": "20261104T190455",
+      "execution_sha256": "85040d16cc9fcb7092266ee2fb8614aa446714dce42f837fb1330fc41c526209",
+      "input_manifest_sha256": "c890a421cdc37545dd5236676964cf110197614a2fa8061032382482c1fd6106"
+    },
+    {
+      "scenario_id": "s1-mg1655-chromosome",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "batch": "20261104T190455",
+      "execution_sha256": "45e1b746319966d493f7a6d4a97e80c4874f1dd30c8dcd7c5c18b8862b5d380a",
+      "input_manifest_sha256": "c890a421cdc37545dd5236676964cf110197614a2fa8061032382482c1fd6106",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "scenario_id": "s1-w-chromosome",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T190455",
+      "execution_sha256": "a590e14143897cee1a4db532c17a33dd435c5867c2fc7af9549e439950cf6829",
+      "input_manifest_sha256": "d4254cc519ba2d8c912b74e5dc6030a92267c6b3b8a5beee039daca5c1225510",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s1-w-chromosome",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T190455",
+      "execution_sha256": "c2f2be6c28fcdf3096b259a2c2a182453b858ec5c1bfe6b89d49b75a63c29015",
+      "input_manifest_sha256": "d4254cc519ba2d8c912b74e5dc6030a92267c6b3b8a5beee039daca5c1225510",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s1-w-chromosome",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "82056afc2006cfc18240cf18410347b90a7df209e7c7841f16a2c75a85b3cd8b",
+      "batch": "20261104T190455",
+      "execution_sha256": "f392ae7414e65fbd658d4bf4cfac5a92a1ac10e5c537c6d4232911075c44cbaa",
+      "input_manifest_sha256": "d4254cc519ba2d8c912b74e5dc6030a92267c6b3b8a5beee039daca5c1225510"
+    },
+    {
+      "scenario_id": "s1-w-chromosome",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "batch": "20261104T190455",
+      "execution_sha256": "748299bdc0dd982e5d704eb981ffa9132b335a16cd4ab46f9eaddfef10e4973f",
+      "input_manifest_sha256": "d4254cc519ba2d8c912b74e5dc6030a92267c6b3b8a5beee039daca5c1225510",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk1",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "f689bcc7845faa36f786773f162877d577ef70e839907c9a2567fb61ede6f130",
+      "batch": "20261104T190455",
+      "execution_sha256": "8f019176c9f37d0bd2d5242c989ad4d03a3f2f235de006f64fd6ed9fd45c2211",
+      "input_manifest_sha256": "c06c3c14390de3b1a3bd8606734d6060b52f807724d731428e17e00caf16695e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "dc8042520b4eb521ba93c94b77adb490ea3a2c8c669b1bbc1905d2217a620618"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk1",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "4f2a0394fcbef803d66b1350b34b3aca7d2ba0efab9253b2e4662589258f516b",
+      "batch": "20261104T190455",
+      "execution_sha256": "e5b4689bd73b5a0432c4e54115e4eb337a4341618b589bb67e1c6cb6c048386b",
+      "input_manifest_sha256": "c06c3c14390de3b1a3bd8606734d6060b52f807724d731428e17e00caf16695e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "a2592fab2bf4f14fc0d0777836465b32a42d05530fa3c0a7608517bf17b87c93"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk1",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "dad80da697451483c2e885fc7025a590ba9c1db3e5117b56f99b0da208b10517",
+      "batch": "20261104T190455",
+      "execution_sha256": "0fbc5c5ff80b5b4bd9ebfc528850581b11264e7c550770f85bd0634d021497c5",
+      "input_manifest_sha256": "c06c3c14390de3b1a3bd8606734d6060b52f807724d731428e17e00caf16695e"
+    },
+    {
+      "scenario_id": "s1-w-prk1",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "a59922e63fc76d815cc7042a35d2addc6b71568e43678466e4520bddf5707618",
+      "batch": "20261104T190455",
+      "execution_sha256": "3f1a49d6d97028c9f8cd190ba1510ea3faa481cc38768c1e9bd9ab090f299e81",
+      "input_manifest_sha256": "c06c3c14390de3b1a3bd8606734d6060b52f807724d731428e17e00caf16695e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "f74c77c52921255d4d49b568c90e6c063c079375dc47061f9e225b5897331a63"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T190455",
+      "execution_sha256": "69c64c07ff2e6b8623ddd71750cba3eff4fb1292d7040e2fe0d109c443ac70f3",
+      "input_manifest_sha256": "826fbbc23fcbadbf23e1cb060f35b0e3ac4063412d800884f9710e03a9c7f07d",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T190455",
+      "execution_sha256": "498b2f23d3f2565d991d5a11174007a77785b768567f5e4001177e86023d2956",
+      "input_manifest_sha256": "826fbbc23fcbadbf23e1cb060f35b0e3ac4063412d800884f9710e03a9c7f07d",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T190455",
+      "execution_sha256": "c7c1e3980239dcf0726835ef9a7da1cd42ebe59067aac6535211db84addfb75c",
+      "input_manifest_sha256": "826fbbc23fcbadbf23e1cb060f35b0e3ac4063412d800884f9710e03a9c7f07d"
+    },
+    {
+      "scenario_id": "s1-w-prk2",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T190455",
+      "execution_sha256": "b8ab8eea372cf961bb7d588370f4e6c8cc4d2d191e81ad2a42f00f12888ba910",
+      "input_manifest_sha256": "826fbbc23fcbadbf23e1cb060f35b0e3ac4063412d800884f9710e03a9c7f07d",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s1-w-native",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "f689bcc7845faa36f786773f162877d577ef70e839907c9a2567fb61ede6f130",
+      "batch": "20261104T190455",
+      "execution_sha256": "4e60f09101e5e2d6281d20979ca164e71116d72a9960ec5948f90ddbe0c40fae",
+      "input_manifest_sha256": "82d862836b27dd684d38765d3a3d7c1b0a40fa3556d2838815e1c74c861cae77",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "dc8042520b4eb521ba93c94b77adb490ea3a2c8c669b1bbc1905d2217a620618"
+      }
+    },
+    {
+      "scenario_id": "s1-w-native",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "4f2a0394fcbef803d66b1350b34b3aca7d2ba0efab9253b2e4662589258f516b",
+      "batch": "20261104T190455",
+      "execution_sha256": "dfb17a702609a092508468c547f5a6e423cd5b8df19b93f04c34e19d77d440f6",
+      "input_manifest_sha256": "82d862836b27dd684d38765d3a3d7c1b0a40fa3556d2838815e1c74c861cae77",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "a2592fab2bf4f14fc0d0777836465b32a42d05530fa3c0a7608517bf17b87c93"
+      }
+    },
+    {
+      "scenario_id": "s1-w-native",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "9b26b27eb58dab6466ffd8e4ce702eb7c242369d38083505802f5fbb62f28603",
+      "batch": "20261104T190455",
+      "execution_sha256": "ebd0b236978fcbec74f09abfe329fd1503fb38c870fbdd6ef96d0dbd72d6285b",
+      "input_manifest_sha256": "82d862836b27dd684d38765d3a3d7c1b0a40fa3556d2838815e1c74c861cae77"
+    },
+    {
+      "scenario_id": "s1-w-native",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "8bc9bb221db4fca68b857f3bcd10b9824dd36a0c36cea06dd96e0b2a9aa443de",
+      "batch": "20261104T190455",
+      "execution_sha256": "59caa4b3c6475addfa28bfe8554aa9a72d17cf9dbd6e84df681a4b8f0efaa2c6",
+      "input_manifest_sha256": "82d862836b27dd684d38765d3a3d7c1b0a40fa3556d2838815e1c74c861cae77",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a0e8277c9725c56539242d6bc9616b2b20dcd6e825096e085f26816e951b4953"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-chromosome",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "7f9dd1a973eb28e8401c44823ccfdb34d82f8d7987d7ac22f626bcdcc38fc69d",
+      "batch": "20261104T190455",
+      "execution_sha256": "3b63aa5fb7cc6624d82723846f0bc35f4e9ed326c9c717258f2509a5c2b9e6ab",
+      "input_manifest_sha256": "f07f71d544629459c7af5d8c2adcb03a367321a2a8d633f14c1c0110e36eeb83",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "b9fa6235c52efed9609d2c488d63088eba79c0fb3ce0673e4c2fbc1ccf984200"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-chromosome",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "6b535212deb319fa39800d1eb401cbba6a48fb64a4cc59e996c69a9486e0630e",
+      "batch": "20261104T190455",
+      "execution_sha256": "c86252d4e78868f22a339affa754ba8740875a95ff79422f763b6d4c6d075583",
+      "input_manifest_sha256": "f07f71d544629459c7af5d8c2adcb03a367321a2a8d633f14c1c0110e36eeb83",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "0990205732720d667980504a99a5a8d756114a66096da3c2b833eab161933af2"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-chromosome",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "309d7b149036f669ca467c23e27e47d526ffb0e920645de699fa5c15ff1672ff",
+      "batch": "20261104T190455",
+      "execution_sha256": "547ec70dd91ca66c9b17ba42f0dd1c9e45d3b81c256bbe02e9aca5480eac872e",
+      "input_manifest_sha256": "f07f71d544629459c7af5d8c2adcb03a367321a2a8d633f14c1c0110e36eeb83"
+    },
+    {
+      "scenario_id": "s1-se11-chromosome",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "batch": "20261104T190455",
+      "execution_sha256": "f0eacf3cdfd5009cf69aadb1de27fb1ae6c947807b867667d1f24b501b86685e",
+      "input_manifest_sha256": "f07f71d544629459c7af5d8c2adcb03a367321a2a8d633f14c1c0110e36eeb83",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-1",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "580f79d1a0bcd1fce60c754f0f23311ebcc6ea734d3071f2c749efabd96e30c8",
+      "batch": "20261104T190455",
+      "execution_sha256": "0fc8cc8b4364ed852b5f9601962015c31f849212fb4be569af26001f2faf8a71",
+      "input_manifest_sha256": "4a21165ea908805323fae4f888118749ee1184ea4b7d54b76c9b8f9e0c98578c",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "3ee1741d4308a41828c0374d10ad8a12123a021215b6635569db6de1ae09f515"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-1",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "3abf0a34dc637e912f5dc3e2a192e434db6522d88699320f3361be33a348d1f6",
+      "batch": "20261104T190455",
+      "execution_sha256": "20e0b7a2fdbd932eb832bf6597f7d59468c53aa2b1b7d2f896ed3a6ed07f0ecd",
+      "input_manifest_sha256": "4a21165ea908805323fae4f888118749ee1184ea4b7d54b76c9b8f9e0c98578c",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "4092201314cacaa83572f0d30f46906871d395043119a174baee4f7d34d1aa5c"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-1",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "2f41a1958e1c0d7f1f060434933dd3ca12112804975c7a46d98886fadb7edb38",
+      "batch": "20261104T190455",
+      "execution_sha256": "9cf2d7edb824b5d16080fb70259b32d9470273f6447cc44606c30a616bde6eed",
+      "input_manifest_sha256": "4a21165ea908805323fae4f888118749ee1184ea4b7d54b76c9b8f9e0c98578c"
+    },
+    {
+      "scenario_id": "s1-se11-pse11-1",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "5ee97c7a34bbc394719a66cb610a2067d5efd41bf50a7672eb605bb8175a5395",
+      "batch": "20261104T190455",
+      "execution_sha256": "347e3c6285dda337602fc1c3f3ecf01364315339981876f6c41d97f0efb5d7ff",
+      "input_manifest_sha256": "4a21165ea908805323fae4f888118749ee1184ea4b7d54b76c9b8f9e0c98578c",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "d2601533c8b90c5be9b903ebec8596b3dea41be5374bc9b183a8b039c4aaeff2"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-2",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "04c1a2cdf5aef5b4e4b57efbef4b5adf088e2c68fa2e497cf0deb099a708f1df",
+      "batch": "20261104T190455",
+      "execution_sha256": "caec2b4f4aef743a677c0489580572cf91cc9a7004822f3b44f84853a1692305",
+      "input_manifest_sha256": "e0f2c2aea22d6ad1a968f421404bbf0a8982e8a22670dce39ed52b04e2f29d47",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "2fb940b56adff01ee6dc3fd5eacd5520f50a262c69f64f335ea3e92b129d956f"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-2",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "5a1f2235cf803639d4f490856f9f6d2567e582a8e1f5985cbcf0a4509fc27fff",
+      "batch": "20261104T190455",
+      "execution_sha256": "0ca8bebe227b8aa55159679779d2aabc50557acc52bccb655be1086a31729119",
+      "input_manifest_sha256": "e0f2c2aea22d6ad1a968f421404bbf0a8982e8a22670dce39ed52b04e2f29d47",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "53972662d180f7d4775bbd323f12c6c5c966b1c01c793b037ea1fed4bd714527"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-2",
+      "tool": "raven",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "231784e615f6f57c2adfbbb07af28d0bb3494a8e687c3357fb8c3685e781a38b",
+      "batch": "20261104T190455",
+      "execution_sha256": "68229df2ccc93525f79dac1d09d4b919b699f862d8f4fc7c95e6db35ebf9ec1c",
+      "input_manifest_sha256": "e0f2c2aea22d6ad1a968f421404bbf0a8982e8a22670dce39ed52b04e2f29d47"
+    },
+    {
+      "scenario_id": "s1-se11-pse11-2",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "00415dd5e944b940d5c3cc094ca38ff7a3b6b2a6f8358c3350af3f493ac1d9c9",
+      "batch": "20261104T190455",
+      "execution_sha256": "6999edc0a58f2b5b1e2fbd094c9059daa1acb0cca5c8aadd72faa9110dd8496d",
+      "input_manifest_sha256": "e0f2c2aea22d6ad1a968f421404bbf0a8982e8a22670dce39ed52b04e2f29d47",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "0c486edf716bbac8b5630c0d8b86acf5c4254ffc98ce23b8d30c46e4ddfd7d12"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-3",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "5a97467afdfcf66842902a1ff19e15ac6cab50e89e2a80c7a215d27ba3ccabc0",
+      "batch": "20261104T190455",
+      "execution_sha256": "6178425b3e40d5dbc4e503fdcab87944e09ec80fe70fac41559c184b40b32e04",
+      "input_manifest_sha256": "6d315ad6ef6ce87997c4df98a8c229a01834dc928aa0ebb2128a921d0eaa9c2b",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "e77aaae561caa68ed96bb9e312d317fa1737652d1afd311a426fc1e4f6c4e744"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-3",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "0b88e6ad21c841a968279487859ffc80d6538b9c947fd156a3e5829063c9bb3a",
+      "batch": "20261104T190455",
+      "execution_sha256": "400571bba4ddf77d865076aeb3e7968752842b420228f340eeb4bf15df95a5d5",
+      "input_manifest_sha256": "6d315ad6ef6ce87997c4df98a8c229a01834dc928aa0ebb2128a921d0eaa9c2b",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "131417b522b7aad7c8b08d3ae6c7440f1da848fd5976726284f42837bd27c99f"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-3",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "3de852a4b2680f592fd55d0d411a0fb8cf899287ee875211486156a5f6a128c9",
+      "batch": "20261104T190455",
+      "execution_sha256": "98aaeb905b03337f8ef533200649be7ae862bef07da9d9084b96bbbca9226de9",
+      "input_manifest_sha256": "6d315ad6ef6ce87997c4df98a8c229a01834dc928aa0ebb2128a921d0eaa9c2b"
+    },
+    {
+      "scenario_id": "s1-se11-pse11-3",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "6dae1cbe64edace066626ecbc8029f766e915863bd12d470adef3ad297ccb60d",
+      "batch": "20261104T190455",
+      "execution_sha256": "ec5228392fa7053dec36cbe89b3ceeb4e6e242bc4a9a5dd8d734fac3b9cddeb0",
+      "input_manifest_sha256": "6d315ad6ef6ce87997c4df98a8c229a01834dc928aa0ebb2128a921d0eaa9c2b",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a0512abc170e9792a6e6e867030e3f81ba53d27312a253d36cd952694db17647"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-4",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "e91f9d7dc68cf9eab176f0729a23bfabeca8dd7410d39a4132125baeec19af08",
+      "batch": "20261104T190455",
+      "execution_sha256": "5d0fb000c3895d7a17dc40f8568750c9ec3ffb0e5174884a9fd60b188ea56d41",
+      "input_manifest_sha256": "cab5756cdd714fcfef3b4136ada0196c5f2e7443c0d13a926713688475437b3e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "292c5ecfa39d6ff21fed196d2399524ebd31c0e1e9255479570553394e90b146"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-4",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "f5f4d2bf13c0286122453e0215c7213338fa75192c401bf3f077cf0b63a1e069",
+      "batch": "20261104T190455",
+      "execution_sha256": "830b4c911501742f130f966ed74ca24c4bf76e821f5019b49ca4dc76e678b902",
+      "input_manifest_sha256": "cab5756cdd714fcfef3b4136ada0196c5f2e7443c0d13a926713688475437b3e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "3a27a71ee7f725fd5546bb7ad0cdb9468b3748e37112d50c237134afcbb21334"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-4",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "bf9b71f13cc51027d84137af4bdfa55e9894048a90440c50b66e1e404855c460",
+      "batch": "20261104T190455",
+      "execution_sha256": "97b3d83423723ebde367011246964f87e50dac88050f5a659e05c08247f0ee00",
+      "input_manifest_sha256": "cab5756cdd714fcfef3b4136ada0196c5f2e7443c0d13a926713688475437b3e"
+    },
+    {
+      "scenario_id": "s1-se11-pse11-4",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "f6b0bb018b7599f6f69197b61bab83cd9016ddb7048e28b56107df16999bffdf",
+      "batch": "20261104T190455",
+      "execution_sha256": "eb79e02d9d872c74cad0db75b3d5364e8e6723bac25e7b205f4ed340718f8a0f",
+      "input_manifest_sha256": "cab5756cdd714fcfef3b4136ada0196c5f2e7443c0d13a926713688475437b3e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "7338b6fd74ba9ec725506d203ef3454076480dc2cafc055df4b31a43060e3b50"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-5",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "7f9dd1a973eb28e8401c44823ccfdb34d82f8d7987d7ac22f626bcdcc38fc69d",
+      "batch": "20261104T190455",
+      "execution_sha256": "74a4c002e820c5188923a256780dbd6adeea53b7645b0df5c2840c411ea26eba",
+      "input_manifest_sha256": "bd0d0b4ecd2829a8afff399bd972533cd6243099c52f7d1ef365565acc2a33a6",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "b9fa6235c52efed9609d2c488d63088eba79c0fb3ce0673e4c2fbc1ccf984200"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-5",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "6b535212deb319fa39800d1eb401cbba6a48fb64a4cc59e996c69a9486e0630e",
+      "batch": "20261104T190455",
+      "execution_sha256": "9bc0dcc8d9b2f7f91c240fce1a32fb442a1cd776ec792b2ad3c6a4ddbc429b44",
+      "input_manifest_sha256": "bd0d0b4ecd2829a8afff399bd972533cd6243099c52f7d1ef365565acc2a33a6",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "0990205732720d667980504a99a5a8d756114a66096da3c2b833eab161933af2"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-5",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "710fcfcdbf1f24df627e26ac1ab73b20db96a72c24135a37339f41430338d8fe",
+      "batch": "20261104T190455",
+      "execution_sha256": "8edda7a07443ef58c4e70396652189b9ec629b72de1a4013f8f25915f7314202",
+      "input_manifest_sha256": "bd0d0b4ecd2829a8afff399bd972533cd6243099c52f7d1ef365565acc2a33a6"
+    },
+    {
+      "scenario_id": "s1-se11-pse11-5",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "24b35ea654d9e1e2c2f7ae67ae3cfeb2ab2e572c0b54aabefb350886ca0aa530",
+      "batch": "20261104T190455",
+      "execution_sha256": "cd65b8eead85be6935498d7ff433f3a2e7f0a83d3ffd335c126882f2d9cfde77",
+      "input_manifest_sha256": "bd0d0b4ecd2829a8afff399bd972533cd6243099c52f7d1ef365565acc2a33a6",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "0e9bf08e504d7a6d6e4889cf5756f3e5141c06f030ca298d0333cc1ac7e8c1e3"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-6",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "7f9dd1a973eb28e8401c44823ccfdb34d82f8d7987d7ac22f626bcdcc38fc69d",
+      "batch": "20261104T190455",
+      "execution_sha256": "725c0ceed4e3665a3e064e508392a047ee3b90b7bcffe16c9f4ed9b49d2b26c8",
+      "input_manifest_sha256": "5189877db9bd1a210ca07a5722dddb69bc3361ac1a6331e55d6568b1aa54a2c6",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "b9fa6235c52efed9609d2c488d63088eba79c0fb3ce0673e4c2fbc1ccf984200"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-6",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "6b535212deb319fa39800d1eb401cbba6a48fb64a4cc59e996c69a9486e0630e",
+      "batch": "20261104T190455",
+      "execution_sha256": "2f00e45ff01a5cdae927ec1a571a55d8caf5952165c83aabbbc31988ba8e24b6",
+      "input_manifest_sha256": "5189877db9bd1a210ca07a5722dddb69bc3361ac1a6331e55d6568b1aa54a2c6",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "0990205732720d667980504a99a5a8d756114a66096da3c2b833eab161933af2"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-pse11-6",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d5aa8902f7fd0a7963f62b0a0ffe68995bb87ddcf26cffde60886d2e76644200",
+      "batch": "20261104T190455",
+      "execution_sha256": "548b627bd95ff0bc3035dc8d34e7508855541dee3792b1a58c769e16d2669766",
+      "input_manifest_sha256": "5189877db9bd1a210ca07a5722dddb69bc3361ac1a6331e55d6568b1aa54a2c6"
+    },
+    {
+      "scenario_id": "s1-se11-pse11-6",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "1817831137e896f3364c8b5e472b544a7cb67cb74200793f85560ad9b2eca05e",
+      "batch": "20261104T190455",
+      "execution_sha256": "2c9bbcf10ca03e831a0eff5c1eca6540421d7d698c52e9e24757b7269d7b1d5d",
+      "input_manifest_sha256": "5189877db9bd1a210ca07a5722dddb69bc3361ac1a6331e55d6568b1aa54a2c6",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "615f6236839108b5d59033e16c9d2240e2c66b22c77790d57e84fb61746bb05d"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-native",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "2a8fdba9ffde51759327d0501e3cb2c4d3ba3ea864c23b22ce8b0b8d79c21f1d",
+      "batch": "20261104T190455",
+      "execution_sha256": "f0d353d5fdb1d7e2ef160b2f7823f334295b518bc8ac19352ac98c68d6f7af42",
+      "input_manifest_sha256": "4d473ae0bbfad86dcb82f998e981d36bf9245af0a30be50e04c29c5e82e58b91",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "bb2433371cd488562cb580f2ab727faff09b8f05e3ecded886923add4b5be81e"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-native",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "f92cd0d7d6d017edc08d377896daca2d10ff40f15fd39304cf2280fa5ec1d071",
+      "batch": "20261104T190455",
+      "execution_sha256": "5a7b961beac41158ae6e83208896d018ec83c556596427ce3894b291b31d6353",
+      "input_manifest_sha256": "4d473ae0bbfad86dcb82f998e981d36bf9245af0a30be50e04c29c5e82e58b91",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "a71a5b1f0c41da0bd5c68a0b14f493bd54b72ca0f600aaad71d7d956afb6b196"
+      }
+    },
+    {
+      "scenario_id": "s1-se11-native",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "8949cd2001ca40c52f44cbf82fb04173b89c7271ead537198599fc90956a673a",
+      "batch": "20261104T190455",
+      "execution_sha256": "cd81aaab4ce832569b81c80c7e35a8479e08ab52ede1ebea07cc0e5aee12e839",
+      "input_manifest_sha256": "4d473ae0bbfad86dcb82f998e981d36bf9245af0a30be50e04c29c5e82e58b91"
+    },
+    {
+      "scenario_id": "s1-se11-native",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "98521a899c3d1e1abeb211899a7c96b1d5e80e542b296e41982cd74d16d7ee0c",
+      "batch": "20261104T190455",
+      "execution_sha256": "89fde120f387a7b51edfd8c73cec4c83f0aca2a7bf4e91f3774cd4b5fc9e7083",
+      "input_manifest_sha256": "4d473ae0bbfad86dcb82f998e981d36bf9245af0a30be50e04c29c5e82e58b91",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "3bc0afa667ccc14d4d5be4efe424a69bac92a7fc80823ea18cfeec339ff768c6"
+      }
+    },
+    {
+      "scenario_id": "s1-ecl8-chromosome",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "324f7054b3129af6b5882b3470ee81a8a2870063ffd5dff52bd515ea58599891",
+      "batch": "20261104T190455",
+      "execution_sha256": "601047df0d597a3015a108ea3430fd0db5a79e4e9de916ad4ebf9a972d10aa2a",
+      "input_manifest_sha256": "3a5f33ae86e0c262a8c810a8837fe417760344096d73d907a80638b789ceb4c3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "0e8024b0436d42834904eaeaaf0bc104bc9168612a4be43e0db7c86ebb0048bb"
+      }
+    },
+    {
+      "scenario_id": "s1-ecl8-chromosome",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "324f7054b3129af6b5882b3470ee81a8a2870063ffd5dff52bd515ea58599891",
+      "batch": "20261104T190455",
+      "execution_sha256": "c329b6160bb98aa23c7ce371ea92c2bf547716b7f67915d03759f88105575040",
+      "input_manifest_sha256": "3a5f33ae86e0c262a8c810a8837fe417760344096d73d907a80638b789ceb4c3",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "0e8024b0436d42834904eaeaaf0bc104bc9168612a4be43e0db7c86ebb0048bb"
+      }
+    },
+    {
+      "scenario_id": "s1-ecl8-chromosome",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "b7f19838055812569d35bbb9fdc2b3fe8e891d24e14d2fbba8bb99bfbcf21da9",
+      "batch": "20261104T190455",
+      "execution_sha256": "d368076f54c34054a37f0f5752d17cff580c696464424802fda99acb6c34463b",
+      "input_manifest_sha256": "3a5f33ae86e0c262a8c810a8837fe417760344096d73d907a80638b789ceb4c3"
+    },
+    {
+      "scenario_id": "s1-ecl8-chromosome",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "batch": "20261104T190455",
+      "execution_sha256": "453ffb49f6fbe81dafe68f16a5371b33ff5cbd9810f05ddb3ac6c7d0355e4891",
+      "input_manifest_sha256": "3a5f33ae86e0c262a8c810a8837fe417760344096d73d907a80638b789ceb4c3",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "scenario_id": "s1-ecl8-pecl8",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "860894db9911148a58e0d5fd288da8c8c8044baba8bd94524f93282607c5e119",
+      "batch": "20261104T190455",
+      "execution_sha256": "3337998b23d2d1f85529c9909536b4f8ed698034011f20bdcf053a60a8a3a4e1",
+      "input_manifest_sha256": "c92c120f2896a7f59fb5599a737dcce40e19ea6a9e8944fd50598d3576dd9c2b",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "2948d170af5c2a02dd448b143618c717088302e4b92aed238c3dcaeb12345d96"
+      }
+    },
+    {
+      "scenario_id": "s1-ecl8-pecl8",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "860894db9911148a58e0d5fd288da8c8c8044baba8bd94524f93282607c5e119",
+      "batch": "20261104T190455",
+      "execution_sha256": "1d10d7815b29d99ba97e10f13188df69f074d401ed0d4de58d2598437d036a19",
+      "input_manifest_sha256": "c92c120f2896a7f59fb5599a737dcce40e19ea6a9e8944fd50598d3576dd9c2b",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "2948d170af5c2a02dd448b143618c717088302e4b92aed238c3dcaeb12345d96"
+      }
+    },
+    {
+      "scenario_id": "s1-ecl8-pecl8",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "8510142ae390fa45fc9a38a8c4d0d45b14e38f9d320164e0b9d4f1e2ed6db3fc",
+      "batch": "20261104T190455",
+      "execution_sha256": "d8293351ffed44bea782075f00fe47d7a79e33ac535263b303cf1f48ebb3e783",
+      "input_manifest_sha256": "c92c120f2896a7f59fb5599a737dcce40e19ea6a9e8944fd50598d3576dd9c2b"
+    },
+    {
+      "scenario_id": "s1-ecl8-pecl8",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "d26ef3b52f9d6020f879c8a3306f91695be2b269714f39d2c11f34f84da8c195",
+      "batch": "20261104T190455",
+      "execution_sha256": "d0b6b5d6e03051e3c17666cceefea993342018ecb1131bf71805ab49c79bd070",
+      "input_manifest_sha256": "c92c120f2896a7f59fb5599a737dcce40e19ea6a9e8944fd50598d3576dd9c2b",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "82589d26faf8e873ae02ae5450e7052765a396a32a9421aad0c51bb125da9678"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-chromosome",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "ee590ba9000c6aacbfe8efbfe34d5dc1ab6ffa3b48eeb879e043252ef181533e",
+      "input_manifest_sha256": "e87c656df3ba093dd63d4e0f0e3702b7a78fa07d87f8e014f33a3e6c7c6c489d",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-chromosome",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "2b6972148dc44dd65d8b9878d9d3f6188cba562a2363889823fdcc94d921238d",
+      "batch": "20261104T190455",
+      "execution_sha256": "b3a4f9531db5a147eb7bde2d81f30e2137eefc9baad077201d4279ddf70f85c5",
+      "input_manifest_sha256": "e87c656df3ba093dd63d4e0f0e3702b7a78fa07d87f8e014f33a3e6c7c6c489d",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "848ee4cf8415295a242167066b3bdae03bdc702a2bcd1a70b0b5ac71e697bdf6"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-chromosome",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "eabeabce3c3b5aaf1eb3b17004327a7012a4f0ae9c31e2eb9baf582734f3d01e",
+      "batch": "20261104T190455",
+      "execution_sha256": "26341599cbddb417ac2f66c4ebd0685eb6cf81104e79c44b304105963e27d900",
+      "input_manifest_sha256": "e87c656df3ba093dd63d4e0f0e3702b7a78fa07d87f8e014f33a3e6c7c6c489d"
+    },
+    {
+      "scenario_id": "s1-mgh78578-chromosome",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "batch": "20261104T190455",
+      "execution_sha256": "92acfa55947a0d677a547d9551cc3d0888caf554a18af4f20ee9ca709888677c",
+      "input_manifest_sha256": "e87c656df3ba093dd63d4e0f0e3702b7a78fa07d87f8e014f33a3e6c7c6c489d",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn3",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "1e5e6472805e54e689fe7e6bf46e2e4db93b1c99db96ebfbbe3a71766eeb2f2f",
+      "batch": "20261104T190455",
+      "execution_sha256": "3b6f576f44612957dbdc99182de00f8f97dcdfcdbc3221951a0375997060b9bf",
+      "input_manifest_sha256": "5be715e306fca0f3d50bb9df2adcc1012dfd498933b500516ca74816580f46fe",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "01643a94a5562ceffbc3829a4b34525ddcf6a45d1fe5b25805b0e982db4b7555"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn3",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "1e5e6472805e54e689fe7e6bf46e2e4db93b1c99db96ebfbbe3a71766eeb2f2f",
+      "batch": "20261104T190455",
+      "execution_sha256": "740f5e90e7fca2bf6e6c87899d769bc8aada6aac3baf9b9c87ba3a8327dd8b98",
+      "input_manifest_sha256": "5be715e306fca0f3d50bb9df2adcc1012dfd498933b500516ca74816580f46fe",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "01643a94a5562ceffbc3829a4b34525ddcf6a45d1fe5b25805b0e982db4b7555"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn3",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "a44426c500a570056b53d2f46a596959f2af2530695dcb12ad82a4b864c12dba",
+      "batch": "20261104T190455",
+      "execution_sha256": "d868359b67ab828e3f33c24062a8737f910db3aaf7f54fa6b0853380e009efb9",
+      "input_manifest_sha256": "5be715e306fca0f3d50bb9df2adcc1012dfd498933b500516ca74816580f46fe"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn3",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "544c9ce102d90a33a1c4f91edfaddf7e095c867dab095d45eb87421edb4adaef",
+      "batch": "20261104T190455",
+      "execution_sha256": "c9599dc0275ab6a40d55aeefec222b20710d8cb1a4e47ed2e659ed22b665fb25",
+      "input_manifest_sha256": "5be715e306fca0f3d50bb9df2adcc1012dfd498933b500516ca74816580f46fe",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "cc081cdc67e57a577eae0aed094d386bf95d16c3fe5a1b58e297076ff0cbf136"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn4",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "24d9e7e79a7643a97d06a96884affcaf04013b159d1f9f40714324a683c58871",
+      "batch": "20261104T190455",
+      "execution_sha256": "da30654c83dd8e4edaceaedb30b747e9c33487d935753cd71a2fa7bf4c38d3d0",
+      "input_manifest_sha256": "b7d57e5072e742c7bc600021b4a15a6a1f44a88ab07af427786c640d3cdc773e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "8c9c3ba47943fa4f64412a36da861b18830012bc0475d1b0a7f2559da36c7482"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn4",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "8cb33865d23b3e0c82929111eb280b341468f2f37174b1b1dc9c2451bd81330a",
+      "batch": "20261104T190455",
+      "execution_sha256": "0cd55bc49afec511b4b9b67218b025814a04cd01bf13846b263307440a1908d7",
+      "input_manifest_sha256": "b7d57e5072e742c7bc600021b4a15a6a1f44a88ab07af427786c640d3cdc773e",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "a2529506018f26c742d7e51568db60f213dd1ad84396e3747136e2469a734b95"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn4",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "15c9dbd6da6a49e259efa0ceef47fdba7f8de71fba554ab1279d5b1a5f89ce6d",
+      "batch": "20261104T190455",
+      "execution_sha256": "28a7ba6222999bf98b1eaab878a5d361c82986ea1c12fec9a21127059997d374",
+      "input_manifest_sha256": "b7d57e5072e742c7bc600021b4a15a6a1f44a88ab07af427786c640d3cdc773e"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn4",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "a12df0520927208ceeb933c35eec1608c759e7b3c2665afe1eb8fdf152c15cc7",
+      "batch": "20261104T190455",
+      "execution_sha256": "a984ad75a4a543f2458fb8b0d9db88cb7e523c324a0574ab831ed65469ad87f0",
+      "input_manifest_sha256": "b7d57e5072e742c7bc600021b4a15a6a1f44a88ab07af427786c640d3cdc773e",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1f9e92d7a0a68413e33bbe96b19e2d2f6dc4dcef8ae6e06db9b8fce0509f871"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn5",
+      "tool": "flye",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "457f25a652d7e475eaa9f8a00440ac7e48e6e9b67ca6bbde7f1f6dcdf8948c9c",
+      "batch": "20261104T190455",
+      "execution_sha256": "c407c3bcd081fce6fdaa692005a7b70bb74f9f101086bcba9c3724c6f528841f",
+      "input_manifest_sha256": "b34bd89c29e07d745506314c01231eb8409c16f23946785030a277dba06b8105",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "08445e5e039ff72a466a8fd768095c79f327fd4d20115001c9cdd63519a13bd6"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn5",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "18659a283edbd68dc0189100e3d05a0cf0f6e2635d2a8ff5d6896f9f14b4798e",
+      "batch": "20261104T190455",
+      "execution_sha256": "d597a6353aa039465c01be400067965cd6d2e0681a371dd85b29874df1e8d886",
+      "input_manifest_sha256": "b34bd89c29e07d745506314c01231eb8409c16f23946785030a277dba06b8105",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "ba4da9ee7ca599f973060f5d9ddefcec63301cd4a646d7b18aa002eec0cef96f"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn5",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "56fc8b040495111eef414036436f265cbbbacfc50bda895bab3a003a4796f9dc",
+      "batch": "20261104T190455",
+      "execution_sha256": "60e1ea3002765e3277180306ae1d981b1c8395144c58c9197bb5549417388856",
+      "input_manifest_sha256": "b34bd89c29e07d745506314c01231eb8409c16f23946785030a277dba06b8105"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn5",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "daeb018173df95611293fc964a617b27be29703c05fbc9709dfff9756b2687d8",
+      "batch": "20261104T190455",
+      "execution_sha256": "2e5b9049b2668ecd811de7cb0d80ed74736dc17efd4e89e9e09ca56d34e11890",
+      "input_manifest_sha256": "b34bd89c29e07d745506314c01231eb8409c16f23946785030a277dba06b8105",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "840fc21c3e8e3f66a7648672f71c6cfb18a593bc0185bd98901932cf0fb33dd0"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn6",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "d4d713548f409034547e90d7264b2829a9a5d5137e01e62ef83564cc6ab2fb9a",
+      "input_manifest_sha256": "ce415da9e977e0ece471ff6176b7b4b6373857b7b42162117b763ab5a04dbecc",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn6",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "bcaafa57a8da0332b6d804f13aae86506bdf9264dfcfa4c1488458879167ed67",
+      "input_manifest_sha256": "ce415da9e977e0ece471ff6176b7b4b6373857b7b42162117b763ab5a04dbecc",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn6",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "1dc4dd61fe09571816e30b1d4eaf4bf8ebd92e4348d5a3f815816a5a5a63bf9e",
+      "batch": "20261104T190455",
+      "execution_sha256": "3b6f1d488676f72550a2a7f37a64b672d06d1712f8fcb12962c3564e57a552cc",
+      "input_manifest_sha256": "ce415da9e977e0ece471ff6176b7b4b6373857b7b42162117b763ab5a04dbecc"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn6",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "2e8e780c0ad2bcc1132bf66c551bb889cee4c4ca2c367d22145833d93af13034",
+      "batch": "20261104T190455",
+      "execution_sha256": "4b1f20eef3fea4c5b775880bcd6cd46768ace54f6bfd6a3601ee9504cf0eb90c",
+      "input_manifest_sha256": "ce415da9e977e0ece471ff6176b7b4b6373857b7b42162117b763ab5a04dbecc",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "7edaa1737379ff6915b31d7ccf8078f46e2c4b7a5d8d4214349f5d406a8b2097"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "adefe67ce31dedb7c4b90a20ebb7e15af29d8048ba22cbcff6cf863337de77a6",
+      "input_manifest_sha256": "a2f6af254926609653936876a173ebb8620e93a1ed84296cc34bca0ceee9e0d0",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "4203e36971f1b656f9aca16729aa4c5219573fbe09e7bcfe338a2811796baf31",
+      "input_manifest_sha256": "a2f6af254926609653936876a173ebb8620e93a1ed84296cc34bca0ceee9e0d0",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T190455",
+      "execution_sha256": "7af3f45698ccdec2123cc1c655fc687dd6df87b96473525a0b656a21ce97c978",
+      "input_manifest_sha256": "a2f6af254926609653936876a173ebb8620e93a1ed84296cc34bca0ceee9e0d0"
+    },
+    {
+      "scenario_id": "s1-mgh78578-pkpn7",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T190455",
+      "execution_sha256": "874bfeb4b8de1aa13cedd842ce9a325968b046b23b2a69b1447a3180d2fc7703",
+      "input_manifest_sha256": "a2f6af254926609653936876a173ebb8620e93a1ed84296cc34bca0ceee9e0d0",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-native",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "052851e505a250d64bf59c0dd95ede18a0682c6b6d7b3e809d65e004dac250a0",
+      "batch": "20261104T190455",
+      "execution_sha256": "642b1e0cddb2e151d563106601fb4a52bf930463690e0b124d0b01895c40c845",
+      "input_manifest_sha256": "a7381bd976035e018f6879a67b3cbf0d06905cf115b7fbb0586b6516f5d2fed9",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "eeff9df5b54d949192b4c2e9f59d92365b7f184d7b43219b09e71b18f55f431a"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-native",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "052851e505a250d64bf59c0dd95ede18a0682c6b6d7b3e809d65e004dac250a0",
+      "batch": "20261104T190455",
+      "execution_sha256": "f3a59e23817058bf2a5ea31d48183e380b96e6c59df4d58c1b2f216ef6bf8ab8",
+      "input_manifest_sha256": "a7381bd976035e018f6879a67b3cbf0d06905cf115b7fbb0586b6516f5d2fed9",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "d476edef611537643082ff16457bf66e136e1acbb43c1ce8b5f3a5426d0e59b6"
+      }
+    },
+    {
+      "scenario_id": "s1-mgh78578-native",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "75b54b0ef8f959c99e7c5de188ca74fd7d4e2ecb48a8ba2e827735d6730f4e5b",
+      "batch": "20261104T190455",
+      "execution_sha256": "0072596aa3ed930d772dffe5a395b666c187f4eff67aed6b96909e44eaee75f0",
+      "input_manifest_sha256": "a7381bd976035e018f6879a67b3cbf0d06905cf115b7fbb0586b6516f5d2fed9"
+    },
+    {
+      "scenario_id": "s1-mgh78578-native",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "a35c0a7a1c600d720dc5ae8f7028247c74cd2a3164925335bba1e12938239ee7",
+      "batch": "20261104T190455",
+      "execution_sha256": "6f8bfc93fe527ae8b2746185601f2765eac60edbac95cff5aa75ef063ad28c77",
+      "input_manifest_sha256": "a7381bd976035e018f6879a67b3cbf0d06905cf115b7fbb0586b6516f5d2fed9",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "2552f16e8a64f5e9403fcb109306646fcb18cf566868a47c5db1e3bdf6066765"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-0p8",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T190455",
+      "execution_sha256": "0fb5d9338cc36fbfe156944a72f5eab82978c8ed86ad1ff72b9054bd2fcf246e",
+      "input_manifest_sha256": "0df68fab0a2f2b37bfb55ea13542b7b8f777a8dde79158adf1d569a6d6cf6288",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-0p8",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T190455",
+      "execution_sha256": "30d94a03b82a7a838e73a074891f8124f137316977bbe38900aea0c37cf94256",
+      "input_manifest_sha256": "0df68fab0a2f2b37bfb55ea13542b7b8f777a8dde79158adf1d569a6d6cf6288",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-0p8",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "4c500611dcc03195e6da2bcdf7a237c23a16a85bfc33215ac43cb6ae7a167285",
+      "batch": "20261104T190455",
+      "execution_sha256": "24d3f1fd8d7f0fa74e9f2c94e1dd547cea92113f7accacfb0dbc262f4972d608",
+      "input_manifest_sha256": "0df68fab0a2f2b37bfb55ea13542b7b8f777a8dde79158adf1d569a6d6cf6288"
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-0p8",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "68f1b7f17ee47e4e7e98fd40ad392dececcc6776ba6191d19025e51358967a0f",
+      "batch": "20261104T190455",
+      "execution_sha256": "05feea62e80d8af788a3336abad2d02b218c97f42bd7dd9d06e5804319bb6fd1",
+      "input_manifest_sha256": "0df68fab0a2f2b37bfb55ea13542b7b8f777a8dde79158adf1d569a6d6cf6288",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-1",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T190455",
+      "execution_sha256": "e3964c70125a05f6f8e9546d5c09708506f88a240fcdc8119cb1c89e20b22a93",
+      "input_manifest_sha256": "c8a48256d6102c55a37bee15fcc4e6f1eaa5781fcbbe878afe1820a138a6ba24",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-1",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T190455",
+      "execution_sha256": "2a03eacb806dc6e84bad4aae5b132107c01debe0df287b8a48be73a8869e70e6",
+      "input_manifest_sha256": "c8a48256d6102c55a37bee15fcc4e6f1eaa5781fcbbe878afe1820a138a6ba24",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-1",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "57106e2a2d25c7e0e6358ab3c7b5cffd04ecc4d1a01e6b2ea429d764a13d4ad1",
+      "batch": "20261104T190455",
+      "execution_sha256": "9e20293dbfe742a71bccffb5e18f4c8f041594a75f659674dd1fdf4c3abb74dd",
+      "input_manifest_sha256": "c8a48256d6102c55a37bee15fcc4e6f1eaa5781fcbbe878afe1820a138a6ba24"
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-1",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "d5786359b9d49a042a8dbc4768ec87b4a501ac7a8237feced02ce69dcf3c879d",
+      "batch": "20261104T190455",
+      "execution_sha256": "7a92a047ad00571ae1cf045ef5d863e800e64fd4b75fa3b5446ef58ba100662f",
+      "input_manifest_sha256": "c8a48256d6102c55a37bee15fcc4e6f1eaa5781fcbbe878afe1820a138a6ba24",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-1p2",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T190455",
+      "execution_sha256": "cf124aadec06321dd826a9b89f7bc8b0790d08c7c44bb32ea3b63054e9ff54d4",
+      "input_manifest_sha256": "5906e2b0cb571c59f3fef1fc69ccb494559b335773684dff96fcb2b3649f5a7b",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-1p2",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T190455",
+      "execution_sha256": "cdac0196fdb38007d6614d4cf4d8a4fa1e2e1e0be238e1641115d23040a8816c",
+      "input_manifest_sha256": "5906e2b0cb571c59f3fef1fc69ccb494559b335773684dff96fcb2b3649f5a7b",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-1p2",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "dc247af0426a6153ca4ac9511b882ff42d06c7c4fb426e1de6ae06bda17fd5b0",
+      "batch": "20261104T190455",
+      "execution_sha256": "5c6bea34fb41c4b5cdec941a0cc0d210554f051ab527faf042bbbfe67b8765c7",
+      "input_manifest_sha256": "5906e2b0cb571c59f3fef1fc69ccb494559b335773684dff96fcb2b3649f5a7b"
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-1p2",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "4bf55de11bce523d3216b6d0b0fe2f3cd9e522e684aa5ac6a49f370379010b31",
+      "batch": "20261104T190455",
+      "execution_sha256": "261603f23cf67e9159c86f8fe76a8669c334f586cffc8f72c5d3e79672628241",
+      "input_manifest_sha256": "5906e2b0cb571c59f3fef1fc69ccb494559b335773684dff96fcb2b3649f5a7b",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-3",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T190455",
+      "execution_sha256": "cb3bfa9bb062d68e00d7ec2c0429b5e60f52fb38272a13e3d051873707511fb2",
+      "input_manifest_sha256": "309cbab9fa4c622d895c8d39c29d9aaa15cc498d2b5957d3326161c6a0b568a0",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-3",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T190455",
+      "execution_sha256": "639ec5d818a0c3a8ea2cac41d68f548946335299cc170191e0b51639ac5db437",
+      "input_manifest_sha256": "309cbab9fa4c622d895c8d39c29d9aaa15cc498d2b5957d3326161c6a0b568a0",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-3",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "4daafb77db3f96f8a484b8725b51be613d405456989da2bf470eaabdff1b215d",
+      "batch": "20261104T190455",
+      "execution_sha256": "87d9e5c342c575d935484625f7d793f582d577fd1a47033daab024beb3d2128c",
+      "input_manifest_sha256": "309cbab9fa4c622d895c8d39c29d9aaa15cc498d2b5957d3326161c6a0b568a0"
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-3",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "e13e3156c5e59da3aae99ecc685d77de8ba601c538ac36050b9b4282016c8520",
+      "batch": "20261104T190455",
+      "execution_sha256": "15cfdf3535ee4bd883922fc85fc50d5a934f5a6a5b91d3d1daaa99074c486a5d",
+      "input_manifest_sha256": "309cbab9fa4c622d895c8d39c29d9aaa15cc498d2b5957d3326161c6a0b568a0",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-5",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d1c8bdd4aa2b3149bbe4c41c93093a7300765527d46a7759f606ac5de317a643",
+      "batch": "20261104T190455",
+      "execution_sha256": "5b9ed0a92f61e56bd53d5be7f9cecbb1fc70a1e4f2a5f18c2c5079a4dc1a912b",
+      "input_manifest_sha256": "9139fb0c6670581088e4385514866f6604fe99cd2afd37004423a6243c8cd79b",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "5c19613f7a9d82a1e7734900a23ddc07dad90167fda22c00e00ece382a64dd99"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-5",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "eb4df5346a2a4dd0351959d1623d4528e3cf020e30922763d8a2b65d2f7759c5",
+      "batch": "20261104T190455",
+      "execution_sha256": "9310214839d578bfbd97baae7f82c7ee59658873c71572182ae49afca30a3a84",
+      "input_manifest_sha256": "9139fb0c6670581088e4385514866f6604fe99cd2afd37004423a6243c8cd79b",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "94b0891c1bb4a205d5018982fa106be2a7148c8789c4792d9394328e57668f79"
+      }
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-5",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "133302bb9b514d07bd31382d45ca5470e58d78d9f2e2aef8a4f2496ac17664e8",
+      "batch": "20261104T190455",
+      "execution_sha256": "60fefbbb4891ebba5b9aa30fc5b2edae7b4dcb55770c6e734f1fd480f9d37657",
+      "input_manifest_sha256": "9139fb0c6670581088e4385514866f6604fe99cd2afd37004423a6243c8cd79b"
+    },
+    {
+      "scenario_id": "s2-w-prk2-depth-5",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "12d1844a632b91b565ab4509333571c3436576728ee77e57789d132444813284",
+      "batch": "20261104T190455",
+      "execution_sha256": "a417dd196ccc9008056a1473dc6962dafdba4eb3ba2600a341f2c507f4d38049",
+      "input_manifest_sha256": "9139fb0c6670581088e4385514866f6604fe99cd2afd37004423a6243c8cd79b",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "a1b09dcd8b63968fba991e550bbe08d13848371a33489b97360555ea21eef8db"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-0p8",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "9e9bcab29c18ab9ce27f5fa0cf7ff9b66b34011062574a7dd3b55034d875ce98",
+      "input_manifest_sha256": "86d5822906ddd0e9760b345cc1f48420746b3c6bfea61370e4b048412368f392",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-0p8",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "7e48e8108321340d2c32b729d560e1c4527ad6383ec3f07b6c7f8810f58a8afe",
+      "input_manifest_sha256": "86d5822906ddd0e9760b345cc1f48420746b3c6bfea61370e4b048412368f392",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-0p8",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "9d989f3d3ef66664e01649180355dbafc19f0e4ec1f1c2e95fc5b114884b309f",
+      "batch": "20261104T190455",
+      "execution_sha256": "4087911d6de0ef69081fabb78887adb94b1f62daba7d33a1e701dc9c13a75ceb",
+      "input_manifest_sha256": "86d5822906ddd0e9760b345cc1f48420746b3c6bfea61370e4b048412368f392"
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-0p8",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "7b486515a93cfe94430e5921838c2f9ccb9b75bfdc6942fbe461fe4467b194cb",
+      "batch": "20261104T190455",
+      "execution_sha256": "501485a5b5c149575f1c5114494502445b95438354989ccc3ec9231af2827bae",
+      "input_manifest_sha256": "86d5822906ddd0e9760b345cc1f48420746b3c6bfea61370e4b048412368f392",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "130fce1dfd19bd17eae8197177fec36e07e17373c907115eb7fa5173b13595b8",
+      "input_manifest_sha256": "3fcd6d5cb8f6a48a4fff5263fab74c400f64d540037b621aaaca03b4c0f8e5d6",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "4be4b734db785248954e9d081f7c69919aeee7811e787c3eea75e32315e75737",
+      "input_manifest_sha256": "3fcd6d5cb8f6a48a4fff5263fab74c400f64d540037b621aaaca03b4c0f8e5d6",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "a472cab6999040cd106716769728c7c861f56f42cb733e28721c697de2217d78",
+      "batch": "20261104T190455",
+      "execution_sha256": "da1dbc8060c93ea9cf0b470ca1326c8dd3894fb61021b9ac49cee01fafb6c795",
+      "input_manifest_sha256": "3fcd6d5cb8f6a48a4fff5263fab74c400f64d540037b621aaaca03b4c0f8e5d6"
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "e83075a0283613fc0777295520375564594703df705efa520e3d42e4e46fd822",
+      "batch": "20261104T190455",
+      "execution_sha256": "be23b90ba77dda8149e7ec38bf2f227700eac0604d7f3dedc8834e4226c5fb56",
+      "input_manifest_sha256": "3fcd6d5cb8f6a48a4fff5263fab74c400f64d540037b621aaaca03b4c0f8e5d6",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1p2",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "59339094071c2ad2638922946ddac9b0d1a06504305bdf4a15ee5ad06519178b",
+      "input_manifest_sha256": "c0fbeebc8fb32bc602ab6f51f1175d8b03873b75fcb55e6806b4cd0531c8337d",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1p2",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "b6afd60cf87399d50c756f676eff614fa33f571819310640cfe581e856d5666e",
+      "input_manifest_sha256": "c0fbeebc8fb32bc602ab6f51f1175d8b03873b75fcb55e6806b4cd0531c8337d",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1p2",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "cf5c49ae8d3759d3bcbaf9891848a4529a739a4a682bdc679d7bf59ce856e3fc",
+      "batch": "20261104T190455",
+      "execution_sha256": "c22670f5dee710edaa2926f3266cb9a4c1d5828ddb9e2f52d597df789e3fe858",
+      "input_manifest_sha256": "c0fbeebc8fb32bc602ab6f51f1175d8b03873b75fcb55e6806b4cd0531c8337d"
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-1p2",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "c336ea61365facd479259af12c50fe7706bd5186cebeadfbf00d612ab2437c34",
+      "batch": "20261104T190455",
+      "execution_sha256": "1a72f87886338b534a3b7ed4e2091786afd8ca562655abb1914fdd1183a304dc",
+      "input_manifest_sha256": "c0fbeebc8fb32bc602ab6f51f1175d8b03873b75fcb55e6806b4cd0531c8337d",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-3",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "f571e58b57390f7239147e477e7884d1d71a74343cc9a5e880d18171128c2d48",
+      "input_manifest_sha256": "23de969d255e46659d73463ff7eb95565080107632cf11fdcae4a79e62a6f752",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-3",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "87c6442bfaa1b69a598e8a38e47e52eb05fbd4df9e9be4bbdb185b3577b043de",
+      "input_manifest_sha256": "23de969d255e46659d73463ff7eb95565080107632cf11fdcae4a79e62a6f752",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-3",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "fdc0c8b5f7688510b2ad1b9ad30453cfd1aadcf77d389e49b098651e404f60d3",
+      "batch": "20261104T190455",
+      "execution_sha256": "979630da6d3ce92ff0b92d1018b3fa322d0b2505e51bdd393a1592c577714efe",
+      "input_manifest_sha256": "23de969d255e46659d73463ff7eb95565080107632cf11fdcae4a79e62a6f752"
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-3",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "8789109264679c410478d74309c67d8c0f13b1123190977f2be98b567e67b3ae",
+      "batch": "20261104T190455",
+      "execution_sha256": "fe28ab8238f02ac9a00f3667dd5ca1492ed10af0a013a4bb2a8a730710077f05",
+      "input_manifest_sha256": "23de969d255e46659d73463ff7eb95565080107632cf11fdcae4a79e62a6f752",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-5",
+      "tool": "flye",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "cf8a14ab906509698d85066ed6662c6aa6000fa99ea5cbce04cd39872f87b8b2",
+      "input_manifest_sha256": "06b54d4bb4da39ef91c8ba599cb4709e0e5c0c7f74ac88c5bca5c46b43022c11",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-5",
+      "tool": "flye-meta",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "d065bf3ff5c141b1ed4a33e9265a24498994d71037a8b3de5301fe0ba3986427",
+      "batch": "20261104T190455",
+      "execution_sha256": "3c43387f51ddde8437abaf9634f97292fe367461f3d9da5bef37e7685346656a",
+      "input_manifest_sha256": "06b54d4bb4da39ef91c8ba599cb4709e0e5c0c7f74ac88c5bca5c46b43022c11",
+      "graph": {
+        "relative_path": "output/assembly_graph.gfa",
+        "sha256": "fa2878feae438390aec3f081ec2bc98c358bcbdb55c8cfe5ecc1aaeb65a3db89"
+      }
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-5",
+      "tool": "raven",
+      "run_id": null,
+      "status": "fail",
+      "assembly_sha256": "6b6e8cdecd271e8a5092086c25b2102362248f641706aef3dc6b15783c6e450b",
+      "batch": "20261104T190455",
+      "execution_sha256": "045e6b92e4917edb7df4b97f59307a03be27d3027ef6277c5c50bb88e341bb7b",
+      "input_manifest_sha256": "06b54d4bb4da39ef91c8ba599cb4709e0e5c0c7f74ac88c5bca5c46b43022c11"
+    },
+    {
+      "scenario_id": "s2-mgh78578-pkpn7-depth-5",
+      "tool": "plassembler",
+      "run_id": null,
+      "status": "pass",
+      "assembly_sha256": "9b52d068fe46c0a291aff310e0b7da6fbc2c33196459a34bfa6bab81513cbae7",
+      "batch": "20261104T190455",
+      "execution_sha256": "62538e8a5681a01898f4a1140f9e0f85c9e31aae7f4fb279621554319517bef2",
+      "input_manifest_sha256": "06b54d4bb4da39ef91c8ba599cb4709e0e5c0c7f74ac88c5bca5c46b43022c11",
+      "graph": {
+        "relative_path": "output/benchmark_plasmids.gfa",
+        "sha256": "86233bdb781ed6f92aeca4407638ce32f7c5e51b5c303d1ecc50ec195ef83971"
+      }
+    }
+  ]
+}

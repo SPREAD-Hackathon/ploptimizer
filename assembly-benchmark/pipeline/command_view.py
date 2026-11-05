@@ -6,7 +6,7 @@ import shlex
 SOURCES = {
     "flye": ("Flye 2.9.6 manual", "https://github.com/mikolmogorov/Flye/blob/2.9.6/docs/USAGE.md"),
     "flye-meta": ("Flye 2.9.6 manual", "https://github.com/mikolmogorov/Flye/blob/2.9.6/docs/USAGE.md"),
-    "raven": ("Raven command-line documentation", "https://github.com/lbcb-sci/raven#usage"),
+    "raven": ("Raven 1.8.3 command definitions", "https://github.com/lbcb-sci/raven/blob/1.8.3/RavenExe/src/main.cc"),
     "plassembler": ("Plassembler 1.9.0 command definitions", "https://github.com/gbouras13/plassembler/blob/v1.9.0/src/plassembler/__init__.py"),
 }
 FLAGS = {
@@ -17,7 +17,7 @@ FLAGS = {
         "--meta": "Enable the metagenome / uneven-coverage mode.",
         "--deterministic": "Run the initial disjointig assembly stage single-threaded; later stages can still use the requested threads. This flag is tested for repeatability, not treated as a guarantee.",
     },
-    "raven": {"-t": "Number of threads requested."},
+    "raven": {"-t": "Number of threads requested.", "-F": "Write the assembly graph in GFA format to this file."},
     "plassembler": {
         "--longreads": "Input long-read FASTQ file.",
         "--outdir": "Directory for output files.",

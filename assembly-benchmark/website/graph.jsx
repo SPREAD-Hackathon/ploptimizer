@@ -188,7 +188,7 @@ export function GraphViewer({ artifact = {} }) {
     if (shifts[event.key]) { event.preventDefault(); const [x, y] = shifts[event.key]; setView({ ...activeView, x: activeView.x + x * activeView.width / 10, y: activeView.y + y * activeView.height / 10 }); }
   }
   return <div className="assembly-graph" role="region" aria-label="Assembly graph viewer">
-    {!ready && <Alert variant="info">{tooLarge ? 'This graph exceeds the interactive display limit; no partial graph is drawn.' : graph.status === 'available' && !nodes.length ? 'The collected GFA contains no segment records. This is an empty recorded graph, not missing graph data.' : artifact.reason || graph.reason || 'No assembly graph was collected for this result. Missing graph data do not imply a graph with no links or a linear molecule.'}</Alert>}
+    {!ready && <Alert variant="info">{tooLarge ? 'This graph exceeds the interactive display limit; no partial graph is drawn.' : graph.status === 'available' && !nodes.length ? 'The collected GFA contains no segment records. This is an empty recorded graph, not missing graph data.' : artifact.availability ? `${artifact.availability.title}. ${artifact.availability.description}` : artifact.reason || graph.reason || 'No assembly graph was collected for this result.'}</Alert>}
     {ready && <>
       <p><StatusBadge variant="info">Recorded GFA</StatusBadge> {nodes.length.toLocaleString()} segments · {edges.length.toLocaleString()} link records. Source: {graph.source?.filename ?? 'not recorded'}; role: {graph.source?.role ?? 'not recorded'}.</p>
       {graph.complete === false && <Alert variant="warning">The source graph includes unsupported or omitted records. This view is not a complete representation of the source file.</Alert>}

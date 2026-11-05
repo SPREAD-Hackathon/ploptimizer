@@ -24,7 +24,7 @@ def command(tool, reads, output, config, mode="default"):
     if tool in ("flye", "flye-meta"):
         return ["flye", "--nano-hq", str(reads), "--out-dir", str(output), "--threads", threads] + (["--meta"] if tool == "flye-meta" else []) + (["--deterministic"] if mode == "deterministic" else [])
     if tool == "raven":
-        return ["raven", "-t", threads, str(reads)]
+        return ["raven", "-t", threads, "-F", str(output.parent / "assembly_graph.gfa"), str(reads)]
     if tool == "plassembler":
         return ["plassembler", "long", "--longreads", str(reads), "--outdir", str(output),
                 "--threads", threads, "--skip_qc", "--skip_mash", "--keep_chromosome",

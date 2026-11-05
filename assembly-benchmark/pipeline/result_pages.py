@@ -148,15 +148,16 @@ def result_body(case, record, artifact, output, family=None):
     if graph.get("status") == "available":
         body += '<noscript>' + source_description(graph.get("source"))
         body += f'<p>{len(graph.get("nodes", []))} GFA segments · {len(graph.get("edges", []))} link records. This is a graph inventory, not a count of biological plasmids.</p></noscript>'
-    else:
-        body += f'<p><strong>Graph unavailable.</strong> {e(artifact.get("reason") or graph.get("reason") or "No usable GFA metadata was collected for this execution.")}</p>'
     from .reference_origins import build_reference_origins
     presentation = copy.deepcopy(artifact)
     prepared = record.get("report_evidence")
+    from .graph_availability import graph_availability
+    availability = (prepared or {}).get("graph_availability") or graph_availability(record, artifact)
+    presentation["availability"] = availability
     presentation["reference_origins"] = prepared["reference_origins"] if prepared else build_reference_origins(case, record, artifact)
     # A GFA identifier must not be able to terminate this inert JSON block.
     payload = json.dumps(presentation, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
-    body += f'<script type="application/json" id="assembly-graph-data">{payload}</script><div data-assembly-graph="assembly-graph-data"><p>The interactive viewer requires JavaScript. The graph metadata download remains available.</p></div>'
+    body += f'<script type="application/json" id="assembly-graph-data">{payload}</script><div data-assembly-graph="assembly-graph-data"><p>{e(availability["title"])}. {e(availability["description"])}</p></div>'
     body += '</section></div>'
     if prepared:
         plot = prepared["dotplot"]

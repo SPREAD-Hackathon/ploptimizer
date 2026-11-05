@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-05",
+  "slurm_job_id": "34423949",
+  "elapsed_seconds": 38,
+  "exit_code": "0:0",
+  "plan_sha256": "50c4045bcb9fc4669a556e92932814a79b37d22a15f64923f92ada4a5b20cb0e",
+  "producer_sha256": "f003f878038f03f61a0e2389a145212d13b28971b1544ee265a1e105b718eb3e",
+  "results_sha256": "b5983a4df9dfd0b0c0b0a6b87b712e128145078ec1344c7008628670213d312a",
+  "source_script": "scripts/audit_saved_artifacts.py"
+}

@@ -107,3 +107,6 @@ and six fails. These endpoints are reported separately. See [NOISY_ADAPTER.md](N
 [Comparison with Wick and Holt and implementation plan](BENCHMARK_DEVELOPMENT.md) ·
 [Linear terminal-repeat candidates](LINEAR_TERMINAL_REPEATS.md) ·
 [Standard length metrics](LENGTH_METRICS.md).
+
+[Existing-run integrity audit and missing Raven graphs](INTEGRITY_AUDIT.md): all
+audited source checksums matched; historic Raven runs did not request GFA output.
