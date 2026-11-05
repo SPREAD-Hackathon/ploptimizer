@@ -34,13 +34,15 @@ def render_bundle(bundle, output):
                 shutil.copy2(source/f'{slug}-alignments.tsv',target/f'{slug}-alignments.tsv')
                 if record['report_evidence']['dotplot'].get('nucmer_status')=='available':
                     shutil.copy2(source/f'{slug}-original-show-coords.tsv',target/f'{slug}-original-show-coords.tsv')
-    for name in ('summary.tsv','molecules.tsv','evidence-availability.tsv','evidence-coverage.json'):
+    for name in ('summary.tsv','molecules.tsv','evidence-availability.tsv','evidence-coverage.json','length-metrics.tsv'):
         if (bundle/name).is_file():
             shutil.copy2(bundle/name,output/'data'/name)
     home=output/'index.html'
     content=home.read_text().replace('</main>','<div class="downloads"><a href="data/results-bundle.zip">Backend results bundle (ZIP)</a><a href="data/summary.tsv">Execution summary TSV</a><a href="data/molecules.tsv">Molecule evidence TSV</a></div></main>')
     if (bundle/'evidence-availability.tsv').is_file():
         content=content.replace('Molecule evidence TSV</a>','Molecule evidence TSV</a><a href="data/evidence-availability.tsv">Evidence availability TSV</a>')
+    if (bundle/'length-metrics.tsv').is_file():
+        content=content.replace('Execution summary TSV</a>', 'Execution summary TSV</a><a href="data/length-metrics.tsv">Graph and contig lengths TSV</a>')
     home.write_text(content)
     from .common import save, digest
     save(output/'.results-render.json',{'schema_version':1,'bundle_manifest_sha256':digest(bundle/'manifest.json')})

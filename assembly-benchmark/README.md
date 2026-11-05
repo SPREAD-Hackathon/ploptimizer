@@ -101,3 +101,9 @@ admission; all 12 assembly comparisons and separate tolerant assessments complet
 Exact outcomes were three passes and nine fails; tolerant outcomes were six passes
 and six fails. These endpoints are reported separately. See [NOISY_ADAPTER.md](NOISY_ADAPTER.md) and
 [TOLERANT_ENDPOINT.md](TOLERANT_ENDPOINT.md).
+
+## Benchmark development
+
+[Comparison with Wick and Holt and implementation plan](BENCHMARK_DEVELOPMENT.md) ·
+[Linear terminal-repeat candidates](LINEAR_TERMINAL_REPEATS.md) ·
+[Standard length metrics](LENGTH_METRICS.md).

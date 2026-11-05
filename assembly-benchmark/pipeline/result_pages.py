@@ -113,6 +113,8 @@ def result_body(case, record, artifact, output, family=None):
     links = [("#run-details", "Run details"), ("#contigs", "Output contigs"), ("#assembly-graph", "Assembly graph")]
     if (record.get("report_evidence") or {}).get("dotplot", {}).get("status") == "available":
         links.append(("#saved-alignment-plot", "Alignment dot plot"))
+    if (record.get("report_evidence") or {}).get("length_metrics"):
+        links.append(("#length-metrics", "Lengths"))
     links.append(("#assessment-audit", "Assessment details"))
     body += '<nav class="result-jumps" aria-label="Result evidence">' + ' · '.join(f'<a href="{href}">{label}</a>' for href, label in links) + '</nav>'
     if record.get("tolerant_assessment"):
@@ -159,6 +161,8 @@ def result_body(case, record, artifact, output, family=None):
         else:
             body += f'<p>{e(plot["reason"])}</p>'
         body += f'<p><a href="../data/results/{e(slug)}-report.md">Standalone detailed report (Markdown)</a></p>'
+    from .length_view import render_lengths
+    body += render_lengths((prepared or {}).get("length_metrics"))
     body += contig_section(record, artifact)
     public = execution_evidence(record, case)
     public["graph_artifacts"] = artifact

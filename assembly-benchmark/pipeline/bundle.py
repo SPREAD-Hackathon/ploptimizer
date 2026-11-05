@@ -15,6 +15,7 @@ from .evidence_model import diagnostic_summary, diagnostic_policy, molecule_expl
 from .explanations import explain_result
 from .reference_origins import build_reference_origins
 from .contig_origins import build_contig_origins
+from .length_metrics import build_length_metrics, METRICS
 from .result_model import assessed_molecules, verdict
 from .identities import result_slug as result_id
 from .recorded_coordinates import recorded_paf_plot
@@ -133,6 +134,7 @@ def prepare_document(source, artifact_root=None, coordinate_roots=(), snapshot_h
         record['report_evidence'] = {'schema_version':VERSION, 'heading':heading, 'description':description,
             'summary':diagnostic_summary(record,case), 'required_accessions':relevant, 'molecules':molecules,
             'reference_origins':build_reference_origins(case,record,graph), 'contig_origins':contig_origins, 'dotplot':plot, 'checked_facts':checked_facts(record),
+            'length_metrics':build_length_metrics(record,graph,document['batch'],artifact_root),
             'failure_details':detail_record(record,molecules,plot,coordinate_plot,sidecar_plot)}
         record['report_evidence']['failure_details']['reported_circularity']['reference_origins']=contig_origins
     if document.get('determinism'):
@@ -165,6 +167,13 @@ def markdown_report(case, record, batch):
             lines.append(f'- {fact["label"]}: `{fact["value"]}`')
         lines.append('')
     lines += markdown_detail_sections(evidence['failure_details'])
+    lengths=evidence.get('length_metrics')
+    if lengths:
+        lines += ['## Graph and contig lengths', '', '| Inventory | Count | Total bp | N50 bp | N90 bp | Status |', '| --- | --- | --- | --- | --- | --- |']
+        for key in ('graph_segments','scored_contigs'):
+            group=lengths[key]
+            lines.append('| '+key+' | '+' | '.join(str(group.get(k)) if group.get(k) is not None else 'Not measured' for k in ('count','total_bp','n50_bp','n90_bp','status'))+' |')
+        lines += ['', lengths['scope'], '']
     plot=evidence['dotplot']
     lines += ['## Alignment dot plot', '']
     if plot['status']=='available':
@@ -251,6 +260,13 @@ def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False, ar
             for row in evidence['molecules']:
                 score=row['exact'];mapping=row['mapping'] or {}
                 molecules.append([batch,record['scenario_id'],record['tool'],record.get('run_id',''),score['accession'],row['required_by_endpoint'],score.get('status'),score.get('length_bp'),','.join(score.get('exact_contigs',[])),mapping.get('recovered_fraction'),mapping.get('alignment_identity'),mapping.get('contig_count')])
+    length_rows=[]
+    for document in documents:
+        for record in document['results']:
+            for kind,measurement in record['report_evidence']['length_metrics'].items():
+                if kind not in ('graph_segments','scored_contigs'): continue
+                length_rows.append([document['batch'],record['scenario_id'],record['tool'],record.get('run_id',''),kind,measurement['status'],measurement.get('source',{}).get('role',''),*[measurement.get(key) for key in METRICS],measurement.get('source',{}).get('file_sha256','')])
+    write_tsv(output/'length-metrics.tsv',['batch','scenario','tool','run','inventory','status','source_role',*METRICS,'source_sha256'],length_rows)
     save(output/'overview.json',overview)
     write_tsv(output/'summary.tsv',['batch','scenario','tool','run','exact_status','version','elapsed_seconds','recorded_summary'],summary)
     write_tsv(output/'molecules.tsv',['batch','scenario','tool','run','accession','required_by_endpoint','exact_status','expected_length_bp','exact_contigs','aligned_reference_fraction','alignment_identity','aligned_contig_count'],molecules)

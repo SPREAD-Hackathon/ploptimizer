@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "checked_on": "2026-11-05",
+  "admission_status": "candidate_not_admitted",
+  "scenario_family": "S5",
+  "repeat_type": "terminal_inverted_repeat",
+  "not_tandem_repeat": true,
+  "candidates": [
+    {
+      "accession": "NC_003903.1",
+      "name": "SCP1",
+      "organism": "Streptomyces coelicolor A3(2)",
+      "length_bp": 356023,
+      "topology": "linear",
+      "literature_repeat_length_bp_approx": 81000,
+      "repeat_coordinates_status": "not_verified_for_this_version",
+      "literature_source": "https://doi.org/10.1016/0147-619X(91)90052-X"
+    },
+    {
+      "accession": "NC_004933.1",
+      "name": "SLP2",
+      "organism": "Streptomyces lividans 1326",
+      "length_bp": 50410,
+      "topology": "linear",
+      "literature_repeat_length_bp_approx": 44,
+      "repeat_coordinates_status": "not_verified_for_this_version",
+      "literature_source": "https://pubmed.ncbi.nlm.nih.gov/12622812/"
+    }
+  ],
+  "metadata_source": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=nuccore&id=NC_003903.1,NC_004933.1&retmode=json"
+}

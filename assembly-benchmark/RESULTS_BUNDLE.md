@@ -200,3 +200,7 @@ alignment candidates remain in the evidence. A unique alignment association is
 labelled alignment-only, multiple unresolved references stay ambiguous/grey, and
 intermediate or unsupported inventories remain unassigned. Reference colours use
 the same accession catalogue as the graph and expected-molecule displays.
+
+Length distributions are an additive `report_evidence.length_metrics` model and
+`length-metrics.tsv` export. See [LENGTH_METRICS.md](LENGTH_METRICS.md) for source
+binding, missing-data rules and collection from existing scored outputs.

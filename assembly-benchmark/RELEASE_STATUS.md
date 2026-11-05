@@ -364,3 +364,26 @@ Result pages now show a single outcome headline, without the duplicate exact
 status badge. Command, flag descriptions and run provenance share one collapsed
 section. Reporting verification: 301 Python tests ran with 11 optional-dependency
 skips and no failures; HTTP checks passed for 376 routes and 284 result views.
+
+## Standard length metrics and benchmark review (5 November)
+
+Reviewed Wick/Holt version 4 and its supporting repository. The comparison and
+prioritised plan are in [BENCHMARK_DEVELOPMENT.md](BENCHMARK_DEVELOPMENT.md).
+[LINEAR_TERMINAL_REPEATS.md](LINEAR_TERMINAL_REPEATS.md) adds pinned SCP1/SLP2
+candidates with terminal inverted repeats, explicitly distinct from tandem repeats.
+They remain proposed and unadmitted; no new biological scenarios were run.
+
+Metadata-only Slurm job 34423267 completed in 26 seconds with exit 0, collecting
+268 complete scored FASTA length inventories from the existing five batches.
+No assemblies, simulations or alignments were rerun. The backend now exports
+length statistics independently of the web layer, including all unaligned and
+short contigs. Of 284 displayed records, 268 have scored-contig inventories and
+204 have graph-segment inventories; missing evidence remains unavailable. Saved
+graph roles retain final/intermediate distinctions. Five empty scored outputs
+are measured zeros rather than missing inventories. Definitions and reproduction
+are in [LENGTH_METRICS.md](LENGTH_METRICS.md).
+
+Verification: 307 Python tests ran, 11 optional-dependency skips, no failures;
+HTTP checks passed for 376 routes and 284 result views. All original source-result
+fields were preserved across 284 records. The TSV has 568 inventory rows (two per
+result). Browser inspection covered the length table and phone-width overflow.

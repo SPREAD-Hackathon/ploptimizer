@@ -56,6 +56,9 @@ Validate the evaluator with exact, rotated/reverse-complemented, missing, fragme
 
 ## Linear plasmids (S5)
 
+See the [terminal-repeat scenario specification](LINEAR_TERMINAL_REPEATS.md) for
+short- and long-TIR candidates, accession versions and admission requirements.
+
 Add a separate topology panel. A naturally linear plasmid is different from a circular plasmid represented by an unfinished linear contig. Linear truth must retain its physical ends: do not simulate circular wraparound, rotate sequences during equivalence checks or reward circularisation. Reverse-complement equivalence still applies. Basic sequence simulation does not model terminal proteins or library-specific behaviour at physical ends; document those limitations.
 
 Measure whole-molecule recovery, left/right terminal sequence recovery, terminal truncation, terminal repeat collapse, false end-to-end joins, inappropriate circularity claims, fragmentation and chromosome–plasmid merges. Report sequence correctness separately from topology: an unlabelled linear FASTA contig alone does not prove the biological topology. Use validated circular controls to detect an evaluator that simply favours one topology.
