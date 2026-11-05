@@ -16,7 +16,8 @@ def expected_molecules(case, record):
 def render_expected_output(case, record):
     e = lambda value: html.escape(str(value), quote=True)
     molecules = expected_molecules(case, record)
-    body = '<section class="expected-output" aria-labelledby="expected-output-title"><h3 id="expected-output-title">Expected final output</h3>'
+    title = 'Expected plasmid output' if record.get('tool') == 'plassembler' else 'Expected final output'
+    body = f'<section class="expected-output" aria-labelledby="expected-output-title"><h3 id="expected-output-title">{title}</h3>'
     if not molecules:
         text = "No plasmids expected in the final output." if record.get("tool") == "plassembler" else "No reference inventory recorded for this case."
         return body + f'<p>{text}</p></section>'

@@ -30,6 +30,7 @@ class ExpectedOutputTests(unittest.TestCase):
         self.assertEqual(body.count('<circle '), 2)
         self.assertNotIn('synthetic-c', body)
         self.assertIn('2 plasmids', body)
+        self.assertIn('Expected plasmid output', body)
 
     def test_chromosome_only_negative_control_does_not_expect_a_plasmid_circle(self):
         self.case["replicons"] = self.case["replicons"][:1]

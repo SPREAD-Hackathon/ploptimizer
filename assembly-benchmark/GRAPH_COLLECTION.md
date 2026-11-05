@@ -113,3 +113,34 @@ The four stopped Plassembler runs retain initial Flye graphs under their origina
 error outcomes. Five passing no-plasmid controls have empty final summary files,
 so their final circularity claims remain unavailable. Raw source files and
 scientific scores were preserved.
+
+## Whole-segment origin association without GFA paths
+
+A final GFA can have S/L records but no P records. That does not mean its plasmid
+is unassembled. In the reviewed `s2-mgh78578-pkpn7-depth-3` Plassembler result,
+the final scored contig `1` is an exact pKPN7 match, while the previous viewer left
+segment `1` grey because it required an explicit path.
+
+`scripts/collect_graph_contig_identities.py` now records sequence hashes for whole
+GFA segments and whole scored FASTA contigs from existing files. Both file hashes
+are checked before and after reading. Comparison ignores letter case and FASTA
+line wrapping; it does not rotate, reverse-complement, align or trim sequences.
+Names and lengths alone never establish identity. Sequences are not exported.
+The output is `graph_contig_identity.json` beside the original execution.
+
+When graph sidecars are held locally rather than on the cluster, supply their
+frozen directory tree as `--metadata-root ROOT` (ROOT/BATCH/results/.../
+graph_artifacts.json). The graph source must still match its recorded SHA-256.
+After collecting the small identity sidecars into local `runs/`, normal backend
+export with `--recorded-artifacts runs` validates execution, assembly, graph,
+segment and contig provenance. A whole-segment identity plus the saved exact
+reference match can support a node colour without a GFA path. The derived model
+records the association type, matching hash and source checksum. Ambiguous
+reference assignments remain grey. This adds no within-node origin boundaries.
+
+Collection job 34423757 completed successfully in 41 seconds: 200 final-graph
+inventories, containing 18,290 whole-segment/contig identity pairs. The preceding
+probe job 34423537 found no colocated graph sidecars and produced zero inventories;
+only the explicitly supplied frozen graph metadata were used by the successful
+collection. No assembly or alignment was rerun. Original graph downloads and
+scientific scores remain unchanged.

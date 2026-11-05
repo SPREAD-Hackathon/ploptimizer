@@ -387,3 +387,25 @@ Verification: 307 Python tests ran, 11 optional-dependency skips, no failures;
 HTTP checks passed for 376 routes and 284 result views. All original source-result
 fields were preserved across 284 records. The TSV has 568 inventory rows (two per
 result). Browser inspection covered the length table and phone-width overflow.
+
+## Path-free final graphs and Plassembler scope (5 November)
+
+The pKPN7 3× Plassembler result was already an exact plasmid pass. Its final GFA
+has one segment/self-link but no P record; the old path-only origin model left
+that segment incorrectly unassigned in the viewer. Verified whole-segment/contig
+sequence hashes now support an origin without inventing a path. Segment `1` and
+scored contig `1` match over all 3,478 bp and associate with NC_009653.1. Matching
+identity evidence is available when selecting the node. Ambiguous cases stay grey.
+
+Plassembler result pages distinguish input chromosome context from the final
+plasmid-only score and graph. The initial Flye chromosome assessment and separately
+retained chromosome file are identified when recorded. The tool summary's
+chromosome row is explicitly outside the plasmid score. Expected output is labelled
+“Expected plasmid output”. Original assessment fields and graph downloads remain
+unchanged across all 284 result records.
+
+Metadata collection and provenance are documented in GRAPH_COLLECTION.md. The
+complete Python suite ran 310 tests with 11 optional skips and no failures, followed
+by expanded focused identity/scope tests. Graph-model checks and HTTP checks for
+376 routes/284 result views passed. Browser checks verified the reviewed node
+label and selectable whole-segment identity evidence.

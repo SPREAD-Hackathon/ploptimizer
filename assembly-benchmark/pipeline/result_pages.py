@@ -79,6 +79,8 @@ def contig_section(record, artifact):
                 cell+='<details><summary>Matching evidence</summary><ul>'
                 cell+=''.join(f'<li>{e(item["reference_id"])} · {e(item["kind"].replace("_"," "))} · <code>{e(item["source"])}</code></li>' for item in origin["evidence"])
                 cell+='</ul></details>'
+            if record.get('tool') == 'plassembler' and contig['id'] == 'chromosome' and info.get('source', {}).get('kind') == 'plassembler_summary':
+                cell = '<span class="contig-origin-name">Chromosome (tool label)</span><small>Separate output · outside plasmid score</small>'
             body += f'<tr><th scope="row">{e(contig["id"])}</th><td>{cell}</td><td>{e(length)}</td><td>{e(claim)}</td><td>{e(coverage)}</td></tr>'
         body += '</tbody></table></div>'
         if collapsed:
@@ -110,6 +112,14 @@ def result_body(case, record, artifact, output, family=None):
     family_link = f'<a href="../scenarios/{e(family.lower())}.html">{e(family)} results</a> · ' if family else ''
     body = f'<nav class="result-breadcrumb" aria-label="Result navigation">{family_link}<a href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Input details</a></nav><h1>{e(LABELS[record["tool"]])}</h1><p class="result-subtitle">{e(case["title"])}</p>'
     body += outcome_section(record)
+    if record.get("tool") == "plassembler":
+        scope = ['The score and graph cover final plasmids only.' + (' The input also contains a chromosome.' if any(m.get('molecule_type') == 'chromosome' for m in case.get('replicons', [])) else '')]
+        if record.get('retained_chromosome_sha256'):
+            scope.append('Plassembler retained the chromosome separately.')
+        chromosomes = [m for m in (record.get('initial_flye_evaluation') or {}).get('replicons', []) if m.get('molecule_type') == 'chromosome']
+        if chromosomes:
+            scope.append('Initial Flye stage: ' + '; '.join(f'{e(m.get("name", "chromosome"))} — {"exact match" if m.get("status") == "pass" else "not recovered exactly"}' for m in chromosomes) + '.')
+        body += '<p class="result-scope">' + ' '.join(scope) + '</p>'
     links = [("#run-details", "Run details"), ("#contigs", "Output contigs"), ("#assembly-graph", "Assembly graph")]
     if (record.get("report_evidence") or {}).get("dotplot", {}).get("status") == "available":
         links.append(("#saved-alignment-plot", "Alignment dot plot"))
@@ -163,6 +173,8 @@ def result_body(case, record, artifact, output, family=None):
         body += f'<p><a href="../data/results/{e(slug)}-report.md">Standalone detailed report (Markdown)</a></p>'
     from .length_view import render_lengths
     body += render_lengths((prepared or {}).get("length_metrics"))
+    if record.get('tool') == 'plassembler' and any(row.get('id') == 'chromosome' for row in (artifact.get('assembly_info') or {}).get('contigs', [])):
+        body += '<p>The tool summary below also lists its separate chromosome output; that row is not a segment missing from the plasmid graph.</p>'
     body += contig_section(record, artifact)
     public = execution_evidence(record, case)
     public["graph_artifacts"] = artifact

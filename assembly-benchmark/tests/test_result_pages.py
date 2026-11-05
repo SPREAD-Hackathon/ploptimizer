@@ -78,6 +78,13 @@ class ResultPageTests(unittest.TestCase):
         self.assertIn("not physical validation", html)
         self.assertIn("intermediate contigs are not automatically final outputs", html)
 
+    def test_plassembler_chromosome_summary_row_is_outside_plasmid_output(self):
+        artifact={'assembly_info':{'status':'available','source':{'kind':'plassembler_summary','role':'final'},'contigs':[{'id':'chromosome','length_bp':1000,'reported_circularity':'unknown'}]}}
+        body=contig_section({**self.record,'tool':'plassembler'},artifact)
+        self.assertIn('Chromosome (tool label)',body)
+        self.assertIn('outside plasmid score',body)
+        self.assertNotIn('>Unassigned<',body)
+
     def test_checked_runtime_sidecar_survives_archive_rebuild_without_source_files(self):
         execution, artifact = self.make_sidecar()
         before = copy.deepcopy(self.document)

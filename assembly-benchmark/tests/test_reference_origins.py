@@ -34,6 +34,18 @@ class ReferenceOriginTests(unittest.TestCase):
         for artifact in variants:
             self.assertFalse(build_reference_origins(self.case,self.record,artifact)['nodes'])
 
+    def test_whole_segment_identity_supports_origin_without_any_path(self):
+        self.artifact['graph']['paths'] = []
+        identities = {'file_sha256':'d'*64,'associations':[{'segment_id':'segment-a','contig_id':'contig-a','orientation':'+','length_bp':6,'sequence_sha256':'e'*64}]}
+        result = build_reference_origins(self.case,self.record,self.artifact,identities)
+        node = result['nodes']['segment-a']
+        self.assertEqual(node['reference_id'],'fixture-a')
+        self.assertEqual(node['evidence'][0]['association_kind'],'whole_segment_sequence_identity')
+        self.assertEqual(node['evidence'][0]['identity_source_sha256'],'d'*64)
+        self.assertNotIn('path_id',node['evidence'][0])
+        self.artifact['graph']['source']['role'] = 'initial_flye'
+        self.assertFalse(build_reference_origins(self.case,self.record,self.artifact,identities)['nodes'])
+
     def test_colour_is_stable_when_other_references_are_not_selected(self):
         molecule={'refseq_accession':'NC_017662.1','molecule_type':'plasmid'}
         colour=reference_colour(molecule)

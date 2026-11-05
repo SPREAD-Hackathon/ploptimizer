@@ -204,3 +204,8 @@ the same accession catalogue as the graph and expected-molecule displays.
 Length distributions are an additive `report_evidence.length_metrics` model and
 `length-metrics.tsv` export. See [LENGTH_METRICS.md](LENGTH_METRICS.md) for source
 binding, missing-data rules and collection from existing scored outputs.
+
+Graph origin model `saved_exact_contig_gfa_association_v2` also supports verified
+whole-segment/contig identity when the GFA has no path records. It preserves the
+saved exact reference assessment and records the identity-source hashes. See
+[GRAPH_COLLECTION.md](GRAPH_COLLECTION.md#whole-segment-origin-association-without-gfa-paths).
