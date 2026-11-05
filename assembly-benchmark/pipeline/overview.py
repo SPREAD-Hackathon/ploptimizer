@@ -13,7 +13,7 @@ def _cell(counts, href=None):
     if "repeatability" in counts:
         return _repeatability_cell(counts["repeatability"], href)
     tone = "neutral" if counts["denominator"] == 0 else "pass" if counts["fail"] == 0 else "fail" if counts["pass"] == 0 else "mixed"
-    text = f'<strong>{counts["pass"]} pass · {counts["fail"]} fail</strong>'
+    text = '<strong>Not assessed</strong>' if counts['total'] == 0 else f'<strong>{counts["pass"]} pass · {counts["fail"]} fail</strong>'
     if href:
         text = f'<a href="{_e(href)}">{text}</a>'
     extra = ([f'{counts["errors"]} errors'] if counts["errors"] else []) + ([f'{counts["unscored"]} unscored'] if counts["unscored"] else [])
@@ -28,7 +28,7 @@ def _repeatability_cell(counts, href=None):
     same, different = counts["identical"], counts["different"]
     denominator = same + different
     tone = "neutral" if not denominator else "pass" if not different else "fail" if not same else "mixed"
-    text = f'<strong>{same} identical · {different} different</strong>'
+    text = '<strong>Not assessed</strong>' if counts['total'] == 0 else f'<strong>{same} identical · {different} different</strong>'
     if href:
         text = f'<a href="{_e(href)}">{text}</a>'
     if counts["not_assessed"]:
@@ -54,24 +54,31 @@ def _repeatability_tables(item, tools):
         body += f'<tr><th scope="row">{_e(genome["organism"])}<small>{_e(genome["assembly_accession"] or "Accession not recorded")}</small></th>'
         body += ''.join(_cell(t) for t in genome["tools"]) + '</tr>'
     body += '</tbody></table></div>'
+    only_supplementary = bool(item.get('repeatability_groups')) and all(g.get('cohort_role') == 'supplementary' for g in item['repeatability_groups'])
+    if only_supplementary:
+        body += '<p>The revised larger-plasmid repeatability case has not been assessed.</p><details><summary>Supplementary repeatability comparisons</summary>'
     for kind, heading in (("within_thread", "Repeated runs at the same thread setting"), ("across_threads", "Agreement across thread settings")):
         body += f'<h2>{heading}</h2><div class="table-scroll"><table><thead><tr><th scope="col">Input</th><th scope="col">Assembler</th><th scope="col">Mode</th><th scope="col">Threads</th><th scope="col">Completed / expected</th><th scope="col">File bytes</th><th scope="col">Normalised sequences</th><th scope="col">Reference-recovery outcomes</th></tr></thead><tbody>'
         groups = [g for g in item.get("repeatability_groups", []) if g["comparison"] == kind]
         for g in groups:
             threads = ', '.join(map(str, g["threads"])) if isinstance(g.get("threads"), list) else str(g.get("threads", "Not recorded"))
             runs = f'{g.get("scored_runs", "—")} / {g.get("expected_runs", "—")}' if kind == "within_thread" else "All saved repeats" if g.get("complete") else "Incomplete"
-            body += f'<tr><th scope="row">{_e(g["title"])}</th><td>{_e(TOOLS[g["tool"]])}</td><td>{_e(g["mode"].replace("_", " ").title())}</td><td>{_e(threads)}</td><td>{_e(runs)}</td>'
+            body += f'<tr><th scope="row">{_e(g["title"])}' + (f'<small>Supplementary: {_e(g.get("cohort_reason"))}</small>' if g.get('cohort_role') == 'supplementary' else '') + f'</th><td>{_e(TOOLS[g["tool"]])}</td><td>{_e(g["mode"].replace("_", " ").title())}</td><td>{_e(threads)}</td><td>{_e(runs)}</td>'
             body += ''.join(f'<td>{_agreement(g, key)}</td>' for key in ("byte", "normalised_sequence", "biological")) + '</tr>'
         if not groups:
             body += '<tr><td colspan="8">No saved comparisons.</td></tr>'
         body += '</tbody></table></div>'
+    if only_supplementary:
+        body += '</details>'
     body += '<p class="muted">Normalisation ignores contig names, order and strand. Circular rotation is ignored only for exact reference-matched circles; other contig ends and duplicates are retained. Different normalised signatures therefore do not establish a particular sequence change. Incomplete groups or unverified inputs are not assessed. Identical observations do not guarantee determinism.</p>'
     return body
 
 
 def render_home(model, prefix=""):
     """Body fragment; caller retains its existing page shell and assets."""
-    body = f'<h1>Assembly benchmark</h1><p class="overview-intro">Recovery and repeatability · {model["counts"]["total"]} run records · {len(model["tools"])} assembler configurations</p>'
+    body = f'<h1>Assembly benchmark</h1><p class="overview-intro">Recovery and repeatability · {model.get("all_counts", model["counts"])["total"]} run records · {len(model["tools"])} assembler configurations</p>'
+    if model.get("baseline_policy"):
+        body += '<p>S1–S3 baseline: plasmids ≥20 kb. Earlier small-plasmid inputs are supplementary.</p>'
     if model["missing_batches"]:
         body += '<p class="notice">Some selected batches are unavailable. Counts are incomplete.</p>'
     body += '<div class="table-scroll" role="region" aria-label="Scenario family outcomes" tabindex="0"><table class="overview-heatmap"><caption>Recovery counts by scenario family; S3 counts repeated-run agreement</caption><thead><tr><th scope="col">Scenario family</th>'
@@ -94,6 +101,12 @@ def render_family(model, family, prefix="../"):
     if item is None:
         raise ValueError("Unknown scenario family")
     body = f'<p><a href="{_e(prefix)}index.html">All scenario families</a></p><h1>{family} · {_e(item["title"])}</h1><p>{_e(item["description"])}</p>'
+    if item.get("supplementary_counts", {}).get("total"):
+        body += '<p>Headline counts exclude supplementary small-plasmid inputs. Their original results remain below.</p>'
+    if family == "S1" and model.get("baseline_policy"):
+        body += '<p>Available: chromosome-only and single larger-plasmid controls. The multiple-larger-plasmid baseline has not been assessed.</p>'
+    if family == "S2" and model.get("baseline_policy") and not item['counts']['total']:
+        body += '<p>The revised larger-plasmid coverage panel has not been assessed.</p>'
     if family == "S6":
         metric = "Repeatability" if family == "S3" else "Tolerant recovery"
         body += f'<p>{metric} is a separate endpoint. The tables below show exact status only; individual result links retain the detailed evidence.</p>'
@@ -107,13 +120,27 @@ def render_family(model, family, prefix="../"):
             body += f'<tr><th scope="row">{_e(genome["organism"])}<small>{_e(genome["assembly_accession"] or "Accession not recorded")}</small></th>'
             body += ''.join(_cell(t) for t in genome["tools"]) + '</tr>'
         body += '</tbody></table></div>'
-    body += '<h2>Individual runs</h2><div class="table-scroll"><table><thead><tr><th scope="col">Genome / case</th><th scope="col">Assembler / version</th><th scope="col">Threads / repeat</th><th scope="col">Exact status</th></tr></thead><tbody>'
-    for row in item["records"]:
+    primary = [row for row in item['records'] if row.get('cohort_role') != 'supplementary']
+    supplementary = [row for row in item['records'] if row.get('cohort_role') == 'supplementary']
+    body += '<h2>Individual runs</h2>' + _run_table(primary, prefix)
+    if family == 'S3':
+        body += '</details>'
+    if supplementary:
+        body += f'<details><summary>Supplementary results · {len(supplementary)} runs</summary>'
+        body += '<p>Inputs contain plasmids below 20 kb; these runs retain their original scenario, score and evidence.</p>'
+        body += _run_table(supplementary, prefix) + '</details>'
+    return body
+
+
+def _run_table(rows, prefix):
+    body = '<div class="table-scroll"><table><thead><tr><th scope="col">Genome / case</th><th scope="col">Assembler / version</th><th scope="col">Threads / repeat</th><th scope="col">Exact status</th></tr></thead><tbody>'
+    for row in rows:
         run = f'{row["threads"] if row["threads"] is not None else "Not recorded"} threads · {row["run_id"] or "Single run"}'
         body += f'<tr data-batch="{_e(row["batch"])}"><th scope="row">{_e(row["organism"])}<small>{_e(row["title"])}</small></th><td><a href="{_e(prefix + row["href"])}">{_e(TOOLS[row["tool"]])}<small>{_e(row["version"])}</small></a></td><td>{_e(run)}</td><td><span class="status {_e(row["status"])}">{_e(row["status"].replace("_", " ").title())}</span></td></tr>'
-    if not item["records"]:
+    if not rows:
         body += '<tr><td colspan="4">No runs in this selected cohort.</td></tr>'
-    return body + '</tbody></table></div>' + ('</details>' if family == 'S3' else '')
+    return body + '</tbody></table></div>'
+
 
 
 def write_overview(documents, output, *, cohort=None, archived_batch=None, root_batch=None, model=None):

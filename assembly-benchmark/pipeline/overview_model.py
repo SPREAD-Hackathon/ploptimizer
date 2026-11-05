@@ -3,11 +3,12 @@ import copy
 import re
 from .common import ROOT, load
 from .identities import result_href
+from .cohort_policy import reporting_role
 
 FAMILIES = {
-    "S1": ("Error-free recovery", "Baseline recovery with error-free simulated reads. Flye (default) is the primary Flye configuration; Flye (--meta) is a parameter comparison."),
-    "S2": ("Relative plasmid coverage", "Recovery across plasmid-to-chromosome coverage ratios."),
-    "S3": ("Repeated runs", "Agreement between repeated executions on the same frozen input, grouped by mode and thread setting."),
+    "S1": ("Error-free recovery", "Revised baseline: chromosome only, or chromosome with plasmids all ≥20 kb. Flye (default) is the primary Flye configuration; Flye (--meta) is a parameter comparison."),
+    "S2": ("Relative plasmid coverage", "Relative coverage of plasmids ≥20 kb. Existing small-plasmid coverage runs remain supplementary."),
+    "S3": ("Repeated runs", "Repeated frozen larger-plasmid inputs, grouped by mode and thread setting. Existing small-plasmid repeats remain supplementary."),
     "S4": ("Small plasmids and read length", "Small-plasmid recovery across read-length targets."),
     "S5": ("Linear plasmids and terminal repeats", "Isolated linear-reference controls with explicit terminal reads; chromosome context is not included."),
     "S6": ("Simulated read errors", "Matched controls and simulated error profiles."),
@@ -78,6 +79,9 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
     cohort = copy.deepcopy(cohort if cohort is not None else load(ROOT / "config/overview.json"))
     if cohort.get("schema_version") != 1:
         raise ValueError("Unsupported overview cohort configuration")
+    policy = cohort.get("baseline_policy") if archived_batch is None else None
+    if policy and (type(policy.get("minimum_plasmid_bp")) is not int or policy["minimum_plasmid_bp"] <= 0):
+        raise ValueError("Baseline threshold must be a positive integer")
     tools = cohort.get("tools", list(TOOLS))
     families = cohort.get("families", list(FAMILIES))
     if len(set(tools)) != len(tools) or any(t not in TOOLS for t in tools) or len(set(families)) != len(families) or any(f not in FAMILIES for f in families):
@@ -102,7 +106,9 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
             continue
         cases = {case["id"]: case for case in document["scenarios"]}
         if document.get("config", {}).get("determinism"):
-            repeatability.extend(_repeatability_groups(document, cases))
+            for group in _repeatability_groups(document, cases):
+                role, reason = reporting_role(cases[group["scenario_id"]], "S3", policy)
+                repeatability.append({**group, "cohort_role": role, "cohort_reason": reason})
         for record in document["results"]:
             case = cases.get(record["scenario_id"])
             if case is None:
@@ -115,7 +121,8 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
                 raise ValueError("Duplicate execution identity; refusing duplicate headline counts")
             seen.add(identity)
             link = result_href(record, "" if archived_batch is not None or batch == root_batch else f"batches/{batch}/")
-            rows.append({"batch": batch, "family": family, "scenario_id": record["scenario_id"],
+            role, reason = reporting_role(case, family, policy)
+            rows.append({"cohort_role": role, "cohort_reason": reason, "batch": batch, "family": family, "scenario_id": record["scenario_id"],
                          "title": case.get("title", case["id"]), "organism": case.get("organism", "Not recorded"),
                          "assembly_accession": case.get("assembly_accession") or case.get("reference_accession"), "tool": record["tool"],
                          "version": record.get("version") or "Version not recorded", "threads": record.get("threads"),
@@ -124,17 +131,19 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
     family_models = []
     for family in families:
         selected_rows = [r for r in rows if r["family"] == family]
-        genomes = sorted({(r["organism"], r["assembly_accession"] or "") for r in selected_rows})
-        family_models.append({"id": family, "title": FAMILIES[family][0], "description": FAMILIES[family][1],
-                              "href": f"scenarios/{family.lower()}.html", "counts": _counts(selected_rows),
-                              "tools": [{"id": tool, "label": TOOLS[tool], **_counts([r for r in selected_rows if r["tool"] == tool])} for tool in tools],
+        headline_rows = [r for r in selected_rows if r["cohort_role"] == "primary"]
+        genomes = sorted({(r["organism"], r["assembly_accession"] or "") for r in headline_rows})
+        family_models.append({"id": family, "title": FAMILIES[family][0], "description": ("Historical batch: original input complements and outcomes; revised baseline exclusions are not applied." if archived_batch is not None and family in {"S1", "S2", "S3"} else FAMILIES[family][1]),
+                              "href": f"scenarios/{family.lower()}.html", "counts": _counts(headline_rows), "all_counts": _counts(selected_rows),
+                              "supplementary_counts": _counts([r for r in selected_rows if r["cohort_role"] == "supplementary"]),
+                              "tools": [{"id": tool, "label": TOOLS[tool], **_counts([r for r in headline_rows if r["tool"] == tool])} for tool in tools],
                               "genomes": [{"organism": organism, "assembly_accession": accession or None,
-                                           "tools": [{"id": tool, "label": TOOLS[tool], **_counts([r for r in selected_rows if r["organism"] == organism and (r["assembly_accession"] or "") == accession and r["tool"] == tool])} for tool in tools]} for organism, accession in genomes],
+                                           "tools": [{"id": tool, "label": TOOLS[tool], **_counts([r for r in headline_rows if r["organism"] == organism and (r["assembly_accession"] or "") == accession and r["tool"] == tool])} for tool in tools]} for organism, accession in genomes],
                               "records": selected_rows})
         if family == "S3":
             item = family_models[-1]
             item["repeatability_groups"] = repeatability
-            within = [g for g in repeatability if g["comparison"] == "within_thread"]
+            within = [g for g in repeatability if g["comparison"] == "within_thread" and g["cohort_role"] == "primary"]
             item["repeatability"] = _repeatability_counts(within)
             for tool in item["tools"]:
                 tool["repeatability"] = _repeatability_counts([g for g in within if g["tool"] == tool["id"]])
@@ -146,6 +155,8 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
             "selected_batches": selected, "included_batches": [b for b in selected if b in by_batch],
             "missing_batches": [b for b in selected if b not in by_batch], "excluded_batches": sorted(set(by_batch) - set(selected)),
             "root_batch": root_batch, "tools": [{"id": t, "label": TOOLS[t]} for t in tools], "families": family_models,
-            "counts": _counts(rows), "endpoint": "recorded_exact_status", "denominator": "pass + fail"}
+            "counts": _counts([r for r in rows if r["cohort_role"] == "primary"]),
+            "all_counts": _counts(rows), "baseline_policy": copy.deepcopy(policy),
+            "supplementary_counts": _counts([r for r in rows if r["cohort_role"] == "supplementary"]), "endpoint": "recorded_exact_status", "denominator": "pass + fail"}
 
 

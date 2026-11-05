@@ -22,14 +22,14 @@ class OverviewCohortTests(unittest.TestCase):
     def test_primary_exact_counts_exclude_historical_pilot(self):
         counts = self.model['counts']
         self.assertEqual({key: counts[key] for key in ('total', 'pass', 'fail', 'errors', 'unscored', 'denominator')},
-                         {'total': 284, 'pass': 84, 'fail': 196, 'errors': 4, 'unscored': 0, 'denominator': 280})
+                         {'total': 128, 'pass': 44, 'fail': 80, 'errors': 4, 'unscored': 0, 'denominator': 124})
         self.assertEqual(self.model['endpoint'], 'recorded_exact_status')
         self.assertEqual(self.model['scope'], 'primary_cohort')
         self.assertEqual(set(self.model['included_batches']), set(self.cohort['primary_batches']))
         self.assertEqual(self.model['missing_batches'], [])
         self.assertIn('20261104T183058', self.model['excluded_batches'])
         self.assertNotIn('20261104T183058', self.model['selected_batches'])
-        expected = {'S1': (88, 45, 43, 0), 'S2': (40, 10, 30, 0), 'S3': (80, 20, 60, 0),
+        expected = {'S1': (52, 35, 17, 0), 'S2': (0, 0, 0, 0), 'S3': (0, 0, 0, 0),
                     'S4': (48, 6, 38, 4), 'S5': (16, 0, 16, 0), 'S6': (12, 3, 9, 0)}
         for family in self.model['families']:
             row = family['counts']
@@ -73,7 +73,7 @@ class OverviewCohortTests(unittest.TestCase):
         records = [{'scenario_id': source_case['id'], 'tool': tool, 'status': status, 'version': 'fixture'}
                    for tool, status in zip(self.cohort['tools'], ['error', 'timeout', 'running', 'not_run'])]
         fixture = {'batch': 'fixture', 'config': {}, 'scenarios': [source_case], 'results': records}
-        model = build_overview([fixture], cohort=dict(self.cohort, primary_batches=['fixture'], root_batch='fixture', excluded_historical_batches=[]))
+        model = build_overview([fixture], cohort=dict(self.cohort, primary_batches=['fixture'], root_batch='fixture', excluded_historical_batches=[], baseline_policy=None))
         counts = model['counts']
         self.assertEqual(tuple(counts[key] for key in ('pass', 'fail', 'errors', 'unscored', 'denominator')), (0, 0, 2, 2, 0))
         self.assertIsNone(counts['pass_fraction'])
@@ -97,7 +97,7 @@ class OverviewCohortTests(unittest.TestCase):
         documents = [document for document in self.documents if document['batch'] != '20261104T210453']
         model = build_overview(documents, cohort=self.cohort)
         self.assertEqual(model['missing_batches'], ['20261104T210453'])
-        self.assertEqual(model['counts']['total'], 272)
+        self.assertEqual(model['counts']['total'], 116)
         self.assertEqual(next(family for family in model['families'] if family['id'] == 'S6')['records'], [])
         self.assertIn('Counts are incomplete', render_home(model))
 
@@ -131,6 +131,6 @@ class OverviewCohortTests(unittest.TestCase):
             write_overview(self.documents, output, cohort=self.cohort)
             self.assertEqual((output / 'data/results.json').read_bytes(), original_json)
             self.assertEqual((output / 'data/results.tsv').read_bytes(), original_tsv)
-            self.assertEqual(load(output / 'data/overview.json')['counts']['total'], 284)
+            self.assertEqual(load(output / 'data/overview.json')['counts']['total'], 128)
         self.assertEqual(before_files, {path: digest(path) for path in self.paths})
         self.assertEqual(before_documents, hashlib.sha256(json.dumps(self.documents, sort_keys=True).encode()).hexdigest())

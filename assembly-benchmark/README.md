@@ -26,16 +26,20 @@ complete downloadable bundle and a detailed report for each result.
 
 Assess whether long-read assembly tools recover the correct plasmid sequences and molecule count alongside the chromosome. Detect missing, fragmented, merged, duplicated and incorrectly circularised plasmids. Start with *Klebsiella pneumoniae* and *Escherichia coli*.
 
-## First benchmark
+## Revised baseline
 
-Use error-free simulated long reads from curated complete references. Test four scenario families, changing one factor at a time:
+The [baseline policy](BASELINE_POLICY.md) separates ordinary recovery from small-plasmid challenges:
 
-1. **Plasmid count (S1):** chromosome alone, chromosome plus one native plasmid, and chromosome plus multiple native plasmids.
-2. **Relative coverage (S2):** plasmid depth at 0.8×, 1×, 1.2×, 3× and 5× chromosome depth. Fix chromosome depth; these ratios describe read coverage, not measured biological copy number.
-3. **Reproducibility (S3):** repeat frozen inputs five times at one and four threads, with default and supported deterministic modes. Headline output agreement and show recovery separately. See [S3 repeatability](S3_REPEATABILITY.md).
-4. **Small plasmids (S4):** test small plasmids with their chromosome and within their native complement. Check that reads were present before calling an assembly failure.
+1. **S1:** chromosome alone, chromosome plus one plasmid ≥20 kb, or multiple plasmids all ≥20 kb.
+2. **S2:** larger-plasmid complements, varying only relative coverage.
+3. **S3:** repeated execution of one fixed larger-plasmid input across modes and thread settings; recovery is secondary.
+4. **S4:** smaller plasmids individually and alongside larger ones.
 
-Use the same frozen reads for all tools. Keep simulation replicates separate from repeated executions on identical reads. Label computational subsets as derived cases rather than natural plasmid complements.
+Existing mixed-size and small-plasmid S1–S3 runs remain supplementary, with their
+original references, identifiers and scores. The revised baseline currently has
+chromosome-only and single larger-plasmid S1 controls. Multiple-larger-plasmid S1,
+larger-plasmid S2 and revised S3 are not assessed. This reporting change does not
+replace references or submit new biological computation.
 
 ## Tools and references
 
@@ -66,7 +70,9 @@ profile is in `config/pilot.json`. Supporting details and sources are in
 [METHODS.md](METHODS.md); accession inventories and metadata are in
 [references/](references/README.md).
 
-## Current expansion
+## Historical execution profiles
+
+These profiles predate the ≥20 kb policy and must not be described as the revised baseline.
 
 `config/next-stages.json` freezes 22 S1 cases across all five references and ten
 S2 cases: W/pRK2 and MGH78578/pKPN7 at relative depths 0.8, 1, 1.2, 3 and 5.

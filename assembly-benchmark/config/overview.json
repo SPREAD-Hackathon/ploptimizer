@@ -27,5 +27,10 @@
   ],
   "headline_endpoint": "recorded_exact_status",
   "denominator": "pass + fail",
-  "notes": "Explicit first-release cohort. Historical pilot excluded. Archived overview includes only its batch. Repeatability and tolerant recovery are separate endpoints."
+  "notes": "Explicit first-release cohort. Historical pilot excluded. Archived overview includes only its batch. Repeatability and tolerant recovery are separate endpoints.",
+  "baseline_policy": {
+    "id": "large-plasmid-baseline-v2",
+    "minimum_plasmid_bp": 20000,
+    "scope": "Reporting classification of saved cases only; original inputs and scores unchanged"
+  }
 }

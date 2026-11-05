@@ -450,3 +450,18 @@ S5 publication: deployment `dpl_Egjp23QfLZTYyYtQPXtCbNsqm6hQ`; all 2,266
 public files passed byte-for-byte verification, with no failed downloads. The
 321-test suite passed with 11 optional skips; eight cohort tests and 6,923 local
 links passed. All 300 source records retain their original fields.
+
+## Revised baseline reporting (5 November)
+
+Policy `large-plasmid-baseline-v2` excludes inputs containing any plasmid below
+20 kb from S1–S3 headline counts. No reference, read, assembly, alignment or
+original score changed. S1 retains 52 eligible executions (35 pass, 17 fail).
+The other 36 S1, all 40 S2 and all 80 S3 executions remain supplementary.
+The revised multiple-larger-plasmid S1, larger-plasmid S2 and S3 panels are
+unassessed. S4–S6 are unchanged. See [BASELINE_POLICY.md](BASELINE_POLICY.md).
+
+Verification: 323 tests ran successfully with 11 optional skips; 6,923 local links
+resolve and original source fields are preserved across all 300 result views.
+Production deployment `dpl_4WFGpYXj8HRTCMKNeh1FnfnobeLw` passed byte-for-byte
+checks for all 2,266 public files, including downloads. Evidence is saved in
+`evidence/baseline-v2/`. No reference replacement or new cluster job was performed.

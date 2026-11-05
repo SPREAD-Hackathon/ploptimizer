@@ -1,5 +1,7 @@
 # Methods and evaluation notes
 
+The current [baseline policy](BASELINE_POLICY.md) requires plasmids ≥20 kb in S1–S3 and isolates smaller plasmids in S4. Saved mixed-size runs remain supplementary. Historical profiles and accessions below retain their original provenance; the revised panel is not fully assessed.
+
 Supporting design notes for the [short specification](README.md). Open choices belong in [DECISIONS.md](DECISIONS.md); these notes do not settle numerical settings or admit reference candidates.
 
 ## Reference and input provenance

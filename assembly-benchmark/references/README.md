@@ -1,5 +1,7 @@
 # RefSeq reference shortlist: E. coli and K. pneumoniae
 
+This is the retained historical reference inventory. The [revised baseline policy](../BASELINE_POLICY.md) classifies each saved input by its actual plasmid lengths: any plasmid below 20 kb excludes that input from S1–S3 baseline counts. Native mixed-size complements remain supplementary. No replacement genomes have been admitted by the reporting revision.
+
 Checked against live NCBI metadata on **4 November 2026**. This is a shortlist of strong gold-standard candidates, not certification that every sequence or plasmid complement is error-free. Five preferred candidates cover **0, 1, 2, 5 and 6 deposited plasmids**, with plasmids from **3,478 to 204,698 bp**. Two additional assemblies are held because their metadata indicates ambiguous/non-ACGT positions.
 
 ## Preferred candidates

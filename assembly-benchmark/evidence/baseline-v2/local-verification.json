@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "local_links_checked": 6923,
+  "source_records_preserved": 300,
+  "primary_counts": {
+    "denominator": 124,
+    "errors": 4,
+    "fail": 80,
+    "pass": 44,
+    "pass_fraction": 0.3548387096774194,
+    "total": 128,
+    "unscored": 0
+  },
+  "supplementary_counts": {
+    "denominator": 156,
+    "errors": 0,
+    "fail": 116,
+    "pass": 40,
+    "pass_fraction": 0.2564102564102564,
+    "total": 156,
+    "unscored": 0
+  },
+  "policy": {
+    "id": "large-plasmid-baseline-v2",
+    "minimum_plasmid_bp": 20000,
+    "scope": "Reporting classification of saved cases only; original inputs and scores unchanged"
+  },
+  "deployment_id": "dpl_4WFGpYXj8HRTCMKNeh1FnfnobeLw",
+  "tests": {
+    "run": 323,
+    "optional_skips": 11,
+    "failures": 0
+  }
+}

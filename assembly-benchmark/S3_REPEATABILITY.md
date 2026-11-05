@@ -1,5 +1,7 @@
 # S3: repeatability, separately from recovery
 
+The [revised baseline policy](BASELINE_POLICY.md) requires one fixed input with plasmids all ≥20 kb. Both inputs in the existing profiles below contain small plasmids, so their measured comparisons are supplementary. The revised larger-plasmid S3 case is not assessed; these historical profiles are not replacement-baseline configurations.
+
 Run the exact same frozen reads five times per tool, mode and thread count.
 Use fresh execution directories without shared checkpoints. Freeze versions,
 dependencies and all other arguments. Record commands and scheduler CPUs.
