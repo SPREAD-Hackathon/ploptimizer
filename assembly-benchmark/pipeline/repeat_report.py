@@ -55,7 +55,7 @@ def unrun_summary(config, cases):
             "limitations": "Observed repeatability on one frozen read set is not a guarantee of determinism."}
 
 
-def build_repeat(config, batch=None, output=None, document=None, include_history=True):
+def build_repeat(config, batch=None, output=None, document=None, include_history=True, render_context=None):
     document = copy.deepcopy(document) if document is not None else None
     output = output or ROOT / "dist"
     generated_assets = ensure_assets(ROOT)
@@ -131,8 +131,8 @@ def build_repeat(config, batch=None, output=None, document=None, include_history
     methods += '<h2>Reading S3 repeatability</h2><p>File bytes preserve headers and output ordering. Normalised sequences ignore names, order and strand; rotation is ignored only for exact matches to known circular truth molecules. Other contig ends are preserved and duplicates remain present. Biological signatures compare the strict endpoint and molecule counts. Input hashes must agree before a repeatability conclusion is shown.</p>'
     (output / "methods.html").write_text(page("Methods", methods, active="methods"))
     (output / "about.html").write_text(page("About", '<h1>About this repeatability panel</h1><p>Ploptimizer compares plasmid assembly outcomes using frozen simulated reads and recorded execution evidence. These S3 results assess observed repeatability, with BMRC Slurm execution and Pixi environments.</p><p><a href="methods.html">Methods and limitations</a> · <a href="history.html">All batches</a></p>', active="about"))
-    write_history(output, document, include_history)
-    write_release_overview(output, document, include_history)
+    write_history(output, document, include_history, render_context)
+    write_release_overview(output, document, include_history, render_context)
     save(output / "vercel.json", {"cleanUrls": True})
     (output / ".vercelignore").write_text(".env*\n.vercel\n.gitignore\n")
     if batch:

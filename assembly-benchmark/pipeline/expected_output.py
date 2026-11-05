@@ -37,7 +37,12 @@ def render_expected_output(case, record):
         radius = 13 + 36 * (max(0, length or 0) / maximum) ** .35
         topology = molecule.get("topology", "unknown")
         kind = "chromosome" if molecule.get("molecule_type") == "chromosome" else "plasmid"
-        colour, light = reference_colour(molecule)
+        prepared = record.get("report_evidence")
+        if prepared:
+            reference = next(r for r in prepared["reference_origins"]["references"] if r["id"] == molecule.get("refseq_accession"))
+            colour, light = reference["colour"], reference["light_colour"]
+        else:
+            colour, light = reference_colour(molecule)
         body += f'<g class="expected-molecule {kind}" style="--reference-colour:{colour};--reference-light:{light}"><title>{e(name)} · {e(size)} · {e(topology)}</title>'
         if topology == "circular":
             body += f'<circle cx="{x}" cy="{y}" r="{radius:.2f}" />'

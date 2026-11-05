@@ -11,7 +11,8 @@ from .assets import ensure_assets
 from .reviews import attach_sequence_review
 from .assessments import attach_assessment
 from .common import ROOT, digest, fingerprint, load, save
-from .diagnostics import DEFAULT_POLICY
+from .evidence_model import (diagnostic_policy, alignment_classification, candidate_labels,
+                             diagnostic_state, diagnostic_summary, molecule_explanation)
 from .result_pages import enrich_graph_artifacts, result_href, write_result_pages
 
 LABELS = {"flye": "Flye", "flye-meta": "Flye · uneven coverage", "raven": "Raven", "plassembler": "Plassembler long"}
@@ -89,15 +90,15 @@ def collect_records(config, batch):
     return output
 
 
-def build(config, batch=None, output=None, document=None, include_history=True):
+def build(config, batch=None, output=None, document=None, include_history=True, render_context=None):
     if batch is None and document is None and (ROOT / "published/latest.json").exists():
         document = load(ROOT / "published/latest.json")
     if config.get("noisy_panel") or (document and document["config"].get("noisy_panel")):
         from .noisy_report import build_noisy
-        return build_noisy(config, batch, output, document, include_history)
+        return build_noisy(config, batch, output, document, include_history, render_context)
     if config.get("determinism") or (document and document["config"].get("determinism")):
         from .repeat_report import build_repeat
-        return build_repeat(config, batch, output, document, include_history)
+        return build_repeat(config, batch, output, document, include_history, render_context)
     output = output or ROOT / "dist"
     generated_assets = ensure_assets(ROOT)
     # Rebuild generated content; preserve only the CLI's ignored project-link state.
@@ -192,8 +193,8 @@ def build(config, batch=None, output=None, document=None, include_history=True):
     (output / "methods.html").write_text(page("Methods", methods, active="methods"))
     about = '<h1>About Ploptimizer</h1><p class="intro">A benchmark for the assembly problems that disappear inside whole-genome summary scores.</p><p>We assess whether long-read assembly workflows recover chromosomes and plasmids correctly, starting with E. coli and K. pneumoniae. Controlled reference subsets, coverage panels and explicit sequence endpoints make individual failures inspectable.</p><p>The results matrix links to the inputs, tool configuration, run evidence and limitations for each scenario. Runs execute on the BMRC cluster using Slurm and Pixi; this site presents static result snapshots.</p><p><a href="methods.html">Read the methods</a> or <a href="https://github.com/SPREAD-Hackathon/ploptimizer/tree/main/assembly-benchmark">inspect the source and brief</a>.</p>'
     (output / "about.html").write_text(page("About", about, active="about"))
-    write_history(output, document, include_history)
-    write_release_overview(output, document, include_history)
+    write_history(output, document, include_history, render_context)
+    write_release_overview(output, document, include_history, render_context)
     save(output / "vercel.json", {"cleanUrls": True})
     (output / ".vercelignore").write_text(".env*\n.vercel\n.gitignore\n")
     if batch:
@@ -232,7 +233,7 @@ def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
     return body
 
 
-def write_history(output, document, include_history=True):
+def write_history(output, document, include_history=True, render_context=None):
     if include_history:
         shutil.rmtree(output / "batches", ignore_errors=True)
         history = '<h1>All batches</h1><p class="intro">Keep each batch separate: inputs, settings and scenario coverage can differ. Completed, running and queued batches remain separate. Counts below use strict exact recovery; noisy batches show tolerant outcomes on their own page. Open a batch to inspect its settings and progress.</p><ul class="scenario-list">'
@@ -240,16 +241,14 @@ def write_history(output, document, include_history=True):
         current_fail = sum(row["status"] == "fail" for row in document["results"])
         current_unscored = len(document["results"]) - current_pass - current_fail
         history += f'<li><a href="batch-details.html">Current source batch · {e(document["config"]["profile_id"])}</a><span>{current_pass} pass · {current_fail} fail · {current_unscored} unscored</span></li>'
-        for path in sorted((ROOT / "published").glob("*.json"), reverse=True):
-            if path.name == "latest.json":
-                continue
-            archived = load(path)
+        archives = render_context["documents"].values() if render_context is not None else (load(path) for path in sorted((ROOT / "published").glob("*.json"), reverse=True) if path.name != "latest.json")
+        for archived in archives:
             if archived["batch"] == document["batch"]:
                 continue
             passes = sum(row["status"] == "pass" for row in archived["results"])
             fails = sum(row["status"] == "fail" for row in archived["results"])
             identifier = archived["batch"]
-            build(archived["config"], output=output / "batches" / identifier, document=archived, include_history=False)
+            build(archived["config"], output=output / "batches" / identifier, document=archived, include_history=False, render_context=render_context)
             unscored = len(archived["results"]) - passes - fails
             history += f'<li><a href="batches/{identifier}/index.html">{identifier} · {e(archived["config"]["profile_id"])}</a><span>{passes} pass · {fails} fail · {unscored} unscored</span></li>'
         history += '</ul><p><a href="index.html">Return to the release overview</a></p>'
@@ -259,99 +258,7 @@ def write_history(output, document, include_history=True):
         (output / "history.html").write_text(page("All batches", '<h1>Batch archive</h1><p><a href="/history.html">Browse all earlier batches</a></p>', active="history"))
 
 
-def diagnostic_policy(diagnostic):
-    return {**DEFAULT_POLICY, **diagnostic.get("policy", {}), **diagnostic.get("evidence", {}).get("policy", {})}
-
-
-def alignment_classification(row, policy):
-    fraction = row["recovered_fraction"]
-    if fraction <= 0 or row.get("candidate_flags", {}).get("no_supported_alignment"):
-        return "none", "No retained alignment"
-    if fraction >= 1 - 1e-9:
-        return "full", "Full aligned recovery"
-    if fraction >= policy["complete_fraction"]:
-        return "near_full", "Near-full aligned recovery"
-    return "partial", "Partial aligned recovery"
-
-
-def candidate_labels(row):
-    flags = row.get("candidate_flags", {})
-    return [label for key, label in (("fragmented", "fragmentation"), ("duplicated", "duplication"), ("joined", "join")) if flags.get(key)]
-
-
-def diagnostic_state(diagnostic):
-    if not diagnostic:
-        return "Recovery diagnostics not available"
-    status = diagnostic.get("status")
-    if status in ("running", "pending", "queued"):
-        return "Recovery mapping pending" if status != "running" else "Recovery mapping running"
-    if status == "error":
-        return "Mapper diagnostic error"
-    if status == "skipped":
-        return "Recovery mapping skipped"
-    return "Recovery diagnostics not available"
-
-
-def diagnostic_summary(record, case):
-    """A compact mapping explanation, never a replacement for strict pass/fail."""
-    if record.get("sequence_review"):
-        return "Verified: " + record["sequence_review"]["summary"]
-    finding = record.get("explanation") or {}
-    if finding.get("summary") and finding.get("source") != "mapping_diagnostics":
-        prefix = {"confirmed": "Observed", "suspected": "Suspected", "unresolved": "Unresolved"}.get(finding.get("confidence"), "Unresolved")
-        return prefix + ": " + finding["summary"]
-    diagnostic = record.get("diagnostics")
-    if not diagnostic or diagnostic.get("status") != "complete":
-        if not diagnostic and record["status"] in ("not_run", "pending", "running"):
-            return "Awaiting assembly assessment"
-        return diagnostic_state(diagnostic)
-    plasmids = {row["refseq_accession"] for row in case["replicons"] if row["molecule_type"] == "plasmid"}
-    if not plasmids and record["tool"] == "plassembler":
-        return "Final plasmid output only; chromosome assessed separately"
-    expected = plasmids or {row["refseq_accession"] for row in case["replicons"]}
-    rows = [row for row in diagnostic["evidence"]["replicons"] if row["accession"] in expected]
-    failed = {row["accession"] for row in record.get("evaluation", {}).get("replicons", [])
-              if row["status"] == "fail" and row["accession"] in expected}
-    if failed:
-        rows = [row for row in rows if row["accession"] in failed]
-    if not rows:
-        return "No matching molecule evidence collected"
-    labels = list(dict.fromkeys(alignment_classification(row, diagnostic_policy(diagnostic))[1] for row in rows))
-    flags = list(dict.fromkeys(label for row in rows for label in candidate_labels(row)))
-    summary = "; ".join(labels)
-    if record["status"] == "fail" and any(alignment_classification(row, diagnostic_policy(diagnostic))[0] in ("full", "near_full") for row in rows):
-        summary += "; exact recovery failed"
-    if any(alignment_classification(row, diagnostic_policy(diagnostic))[0] == "none" for row in rows):
-        summary += "; absence not established"
-    if flags:
-        summary += "; candidate " + ", ".join(flags)
-    if finding:
-        prefix = {"confirmed": "Observed", "suspected": "Suspected", "unresolved": "Unresolved"}.get(finding.get("confidence"), "Unresolved")
-        summary = prefix + ": " + summary
-    return summary
-
-
-def molecule_explanation(row, policy, strict=None):
-    kind, label = alignment_classification(row, policy)
-    if kind == "none":
-        molecule = "plasmid" if row["molecule_type"] == "plasmid" else "chromosome"
-        text = f"No retained alignment under this mapping policy. This is not evidence of {molecule} absence: filtering or alignment heuristics can hide short, shared or repetitive sequence."
-    else:
-        text = f'{label}: {row["aligned_reference_bp"]:,}/{row["length_bp"]:,} reference bases ({row["recovered_fraction"]:.2%}) are covered by retained alignments'
-        if row.get("alignment_identity") is not None:
-            text += f', with {row["alignment_identity"]:.3%} alignment identity'
-        text += "."
-        if strict and strict["status"] == "fail":
-            text += " The exact endpoint still fails; mapped coverage does not establish an exact, unique dedicated molecule."
-        elif strict and strict["status"] == "pass":
-            text += " The separate strict sequence endpoint passes."
-    labels = candidate_labels(row)
-    if labels:
-        text += " Candidate " + ", ".join(labels) + " evidence needs review; these flags can overlap and are not confirmed structural errors."
-    return text
-
-
-def diagnostic_table(diagnostic, plasmid_only=False, evaluation=None):
+def diagnostic_table(diagnostic, plasmid_only=False, evaluation=None, prepared=None):
     if diagnostic.get("status") != "complete":
         body = f'<p>{e(diagnostic_state(diagnostic))}. Supplementary recovery evidence is unavailable; the strict score is unchanged.</p>'
         if diagnostic.get("error") or diagnostic.get("reason"):
@@ -362,19 +269,22 @@ def diagnostic_table(diagnostic, plasmid_only=False, evaluation=None):
     if plasmid_only:
         body += '<p class="muted">Final plasmid output only; retained chromosome recovery is assessed separately.</p>'
     rows = [row for row in diagnostic["evidence"]["replicons"] if not (plasmid_only and row["molecule_type"] == "chromosome")]
+    prepared_rows = {row["exact"]["accession"]:row for row in prepared["molecules"]} if prepared else {}
     scores = {row["accession"]: row for row in (evaluation or {}).get("replicons", [])}
     if rows:
         body += '<ul>'
         for row in rows:
-            body += f'<li><strong>{e(row["name"])}</strong>: {e(molecule_explanation(row, policy, scores.get(row["accession"])))}</li>'
+            description = prepared_rows[row["accession"]]["mapping_description"] if prepared else molecule_explanation(row, policy, scores.get(row["accession"]))
+            body += f'<li><strong>{e(row["name"])}</strong>: {e(description)}</li>'
         body += '</ul>'
     else:
         body += '<p>No plasmids are expected in this control. The final plasmid output does not assess chromosome recovery.</p>' if plasmid_only else '<p>No molecule-level mapping evidence has been collected.</p>'
     body += '<details><summary>Alignment measurements, thresholds and limitations</summary><div class="table-scroll" role="region" aria-label="Aligned recovery evidence" tabindex="0"><table><thead><tr><th scope="col">Molecule</th><th scope="col">Aligned reference</th><th scope="col">Alignment identity</th><th scope="col">Supporting contigs</th><th scope="col">Candidate evidence</th></tr></thead><tbody>'
     for row in rows:
         identity = f'{row["alignment_identity"]:.3%}' if row["alignment_identity"] is not None else "Not estimated"
-        labels = candidate_labels(row)
-        flags = "Candidate " + ", ".join(labels) if labels else "No retained alignment" if alignment_classification(row, policy)[0] == "none" else "No flags under this policy"
+        labels = prepared_rows[row["accession"]]["candidate_labels"] if prepared else candidate_labels(row)
+        kind = prepared_rows[row["accession"]]["mapping_kind"] if prepared else alignment_classification(row, policy)[0]
+        flags = "Candidate " + ", ".join(labels) if labels else "No retained alignment" if kind == "none" else "No flags under this policy"
         body += f'<tr><th scope="row">{e(row["name"])}</th><td>{row["aligned_reference_bp"]:,}/{row["length_bp"]:,} bp ({row["recovered_fraction"]:.2%})</td><td>{identity}</td><td>{row["contig_count"]}</td><td>{e(flags)}</td></tr>'
     body += '</tbody></table></div>'
     body += f'<p class="muted">Retained alignments require mapQ ≥{policy["minimum_mapq"]}, at least {policy["minimum_aligned_bp"]} aligned reference bases and identity ≥{policy["minimum_identity"]:.0%}; secondary, ambiguous-base and non-base-aligned records are excluded. Near-full means ≥{policy["complete_fraction"]:.0%} aligned reference coverage, not exact recovery. Candidate fragmentation requires multiple contigs, best-contig coverage below {policy["complete_fraction"]:.0%} and a union gain of at least {policy["fragmentation_gain_fraction"]:.0%}; candidate duplication requires overlapping reference coverage ≥{policy["duplication_fraction"]:.0%}; candidate joins use distinct reference molecules on query segments overlapping by at most {policy["maximum_query_overlap_fraction"]:.0%}. These flags do not establish a structural error.</p>'
@@ -492,6 +402,9 @@ def explained_records(rows, cases):
     by_id = {case["id"]: case for case in cases}
     result = []
     for row in rows:
+        if row.get("report_evidence"):
+            result.append(row)
+            continue
         reviewed = row.get("sequence_review", {}).get("status") == "verified"
         if row.get("explanation") and not (reviewed and row["explanation"].get("source") != "curated_review"):
             result.append(row)
@@ -527,7 +440,7 @@ def run_summary(rows, case, prefix="../", output=None, show_tolerant=False):
     return body + '</tbody></table></div>'
 
 
-def write_release_overview(output, document, include_history=True):
+def write_release_overview(output, document, include_history=True, render_context=None):
     """Replace navigation pages, preserving scientific files and individual results."""
     if not document.get("batch"):
         return None
@@ -537,18 +450,17 @@ def write_release_overview(output, document, include_history=True):
     if document["config"].get("determinism") or document["config"].get("noisy_panel"):
         shutil.copy2(output / "index.html", output / "batch-details.html")
     else:
-        local_model = build_overview([document], cohort=local, archived_batch=document["batch"])
+        local_model = render_context["models"][document["batch"]] if render_context is not None else build_overview([document], cohort=local, archived_batch=document["batch"])
         (output / "batch-details.html").write_text(page("Batch summary", render_home(local_model)))
     documents = {document["batch"]: document}
     if include_history:
-        for path in sorted((ROOT / "published").glob("*.json")):
-            if path.name == "latest.json":
-                continue
-            archived = load(path)
+        archives = render_context["documents"].values() if render_context is not None else (load(path) for path in sorted((ROOT / "published").glob("*.json")) if path.name != "latest.json")
+        for archived in archives:
             if archived["batch"] not in documents:
                 documents[archived["batch"]] = archived
     model = write_overview(list(documents.values()), output, cohort=None if include_history else local,
-                           archived_batch=None if include_history else document["batch"])
+                           archived_batch=None if include_history else document["batch"],
+                           model=(render_context["overview"] if include_history else render_context["models"][document["batch"]]) if render_context is not None else None)
     catalog = '<h1>Scenario families</h1><p>Choose a family for genome, assembler and execution summaries.</p><ul class="scenario-list">'
     for family in model["families"]:
         href = family["href"].removeprefix("scenarios/")

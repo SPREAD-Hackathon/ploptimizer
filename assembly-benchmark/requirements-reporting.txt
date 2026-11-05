@@ -1,0 +1,2 @@
+# Only needed to draw standalone figures from existing reviewed coordinates.
+matplotlib==3.10.8

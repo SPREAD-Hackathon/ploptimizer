@@ -45,12 +45,40 @@ def main(argv=None):
             sub.add_argument("--publish-interval", type=int, default=600)
             sub.add_argument("--max-hours", type=float, default=8)
             sub.add_argument("--also-batch", action="append", default=[])
+    sub = commands.add_parser("export", help="Package existing frozen metadata; no assemblies or analyses")
+    sub.add_argument("--batch", required=True)
+    sub.add_argument("--output", required=True)
+    sub.add_argument("--single-batch", action="store_true")
+    sub.add_argument("--replace", action="store_true", help="Atomically replace an existing validated generated bundle")
+    sub = commands.add_parser("render", help="Render a validated results bundle")
+    sub.add_argument("--bundle", required=True)
+    sub.add_argument("--output", default=str(ROOT / "dist"))
     sub = commands.add_parser("submit")
     sub.add_argument("--cluster", default=str(ROOT / "config/cluster.local.json"))
     sub.add_argument("--scenario", help="Limit the submitted profile to one scenario")
     sub.add_argument("--after-job", help="Queue preparation after this numeric Slurm job ID finishes")
     sub.add_argument("--assemble-after-job", help="Generate inputs now but queue assemblies after this Slurm job")
     args = parser.parse_args(argv)
+    if args.action in ("export", "render"):
+        def scoped(value):
+            path = Path(value).resolve()
+            if path == ROOT or ROOT not in path.parents:
+                raise ValueError("Bundle and render paths must stay inside assembly-benchmark")
+            return path
+        if args.action == "export":
+            from pipeline.bundle import export_bundle
+            source = ROOT / "published" / (args.batch + ".json")
+            batch_path(args.batch)
+            snapshots = [source] if args.single_batch else sorted(p for p in (ROOT / "published").glob("*.json") if p.name != "latest.json")
+            cohort = load(ROOT / "config/overview.json")
+            if args.single_batch:
+                document = load(source)
+                cohort = {"schema_version":1,"primary_batches":[args.batch],"families":["S3"] if document["config"].get("determinism") else list(dict.fromkeys(c["category"] for c in document["scenarios"])),"tools":document["config"]["tools"]}
+            print(export_bundle(snapshots, scoped(args.output), primary_batch=args.batch, cohort=cohort, replace=args.replace))
+        else:
+            from pipeline.bundle_render import render_bundle
+            print(render_bundle(scoped(args.bundle), scoped(args.output)))
+        return 0
     batch = batch_path(args.batch) if getattr(args, "batch", None) else None
     config = load(batch / "config.json") if batch and (batch / "config.json").exists() else load(args.config)
     if config.get("status") == "proposed":

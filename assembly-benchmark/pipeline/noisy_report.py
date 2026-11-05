@@ -56,7 +56,7 @@ def metrics_table(value, label):
     return f'<details><summary>{e(label)} ({len(rows)} fields)</summary>{table}</details>' if len(rows) > 30 else table
 
 
-def build_noisy(config, batch=None, output=None, document=None, include_history=True):
+def build_noisy(config, batch=None, output=None, document=None, include_history=True, render_context=None):
     document = copy.deepcopy(document) if document is not None else None
     output = output or ROOT / "dist"
     generated = ensure_assets(ROOT)
@@ -124,8 +124,8 @@ def build_noisy(config, batch=None, output=None, document=None, include_history=
         methods += f'<h2>Bounded tolerant criterion</h2><p>The first version supports circular pRK2 and pKPN7. It requires one dedicated contig with at least {policy["minimum_reference_coverage"]:.0%} reference coverage, {policy["minimum_alignment_identity"]:.1%} alignment identity and length between {policy["minimum_length_ratio"]:.0%} and {policy["maximum_length_ratio"]:.0%} of truth. Another near-complete copy at {policy["second_copy_recovery_threshold"]:.0%} coverage prevents a pass. Unresolved repeat, embedded-copy or structural assignment is unscored. Chromosome recovery and physical topology are outside this tolerant endpoint.</p><p><a href="https://github.com/SPREAD-Hackathon/ploptimizer/blob/main/assembly-benchmark/TOLERANT_ENDPOINT.md">Read the full versioned endpoint and validation limits</a>.</p>'
     (output / "methods.html").write_text(page("Noisy-read methods", methods, active="methods"))
     (output / "about.html").write_text(page("About", '<h1>About the noisy-read panel</h1><p>Ploptimizer runs controlled assembly comparisons on BMRC through Slurm and Pixi. This static report preserves the recorded exact and tolerant assessments.</p><p><a href="methods.html">Methods</a> · <a href="history.html">All batches</a></p>', active="about"))
-    write_history(output, document, include_history)
-    write_release_overview(output, document, include_history)
+    write_history(output, document, include_history, render_context)
+    write_release_overview(output, document, include_history, render_context)
     save(output / "vercel.json", {"cleanUrls": True})
     (output / ".vercelignore").write_text(".env*\n.vercel\n.gitignore\n")
     if batch:

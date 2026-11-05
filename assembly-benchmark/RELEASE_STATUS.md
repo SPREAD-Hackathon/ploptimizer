@@ -255,3 +255,38 @@ and graph metadata. No source snapshot, scientific score or scenario changed.
 Production deployment: `dpl_5VNLN21i6UPUZhzrXeVzD27HrnMC`. The live W graph
 selection was checked, and ten representative public pages, assets and downloads
 matched the reviewed build byte-for-byte.
+
+## Separate backend bundle and website renderer
+
+`benchmark.py export` now builds a versioned bundle from existing frozen
+publication snapshots. It performs metadata joins and produces JSON, summary and
+molecule TSVs, a standalone Markdown report per result, source/producer hashes,
+prepared cohort models and available saved-coordinate SVG/TSV artefacts.
+Matplotlib is pinned separately in `requirements-reporting.txt`. Export does not
+launch assemblies, alignments, sequence analyses or cluster work. `--replace`
+stages an updated bundle before replacing a validated generated destination.
+
+`benchmark.py render` validates the bundle and consumes its prepared findings,
+origin associations and cohort models. It does not discover runs or publication
+snapshots. The existing `report`/`snapshot`/`publish` commands remain compatibility
+paths; the production site for this update was built with `render`. A ZIP of the
+complete backend output and standalone report downloads are linked from the site.
+See [RESULTS_BUNDLE.md](RESULTS_BUNDLE.md).
+
+The W chromosome-only Flye uneven-coverage failure has the sole available
+source-bound reviewed coordinate plot in these snapshots. Its full-scale plot
+and two terminal windows draw the existing review records. Orange bands mark
+intervals already recorded in that review. The page and standalone report show
+expected/output lengths, the recorded 13 bp excess, interval convention,
+reported circularity, command, source hashes and unresolved internal cause.
+This is explicitly not a NUCmer run. Most results still have no reviewed plot;
+general base-level difference-event tables and benchmark NUCmer outputs remain
+uncollected. Original source fields across all 284 executions are preserved.
+
+Verification: 265 Python tests (11 skips), including deterministic metadata
+export, atomic replacement failure, tamper rejection and rendering with backend
+collection/interpretation functions blocked. All 376 routes/284 result views
+passed; desktop/phone layouts and live example/downloads were checked. The
+primary cohort remains 84 pass, 180 fail and 4 errors. Fourteen live pages/assets/
+downloads matched the build, and every file inside the downloaded bundle ZIP
+matched its manifest. Production: `dpl_HBPT58p33o3TNYmzg5SffPHS7nnM`.

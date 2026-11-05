@@ -14,6 +14,14 @@ downloadable provenance. See [graph collection](GRAPH_COLLECTION.md) for source
 coverage and limits. Publication snapshots are versioned in `published/`; large
 run artefacts stay on BMRC.
 
+## Rebuild reporting from frozen evidence
+
+Use the [backend bundle workflow](RESULTS_BUNDLE.md): `benchmark.py export`
+produces versioned JSON, TSV, standalone reports and any available saved-coordinate
+plots without the website. `benchmark.py render` consumes that validated bundle.
+Export does not rerun assemblies or sequence analyses. The website links the
+complete downloadable bundle and a detailed report for each result.
+
 ## Aim
 
 Assess whether long-read assembly tools recover the correct plasmid sequences and molecule count alongside the chromosome. Detect missing, fragmented, merged, duplicated and incorrectly circularised plasmids. Start with *Klebsiella pneumoniae* and *Escherichia coli*.

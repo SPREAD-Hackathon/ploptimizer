@@ -5,24 +5,13 @@ import json
 import re
 import shutil
 
+from .identities import result_slug, result_href
+
 
 def write_download(path, document):
     """Keep large metadata downloads compact without changing their JSON content."""
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(document, ensure_ascii=True, separators=(",", ":")) + "\n")
-
-
-def result_slug(record):
-    values = [record["scenario_id"], record["tool"]]
-    if record.get("run_id"):
-        values.append(record["run_id"])
-    if any(not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]*", value) for value in values):
-        raise ValueError("Result URL components must be simple identifiers")
-    return "--".join(values)
-
-
-def result_href(record, prefix=""):
-    return prefix + "results/" + result_slug(record) + ".html"
 
 
 def graph_artifact(record, execution_path=None):
@@ -109,6 +98,8 @@ def result_body(case, record, artifact, output, family=None):
     body = f'<nav class="result-breadcrumb" aria-label="Result navigation">{family_link}<a href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Input details</a></nav><h1>{e(LABELS[record["tool"]])}</h1><p class="result-subtitle">{e(case["title"])}</p><p>Exact endpoint: {badge(record["status"])}</p>'
     body += outcome_section(record)
     body += '<nav class="result-jumps" aria-label="Result evidence"><a href="#command-used">Command used</a> · <a href="#contigs">Output contigs</a> · <a href="#assembly-graph">Assembly graph</a> · <a href="#nucmer-dotplot">NUCmer dot plot</a> · <a href="#assessment-audit">Assessment details</a></nav>'
+    if (record.get("report_evidence") or {}).get("dotplot", {}).get("status") == "available":
+        body = body.replace('href="#nucmer-dotplot">NUCmer dot plot', 'href="#saved-alignment-plot">Alignment dot plot')
     body += render_command(record, case)
     if record.get("tolerant_assessment"):
         from .noisy_report import tolerant_badge
@@ -135,11 +126,22 @@ def result_body(case, record, artifact, output, family=None):
         body += f'<p><strong>Graph unavailable.</strong> {e(artifact.get("reason") or graph.get("reason") or "No usable GFA metadata was collected for this execution.")}</p>'
     from .reference_origins import build_reference_origins
     presentation = copy.deepcopy(artifact)
-    presentation["reference_origins"] = build_reference_origins(case, record, artifact)
+    prepared = record.get("report_evidence")
+    presentation["reference_origins"] = prepared["reference_origins"] if prepared else build_reference_origins(case, record, artifact)
     # A GFA identifier must not be able to terminate this inert JSON block.
     payload = json.dumps(presentation, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     body += f'<script type="application/json" id="assembly-graph-data">{payload}</script><div data-assembly-graph="assembly-graph-data"><p>The interactive viewer requires JavaScript. The graph metadata download remains available.</p></div>'
     body += '</section></div>'
+    if prepared:
+        plot = prepared["dotplot"]
+        body += f'<h2 id="saved-alignment-plot">Saved alignment evidence</h2>'
+        if plot["status"] == "available":
+            if prepared.get("checked_facts"):
+                body += '<dl class="result-facts">' + ''.join(f'<dt>{e(fact["label"])}</dt><dd>{e(fact["value"])}</dd>' for fact in prepared["checked_facts"]) + '</dl>'
+            body += f'<p>{e(plot["method"])}. The lower panels show the terminal intervals already recorded in the review. Individual base differences and assembler-internal causes are separate evidence.</p><figure><img class="saved-alignment-plot" src="../data/results/{e(slug)}-alignment.svg" alt="Saved alignment dot plot with separate terminal coordinate windows" /></figure><p><a href="../data/results/{e(slug)}-alignments.tsv">Saved alignment coordinates (TSV)</a> · <a href="../data/results/{e(slug)}-alignment.svg">Open full-size plot (SVG)</a></p>'
+        else:
+            body += f'<p>{e(plot["reason"])}</p>'
+        body += f'<p><a href="../data/results/{e(slug)}-report.md">Standalone detailed report (Markdown)</a></p>'
     body += '<details id="nucmer-dotplot" class="nucmer-panel"><summary>NUCmer dot plot · benchmark coordinates not collected</summary><div data-nucmer-dotplot><p>No NUCmer coordinate file has been collected for this result.</p></div></details>'
     body += contig_section(record, artifact)
     public = execution_evidence(record, case)
@@ -150,7 +152,7 @@ def result_body(case, record, artifact, output, family=None):
     body += f'<div class="downloads"><a href="../data/results/{e(slug)}.json">Execution and assessment JSON</a><a href="../data/results/{e(slug)}-graph.json">Collected graph metadata JSON</a><a href="../methods.html">Methods and endpoint limits</a></div>'
     body += '<details id="assessment-audit" class="assessment-audit"><summary>Recorded assessment, mapping and sources</summary>' + finding_panel(record, case)
     if record.get("diagnostics"):
-        body += diagnostic_table(record["diagnostics"], plasmid_only=record["tool"] == "plassembler", evaluation=record.get("evaluation"))
+        body += diagnostic_table(record["diagnostics"], plasmid_only=record["tool"] == "plassembler", evaluation=record.get("evaluation"), prepared=prepared)
     if record.get("evaluation"):
         body += '<details><summary>Recorded exact criterion</summary><p>' + e(record["evaluation"].get("endpoint", "See the saved scoring record")) + '</p><p>Graph presentation does not change this endpoint or establish molecular topology.</p></details>'
     return body + '</details>'
@@ -174,6 +176,8 @@ def write_result_pages(document, output, batch=None):
 def enrich_graph_artifacts(document, batch=None):
     """Freeze checked sidecars into copied snapshots so archives keep their graphs."""
     result = copy.deepcopy(document)
+    if document.get("report_bundle_version") == 1:
+        return result
     for record in result["results"]:
         record["graph_artifacts"] = graph_artifact(record, execution_path(batch, record))
     if result.get("determinism"):

@@ -3,42 +3,11 @@
 import html
 import math
 
+from .result_model import assessed_molecules, verdict
+
 
 def e(value):
     return html.escape(str(value), quote=True)
-
-
-def assessed_molecules(record):
-    """Select the molecules relevant to the recorded endpoint, not a new policy."""
-    molecules = (record.get("evaluation") or {}).get("replicons", [])
-    plasmids = [m for m in molecules if m.get("molecule_type") == "plasmid"]
-    if plasmids or record.get("tool") == "plassembler":
-        return plasmids
-    return molecules
-
-
-def verdict(record):
-    status = record["status"]
-    if status not in {"pass", "fail"}:
-        return "No completed exact assessment", record.get("error") or "This run has no completed sequence verdict."
-    if not record.get("evaluation"):
-        return f'{status.title()} — recorded exact endpoint', "Per-molecule assessment details are not recorded for this run."
-    molecules = assessed_molecules(record)
-    failed = [m for m in molecules if m.get("status") != "pass"]
-    if status == "pass":
-        if not molecules and record.get("tool") == "plassembler":
-            return "Pass — chromosome-only negative control", "The saved output meets the no-plasmid endpoint."
-        return "Pass — exact recovery", "Every molecule required by this endpoint has a complete, separate exact match."
-    names = ", ".join(m.get("name", m.get("accession", "Expected molecule")) for m in failed)
-    heading = f"Fail — {names} not recovered exactly" if names else "Fail — the exact endpoint was not met"
-    review = record.get("sequence_review") or {}
-    if review.get("status") == "verified" and review.get("summary"):
-        return heading, review["summary"]
-    if failed:
-        if all(not m.get("exact_contigs") for m in failed):
-            return heading, "No complete, separate copy matches the reference sequence."
-        return heading, "Exact matches were recorded, but their copy count or assignment does not meet the saved criterion."
-    return heading, "Inspect the saved exact criterion and assessment below for the recorded reason."
 
 
 def outcome_section(record):

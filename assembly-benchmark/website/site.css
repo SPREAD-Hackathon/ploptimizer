@@ -171,3 +171,5 @@ tbody tr:hover > .overview-cell { background: var(--heat-surface); }
   .result-subtitle { font-size: 16px; }
 }
 @media (max-width: 700px) { .overview-heatmap { min-width: 760px; } .overview-heatmap th:first-child { width: 190px; } .overview-heatmap th, .overview-heatmap td { padding: 12px 10px; } }
+
+.saved-alignment-plot { display: block; width: 100%; height: auto; background: #fff; }

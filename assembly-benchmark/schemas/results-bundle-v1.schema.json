@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Ploptimizer results bundle manifest v1",
+  "type": "object",
+  "required": ["kind", "schema_version", "primary_batch", "batches", "sources", "cohort", "producer", "files"],
+  "properties": {
+    "kind": {"const": "ploptimizer-results-bundle"},
+    "schema_version": {"const": 1},
+    "primary_batch": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]*$"},
+    "batches": {"type": "array", "uniqueItems": true, "minItems": 1, "items": {"type": "string"}},
+    "sources": {"type": "array", "items": {"type": "object", "required": ["filename", "batch", "sha256"]}},
+    "cohort": {"type": "object"},
+    "coordinate_conventions": {"type": "object"},
+    "producer": {"type": "object", "required": ["name", "sources"]},
+    "files": {"type": "object", "additionalProperties": {"type": "string", "pattern": "^[a-f0-9]{64}$"}}
+  },
+  "additionalProperties": false
+}
