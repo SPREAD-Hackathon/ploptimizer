@@ -9,9 +9,11 @@
 .graph-canvas { display: block; width: 100%; height: clamp(300px, 55vh, 560px); border: 1px solid var(--gx-border); background: var(--gx-bg-alt); color: var(--gx-text-muted); touch-action: none; cursor: grab; }
 .graph-canvas:active { cursor: grabbing; }
 .graph-canvas:focus-visible { outline: 3px solid var(--gx-accent); outline-offset: 4px; }
+.graph-comparison .graph-canvas { height: clamp(300px, 42vh, 380px); }
 .graph-edge { fill: none; stroke: var(--gx-text-muted); stroke-width: 1.5; color: var(--gx-text-muted); }
 .graph-edge.selected { stroke: var(--gx-accent); stroke-width: 2.5; color: var(--gx-accent); }
-.graph-node { cursor: pointer; }
+.graph-node { cursor: grab; }
+.graph-node:active { cursor: grabbing; }
 .graph-node rect { fill: var(--gx-surface); stroke: var(--gx-text-muted); stroke-width: 2; }
 .graph-node:hover rect, .graph-node:focus-visible rect { stroke: var(--gx-accent); stroke-width: 3; }
 .graph-node.selected rect { fill: var(--gx-accent-dim); stroke: var(--gx-accent); }

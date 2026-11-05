@@ -28,6 +28,18 @@ plasmid endpoint as folded supporting context. State an unresolved software caus
 plainly on failures, without implying that successful runs need a failure cause.
 Run metadata and the original assessment remain available in disclosures.
 
+The graph section pairs expected reference molecules with the recorded GFA.
+Reference circles/lines use declared topology and labelled lengths; their sizes
+are schematic. Plassembler's final target contains plasmids only. The observed
+graph retains source segments and orientations, with draggable force-layout
+positions for small graphs and a complete grid fallback for large graphs.
+Reference schematics do not introduce a topology score or assign graph segments
+to reference molecules.
+
+The NUCmer disclosure explicitly states that benchmark coordinates are not
+collected. Its optional local coordinate preview is labelled separately from
+benchmark evidence. Synthetic viewer tests must never appear as benchmark plots.
+
 ## Truthful interface
 
 Queued, running, invalid and failed executions remain distinct from scientific

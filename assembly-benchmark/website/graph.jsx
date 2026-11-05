@@ -55,6 +55,46 @@ export function schematicLayout(nodes) {
     positions: new Map(nodes.map((node, index) => [node.id, { x: 110 + index % columns * 180, y: 90 + Math.floor(index / columns) * 140 }])) };
 }
 
+// Bounded, deterministic springs/repulsion; all source records stay untouched.
+// Large graphs retain the full inventory using the cheaper grid layout.
+export function forceLayout(nodes, edges) {
+  if (!nodes.length || nodes.length > 300) return { ...schematicLayout(nodes), mode: 'grid' };
+  const index = new Map(nodes.map((node, i) => [node.id, i]));
+  const radius = Math.max(100, Math.sqrt(nodes.length) * 55);
+  const points = nodes.map((_, i) => ({ x: nodes.length === 1 ? 0 : radius * Math.cos(i * 2 * Math.PI / nodes.length), y: nodes.length === 1 ? 0 : radius * Math.sin(i * 2 * Math.PI / nodes.length), vx: 0, vy: 0 }));
+  const seen = new Set(), links = [];
+  for (const edge of edges) {
+    const a = index.get(edge.source), b = index.get(edge.target);
+    if (a == null || b == null || a === b) continue;
+    const key = [Math.min(a, b), Math.max(a, b)].join(':');
+    if (!seen.has(key)) { seen.add(key); links.push([a, b]); }
+  }
+  for (let tick = 0; tick < 100; tick++) {
+    const forces = points.map(p => ({ x: -p.x * .001, y: -p.y * .001 }));
+    for (let a = 0; a < points.length; a++) for (let b = a + 1; b < points.length; b++) {
+      const dx = points[b].x - points[a].x, dy = points[b].y - points[a].y;
+      const distance = Math.max(1, Math.hypot(dx, dy)), force = Math.min(20, 28000 / (distance * distance));
+      const x = dx / distance * force, y = dy / distance * force;
+      forces[a].x -= x; forces[a].y -= y; forces[b].x += x; forces[b].y += y;
+    }
+    for (const [a, b] of links) {
+      const dx = points[b].x - points[a].x, dy = points[b].y - points[a].y;
+      const distance = Math.max(1, Math.hypot(dx, dy)), force = (distance - 170) * .025;
+      const x = dx / distance * force, y = dy / distance * force;
+      forces[a].x += x; forces[a].y += y; forces[b].x -= x; forces[b].y -= y;
+    }
+    points.forEach((p, i) => {
+      p.vx = (p.vx + forces[i].x * .5) * .8; p.vy = (p.vy + forces[i].y * .5) * .8;
+      const speed = Math.max(1, Math.hypot(p.vx, p.vy) / 12);
+      p.x += p.vx / speed; p.y += p.vy / speed;
+    });
+  }
+  const xs = points.map(p => p.x), ys = points.map(p => p.y);
+  const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+  const width = Math.max(400, maxX - minX + 200), height = Math.max(300, maxY - minY + 240);
+  return { width, height, mode: 'force', positions: new Map(nodes.map((node, i) => [node.id, { x: points[i].x - (minX + maxX) / 2 + width / 2, y: points[i].y - (minY + maxY) / 2 + height / 2 + 15 }])) };
+}
+
 export function coverageDescription(tags) {
   if (Array.isArray(tags)) return tags.map(tag => `${tag.tag}=${tag.value} (${String(tag.meaning ?? 'reported tag').replaceAll('_', ' ')})`).join(', ');
   return Object.entries(tags ?? {}).map(([key, value]) => `${key}=${value}`).join(', ');
@@ -72,15 +112,24 @@ function edgePath(edge, positions) {
 export function GraphViewer({ artifact = {} }) {
   const [local, setLocal] = useState(null), [files, setFiles] = useState([]), [error, setError] = useState(''), [loading, setLoading] = useState(false);
   const [selected, setSelected] = useState(''), [view, setView] = useState(null), [showLabels, setShowLabels] = useState(true);
-  const svg = useRef(null), pan = useRef(null), marker = useId().replace(/:/g, '');
+  const [movedNodes, setMovedNodes] = useState(new Map());
+  const svg = useRef(null), pan = useRef(null), nodeDrag = useRef(null), suppressClick = useRef(false), marker = useId().replace(/:/g, '');
   const graph = local ?? artifact.graph ?? {}, nodes = graph.nodes ?? [], edges = graph.edges ?? [];
-  const layout = useMemo(() => schematicLayout(nodes), [nodes]);
+  const layout = useMemo(() => forceLayout(nodes, edges), [nodes, edges]);
+  const positions = useMemo(() => new Map([...layout.positions, ...[...movedNodes].filter(([id]) => layout.positions.has(id))]), [layout, movedNodes]);
   const activeView = view ?? { x: 0, y: 0, width: layout.width, height: layout.height };
   const selectedNode = nodes.find(node => node.id === selected);
   const tooLarge = nodes.length > GRAPH_LIMITS.segments || edges.length > GRAPH_LIMITS.links;
   const ready = graph.status === 'available' && nodes.length > 0 && !tooLarge;
   const related = edges.filter(edge => edge.source === selected || edge.target === selected);
-  function reset() { setView(null); setSelected(''); }
+  function reset() { setView(null); setSelected(''); setMovedNodes(new Map()); }
+  function fit() {
+    if (!positions.size) return;
+    const points = [...positions.values()], xs = points.map(p => p.x), ys = points.map(p => p.y);
+    const minX = Math.min(...xs), maxX = Math.max(...xs), minY = Math.min(...ys), maxY = Math.max(...ys);
+    const width = Math.max(400, maxX - minX + 200), height = Math.max(300, maxY - minY + 240);
+    setView({ x: (minX + maxX - width) / 2, y: (minY + maxY - height) / 2 - 15, width, height });
+  }
   function zoom(factor) {
     const width = Math.min(layout.width * 20, Math.max(80, activeView.width * factor)), ratio = width / activeView.width;
     setView({ x: activeView.x + activeView.width * (1 - ratio) / 2, y: activeView.y + activeView.height * (1 - ratio) / 2, width, height: activeView.height * ratio });
@@ -88,7 +137,7 @@ export function GraphViewer({ artifact = {} }) {
   function select(id) {
     setSelected(id);
     if (!id) { setView(null); return; }
-    const point = layout.positions.get(id);
+    const point = positions.get(id);
     if (point) {
       const width = Math.min(560, layout.width, Math.max(240, svg.current?.getBoundingClientRect().width ?? 560));
       const height = width * 360 / 560;
@@ -114,11 +163,31 @@ export function GraphViewer({ artifact = {} }) {
     event.currentTarget.setPointerCapture(event.pointerId);
   }
   function pointerMove(event) {
+    if (nodeDrag.current) {
+      const matrix = svg.current.getScreenCTM();
+      if (!matrix) return;
+      const point = new DOMPoint(event.clientX, event.clientY).matrixTransform(matrix.inverse());
+      const start = nodeDrag.current;
+      if (Math.hypot(event.clientX - start.clientX, event.clientY - start.clientY) > 3) suppressClick.current = true;
+      setMovedNodes(previous => new Map(previous).set(start.id, { x: point.x - start.offsetX, y: point.y - start.offsetY }));
+      return;
+    }
     if (!pan.current) return;
     const bounds = svg.current.getBoundingClientRect(), start = pan.current;
     if (!bounds.width || !bounds.height) return;
     setView({ ...start.view, x: start.view.x - (event.clientX - start.clientX) * start.view.width / bounds.width, y: start.view.y - (event.clientY - start.clientY) * start.view.height / bounds.height });
   }
+  function dragNode(event, id) {
+    if (event.button !== 0) return;
+    event.stopPropagation();
+    const matrix = svg.current.getScreenCTM();
+    if (!matrix) return;
+    const point = new DOMPoint(event.clientX, event.clientY).matrixTransform(matrix.inverse()), position = positions.get(id);
+    nodeDrag.current = { id, clientX: event.clientX, clientY: event.clientY, offsetX: point.x - position.x, offsetY: point.y - position.y };
+    suppressClick.current = false; setSelected(id);
+    event.currentTarget.setPointerCapture(event.pointerId);
+  }
+  function endPointer() { pan.current = null; nodeDrag.current = null; }
   function keyboard(event) {
     if (['+', '='].includes(event.key)) { event.preventDefault(); zoom(.8); }
     if (event.key === '-') { event.preventDefault(); zoom(1.25); }
@@ -133,21 +202,22 @@ export function GraphViewer({ artifact = {} }) {
     {loading && <p role="status">Reading the local GFA…</p>}
     {ready && <>
       <p><StatusBadge variant="info">{local ? 'Local file' : 'Recorded GFA'}</StatusBadge> {nodes.length.toLocaleString()} segments · {edges.length.toLocaleString()} link records. Source: {graph.source?.filename ?? 'not recorded'}; role: {graph.source?.role ?? 'not recorded'}.</p>
-      {graph.source?.file_sha256 && <details><summary>Graph source SHA-256</summary><code className="checksum">{graph.source.file_sha256}</code></details>}
       {graph.complete === false && <Alert variant="warning">The source graph includes unsupported or omitted records. This view is not a complete representation of the source file.</Alert>}
       {graph.warnings?.length > 0 && <details><summary>Graph parsing notes</summary><ul>{graph.warnings.map((warning, index) => <li key={index}>{warning}</li>)}</ul></details>}
       <div className="graph-controls">
         <button className="gx-btn gx-btn-secondary gx-btn-sm" onClick={() => zoom(.8)}>Zoom in</button>
         <button className="gx-btn gx-btn-secondary gx-btn-sm" onClick={() => zoom(1.25)}>Zoom out</button>
-        <button className="gx-btn gx-btn-secondary gx-btn-sm" onClick={reset}>Fit graph</button>
+        <button className="gx-btn gx-btn-secondary gx-btn-sm" onClick={fit}>Fit graph</button>
+        <button className="gx-btn gx-btn-secondary gx-btn-sm" onClick={reset}>Reset layout</button>
         <label>Select segment<select className="gx-input" value={selected} onChange={event => select(event.target.value)}><option value="">Whole graph</option>{nodes.map(node => <option key={node.id} value={node.id}>{node.id}</option>)}</select></label>
         <label className="graph-checkbox"><input type="checkbox" checked={showLabels} onChange={event => setShowLabels(event.target.checked)} /> Show labels</label>
       </div>
-      <p className="muted">Schematic layout; node positions and widths are not genomic coordinates or sequence scale. Drag the background to pan. Use zoom buttons, or focus the graph and use arrow keys and +/−. Arrows follow GFA link records; orientations are shown in the selected segment’s links.</p>
-      <svg ref={svg} className="graph-canvas" viewBox={`${activeView.x} ${activeView.y} ${activeView.width} ${activeView.height}`} role="group" aria-label="Schematic GFA topology" tabIndex="0" onKeyDown={keyboard} onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={() => { pan.current = null; }} onPointerCancel={() => { pan.current = null; }}>
+      <p className="muted">{layout.mode === 'force' ? 'Force-directed layout.' : 'Grid layout for large graphs.'} Drag segments to rearrange; drag the background to pan.</p>
+      <details><summary>Graph controls and interpretation</summary><p className="muted">Positions and node widths are schematic, not sequence coordinates or size. Use zoom buttons, or focus the graph and use arrow keys and +/−. Arrows follow GFA links; selected segments show their recorded orientations. Reset layout restores the initial arrangement. Graphs over 300 segments use a grid to keep interaction responsive.</p>{graph.source?.file_sha256 && <><p>Graph source SHA-256</p><code className="checksum">{graph.source.file_sha256}</code></>}</details>
+      <svg ref={svg} className="graph-canvas" viewBox={`${activeView.x} ${activeView.y} ${activeView.width} ${activeView.height}`} role="group" aria-label="Schematic GFA topology" tabIndex="0" onKeyDown={keyboard} onPointerDown={pointerDown} onPointerMove={pointerMove} onPointerUp={endPointer} onPointerCancel={endPointer}>
         <defs><marker id={marker} markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="currentColor" /></marker></defs>
-        {edges.map((edge, index) => <path key={index} className={`graph-edge ${selected && (edge.source === selected || edge.target === selected) ? 'selected' : ''}`} d={edgePath(edge, layout.positions)} markerEnd={`url(#${marker})`}><title>{`${edge.source}${edge.source_orientation} → ${edge.target}${edge.target_orientation}; overlap ${edge.overlap}`}</title></path>)}
-        {nodes.map(node => { const point = layout.positions.get(node.id); return <g key={node.id} className={`graph-node ${node.id === selected ? 'selected' : ''}`} data-graph-node={node.id} role="button" tabIndex="0" aria-label={`Segment ${node.id}; ${node.length_bp == null ? 'length unknown' : `${node.length_bp} bases`}`} aria-pressed={node.id === selected} onClick={() => select(node.id)} onKeyDown={event => { if (['Enter', ' '].includes(event.key)) { event.preventDefault(); event.stopPropagation(); select(node.id); } }}>
+        {edges.map((edge, index) => <path key={index} className={`graph-edge ${selected && (edge.source === selected || edge.target === selected) ? 'selected' : ''}`} d={edgePath(edge, positions)} markerEnd={`url(#${marker})`}><title>{`${edge.source}${edge.source_orientation} → ${edge.target}${edge.target_orientation}; overlap ${edge.overlap}`}</title></path>)}
+        {nodes.map(node => { const point = positions.get(node.id); return <g key={node.id} className={`graph-node ${node.id === selected ? 'selected' : ''}`} data-graph-node={node.id} role="button" tabIndex="0" aria-label={`Segment ${node.id}; ${node.length_bp == null ? 'length unknown' : `${node.length_bp} bases`}`} aria-pressed={node.id === selected} onPointerDown={event => dragNode(event, node.id)} onClick={() => { if (suppressClick.current) { suppressClick.current = false; return; } select(node.id); }} onKeyDown={event => { if (['Enter', ' '].includes(event.key)) { event.preventDefault(); event.stopPropagation(); select(node.id); } }}>
           <rect x={point.x - 58} y={point.y - 22} width="116" height="44" rx="4" />
           {showLabels && <text x={point.x} y={point.y + 5} textAnchor="middle">{node.id.length > 16 ? node.id.slice(0, 14) + '…' : node.id}</text>}
           <title>{`${node.id}; ${node.length_bp == null ? 'length unknown' : node.length_bp + ' bp'}`}</title>

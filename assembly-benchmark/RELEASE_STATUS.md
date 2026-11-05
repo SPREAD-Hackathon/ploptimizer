@@ -180,3 +180,31 @@ Verification: 246 Python tests (11 skips, no failures), targeted summary checks,
 passing outcomes. Deployment: `dpl_GZrh5SzxAzinc4k3GnNMDXx6Ryym`.
 All published HTML, shared CSS and six example result/graph downloads matched
 the reviewed build byte-for-byte: 387 files, no failures.
+
+## Expected output and interactive graph comparison
+
+Result pages now pair the frozen reference inventory with the recorded GFA.
+Chromosomes and plasmids show their declared topology, names and lengths;
+Plassembler's final target contains plasmids only. Unknown topology is not drawn
+as circular. Reference sizes are schematic, and graph shape introduces no new
+score or reference-to-segment assignment.
+
+Graphs up to 300 segments use a deterministic bounded force layout. Segments can
+be dragged, the background panned, and the view fitted or reset. Larger graphs
+retain every segment in a grid; the existing 2,102-segment example was checked.
+Source nodes, link orientations, paths, provenance and all scientific outcomes
+remain unchanged. Tests cover reference inventory/topology, immutable graph
+records, force geometry and the large-graph fallback.
+
+NUCmer benchmark plots are **not generated**. No NUCmer jobs or new sequence
+alignments were run. A separate, explicitly labelled local viewer accepts
+existing eleven-column coordinate tables; only toy coordinates were used for
+parser and browser rendering tests. It does not attach local previews to a run
+or substitute them for benchmark evidence. See [NUCMER_PLOTS.md](NUCMER_PLOTS.md).
+
+Verification: 251 Python tests (11 skips, no failures), graph and coordinate
+parser tests, 376 local routes/284 result views, node drag/reset, responsive
+comparison and local toy-file rendering. Production deployment:
+`dpl_A68vNQs7S6igPLrT2CEoM6CpsWJQ`.
+All published HTML, shared CSS/JS and six example result/graph downloads matched
+the reviewed build byte-for-byte: 392 files, no failures.

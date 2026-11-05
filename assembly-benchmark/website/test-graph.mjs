@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { build } from 'esbuild';
 const { outputFiles } = await build({ entryPoints: [new URL('./graph.jsx', import.meta.url).pathname], bundle: true, write: false, format: 'esm', platform: 'browser', jsx: 'automatic', loader: { '.css': 'empty' }, define: { 'process.env.NODE_ENV': '"production"' } });
-const { parseLocalGfa, schematicLayout, coverageDescription, GRAPH_LIMITS } = await import('data:text/javascript;base64,' + Buffer.from(outputFiles[0].contents).toString('base64'));
+const { parseLocalGfa, schematicLayout, forceLayout, coverageDescription, GRAPH_LIMITS } = await import('data:text/javascript;base64,' + Buffer.from(outputFiles[0].contents).toString('base64'));
 assert.equal(coverageDescription([{tag:'KC',value:12,meaning:'kmer_count'}]), 'KC=12 (kmer count)');
 const sequence = 'AACCGGTTAACCGGTT';
 const graph = parseLocalGfa(`H\tVN:Z:1.0\nS\ta\t${sequence}\tdp:f:3.5\nS\tb\t*\tLN:i:24\nL\ta\t+\tb\t-\t0M\nL\tb\t+\tb\t+\t0M\nP\tpath1\ta+,b-\t0M\n`, { filename: 'synthetic-test.gfa', file_sha256: 'fixture-hash' });
@@ -23,4 +23,26 @@ assert.equal(layout.positions.size, 2);
 assert.notDeepEqual(layout.positions.get('a'), layout.positions.get('b'));
 assert.ok(Number.isFinite(layout.width) && Number.isFinite(layout.height));
 assert.deepEqual(schematicLayout(graph.nodes), layout, 'Schematic layout must be deterministic');
+const frozenGraph = JSON.stringify(graph);
+const force = forceLayout(graph.nodes, graph.edges);
+assert.equal(force.mode, 'force');
+assert.deepEqual(forceLayout(graph.nodes, graph.edges), force, 'Force layout must be deterministic');
+assert.equal(JSON.stringify(graph), frozenGraph, 'Layout must not modify graph records');
+for (const point of force.positions.values()) {
+  assert.ok(Number.isFinite(point.x) && Number.isFinite(point.y));
+  assert.ok(point.x >= 80 && point.x <= force.width - 80);
+  assert.ok(point.y >= 100 && point.y <= force.height - 80, 'Self-links need drawing margins');
+}
+const topologyNodes = ['a', 'b', 'c'].map(id => ({id}));
+const connected = forceLayout(topologyNodes, [{source:'a',target:'b'}]);
+const independent = forceLayout(topologyNodes, []);
+const distance = (model, a, b) => Math.hypot(model.positions.get(a).x-model.positions.get(b).x, model.positions.get(a).y-model.positions.get(b).y);
+assert.ok(distance(connected, 'a', 'b') < distance(independent, 'a', 'b'), 'Links must influence the spring layout');
+const singleton = forceLayout([{id:'one'}], [{source:'one',target:'one'}]);
+assert.equal(singleton.positions.size, 1);
+assert.equal(singleton.positions.get('one').x, singleton.width / 2);
+const largeNodes = Array.from({length:GRAPH_LIMITS.segments},(_,i)=>({id:`large-${i}`}));
+const large = forceLayout(largeNodes, []);
+assert.equal(large.mode, 'grid');
+assert.equal(large.positions.size, largeNodes.length, 'Large-layout fallback must not omit nodes');
 console.log('Graph tests passed: orientations, paths, lengths, self-links, sequence omission, limits and invalid inputs.');

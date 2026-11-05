@@ -5,7 +5,8 @@
   "scripts": {
     "build": "node build.mjs",
     "test:e2e": "node test-site.mjs",
-    "test:graph": "node test-graph.mjs"
+    "test:graph": "node test-graph.mjs",
+    "test:dotplot": "node test-dotplot.mjs"
   },
   "dependencies": {
     "@genomicx/ui": "0.10.1",

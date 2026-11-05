@@ -102,11 +102,12 @@ def contig_section(record, artifact):
 def result_body(case, record, artifact, output, family=None):
     from .report import LABELS, badge, diagnostic_table, e, execution_evidence, finding_panel
     from .result_summary import outcome_section
+    from .expected_output import render_expected_output
     slug = result_slug(record)
     family_link = f'<a href="../scenarios/{e(family.lower())}.html">{e(family)} results</a> · ' if family else ''
     body = f'<nav class="result-breadcrumb" aria-label="Result navigation">{family_link}<a href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Input details</a></nav><h1>{e(LABELS[record["tool"]])}</h1><p class="result-subtitle">{e(case["title"])}</p><p>Exact endpoint: {badge(record["status"])}</p>'
     body += outcome_section(record)
-    body += '<nav class="result-jumps" aria-label="Result evidence"><a href="#contigs">Output contigs</a> · <a href="#assembly-graph">Assembly graph</a> · <a href="#assessment-audit">Assessment details</a></nav>'
+    body += '<nav class="result-jumps" aria-label="Result evidence"><a href="#contigs">Output contigs</a> · <a href="#assembly-graph">Assembly graph</a> · <a href="#nucmer-dotplot">NUCmer dot plot</a> · <a href="#assessment-audit">Assessment details</a></nav>'
     if record.get("tolerant_assessment"):
         from .noisy_report import tolerant_badge
         body += f'<p>Separate tolerant endpoint: {tolerant_badge(record)}. Exact and tolerant outcomes retain their own definitions.</p>'
@@ -123,17 +124,19 @@ def result_body(case, record, artifact, output, family=None):
         body += '<h2>Tolerant recovery measurements</h2>' + tolerant_details(record)
     if artifact.get("failed_execution_provenance"):
         body += '<div class="notice"><strong>Retained intermediate output</strong><p>This graph and its tool claims come from a stopped run. No completed primary assembly was verified; the original execution error remains unchanged.</p></div>'
-    body += contig_section(record, artifact)
     graph = artifact.get("graph") or {}
-    body += '<h2 id="assembly-graph">Assembly graph</h2><p>Inspect the recorded GFA topology independently of assembler circularity claims and recovery scores. Intermediate workflow graphs remain labelled with their recorded source role.</p>'
+    body += '<h2 id="assembly-graph">Expected vs assembled</h2><p>Compare the reference molecules with the recorded graph. One molecule can use several linked graph segments; visual shape alone does not determine the exact score.</p><div class="graph-comparison">' + render_expected_output(case, record) + '<section class="observed-output" aria-labelledby="observed-output-title"><h3 id="observed-output-title">Recorded assembly graph</h3>'
     if graph.get("status") == "available":
-        body += source_description(graph.get("source"))
-        body += f'<p>{len(graph.get("nodes", []))} GFA segments · {len(graph.get("edges", []))} link records. This is a graph inventory, not a count of biological plasmids.</p>'
+        body += '<noscript>' + source_description(graph.get("source"))
+        body += f'<p>{len(graph.get("nodes", []))} GFA segments · {len(graph.get("edges", []))} link records. This is a graph inventory, not a count of biological plasmids.</p></noscript>'
     else:
         body += f'<p><strong>Graph unavailable.</strong> {e(artifact.get("reason") or graph.get("reason") or "No usable GFA metadata was collected for this execution.")}</p>'
     # A GFA identifier must not be able to terminate this inert JSON block.
     payload = json.dumps(artifact, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     body += f'<script type="application/json" id="assembly-graph-data">{payload}</script><div data-assembly-graph="assembly-graph-data"><p>The interactive viewer requires JavaScript. The graph metadata download remains available.</p></div>'
+    body += '</section></div>'
+    body += '<details id="nucmer-dotplot" class="nucmer-panel"><summary>NUCmer dot plot · benchmark coordinates not collected</summary><div data-nucmer-dotplot><p>No NUCmer coordinate file has been collected for this result.</p></div></details>'
+    body += contig_section(record, artifact)
     public = execution_evidence(record, case)
     public["graph_artifacts"] = artifact
     write_download(output / "data/results" / (slug + ".json"), public)
