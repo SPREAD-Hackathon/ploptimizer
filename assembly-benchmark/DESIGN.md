@@ -45,6 +45,21 @@ coverage bars do not depict genomic coordinates. Keep chromosomes outside a
 plasmid endpoint as folded supporting context. State an unresolved software cause
 plainly on failures, without implying that successful runs need a failure cause.
 Run metadata and the original assessment remain available in disclosures.
+
+For failed results, place a compact “Recorded difference” fact list near the
+verdict using semantic labels and values, with stacked pairs on phones. Show
+only saved review facts bound to the same scenario, tool, scientific status,
+assembly checksum and truth checksum. Include recorded excess, reference/output
+lengths and existing intervals when available; state that coordinates are
+0-based with the end excluded. Keep the source document and individual evidence
+fields in a folded “Difference evidence source” disclosure. Use the existing
+GenomicX typography, spacing and muted text rather than a separate card or new
+visual identity. If no bound review supplies facts, say “Difference location:
+not recorded in the saved evidence.” Never invent positions or infer an
+assembler mechanism from a measured mismatch. Keep the unresolved internal cause
+explicit and the exact-copy verdict separate from aligned coverage; presenting
+these facts does not change the scientific score.
+
 Each result also exposes its saved command and descriptions of only the flags
 present in that invocation. Command links open the disclosure directly. Preserve
 argument order and values, use shell-safe display quoting, and retain the public

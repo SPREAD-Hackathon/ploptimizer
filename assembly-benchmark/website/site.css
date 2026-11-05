@@ -202,3 +202,9 @@ tr[hidden], .table-empty[hidden] { display: none; }
 
 th[aria-sort="ascending"] .table-sort svg path { d: path("M3 8 6 5 9 8"); }
 th[aria-sort="descending"] .table-sort svg path { d: path("M3 6 6 9 9 6"); }
+
+.failure-facts { margin-block: 24px; }
+.failure-facts h3 { margin-bottom: 8px; }
+.failure-facts > p { margin-bottom: 12px; }
+.failure-facts .result-facts { margin-block: 12px; }
+.failure-location { color: var(--gx-text-muted); font-size: 14px; }

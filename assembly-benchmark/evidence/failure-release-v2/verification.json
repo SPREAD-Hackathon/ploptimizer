@@ -1,0 +1,33 @@
+{
+  "status": "local_verified_not_published",
+  "full_python_tests": 347,
+  "optional_skips": 11,
+  "final_focused_tests": 26,
+  "http_routes_checked": 398,
+  "result_views": 300,
+  "source_records_preserved": 300,
+  "new_cluster_jobs": 0,
+  "new_sequence_analyses": 0,
+  "deployment_attempted": false,
+  "publication_blocker": "Previously reported Vercel daily upload quota; production remains unchanged",
+  "bundle": ".cache/bundles/failure-release-v2",
+  "review_fact_confidence_counts": {
+    "confirmed": 4,
+    "unresolved": 195
+  },
+  "negative_tests": [
+    "broken file and fragment links",
+    "total, per-file and file-count budgets",
+    "hidden backend ZIP",
+    "stale source checksum",
+    "changed scientific field",
+    "changed generated HTML or deployment ignore rules",
+    "mismatched plot/origin hashes",
+    "stale verified-review confidence copy",
+    "blocked deployment never invokes network"
+  ],
+  "ui_review": "SHIP after shared review binding fixed; documentation updated",
+  "design_detector": [],
+  "screenshots": ".cache/failure-release-review",
+  "visual_scope": "Dark theme, nominal1440x1000 desktop and390x844 phone, contained document width380"
+}

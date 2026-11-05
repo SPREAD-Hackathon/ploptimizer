@@ -56,10 +56,19 @@ class ResultSummaryTests(unittest.TestCase):
 
     def test_verified_review_is_preserved_and_html_is_escaped(self):
         record = self.record()
-        record["sequence_review"] = {"status": "verified", "summary": "Checked <synthetic> mismatch"}
+        record.update(scenario_id="fixture",assembly_sha256="a",truth_sha256="t")
+        record["sequence_review"] = {"status":"verified","strict_status":"fail","scenario_id":"fixture","tool":"flye","hashes":{"assembly_sha256":"a","truth_sha256":"t"},"summary":"Checked <synthetic> mismatch"}
         body = outcome_section(record)
         self.assertIn("Checked &lt;synthetic&gt; mismatch", body)
         self.assertNotIn("Not established by the saved evidence", body)
+
+    def test_unbound_verified_flag_does_not_claim_a_checked_mismatch(self):
+        record=self.record()
+        record['sequence_review']={'status':'verified','summary':'Unbound mismatch claim'}
+        body=outcome_section(record)
+        self.assertNotIn('Unbound mismatch claim',body)
+        self.assertNotIn('The checked mismatch',body)
+        self.assertIn('Not established by the saved evidence',body)
 
 
 if __name__ == "__main__":

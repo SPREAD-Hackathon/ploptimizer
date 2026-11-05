@@ -91,7 +91,8 @@ def saved_plot(record):
 
 def checked_facts(record):
     review=record.get('sequence_review') or {}
-    if review.get('status')!='verified':
+    from .failure_summary import review_matches_execution
+    if not review_matches_execution(record):
         return []
     validation=review.get('validation') or {}
     labels=(('reference_length','Reference length (bp)'),('query_length','Output length (bp)'),
@@ -140,6 +141,8 @@ def prepare_document(source, artifact_root=None, coordinate_roots=(), snapshot_h
             'reference_origins':build_reference_origins(case,record,graph,identities,recorded_plot=plot), 'contig_origins':contig_origins, 'dotplot':plot, 'checked_facts':checked_facts(record),
             'length_metrics':lengths, 'graph_availability':graph_availability(record,graph),
             'failure_details':detail_record(record,molecules,plot,coordinate_plot,sidecar_plot)}
+        from .failure_summary import failure_summary
+        record['report_evidence']['failure_summary'] = failure_summary(record)
         record['report_evidence']['failure_details']['reported_circularity']['reference_origins']=contig_origins
     if document.get('determinism'):
         document['determinism']['executions'] = document['results']
@@ -165,7 +168,8 @@ def markdown_report(case, record, batch):
                   f'- Mapping: {molecule["mapping_description"]}', '']
     review=record.get('sequence_review') or {}
     validation=review.get('validation') or {}
-    if review.get('status')=='verified':
+    from .failure_summary import review_matches_execution
+    if review_matches_execution(record):
         lines += ['## Checked discrepancy', '', review.get('summary',''), '']
         for fact in evidence['checked_facts']:
             lines.append(f'- {fact["label"]}: `{fact["value"]}`')

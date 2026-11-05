@@ -136,3 +136,5 @@ Vercel output. See [website packaging](WEB_DOWNLOADS.md) for the retained assets
 separate backend archive and size audit.
 
 [Recorded node interval evidence](NODE_INTERVAL_EVIDENCE.md) · [Scenario readiness and remaining definitions](SCENARIO_ROADMAP.md).
+
+[Static release safeguards and guarded deployment](STATIC_RELEASE.md).

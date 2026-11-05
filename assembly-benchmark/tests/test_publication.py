@@ -49,19 +49,30 @@ class PublicationTests(unittest.TestCase):
         deploy.assert_not_called()
         self.assertFalse((self.root / "published").exists())
 
-    def test_primary_publication_updates_latest_and_deploys_only_dist(self):
-        save(self.root / "config/vercel-project.json", {"projectId": "test-project", "orgId": "test-org"})
-        with patch("pipeline.publication.ROOT", self.root), \
-             patch("pipeline.publication.build", side_effect=self.render) as build, \
-             patch("pipeline.publication.subprocess.run") as deploy:
-            publish({}, self.batch, deploy=True)
-        self.assertEqual(load(self.root / "published/latest.json"), self.document)
-        self.assertEqual(load(self.root / "dist/.vercel/project.json"), {"projectId": "test-project", "orgId": "test-org"})
-        build.assert_called_once_with({}, self.batch, output=self.root / "dist", include_history=True)
-        argv = deploy.call_args.args[0]
-        self.assertEqual(argv[argv.index("--cwd") + 1], str(self.root / "dist"))
-        self.assertEqual(deploy.call_args.kwargs["cwd"], self.root)
-        self.assertTrue(deploy.call_args.kwargs["check"])
+    def test_legacy_deployment_is_rejected_before_build_or_snapshot_mutation(self):
+        with patch("pipeline.publication.build") as build, patch("pipeline.publication.subprocess.run") as deploy:
+            with self.assertRaisesRegex(ValueError, "deploy-site"):
+                publish({}, self.batch, deploy=True)
+        build.assert_not_called()
+        deploy.assert_not_called()
+        self.assertFalse((self.root / 'published').exists())
+
+    def test_reviewed_deployment_is_blocked_before_network_when_gate_fails(self):
+        from pipeline.publication import deploy_site
+        with patch("pipeline.publication.ROOT",self.root), patch("pipeline.site_gate.check_release",return_value={'status':'fail','errors':['stale evidence']}), patch("pipeline.publication.subprocess.run") as deploy:
+            with self.assertRaisesRegex(ValueError,'stale evidence'):
+                deploy_site(self.root/'bundle',self.root/'dist')
+        deploy.assert_not_called()
+
+    def test_reviewed_deployment_uses_scoped_project_and_one_archive(self):
+        from pipeline.publication import deploy_site
+        save(self.root/'config/vercel-project.json', {'projectId':'fixture','orgId':'fixture-team'})
+        with patch("pipeline.publication.ROOT",self.root), patch("pipeline.site_gate.check_release",return_value={'status':'pass','errors':[]}), patch("pipeline.publication.subprocess.run") as deploy:
+            deploy_site(self.root/'bundle',self.root/'dist')
+        command=deploy.call_args.args[0]
+        self.assertIn('--archive=tgz',command)
+        self.assertEqual(command[-1],str((self.root/'dist').resolve()))
+        self.assertEqual(load(self.root/'dist/.vercel/project.json')['projectId'],'fixture')
 
 
 if __name__ == "__main__":

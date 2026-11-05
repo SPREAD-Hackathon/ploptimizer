@@ -15,7 +15,8 @@ def recorded_change(record):
             'type':_field(),'length_bp':_field(),'reference_intervals':_field(),'output_intervals':_field(),
             'coordinate_system':'0-based half-open intervals',
             'difference_event_table':{'status':'not_collected','records':None}}
-    if review.get('status')!='verified':
+    from .failure_summary import review_matches_execution
+    if not review_matches_execution(record):
         return result
     summary=review.get('summary','')
     result.update(status='reviewed',description=summary,source='sequence_review.summary',confidence='confirmed')

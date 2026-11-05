@@ -60,4 +60,7 @@ def render_bundle(bundle, output):
                 archive.writestr(entry,path.read_bytes())
     from .web_downloads import package_downloads
     package_downloads(output)
+    from .site_gate import require_site, write_site_receipt
+    require_site(output)
+    write_site_receipt(output)
     return output

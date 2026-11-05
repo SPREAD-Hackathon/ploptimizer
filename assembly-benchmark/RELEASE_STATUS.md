@@ -581,3 +581,33 @@ changed. Browser checks at 390 px verified aligned header/body positions at a
 partial swipe and the far-right end, in dark and light themes; desktop was also
 checked at 1440 px. See `evidence/heatmap-scroll-v1/local-verification.json`.
 This fix remains in the local build pending the previously quota-blocked publish.
+
+## Failure facts and guarded static releases (5 November)
+
+Implemented and verified locally; no cluster work, sequence analyses or deployment
+attempts. Production remains unchanged after the previously reported Vercel quota
+block. The new bundle is `.cache/bundles/failure-release-v2`.
+
+Near-verdict failure facts now show recorded excess, reference/output lengths and
+existing coordinate intervals when the saved review matches scenario, tool, exact
+status and assembly/truth hashes. The same binding protects verdict descriptions,
+confidence wording, detail records and exported checked facts. Unbound verified
+flags cannot earn a checked mismatch claim. Four saved failure reviews support
+confirmed observations; 195 other failure views remain unresolved. No mechanism
+or missing sequence event is invented, and all 300 original records/scores remain
+unchanged. The reviewer approved the scoped desktop/phone UI after the shared
+binding fix; DESIGN.md documents the distinction.
+
+`render` automatically checks local links/anchors, build-size budgets and forbidden
+backend artefacts, then records generated-file hashes. `check-site` additionally
+checks the render receipt, source snapshots, original fields and plot/origin
+bindings. `deploy-site` requires that gate and uses the configured Vercel project
+with an archive upload. Direct legacy deployment is rejected before rebuilding
+or mutating snapshots. See [STATIC_RELEASE.md](STATIC_RELEASE.md).
+
+Verification: 347 Python tests passed (11 optional skips), followed by 26 focused
+checks and HTTP verification of 398 routes / 300 result views. The static gate
+checked 8,005 links/anchors, preserved all 300 source records, and passed at
+47,278,887 bytes against a 64 MiB budget. Negative tests cover broken links, large
+files, changed scores, stale evidence, changed HTML/ignore rules and blocked
+deployment. Evidence: `evidence/failure-release-v2/`.

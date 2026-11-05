@@ -56,18 +56,35 @@ def main(argv=None):
     sub = commands.add_parser("render", help="Render a validated results bundle")
     sub.add_argument("--bundle", required=True)
     sub.add_argument("--output", default=str(ROOT / "dist"))
+    for action in ("check-site", "deploy-site"):
+        sub = commands.add_parser(action, help="Validate a static release" if action == "check-site" else "Deploy only a validated presentation build")
+        sub.add_argument("--bundle", required=True)
+        sub.add_argument("--output", default=str(ROOT / "dist"))
+        sub.add_argument("--report")
     sub = commands.add_parser("submit")
     sub.add_argument("--cluster", default=str(ROOT / "config/cluster.local.json"))
     sub.add_argument("--scenario", help="Limit the submitted profile to one scenario")
     sub.add_argument("--after-job", help="Queue preparation after this numeric Slurm job ID finishes")
     sub.add_argument("--assemble-after-job", help="Generate inputs now but queue assemblies after this Slurm job")
     args = parser.parse_args(argv)
-    if args.action in ("export", "render"):
+    if args.action in ("export", "render", "check-site", "deploy-site"):
         def scoped(value):
             path = Path(value).resolve()
             if path == ROOT or ROOT not in path.parents:
                 raise ValueError("Bundle and render paths must stay inside assembly-benchmark")
             return path
+        if args.action == "deploy-site":
+            from pipeline.publication import deploy_site
+            report = deploy_site(scoped(args.bundle), scoped(args.output))
+            print(json.dumps(report, indent=2))
+            return 0
+        if args.action == "check-site":
+            from pipeline.site_gate import check_release
+            report = check_release(scoped(args.bundle), scoped(args.output))
+            if args.report:
+                save(scoped(args.report), report)
+            print(json.dumps(report, indent=2))
+            return 0 if report["status"] == "pass" else 1
         if args.action == "export":
             from pipeline.bundle import export_bundle
             source = ROOT / "published" / (args.batch + ".json")

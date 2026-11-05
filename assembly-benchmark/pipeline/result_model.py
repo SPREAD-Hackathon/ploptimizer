@@ -35,7 +35,8 @@ def verdict(record):
     names = ", ".join(molecule_label(m) for m in failed)
     heading = f"Fail — {names} not recovered exactly" if names else "Fail — the exact endpoint was not met"
     review = record.get("sequence_review") or {}
-    if review.get("status") == "verified" and review.get("summary"):
+    from .failure_summary import review_matches_execution
+    if review_matches_execution(record) and review.get("summary"):
         return heading, review["summary"]
     if failed:
         if all(not m.get("exact_contigs") for m in failed):

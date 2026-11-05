@@ -10,11 +10,37 @@ def e(value):
     return html.escape(str(value), quote=True)
 
 
+def failure_facts(record):
+    from .failure_summary import failure_summary
+    summary = (record.get('report_evidence') or {}).get('failure_summary')
+    if summary is None:
+        summary = failure_summary(record)
+    if not summary:
+        return ''
+    if not summary['facts']:
+        return '<p class="failure-location">Difference location: not recorded in the saved evidence.</p>'
+    body = '<div class="failure-facts"><h3>Recorded difference</h3><p>Confirmed by the saved review.</p><dl class="result-facts">'
+    for fact in summary['facts']:
+        if fact['kind'] == 'bp':
+            value = f"{fact['value']:,} bp"
+        else:
+            spans = [fact['value']] if fact['kind'] == 'interval' else fact['value']
+            value = '; '.join(f'{a:,}–{b:,} bp' for a,b in spans)
+        body += f'<dt>{e(fact["label"])}</dt><dd>{e(value)}</dd>'
+    body += '</dl>'
+    if summary['location_status'] == 'recorded':
+        body += '<p class="muted">Coordinates are 0-based; the end is excluded.</p>'
+    body += '<details><summary>Difference evidence source</summary><p>' + e(summary['source']) + '</p><ul>'
+    body += ''.join('<li>' + e(fact['label']) + ': <code>' + e(fact['source']) + '</code></li>' for fact in summary['facts'])
+    return body + '</ul></details></div>'
+
+
 def outcome_section(record):
     heading, explanation = verdict(record)
     body = f'<section class="result-outcome" data-exact-status="{e(record["status"])}" aria-labelledby="outcome-title"><h2 id="outcome-title">{e(heading)}</h2><p>{e(explanation)}</p>'
     if record["status"] not in {"pass", "fail"}:
         return body + '</section>'
+    body += failure_facts(record)
     evaluation = record.get("evaluation") or {}
     molecules = evaluation.get("replicons", [])
     relevant = {m.get("accession") for m in assessed_molecules(record)}
@@ -58,7 +84,8 @@ def outcome_section(record):
         body += '<p class="evidence-note">Bars show total aligned coverage, not genomic positions. An alignment is not an exact-copy test.</p>'
     if record["status"] == "fail":
         review = record.get("sequence_review") or {}
-        if review.get("status") != "verified":
+        from .failure_summary import review_matches_execution
+        if not review_matches_execution(record):
             has_zero = any(mapped.get(m.get("accession"), {}).get("recovered_fraction") == 0 for m in assessed_molecules(record) if m.get("status") == "fail")
             body += '<p class="cause-status"><strong>Why did the assembler do this?</strong> Not established by the saved evidence.'
             if has_zero:
