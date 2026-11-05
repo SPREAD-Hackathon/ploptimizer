@@ -116,3 +116,8 @@ Pixi environments and the Slurm account/concurrency come from the existing clust
 configuration. Each batch freezes its config, task list, source provenance, input
 admission and original execution files. Its initial report is batch-scoped;
 joining an expanded public cohort is a later explicit publication step.
+
+The default Pixi environment now includes the reporting Matplotlib version
+(3.10.8), so cluster preparation can run the full backend/reporting test suite.
+The first submission stopped during this environment check before simulation;
+it is retained as an unsuccessful setup attempt, not an assembler result.

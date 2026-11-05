@@ -6,6 +6,7 @@ platforms = ["linux-64"]
 
 [dependencies]
 python = "3.11.*"
+matplotlib-base = "==3.10.8"
 
 [feature.flye.dependencies]
 flye = "==2.9.6"
