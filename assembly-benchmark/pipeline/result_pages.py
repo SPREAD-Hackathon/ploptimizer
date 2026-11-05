@@ -101,11 +101,12 @@ def contig_section(record, artifact):
 
 def result_body(case, record, artifact, output, family=None):
     from .report import LABELS, badge, diagnostic_table, e, execution_evidence, finding_panel
+    from .result_summary import outcome_section
     slug = result_slug(record)
-    body = f'<a class="back" href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Back to this scenario and assembler</a><h1>{e(LABELS[record["tool"]])} · {e(case["title"])}</h1><p>Exact endpoint: {badge(record["status"])}</p>'
-    body += '<nav aria-label="Result evidence"><a href="#contigs">Contigs and circularity</a> · <a href="#assembly-graph">Assembly graph</a></nav>'
-    if family:
-        body = f'<a class="back" href="../scenarios/{family.lower()}.html">{family} family results</a> · ' + body
+    family_link = f'<a href="../scenarios/{e(family.lower())}.html">{e(family)} results</a> · ' if family else ''
+    body = f'<nav class="result-breadcrumb" aria-label="Result navigation">{family_link}<a href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Input details</a></nav><h1>{e(LABELS[record["tool"]])}</h1><p class="result-subtitle">{e(case["title"])}</p><p>Exact endpoint: {badge(record["status"])}</p>'
+    body += outcome_section(record)
+    body += '<nav class="result-jumps" aria-label="Result evidence"><a href="#contigs">Output contigs</a> · <a href="#assembly-graph">Assembly graph</a> · <a href="#assessment-audit">Assessment details</a></nav>'
     if record.get("tolerant_assessment"):
         from .noisy_report import tolerant_badge
         body += f'<p>Separate tolerant endpoint: {tolerant_badge(record)}. Exact and tolerant outcomes retain their own definitions.</p>'
@@ -116,8 +117,7 @@ def result_body(case, record, artifact, output, family=None):
             facts.append((label, record[key]))
     if record.get("elapsed_seconds") is not None:
         facts.append(("Elapsed", f'{record["elapsed_seconds"]:.1f} seconds'))
-    body += '<dl class="result-facts">' + ''.join(f'<dt>{e(key)}</dt><dd>{e(value)}</dd>' for key, value in facts) + '</dl>'
-    body += finding_panel(record, case)
+    body += '<details class="result-metadata"><summary>Run details and provenance</summary><dl class="result-facts">' + ''.join(f'<dt>{e(key)}</dt><dd>{e(value)}</dd>' for key, value in facts) + '</dl></details>'
     if family == "S6" or record.get("tolerant_assessment"):
         from .noisy_report import tolerant_details
         body += '<h2>Tolerant recovery measurements</h2>' + tolerant_details(record)
@@ -139,11 +139,12 @@ def result_body(case, record, artifact, output, family=None):
     write_download(output / "data/results" / (slug + ".json"), public)
     write_download(output / "data/results" / (slug + "-graph.json"), artifact)
     body += f'<div class="downloads"><a href="../data/results/{e(slug)}.json">Execution and assessment JSON</a><a href="../data/results/{e(slug)}-graph.json">Collected graph metadata JSON</a><a href="../methods.html">Methods and endpoint limits</a></div>'
+    body += '<details id="assessment-audit" class="assessment-audit"><summary>Recorded assessment, mapping and sources</summary>' + finding_panel(record, case)
     if record.get("diagnostics"):
         body += diagnostic_table(record["diagnostics"], plasmid_only=record["tool"] == "plassembler", evaluation=record.get("evaluation"))
     if record.get("evaluation"):
         body += '<details><summary>Recorded exact criterion</summary><p>' + e(record["evaluation"].get("endpoint", "See the saved scoring record")) + '</p><p>Graph presentation does not change this endpoint or establish molecular topology.</p></details>'
-    return body
+    return body + '</details>'
 
 
 def write_result_pages(document, output, batch=None):

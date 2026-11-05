@@ -464,7 +464,7 @@ def finding_panel(record, case=None, compact=False):
         body += '</ul></details>'
     if finding.get("confidence_scope"):
         body += f'<p class="muted">Evidence scope: {e(finding["confidence_scope"])}</p>'
-    if finding.get("mechanism_confidence") == "unresolved":
+    if record["status"] != "pass" and finding.get("mechanism_confidence") == "unresolved":
         body += '<p class="muted">The software-internal cause remains unresolved.</p>'
     review = record.get("sequence_review") or {}
     source = review.get("source_document")

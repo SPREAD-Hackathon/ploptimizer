@@ -114,4 +114,30 @@ tbody tr:hover > .overview-cell { background: var(--heat-surface); }
 .run-summary-table { min-width: 720px; }
 .run-summary-table th, .run-summary-table td { padding: 13px 16px; }
 .table-scroll th small, .table-scroll td a small { display: block; margin-top: 4px; color: var(--gx-text-muted); font-size: 12px; font-weight: 400; overflow-wrap: anywhere; }
+.result-breadcrumb { font-size: 14px; margin-bottom: 22px; }
+.result-subtitle { font-size: 18px; color: var(--gx-text-muted); margin-top: -8px; }
+.result-outcome { max-width: 900px; margin-block: 26px; }
+.result-outcome > h2 { margin-top: 0; font-size: 25px; }
+.molecule-outcome { padding-block: 18px; border-bottom: 1px solid var(--gx-border); }
+.molecule-outcome h3 { margin: 0 0 12px; }
+.molecule-outcome h3 small { display: block; margin-top: 4px; font-size: 13px; font-weight: 400; color: var(--gx-text-muted); }
+.molecule-evidence { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 32px; }
+.evidence-label { display: block; font-size: 13px; color: var(--gx-text-muted); margin-bottom: 5px; }
+.molecule-evidence strong { display: block; font-size: 17px; font-variant-numeric: tabular-nums; }
+.molecule-evidence p { font-size: 13px; margin: 6px 0 0; overflow-wrap: anywhere; }
+.molecule-context { font-size: 13px; margin-block: 16px; color: var(--gx-text-muted); }
+.molecule-context .molecule-outcome { color: var(--gx-text); }
+.coverage-track { height: 9px; background: var(--gx-bg-alt); border: 1px solid var(--gx-border); margin-top: 7px; }
+.coverage-track span { display: block; height: 100%; background: var(--gx-accent); }
+.evidence-note { font-size: 12px; color: var(--gx-text-muted); margin-top: 12px; }
+.cause-status { margin-top: 22px; }
+.cause-status strong { display: block; margin-bottom: 4px; }
+.result-jumps { font-size: 14px; margin-bottom: 18px; }
+.result-metadata, .assessment-audit { margin-block: 20px; }
+.assessment-audit > .notice { margin-top: 18px; }
+@media (max-width: 600px) {
+  .molecule-evidence { gap: 14px; }
+  .result-outcome > h2 { font-size: 22px; }
+  .result-subtitle { font-size: 16px; }
+}
 @media (max-width: 700px) { .overview-heatmap { min-width: 760px; } .overview-heatmap th:first-child { width: 190px; } .overview-heatmap th, .overview-heatmap td { padding: 12px 10px; } }

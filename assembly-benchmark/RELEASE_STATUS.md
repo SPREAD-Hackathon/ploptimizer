@@ -158,3 +158,25 @@ Production deployment `dpl_6Wcyk4xszi9V359Yn6qRqhG18fpb` is live at
 including downloads, matched the reviewed build byte-for-byte. One transient DNS
 lookup failure passed a targeted retry. The source snapshot timestamp remains
 `2026-11-05T07:43:04+00:00`; the presentation rebuild does not imply newer runs.
+
+## Evidence-first individual results
+
+Individual result pages now start with the recorded endpoint verdict, name the
+molecules that fail that endpoint, and show exact-copy checks beside saved total
+aligned coverage. Chromosomes outside a plasmid endpoint are folded supporting
+context. Metadata and the original explanation/mapping report are disclosures;
+the contigs, graph and downloads remain available. Successful runs no longer
+carry the generic unresolved-failure-cause message.
+
+For SE11 / pSE11-5 / Flye uneven coverage, this reports the existing failure to
+recover a dedicated exact plasmid copy and 0% retained plasmid alignment. The
+saved chromosome coverage is 99.78% across three contigs. Neither zero retained
+alignment nor graph topology establishes where plasmid sequence went or the
+software-internal cause. The page explicitly retains that unresolved status.
+
+No sequence analysis, scoring, source snapshot or benchmark configuration changed.
+Verification: 246 Python tests (11 skips, no failures), targeted summary checks,
+376 local routes/284 result views, and desktop/phone inspection of failing and
+passing outcomes. Deployment: `dpl_GZrh5SzxAzinc4k3GnNMDXx6Ryym`.
+All published HTML, shared CSS and six example result/graph downloads matched
+the reviewed build byte-for-byte: 387 files, no failures.
