@@ -1,0 +1,20 @@
+{
+  "status": "pass",
+  "original_source_records_preserved": 300,
+  "gzip_downloads_verified": 910,
+  "backend_zip_members_verified": 1280,
+  "website_bytes_before": 315968298,
+  "website_bytes_after_including_audit": 89755132,
+  "python_tests": {
+    "run": 330,
+    "optional_skips": 11,
+    "failures": 0
+  },
+  "http_qa": {
+    "routes": 398,
+    "result_views": 300,
+    "batch_views": 6
+  },
+  "cluster_reruns": 0,
+  "cluster_status_check": "SSH authentication unavailable; no queue-state claim made"
+}

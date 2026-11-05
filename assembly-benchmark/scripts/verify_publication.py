@@ -3,6 +3,7 @@
 import argparse
 from concurrent.futures import ThreadPoolExecutor
 import hashlib
+import gzip
 import json
 from pathlib import Path
 from urllib.error import HTTPError
@@ -24,7 +25,12 @@ def verify(root, base_url, workers=6):
     if parsed.scheme not in {"http", "https"} or not parsed.netloc:
         raise ValueError("Supply an HTTP(S) report URL")
     files = public_files(root)
-    if not files or not (root / "data/results.json").is_file():
+    results = root / "data/results.json"
+    if not results.is_file():
+        results = root / "data/results.json.gz"
+    if not results.is_file():
+        results = root / "site-manifest.json"
+    if not files or not results.is_file():
         raise ValueError("The report build and results.json must exist")
 
     def check(path):
@@ -47,7 +53,8 @@ def verify(root, base_url, workers=6):
 
     with ThreadPoolExecutor(max_workers=workers) as pool:
         failures = [failure for failure in pool.map(check, files) if failure]
-    document = json.loads((root / "data/results.json").read_text())
+    content = results.read_bytes()
+    document = json.loads(gzip.decompress(content) if results.suffix == ".gz" else content)
     return {"status": "fail" if failures else "pass", "base_url": base_url,
             "batch": document.get("batch"), "generated_at": document.get("generated_at"),
             "checked_files": len(files), "failures": failures}

@@ -44,3 +44,10 @@
 [data-theme="light"] .origin-track { background: var(--reference-light, #686c73); color: #fff; }
 
 .graph-node text.origin-node-label { font-size: 10px; }
+
+.graph-node text.origin-node-evidence { font-size: 8px; }
+.origin-proof-list { padding-left: 1.4rem; }
+.origin-proof-list > li { margin-block: 1.5rem; }
+.origin-proof-list p { margin-bottom: .5rem; }
+.origin-coordinates { margin-block: .75rem; }
+.origin-coordinates .table-scroll { margin-top: .75rem; }

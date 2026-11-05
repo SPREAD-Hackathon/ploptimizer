@@ -1,0 +1,14 @@
+{
+  "state": "ready locally; production publication blocked",
+  "blocker": "Vercel api-upload-free daily upload quota; CLI reported more than 5000 and retry in 24 hours",
+  "live_site": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "live_deployment_id": "dpl_88jLqrtApY8UA4WHC6Q314RFnuRB",
+  "compact_build_is_live": false,
+  "stalled_archive_attempt_removed": "dpl_U1ySbs9B9V6pKGQYa1EEMbhUrSwQ",
+  "cleanup_complete": true,
+  "old_ready_deployments_removed": 63,
+  "retained_ready_deployments": 3,
+  "cluster_jobs_submitted": 0,
+  "cluster_queue_checked": false,
+  "ssh_status": "Saved login authentication expired; no cluster access needed for current reporting changes"
+}

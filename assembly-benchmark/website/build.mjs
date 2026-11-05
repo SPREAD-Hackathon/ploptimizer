@@ -27,7 +27,7 @@ for (const name of await readdir(output)) {
   files[name] = createHash('sha256').update(await readFile(join(output, name))).digest('hex');
 }
 const sources = {};
-for (const name of ['package.json', 'shell.jsx', 'site.css', 'graph.jsx', 'graph.css', 'dotplot.jsx', 'build.mjs']) {
+for (const name of ['package.json', 'shell.jsx', 'site.css', 'graph.jsx', 'graph.css', 'origin-evidence.jsx', 'dotplot.jsx', 'build.mjs']) {
   sources[name] = createHash('sha256').update(await readFile(join(root, name))).digest('hex');
 }
 await writeFile(join(output, 'build.json'), JSON.stringify({packages: versions, sha256: files, source_sha256: sources}, null, 2) + '\n');

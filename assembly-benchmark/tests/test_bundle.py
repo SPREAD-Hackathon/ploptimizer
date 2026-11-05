@@ -3,6 +3,7 @@ import copy
 import json
 import tempfile
 import unittest
+import zipfile
 from pathlib import Path
 from unittest.mock import patch
 
@@ -68,7 +69,18 @@ class BundleTests(unittest.TestCase):
         self.assertIn('Saved alignment evidence',page)
         self.assertIn('not a NUCmer run',page)
         self.assertTrue((output/'data/results/s1-w-chromosome--flye-meta-alignment.svg').exists())
-        self.assertTrue((output/'data/results-bundle.zip').exists())
+        self.assertFalse((output/'data/results-bundle.zip').exists())
+        self.assertTrue(bundle.with_suffix('.zip').exists())
+        with zipfile.ZipFile(bundle.with_suffix('.zip')) as archive:
+            expected={str(path.relative_to(bundle)):path.read_bytes() for path in bundle.rglob('*') if path.is_file()}
+            self.assertEqual(set(archive.namelist()),set(expected))
+            for name,content in expected.items():
+                self.assertEqual(archive.read(name),content)
+        self.assertFalse((output/'data/results.json').exists())
+        self.assertFalse((output/'data/results.json.gz').exists())
+        rendered=load(bundle/'batches'/f'{self.source["batch"]}.json')
+        self.assertEqual(rendered['results'][0]['evaluation'],self.source['results'][0]['evaluation'])
+        self.assertTrue((output/'data/overview.json').exists())
 
     def test_tampering_fails_before_rendering_or_overwriting(self):
         bundle=self.export();(bundle/'summary.tsv').write_text('tampered')

@@ -500,3 +500,38 @@ Removed the history index and its navigation/about/scenario references. Old root
 and archived history URLs redirect to the results overview. Archived result
 routes and downloads remain generated; all 300 result pages remain present.
 Eight focused report tests passed and 7,031 local links resolve.
+
+## Presentation-only storage and graph-origin evidence (5 November)
+
+Ready locally and source-tested; **not yet published**. The compact website is
+47,068,824 bytes (47.1 MB), down from the original 314,876,802 bytes (85% smaller).
+It retains all 300 result views, plots, tables and interactive graphs. Full batch,
+result and graph JSON downloads, duplicate Markdown reports and the backend ZIP
+are excluded from Vercel. Shared batch CSS/JS/fonts use one root asset directory.
+The full validated backend remains unchanged; its 1,280-member archive is written
+beside the source bundle, outside the website. See [WEB_DOWNLOADS.md](WEB_DOWNLOADS.md).
+
+Graph nodes distinguish whole-segment identity, saved exact-contig-path inference
+and ambiguous/unassigned evidence. Saved contig/reference spans are displayed
+when bound to the same source hashes. No new alignment or internal boundary
+measurement is implied. This is repackaging existing evidence; no cluster job,
+simulation, sequence analysis or assembly rerun was performed.
+
+Verification: 330 Python tests passed with 11 optional skips; the final 10
+focused packaging/bundle/publication tests and graph tests passed. Four
+publication tests also verify the presentation-only manifest fallback. HTTP checks
+cover 398 routes and 300 result views across six batch reports. Original scores
+and source records are preserved. All 1,280 archive members match their backend
+files. Earlier gzip-only size evidence is superseded by the lean verification.
+
+Storage cleanup is complete: 63 old deployments removed using explicit deployment
+IDs and Vercel's safe mode. Three READY versions remain: live plus two rollback
+versions. The canonical deployment remains `dpl_88jLqrtApY8UA4WHC6Q314RFnuRB`;
+live overview, scenarios, W result and aggregate pages returned HTTP 200 after
+cleanup. Exact team-billed storage usage was not available and is not claimed.
+
+Publishing is blocked by Vercel's separate daily upload quota (`api-upload-free`,
+CLI: more than 5,000; retry in 24 hours). A stalled archive attempt was removed;
+the old production remains live. Do not claim the compact build or new graph
+labels are live until deployment and byte-for-byte verification succeed. Evidence
+and the publishing checkpoint are in `evidence/storage-origin-v1/`.

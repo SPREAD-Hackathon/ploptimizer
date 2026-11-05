@@ -3,6 +3,7 @@
 from functools import partial
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 import importlib.util
+import gzip
 from pathlib import Path
 import tempfile
 import threading
@@ -43,6 +44,43 @@ class PublicationVerificationTests(unittest.TestCase):
                 result = publication.verify(expected, url)
                 self.assertEqual(result["status"], "fail")
                 self.assertEqual({item["route"] for item in result["failures"]}, {"index.html", "data/results.tsv"})
+            finally:
+                server.shutdown()
+                server.server_close()
+                thread.join()
+
+    def test_gzip_results_are_verified_as_exact_download_bytes(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "data").mkdir()
+            payload = gzip.compress(b'{"batch":"gzip-fixture"}', mtime=0)
+            (root / "data/results.json.gz").write_bytes(payload)
+            server = ThreadingHTTPServer(("127.0.0.1", 0), partial(QuietHandler, directory=str(root)))
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                result = publication.verify(root, f"http://127.0.0.1:{server.server_port}")
+                self.assertEqual(result["status"], "pass")
+                self.assertEqual(result["batch"], "gzip-fixture")
+                self.assertEqual(result["checked_files"], 1)
+            finally:
+                server.shutdown()
+                server.server_close()
+                thread.join()
+
+    def test_presentation_manifest_without_bulk_evidence(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root/'index.html').write_text('Result tables and plots')
+            (root/'site-manifest.json').write_text('{"policy":"presentation-only","batch":"lean-fixture"}')
+            server = ThreadingHTTPServer(("127.0.0.1", 0), partial(QuietHandler, directory=str(root)))
+            thread = threading.Thread(target=server.serve_forever, daemon=True)
+            thread.start()
+            try:
+                result = publication.verify(root, f"http://127.0.0.1:{server.server_port}")
+                self.assertEqual(result['status'], 'pass')
+                self.assertEqual(result['batch'], 'lean-fixture')
+                self.assertEqual(result['checked_files'], 2)
             finally:
                 server.shutdown()
                 server.server_close()

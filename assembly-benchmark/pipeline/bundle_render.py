@@ -42,7 +42,7 @@ def render_bundle(bundle, output):
         shutil.copytree(bundle/'aggregates', output/'data/aggregates', dirs_exist_ok=True)
         (output/'aggregate.html').write_text(aggregate_page(load(bundle/'aggregates/index.json'), load(bundle/'aggregates/wick-figures.json')))
     home=output/'index.html'
-    content=home.read_text().replace('</main>','<div class="downloads"><a href="data/results-bundle.zip">Backend results bundle (ZIP)</a><a href="data/summary.tsv">Execution summary TSV</a><a href="data/molecules.tsv">Molecule evidence TSV</a></div></main>')
+    content=home.read_text().replace('</main>','<div class="downloads"><a href="data/summary.tsv">Execution summary TSV</a><a href="data/molecules.tsv">Molecule evidence TSV</a></div></main>')
     if (bundle/'evidence-availability.tsv').is_file():
         content=content.replace('Molecule evidence TSV</a>','Molecule evidence TSV</a><a href="data/evidence-availability.tsv">Evidence availability TSV</a>')
     if (bundle/'length-metrics.tsv').is_file():
@@ -50,12 +50,14 @@ def render_bundle(bundle, output):
     home.write_text(content)
     from .common import save, digest
     save(output/'.results-render.json',{'schema_version':1,'bundle_manifest_sha256':digest(bundle/'manifest.json')})
-    # A portable, complete backend deliverable is available independently of HTML.
-    with zipfile.ZipFile(output/'data/results-bundle.zip','w',compression=zipfile.ZIP_DEFLATED) as archive:
+    # Keep the complete backend archive alongside its bundle, outside the website.
+    with zipfile.ZipFile(bundle.with_suffix('.zip'),'w',compression=zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(bundle.rglob('*')):
             if path.is_file():
                 entry=zipfile.ZipInfo(str(path.relative_to(bundle)),date_time=(1980,1,1,0,0,0))
                 entry.compress_type=zipfile.ZIP_DEFLATED
                 entry.external_attr=0o100644 << 16
                 archive.writestr(entry,path.read_bytes())
+    from .web_downloads import package_downloads
+    package_downloads(output)
     return output

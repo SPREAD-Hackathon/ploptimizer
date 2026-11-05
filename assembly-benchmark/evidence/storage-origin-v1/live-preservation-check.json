@@ -1,0 +1,22 @@
+[
+  {
+    "route": "/",
+    "status": 200,
+    "bytes": 6517
+  },
+  {
+    "route": "/scenarios",
+    "status": 200,
+    "bytes": 4356
+  },
+  {
+    "route": "/results/s1-w-chromosome--flye-meta",
+    "status": 200,
+    "bytes": 20134
+  },
+  {
+    "route": "/aggregate",
+    "status": 200,
+    "bytes": 28313
+  }
+]

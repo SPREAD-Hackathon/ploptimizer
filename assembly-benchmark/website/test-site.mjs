@@ -3,9 +3,16 @@ import { createServer } from 'node:http';
 import { readFile, stat, readdir } from 'node:fs/promises';
 import { dirname, resolve, extname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gunzipSync } from 'node:zlib';
 
-const root = resolve(dirname(fileURLToPath(import.meta.url)), '../dist');
-const cohortConfig = JSON.parse(await readFile(resolve(root, '../config/overview.json'), 'utf8'));
+const project = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const root = resolve(process.argv[2] ?? resolve(project, 'dist'));
+const backendRoot = process.argv[3] ? resolve(process.argv[3]) : null;
+const cohortConfig = JSON.parse(await readFile(resolve(project, 'config/overview.json'), 'utf8'));
+const deploymentConfig = JSON.parse(await readFile(resolve(root, 'vercel.json'), 'utf8'));
+for (const source of ['/history', '/history.html', '/batches/:batch/history', '/batches/:batch/history.html']) {
+  assert.ok(deploymentConfig.redirects.some(rule => rule.source === source && rule.destination === '/' && rule.permanent === true), `${source}: legacy navigation redirect required`);
+}
 const types = {'.html': 'text/html', '.css': 'text/css', '.js': 'text/javascript', '.json': 'application/json'};
 const server = createServer(async (request, response) => {
   try {
@@ -41,7 +48,17 @@ async function textAt(route) {
   return response.text();
 }
 
-async function jsonAt(route) { return JSON.parse(await textAt(route)); }
+async function jsonRoute(route) {
+  return await httpStatus(base + route + '.gz') === 200 ? route + '.gz' : route;
+}
+
+async function jsonAt(route) {
+  const download = await jsonRoute(route);
+  const response = await fetch(base + download);
+  assert.equal(response.status, 200, download);
+  const bytes = Buffer.from(await response.arrayBuffer());
+  return JSON.parse((download.endsWith('.gz') ? gunzipSync(bytes) : bytes).toString('utf8'));
+}
 
 async function checkPage(route) {
   const html = await textAt(route);
@@ -68,6 +85,33 @@ function noSequenceFields(value) {
   }
 }
 
+function assertCohortCounts(model, records, context) {
+  const countsFor = rows => {
+    const counts = {total: rows.length, pass: 0, fail: 0, errors: 0, unscored: 0, denominator: 0};
+    for (const row of rows) {
+      const key = ['pass', 'fail'].includes(row.status) ? row.status : ['error', 'timeout', 'invalid_input'].includes(row.status) ? 'errors' : 'unscored';
+      counts[key]++;
+    }
+    counts.denominator = counts.pass + counts.fail;
+    counts.pass_fraction = counts.denominator ? counts.pass / counts.denominator : null;
+    return counts;
+  };
+  for (const record of records) assert.ok(['primary', 'supplementary'].includes(record.cohort_role), `${context}: explicit reporting role required`);
+  assert.deepEqual(model.counts, countsFor(records.filter(row => row.cohort_role === 'primary')), `${context}: headline counts include primary records only`);
+  assert.deepEqual(model.supplementary_counts, countsFor(records.filter(row => row.cohort_role === 'supplementary')), `${context}: supplementary records retain separate counts`);
+  assert.deepEqual(model.all_counts, countsFor(records), `${context}: all source records remain represented`);
+}
+
+function repeatabilityCounts(groups) {
+  const counts = {identical: 0, different: 0, not_assessed: 0, total: groups.length};
+  for (const group of groups) {
+    const assessed = group.complete === true && group.inputs_identical === true;
+    const key = assessed && group.normalised_sequence_identical === true ? 'identical' : assessed && group.normalised_sequence_identical === false ? 'different' : 'not_assessed';
+    counts[key]++;
+  }
+  return counts;
+}
+
 async function checkOverview(prefix) {
   const overview = await jsonAt(prefix + '/data/overview.json');
   const home = await checkPage(prefix + '/');
@@ -91,7 +135,8 @@ async function checkOverview(prefix) {
       const fields = repeat ? {identical: repeat.identical, different: repeat.different, denominator} : {pass: tool.pass, fail: tool.fail, denominator};
       for (const [key, value] of Object.entries(fields)) assert.ok(cell[0].includes(`data-${key}="${value}"`), `${prefix}/${family.id}/${tool.id}: ${key}`);
       if (repeat) {
-        assert.ok(cell[0].includes(`${repeat.identical} identical · ${repeat.different} different`));
+        if (repeat.total) assert.ok(cell[0].includes(`${repeat.identical} identical · ${repeat.different} different`));
+        else assert.ok(cell[0].includes('Not assessed'), 'Unassessed primary repeatability must stay explicit');
         if (repeat.not_assessed) assert.ok(compact(cell[0]).includes(`${repeat.not_assessed} not assessed`));
       } else {
         if (tool.errors) assert.ok(compact(cell[0]).includes(`${tool.errors} errors`));
@@ -128,9 +173,18 @@ async function checkOverview(prefix) {
       const result = new URL('../' + record.href, base + route);
       assert.equal(await httpStatus(result.href), 200, `${route}: ${result.pathname}`);
     }
-    assert.equal(family.records.length, family.counts.total);
+    assertCohortCounts(family, family.records, `${prefix}/${family.id}`);
+    for (const tool of family.tools) {
+      assert.equal(tool.total, family.records.filter(row => row.cohort_role === 'primary' && row.tool === tool.id).length);
+    }
+    if (family.id === 'S3') {
+      const primaryGroups = family.repeatability_groups.filter(group => group.comparison === 'within_thread' && group.cohort_role === 'primary');
+      assert.deepEqual(family.repeatability, repeatabilityCounts(primaryGroups), 'Headline repeatability excludes supplementary groups');
+      for (const tool of family.tools) assert.deepEqual(tool.repeatability, repeatabilityCounts(primaryGroups.filter(group => group.tool === tool.id)));
+    }
   }
-  assert.equal(identities.size, overview.counts.total);
+  assert.equal(identities.size, overview.all_counts.total);
+  assertCohortCounts(overview, overview.families.flatMap(family => family.records), prefix || '/');
   return overview;
 }
 
@@ -138,7 +192,9 @@ try {
   const primary = await checkOverview('');
   assert.equal(primary.scope, 'primary_cohort');
   assert.deepEqual(Object.fromEntries(['total', 'pass', 'fail', 'errors', 'unscored', 'denominator'].map(key => [key, primary.counts[key]])),
-    {total: 268, pass: 84, fail: 180, errors: 4, unscored: 0, denominator: 264});
+    {total: 128, pass: 44, fail: 80, errors: 4, unscored: 0, denominator: 124});
+  assert.equal(primary.all_counts.total, 284);
+  assert.equal(primary.supplementary_counts.total, 156);
   assert.ok(primary.excluded_batches.includes('20261104T183058'));
   assert.ok(!primary.included_batches.includes('20261104T183058'));
   const prefixes = ['', ...(await readdir(resolve(root, 'batches')).catch(() => [])).map(id => `/batches/${id}`)];
@@ -146,12 +202,13 @@ try {
   let batchViews = 0;
   let resultViews = 0;
   for (const prefix of prefixes) {
-    if (await httpStatus(base + prefix + '/data/results.json') !== 200) continue;
-    const data = await jsonAt(prefix + '/data/results.json');
+    const batchId = prefix ? prefix.split('/').at(-1) : cohortConfig.root_batch;
+    if (!backendRoot && await httpStatus(base + await jsonRoute(prefix + '/data/results.json')) !== 200) continue;
+    const data = backendRoot ? JSON.parse(await readFile(resolve(backendRoot, 'batches', batchId + '.json'), 'utf8')) : await jsonAt(prefix + '/data/results.json');
     const repeats = data.config.determinism;
     const factor = repeats ? repeats.repeats * repeats.threads.length : 1;
     assert.equal(data.results.length, data.scenarios.length * data.config.tools.length * factor);
-    const frozen = JSON.parse(await readFile(resolve(root, '../published', data.batch + '.json'), 'utf8'));
+    const frozen = JSON.parse(await readFile(resolve(project, 'published', data.batch + '.json'), 'utf8'));
     assert.deepEqual(data.config, frozen.config, 'Presentation must preserve the frozen configuration');
     const sourceRows = new Map(frozen.results.map(row => [JSON.stringify([row.scenario_id, row.tool, row.run_id]), row]));
     for (const row of data.results) {
@@ -165,9 +222,9 @@ try {
       const archived = await checkOverview(prefix);
       assert.equal(archived.scope, 'archived_batch');
       assert.deepEqual(archived.included_batches, [data.batch], 'Archived views cannot pool the primary cohort');
-      assert.equal(archived.counts.total, data.results.length);
+      assert.equal(archived.all_counts.total, data.results.length);
     }
-    for (const route of ['/methods.html', '/about.html', '/history.html', '/scenarios/index.html', '/batch-details.html', ...data.scenarios.map(scenario => `/scenarios/${scenario.id}.html`)]) {
+    for (const route of ['/methods.html', '/about.html', '/scenarios/index.html', '/batch-details.html', ...data.scenarios.map(scenario => `/scenarios/${scenario.id}.html`)]) {
       await checkPage(prefix + route);
     }
     for (const record of data.results) {
@@ -177,10 +234,10 @@ try {
       assert.ok(html.includes('id="assembly-graph"'), `${route}: graph section missing`);
       assert.ok(html.includes('id="assembly-graph-data"'), `${route}: graph data missing`);
       if (record.assembly_sha256) assert.ok(html.includes(record.assembly_sha256), `${route}: assembly provenance missing`);
-      const execution = await jsonAt(prefix + `/data/results/${slug(record)}.json`);
+      const execution = backendRoot ? record : await jsonAt(prefix + `/data/results/${slug(record)}.json`);
       assert.equal(execution.status, record.status, `${route}: download changed status`);
       assert.equal(execution.assembly_sha256, record.assembly_sha256, `${route}: download changed assembly provenance`);
-      const artifact = await jsonAt(prefix + `/data/results/${slug(record)}-graph.json`);
+      const artifact = backendRoot ? JSON.parse(html.match(/<script type="application\/json" id="assembly-graph-data">(.*?)<\/script>/s)[1]) : await jsonAt(prefix + `/data/results/${slug(record)}-graph.json`);
       noSequenceFields(artifact);
       if (artifact.input_hashes?.assembly_sha256 && record.assembly_sha256) assert.equal(artifact.input_hashes.assembly_sha256, record.assembly_sha256, `${route}: graph belongs to another assembly`);
       if (artifact.graph?.status === 'available') assert.match(artifact.graph.source.file_sha256, /^[0-9a-f]{64}$/);
@@ -192,5 +249,5 @@ try {
   assert.equal(assetInfo.packages['@genomicx/ui'], '0.10.1');
   const bundle = await textAt('/assets/genomicx.js');
   for (const marker of ['gx-theme-toggle', 'gx-nav-logo', 'gx-badge']) assert.ok(bundle.includes(marker));
-  console.log(`HTTP end-to-end checks passed: ${checkedPages.size} routes, ${resultViews} result views across ${batchViews} batch views; primary cohort 268 executions; family/run/graph hierarchy and scientific metrics preserved.`);
+  console.log(`HTTP end-to-end checks passed: ${checkedPages.size} routes, ${resultViews} result views across ${batchViews} batch views; 128 primary and 156 supplementary executions; family/run/graph hierarchy and scientific metrics preserved.`);
 } finally { await new Promise(resolve => server.close(resolve)); }

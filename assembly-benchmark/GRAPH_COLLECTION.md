@@ -151,3 +151,23 @@ scientific scores remain unchanged.
 inventory audit. The 68 completed Raven executions did not request graph output
 and have no GFA files. Future commands request `assembly_graph.gfa` explicitly;
 historical graph gaps are labelled independently of sequence recovery.
+
+## Origin evidence in the report
+
+The derived origin model distinguishes `verified_whole_segment` (a recorded
+segment/contig sequence-hash identity plus the contig's saved exact reference
+match), `path_inferred` (membership in an exact contig's recorded GFA path), and
+ambiguous/unresolved origins. A path association is not a direct segment/reference
+alignment. Ambiguous nodes retain grey colouring and their candidate evidence.
+
+Selected nodes show the supporting segment → contig → reference chain. Coordinate
+snippets are copied only from saved alignments whose assembly and truth hashes
+match the execution. They are labelled **contig/reference** coordinates, capped at
+20 saved rows per contig; full source coordinates remain downloadable. No new
+alignment or path-to-reference projection is performed. A whole-segment identity
+supports its complete segment/contig interval; internal origin boundaries and
+path segment positions remain unmeasured when not recorded.
+
+This reporting refresh reuses local frozen metadata. It does not require assembly,
+simulation, alignment or cluster reruns. The source-output integrity and original
+scientific scores are unchanged.

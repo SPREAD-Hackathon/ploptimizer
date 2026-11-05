@@ -137,7 +137,7 @@ def prepare_document(source, artifact_root=None, coordinate_roots=(), snapshot_h
         identities=load_graph_contig_identity(record,graph,document['batch'],artifact_root,lengths)
         record['report_evidence'] = {'schema_version':VERSION, 'heading':heading, 'description':description,
             'summary':diagnostic_summary(record,case), 'required_accessions':relevant, 'molecules':molecules,
-            'reference_origins':build_reference_origins(case,record,graph,identities), 'contig_origins':contig_origins, 'dotplot':plot, 'checked_facts':checked_facts(record),
+            'reference_origins':build_reference_origins(case,record,graph,identities,recorded_plot=plot), 'contig_origins':contig_origins, 'dotplot':plot, 'checked_facts':checked_facts(record),
             'length_metrics':lengths, 'graph_availability':graph_availability(record,graph),
             'failure_details':detail_record(record,molecules,plot,coordinate_plot,sidecar_plot)}
         record['report_evidence']['failure_details']['reported_circularity']['reference_origins']=contig_origins
