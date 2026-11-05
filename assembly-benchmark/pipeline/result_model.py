@@ -12,6 +12,12 @@ def assessed_molecules(record):
     return molecules
 
 
+def molecule_label(molecule):
+    name = molecule.get("name", molecule.get("accession", "Expected molecule"))
+    length = molecule.get("length_bp")
+    return f"{name} ({length:,} bp)" if isinstance(length, int) and not isinstance(length, bool) and length > 0 else name
+
+
 def verdict(record):
     if record.get("report_evidence"):
         return record["report_evidence"]["heading"], record["report_evidence"]["description"]
@@ -26,7 +32,7 @@ def verdict(record):
         if not molecules and record.get("tool") == "plassembler":
             return "Pass — chromosome-only negative control", "The saved output meets the no-plasmid endpoint."
         return "Pass — exact recovery", "Every molecule required by this endpoint has a complete, separate exact match."
-    names = ", ".join(m.get("name", m.get("accession", "Expected molecule")) for m in failed)
+    names = ", ".join(molecule_label(m) for m in failed)
     heading = f"Fail — {names} not recovered exactly" if names else "Fail — the exact endpoint was not met"
     review = record.get("sequence_review") or {}
     if review.get("status") == "verified" and review.get("summary"):

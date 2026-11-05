@@ -19,7 +19,7 @@ class ResultSummaryTests(unittest.TestCase):
         record = self.record()
         original = copy.deepcopy(record)
         body = outcome_section(record)
-        self.assertIn("Fail — fixture plasmid not recovered exactly", body)
+        self.assertIn("Fail — fixture plasmid (100 bp) not recovered exactly", body)
         self.assertLess(body.index('<h3>fixture plasmid'), body.index('<h3>chromosome'))
         self.assertIn("supporting context", body)
         self.assertIn("0.00%", body)
