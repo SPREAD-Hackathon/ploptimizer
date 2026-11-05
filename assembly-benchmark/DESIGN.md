@@ -37,8 +37,13 @@ Reference circles/lines use declared topology and labelled lengths; their sizes
 are schematic. Plassembler's final target contains plasmids only. The observed
 graph retains source segments and orientations, with draggable force-layout
 positions for small graphs and a complete grid fallback for large graphs.
-Reference schematics do not introduce a topology score or assign graph segments
-to reference molecules.
+Reference schematics do not introduce a topology score. Reference colours are
+stable by catalogue accession across scenarios. Graph origin strips use only
+saved exact-contig matches joined through explicit GFA paths in a complete final
+graph bound to the scored assembly. Multiple reference associations and missing
+evidence stay grey. The selected segment exposes its exact-match/path evidence.
+These are whole-segment path associations, not measured internal alignment
+boundaries. The illustrative mixed-origin mock-up is not published as evidence.
 
 The NUCmer disclosure explicitly states that benchmark coordinates are not
 collected. Its optional local coordinate preview is labelled separately from

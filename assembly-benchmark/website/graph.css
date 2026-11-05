@@ -31,3 +31,17 @@
   .result-facts { grid-template-columns: 1fr; gap: 2px; }
   .result-facts dd { margin-bottom: 10px; }
 }
+
+.origin-legend { display: flex; flex-wrap: wrap; gap: 10px 20px; font-size: 13px; }
+.origin-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.origin-legend i { width: 12px; height: 12px; background: var(--reference-colour, #92969d); }
+.graph-node rect.origin-strip { fill: var(--reference-colour, #92969d); stroke: none; pointer-events: none; }
+.origin-track { background: var(--reference-colour, #92969d); color: #16191e; padding: 3px 8px; text-align: center; font-size: 13px; font-weight: 600; }
+.origin-axis { display: flex; justify-content: space-between; font-size: 12px; color: var(--gx-text-muted); margin-top: 5px; }
+.origin-evidence { margin-block: 20px; }
+.origin-evidence h4 { margin-bottom: 12px; }
+[data-theme="light"] .origin-legend i { background: var(--reference-light, #686c73); }
+[data-theme="light"] .graph-node rect.origin-strip { fill: var(--reference-light, #686c73); }
+[data-theme="light"] .origin-track { background: var(--reference-light, #686c73); color: #fff; }
+
+.graph-node text.origin-node-label { font-size: 10px; }

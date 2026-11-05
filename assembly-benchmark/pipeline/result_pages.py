@@ -133,14 +133,18 @@ def result_body(case, record, artifact, output, family=None):
         body += f'<p>{len(graph.get("nodes", []))} GFA segments · {len(graph.get("edges", []))} link records. This is a graph inventory, not a count of biological plasmids.</p></noscript>'
     else:
         body += f'<p><strong>Graph unavailable.</strong> {e(artifact.get("reason") or graph.get("reason") or "No usable GFA metadata was collected for this execution.")}</p>'
+    from .reference_origins import build_reference_origins
+    presentation = copy.deepcopy(artifact)
+    presentation["reference_origins"] = build_reference_origins(case, record, artifact)
     # A GFA identifier must not be able to terminate this inert JSON block.
-    payload = json.dumps(artifact, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
+    payload = json.dumps(presentation, ensure_ascii=True).replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026")
     body += f'<script type="application/json" id="assembly-graph-data">{payload}</script><div data-assembly-graph="assembly-graph-data"><p>The interactive viewer requires JavaScript. The graph metadata download remains available.</p></div>'
     body += '</section></div>'
     body += '<details id="nucmer-dotplot" class="nucmer-panel"><summary>NUCmer dot plot · benchmark coordinates not collected</summary><div data-nucmer-dotplot><p>No NUCmer coordinate file has been collected for this result.</p></div></details>'
     body += contig_section(record, artifact)
     public = execution_evidence(record, case)
     public["graph_artifacts"] = artifact
+    public["reference_origins"] = presentation["reference_origins"]
     write_download(output / "data/results" / (slug + ".json"), public)
     write_download(output / "data/results" / (slug + "-graph.json"), artifact)
     body += f'<div class="downloads"><a href="../data/results/{e(slug)}.json">Execution and assessment JSON</a><a href="../data/results/{e(slug)}-graph.json">Collected graph metadata JSON</a><a href="../methods.html">Methods and endpoint limits</a></div>'

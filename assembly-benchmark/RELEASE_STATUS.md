@@ -223,3 +223,35 @@ and the 376-route/284-result HTTP checks passed; desktop and phone layouts were
 checked. Six representative live pages/assets matched the reviewed build,
 including the one-thread repeat view. Deployment:
 `dpl_EP1BReR9bBggUEX84DjngiQLtyFb`. Scientific snapshots remain unchanged.
+
+## Reference origin strips and coordinate inspection
+
+The approved origin-strip display is now generated for every result graph.
+Reference colours are keyed by accession using the full catalogue, so selecting
+a subset of plasmids does not change their colours. Reference schematics use the
+same palette. Each coloured strip is supported by a saved exact-contig match and
+an explicit GFA path in a complete final graph bound to that scored assembly.
+Clicking a node shows the accession, contig, path and orientation. Associations
+with multiple references and nodes without supporting paths remain grey.
+Intermediate/failed graphs receive no final-reference assignment.
+
+These are whole-segment path associations. Measured internal origin boundaries
+are not available, and the mixed-origin demonstration from the local mock-up is
+not published as benchmark evidence. Original graph JSON downloads are preserved;
+derived associations and their source hashes are separate in result JSON.
+
+The optional local NUCmer coordinate viewer has explicit coordinate windows,
+per-alignment focus with 50 bp context, and a paginated table retaining every
+alignment row. Coordinate windows are 1-based inclusive. Browser verification
+used a toy table only. Benchmark NUCmer coordinates and per-base difference
+records remain uncollected. This update does not establish changed bases,
+insertion/deletion content or causes of assembly failure.
+
+Validation: 259 Python tests (11 skips, no failures), graph and coordinate tests,
+376 routes/284 result views, desktop/dark and phone/light inspections, and toy
+coordinate focus. All 128 primary-batch views retain their original exact scores
+and graph metadata. No source snapshot, scientific score or scenario changed.
+
+Production deployment: `dpl_5VNLN21i6UPUZhzrXeVzD27HrnMC`. The live W graph
+selection was checked, and ten representative public pages, assets and downloads
+matched the reviewed build byte-for-byte.

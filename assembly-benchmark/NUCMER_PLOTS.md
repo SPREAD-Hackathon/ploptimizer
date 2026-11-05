@@ -28,3 +28,18 @@ Validation uses toy coordinate tables, not benchmark sequence data:
 ```sh
 npm --prefix website run test:dotplot
 ```
+
+## Coordinate windows and small changes
+
+The local viewer now accepts explicit 1-based inclusive windows on each axis.
+When all sequences are selected, these are cumulative axis positions. Selecting
+one reference and query switches to their own coordinates. Each coordinate row
+has a focus action with 50 bp of context, and the full row inventory is paginated
+in groups of 25 without dropping records. Invalid ranges hide the plot.
+
+The view exposes coordinate offsets that disappear at genome scale; it does not
+classify their cause. Individual substitutions, insertion/deletion sequences,
+terminal overlaps and exact breakpoint content need separately collected,
+source-bound base-level difference evidence. No such new evidence was generated
+for this presentation update. A straight diagonal or rounded 100% identity is
+not an exact-copy criterion. Existing exact scores are unchanged.

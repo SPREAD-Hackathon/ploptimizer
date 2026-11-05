@@ -3,6 +3,8 @@
 import html
 import math
 
+from .reference_origins import reference_colour
+
 
 def expected_molecules(case, record):
     molecules = case.get("replicons", [])
@@ -35,7 +37,8 @@ def render_expected_output(case, record):
         radius = 13 + 36 * (max(0, length or 0) / maximum) ** .35
         topology = molecule.get("topology", "unknown")
         kind = "chromosome" if molecule.get("molecule_type") == "chromosome" else "plasmid"
-        body += f'<g class="expected-molecule {kind}"><title>{e(name)} · {e(size)} · {e(topology)}</title>'
+        colour, light = reference_colour(molecule)
+        body += f'<g class="expected-molecule {kind}" style="--reference-colour:{colour};--reference-light:{light}"><title>{e(name)} · {e(size)} · {e(topology)}</title>'
         if topology == "circular":
             body += f'<circle cx="{x}" cy="{y}" r="{radius:.2f}" />'
         else:
