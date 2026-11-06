@@ -12,7 +12,7 @@ configurations are retained as historical design records.
 | S4: small plasmids / read length | Implemented and run. Original results include execution errors explicitly. | `published/20261104T193551.json` |
 | S5: native linear genomes | Implemented. Original 24 outcomes/evidence complete; raw and polished Miniasm follow-ups have six runs each, tracked separately from publication. | `evidence/s5-native-v2/status.json`, `evidence/s5-miniasm-v1/status.json`, `evidence/s5-miniasm-plus-v1/status.json` |
 | S6: read errors, larger plasmids | Implemented; 24 executions/evidence complete. Continuous measurements reported; tolerant binary endpoint remains unscored. | `evidence/s6-large-v1/status.json` |
-| S7: shuffled input order | Implemented; all 48 executions and backend comparisons complete in `20261106T134415`. Standalone report verified; live publication separate. | `evidence/read-order-v1/status.json` |
+| S7: shuffled input order | Implemented; all 48 executions and backend comparisons complete in `20261106T134415`. Report verified live at `/scenarios/s7`, with homepage and catalogue links. | `evidence/read-order-v1/status.json` |
 
 Separate from these scenarios, the 50-dataset broad-performance study is a
 distinct workstream; its active state is `performance/snapshot.json`.

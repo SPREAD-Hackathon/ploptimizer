@@ -1,0 +1,54 @@
+{
+  "additional_failure_copy_regressions": 1,
+  "additional_freeze_regressions": 3,
+  "build_bytes": 62346489,
+  "bundle": ".cache/bundles/s5-general-release",
+  "bundle_manifest_sha256": "2884bc93d0ada6d46c6d0dba2e7b13f124ebdb9486f32f97f2514952b185d336",
+  "deployment_id": "dpl_BMCRn3BUo2wjLMwEGuHaBC6EDgh4",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-dohnwcv6k-happykhans-projects.vercel.app",
+  "general_benchmark": {
+    "batch_id": "20261106T134511",
+    "datasets": 50,
+    "expected_executions": 200,
+    "published_outcomes": {
+      "chromosome_complete": 1,
+      "empty": 1,
+      "execution_error": 2,
+      "fully_complete": 18,
+      "incomplete": 6
+    },
+    "published_results": 28,
+    "state": "running"
+  },
+  "general_monitor": "finish-general-assembler-benchmark",
+  "local_links_checked": 14752,
+  "material_limitations": [
+    "General benchmark is a partial28/200publication, not a final comparison.",
+    "Stopped S5Plassembler run has no completed final sequence assessment or final plot.",
+    "Graph reference colouring remains grey where no validated association or interval evidence is recorded.",
+    "Software-internal causes are unresolved unless supported by retained evidence."
+  ],
+  "new_s5_executions": 36,
+  "optional_skips": 11,
+  "public_files_verified": 262,
+  "python_tests": 429,
+  "retained_deployments": [
+    "ploptimizer-assembly-benchmark-dohnwcv6k-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-c84gi8a0s-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-qaeqjocoz-happykhans-projects.vercel.app"
+  ],
+  "retained_ready_deployments": 3,
+  "s5_nucmer_comparisons": 34,
+  "s5_outcomes": {
+    "completed_exact_fail": 35,
+    "did_not_complete": 1
+  },
+  "schema_version": 1,
+  "source_commit": "44cef7f",
+  "source_records_preserved": 528,
+  "static_files_including_routing_configs": 1416,
+  "status": "live_verified",
+  "url": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "verification_failures": 0,
+  "verified_at": "2026-11-06T14:19:25.184661+00:00"
+}

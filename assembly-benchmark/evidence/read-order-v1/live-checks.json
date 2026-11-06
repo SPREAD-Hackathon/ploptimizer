@@ -1,0 +1,60 @@
+{
+  "checks": [
+    {
+      "bytes": 12787,
+      "match": true,
+      "route": "/",
+      "sha256": "a0fc662cc196f3136766871c6fbac180dee1b8bcddde3bbfa4125f3794992d1c",
+      "status": 200
+    },
+    {
+      "bytes": 4632,
+      "match": true,
+      "route": "/scenarios",
+      "sha256": "74b0426a34784b5a7f2a99a446f5563dc2c791ea8655f2992dd31b3e96d24d14",
+      "status": 200
+    },
+    {
+      "bytes": 53936,
+      "match": true,
+      "route": "/scenarios/s7",
+      "sha256": "bfd62448a70db141ab3ef3c2d59ad3e5c12c8a895f7627bc17109f4f809a1068",
+      "status": 200
+    },
+    {
+      "bytes": 8518,
+      "match": true,
+      "route": "/data/read-order/runs.tsv",
+      "sha256": "fdb39d7298e208250c5cddd6790ec52bec8a0a73970fd1433344d7a7f11a4b35",
+      "status": 200
+    },
+    {
+      "bytes": 1219,
+      "match": true,
+      "route": "/data/read-order/orders.tsv",
+      "sha256": "e0448fdf22be251fb47d1e7dfb7f0bd0790c46ce5a1bf1407cae4313d04d7f4d",
+      "status": 200
+    },
+    {
+      "bytes": 33635,
+      "match": true,
+      "route": "/assets/genomicx.css",
+      "sha256": "0de7f0d69feac65e783eff15ff88b5ec3c5385d5ec2768b9994071e986fadf51",
+      "status": 200
+    },
+    {
+      "bytes": 268009,
+      "match": true,
+      "route": "/assets/genomicx.js",
+      "sha256": "5146b47ad8d8f80816abc25d27d06e8f3f9c99ecef0e695e3bb5b6df86718825",
+      "status": 200
+    }
+  ],
+  "executions_in_download": 48,
+  "input_orders_in_download": 4,
+  "page_matrices": 4,
+  "same_record_multiset_verified": true,
+  "scientific_source_unchanged": true,
+  "status": "pass",
+  "url": "https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s7"
+}

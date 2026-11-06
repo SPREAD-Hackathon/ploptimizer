@@ -158,3 +158,5 @@ reference endpoint has 24 passes and 24 failures; these are not S7 verdicts.
 Topology review job `34524603` used saved outputs only; no assembler or read
 generator was rerun. Its input/output hashes and the unchanged end-sensitive
 signatures are verified in `evidence/read-order-v1/release-qa.json`.
+
+The [completed S7 website report](https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s7) includes both comparison views, pairwise matrices and TSV downloads. It is linked from the homepage and Scenarios catalogue.

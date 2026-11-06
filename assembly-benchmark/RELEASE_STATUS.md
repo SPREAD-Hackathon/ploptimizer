@@ -1048,3 +1048,20 @@ the website nor this release claims the remaining jobs are complete.
 Source commit: `44cef7f`. The read-retention policy is unchanged: shared reads
 still needed by jobs are retained; automated verified restoration/cleanup is
 not yet implemented. See `CURRENT_RELEASE.json` and `evidence/s5-release/`.
+
+
+### S7 read-order report verified live
+
+The [S7 read-order report](https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s7)
+now contains 48 completed runs: four input orders and three repeats per order
+for four configurations. The homepage S7 row and Scenarios catalogue link to
+it. Output agreement remains separate from reference-recovery counts. Both
+comparison views, four ends-retained matrices and two TSV downloads are available.
+
+Deployment `dpl_F85Jn4dBawzk3DXorSSnFvpNGrHY`, source `c2ec6a8`. Seven live
+byte checks verify the report, discovery links, downloads and shared assets.
+The build is 62,411,919 bytes in 1,420 files, with zero release-gate errors.
+Every previous frozen bundle file retains its checksum; 528 diagnostic records
+and the published 28/200 general outcomes are unchanged. Twenty-eight targeted
+regression tests pass. Bounded Impeccable review resolved the configuration-copy
+issue; desktop/mobile full-page and keyboard checks pass.

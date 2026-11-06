@@ -2,8 +2,8 @@
 
 **Status:** S1–S6 have implemented benchmark panels and recorded runs. S7
 read-order sensitivity is implemented and all 48 executions and backend
-comparisons are complete. Its standalone report is ready; live-site publication
-is tracked separately. See the [scenario status](SCENARIO_STATUS.md) for the
+comparisons are complete. Its [S7 report is live](https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s7).
+Publication evidence is tracked separately. See the [scenario status](SCENARIO_STATUS.md) for the
 current distinction between implemented, executed and published work, and
 [release results](RELEASE_STATUS.md) for verified production releases.
 All code, configurations and reporting work stay inside this folder.
@@ -26,7 +26,7 @@ original order plus three frozen shuffles, three repeats per order and four
 assembler configurations. All 48 have completed, using the same complete
 read-record multiset in four distinct orders. Outputs are compared independently
 of reference recovery. See [S7 results](evidence/read-order-v1/RESULTS.md) and
-`evidence/read-order-v1/status.json`. Live-site integration remains separate.
+`evidence/read-order-v1/status.json`. The [live S7 page](https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s7) contains both comparison views, matrices and TSV downloads.
 
 ## Aggregate plots
 

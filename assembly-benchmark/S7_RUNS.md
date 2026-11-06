@@ -68,3 +68,11 @@ verified export.
 Backend JSON remains separate. See `public-report-files.json` for exact current
 bytes/hashes and `RESULTS.md` for scientific interpretation. No website deployment
 was performed by this isolated S7 work.
+
+## Verified website publication
+
+All 48 records are now live in the [S7 read-order report](https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s7).
+The homepage S7 row and Scenarios catalogue link to it. Ends-retained matrices,
+the circular-start view, actual configuration labels and both TSV downloads
+are verified. Reference pass/fail remains secondary; no signature or scientific
+score changed. See `evidence/read-order-v1/live-checks.json` and `deployment.json`.

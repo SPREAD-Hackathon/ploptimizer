@@ -1,0 +1,12 @@
+{
+  "policy": "Current plus two previous READY deployments",
+  "removed": [
+    "ploptimizer-assembly-benchmark-qaeqjocoz-happykhans-projects.vercel.app"
+  ],
+  "retained": [
+    "ploptimizer-assembly-benchmark-es8b9if95-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-dohnwcv6k-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-c84gi8a0s-happykhans-projects.vercel.app"
+  ],
+  "status": "pass"
+}

@@ -9,6 +9,7 @@
   },
   "config_fingerprint": "7a7b1b9170b922a60b89d10718577b6cd26a454a1f1981c73c22fda15b664cc1",
   "config_sha256": "46e320de5ec5b298b48121b4a04763a672563314406cf05c24b56f098d806175",
+  "deployment_id": "dpl_F85Jn4dBawzk3DXorSSnFvpNGrHY",
   "execution_counts": {
     "completed": 48
   },
@@ -30,7 +31,8 @@
     "topology-review": "34524603"
   },
   "public_report": "evidence/read-order-v1/report/index.html",
-  "publication_status": "standalone_report_verified_not_live",
+  "public_url": "https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s7",
+  "publication_status": "live_verified",
   "qa": "evidence/read-order-v1/release-qa.json",
   "remote_root": "/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7",
   "repeats_per_order": 3,

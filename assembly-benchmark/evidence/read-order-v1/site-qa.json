@@ -24,12 +24,12 @@
   "review": {
     "disposition": "ship",
     "resolved_findings": [
-      "ActualconfigurationlabelsreplaceuniversalDefaultmode"
+      "Configuration labels match each workflow; Flye (--meta) no longer says default mode."
     ],
     "scope": "FullS7captures,rootdiscoverydetail;singlecopycorrectionresolvedinverdictpass"
   },
   "scientific_summary_sha256": "03a6ea0b5eeefa36085c47cf338bcb014f8fb99e7ae711b3a33b604cf4191bc0",
-  "scope": "GenomicXsiteintegration; desktop/mobilefull-pagecapturesandkeyboard-scrollcheck",
+  "scope": "GenomicX website integration: full-page desktop/mobile captures and keyboard scrolling checks.",
   "screenshot_sha256": {
     "desktop-full.png": "2fed3d1287dfe6d008b82ec11057891212ae14134bfb8f850c112021fdec21b2",
     "mobile-full.png": "32668cf292d5afab79ddec14e085b373d8e066a190a81b06420b8cd9423e1cfa"

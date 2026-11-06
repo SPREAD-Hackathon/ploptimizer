@@ -1,11 +1,9 @@
 {
-  "additional_failure_copy_regressions": 1,
-  "additional_freeze_regressions": 3,
-  "build_bytes": 62346489,
-  "bundle": ".cache/bundles/s5-general-release",
-  "bundle_manifest_sha256": "2884bc93d0ada6d46c6d0dba2e7b13f124ebdb9486f32f97f2514952b185d336",
-  "deployment_id": "dpl_BMCRn3BUo2wjLMwEGuHaBC6EDgh4",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-dohnwcv6k-happykhans-projects.vercel.app",
+  "build_bytes": 62411919,
+  "bundle": ".cache/bundles/s7-release",
+  "bundle_manifest_sha256": "f50ce15635e1f89d3d9d54a3f1dbebeb50bb9f380b9bee70a372b66a636883b8",
+  "deployment_id": "dpl_F85Jn4dBawzk3DXorSSnFvpNGrHY",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-es8b9if95-happykhans-projects.vercel.app",
   "general_benchmark": {
     "batch_id": "20261106T134511",
     "datasets": 50,
@@ -21,34 +19,46 @@
     "state": "running"
   },
   "general_monitor": "finish-general-assembler-benchmark",
-  "local_links_checked": 14752,
+  "local_links_checked": 14773,
   "material_limitations": [
     "General benchmark is a partial28/200publication, not a final comparison.",
     "Stopped S5Plassembler run has no completed final sequence assessment or final plot.",
     "Graph reference colouring remains grey where no validated association or interval evidence is recorded.",
     "Software-internal causes are unresolved unless supported by retained evidence."
   ],
-  "new_s5_executions": 36,
-  "optional_skips": 11,
-  "public_files_verified": 262,
-  "python_tests": 429,
+  "optional_skips": 0,
+  "public_files_verified": 7,
+  "python_tests": 28,
+  "read_order": {
+    "batch_id": "20261106T134415",
+    "executions": 48,
+    "input_orders": 4,
+    "reference_recovery_secondary": true,
+    "repeats_per_order": 3,
+    "state": "live_verified",
+    "summary_sha256": "03a6ea0b5eeefa36085c47cf338bcb014f8fb99e7ae711b3a33b604cf4191bc0",
+    "url": "https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s7"
+  },
   "retained_deployments": [
+    "ploptimizer-assembly-benchmark-es8b9if95-happykhans-projects.vercel.app",
     "ploptimizer-assembly-benchmark-dohnwcv6k-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-c84gi8a0s-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-qaeqjocoz-happykhans-projects.vercel.app"
+    "ploptimizer-assembly-benchmark-c84gi8a0s-happykhans-projects.vercel.app"
   ],
   "retained_ready_deployments": 3,
+  "s5_executions": 36,
   "s5_nucmer_comparisons": 34,
   "s5_outcomes": {
     "completed_exact_fail": 35,
     "did_not_complete": 1
   },
   "schema_version": 1,
-  "source_commit": "44cef7f",
+  "source_commit": "c2ec6a8",
   "source_records_preserved": 528,
-  "static_files_including_routing_configs": 1416,
+  "static_files_including_routing_configs": 1420,
   "status": "live_verified",
+  "test_scope": "Targeted S7, read-order, bundle and performance-web regressions",
   "url": "https://ploptimizer-assembly-benchmark.vercel.app",
   "verification_failures": 0,
-  "verified_at": "2026-11-06T14:19:25.184661+00:00"
+  "verification_scope": "Verified the new S7 page, homepage and catalogue links, both TSV downloads and shared runtime assets. All prior frozen data and scores remain unchanged.",
+  "verified_at": "2026-11-06T14:56:23.706300+00:00"
 }
