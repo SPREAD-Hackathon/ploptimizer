@@ -119,7 +119,7 @@
       ]
     }
   ],
-  "phase": "S1 and S2 evidence complete and locally verified; S3 repeat assemblies running",
+  "phase": "All 168 assembly executions complete; S3 evidence postprocessing running",
   "scheduler_adjustment": {
     "batch_id": "20261106T042113",
     "future_policy": "1000-task array cap; no artificial cross-batch assembly dependency. Environment preparation dependencies retained.",
@@ -142,5 +142,10 @@
   "schema_version": 1,
   "source_commit": "fa47838",
   "status": "running",
-  "updated_at": "2026-11-06T06:23:49.134943+00:00"
+  "updated_at": "2026-11-06T08:34:06.408182+00:00",
+  "assembly_outcomes": {
+    "pass": 72,
+    "fail": 96
+  },
+  "repeatability_audit": "evidence/large-baseline-v3/s3-repeatability-audit.json"
 }

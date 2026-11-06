@@ -1,0 +1,1207 @@
+{
+  "schema_version": 1,
+  "batch_id": "20261106T042113",
+  "expected_runs": 120,
+  "status_counts": {
+    "pass": 40,
+    "fail": 80
+  },
+  "within_thread": [
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye",
+      "mode": "default",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "pass": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye",
+      "mode": "default",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "pass": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye",
+      "mode": "deterministic",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "pass": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye",
+      "mode": "deterministic",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "pass": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye-meta",
+      "mode": "default",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "pass": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye-meta",
+      "mode": "default",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "pass": 5
+      },
+      "byte_variants": 2,
+      "byte_identical": false,
+      "normalised_sequence_variants": 2,
+      "normalised_sequence_identical": false,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye-meta",
+      "mode": "deterministic",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "pass": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye-meta",
+      "mode": "deterministic",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "pass": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "raven",
+      "mode": "default",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "raven",
+      "mode": "default",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "plassembler",
+      "mode": "default",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "plassembler",
+      "mode": "default",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye",
+      "mode": "default",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye",
+      "mode": "default",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye",
+      "mode": "deterministic",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye",
+      "mode": "deterministic",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye-meta",
+      "mode": "default",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye-meta",
+      "mode": "default",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye-meta",
+      "mode": "deterministic",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye-meta",
+      "mode": "deterministic",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "raven",
+      "mode": "default",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "raven",
+      "mode": "default",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "plassembler",
+      "mode": "default",
+      "threads": 1,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "plassembler",
+      "mode": "default",
+      "threads": 4,
+      "expected_runs": 5,
+      "scored_runs": 5,
+      "complete": true,
+      "inputs_identical": true,
+      "status_counts": {
+        "fail": 5
+      },
+      "byte_variants": 1,
+      "byte_identical": true,
+      "normalised_sequence_variants": 1,
+      "normalised_sequence_identical": true,
+      "biological_variants": 1,
+      "biological_identical": true
+    }
+  ],
+  "across_threads": [
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye",
+      "mode": "default",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": false,
+      "normalised_sequence_identical": false,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye",
+      "mode": "deterministic",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": true,
+      "normalised_sequence_identical": true,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye-meta",
+      "mode": "default",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": false,
+      "normalised_sequence_identical": false,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "flye-meta",
+      "mode": "deterministic",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": true,
+      "normalised_sequence_identical": true,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "plassembler",
+      "mode": "default",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": true,
+      "normalised_sequence_identical": true,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-mgh78578-large",
+      "tool": "raven",
+      "mode": "default",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": true,
+      "normalised_sequence_identical": true,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye",
+      "mode": "default",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": false,
+      "normalised_sequence_identical": true,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye",
+      "mode": "deterministic",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": true,
+      "normalised_sequence_identical": true,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye-meta",
+      "mode": "default",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": false,
+      "normalised_sequence_identical": false,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "flye-meta",
+      "mode": "deterministic",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": true,
+      "normalised_sequence_identical": true,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "plassembler",
+      "mode": "default",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": true,
+      "normalised_sequence_identical": true,
+      "biological_identical": true
+    },
+    {
+      "scenario_id": "s1-se11-large",
+      "tool": "raven",
+      "mode": "default",
+      "threads": [
+        1,
+        4
+      ],
+      "complete": true,
+      "inputs_identical": true,
+      "byte_identical": true,
+      "normalised_sequence_identical": true,
+      "biological_identical": true
+    }
+  ],
+  "mode_thread_summary": [
+    {
+      "tool": "flye",
+      "mode": "default",
+      "threads": 1,
+      "groups": 2,
+      "identical_normalised_sequences": 2
+    },
+    {
+      "tool": "flye",
+      "mode": "default",
+      "threads": 4,
+      "groups": 2,
+      "identical_normalised_sequences": 2
+    },
+    {
+      "tool": "flye",
+      "mode": "deterministic",
+      "threads": 1,
+      "groups": 2,
+      "identical_normalised_sequences": 2
+    },
+    {
+      "tool": "flye",
+      "mode": "deterministic",
+      "threads": 4,
+      "groups": 2,
+      "identical_normalised_sequences": 2
+    },
+    {
+      "tool": "flye-meta",
+      "mode": "default",
+      "threads": 1,
+      "groups": 2,
+      "identical_normalised_sequences": 2
+    },
+    {
+      "tool": "flye-meta",
+      "mode": "default",
+      "threads": 4,
+      "groups": 2,
+      "identical_normalised_sequences": 1
+    },
+    {
+      "tool": "flye-meta",
+      "mode": "deterministic",
+      "threads": 1,
+      "groups": 2,
+      "identical_normalised_sequences": 2
+    },
+    {
+      "tool": "flye-meta",
+      "mode": "deterministic",
+      "threads": 4,
+      "groups": 2,
+      "identical_normalised_sequences": 2
+    },
+    {
+      "tool": "raven",
+      "mode": "default",
+      "threads": 1,
+      "groups": 2,
+      "identical_normalised_sequences": 2
+    },
+    {
+      "tool": "raven",
+      "mode": "default",
+      "threads": 4,
+      "groups": 2,
+      "identical_normalised_sequences": 2
+    },
+    {
+      "tool": "plassembler",
+      "mode": "default",
+      "threads": 1,
+      "groups": 2,
+      "identical_normalised_sequences": 2
+    },
+    {
+      "tool": "plassembler",
+      "mode": "default",
+      "threads": 4,
+      "groups": 2,
+      "identical_normalised_sequences": 2
+    }
+  ],
+  "limitations": "Repeats on one frozen simulated read set assess observed repeatability, not a guarantee of determinism. Non-exact contigs retain their ends during normalisation. Biological signatures describe the strict endpoint, not all assembly errors.",
+  "evidence_release_status": "Assembly outcomes and repeat signatures complete; alignment/graph postprocessing and final publication remain pending.",
+  "source_execution_files": [
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-default-threads-1-repeat-1/execution.json",
+      "sha256": "9ebe44b4a7662a5ad3a81b407c11e87a7a412ed8acf87a8cfa0b918f663583a1"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-default-threads-1-repeat-2/execution.json",
+      "sha256": "898e106ebba530d3a9c3b87565906ccbcadcb4a22fca8ae4e09eab985f94144d"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-default-threads-1-repeat-3/execution.json",
+      "sha256": "97398891adc4945f6928e40a906f8cb34696e6f1a9d599066e1554f1e6e18f2e"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-default-threads-1-repeat-4/execution.json",
+      "sha256": "34ebe3b37d5410c06808281d40b5ce49b4f5efc4525f3eb8cf7ed95038992fab"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-default-threads-1-repeat-5/execution.json",
+      "sha256": "2c097b34031ffdf83a67eaf1a116772e1715f29efb6fcaae52c9f4f0d6eb2859"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-default-threads-4-repeat-1/execution.json",
+      "sha256": "87081de9f74fce6d320b5793104a8d07e05607394afe326b3f0194f1250dd341"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-default-threads-4-repeat-2/execution.json",
+      "sha256": "3c8e8c5ddc3b7ef951dc8fbd4921dac3001f54c1d17eb0abe7899c8427d20071"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-default-threads-4-repeat-3/execution.json",
+      "sha256": "2cf4a9d10b5f1e32d1da73f25c6fc77b6ed52e688941156a07d6a0bba323bf18"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-default-threads-4-repeat-4/execution.json",
+      "sha256": "c2ed09b4e4bcda7aab3c21d9cfbb12f54542e2666175a28c0117623154ff6ff6"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-default-threads-4-repeat-5/execution.json",
+      "sha256": "a68fb38b81b94b55fa83b70bd25092cab96172b1bd06e9f7e230546346a9005d"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-deterministic-threads-1-repeat-1/execution.json",
+      "sha256": "f4c663003b4cfbe79a4849168177f1048b4fb11fbcd6fe92fada76f4a40c9713"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-deterministic-threads-1-repeat-2/execution.json",
+      "sha256": "dd672cf5d184564a7b7fdba20b66a0cec0fc9b154b83ccd6b3365cc41b5dc568"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-deterministic-threads-1-repeat-3/execution.json",
+      "sha256": "cfe86f58a4b9a24720db22ad902fdecb298536d32f77c821c7d919552e7af578"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-deterministic-threads-1-repeat-4/execution.json",
+      "sha256": "65bb3be4c2db56c6b8a4aa46188ab699010e544f38e29f985ca6b7a77222a40e"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-deterministic-threads-1-repeat-5/execution.json",
+      "sha256": "aa5a89ca1decd199c11f8a9c747adb52f343a3857a6b52af906fcdf52ba25db0"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-deterministic-threads-4-repeat-1/execution.json",
+      "sha256": "7d126a96a4809cfb98e2d372e1cb6484f4cc8fd230935dc387f3102467b30e11"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-deterministic-threads-4-repeat-2/execution.json",
+      "sha256": "e64f47bc1d746b94a6ad28e4cdf2e856e0f0bb7a4bdba20d092cff2ebd598bac"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-deterministic-threads-4-repeat-3/execution.json",
+      "sha256": "cebfd0322a0fd35b093c3a4a29421e352f65f13163107495ef1e2441321e8fa0"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-deterministic-threads-4-repeat-4/execution.json",
+      "sha256": "553a114f5e49ea0518ec631215fcbe481aab98a2f6c56471b83c848a8dcb97d0"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye/repeats/mode-deterministic-threads-4-repeat-5/execution.json",
+      "sha256": "b8409807ba5277f332eea8e1c5e1e4a13dc6af526dab442b75c65524ea4813de"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-default-threads-1-repeat-1/execution.json",
+      "sha256": "106d6893636067fcca213781c2126e104ea23f01104a7b9430b33203d628ab89"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-default-threads-1-repeat-2/execution.json",
+      "sha256": "22aff64ccd2e631e76cfdb7fa000c799ddf01e4bb28e9c358f097c2e6a9acf8a"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-default-threads-1-repeat-3/execution.json",
+      "sha256": "d85b96ef4382a51e0920497af0455692189ed03ea6d9d305283afef441dbe45f"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-default-threads-1-repeat-4/execution.json",
+      "sha256": "374cc833dcb0c33523d16d62b4892f11175eed402a20beaa0a593e96c3da62c1"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-default-threads-1-repeat-5/execution.json",
+      "sha256": "53ec0ab47512cabdaefc88a93ac639dd10924ffacf77e4412e89a0a599c85326"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-default-threads-4-repeat-1/execution.json",
+      "sha256": "0c07ca974efb16538353d2c5ab5797a5fcbd5de873fb94ebba0e623ed3bddd94"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-default-threads-4-repeat-2/execution.json",
+      "sha256": "d74a0c72503f44f7000febdf2dbff10688e050a0786ecaaeec27961c096844f9"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-default-threads-4-repeat-3/execution.json",
+      "sha256": "1535f6ae0df644b7ece40ebc64e0a9f42ef163ad5c8ddfcb72014fd6be252029"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-default-threads-4-repeat-4/execution.json",
+      "sha256": "11470f4c4e34266147c8da9055ba6bedead1b712cbcefcbc81dbcf6ffaedbc6b"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-default-threads-4-repeat-5/execution.json",
+      "sha256": "5eac6ac4f5cbea197c192b5cde9ecd37cd187dc28229cdcb8b1a34011d2e391b"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-deterministic-threads-1-repeat-1/execution.json",
+      "sha256": "84b4c87b937a54a133142e7b78f90f8f387ebbdda22ec3aac5017efd49a9973e"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-deterministic-threads-1-repeat-2/execution.json",
+      "sha256": "e44b62f31567c9da47ceca5c418122314af985ab2d6c327c8f51c540e539bc60"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-deterministic-threads-1-repeat-3/execution.json",
+      "sha256": "0aea11de98fc58f8cbf505a0ac5e85a5b4d9de15b47b1518e53b48c1984b8da1"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-deterministic-threads-1-repeat-4/execution.json",
+      "sha256": "1b4db80f37576c4b779a3e3d2a364199bdbdffadb7c93880b5f47e07d6c45b7a"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-deterministic-threads-1-repeat-5/execution.json",
+      "sha256": "cdf924faedbe8db7df658a5f1f0c11d5749096bab61098017b4deb69c6ab503c"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-deterministic-threads-4-repeat-1/execution.json",
+      "sha256": "d2693159ce34fbddeb6d61404c3d2fcb432dd5da9c875af9c732f347824573dd"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-deterministic-threads-4-repeat-2/execution.json",
+      "sha256": "30f079aa087a14c1aab6324f4db283e4f377dd1d1fb2c9ab334f103e485a43d4"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-deterministic-threads-4-repeat-3/execution.json",
+      "sha256": "ec2fa8f02580c19db89d8d475daa63085f71e00daf32b5795d0fe76e541ef013"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-deterministic-threads-4-repeat-4/execution.json",
+      "sha256": "d5acd2be9d421d8ebb77c480ce5f942730c7d5295a2e5c9e8f3c22e8b77b9d03"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/flye-meta/repeats/mode-deterministic-threads-4-repeat-5/execution.json",
+      "sha256": "c9a8bb40ebe20ee09992c0aac87fb1f40247bba8cc7b9e5a3dacf34c410ff7c8"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/plassembler/repeats/mode-default-threads-1-repeat-1/execution.json",
+      "sha256": "19cc5d6e023bec2d4fd7f882ec49c0dce287e91862e0bd22149fe3958bdbfe90"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/plassembler/repeats/mode-default-threads-1-repeat-2/execution.json",
+      "sha256": "24d85009de88843160460f4a60d03f7716eee2927448b8c45d839965d663ccfb"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/plassembler/repeats/mode-default-threads-1-repeat-3/execution.json",
+      "sha256": "3230fa1397c987ac8212b0b13f900d9915afc1cc947b7b8aa94a86db5255c720"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/plassembler/repeats/mode-default-threads-1-repeat-4/execution.json",
+      "sha256": "032458889736cfa837db81fef961f51fa14dd02c4593fea041e2ce5896373430"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/plassembler/repeats/mode-default-threads-1-repeat-5/execution.json",
+      "sha256": "ec643a547b3a5e3a9782708e5970430eda23db8dd95ffe0827dc9d1bba73c0c6"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/plassembler/repeats/mode-default-threads-4-repeat-1/execution.json",
+      "sha256": "eef47e56cfaa9e17ef17e6fdb1abe3e9e22244a8587ff8d070ecc0b4c741768c"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/plassembler/repeats/mode-default-threads-4-repeat-2/execution.json",
+      "sha256": "368b3269a25aab3c9d32c0bc0c5f28dc7ef243f26d6c16b057f0949b5e073d8e"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/plassembler/repeats/mode-default-threads-4-repeat-3/execution.json",
+      "sha256": "fe0dd16e1ea181862941c78cbd2e6c309ca0f005b4f81129d2dfae6d629b1f03"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/plassembler/repeats/mode-default-threads-4-repeat-4/execution.json",
+      "sha256": "af6c9e92b01fdd03c3f899595f9f54daeb8e7b989ffc57b2f15a5d4f18e750f3"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/plassembler/repeats/mode-default-threads-4-repeat-5/execution.json",
+      "sha256": "b074feac77387d6556c3bd29120e2185c8d5ce72dfe1ca87aef4e9f15803eff8"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/raven/repeats/mode-default-threads-1-repeat-1/execution.json",
+      "sha256": "4690ed382bf84abc2c49df0e0c108c181e74d5b32ec089ab898d09bbbe0e82ad"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/raven/repeats/mode-default-threads-1-repeat-2/execution.json",
+      "sha256": "bc5afaad6e91520cb9e0e2b52b439df9a075b0fd457bd9f8a092f60e4ba7ce8e"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/raven/repeats/mode-default-threads-1-repeat-3/execution.json",
+      "sha256": "707970390a936edcf6cbebde0c255d64d15e89b9af8fc95c5269fee6a0e13aaa"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/raven/repeats/mode-default-threads-1-repeat-4/execution.json",
+      "sha256": "18342d5e3442ebd7c96daf8a3836aca2ddbf6359db226d000afdd36f09932cf2"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/raven/repeats/mode-default-threads-1-repeat-5/execution.json",
+      "sha256": "a9e99b7104920b531dab1675af98bb7b53c7ce14b3537151bcbbc444b739a80d"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/raven/repeats/mode-default-threads-4-repeat-1/execution.json",
+      "sha256": "aec91379df91f1d46a6c00a696bcd8587fb160436cc4b9bf9e1a2564f6d7c440"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/raven/repeats/mode-default-threads-4-repeat-2/execution.json",
+      "sha256": "606e8dd25ca0f7a485820b0553ed275b8deab352fed3c835ff907db513d820f2"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/raven/repeats/mode-default-threads-4-repeat-3/execution.json",
+      "sha256": "629101c7ece0e25b2e3810a775da7e74243022aedb8af55aa64543e021453f5f"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/raven/repeats/mode-default-threads-4-repeat-4/execution.json",
+      "sha256": "a42e3ada49fcd7ffdfca128023d821623b3c3b147f33c5a7b5dbf72e9ed5b963"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-mgh78578-large/raven/repeats/mode-default-threads-4-repeat-5/execution.json",
+      "sha256": "6ff7479c056da1256d6cb588347879410a0b92442a6275ba1bb5ce2762b3ef8a"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-default-threads-1-repeat-1/execution.json",
+      "sha256": "90ce61a7bce3201d730b13842842e3e4a908fe0b8a94ee57ddf1dc0a8c01487e"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-default-threads-1-repeat-2/execution.json",
+      "sha256": "b57701e7418211acb2f9f88054e4f1d87ff3e2bc52f328d6e1f3e434f551051d"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-default-threads-1-repeat-3/execution.json",
+      "sha256": "5fb71670ba59342ed5c9ea6beba6c28444588e741162136252ed4259a20dd6fe"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-default-threads-1-repeat-4/execution.json",
+      "sha256": "f22124034496c1fc703ff08d8f82166ae7372b8e50de9e17140c8ed6af589f06"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-default-threads-1-repeat-5/execution.json",
+      "sha256": "7e3acefa1320102569aa7811fa4a3ee3e1eec5c42cf07274e4f51cd094c98a05"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-default-threads-4-repeat-1/execution.json",
+      "sha256": "40e01446149daded8fcc279dc6567a58e79e65d70fc40f4b6b863a079ca8b834"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-default-threads-4-repeat-2/execution.json",
+      "sha256": "c73261eddf024c8c7aeed8ade1776f05bf0ce327bae5ec316155932c8562c9f1"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-default-threads-4-repeat-3/execution.json",
+      "sha256": "835c33d74b647f8f2ca9199474f08a92d3b39dad0fb05906723e6dd944065134"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-default-threads-4-repeat-4/execution.json",
+      "sha256": "d5c5b8c94302e0e3ac0baa2b2fc6502c52018c3aabd7d0ca117304137c300e1a"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-default-threads-4-repeat-5/execution.json",
+      "sha256": "b2d6e4294141c45a1adb9c3c821d3ae06cdf4aa7a5018bc8a6c1328f16cee777"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-deterministic-threads-1-repeat-1/execution.json",
+      "sha256": "af3da12d47520e38d595944ed342b57d81c4b6cf5438eca3367ece0387e5d399"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-deterministic-threads-1-repeat-2/execution.json",
+      "sha256": "26626ed28c8585048a038f10e5f6273c02b4459ace75b3202b89cddcd968cb09"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-deterministic-threads-1-repeat-3/execution.json",
+      "sha256": "78208d15d69ba046a8f0691da54a1d3f50a3ee8c903c6841f90fae189df09f6d"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-deterministic-threads-1-repeat-4/execution.json",
+      "sha256": "5a06aada7e2326eba347c9031cdbe6fdc2dbe6f6a17a767df28ea7b562afeb7a"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-deterministic-threads-1-repeat-5/execution.json",
+      "sha256": "e9cc468e51d5ba0618f3e5493f410b7b75db721d458393c347673397d39498e7"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-deterministic-threads-4-repeat-1/execution.json",
+      "sha256": "59f5a97dc7e8c0f305c86b0648fd68237094392d06093d6533a1f75406bed6ac"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-deterministic-threads-4-repeat-2/execution.json",
+      "sha256": "9169959d1166f9db0a988c231754ea005bd6c8a88f51a1d354fe2036f3afcd2d"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-deterministic-threads-4-repeat-3/execution.json",
+      "sha256": "e536977274a917bea50a2b8f6d23679012cdc816ed8d724f4d547d0f2b937663"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-deterministic-threads-4-repeat-4/execution.json",
+      "sha256": "ab49492292929a596baaa1e292d5baf526fd4d5fe2278af51e42a5c6660bebb0"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye/repeats/mode-deterministic-threads-4-repeat-5/execution.json",
+      "sha256": "7d166751da961399d4a23d187c10d4bb5c5a1e5adf05b1b6a4d4bdc02958fb70"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-default-threads-1-repeat-1/execution.json",
+      "sha256": "05d924edf24b720556989584748af7c3392181fd19d11f7a27604ebdbf51036d"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-default-threads-1-repeat-2/execution.json",
+      "sha256": "4f24115c0eb4e4acc69cb4541655c1e9da36d89ddf268871fa38f3c0f61129df"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-default-threads-1-repeat-3/execution.json",
+      "sha256": "9097151d47bd479c9e2500b009e7d2c7d6466d3740a422a6170ba7786fba9294"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-default-threads-1-repeat-4/execution.json",
+      "sha256": "912528e9711fd475e35b8c65126866c4b4c04e43bb0f692eb7992fd23935629d"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-default-threads-1-repeat-5/execution.json",
+      "sha256": "7ec3f57669438688e834f5eabe0ee55f634c8eab504b414f59018b09a74cd3c0"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-default-threads-4-repeat-1/execution.json",
+      "sha256": "d1509965f9f0415915f1d59d23549953138b665b8d6df1d05f926228d17e51f5"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-default-threads-4-repeat-2/execution.json",
+      "sha256": "c10334a20c938b282d482bdd29b14e16584f8df4f7b9b5f417a62615e839a854"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-default-threads-4-repeat-3/execution.json",
+      "sha256": "da124cd5a59873e5dcafa43383df4b3f15cd526a93d160720a53d2cbe293b364"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-default-threads-4-repeat-4/execution.json",
+      "sha256": "a216b7d7cf9c9f2e555c81517d758d20173cb6d91ab7dac2552393fd23cb6ea5"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-default-threads-4-repeat-5/execution.json",
+      "sha256": "84047657c7a600a1eb725e2f020f3c083160f1b16cceac9532a12393654a19ad"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-deterministic-threads-1-repeat-1/execution.json",
+      "sha256": "2ccef2c895360ce926442706a13d1704eabb66078cd82867394c825efe8b9973"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-deterministic-threads-1-repeat-2/execution.json",
+      "sha256": "ae8c57959b76a85960a5503c1d65add04bca7de9d10afbd2496c63777af26fa5"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-deterministic-threads-1-repeat-3/execution.json",
+      "sha256": "7164396cd7adc82e275f6e7eb07014da88e4a3e2237fc457a5bb323d684d11ee"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-deterministic-threads-1-repeat-4/execution.json",
+      "sha256": "998452045bf8e191f27963fe3b446105ca2c5d9d343caf493d280c32094c0d38"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-deterministic-threads-1-repeat-5/execution.json",
+      "sha256": "9f4288e62909832dc7b36f332e8f70cb6532db162b8c9ae052dd37b0884edcf7"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-deterministic-threads-4-repeat-1/execution.json",
+      "sha256": "e074fc71637c7a82dd7f46c8d19aa1e635de8e183c0cadc2bdb2730ec5848f62"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-deterministic-threads-4-repeat-2/execution.json",
+      "sha256": "c3954a6fe0fa889765eaef8bcfda5dc336b8e32ee64ba899fcc0e07ed4048ece"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-deterministic-threads-4-repeat-3/execution.json",
+      "sha256": "ef386aae321d7e4a5de99d8f6f49dbe7fc1b10d3e57f9e28a555ca6a6dea27bb"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-deterministic-threads-4-repeat-4/execution.json",
+      "sha256": "5ab26139dc4cbb3418961bf01e824c36485aba065cc25fb4bf3d3edea5eefe5f"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/flye-meta/repeats/mode-deterministic-threads-4-repeat-5/execution.json",
+      "sha256": "c5ceee395eb952da2a932403b57fdadcb21bcc8cf9eb1d2ef0bfcae0dc3b800e"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/plassembler/repeats/mode-default-threads-1-repeat-1/execution.json",
+      "sha256": "46ce99ffd9662c06bd384b389d9fdb5fff3de4b6041dc0899aadc2988d7f898b"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/plassembler/repeats/mode-default-threads-1-repeat-2/execution.json",
+      "sha256": "4fe3b6afd9e302b836135aead7310b5a5a932b44f40e38e2e3a131569d8cece3"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/plassembler/repeats/mode-default-threads-1-repeat-3/execution.json",
+      "sha256": "cdf7cc12609a4b8b09e64fd78cfe62e02ac5a410187db11a2baef60f2ce2a8a0"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/plassembler/repeats/mode-default-threads-1-repeat-4/execution.json",
+      "sha256": "e96e28fc04bc4182cde027add599b0465a9535b0e7a8cd13551dbc7b10023c1f"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/plassembler/repeats/mode-default-threads-1-repeat-5/execution.json",
+      "sha256": "5447c7a4670f1618a98c115983e7ab9de91cfef3c2a052965a9ad0aa6ffd89b3"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/plassembler/repeats/mode-default-threads-4-repeat-1/execution.json",
+      "sha256": "992026c9a9efe09a26785ec027d1fc8764b1347029085e37bd16bf50defcdc15"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/plassembler/repeats/mode-default-threads-4-repeat-2/execution.json",
+      "sha256": "8f43dfe43336741d714a1df50735a319921070afcbadc60a35fe72f25ea22285"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/plassembler/repeats/mode-default-threads-4-repeat-3/execution.json",
+      "sha256": "99693416bbc885abed12cf63f7f2c48ad610af97635a562395110ae6eee221bd"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/plassembler/repeats/mode-default-threads-4-repeat-4/execution.json",
+      "sha256": "713ef4b38d62245d0ccc785c1da6df8408549b19f39e393a3a630b722e8da048"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/plassembler/repeats/mode-default-threads-4-repeat-5/execution.json",
+      "sha256": "2b53457f5b02d99e8eda068510d802c8358ba66698753d18453eb9d26f32efea"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/raven/repeats/mode-default-threads-1-repeat-1/execution.json",
+      "sha256": "64c2a409ac577c79cc69144edbf77447a8c69ea223dc58546ce9e7a29a4fabf7"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/raven/repeats/mode-default-threads-1-repeat-2/execution.json",
+      "sha256": "d00c87f0b64895dc7d038723861eb162abb79470e155f1a6e4a36da746363874"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/raven/repeats/mode-default-threads-1-repeat-3/execution.json",
+      "sha256": "4de8a4b240db644a14a327f9371cb7e93216214016b1f805f3ea780b3666d417"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/raven/repeats/mode-default-threads-1-repeat-4/execution.json",
+      "sha256": "69de31935913ddaff8ee6ab76248470d30ed362f9a2e24dc67b3caa5dca619fc"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/raven/repeats/mode-default-threads-1-repeat-5/execution.json",
+      "sha256": "578224f1f2405e69ab50b54f9aad4caa7b9e582f96827f83369ca06b47687f10"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/raven/repeats/mode-default-threads-4-repeat-1/execution.json",
+      "sha256": "34507de3cb0891ecc10a336a0f51b6895060abf7f9cc9a1a1e4232ec1e98e623"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/raven/repeats/mode-default-threads-4-repeat-2/execution.json",
+      "sha256": "8768db0afc3a2bae5f0358fc42f35625cacb3fec082a07a8fc26cfb62eeb90ed"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/raven/repeats/mode-default-threads-4-repeat-3/execution.json",
+      "sha256": "3b55d81336725dde549c74218a32479a2f973627cd69802144bec3f795d320de"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/raven/repeats/mode-default-threads-4-repeat-4/execution.json",
+      "sha256": "f561c5542b2c54d65f4f95061f3488a82ca72dc94b0b4579d9b1fb38c805d2e6"
+    },
+    {
+      "path": "runs/20261106T042113/results/s1-se11-large/raven/repeats/mode-default-threads-4-repeat-5/execution.json",
+      "sha256": "054760bf22108a61ed40bc356939e97efa0338ca3cdb5439f0ae600c847b33ca"
+    }
+  ]
+}
