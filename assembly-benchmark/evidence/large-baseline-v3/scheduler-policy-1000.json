@@ -1,0 +1,19 @@
+{
+  "batch_id": "20261106T042113",
+  "future_policy": "1000-task array cap; no artificial cross-batch assembly dependency. Environment preparation dependencies retained.",
+  "inputs_modes_commands_and_repeats_unchanged": true,
+  "job_id": "34499396",
+  "memory_per_task": "16G",
+  "new_assembly_jobs_submitted": 0,
+  "previous_array_throttle": 8,
+  "reason": "Explicit user instruction: use a job cap of 1000 and let Slurm schedule resources.",
+  "reserved_cpus_per_task": 4,
+  "running_tasks_at_verification": 14,
+  "schema_version": 1,
+  "tool_threads_unchanged": [
+    1,
+    4
+  ],
+  "updated_at": "2026-11-06T07:10:46.113143+00:00",
+  "verified_array_throttle": 1000
+}

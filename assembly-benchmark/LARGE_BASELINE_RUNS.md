@@ -33,10 +33,12 @@ The ignored `.cache/large-baseline-v3/checkpoint.json` prevents duplicate suite
 submissions. Authentication is checked before creating runs. Partial submissions
 require inspection. Every repeat has a fresh execution directory. Preparation
 jobs are ordered to avoid concurrent environment installation, and assembly
-arrays are ordered across batches. The initial limit was four active assembly
-tasks; the S3 limit was raised to eight on 6 November following the user’s speed
-request. Per-run CPU reservations, tool thread counts, inputs and modes were
-unchanged. See `evidence/large-baseline-v3/scheduler-adjustment.json`.
+arrays use a concurrency cap of 1,000, allowing Slurm to allocate resources.
+Future assembly batches are not artificially ordered behind earlier assemblies;
+only actual input/environment dependencies remain. S3's original cap was four,
+then eight, and was raised to 1,000 at the user’s explicit instruction. Per-run
+CPU reservations, thread counts, inputs and modes are unchanged. See
+`evidence/large-baseline-v3/scheduler-policy-1000.json`.
 No assembler failures are silently retried with changed settings.
 
 Each batch has a dependency-linked evidence job after assembly/report completion.

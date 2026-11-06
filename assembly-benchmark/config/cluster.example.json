@@ -6,6 +6,6 @@
   "cpus": 4,
   "memory": "16G",
   "time": "04:00:00",
-  "array_concurrency": 4,
+  "array_concurrency": 1000,
   "pixi": "pixi"
 }

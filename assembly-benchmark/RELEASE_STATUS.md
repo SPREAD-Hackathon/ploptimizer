@@ -750,3 +750,17 @@ active tasks; every task still reserves four CPUs / 16 GB and retains its
 configured one- or four-thread assembler setting. No new tasks, input changes,
 parameter changes or assembly retries were introduced. The scheduler adjustment
 and verification are retained in `evidence/large-baseline-v3/scheduler-adjustment.json`.
+
+### 6 November — scheduler policy corrected to the user’s 1,000-job cap
+
+At the user’s explicit instruction, S3 array `34499396` now has a verified
+`ArrayTaskThrottle=1000`. Slurm allocates nodes according to account, partition
+and resource availability; the controller no longer imposes a low running-task
+cap. Four CPUs / 16 GB remain reserved per task, and each assembler retains its
+fixed one- or four-thread setting. No tasks were duplicated or biological
+settings changed. The eight-job adjustment above is superseded.
+
+The controller cluster configuration and example now use 1,000. Future suite
+submissions also omit artificial cross-batch assembly ordering, retaining input
+and environment-preparation dependencies. Actual scheduler verification and
+running-task count are in `evidence/large-baseline-v3/scheduler-policy-1000.json`.

@@ -75,8 +75,7 @@ def submit_suite():
             before = set((ROOT / 'runs').iterdir())
             try:
                 record = submit(load(ROOT / panel['config']), cluster,
-                                after_job=previous['jobs']['prepare'] if previous else None,
-                                assembly_after_job=previous['jobs']['assemble'] if previous else None)
+                                after_job=previous['jobs']['prepare'] if previous else None)
             except Exception:
                 created = set((ROOT / 'runs').iterdir()) - before
                 if len(created) == 1:panel['batch_id'] = created.pop().name
