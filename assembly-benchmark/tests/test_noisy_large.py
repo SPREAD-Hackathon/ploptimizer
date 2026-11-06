@@ -130,8 +130,13 @@ class NoisyLargeTests(unittest.TestCase):
              patch.object(noisy_large,'queue_evidence',side_effect=evidence_once), \
              patch.object(noisy_large.subprocess,'check_output',return_value='fixture-commit\n'):
             first=noisy_large.submit_panel()
+            noisy_large.CHECKPOINT.unlink()
             second=noisy_large.submit_panel()
             self.assertEqual(first['batch_id'],second['batch_id'])
+            self.assertEqual(calls,{'submit':1,'evidence':1})
+            complete=load(noisy_large.CHECKPOINT);complete['status']='evidence_complete'
+            save(noisy_large.CHECKPOINT,complete)
+            self.assertEqual(noisy_large.submit_panel()['status'],'evidence_complete')
             self.assertEqual(calls,{'submit':1,'evidence':1})
             changed=load(config_path);changed['threads']=1;save(config_path,changed)
             with self.assertRaisesRegex(ValueError,'checkpoint'):noisy_large.submit_panel()

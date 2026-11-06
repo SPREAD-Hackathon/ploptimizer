@@ -11,9 +11,41 @@
       "status": "valid"
     },
     {
+      "input_manifest_sha256": "ff767b6fa5319fcfa3863227bc8adfd570585e786f75ad19d7a3c17b99b4047c",
+      "reads_sha256": "e1ff861563ece6b92414b5ae7cf3dbc90337d58ec298a82a2680475c2fb133e6",
+      "scenario_id": "s6-se11-pse11-1-seed-20261106-generic-stress",
+      "source_fragments_sha256": "6e4b0c3661f78bd99b8501c1109b285ac6afeb503cc94da67a3f4b0db3d77d3d",
+      "source_hashes_match": true,
+      "status": "valid"
+    },
+    {
+      "input_manifest_sha256": "a354e08be73ef177e7d67e5f6d5f497c15962be8ed78160a5f21cfd4a17c14bb",
+      "reads_sha256": "804aafeefc5bdf87ce4f9280339e24598650c4e64f940da9cb567e9e4017876f",
+      "scenario_id": "s6-se11-pse11-1-seed-20261106-ont2023-shaped",
+      "source_fragments_sha256": "6e4b0c3661f78bd99b8501c1109b285ac6afeb503cc94da67a3f4b0db3d77d3d",
+      "source_hashes_match": true,
+      "status": "valid"
+    },
+    {
       "input_manifest_sha256": "e4959d9eaf4043551c74b476ba3cdc7b4587d91754b90b77468db5d42544293e",
       "reads_sha256": "3609c5f5023d24022c9aa1f0368ae4b2f789346d3f8e9c031259c89297d837ae",
       "scenario_id": "s6-mgh78578-pkpn3-seed-20261106-matched-exact",
+      "source_fragments_sha256": "3609c5f5023d24022c9aa1f0368ae4b2f789346d3f8e9c031259c89297d837ae",
+      "source_hashes_match": true,
+      "status": "valid"
+    },
+    {
+      "input_manifest_sha256": "d77ca8bf5183d8c70ab37dff4b0a9a542e407a6c81b8b1bd93740170cf2aa150",
+      "reads_sha256": "d65d9161679a452d0feac8631deb3c3d6a0176428dfe95a1fccbdbe3d848e5d1",
+      "scenario_id": "s6-mgh78578-pkpn3-seed-20261106-generic-stress",
+      "source_fragments_sha256": "3609c5f5023d24022c9aa1f0368ae4b2f789346d3f8e9c031259c89297d837ae",
+      "source_hashes_match": true,
+      "status": "valid"
+    },
+    {
+      "input_manifest_sha256": "33443ed388cffcffd175ee33ac416f7f688f6199864cb80abf628884ac00beae",
+      "reads_sha256": "540c4387657dd0ee6f8971c073ef06492477e7afd2a0db7f7950c314a102c026",
+      "scenario_id": "s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped",
       "source_fragments_sha256": "3609c5f5023d24022c9aa1f0368ae4b2f789346d3f8e9c031259c89297d837ae",
       "source_hashes_match": true,
       "status": "valid"
@@ -21,5 +53,5 @@
   ],
   "schema_version": 1,
   "scope": "Recorded manifest and frozen-source hash equivalence; source reads are retained on BMRC.",
-  "status": "pending"
+  "status": "complete"
 }

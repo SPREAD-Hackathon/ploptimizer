@@ -44,13 +44,19 @@ def checkpoint(state):
     return state
 
 
+def recorded_state():
+    # The committed status also prevents resubmission after cache cleanup.
+    path=CHECKPOINT if CHECKPOINT.exists() else STATUS
+    return load(path) if path.exists() else None
+
+
 def submit_panel():
     planned=panel_plan()
     cluster=load(ROOT/'config/cluster.local.json')
     if cluster.get('array_concurrency')!=1000:
         raise ValueError('Use the authorised 1000-task cap; let Slurm schedule resources')
     ssh(cluster['host'],['true'])
-    state=load(CHECKPOINT) if CHECKPOINT.exists() else planned
+    state=recorded_state() or planned
     if state['config_fingerprint']!=planned['config_fingerprint']:
         raise ValueError('Configuration differs from the existing S6 checkpoint; inspect before proceeding')
     if not state.get('batch_id'):
@@ -66,9 +72,13 @@ def submit_panel():
         state.update(batch_id=record['batch_id'],source_commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip())
         checkpoint(state)
     batch=ROOT/'runs'/state['batch_id']
+    if not (batch/'submission.json').exists():
+        raise ValueError('An existing S6 batch is recorded; recover its submission metadata instead of submitting duplicates')
     record=load(batch/'submission.json')
     if record['status']!='submitted':
         raise ValueError('Partial submission requires inspection; no duplicate assembly tasks will be created')
+    if state.get('status')=='evidence_complete':
+        return checkpoint(state)
     if not record['jobs'].get('evidence'):
         queue_evidence(batch,cluster,comparison_label=COMPARISON_LABEL)
         record=load(batch/'submission.json')
@@ -99,7 +109,9 @@ def input_audit(batch):
 
 
 def collect_panel():
-    state=load(CHECKPOINT)
+    state=recorded_state()
+    if not state or not state.get('batch_id'):
+        raise ValueError('No submitted S6 batch is recorded')
     batch=ROOT/'runs'/state['batch_id']
     collect(batch)
     record=load(batch/'submission.json');cluster=record['cluster']
