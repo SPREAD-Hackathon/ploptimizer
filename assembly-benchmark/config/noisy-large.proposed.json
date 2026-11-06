@@ -1,49 +1,49 @@
 {
-  "schema_version": 1,
-  "status": "design_only",
-  "profile_id": "s6-large-matched-errors-proposed-v1",
-  "purpose": "Isolate read-error effects from small-plasmid recovery. This is a design record, not a runnable benchmark configuration.",
-  "minimum_plasmid_bp": 20000,
-  "inputs": [
-    {
-      "source_case_id": "s1-se11-pse11-1",
-      "assembly_accession": "GCF_000010385.1",
-      "chromosome": {
-        "accession": "NC_011415.1",
-        "length_bp": 4887515
-      },
-      "plasmid": {
-        "name": "pSE11-1",
-        "accession": "NC_011419.1",
-        "length_bp": 100021
-      }
-    },
-    {
-      "source_case_id": "s1-mgh78578-pkpn3",
-      "assembly_accession": "GCF_000016305.1",
-      "chromosome": {
-        "accession": "NC_009648.1",
-        "length_bp": 5315120
-      },
-      "plasmid": {
-        "name": "pKPN3",
-        "accession": "NC_009649.1",
-        "length_bp": 175879
-      }
-    }
+  "admission_gates": [
+    "Every selected input has exactly one chromosome and one plasmid >=20,000 bp, and no other plasmids.",
+    "Larger-plasmid assessment and truth controls validated before this becomes a runnable configuration."
   ],
-  "reference_scope": "Derived subsets of the deposited assemblies; all other plasmids, including small native plasmids, excluded. Do not call these complete native complements.",
-  "matched_design": "For each selected subset, compare error-free and noisy conditions from the same frozen source fragments and geometry. Keep coverage and read-length settings fixed across conditions.",
-  "error_profiles": "Retain the previous declared matched-exact, generic-stress and historical ONT-shaped comparisons; do not describe them as calibrated current Nanopore chemistry.",
   "assessment_requirements": [
     "Keep exact reference equality separate from tolerant/continuous recovery.",
     "The current small-plasmid-tolerant-v1 evaluator is not validated for these larger plasmids; do not extend its supported accessions or size limit without validation.",
     "Record per-molecule coverage, identity, continuity and output length with provenance; define and validate the larger-plasmid endpoint before execution.",
     "Compare each noisy outcome with its own clean control; a clean-control failure cannot be attributed to read errors."
   ],
-  "admission_gates": [
-    "Every selected input has exactly one chromosome and one plasmid >=20,000 bp, and no other plasmids.",
-    "Larger-plasmid assessment and truth controls validated before this becomes a runnable configuration."
+  "error_profiles": "Retain the previous declared matched-exact, generic-stress and historical ONT-shaped comparisons; do not describe them as calibrated current Nanopore chemistry.",
+  "execution_status": "See S6_LARGE_RUNS.md and evidence/s6-large-v1/status.json for the executable panel and actual job state.",
+  "inputs": [
+    {
+      "assembly_accession": "GCF_000010385.1",
+      "chromosome": {
+        "accession": "NC_011415.1",
+        "length_bp": 4887515
+      },
+      "plasmid": {
+        "accession": "NC_011419.1",
+        "length_bp": 100021,
+        "name": "pSE11-1"
+      },
+      "source_case_id": "s1-se11-pse11-1"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "chromosome": {
+        "accession": "NC_009648.1",
+        "length_bp": 5315120
+      },
+      "plasmid": {
+        "accession": "NC_009649.1",
+        "length_bp": 175879,
+        "name": "pKPN3"
+      },
+      "source_case_id": "s1-mgh78578-pkpn3"
+    }
   ],
-  "execution_status": "Not submitted; no new simulations, alignments or assembly jobs are implied."
+  "matched_design": "For each selected subset, compare error-free and noisy conditions from the same frozen source fragments and geometry. Keep coverage and read-length settings fixed across conditions.",
+  "minimum_plasmid_bp": 20000,
+  "profile_id": "s6-large-matched-errors-proposed-v1",
+  "purpose": "Original S6 design record. Executable config/noisy-large.json now reuses frozen S2 inputs with continuous-evidence-v1; tolerant binary outcomes remain explicitly unscored.",
+  "reference_scope": "Derived subsets of the deposited assemblies; all other plasmids, including small native plasmids, excluded. Do not call these complete native complements.",
+  "schema_version": 1,
+  "status": "superseded_design_record"
 }

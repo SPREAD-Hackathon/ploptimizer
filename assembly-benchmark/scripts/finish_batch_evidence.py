@@ -1,6 +1,7 @@
 """Compute-node postprocessing for a newly completed benchmark batch."""
 import argparse
 import collections
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -16,7 +17,9 @@ from scripts.compare_existing_outputs import run_task
 from scripts.plan_existing_comparisons import plan as comparison_plan
 
 
-def finish(identifier):
+def finish(identifier, comparison_label='large-baseline-v3'):
+    if not re.fullmatch(r'[A-Za-z0-9_-]+', comparison_label):
+        raise ValueError('Comparison label must be a simple identifier')
     batch = batch_directory(identifier)
     diagnostic_counts = run_batch(batch)
     executions = [str(path.relative_to(batch)) for path in sorted((batch / 'results').rglob('execution.json'))
@@ -30,7 +33,7 @@ def finish(identifier):
     identities = collect_identities(batch)
     config = load(batch / 'config.json')
     snapshot = publish(config, batch, deploy=False, make_latest=False)
-    comparison_root = batch / 'comparisons' / 'large-baseline-v3'
+    comparison_root = batch / 'comparisons' / comparison_label
     comparison_root.mkdir(parents=True, exist_ok=True)
     provenance = comparison_root / 'provenance'
     provenance.mkdir(exist_ok=True)
@@ -45,7 +48,7 @@ def finish(identifier):
     if executions:
         if manifest.exists():
             raise ValueError('Comparison manifest already exists; inspect it instead of silently overwriting a run')
-        save(manifest, comparison_plan(batch.name, 'large-baseline-v3', cluster))
+        save(manifest, comparison_plan(batch.name, comparison_label, cluster))
         for index in range(len(load(manifest)['tasks'])):
             code = run_task(manifest, index)
             comparison_counts['complete' if code == 0 else 'error'] += 1
@@ -65,4 +68,6 @@ def finish(identifier):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--batch', required=True)
-    print(finish(parser.parse_args().batch))
+    parser.add_argument('--comparison-label', default='large-baseline-v3')
+    args = parser.parse_args()
+    print(finish(args.batch,args.comparison_label))

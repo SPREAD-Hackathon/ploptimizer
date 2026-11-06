@@ -185,6 +185,9 @@ def noisy_cases(config, baseline):
                 case["title"] += f' · {profile["id"]} · seed {seed}'
                 case["category"] = "S6"
                 case["source_case_id"] = source["id"]
+                frozen_source = panel.get("frozen_sources", {}).get(source["id"])
+                if frozen_source is not None:
+                    case["frozen_source"] = copy.deepcopy(frozen_source)
                 case["simulation"].update(model="matched-error-v1", seed=seed)
                 case["error_profile"] = copy.deepcopy(profile)
                 case["fingerprint"] = fingerprint({key:value for key,value in case.items() if key != "fingerprint"})

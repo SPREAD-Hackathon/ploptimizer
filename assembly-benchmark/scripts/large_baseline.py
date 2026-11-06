@@ -1,6 +1,7 @@
 """Plan, submit and collect the bounded 168-execution replacement panels."""
 import argparse
 import json
+import re
 import shlex
 import subprocess
 import sys
@@ -32,7 +33,9 @@ def suite_plan():
     return {'schema_version':1,'status':'ready_not_submitted','panels':panels,'assembly_count':168}
 
 
-def queue_evidence(batch, cluster, previous_evidence):
+def queue_evidence(batch, cluster, previous_evidence=None, comparison_label='large-baseline-v3'):
+    if not re.fullmatch(r'[A-Za-z0-9_-]+', comparison_label):
+        raise ValueError('Comparison label must be a simple identifier')
     record = load(batch / 'submission.json')
     directory = Path(cluster['remote_root']) / 'runs' / batch.name
     pixi = shlex.quote(cluster['pixi'])
@@ -42,7 +45,7 @@ def queue_evidence(batch, cluster, previous_evidence):
     body += 'export PIXI_CACHE_DIR="$PWD/.cache/pixi"\nexport XDG_CACHE_HOME="$PWD/.cache"\n'
     body += 'export TMPDIR="$PWD/.t/${SLURM_JOB_ID}"\nmkdir -p "$TMPDIR"\n'
     body += f'{pixi} install --locked --manifest-path environments/coordinate-comparison/pixi.toml\n'
-    body += f'{pixi} run --locked --manifest-path environments/coordinate-comparison/pixi.toml python scripts/finish_batch_evidence.py --batch {batch.name}\n'
+    body += f'{pixi} run --locked --manifest-path environments/coordinate-comparison/pixi.toml python scripts/finish_batch_evidence.py --batch {batch.name} --comparison-label {comparison_label}\n'
     script = batch / 'slurm/evidence.sh'
     script.write_text(body)
     subprocess.run(['rsync','-az',str(script),cluster['host']+':'+str(directory / 'slurm')+'/'],check=True)
