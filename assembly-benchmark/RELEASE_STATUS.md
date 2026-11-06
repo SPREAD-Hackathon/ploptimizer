@@ -1029,3 +1029,22 @@ bounded inherited GenomicX extension, with documentation completed. Final
 production checks are recorded in `evidence/s5-release/` and
 `evidence/broad-performance-v1/`; this preparation entry does not claim a
 deployment.
+
+
+### Verified live: S5 complete, general benchmark partial
+
+Deployment `dpl_BMCRn3BUo2wjLMwEGuHaBC6EDgh4` is verified at
+https://ploptimizer-assembly-benchmark.vercel.app . All 36 new S5 result pages,
+their referenced plots/tables, the general overview/details/figures and runtime
+assets match the reviewed build: 262 public byte checks, zero failures.
+The build is 62,346,489 bytes in 1,416 files;
+14,752 local links pass.
+
+S5 has 35 completed exact-copy failures plus one explicit incomplete execution.
+The separate general performance panel is still running: this publication
+contains 28 of 200 outcomes. Its cohort is frozen and labelled partial; neither
+the website nor this release claims the remaining jobs are complete.
+
+Source commit: `44cef7f`. The read-retention policy is unchanged: shared reads
+still needed by jobs are retained; automated verified restoration/cleanup is
+not yet implemented. See `CURRENT_RELEASE.json` and `evidence/s5-release/`.

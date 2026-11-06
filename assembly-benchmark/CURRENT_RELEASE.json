@@ -1,94 +1,54 @@
 {
+  "additional_failure_copy_regressions": 1,
+  "additional_freeze_regressions": 3,
+  "build_bytes": 62346489,
+  "bundle": ".cache/bundles/s5-general-release",
+  "bundle_manifest_sha256": "2884bc93d0ada6d46c6d0dba2e7b13f124ebdb9486f32f97f2514952b185d336",
+  "deployment_id": "dpl_BMCRn3BUo2wjLMwEGuHaBC6EDgh4",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-dohnwcv6k-happykhans-projects.vercel.app",
+  "general_benchmark": {
+    "batch_id": "20261106T134511",
+    "datasets": 50,
+    "expected_executions": 200,
+    "published_outcomes": {
+      "chromosome_complete": 1,
+      "empty": 1,
+      "execution_error": 2,
+      "fully_complete": 18,
+      "incomplete": 6
+    },
+    "published_results": 28,
+    "state": "running"
+  },
+  "general_monitor": "finish-general-assembler-benchmark",
+  "local_links_checked": 14752,
+  "material_limitations": [
+    "General benchmark is a partial28/200publication, not a final comparison.",
+    "Stopped S5Plassembler run has no completed final sequence assessment or final plot.",
+    "Graph reference colouring remains grey where no validated association or interval evidence is recorded.",
+    "Software-internal causes are unresolved unless supported by retained evidence."
+  ],
+  "new_s5_executions": 36,
+  "optional_skips": 11,
+  "public_files_verified": 262,
+  "python_tests": 429,
+  "retained_deployments": [
+    "ploptimizer-assembly-benchmark-dohnwcv6k-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-c84gi8a0s-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-qaeqjocoz-happykhans-projects.vercel.app"
+  ],
+  "retained_ready_deployments": 3,
+  "s5_nucmer_comparisons": 34,
+  "s5_outcomes": {
+    "completed_exact_fail": 35,
+    "did_not_complete": 1
+  },
   "schema_version": 1,
+  "source_commit": "44cef7f",
+  "source_records_preserved": 528,
+  "static_files_including_routing_configs": 1416,
   "status": "live_verified",
   "url": "https://ploptimizer-assembly-benchmark.vercel.app",
-  "source_commit": null,
-  "build_start_head": "d175ad1",
-  "source_followup_commit": "ec685ea",
-  "source_commit_note": "The frozen presentation build included the parent S5 submitted-state edits before their ec685ea commit. deploy-site returned no source_commit field; no inferred commit was substituted. Original S6 scientific jobs used 0662fa0.",
-  "deployment_id": "dpl_DpRxjygqnHvG5eA2tTe3eQBD6TJG",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-c84gi8a0s-happykhans-projects.vercel.app",
-  "verified_at": "2026-11-06T10:54:25.509515+00:00",
-  "bundle": ".cache/bundles/s6-large-cohort",
-  "build_bytes": 56642933,
-  "source_records_preserved": 492,
-  "new_executions": 24,
-  "new_exact_outcomes": {
-    "pass": 18,
-    "fail": 6
-  },
-  "new_nucmer_plots": 24,
-  "public_files_verified": 53,
   "verification_failures": 0,
-  "verification_scope": "All 24 new S6 result pages, their deduplicated plot/coordinate assets, headline/scenario pages and representative downloads match the reviewed build. All 13,260 local links pass. Historical assets were not all re-downloaded.",
-  "static_files_including_routing_configs": 1216,
-  "python_tests": 383,
-  "optional_skips": 11,
-  "retained_ready_deployments": 3,
-  "retained_deployments": [
-    "ploptimizer-assembly-benchmark-c84gi8a0s-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-qaeqjocoz-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-b0p9byg2e-happykhans-projects.vercel.app"
-  ],
-  "presentation_url": "https://docs.google.com/presentation/d/1t40OE2R48Z25i_XTfP6kt08CQtbcdX2DuZLyaTlvNCA/edit",
-  "presentation_slide_count": 12,
-  "repeatability": {
-    "within_setting_identical": 23,
-    "within_setting_groups": 24,
-    "across_threads_identical": 9,
-    "across_threads_groups": 12,
-    "deterministic_flye_within_identical": 8,
-    "deterministic_flye_within_groups": 8,
-    "deterministic_flye_across_identical": 4,
-    "deterministic_flye_across_groups": 4
-  },
-  "repeatability_source": "evidence/s6-large-v1/prior-release.json; existing verified S3 assessment unchanged",
-  "browser_checks": {
-    "status": "pass",
-    "page": "https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s6",
-    "s6_two_genomes_correct_counts": true,
-    "individual_runs": 24
-  },
-  "limitations": [
-    "Many exact failures still lack reviewed per-base changes or a confirmed assembler-internal mechanism.",
-    "Real node-internal reference intervals remain unmeasured; whole-segment associations and contig alignments have different scopes.",
-    "Two controlled reference complements and one noise seed do not establish general real-read performance.",
-    "Larger-plasmid binary tolerant recovery remains unvalidated; all 24 S6 tolerant outcomes are explicitly unscored.",
-    "Native S5 results remain pending; batch 20261106T104655 has been submitted and reference repeat intervals have been measured."
-  ],
-  "s6_replacement": {
-    "status": "verified_live",
-    "batch": "20261106T100403",
-    "executions": 24,
-    "inputs": [
-      "SE11 chromosome + pSE11-1 (100,021 bp)",
-      "MGH78578 chromosome + pKPN3 (175,879 bp)"
-    ],
-    "exact_plasmid_outcomes": {
-      "pass": 18,
-      "fail": 6
-    },
-    "binary_tolerant_outcomes": {
-      "unscored": 24
-    },
-    "historical_small_plasmid_noise_runs_supplementary": 12
-  },
-  "s5_replacement": {
-    "status": "submitted",
-    "batch": "20261106T104655",
-    "assemblies": [
-      "GCF_036177905.1",
-      "GCF_045162825.1",
-      "GCF_045210185.1"
-    ],
-    "inputs": 6,
-    "submitted_executions": 24,
-    "repeat_coordinates": "measured; see LINEAR_TERMINAL_REPEATS.md"
-  },
-  "overview_executions": {
-    "primary": 292,
-    "supplementary": 184,
-    "total": 476
-  },
-  "evidence": "evidence/s6-large-v1/"
+  "verified_at": "2026-11-06T14:19:25.184661+00:00"
 }
