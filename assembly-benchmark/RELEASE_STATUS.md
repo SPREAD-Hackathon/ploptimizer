@@ -787,3 +787,28 @@ cohort and frozen source records and accept explicit repeat-mode identities,
 instead of hard-coding the original release totals. Production and its cohort
 remain unchanged until the complete suite and updated presentation are verified.
 See `evidence/large-baseline-v3/shared-assets-preflight.json`.
+
+### 6 November, 08:32 UTC follow-up — all assemblies finished; evidence processing pending
+
+All 168 revised-suite executions now have terminal scientific outcomes: 72 exact
+passes and 96 exact failures, with no execution errors. S3 contributes 40 passes
+and 80 failures; these reference scores remain separate from repeatability.
+Slurm reports assembly array 34499396 completed successfully. Its evidence job
+34499398 is running; the source snapshot, coordinate export, release QA and
+publication are not yet complete.
+
+The saved S3 execution records account for all 120 repeats. All 24 within-thread
+and 12 across-thread groups have identical recorded input hashes. Normalised
+sequence signatures agree in 23/24 within-thread groups and 9/12 across-thread
+groups. The within-thread exception is SE11 Flye (`--meta`), default mode, four
+threads. Across-thread exceptions are MGH78578 Flye default mode, MGH78578 Flye
+(`--meta`) default mode, and SE11 Flye (`--meta`) default mode. All four Flye
+configuration/input groups in deterministic mode agree across one and four
+threads. Every group agrees in the recorded strict biological signature.
+
+These are comparisons of existing recorded signatures, not a localisation of
+sequence differences. Non-exact circular outputs retain their ends during
+normalisation; differing signatures alone do not establish the type or cause of
+a change. Byte agreement remains a separate metric. The source-file hashes and
+mode/thread denominators are retained in `s3-repeatability-audit.json`.
+The live report and presentation remain unchanged pending final evidence QA.
