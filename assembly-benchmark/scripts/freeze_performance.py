@@ -30,6 +30,13 @@ def freeze():
     keys = [(r.get('dataset_id'), r.get('tool')) for r in collected['results']]
     if len(set(keys)) != len(keys) or set(keys) != expected:
         raise ValueError('Collection has missing, duplicate or unknown execution slots')
+    if state['status'] == 'complete':
+        if (any(r.get('status') != 'complete' for r in collected['results'])
+                or state.get('admitted_inputs') != len(selection['datasets'])
+                or state.get('verified_execution_input_bindings') != len(expected)
+                or state.get('verified_assessment_execution_bindings') != len(expected)
+                or state.get('assessment_errors', 0)):
+            raise ValueError('Complete release requires every admitted input and terminal assessment binding')
     rows = []
     for record in collected['results']:
         if record['status'] == 'pending':

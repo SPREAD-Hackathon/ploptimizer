@@ -1,0 +1,93 @@
+{
+  "batch_id": "20261106T134511",
+  "collected": {
+    "admitted_inputs": 48,
+    "assessed_results": 97,
+    "assessment_execution_bindings": 97,
+    "execution_input_bindings": 159
+  },
+  "confirmed_findings": [
+    {
+      "indices": [
+        5,
+        22
+      ],
+      "kind": "input_download_failure",
+      "observation": "Published archive member stream ended early; neither input was admitted. Original job IDs are no longer requeueable."
+    },
+    {
+      "kind": "scheduler_receipt_bug",
+      "observation": "A recorded individual Slurm job ID was incorrectly combined with its array index. Reporting now queries JobIDRaw using the individual ID."
+    },
+    {
+      "kind": "completion_guard",
+      "observation": "Failed assessment scheduler states are infrastructure errors, not completed sequence outcomes. Final release requires all current execution hashes and input bindings."
+    }
+  ],
+  "missing_execution_indices_at_review": {
+    "flye": [
+      5,
+      22,
+      32,
+      34
+    ],
+    "miniasm": [
+      5,
+      14,
+      15,
+      17,
+      20,
+      22,
+      23,
+      24,
+      25,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      37,
+      38,
+      39,
+      40,
+      41,
+      43,
+      47
+    ],
+    "plassembler": [
+      5,
+      15,
+      22,
+      29,
+      32,
+      34,
+      39,
+      47
+    ],
+    "raven": [
+      5,
+      22,
+      32,
+      34,
+      39
+    ]
+  },
+  "new_jobs_submitted_in_review": false,
+  "original_jobs_preserved": true,
+  "production_unchanged": true,
+  "release_complete": false,
+  "required_repair_guards": [
+    "Recheck active jobs, execution records and partial output directories immediately before any action.",
+    "Never rerun a workflow with an existing execution, including genuine software or resource failures.",
+    "Preserve original IDs; record additional job IDs and source-bound receipts separately.",
+    "An assessment must wait for its actual producer and must not create an execution record before the producer runs."
+  ],
+  "reviewed_at": "2026-11-06T15:12:59.651422+00:00",
+  "schema_version": 1,
+  "tests": {
+    "performance_regressions_passed": 37
+  }
+}

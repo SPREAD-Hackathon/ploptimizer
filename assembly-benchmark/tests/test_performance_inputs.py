@@ -63,3 +63,16 @@ class PerformanceInputTests(unittest.TestCase):
             self.assertEqual(len(download_references(selection,directory)['selected']),50)
             bad=dict(selection,archives={'references':dict(source,computed_md5='0'*32)})
             with self.assertRaisesRegex(ValueError,'published bytes'):download_references(bad,directory)
+
+    def test_truncated_member_retries_without_retaining_partial_bytes(self):
+        from pipeline.performance.archive import fetch_member
+        import hashlib
+        with tempfile.TemporaryDirectory() as temporary:
+            target = Path(temporary) / 'reads.gz'
+            with patch('pipeline.performance.archive.ranged_response', side_effect=[io.BytesIO(b'ab'), io.BytesIO(b'abcdef')]) as response, patch('pipeline.performance.archive.time.sleep'):
+                receipt = fetch_member({'size':100}, {'offset':10,'size':6}, target)
+            self.assertEqual(target.read_bytes(), b'abcdef')
+            self.assertEqual(receipt['sha256'], hashlib.sha256(b'abcdef').hexdigest())
+            self.assertEqual(receipt['download_attempts'], 2)
+            self.assertEqual(response.call_count, 2)
+            self.assertFalse(target.with_suffix('.gz.download').exists())

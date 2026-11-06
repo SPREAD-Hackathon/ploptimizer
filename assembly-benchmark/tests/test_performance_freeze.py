@@ -43,3 +43,10 @@ class PerformanceFreezeTests(unittest.TestCase):
         state = load(self.state); state['input_binding_errors'] = ['mismatch']; save(self.state,state)
         with patch.object(freeze_performance, 'ROOT', self.root), self.assertRaisesRegex(ValueError,'bindings'):
             freeze_performance.freeze()
+
+    def test_stale_complete_status_cannot_release_pending_slots(self):
+        original = self.path.read_bytes()
+        state = load(self.state); state['status'] = 'complete'; save(self.state, state)
+        with patch.object(freeze_performance, 'ROOT', self.root), self.assertRaisesRegex(ValueError, 'Complete release'):
+            freeze_performance.freeze()
+        self.assertEqual(self.path.read_bytes(), original)

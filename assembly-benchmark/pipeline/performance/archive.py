@@ -1,5 +1,6 @@
 """Bounded range access to published TAR members; never fetch the whole read archive."""
 import hashlib
+import http.client
 import re
 import tarfile
 import time
@@ -65,19 +66,25 @@ def fetch_member(source, member, destination):
     if destination.exists():
         raise ValueError('Do not overwrite a retained read set')
     temporary = destination.with_suffix(destination.suffix + '.download')
-    digest = hashlib.sha256()
-    count = 0
-    try:
-        with ranged_response(source, member['offset'], member['size']) as response, temporary.open('wb') as output:
-            while count < member['size']:
-                block = response.read(min(1024 * 1024, member['size'] - count))
-                if not block:
-                    raise ValueError('Truncated TAR member')
-                output.write(block)
-                digest.update(block)
-                count += len(block)
-        temporary.replace(destination)
-    finally:
-        if temporary.exists():
-            temporary.unlink()
-    return {'sha256': digest.hexdigest(), 'bytes': count, 'archive_member': member}
+    for attempt in range(4):
+        checksum = hashlib.sha256()
+        count = 0
+        try:
+            with ranged_response(source, member['offset'], member['size']) as response, temporary.open('wb') as output:
+                while count < member['size']:
+                    block = response.read(min(1024 * 1024, member['size'] - count))
+                    if not block:
+                        raise EOFError('Truncated TAR member')
+                    output.write(block)
+                    checksum.update(block)
+                    count += len(block)
+            temporary.replace(destination)
+            return {'sha256': checksum.hexdigest(), 'bytes': count,
+                    'archive_member': member, 'download_attempts': attempt + 1}
+        except (OSError, EOFError, http.client.IncompleteRead):
+            if attempt == 3:
+                raise
+            time.sleep(min(2 ** attempt, 8))
+        finally:
+            if temporary.exists():
+                temporary.unlink()

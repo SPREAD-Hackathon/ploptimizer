@@ -1065,3 +1065,20 @@ Every previous frozen bundle file retains its checksum; 528 diagnostic records
 and the published 28/200 general outcomes are unchanged. Twenty-eight targeted
 regression tests pass. Bounded Impeccable review resolved the configuration-copy
 issue; desktop/mobile full-page and keyboard checks pass.
+
+
+### Broad collection and scheduler receipt review (not a publication)
+
+The current collection has 97 assessed outcomes and 48 admitted inputs;
+production still contains the labelled partial 28/200 snapshot. Two archive
+member transfers ended early before input admission. Some planned slots have
+no execution record; the bounded audit and required duplicate-prevention guards
+are recorded in `evidence/broad-performance-v1/orchestration-review.json`.
+No replacement jobs were submitted in this review. Running original jobs remain
+untouched; genuine software/resource failures must remain failures.
+
+Generic reporting repairs resolve individual Slurm IDs correctly, prevent an
+assessment from inventing a missing execution, distinguish scheduler failures
+from measured outcomes, and require current assessment/execution hashes before
+a complete release. Thirty-seven performance regression tests pass. This is
+not a completed 200-outcome release or a deployment.

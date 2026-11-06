@@ -71,7 +71,7 @@ def assess_result(batch, index, tool):
     case = planned[index]
     execution = batch / 'results' / case['id'] / tool / 'execution.json'
     if not execution.exists():
-        save(execution, {'status': 'error', 'tool': tool, 'batch_id': batch.name, 'scenario_id': case['id'], 'scenario_fingerprint': case['fingerprint'], 'error': 'No terminal execution record was produced; inspect scheduler accounting.'})
+        raise ValueError('No execution record exists; verify scheduler state before recording an outcome')
     record = load(execution)
     if record.get('status') == 'running':
         backup = execution.with_name('execution.before-scheduler-finalisation.json')
@@ -79,9 +79,9 @@ def assess_result(batch, index, tool):
             shutil.copy2(execution, backup)
         import subprocess
         job = record.get('slurm_job_id', '')
-        task = record.get('slurm_array_task_id')
-        job = f'{job}_{task}' if task is not None else job
-        state = subprocess.check_output(['sacct', '-j', job, '--parsable2', '--noheader', '--format=JobID,State,Elapsed,ExitCode'], text=True)
+        # SLURM_JOB_ID is the element's own ID, not the array master.
+        # JobIDRaw resolves it without constructing a nonexistent master_task ID.
+        state = subprocess.check_output(['sacct', '-j', job, '--parsable2', '--noheader', '--format=JobIDRaw,State,Elapsed,ExitCode'], text=True)
         own = next((line.split('|') for line in state.splitlines() if line.split('|')[0] == job), None)
         if own is None or own[1].startswith(('RUNNING', 'PENDING', 'COMPLETING')):
             raise ValueError('Assembly has no verified terminal scheduler state')

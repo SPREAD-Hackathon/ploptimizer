@@ -146,6 +146,7 @@ def collect():
     admitted = 0
     bindings = 0
     binding_errors = []
+    assessment_bindings = 0
     for index, case in enumerate(load(batch / 'cases.json')):
         manifest_path = batch / 'cases' / case['id'] / 'input.json'
         manifest = load(manifest_path) if manifest_path.exists() else {}
@@ -164,7 +165,7 @@ def collect():
                 terminal = ('FAILED', 'CANCELLED', 'TIMEOUT', 'OUT_OF_MEMORY', 'NODE_FAIL', 'BOOT_FAIL', 'DEADLINE', 'PREEMPTED')
                 if assessment_state and assessment_state[1].startswith(terminal):
                     timed_out = bool(assembly_state and assembly_state[1].startswith('TIMEOUT'))
-                    result.update(status='complete', genome_outcome='did_not_complete' if timed_out else 'execution_error',
+                    result.update(status='error', failure_scope='infrastructure', genome_outcome='did_not_complete' if timed_out else 'execution_error',
                                   execution_status='timeout' if timed_out else 'error',
                                   reason='Scheduler ended a required stage before a completed assessment.', replicons=[],
                                   scheduler_evidence={'input': input_state, 'assembly': assembly_state, 'assessment': assessment_state},
@@ -175,10 +176,15 @@ def collect():
                 bindings += 1
             elif result['status'] == 'complete':
                 binding_errors.append({'dataset_id': case['id'], 'tool': tool, 'reason': 'No verified same-input execution binding'})
+            if result['status'] == 'complete':
+                if execution and result.get('provenance', {}).get('execution_sha256') == digest(directory / 'execution.json'):
+                    assessment_bindings += 1
+                else:
+                    binding_errors.append({'dataset_id': case['id'], 'tool': tool, 'reason': 'Assessment does not bind retained execution metadata'})
             result['execution_path'] = str((directory / 'execution.json').relative_to(ROOT)); results.append(result)
     save(batch / 'performance-results.json', {'schema_version': 1, 'batch_id': batch.name, 'results': results})
     complete = sum(row['status'] == 'complete' for row in results); errors = sum(row['status'] == 'error' for row in results)
-    state.update(status='complete' if complete == 200 and admitted == 50 and not binding_errors else 'needs_review' if complete + errors == 200 else 'running', admitted_inputs=admitted, verified_execution_input_bindings=bindings, input_binding_errors=binding_errors, assessed_results=complete, assessment_errors=errors, result_path=str((batch / 'performance-results.json').relative_to(ROOT)))
+    state.update(status='complete' if complete == 200 and admitted == 50 and bindings == 200 and assessment_bindings == 200 and not binding_errors else 'needs_review' if complete + errors == 200 else 'running', admitted_inputs=admitted, verified_assessment_execution_bindings=assessment_bindings, verified_execution_input_bindings=bindings, input_binding_errors=binding_errors, assessed_results=complete, assessment_errors=errors, result_path=str((batch / 'performance-results.json').relative_to(ROOT)))
     save(STATUS, state)
     return state
 
