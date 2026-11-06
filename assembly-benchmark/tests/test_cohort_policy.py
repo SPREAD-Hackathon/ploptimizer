@@ -37,3 +37,11 @@ class CohortPolicyTests(unittest.TestCase):
         archive = build_overview([source], cohort=cohort, archived_batch='fixture')
         self.assertEqual(archive['counts']['fail'], 1)
         self.assertEqual(source, before)
+
+    def test_s6_revised_policy_excludes_small_plasmids_without_rewriting_history(self):
+        revised = dict(self.policy, families=['S1', 'S2', 'S3', 'S6'])
+        self.assertEqual(reporting_role(self.case(5360), 'S6', revised)[0], 'supplementary')
+        self.assertEqual(reporting_role(self.case(100021), 'S6', revised)[0], 'primary')
+        self.assertEqual(reporting_role(self.case(100021, 5360), 'S6', revised)[0], 'supplementary')
+        self.assertEqual(reporting_role(self.case(), 'S6', revised)[0], 'supplementary')
+        self.assertEqual(reporting_role(self.case(5360), 'S6', self.policy)[0], 'primary')

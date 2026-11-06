@@ -1,0 +1,33 @@
+{
+  "status": "pass",
+  "python_tests": 370,
+  "optional_skips": 11,
+  "final_focused_tests": 11,
+  "http_routes": 598,
+  "result_views": 468,
+  "primary_executions": 284,
+  "supplementary_executions": 168,
+  "legacy_s6_executions": 12,
+  "revised_s6_executions": 0,
+  "new_cluster_jobs": 0,
+  "simulation_or_sequence_analysis_performed": false,
+  "source_records_preserved": 468,
+  "source_bindings": "All frozen snapshot bindings identical to preceding bundle; only cohort eligibility/reporting changed.",
+  "proposal_inventory_check": "Both proposed chromosome/plasmid accession-length pairs match references/panel.json.",
+  "inventory_sha256": "6d18f92947750d703aee8b834f6ea4eb44a9238460a766850326161cfc0c9ce8",
+  "proposal_sha256": "72f8801c102775bfc468801f720f5e9c2b43317d00be866350582d942811f10f",
+  "browser": {
+    "status": "pass",
+    "base_url": "http://127.0.0.1:8891",
+    "viewports": [
+      1440,
+      390
+    ],
+    "planned_panel_unrun": true,
+    "legacy_runs_supplementary": 12,
+    "historical_result_note_visible": true,
+    "script_errors": []
+  },
+  "detector_findings": [],
+  "execution_gate": "Larger-plasmid assessment and truth-control validation required before the design becomes executable."
+}

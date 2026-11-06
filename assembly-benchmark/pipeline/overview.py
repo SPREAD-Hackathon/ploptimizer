@@ -78,7 +78,8 @@ def render_home(model, prefix=""):
     """Body fragment; caller retains its existing page shell and assets."""
     body = f'<h1>Assembly benchmark</h1><p class="overview-intro">Recovery and repeatability · {model.get("all_counts", model["counts"])["total"]} run records · {len(model["tools"])} assembler configurations</p>'
     if model.get("baseline_policy"):
-        body += '<p>S1–S3 baseline: plasmids ≥20 kb. Earlier small-plasmid inputs are supplementary.</p>'
+        families = 'S1–S3 and S6' if 'S6' in model['baseline_policy'].get('families', []) else 'S1–S3'
+        body += f'<p>{families}: plasmids ≥20 kb. Earlier small-plasmid inputs are supplementary.</p>'
     if model["missing_batches"]:
         body += '<p class="notice">Some selected batches are unavailable. Counts are incomplete.</p>'
     body += '<div class="table-scroll" role="region" aria-label="Scenario family outcomes" tabindex="0"><table class="overview-heatmap"><caption>Recovery counts by scenario family; S3 counts repeated-run agreement</caption><thead><tr><th scope="col">Scenario family</th>'
@@ -101,19 +102,21 @@ def render_family(model, family, prefix="../"):
     if item is None:
         raise ValueError("Unknown scenario family")
     body = f'<p><a href="{_e(prefix)}index.html">All scenario families</a></p><h1>{family} · {_e(item["title"])}</h1><p>{_e(item["description"])}</p>'
-    if item.get("supplementary_counts", {}).get("total"):
+    if item.get("supplementary_counts", {}).get("total") and family != "S6":
         body += '<p>Headline counts exclude supplementary small-plasmid inputs. Their original results remain below.</p>'
     if family == "S1" and model.get("baseline_policy"):
         body += '<p>The baseline tests chromosome-only controls and recovery of one or several plasmids ≥20 kb. The tables show recorded results.</p>'
     if family == "S2" and model.get("baseline_policy") and not item['counts']['total']:
         body += '<p>The revised larger-plasmid coverage panel has not been assessed.</p>'
-    if family == "S6":
+    if family == "S6" and model.get("baseline_policy") and not item['counts']['total']:
+        body += '<p>The revised large-plasmid read-error panel has not been run. Planned inputs are SE11 + pSE11-1 (100,021 bp) and MGH78578 + pKPN3 (175,879 bp), each with its chromosome. Larger-plasmid assessment must be validated before execution.</p>'
+    if family == "S6" and item['counts']['total']:
         metric = "Repeatability" if family == "S3" else "Tolerant recovery"
         body += f'<p>{metric} is a separate endpoint. The tables below show exact status only; individual result links retain the detailed evidence.</p>'
     if family == "S3":
         body += _repeatability_tables(item, model["tools"])
         body += '<details><summary>Reference recovery for individual runs</summary>'
-    else:
+    elif item["genomes"]:
         body += '<div class="table-scroll"><table><caption>Exact outcomes for each reference genome</caption><thead><tr><th scope="col">Genome</th>'
         body += ''.join(f'<th scope="col">{_e(t["label"])}</th>' for t in model["tools"]) + '</tr></thead><tbody>'
         for genome in item["genomes"]:
@@ -122,7 +125,8 @@ def render_family(model, family, prefix="../"):
         body += '</tbody></table></div>'
     primary = [row for row in item['records'] if row.get('cohort_role') != 'supplementary']
     supplementary = [row for row in item['records'] if row.get('cohort_role') == 'supplementary']
-    body += '<h2>Individual runs</h2>' + _run_table(primary, prefix)
+    if primary or family != 'S6':
+        body += '<h2>Individual runs</h2>' + _run_table(primary, prefix)
     if family == 'S3':
         body += '</details>'
     if supplementary:

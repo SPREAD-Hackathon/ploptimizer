@@ -79,3 +79,19 @@ smoke tests remain available. Broader linear cases require terminal-reference
 curation; broader error modelling and real-data validation are not completed.
 New scenarios remain proposals until their scope, endpoints, inputs and finite
 job counts are explicitly defined and authorised.
+
+## S6 scope correction — separate noise from small-plasmid recovery
+
+Read-error comparisons should use chromosome plus one plasmid ≥20 kb, with no
+small plasmids in the selected input. Proposed controls reuse SE11 + pSE11-1 and
+MGH78578 + pKPN3 from S2; `config/noisy-large.proposed.json` binds their accessions
+and lengths. They are derived subsets, not complete native complements.
+
+The 12 historical W/pRK2 noise runs combine two challenges and remain
+supplementary with their original evidence. They do not assess the revised S6.
+The replacement has not been run. The current tolerant evaluator only supports
+small pRK2/pKPN7 references; larger-plasmid assessment and truth-control validation
+are required before converting the proposal into an executable configuration.
+Exact recovery alone must not be used as a substitute for noisy-read accuracy and
+continuity. Matched clean failures must remain visible rather than being
+attributed to noise.

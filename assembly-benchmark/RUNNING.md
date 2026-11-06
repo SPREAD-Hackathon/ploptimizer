@@ -218,7 +218,13 @@ The next noisy-read design is in `REALISTIC_READS.md`. Its proposed configuratio
 is deliberately non-executable: the controller rejects `status: proposed`, and
 the sampler refuses unknown models instead of silently generating exact reads.
 
-## Controlled-error smoke workflow (S6)
+## Historical controlled-error smoke workflow (S6)
+
+These commands reproduce the completed small-plasmid W/pRK2 smoke panel, not
+the revised S6 baseline. The replacement is documented in
+`config/noisy-large.proposed.json`; it is not executable until larger-plasmid
+assessment and truth controls are validated. Existing smoke results remain
+supplementary and must not be relabelled as the revised panel.
 
 ```sh
 python3 benchmark.py --config config/noisy-smoke.json plan

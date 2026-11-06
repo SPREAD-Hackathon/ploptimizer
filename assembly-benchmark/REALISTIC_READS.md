@@ -1,12 +1,17 @@
 # Proposed error-bearing read panel
 
-Status: **expanded panel proposed; bounded smoke workflow implemented**.
-`config/realistic-reads.proposed.json` remains a non-executable design record for
-the expanded 18-read-set panel. `config/noisy-smoke.json` now freezes W/pRK2 at
-one fragment seed in three conditions (three read sets, 12 assembler executions).
-Read generation has been submitted; assembly waits behind S3. No noisy assembly
-performance conclusion is available yet. The adapter and bounded tolerant
-endpoint are documented in NOISY_ADAPTER.md and TOLERANT_ENDPOINT.md.
+Status: **historical small-plasmid smoke complete; larger-plasmid S6 proposed**.
+`config/noisy-smoke.json` retains the completed W/pRK2 experiment (three read
+sets, 12 executions). Its original scores and evidence remain supplementary.
+The revised S6 uses chromosome plus a plasmid ≥20 kb to separate read errors
+from small-plasmid recovery. `config/noisy-large.proposed.json` records SE11 +
+pSE11-1 and MGH78578 + pKPN3; it is a design record, not a runnable configuration.
+The current tolerant evaluator is restricted to small pRK2/pKPN7 references;
+larger-plasmid assessment and truth-control validation must precede execution.
+
+`config/realistic-reads.proposed.json` remains the separate, non-executable
+expanded 18-read-set design. Adapter and historical bounded-endpoint details are
+in NOISY_ADAPTER.md and TOLERANT_ENDPOINT.md.
 
 ## Controlled stress before empirical calibration
 

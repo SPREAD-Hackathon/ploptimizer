@@ -12,7 +12,7 @@ FAMILIES = {
     "S3": ("Repeated runs", "Repeated frozen larger-plasmid inputs, grouped by mode and thread setting. Existing small-plasmid repeats remain supplementary."),
     "S4": ("Small plasmids and read length", "Small-plasmid recovery across read-length targets."),
     "S5": ("Linear plasmids and terminal repeats", "Isolated linear-reference controls with explicit terminal reads; chromosome context is not included."),
-    "S6": ("Simulated read errors", "Matched controls and simulated error profiles."),
+    "S6": ("Simulated read errors", "Simulated read errors with plasmids ≥20 kb. Earlier small-plasmid noise tests remain supplementary."),
 }
 TOOLS = {"flye": "Flye (default)", "flye-meta": "Flye (--meta)", "raven": "Raven", "plassembler": "Plassembler long"}
 ERRORS = {"error", "timeout", "invalid_input"}
@@ -134,7 +134,7 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
         selected_rows = [r for r in rows if r["family"] == family]
         headline_rows = [r for r in selected_rows if r["cohort_role"] == "primary"]
         genomes = sorted({(r["organism"], r["assembly_accession"] or "") for r in headline_rows})
-        family_models.append({"id": family, "title": FAMILIES[family][0], "description": ("Historical batch: original input complements and outcomes; revised baseline exclusions are not applied." if archived_batch is not None and family in {"S1", "S2", "S3"} else FAMILIES[family][1]),
+        family_models.append({"id": family, "title": FAMILIES[family][0], "description": ("Historical batch: original input complements and outcomes; revised baseline exclusions are not applied." if archived_batch is not None and family in {"S1", "S2", "S3", "S6"} else FAMILIES[family][1]),
                               "href": f"scenarios/{family.lower()}.html", "counts": _counts(headline_rows), "all_counts": _counts(selected_rows),
                               "supplementary_counts": _counts([r for r in selected_rows if r["cohort_role"] == "supplementary"]),
                               "tools": [{"id": tool, "label": TOOLS[tool], **_counts([r for r in headline_rows if r["tool"] == tool])} for tool in tools],

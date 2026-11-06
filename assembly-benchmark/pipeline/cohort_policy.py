@@ -2,7 +2,7 @@
 
 
 def reporting_role(case, family, policy):
-    if not policy or family not in {'S1', 'S2', 'S3'}:
+    if not policy or family not in policy.get('families', ['S1', 'S2', 'S3']):
         return 'primary', None
     threshold = policy['minimum_plasmid_bp']
     molecules = case.get('replicons', [])
@@ -10,7 +10,7 @@ def reporting_role(case, family, policy):
     plasmids = [m for m in molecules if m.get('molecule_type') == 'plasmid']
     if len(chromosomes) != 1:
         return 'supplementary', 'The revised baseline requires one chromosome.'
-    if family in {'S2', 'S3'} and not plasmids:
+    if family in {'S2', 'S3', 'S6'} and not plasmids:
         return 'supplementary', 'This family requires a larger-plasmid input.'
     if any(type(m.get('length_bp')) is not int or m['length_bp'] <= 0 for m in plasmids):
         return 'supplementary', 'Plasmid length metadata is incomplete.'

@@ -206,7 +206,7 @@ try {
       const policy = cohortConfig.baseline_policy;
       const molecules = scenario.replicons ?? [];
       const plasmids = molecules.filter(m => m.molecule_type === 'plasmid');
-      const eligible = !policy || !['S1', 'S2', 'S3'].includes(family) ||
+      const eligible = !policy || !(policy.families ?? ['S1', 'S2', 'S3']).includes(family) ||
         (molecules.filter(m => m.molecule_type === 'chromosome').length === 1 &&
          (family === 'S1' || plasmids.length > 0) &&
          plasmids.every(m => Number.isInteger(m.length_bp) && m.length_bp >= policy.minimum_plasmid_bp));

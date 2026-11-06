@@ -23,6 +23,7 @@ class OverviewCohortTests(unittest.TestCase):
         cls.cohort['primary_batches'] = ['20261104T190455', '20261104T193551',
                                          '20261104T193612', '20261104T210453',
                                          '20261105T161510']
+        cls.cohort['baseline_policy']['families'] = ['S1', 'S2', 'S3']
         cls.model = build_overview(cls.documents, cohort=cls.cohort)
 
     def test_primary_exact_counts_exclude_historical_pilot(self):

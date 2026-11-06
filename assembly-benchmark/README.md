@@ -108,8 +108,11 @@ truth and mapping hashes. Per-molecule mapping evidence is downloadable as TSV.
 
 The [next error-bearing read design](REALISTIC_READS.md) proposes matched controls,
 three simulation seeds and two error/quality packages. The expanded design remains non-executable in
-`config/realistic-reads.proposed.json`. The bounded implementation is now frozen
+`config/realistic-reads.proposed.json`. The historical small-plasmid smoke implementation is frozen
 in `config/noisy-smoke.json`: three W/pRK2 read sets and 12 assembler comparisons.
+The revised S6 excludes small plasmids; `config/noisy-large.proposed.json` records
+SE11 + pSE11-1 and MGH78578 + pKPN3 as matched controls. It has not been run and
+requires larger-plasmid assessment validation before becoming executable.
 Its source-paired Badread adapter, admission checks and separate tolerant endpoint
 passed Linux tests and real-reference controls. All three read sets passed
 admission; all 12 assembly comparisons and separate tolerant assessments completed.

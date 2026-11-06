@@ -19,6 +19,13 @@ from .report import LABELS, STATUSES, badge, batch_progress, collect_records, e,
 CAUTION = 'An exact sequence failure alone does not show that a plasmid was lost. Residual sequence errors can prevent exact equality; tolerant recovery is assessed separately.'
 
 
+def legacy_noise_note(case):
+    plasmids = [m for m in case.get('replicons', []) if m.get('molecule_type') == 'plasmid']
+    if case.get('category') == 'S6' and any(isinstance(m.get('length_bp'), int) and m['length_bp'] < 20000 for m in plasmids):
+        return '<p class="muted">Historical small-plasmid noise test: this input combines simulated read errors with a plasmid below 20 kb. The <a href="/scenarios/s6.html">revised S6 panel</a> uses larger plasmids to separate those challenges. This saved run and its score are unchanged.</p>'
+    return ''
+
+
 def display_title(case):
     profile=case.get("error_profile",{}).get("id")
     labels={"matched-exact":"Matched error-free control", "generic-stress":"Generic simulated errors", "ont2023-shaped":"Historical ONT-shaped errors"}
@@ -206,6 +213,7 @@ def build_noisy(config, batch=None, output=None, document=None, include_history=
 def noisy_scenario(case, document, output):
     manifest = document.get("inputs", {}).get(case["id"], {})
     body = f'<a class="back" href="s6.html">S6 family results</a><h1>{e(display_title(case))}</h1><p class="intro">S6 · Controlled read errors · {e(case["organism"])}</p><p>Simulation model: <code>{e(case["simulation"]["model"])}</code>. Batch <code>{e(document["batch"] or "not submitted")}</code>.</p><div class="notice">{CAUTION}</div><h2>Input evidence</h2>'
+    body = legacy_noise_note(case) + body
     settings = {"simulation": case["simulation"], "error_profile": case.get("error_profile")}
     body += '<details><summary>Frozen simulation settings</summary><div class="table-scroll" role="region" aria-label="Frozen simulation settings" tabindex="0"><pre><code>' + e(json.dumps(settings, indent=2, sort_keys=True)) + '</code></pre></div></details>'
     body += f'<p>Recorded simulation status: {e(manifest.get("status", "not collected"))}.</p>'
