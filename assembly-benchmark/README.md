@@ -12,7 +12,9 @@ assembler/scenario matrix, scenario evidence and individual tool-execution pages
 with reported circularity, contig measurements, interactive graph inspection and
 downloadable provenance. See [graph collection](GRAPH_COLLECTION.md) for source
 coverage and limits. Publication snapshots are versioned in `published/`; large
-run artefacts stay on BMRC.
+run artefacts stay on BMRC. Simulated reads are temporary working data under
+the [read retention policy](READ_RETENTION.md); cleanup awaits verified restoration
+and completion of every dependent job.
 
 ## Proposed read-order comparison
 
