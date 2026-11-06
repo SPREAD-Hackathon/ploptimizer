@@ -1,0 +1,33 @@
+{
+  "status": "pass",
+  "presentation_url": null,
+  "revision_id": "Xz2BiYuZOmoN8Q",
+  "slides": 12,
+  "updated_visible_slides": [
+    8,
+    11
+  ],
+  "pixel_identical_slides": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    12
+  ],
+  "visual_review": "Updated slides 8 and 11 inspected; no clipped text or empty bullet markers. Other ten slides are pixel identical to the previously visually reviewed delivery.",
+  "issue_checker": {
+    "totalIssues": 0,
+    "reportedIssues": 0,
+    "truncated": false,
+    "bySeverity": {},
+    "byCode": {}
+  },
+  "repeatability_source": "evidence/large-baseline-v3/s3-repeatability-audit.json",
+  "repeatability_source_sha256": "1b7c374cd0849040fd6e86c0fea5cd51dad5f740e4ab8c939335651094797bf2",
+  "pdf_sha256": "a5abb8d5d4fc014b6f6a79adabd62d7199f520c60dfb0aeecc48e5f8e5ca3ae5"
+}

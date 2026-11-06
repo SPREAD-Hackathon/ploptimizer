@@ -17,6 +17,12 @@ class OverviewCohortTests(unittest.TestCase):
         cls.documents = [load(path) for path in cls.paths]
         cls.by_batch = {document['batch']: document for document in cls.documents}
         cls.cohort = load(ROOT / 'config/overview.json')
+        # These assertions describe the original frozen release, independent of
+        # later admissions to the live cohort. Full-cohort counts are checked by
+        # the source-derived website integration checks.
+        cls.cohort['primary_batches'] = ['20261104T190455', '20261104T193551',
+                                         '20261104T193612', '20261104T210453',
+                                         '20261105T161510']
         cls.model = build_overview(cls.documents, cohort=cls.cohort)
 
     def test_primary_exact_counts_exclude_historical_pilot(self):

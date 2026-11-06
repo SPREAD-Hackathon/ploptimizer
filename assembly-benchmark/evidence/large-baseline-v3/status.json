@@ -1,6 +1,5 @@
 {
   "assembly_count": 168,
-  "monitor": "finish-large-plasmid-benchmark-panels",
   "panels": [
     {
       "assembly_count": 8,
@@ -104,6 +103,30 @@
       "config": "config/repeatability-large.json",
       "config_fingerprint": "e8414d5b835dabd47ed4ce911f3b589841cbec7165e85a2003cb327e7b1c4664",
       "config_sha256": "17c62af0784f206a94ff36b40bd1ed729fcf753b013e3f6741e29b4920bab3df",
+      "evidence": {
+        "comparison_root": "comparisons/large-baseline-v3",
+        "coordinate_comparisons": {
+          "complete": 120
+        },
+        "diagnostics": {
+          "complete": 120
+        },
+        "expected_executions": 120,
+        "graph_identities": {
+          "identity_pairs": 430,
+          "inventories": 120
+        },
+        "graphs": {
+          "available": 120
+        },
+        "length_inventories": 120,
+        "outcomes": {
+          "fail": 80,
+          "pass": 40
+        },
+        "source_snapshot": "published/20261106T042113.json",
+        "status": "complete"
+      },
       "family": "S3",
       "input_count": 2,
       "jobs": {
@@ -119,7 +142,6 @@
       ]
     }
   ],
-  "phase": "All 168 assembly executions complete; S3 evidence postprocessing running",
   "scheduler_adjustment": {
     "batch_id": "20261106T042113",
     "future_policy": "1000-task array cap; no artificial cross-batch assembly dependency. Environment preparation dependencies retained.",
@@ -140,9 +162,10 @@
     "verified_array_throttle": 1000
   },
   "schema_version": 1,
-  "source_commit": "fa47838",
-  "status": "running",
-  "updated_at": "2026-11-06T08:34:06.408182+00:00",
+  "status": "evidence_complete",
+  "monitor": "finish-large-plasmid-benchmark-panels",
+  "phase": "All 168 executions and 168 coordinate comparisons complete; final report QA and publication in progress",
+  "updated_at": "2026-11-06T08:42:46.746802+00:00",
   "assembly_outcomes": {
     "pass": 72,
     "fail": 96

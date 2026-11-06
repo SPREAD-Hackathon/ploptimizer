@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "panels": [
+    {
+      "batch": "20261106T042103",
+      "executions": 8,
+      "nucmer_plots": 8,
+      "outcomes": {
+        "pass": 2,
+        "fail": 6
+      }
+    },
+    {
+      "batch": "20261106T042108",
+      "executions": 40,
+      "nucmer_plots": 40,
+      "outcomes": {
+        "pass": 30,
+        "fail": 10
+      }
+    },
+    {
+      "batch": "20261106T042113",
+      "executions": 120,
+      "nucmer_plots": 120,
+      "outcomes": {
+        "pass": 40,
+        "fail": 80
+      }
+    }
+  ],
+  "assembly_retries": 0,
+  "source_mutations": 0
+}

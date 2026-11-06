@@ -1,0 +1,69 @@
+{
+  "status": "pass",
+  "verified_at": "2026-11-06T08:50:17.196737+00:00",
+  "python_tests": 368,
+  "optional_skips": 11,
+  "focused_tests": 26,
+  "graph_tests": "pass",
+  "coordinate_parser_tests": "pass",
+  "http_checks": {
+    "routes": 598,
+    "result_views": 468,
+    "batch_views": 9,
+    "primary_executions": 296,
+    "supplementary_executions": 156
+  },
+  "site_gate": {
+    "errors": [],
+    "html_pages": 599,
+    "local_links_checked": 12476,
+    "policy": {
+      "max_file_bytes": 5242880,
+      "max_files": 1500,
+      "max_total_bytes": 67108864
+    },
+    "preserved_source_records": 468,
+    "public_files": 1120,
+    "schema_version": 1,
+    "status": "pass",
+    "total_files": 1134,
+    "website_bytes": 53679735
+  },
+  "browser": {
+    "status": "pass",
+    "base_url": "http://127.0.0.1:8891",
+    "mobile_checks": [
+      {
+        "mobile_assembler": "Flye (default)",
+        "scroll": 390,
+        "viewport": 390
+      },
+      {
+        "mobile_assembler": "Flye (--meta)",
+        "scroll": 390,
+        "viewport": 390
+      },
+      {
+        "mobile_assembler": "Raven",
+        "scroll": 390,
+        "viewport": 390
+      },
+      {
+        "mobile_assembler": "Plassembler long",
+        "scroll": 390,
+        "viewport": 390
+      }
+    ],
+    "s3_record": "batches/20261106T042113/results/s1-se11-large--flye--mode-default-threads-1-repeat-1.html",
+    "loaded_images": 1,
+    "script_errors": [],
+    "pkpn5_positions_present": true
+  },
+  "new_nucmer_plots": 168,
+  "new_execution_outcomes": {
+    "pass": 72,
+    "fail": 96
+  },
+  "source_snapshot_changes": 0,
+  "scope": "Local completed release QA; production verification recorded separately."
+}

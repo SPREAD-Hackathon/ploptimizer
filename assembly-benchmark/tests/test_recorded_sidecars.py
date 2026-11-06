@@ -75,6 +75,31 @@ class RecordedSidecarTests(unittest.TestCase):
     def test_checksum_mismatch_is_not_a_plot(self):
         (self.directory/'coordinates.tsv').write_bytes(self.coords+b'changed');self.assertEqual(self.plot()['status'],'hash_mismatch')
 
+    def test_repeat_comparison_uses_producer_output_path_and_original_metadata(self):
+        run_id='mode-default-threads-1-repeat-1'
+        self.record['run_id']=run_id
+        original=self.runs/self.batch/'results/fixture/flye/execution.json'
+        repeated=original.parent/'repeats'/run_id/'execution.json'
+        repeated.parent.mkdir(parents=True)
+        original.rename(repeated)
+        old_directory=self.directory
+        self.directory=old_directory/run_id
+        self.directory.mkdir()
+        for path in list(old_directory.iterdir()):
+            if path.is_file():path.rename(self.directory/path.name)
+        manifest_path=self.source_root/'tasks.json'
+        manifest=json.loads(manifest_path.read_text())
+        task=manifest['tasks'][0]
+        task.update(run_id=run_id,execution_relative_path=f'results/fixture/flye/repeats/{run_id}/execution.json',
+                    output_relative_path=f'runs/{self.batch}/comparisons/{self.label}/fixture/flye/{run_id}')
+        manifest_path.write_text(json.dumps(manifest))
+        self.sidecar['comparison_manifest_sha256']=sha(manifest_path.read_bytes())
+        self.write_sidecar()
+        self.assertEqual(self.plot()['status'],'available')
+        task['run_id']='mode-default-threads-1-repeat-2'
+        manifest_path.write_text(json.dumps(manifest))
+        self.assertEqual(self.plot()['status'],'not_applicable')
+
     def test_explicit_completed_nucmer_plot_preserves_separate_paf_count_evidence(self):
         from pipeline.bundle import prepare_document
         paf = copy.deepcopy(self.plot())

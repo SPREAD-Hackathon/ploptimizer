@@ -5,6 +5,7 @@ import hashlib
 from pathlib import Path
 import tempfile
 import unittest
+import copy
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('release_check', ROOT / 'scripts/check_release.py')
@@ -90,6 +91,36 @@ class ReleaseCheckTests(unittest.TestCase):
         result = self.check()
         self.assertFalse(result['release_ready'])
         self.assertEqual(result['batches'][0]['matched_snapshot_executions'], 0)
+
+    def test_repeatability_gate_keeps_modes_separate(self):
+        self.document['config']['determinism'] = {'repeats': 1, 'threads': [1]}
+        original = self.document['results'][0]
+        rows, tasks, within, across = [], [], [], []
+        for mode in ('default', 'deterministic'):
+            task = {'scenario': 'case', 'tool': 'flye', 'mode': mode,
+                    'threads': 1, 'repeat': 1, 'run_id': f'mode-{mode}-threads-1-repeat-1'}
+            tasks.append(task)
+            row = copy.deepcopy(original)
+            row.pop('config_fingerprint', None)
+            row.update(task, scenario_id='case')
+            rows.append(row)
+            group = {'scenario_id': 'case', 'tool': 'flye', 'mode': mode,
+                     'complete': True, 'inputs_identical': True,
+                     'byte_identical': True, 'normalised_sequence_identical': True,
+                     'biological_identical': True}
+            within.append(dict(group, threads=1))
+            across.append(dict(group, threads=[1]))
+        self.tasks['assemble'] = tasks
+        self.document['results'] = rows
+        self.document['determinism'] = {'executions': rows, 'within_thread': within, 'across_threads': across}
+        with (self.batch / 'accounting.tsv').open('a') as output:
+            output.write('10_1|COMPLETED|0:0\n')
+        self.assertTrue(self.check()['release_ready'])
+        within[1]['mode'] = 'default'
+        self.assertFalse(self.check()['release_ready'])
+        within[1]['mode'] = 'deterministic'
+        across.pop()
+        self.assertFalse(self.check()['release_ready'])
 
     def test_noisy_assessment_error_blocks_but_reasoned_unscored_is_preserved(self):
         self.document['config']['noisy_panel'] = {'profiles': ['fixture']}

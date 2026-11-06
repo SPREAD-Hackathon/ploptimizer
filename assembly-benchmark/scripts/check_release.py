@@ -174,11 +174,15 @@ def check_batch(root, batch_id):
             blockers.append(f'{scenario}: valid admitted input manifest is missing')
     if document.get('config', {}).get('determinism'):
         summary = document.get('determinism') or {}
-        for kind, positions in [('within_thread', (0, 1, 3)), ('across_threads', (0, 1))]:
-            expected_groups = {tuple(key[index] for index in positions) for key in expected_keys}
-            fields = ('scenario_id', 'tool', 'threads') if kind == 'within_thread' else ('scenario_id', 'tool')
+        for kind in ('within_thread', 'across_threads'):
+            fields = ('scenario_id', 'tool', 'mode', 'threads') if kind == 'within_thread' else ('scenario_id', 'tool', 'mode')
+            def group_key(row):
+                return tuple(row.get('scenario_id', row.get('scenario')) if field == 'scenario_id'
+                             else row.get('mode', 'default') if field == 'mode'
+                             else row.get(field) for field in fields)
+            expected_groups = {group_key(task) for task in tasks}
             groups = summary.get(kind, [])
-            actual = [tuple(row.get(field) for field in fields) for row in groups]
+            actual = [group_key(row) for row in groups]
             if len(actual) != len(set(actual)) or set(actual) != expected_groups:
                 blockers.append(f'{kind}: repeatability group identities are missing or duplicated')
             for group in groups:

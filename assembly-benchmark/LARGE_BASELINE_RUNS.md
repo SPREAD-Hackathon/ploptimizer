@@ -50,10 +50,10 @@ The controller collects small metadata and coordinates; sequence files and delta
 files remain on BMRC. Source snapshots are copied exactly to preserve comparison
 manifest hashes.
 
-The current live report remains a verified release while jobs are pending. Add
-new batches to the headline cohort only after checking their frozen snapshots,
-execution outcomes and evidence; then export/render, run the release gate and
-publish the compact site. Pending work must not be called complete.
+All 168 executions and their evidence calculations have now completed. The three
+frozen snapshots are admitted to the overview cohort after the execution and
+provenance checks. Final publication status is tracked in `CURRENT_RELEASE.json`;
+completed calculations alone do not establish a verified live deployment.
 
 The first submission attempt was cancelled before any assembly started:
 preparation tests caught Python 3.12-only f-string syntax in the reporting layer
@@ -62,3 +62,28 @@ cluster interpreter (363 tests, 11 optional skips), and a Python 3.11 grammar
 regression check was added. Archived job IDs and Slurm accounting with unset
 assembly start times are retained in `evidence/large-baseline-v3/attempt-1*`.
 Replacement batches use fresh directories; there are no duplicate assembly runs.
+
+## Completed suite results
+
+- S1: 2 exact passes / 6 exact failures, 8 executions.
+- S2: 30 exact passes / 10 exact failures, 40 executions.
+- S3: 40 exact passes / 80 exact failures, 120 executions; reference recovery is
+  separate from repeat agreement.
+- Total: 72 exact passes / 96 exact failures; no unscored execution errors.
+  All 168 mappings, saved graphs, length inventories and NUCmer comparisons
+  completed. No assembly retries or changed scoring parameters were introduced.
+
+All S3 groups have identical recorded input hashes. Normalised sequence signatures
+agree in 23/24 within-mode/thread groups and 9/12 across-thread groups. Deterministic
+Flye and Flye (`--meta`) modes agree in all 8 within-setting and 4 across-thread
+groups. Byte equality and strict biological signatures are reported separately.
+See `evidence/large-baseline-v3/s3-repeatability-audit.json` for exact mode/thread
+identities and denominators. Non-exact contigs retain their ends during
+normalisation, so differing signatures do not by themselves locate a sequence
+change or establish a software mechanism.
+
+The report consumes recorded NUCmer coordinate plots and retains separate saved
+PAF evidence for mismatch counts. Repeated-run coordinate imports verify the
+producer's comparison output path and the separate original `repeats/` execution
+metadata path. The readiness gate distinguishes default and deterministic modes;
+the source snapshots, reads, assemblies and scientific scores remain unchanged.

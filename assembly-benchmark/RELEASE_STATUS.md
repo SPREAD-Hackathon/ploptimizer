@@ -812,3 +812,32 @@ normalisation; differing signatures alone do not establish the type or cause of
 a change. Byte agreement remains a separate metric. The source-file hashes and
 mode/thread denominators are retained in `s3-repeatability-audit.json`.
 The live report and presentation remain unchanged pending final evidence QA.
+
+### 6 November — completed suite ready for publication
+
+All 168 authorised executions and evidence calculations completed without tool
+execution errors: S1 2 pass / 6 fail; S2 30 pass / 10 fail; S3 40 pass / 80 fail.
+Every new execution has recorded mapping, graph, length inventory and NUCmer
+coordinates. The unchanged snapshots are admitted to the overview cohort; the
+earlier small-plasmid baseline inputs remain supplementary. S3 headlines show
+repeat agreement, separately from exact reference recovery.
+
+Final local QA passes 368 Python tests (11 optional skips), graph/coordinate
+parser checks, 598 HTTP routes / 468 result views across nine batch views,
+599 HTML pages and 12,476 local links. All 468 original source records are
+preserved. The compact build is 53,679,735 bytes / 1,120 public files, below
+the unchanged 64 MiB / 1,500-file budgets. Mobile checks exercise all four
+assembler selectors without page overflow; repeated-run pages use the completed
+NUCmer plots, and the reviewed pKPN5 substitutions remain present.
+
+The existing 12-slide scientific presentation now includes the complete S3
+assessment. Its two changed visible slides were visually reviewed; the other
+ten are pixel-identical to the reviewed delivery. Native issue checks report
+zero findings. Source, review and QA hashes are retained in `presentation-qa.json`.
+
+Two generic reporting issues were repaired: the readiness gate now distinguishes
+repeat modes, and the coordinate importer follows the producer's repeated-run
+output layout while separately verifying original execution metadata. Regression
+checks cover both. No assemblies or alignments were rerun during release QA.
+Production is not declared updated until the deployment and public byte checks
+finish; see the current production entry and `CURRENT_RELEASE.json`.

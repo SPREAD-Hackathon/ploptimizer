@@ -129,7 +129,9 @@ def _completed_plot(case,record,batch,root,manifest_bytes,manifest,task,artifact
     relative=Path(record['scenario_id'])/record['tool']
     execution=Path('results')/record['scenario_id']/record['tool']
     if record.get('run_id'):
-        relative=relative/'repeats'/record['run_id'];execution=execution/'repeats'/record['run_id']
+        # Comparison output uses the run ID directly; original assembly
+        # metadata lives under repeats/, as declared by the producer manifest.
+        relative=relative/record['run_id'];execution=execution/'repeats'/record['run_id']
     expected_output=Path('runs')/batch/'comparisons'/root.name/relative
     if task.get('output_relative_path')!=str(expected_output) or task.get('execution_relative_path')!=str(execution/'execution.json'):
         raise SidecarError('provenance_mismatch','Completed comparison paths do not identify this execution.')
