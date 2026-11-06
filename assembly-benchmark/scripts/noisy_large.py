@@ -117,7 +117,15 @@ def collect_panel():
         if state['evidence']['status']=='complete':
             subprocess.run(['rsync','-az','--exclude=*.delta',cluster['host']+':'+str(remote/'runs'/batch.name/'comparisons')+'/',str(batch/'comparisons')+'/'],check=True)
             subprocess.run(['rsync','-az',cluster['host']+':'+str(remote/'published'/(batch.name+'.json')),str(ROOT/'published')+'/'],check=True)
-    state['status']='evidence_complete' if state.get('evidence',{}).get('status')=='complete' and state['input_audit']['status']=='complete' else 'running_or_needs_review'
+    failed_states={'FAILED','CANCELLED','TIMEOUT','OUT_OF_MEMORY','NODE_FAIL','BOOT_FAIL','DEADLINE'}
+    scheduler_failure=any(len(fields)>1 and fields[1].strip() and fields[1].split()[0].rstrip('+') in failed_states
+                          for fields in (line.split('|') for line in (batch/'accounting.tsv').read_text().splitlines()))
+    if state.get('evidence',{}).get('status')=='complete' and state['input_audit']['status']=='complete':
+        state['status']='evidence_complete'
+    elif scheduler_failure or state['input_audit']['status']=='needs_review' or state.get('evidence',{}).get('status')=='needs_review':
+        state['status']='needs_review'
+    else:
+        state['status']='running'
     return checkpoint(state)
 
 

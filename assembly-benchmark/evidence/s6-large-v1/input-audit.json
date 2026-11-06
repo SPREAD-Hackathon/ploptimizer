@@ -1,0 +1,25 @@
+{
+  "batch_id": "20261106T100403",
+  "expected_inputs": 6,
+  "inputs": [
+    {
+      "input_manifest_sha256": "ac13ae38df8423ba399f50a573a579215970f01295d1af58c8411e9ea41c29a8",
+      "reads_sha256": "6e4b0c3661f78bd99b8501c1109b285ac6afeb503cc94da67a3f4b0db3d77d3d",
+      "scenario_id": "s6-se11-pse11-1-seed-20261106-matched-exact",
+      "source_fragments_sha256": "6e4b0c3661f78bd99b8501c1109b285ac6afeb503cc94da67a3f4b0db3d77d3d",
+      "source_hashes_match": true,
+      "status": "valid"
+    },
+    {
+      "input_manifest_sha256": "e4959d9eaf4043551c74b476ba3cdc7b4587d91754b90b77468db5d42544293e",
+      "reads_sha256": "3609c5f5023d24022c9aa1f0368ae4b2f789346d3f8e9c031259c89297d837ae",
+      "scenario_id": "s6-mgh78578-pkpn3-seed-20261106-matched-exact",
+      "source_fragments_sha256": "3609c5f5023d24022c9aa1f0368ae4b2f789346d3f8e9c031259c89297d837ae",
+      "source_hashes_match": true,
+      "status": "valid"
+    }
+  ],
+  "schema_version": 1,
+  "scope": "Recorded manifest and frozen-source hash equivalence; source reads are retained on BMRC.",
+  "status": "pending"
+}

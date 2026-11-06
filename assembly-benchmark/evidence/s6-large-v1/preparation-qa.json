@@ -1,0 +1,16 @@
+{
+  "assessment_mode": "continuous-evidence-v1",
+  "batch_id": "20261106T100403",
+  "binary_tolerant_endpoint_validated": false,
+  "cluster_python_tests": 377,
+  "final_focused_tests": 8,
+  "frozen_source_controls": 2,
+  "input_controls_sha256": "9261943de25bba80df93e288feaad1537a81961a23993f208b4707fbd89479ad",
+  "local_python_tests": 376,
+  "matched_clean_inputs_verified": 2,
+  "optional_skips": 11,
+  "phase": "Read generation running; no assembly outcomes claimed.",
+  "preparation_log_sha256": "967f3a69170e3c4a1ff9d9059864014f0f32b72de137ecc46dbd51c56f1264da",
+  "status": "pass",
+  "submitted_source_commit": "0662fa0"
+}

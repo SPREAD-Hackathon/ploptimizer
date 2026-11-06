@@ -1,0 +1,73 @@
+{
+  "assembly_count": 24,
+  "assessment_mode": "continuous-evidence-v1",
+  "batch_id": "20261106T100403",
+  "binary_tolerant_endpoint": "Unscored; continuous evidence and exact scores reported separately.",
+  "config": "config/noisy-large.json",
+  "config_fingerprint": "4fa8203f48ee90e54cdba9ac2becef6a52a382f849f83881957b97e2389cb4a3",
+  "config_sha256": "816e3b3fee9f220420273a4f3f0cf23b66092132ad98d54d81b9d7524da94c50",
+  "input_audit": {
+    "batch_id": "20261106T100403",
+    "expected_inputs": 6,
+    "inputs": [
+      {
+        "input_manifest_sha256": "ac13ae38df8423ba399f50a573a579215970f01295d1af58c8411e9ea41c29a8",
+        "reads_sha256": "6e4b0c3661f78bd99b8501c1109b285ac6afeb503cc94da67a3f4b0db3d77d3d",
+        "scenario_id": "s6-se11-pse11-1-seed-20261106-matched-exact",
+        "source_fragments_sha256": "6e4b0c3661f78bd99b8501c1109b285ac6afeb503cc94da67a3f4b0db3d77d3d",
+        "source_hashes_match": true,
+        "status": "valid"
+      },
+      {
+        "input_manifest_sha256": "e4959d9eaf4043551c74b476ba3cdc7b4587d91754b90b77468db5d42544293e",
+        "reads_sha256": "3609c5f5023d24022c9aa1f0368ae4b2f789346d3f8e9c031259c89297d837ae",
+        "scenario_id": "s6-mgh78578-pkpn3-seed-20261106-matched-exact",
+        "source_fragments_sha256": "3609c5f5023d24022c9aa1f0368ae4b2f789346d3f8e9c031259c89297d837ae",
+        "source_hashes_match": true,
+        "status": "valid"
+      }
+    ],
+    "schema_version": 1,
+    "scope": "Recorded manifest and frozen-source hash equivalence; source reads are retained on BMRC.",
+    "status": "pending"
+  },
+  "input_count": 6,
+  "jobs": {
+    "assemble": "34518327",
+    "assessment": "34518328",
+    "evidence": "34518330",
+    "prepare": "34518325",
+    "report": "34518329",
+    "simulate": "34518326"
+  },
+  "scenario_ids": [
+    "s6-se11-pse11-1-seed-20261106-matched-exact",
+    "s6-se11-pse11-1-seed-20261106-generic-stress",
+    "s6-se11-pse11-1-seed-20261106-ont2023-shaped",
+    "s6-mgh78578-pkpn3-seed-20261106-matched-exact",
+    "s6-mgh78578-pkpn3-seed-20261106-generic-stress",
+    "s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped"
+  ],
+  "schema_version": 1,
+  "source_commit": "0662fa0be95069148b3b37bc917cc7b8742b7fa9",
+  "source_fragments": {
+    "s1-mgh78578-pkpn3": {
+      "batch": "20261106T042108",
+      "input_manifest_sha256": "045cfa5505793ba3118e811d72cf43bbd3b5076a1c165ab5512d86cecab9bbdf",
+      "origins_sha256": "5583ed925f0169515fd27c59e6cb9b538a2f3c9c6e686559950f51a7289eb10c",
+      "reads_sha256": "3609c5f5023d24022c9aa1f0368ae4b2f789346d3f8e9c031259c89297d837ae",
+      "scenario_id": "s2-mgh78578-pkpn3-depth-1",
+      "truth_sha256": "b3c26001161ae6c9dc8f64c5781631592bb066e07c7ed00fc50c4f1bad03fe6a"
+    },
+    "s1-se11-pse11-1": {
+      "batch": "20261106T042108",
+      "input_manifest_sha256": "c77b9a2f1cfbb1391048039cd9bf28cf021e203d90665e0441019a56efe7aaec",
+      "origins_sha256": "4c8d12dfdf5c308b365bec2d0b98e67a29d4c2a86c9c350360fd125cd3a7aa11",
+      "reads_sha256": "6e4b0c3661f78bd99b8501c1109b285ac6afeb503cc94da67a3f4b0db3d77d3d",
+      "scenario_id": "s2-se11-pse11-1-depth-1",
+      "truth_sha256": "c832da0cec8a590926fb24251cc56336d61bd9c453b2f8c3e89e6fe89a5418db"
+    }
+  },
+  "status": "running",
+  "updated_at": "2026-11-06T10:07:22.567237+00:00"
+}
