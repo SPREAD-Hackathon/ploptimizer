@@ -1,0 +1,294 @@
+{
+  "header": {
+    "type": "esummary",
+    "version": "0.3"
+  },
+  "result": {
+    "uids": [
+      "21133041",
+      "65886078",
+      "65940088"
+    ],
+    "21133041": {
+      "uid": "21133041",
+      "rsuid": "53323138",
+      "gbuid": "53171008",
+      "assemblyaccession": "GCF_036177905.1",
+      "lastmajorreleaseaccession": "GCF_036177905.1",
+      "latestaccession": "",
+      "chainid": "36177905",
+      "assemblyname": "ASM3617790v1",
+      "ucscname": "",
+      "ensemblname": "",
+      "taxid": "58343",
+      "organism": "Streptomyces canus (high G+C Gram-positive bacteria)",
+      "speciestaxid": "58343",
+      "speciesname": "Streptomyces canus",
+      "assemblytype": "haploid",
+      "assemblystatus": "Complete Genome",
+      "assemblystatussort": 1,
+      "wgs": "",
+      "gb_bioprojects": [
+        {
+          "bioprojectaccn": "PRJNA747871",
+          "bioprojectid": 747871
+        }
+      ],
+      "gb_projects": [],
+      "rs_bioprojects": [
+        {
+          "bioprojectaccn": "PRJNA224116",
+          "bioprojectid": 224116
+        }
+      ],
+      "rs_projects": [],
+      "biosampleaccn": "SAMN30552984",
+      "biosampleid": "30552984",
+      "biosource": {
+        "infraspecieslist": [
+          {
+            "sub_type": "strain",
+            "sub_value": "NBC_00277"
+          }
+        ],
+        "sex": "",
+        "isolate": ""
+      },
+      "coverage": "172",
+      "partialgenomerepresentation": "false",
+      "primary": "53323128",
+      "assemblydescription": "",
+      "releaselevel": "Major",
+      "releasetype": "Major",
+      "asmreleasedate_genbank": "2024/01/26 00:00",
+      "asmreleasedate_refseq": "2024/01/30 00:00",
+      "seqreleasedate": "2024/01/25 00:00",
+      "asmupdatedate": "2024/01/30 00:00",
+      "submissiondate": "2024/01/25 00:00",
+      "lastupdatedate": "2024/01/30 00:00",
+      "submitterorganization": "Technical University of Denmark",
+      "refseq_category": "reference genome",
+      "anomalouslist": [],
+      "exclfromrefseq": [],
+      "propertylist": [
+        "full-genome-representation",
+        "genbank_has_annotation",
+        "has-chromosome",
+        "has-plasmid",
+        "has_annotation",
+        "latest",
+        "latest_genbank",
+        "latest_refseq",
+        "reference",
+        "refseq_has_annotation"
+      ],
+      "fromtype": "",
+      "synonym": {
+        "genbank": "GCA_036177905.1",
+        "refseq": "GCF_036177905.1",
+        "similarity": "identical"
+      },
+      "contign50": 10691412,
+      "scaffoldn50": 10691412,
+      "annotrpturl": "",
+      "ftppath_genbank": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/036/177/905/GCA_036177905.1_ASM3617790v1",
+      "ftppath_refseq": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/036/177/905/GCF_036177905.1_ASM3617790v1",
+      "ftppath_assembly_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/036/177/905/GCF_036177905.1_ASM3617790v1/GCF_036177905.1_ASM3617790v1_assembly_report.txt",
+      "ftppath_stats_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/036/177/905/GCF_036177905.1_ASM3617790v1/GCF_036177905.1_ASM3617790v1_assembly_stats.txt",
+      "ftppath_regions_rpt": "",
+      "busco": {
+        "refseqannotationrelease": "",
+        "buscolineage": "",
+        "buscover": "",
+        "complete": "",
+        "singlecopy": "",
+        "duplicated": "",
+        "fragmented": "",
+        "missing": "",
+        "totalcount": ""
+      },
+      "sortorder": "1C1XBFB69893085870361779059898",
+      "meta": " <Stats> <Stat category=\"alt_loci_count\" sequence_tag=\"all\">0</Stat> <Stat category=\"chromosome_count\" sequence_tag=\"all\">1</Stat> <Stat category=\"contig_count\" sequence_tag=\"all\">2</Stat> <Stat category=\"contig_l50\" sequence_tag=\"all\">1</Stat> <Stat category=\"contig_n50\" sequence_tag=\"all\">10691412</Stat> <Stat category=\"non_chromosome_replicon_count\" sequence_tag=\"all\">1</Stat> <Stat category=\"replicon_count\" sequence_tag=\"all\">2</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"all\">2</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"placed\">2</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"unlocalized\">0</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"unplaced\">0</Stat> <Stat category=\"scaffold_l50\" sequence_tag=\"all\">1</Stat> <Stat category=\"scaffold_n50\" sequence_tag=\"all\">10691412</Stat> <Stat category=\"total_length\" sequence_tag=\"all\">10825738</Stat> <Stat category=\"ungapped_length\" sequence_tag=\"all\">10825738</Stat> </Stats> <FtpSites>   <FtpPath type=\"Assembly_rpt\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/036/177/905/GCF_036177905.1_ASM3617790v1/GCF_036177905.1_ASM3617790v1_assembly_report.txt</FtpPath>   <FtpPath type=\"GenBank\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/036/177/905/GCA_036177905.1_ASM3617790v1</FtpPath>   <FtpPath type=\"RefSeq\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/036/177/905/GCF_036177905.1_ASM3617790v1</FtpPath>   <FtpPath type=\"Stats_rpt\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/036/177/905/GCF_036177905.1_ASM3617790v1/GCF_036177905.1_ASM3617790v1_assembly_stats.txt</FtpPath> </FtpSites> <assembly-level>90</assembly-level> <assembly-status>Complete Genome</assembly-status> <representative-status>reference genome</representative-status> <submitter-organization>Technical University of Denmark</submitter-organization> <taxonomy-check-status>OK</taxonomy-check-status>    "
+    },
+    "65886078": {
+      "uid": "65886078",
+      "rsuid": "66046728",
+      "gbuid": "65886078",
+      "assemblyaccession": "GCF_045162825.1",
+      "lastmajorreleaseaccession": "GCF_045162825.1",
+      "latestaccession": "",
+      "chainid": "45162825",
+      "assemblyname": "ASM4516282v1",
+      "ucscname": "",
+      "ensemblname": "",
+      "taxid": "67348",
+      "organism": "Streptomyces prunicolor (high G+C Gram-positive bacteria)",
+      "speciestaxid": "67348",
+      "speciesname": "Streptomyces prunicolor",
+      "assemblytype": "haploid",
+      "assemblystatus": "Complete Genome",
+      "assemblystatussort": 1,
+      "wgs": "",
+      "gb_bioprojects": [
+        {
+          "bioprojectaccn": "PRJNA747871",
+          "bioprojectid": 747871
+        }
+      ],
+      "gb_projects": [],
+      "rs_bioprojects": [],
+      "rs_projects": [],
+      "biosampleaccn": "SAMN24016350",
+      "biosampleid": "24016350",
+      "biosource": {
+        "infraspecieslist": [],
+        "sex": "",
+        "isolate": ""
+      },
+      "coverage": "41",
+      "partialgenomerepresentation": "false",
+      "primary": "66046738",
+      "assemblydescription": "",
+      "releaselevel": "Major",
+      "releasetype": "Major",
+      "asmreleasedate_genbank": "2024/11/21 00:00",
+      "asmreleasedate_refseq": "2024/11/25 00:00",
+      "seqreleasedate": "2024/11/25 00:00",
+      "asmupdatedate": "2025/11/29 00:00",
+      "submissiondate": "2024/11/25 00:00",
+      "lastupdatedate": "2025/11/29 00:00",
+      "submitterorganization": "Technical University of Denmark",
+      "refseq_category": "reference genome",
+      "anomalouslist": [],
+      "exclfromrefseq": [],
+      "propertylist": [
+        "full-genome-representation",
+        "genbank_has_annotation",
+        "has-chromosome",
+        "has_annotation",
+        "latest",
+        "latest_genbank",
+        "latest_refseq",
+        "reference",
+        "refseq_has_annotation"
+      ],
+      "fromtype": "",
+      "synonym": {
+        "genbank": "GCA_045162825.1",
+        "refseq": "GCF_045162825.1",
+        "similarity": "identical"
+      },
+      "contign50": 10948847,
+      "scaffoldn50": 10948847,
+      "annotrpturl": "",
+      "ftppath_genbank": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/045/162/825/GCA_045162825.1_ASM4516282v1",
+      "ftppath_refseq": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/162/825/GCF_045162825.1_ASM4516282v1",
+      "ftppath_assembly_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/162/825/GCF_045162825.1_ASM4516282v1/GCF_045162825.1_ASM4516282v1_assembly_report.txt",
+      "ftppath_stats_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/162/825/GCF_045162825.1_ASM4516282v1/GCF_045162825.1_ASM4516282v1_assembly_stats.txt",
+      "ftppath_regions_rpt": "",
+      "busco": {
+        "refseqannotationrelease": "",
+        "buscolineage": "",
+        "buscover": "",
+        "complete": "",
+        "singlecopy": "",
+        "duplicated": "",
+        "fragmented": "",
+        "missing": "",
+        "totalcount": ""
+      },
+      "sortorder": "1C1XC4FF9890511520451628259898",
+      "meta": " <Stats> <Stat category=\"alt_loci_count\" sequence_tag=\"all\">0</Stat> <Stat category=\"chromosome_count\" sequence_tag=\"all\">1</Stat> <Stat category=\"contig_count\" sequence_tag=\"all\">1</Stat> <Stat category=\"contig_l50\" sequence_tag=\"all\">1</Stat> <Stat category=\"contig_n50\" sequence_tag=\"all\">10948847</Stat> <Stat category=\"non_chromosome_replicon_count\" sequence_tag=\"all\">0</Stat> <Stat category=\"replicon_count\" sequence_tag=\"all\">1</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"all\">1</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"placed\">1</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"unlocalized\">0</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"unplaced\">0</Stat> <Stat category=\"scaffold_l50\" sequence_tag=\"all\">1</Stat> <Stat category=\"scaffold_n50\" sequence_tag=\"all\">10948847</Stat> <Stat category=\"total_length\" sequence_tag=\"all\">10948847</Stat> <Stat category=\"ungapped_length\" sequence_tag=\"all\">10948847</Stat> </Stats> <FtpSites>   <FtpPath type=\"Assembly_rpt\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/162/825/GCF_045162825.1_ASM4516282v1/GCF_045162825.1_ASM4516282v1_assembly_report.txt</FtpPath>   <FtpPath type=\"GenBank\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/045/162/825/GCA_045162825.1_ASM4516282v1</FtpPath>   <FtpPath type=\"RefSeq\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/162/825/GCF_045162825.1_ASM4516282v1</FtpPath>   <FtpPath type=\"Stats_rpt\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/162/825/GCF_045162825.1_ASM4516282v1/GCF_045162825.1_ASM4516282v1_assembly_stats.txt</FtpPath> </FtpSites> <assembly-level>90</assembly-level> <assembly-status>Complete Genome</assembly-status> <representative-status>reference genome</representative-status> <submitter-organization>Technical University of Denmark</submitter-organization> <taxonomy-check-status>OK</taxonomy-check-status>    "
+    },
+    "65940088": {
+      "uid": "65940088",
+      "rsuid": "66062428",
+      "gbuid": "65940088",
+      "assemblyaccession": "GCF_045210185.1",
+      "lastmajorreleaseaccession": "GCF_045210185.1",
+      "latestaccession": "",
+      "chainid": "45210185",
+      "assemblyname": "ASM4521018v1",
+      "ucscname": "",
+      "ensemblname": "",
+      "taxid": "1886",
+      "organism": "Streptomyces albidoflavus (high G+C Gram-positive bacteria)",
+      "speciestaxid": "1886",
+      "speciesname": "Streptomyces albidoflavus",
+      "assemblytype": "haploid",
+      "assemblystatus": "Complete Genome",
+      "assemblystatussort": 1,
+      "wgs": "",
+      "gb_bioprojects": [
+        {
+          "bioprojectaccn": "PRJNA747871",
+          "bioprojectid": 747871
+        }
+      ],
+      "gb_projects": [],
+      "rs_bioprojects": [],
+      "rs_projects": [],
+      "biosampleaccn": "SAMN30553390",
+      "biosampleid": "30553390",
+      "biosource": {
+        "infraspecieslist": [],
+        "sex": "",
+        "isolate": ""
+      },
+      "coverage": "47",
+      "partialgenomerepresentation": "false",
+      "primary": "66062438",
+      "assemblydescription": "",
+      "releaselevel": "Major",
+      "releasetype": "Major",
+      "asmreleasedate_genbank": "2024/11/22 00:00",
+      "asmreleasedate_refseq": "2024/11/25 00:00",
+      "seqreleasedate": "2024/11/25 00:00",
+      "asmupdatedate": "2025/12/20 00:00",
+      "submissiondate": "2024/11/25 00:00",
+      "lastupdatedate": "2025/12/20 00:00",
+      "submitterorganization": "Technical University of Denmark",
+      "refseq_category": "na",
+      "anomalouslist": [],
+      "exclfromrefseq": [],
+      "propertylist": [
+        "full-genome-representation",
+        "genbank_has_annotation",
+        "has-chromosome",
+        "has-plasmid",
+        "has_annotation",
+        "latest",
+        "latest_genbank",
+        "latest_refseq",
+        "refseq_has_annotation"
+      ],
+      "fromtype": "",
+      "synonym": {
+        "genbank": "GCA_045210185.1",
+        "refseq": "GCF_045210185.1",
+        "similarity": "identical"
+      },
+      "contign50": 7135774,
+      "scaffoldn50": 7135774,
+      "annotrpturl": "",
+      "ftppath_genbank": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/045/210/185/GCA_045210185.1_ASM4521018v1",
+      "ftppath_refseq": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/210/185/GCF_045210185.1_ASM4521018v1",
+      "ftppath_assembly_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/210/185/GCF_045210185.1_ASM4521018v1/GCF_045210185.1_ASM4521018v1_assembly_report.txt",
+      "ftppath_stats_rpt": "ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/210/185/GCF_045210185.1_ASM4521018v1/GCF_045210185.1_ASM4521018v1_assembly_stats.txt",
+      "ftppath_regions_rpt": "",
+      "busco": {
+        "refseqannotationrelease": "",
+        "buscolineage": "",
+        "buscover": "",
+        "complete": "",
+        "singlecopy": "",
+        "duplicated": "",
+        "fragmented": "",
+        "missing": "",
+        "totalcount": ""
+      },
+      "sortorder": "5C1XA1989928642250452101859898",
+      "meta": " <Stats> <Stat category=\"alt_loci_count\" sequence_tag=\"all\">0</Stat> <Stat category=\"chromosome_count\" sequence_tag=\"all\">1</Stat> <Stat category=\"contig_count\" sequence_tag=\"all\">2</Stat> <Stat category=\"contig_l50\" sequence_tag=\"all\">1</Stat> <Stat category=\"contig_n50\" sequence_tag=\"all\">7135774</Stat> <Stat category=\"non_chromosome_replicon_count\" sequence_tag=\"all\">1</Stat> <Stat category=\"replicon_count\" sequence_tag=\"all\">2</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"all\">2</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"placed\">2</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"unlocalized\">0</Stat> <Stat category=\"scaffold_count\" sequence_tag=\"unplaced\">0</Stat> <Stat category=\"scaffold_l50\" sequence_tag=\"all\">1</Stat> <Stat category=\"scaffold_n50\" sequence_tag=\"all\">7135774</Stat> <Stat category=\"total_length\" sequence_tag=\"all\">7307846</Stat> <Stat category=\"ungapped_length\" sequence_tag=\"all\">7307846</Stat> </Stats> <FtpSites>   <FtpPath type=\"Assembly_rpt\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/210/185/GCF_045210185.1_ASM4521018v1/GCF_045210185.1_ASM4521018v1_assembly_report.txt</FtpPath>   <FtpPath type=\"GenBank\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/045/210/185/GCA_045210185.1_ASM4521018v1</FtpPath>   <FtpPath type=\"RefSeq\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/210/185/GCF_045210185.1_ASM4521018v1</FtpPath>   <FtpPath type=\"Stats_rpt\">ftp://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/045/210/185/GCF_045210185.1_ASM4521018v1/GCF_045210185.1_ASM4521018v1_assembly_stats.txt</FtpPath> </FtpSites> <assembly-level>90</assembly-level> <assembly-status>Complete Genome</assembly-status> <representative-status>na</representative-status> <submitter-organization>Technical University of Denmark</submitter-organization> <taxonomy-check-status>OK</taxonomy-check-status>    "
+    }
+  }
+}

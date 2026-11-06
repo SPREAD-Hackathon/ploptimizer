@@ -106,3 +106,13 @@ output comparison must be reference-independent, including its treatment of
 circular starts; exact recovery remains supporting context. Permutation admission,
 independent comparison and grouping/reporting need validation before execution.
 No S7 read shuffles or assembly jobs have been generated.
+
+## S5 reference replacement — native linear genomes
+
+The active S5 selection is now the three complete assemblies linked by
+CP108065.1, CP108676.1 and CP109243.1. Their five deposited replicons are all
+annotated linear. Standard/long read arms define six inputs and 24 executions;
+no replacement jobs have been submitted. Exact terminal repeat coordinates/type
+remain unassigned, so long reads are not labelled repeat-spanning. See
+`LINEAR_TERMINAL_REPEATS.md` and `references/streptomyces-linear-panel.json`.
+The isolated SCP1/SLP2 profile and original scores remain historical.

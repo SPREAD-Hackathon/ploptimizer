@@ -1,0 +1,53 @@
+{
+  "header": {
+    "type": "elink",
+    "version": "0.3"
+  },
+  "linksets": [
+    {
+      "dbfrom": "nuccore",
+      "ids": [
+        "2659237615"
+      ],
+      "linksetdbs": [
+        {
+          "dbto": "assembly",
+          "linkname": "nuccore_assembly",
+          "links": [
+            "21133041"
+          ]
+        }
+      ]
+    },
+    {
+      "dbfrom": "nuccore",
+      "ids": [
+        "2655090101"
+      ],
+      "linksetdbs": [
+        {
+          "dbto": "assembly",
+          "linkname": "nuccore_assembly",
+          "links": [
+            "65886078"
+          ]
+        }
+      ]
+    },
+    {
+      "dbfrom": "nuccore",
+      "ids": [
+        "2655774549"
+      ],
+      "linksetdbs": [
+        {
+          "dbto": "assembly",
+          "linkname": "nuccore_assembly",
+          "links": [
+            "65940088"
+          ]
+        }
+      ]
+    }
+  ]
+}

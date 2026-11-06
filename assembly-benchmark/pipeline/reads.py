@@ -41,7 +41,7 @@ def prepare(config):
             raise ValueError(f"Reference failed length/unambiguous-base audit: {accession}")
         if replicon.get("sequence_sha256") and hashlib.sha256(sequence.encode()).hexdigest() != replicon["sequence_sha256"]:
             raise ValueError(f"Reference differs from admitted sequence: {accession}")
-        if replicon.get("admission_scope") == "isolated_linear_reference_record":
+        if replicon.get("admission_scope") in {"isolated_linear_reference_record", "native_linear_genome_record"}:
             from .linear_cases import validate_terminal_reference
             validate_terminal_reference(replicon, sequence)
         audits.append({**replicon, "file_sha256": digest(path), "sequence_sha256": hashlib.sha256(sequence.encode()).hexdigest()})

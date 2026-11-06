@@ -11,7 +11,7 @@ FAMILIES = {
     "S2": ("Relative plasmid coverage", "Relative coverage of plasmids ≥20 kb. Existing small-plasmid coverage runs remain supplementary."),
     "S3": ("Repeated runs", "Repeated frozen larger-plasmid inputs, grouped by mode and thread setting. Existing small-plasmid repeats remain supplementary."),
     "S4": ("Small plasmids and read length", "Small-plasmid recovery across read-length targets."),
-    "S5": ("Linear plasmids and terminal repeats", "Isolated linear-reference controls with explicit terminal reads; chromosome context is not included."),
+    "S5": ("Linear genomes and terminal repeats", "Complete Streptomyces genomes with linear chromosomes and their native plasmids. Earlier isolated-plasmid controls remain supplementary."),
     "S6": ("Simulated read errors", "Simulated read errors with plasmids ≥20 kb. Earlier small-plasmid noise tests remain supplementary."),
 }
 TOOLS = {"flye": "Flye (default)", "flye-meta": "Flye (--meta)", "raven": "Raven", "plassembler": "Plassembler long"}
@@ -134,7 +134,7 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
         selected_rows = [r for r in rows if r["family"] == family]
         headline_rows = [r for r in selected_rows if r["cohort_role"] == "primary"]
         genomes = sorted({(r["organism"], r["assembly_accession"] or "") for r in headline_rows})
-        family_models.append({"id": family, "title": FAMILIES[family][0], "description": ("Historical batch: original input complements and outcomes; revised baseline exclusions are not applied." if archived_batch is not None and family in {"S1", "S2", "S3", "S6"} else FAMILIES[family][1]),
+        family_models.append({"id": family, "title": FAMILIES[family][0], "description": ("Historical batch: original input complements and outcomes; revised baseline exclusions are not applied." if archived_batch is not None and family in {"S1", "S2", "S3", "S5", "S6"} else FAMILIES[family][1]),
                               "href": f"scenarios/{family.lower()}.html", "counts": _counts(headline_rows), "all_counts": _counts(selected_rows),
                               "supplementary_counts": _counts([r for r in selected_rows if r["cohort_role"] == "supplementary"]),
                               "tools": [{"id": tool, "label": TOOLS[tool], **_counts([r for r in headline_rows if r["tool"] == tool])} for tool in tools],
@@ -158,6 +158,7 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
             "root_batch": root_batch, "tools": [{"id": t, "label": TOOLS[t]} for t in tools], "families": family_models,
             "counts": _counts([r for r in rows if r["cohort_role"] == "primary"]),
             "all_counts": _counts(rows), "baseline_policy": copy.deepcopy(policy),
+            "panel_statuses": copy.deepcopy(cohort.get("panel_statuses", {})) if archived_batch is None else {},
             "supplementary_counts": _counts([r for r in rows if r["cohort_role"] == "supplementary"]), "endpoint": "recorded_exact_status", "denominator": "pass + fail"}
 
 

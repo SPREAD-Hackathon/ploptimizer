@@ -1,0 +1,32 @@
+{
+  "status": "pass",
+  "python_tests": 380,
+  "optional_skips": 11,
+  "planned_assemblies": 3,
+  "planned_replicons": 5,
+  "planned_inputs": 6,
+  "planned_executions": 24,
+  "new_s5_jobs_submitted": 0,
+  "legacy_s5_runs_supplementary": 16,
+  "http_routes": 598,
+  "result_views": 468,
+  "source_records_preserved": 468,
+  "overview_primary_executions": 268,
+  "overview_supplementary_executions": 184,
+  "browser": {
+    "status": "pass",
+    "base_url": "http://127.0.0.1:8891",
+    "s5_native_selection_visible": true,
+    "old_s5_runs_supplementary": 16,
+    "s5_replacement_explicitly_unrun": true,
+    "s6_submission_status_visible": true,
+    "legacy_case_note_visible": true,
+    "viewports": [
+      1440,
+      390
+    ]
+  },
+  "detector_findings": [],
+  "repeat_coordinates_status": "Unassigned; arms labelled standard and long, not repeat-spanning.",
+  "s6_status_displayed": "24 executions submitted, no partial results admitted."
+}

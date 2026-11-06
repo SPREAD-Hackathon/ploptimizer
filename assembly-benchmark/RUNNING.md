@@ -272,11 +272,13 @@ replace historical benchmark executions. The source-linked conclusions and limit
 are in `FLYE_HYPOTHESES.md` and `RAVEN_CAUSE_REVIEW.md`; compact reproducibility
 records are versioned under `reviews/evidence/`.
 
-## Linear plasmid controls (S5)
+## Complete linear genomes (S5)
 
-`python benchmark.py --config config/linear-plasmids.json submit` uses the existing
-Pixi/Slurm backend for four isolated reference controls (16 assembly tasks).
-The linear-only model requires full breadth and explicit terminal read support;
-Plassembler uses declared no-chromosome mode. Reports stay batch-scoped.
+`python benchmark.py --config config/linear-plasmids.json plan` expands three
+complete Streptomyces assemblies with all native replicons into six standard/long
+inputs and 24 assembly tasks. No replacement run has been submitted. The model
+requires full breadth and explicit terminal read support; Plassembler uses its
+chromosome-aware workflow. Reports stay batch-scoped. Historical isolated
+SCP1/SLP2 reproduction uses `config/linear-isolated-legacy.json`.
 See [LINEAR_TERMINAL_REPEATS.md](LINEAR_TERMINAL_REPEATS.md) for sequence hashes,
 terminal-repeat curation, read models and interpretation limits.

@@ -206,10 +206,13 @@ try {
       const policy = cohortConfig.baseline_policy;
       const molecules = scenario.replicons ?? [];
       const plasmids = molecules.filter(m => m.molecule_type === 'plasmid');
-      const eligible = !policy || !(policy.families ?? ['S1', 'S2', 'S3']).includes(family) ||
-        (molecules.filter(m => m.molecule_type === 'chromosome').length === 1 &&
-         (family === 'S1' || plasmids.length > 0) &&
-         plasmids.every(m => Number.isInteger(m.length_bp) && m.length_bp >= policy.minimum_plasmid_bp));
+      const scoped = policy && (policy.families ?? ['S1', 'S2', 'S3']).includes(family);
+      const eligible = !scoped || (family === 'S5'
+        ? (policy.linear_assemblies ?? []).includes(scenario.assembly_accession) &&
+          molecules.filter(m => m.molecule_type === 'chromosome').length === 1 && molecules.every(m => m.topology === 'linear')
+        : molecules.filter(m => m.molecule_type === 'chromosome').length === 1 &&
+          (family === 'S1' || plasmids.length > 0) &&
+          plasmids.every(m => Number.isInteger(m.length_bp) && m.length_bp >= policy.minimum_plasmid_bp));
       if (!eligible) { supplementary++; continue; }
       expected.total++;
       expected[['pass', 'fail'].includes(row.status) ? row.status : ['error', 'timeout', 'invalid_input'].includes(row.status) ? 'errors' : 'unscored']++;

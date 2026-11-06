@@ -1,0 +1,70 @@
+{
+  "scope": "Pinned reference integrity and literal inverted-end comparison only.",
+  "replicons": [
+    {
+      "accession": "NZ_CP108065.1",
+      "length_bp": 10691412,
+      "alphabet": [
+        "A",
+        "C",
+        "G",
+        "T"
+      ],
+      "sequence_sha256": "0ee8df97abc7a3a4118aef7ea87770b7a61e21601a66de839760a41eb5a373d3",
+      "fasta_sha256": "9c37ec15dd5e19e00a98374905700cb0174138064663f71e5536eccb8ae7c27f",
+      "exact_terminal_inverted_prefix_bp": 35
+    },
+    {
+      "accession": "NZ_CP108066.1",
+      "length_bp": 134326,
+      "alphabet": [
+        "A",
+        "C",
+        "G",
+        "T"
+      ],
+      "sequence_sha256": "32f8701582206ff699a4a9be0baa47e951d23756035d4f58c28184356ac52165",
+      "fasta_sha256": "1d61ec6101401ed126c6a3cc98cd29e82b7cb0b3904bbcae42ebed8e803735fd",
+      "exact_terminal_inverted_prefix_bp": 3
+    },
+    {
+      "accession": "NZ_CP108676.1",
+      "length_bp": 10948847,
+      "alphabet": [
+        "A",
+        "C",
+        "G",
+        "T"
+      ],
+      "sequence_sha256": "61a7a05815d2b1e8328f5cbcc28034cf16cefeb915fa3f98d68325703ef9c753",
+      "fasta_sha256": "d94aeaedc6ce52488ec66deffc6fc97a01edbd694b4144bf92862dc5cd862ccc",
+      "exact_terminal_inverted_prefix_bp": 48
+    },
+    {
+      "accession": "NZ_CP109243.1",
+      "length_bp": 7135774,
+      "alphabet": [
+        "A",
+        "C",
+        "G",
+        "T"
+      ],
+      "sequence_sha256": "5e4b8cd14bfe83008bc5b3c9e4b9c36e655d714e5b2900970216c8ce6f4ea25d",
+      "fasta_sha256": "45a484f3904768768b0ed04b1df58899de2badac06fd75fcfa58909b9584d7ca",
+      "exact_terminal_inverted_prefix_bp": 0
+    },
+    {
+      "accession": "NZ_CP109244.1",
+      "length_bp": 172072,
+      "alphabet": [
+        "A",
+        "C",
+        "G",
+        "T"
+      ],
+      "sequence_sha256": "063821360e73103b432f5a1fee3c65b012176005815c593fc6694e74e4a2b483",
+      "fasta_sha256": "b0c648125a86142d8131e5c1d45e19d005747c6fdae7a8606976df093a19f9a8",
+      "exact_terminal_inverted_prefix_bp": 0
+    }
+  ]
+}

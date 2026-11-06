@@ -1,6 +1,6 @@
 # Revised baseline: ordinary recovery before small-plasmid challenges
 
-Policy ID: `large-plasmid-baseline-v3`. Boundary: **20,000 bp inclusive**.
+Policy ID: `reference-scope-v4`. Boundary: **20,000 bp inclusive**.
 This is a reporting policy over saved metadata; it does not change reference
 sequences, frozen input manifests, execution commands or scientific scores.
 
@@ -9,6 +9,7 @@ sequences, frozen input manifests, execution commands or scientific scores.
 | S1 | Error-free reads: chromosome only; chromosome plus one plasmid ≥20 kb; chromosome plus multiple plasmids, each ≥20 kb. |
 | S2 | The larger-plasmid baseline complement, changing only plasmid coverage relative to the chromosome. |
 | S3 | One fixed larger-plasmid input; compare repeats within mode/thread groups and across thread settings. Recovery against the reference remains secondary. |
+| S5 | Selected complete Streptomyces assemblies with their deposited linear chromosomes and plasmids; isolated SCP1/SLP2 controls are historical. |
 | S6 | Matched read-error comparisons using one chromosome plus one plasmid ≥20 kb; no small plasmids. |
 | S4 | Plasmids below 20 kb, individually and with larger plasmids; label read-length and other changes explicitly. |
 
@@ -32,7 +33,9 @@ both eligible saved controls and supplementary mixed-size results.
   earlier small-plasmid repeats remain supplementary.
 - S6's 12 historical pRK2 noise executions use a 5,360 bp plasmid. They remain
   available as supplementary small-plasmid noise tests, not the revised S6 panel.
-- S4 and S5 retain their existing scopes and results.
+- S4 retains its existing scope and results. S5 now selects three complete
+  Streptomyces assemblies; its 16 isolated SCP1/SLP2 executions remain historical
+  and supplementary. The replacement has not run.
 
 Supplementary runs keep their original scenario identifiers, detailed pages,
 commands, plots, downloads and scores. They are not relabelled as new S4 runs or

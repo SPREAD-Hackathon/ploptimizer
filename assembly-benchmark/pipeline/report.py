@@ -20,7 +20,7 @@ from .result_pages import enrich_graph_artifacts, result_href, write_result_page
 LABELS = {"flye": "Flye (default)", "flye-meta": "Flye (--meta)", "raven": "Raven", "plassembler": "Plassembler long"}
 STATUSES = {"pass": "Pass", "fail": "Fail", "not_run": "Not run", "pending": "Queued", "running": "Running", "error": "Job error", "timeout": "Timed out", "invalid_input": "Invalid input"}
 CATEGORIES = {
-    "S5": ("Linear plasmids and terminal repeats", "Isolated linear-plasmid reference controls with standard and repeat-spanning reads. Physical ends are retained; terminal anchors are a declared ideal-data control, not a library model."),
+    "S5": ("Linear plasmids and terminal repeats", "Linear references with standard and long read-length targets. Input sequences retain their recorded ends."),
     "S1": ("Error-free recovery", "Chromosome-only controls, individual native plasmids and complete deposited complements. These cases establish the baseline for each reference."),
     "S4": ("Small plasmids and read length", "Compare short, baseline and long read-length targets for small plasmids individually and in their native complements. Achieved read lengths are capped to one molecule circumference; targets describe simulation settings, not nanopore chemistry."),
     "S2": ("Relative plasmid coverage", "Hold chromosome depth and read properties fixed, and vary plasmid depth at 0.8×, 1×, 1.2×, 3× and 5× relative to it. These are coverage ratios, not measured biological copy numbers."),

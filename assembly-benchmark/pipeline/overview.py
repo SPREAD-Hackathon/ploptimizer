@@ -102,14 +102,20 @@ def render_family(model, family, prefix="../"):
     if item is None:
         raise ValueError("Unknown scenario family")
     body = f'<p><a href="{_e(prefix)}index.html">All scenario families</a></p><h1>{family} · {_e(item["title"])}</h1><p>{_e(item["description"])}</p>'
-    if item.get("supplementary_counts", {}).get("total") and family != "S6":
+    if item.get("supplementary_counts", {}).get("total") and family not in {"S5", "S6"}:
         body += '<p>Headline counts exclude supplementary small-plasmid inputs. Their original results remain below.</p>'
     if family == "S1" and model.get("baseline_policy"):
         body += '<p>The baseline tests chromosome-only controls and recovery of one or several plasmids ≥20 kb. The tables show recorded results.</p>'
     if family == "S2" and model.get("baseline_policy") and not item['counts']['total']:
         body += '<p>The revised larger-plasmid coverage panel has not been assessed.</p>'
+    if family == "S5" and model.get("baseline_policy") and not item['counts']['total']:
+        body += '<p>The replacement panel has not been run. It selects complete assemblies of S. canus NBC_00277, S. prunicolor NBC_01021 and S. albidoflavus NBC 01661, including their deposited plasmids.</p>'
     if family == "S6" and model.get("baseline_policy") and not item['counts']['total']:
-        body += '<p>The revised large-plasmid read-error panel has not been run. Planned inputs are SE11 + pSE11-1 (100,021 bp) and MGH78578 + pKPN3 (175,879 bp), each with its chromosome. Larger-plasmid assessment must be validated before execution.</p>'
+        status = model.get('panel_statuses', {}).get('S6', {})
+        if status.get('state') == 'submitted':
+            body += '<p>The 24-execution replacement panel has been submitted. Verified results will appear when the evidence is complete. Inputs are SE11 + pSE11-1 (100,021 bp) and MGH78578 + pKPN3 (175,879 bp), each with its chromosome.</p>'
+        else:
+            body += '<p>The revised large-plasmid read-error panel has not been run. Planned inputs are SE11 + pSE11-1 (100,021 bp) and MGH78578 + pKPN3 (175,879 bp), each with its chromosome.</p>'
     if family == "S6" and item['counts']['total']:
         metric = "Repeatability" if family == "S3" else "Tolerant recovery"
         body += f'<p>{metric} is a separate endpoint. The tables below show exact status only; individual result links retain the detailed evidence.</p>'
@@ -125,13 +131,13 @@ def render_family(model, family, prefix="../"):
         body += '</tbody></table></div>'
     primary = [row for row in item['records'] if row.get('cohort_role') != 'supplementary']
     supplementary = [row for row in item['records'] if row.get('cohort_role') == 'supplementary']
-    if primary or family != 'S6':
+    if primary or family not in {'S5', 'S6'}:
         body += '<h2>Individual runs</h2>' + _run_table(primary, prefix)
     if family == 'S3':
         body += '</details>'
     if supplementary:
         body += f'<details><summary>Supplementary results · {len(supplementary)} runs</summary>'
-        body += '<p>Inputs contain plasmids below 20 kb; these runs retain their original scenario, score and evidence.</p>'
+        body += ('<p>Previous isolated SCP1/SLP2 controls; original scores and evidence are retained.</p>' if family == 'S5' else '<p>Inputs contain plasmids below 20 kb; these runs retain their original scenario, score and evidence.</p>')
         body += _run_table(supplementary, prefix) + '</details>'
     return body
 

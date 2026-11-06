@@ -112,6 +112,8 @@ def result_body(case, record, artifact, output, family=None):
     slug = result_slug(record)
     family_link = f'<a href="../scenarios/{e(family.lower())}.html">{e(family)} results</a> · ' if family else ''
     body = f'<nav class="result-breadcrumb" aria-label="Result navigation">{family_link}<a href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Input details</a></nav><h1>{e(LABELS[record["tool"]])}</h1><p class="result-subtitle">{e(case_title(case))}</p>'
+    if family == 'S5' and case.get('truth_type') == 'isolated_linear_reference_record':
+        body += '<p class="muted">Historical isolated-plasmid control. The <a href="/scenarios/s5.html">active S5 panel</a> uses complete Streptomyces genomes.</p>'
     if family == 'S6':
         from .noisy_report import legacy_noise_note
         body += legacy_noise_note(case)

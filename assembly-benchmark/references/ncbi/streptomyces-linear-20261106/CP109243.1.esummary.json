@@ -1,0 +1,46 @@
+{
+  "header": {
+    "type": "esummary",
+    "version": "0.3"
+  },
+  "result": {
+    "uids": [
+      "2655774549"
+    ],
+    "2655774549": {
+      "uid": "2655774549",
+      "term": "2655774549",
+      "caption": "CP109243",
+      "title": "Streptomyces albidoflavus strain NBC 01661 chromosome, complete genome",
+      "extra": "gi|2655774549|gb|CP109243.1|",
+      "gi": 2655774549,
+      "createdate": "2024/01/23",
+      "updatedate": "2024/01/23",
+      "taxid": 1886,
+      "slen": 7135774,
+      "biomol": "genomic",
+      "moltype": "dna",
+      "topology": "linear",
+      "sourcedb": "insd",
+      "projectid": "747871",
+      "genome": "chromosome",
+      "subtype": "strain|country|isolation_source|collection_date",
+      "subname": "NBC 01661|Netherlands: Hegelsom, Ploughed and fertilized land (no crops)|soil|2021-05",
+      "completeness": "complete",
+      "geneticcode": "11",
+      "organism": "Streptomyces albidoflavus",
+      "strain": "NBC 01661",
+      "biosample": "SAMN30553390",
+      "statistics": "",
+      "properties": {
+        "na": "1",
+        "value": "1"
+      },
+      "oslt": {
+        "indexed": true,
+        "value": "CP109243.1"
+      },
+      "accessionversion": "CP109243.1"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "status": "pass",
+  "scope": "Accession/version, declared record length, ACGT alphabet, sequence hashes and literal terminal measurements; repeat classification remains unassigned.",
+  "assemblies": 3,
+  "replicons": [
+    {
+      "accession": "NZ_CP108065.1",
+      "genbank_accession": "CP108065.1",
+      "length_bp": 10691412,
+      "sequence_sha256": "0ee8df97abc7a3a4118aef7ea87770b7a61e21601a66de839760a41eb5a373d3",
+      "topology": "linear"
+    },
+    {
+      "accession": "NZ_CP108066.1",
+      "genbank_accession": "CP108066.1",
+      "length_bp": 134326,
+      "sequence_sha256": "32f8701582206ff699a4a9be0baa47e951d23756035d4f58c28184356ac52165",
+      "topology": "linear"
+    },
+    {
+      "accession": "NZ_CP108676.1",
+      "genbank_accession": "CP108676.1",
+      "length_bp": 10948847,
+      "sequence_sha256": "61a7a05815d2b1e8328f5cbcc28034cf16cefeb915fa3f98d68325703ef9c753",
+      "topology": "linear"
+    },
+    {
+      "accession": "NZ_CP109243.1",
+      "genbank_accession": "CP109243.1",
+      "length_bp": 7135774,
+      "sequence_sha256": "5e4b8cd14bfe83008bc5b3c9e4b9c36e655d714e5b2900970216c8ce6f4ea25d",
+      "topology": "linear"
+    },
+    {
+      "accession": "NZ_CP109244.1",
+      "genbank_accession": "CP109244.1",
+      "length_bp": 172072,
+      "sequence_sha256": "063821360e73103b432f5a1fee3c65b012176005815c593fc6694e74e4a2b483",
+      "topology": "linear"
+    }
+  ],
+  "planned_inputs": 6,
+  "planned_executions": 24,
+  "new_jobs_submitted": 0,
+  "reference_panel_sha256": "3644f34414f365e742f4a081900c556496d4bb599f4a1a5a7d98da9de1996632"
+}

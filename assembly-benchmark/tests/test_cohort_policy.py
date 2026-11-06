@@ -45,3 +45,16 @@ class CohortPolicyTests(unittest.TestCase):
         self.assertEqual(reporting_role(self.case(100021, 5360), 'S6', revised)[0], 'supplementary')
         self.assertEqual(reporting_role(self.case(), 'S6', revised)[0], 'supplementary')
         self.assertEqual(reporting_role(self.case(5360), 'S6', self.policy)[0], 'primary')
+
+    def test_s5_uses_selected_native_assemblies_and_retires_isolated_controls(self):
+        policy = dict(self.policy, families=['S5'], linear_assemblies=['GCF_036177905.1'])
+        native = self.case(134326)
+        native['assembly_accession'] = 'GCF_036177905.1'
+        for molecule in native['replicons']:
+            molecule['topology'] = 'linear'
+        self.assertEqual(reporting_role(native, 'S5', policy)[0], 'primary')
+        isolated = self.case(356023)
+        isolated['replicons'] = isolated['replicons'][1:]
+        self.assertEqual(reporting_role(isolated, 'S5', policy)[0], 'supplementary')
+        native['replicons'][0]['topology'] = 'circular'
+        self.assertEqual(reporting_role(native, 'S5', policy)[0], 'supplementary')

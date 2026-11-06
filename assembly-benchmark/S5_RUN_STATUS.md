@@ -1,6 +1,8 @@
-# S5 completed backend batch
+# Historical S5 completed backend batch
 
-Batch: **20261105T161510** · profile: `config/linear-plasmids.json`.
+Batch: **20261105T161510** · profile: `config/linear-isolated-legacy.json`.
+This batch is retired from the active S5 reference selection; see
+[the replacement complete-genome panel](LINEAR_TERMINAL_REPEATS.md).
 Run on BMRC cluster3 on 5 November 2026. All required jobs completed with exit 0.
 
 This separate panel simulates isolated SCP1/SLP2 reference records. It does not
@@ -59,8 +61,8 @@ commit `e1e23c1`; the successful retry uses a fresh batch.
 From assembly-benchmark:
 
 ```sh
-python benchmark.py --config config/linear-plasmids.json plan
-python benchmark.py --config config/linear-plasmids.json submit
+python benchmark.py --config config/linear-isolated-legacy.json plan
+python benchmark.py --config config/linear-isolated-legacy.json submit
 python benchmark.py collect --batch 20261105T161510
 python benchmark.py report --batch 20261105T161510
 ```

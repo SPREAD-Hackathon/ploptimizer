@@ -1,0 +1,46 @@
+{
+  "header": {
+    "type": "esummary",
+    "version": "0.3"
+  },
+  "result": {
+    "uids": [
+      "2659237615"
+    ],
+    "2659237615": {
+      "uid": "2659237615",
+      "term": "2659237615",
+      "caption": "CP108065",
+      "title": "Streptomyces canus strain NBC_00277 chromosome, complete genome",
+      "extra": "gi|2659237615|gb|CP108065.1|",
+      "gi": 2659237615,
+      "createdate": "2024/01/25",
+      "updatedate": "2024/01/25",
+      "taxid": 58343,
+      "slen": 10691412,
+      "biomol": "genomic",
+      "moltype": "dna",
+      "topology": "linear",
+      "sourcedb": "insd",
+      "projectid": "747871",
+      "genome": "chromosome",
+      "subtype": "strain|country|isolation_source|lat_lon|collection_date",
+      "subname": "NBC_00277|Denmark: Hoersholm, Deer feeding station near old CFB building in Hoersholm|soil|55.8714 N 12.4942 E|2016-08",
+      "completeness": "complete",
+      "geneticcode": "11",
+      "organism": "Streptomyces canus",
+      "strain": "NBC_00277",
+      "biosample": "SAMN30552984",
+      "statistics": "",
+      "properties": {
+        "na": "1",
+        "value": "1"
+      },
+      "oslt": {
+        "indexed": true,
+        "value": "CP108065.1"
+      },
+      "accessionversion": "CP108065.1"
+    }
+  }
+}

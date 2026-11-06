@@ -1,0 +1,32 @@
+{
+  "reports": [
+    {
+      "assembly_accession": "GCF_045210185.1",
+      "chr_name": "chromosome",
+      "assigned_molecule_location_type": "Chromosome",
+      "refseq_accession": "NZ_CP109243.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 7135774,
+      "genbank_accession": "CP109243.1",
+      "gc_count": "5230873",
+      "gc_percent": 73.5,
+      "role": "assembled-molecule",
+      "sequence_name": "CP109243.1"
+    },
+    {
+      "assembly_accession": "GCF_045210185.1",
+      "chr_name": "unnamed1",
+      "sort_order": 2,
+      "assigned_molecule_location_type": "Plasmid",
+      "refseq_accession": "NZ_CP109244.1",
+      "assembly_unit": "Primary Assembly",
+      "length": 172072,
+      "genbank_accession": "CP109244.1",
+      "gc_count": "121561",
+      "gc_percent": 70.5,
+      "role": "assembled-molecule",
+      "sequence_name": "unnamed1"
+    }
+  ],
+  "total_count": 2
+}

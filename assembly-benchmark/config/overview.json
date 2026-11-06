@@ -32,14 +32,31 @@
   "denominator": "pass + fail",
   "notes": "Explicit first-release cohort. Historical pilot excluded. Archived overview includes only its batch. Repeatability and tolerant recovery are separate endpoints.",
   "baseline_policy": {
-    "id": "large-plasmid-baseline-v3",
+    "id": "reference-scope-v4",
     "minimum_plasmid_bp": 20000,
     "scope": "Reporting classification of saved cases only; original inputs and scores unchanged",
     "families": [
       "S1",
       "S2",
       "S3",
-      "S6"
+      "S6",
+      "S5"
+    ],
+    "linear_assemblies": [
+      "GCF_036177905.1",
+      "GCF_045162825.1",
+      "GCF_045210185.1"
     ]
+  },
+  "panel_statuses": {
+    "S5": {
+      "state": "not_run",
+      "config": "config/linear-plasmids.json"
+    },
+    "S6": {
+      "state": "submitted",
+      "batch_id": "20261106T100403",
+      "assembly_count": 24
+    }
   }
 }

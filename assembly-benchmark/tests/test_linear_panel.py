@@ -13,7 +13,27 @@ from pipeline.execution import command
 
 
 class LinearPanelTests(unittest.TestCase):
-    def config(self):return load(ROOT/'config/linear-plasmids.json')
+    def config(self):return load(ROOT/'config/linear-isolated-legacy.json')
+
+    def test_active_panel_uses_complete_native_streptomyces_genomes(self):
+        config = load(ROOT / 'config/linear-plasmids.json')
+        cases = plan(config)
+        self.assertEqual(len(cases), 6)
+        self.assertEqual(len(assembly_tasks(config, cases)), 24)
+        self.assertEqual({c['assembly_accession'] for c in cases},
+                         {'GCF_036177905.1', 'GCF_045162825.1', 'GCF_045210185.1'})
+        for case in cases:
+            self.assertEqual(case['truth_type'], 'native_complement')
+            self.assertEqual(sum(m['molecule_type'] == 'chromosome' for m in case['replicons']), 1)
+            self.assertTrue(all(m['topology'] == 'linear' for m in case['replicons']))
+            self.assertTrue(all(m['refseq_accession'] not in {'NC_003903.1', 'NC_004933.1'} for m in case['replicons']))
+        self.assertEqual(sorted(len(c['replicons']) for c in cases), [1, 1, 2, 2, 2, 2])
+        argv = command('plassembler', Path('reads.fq'), Path('out'), config)
+        self.assertIn('--keep_chromosome', argv)
+        self.assertNotIn('--no_chromosome', argv)
+        config['plassembler_no_chromosome'] = True
+        with self.assertRaises(ValueError):
+            plan(config)
 
     def test_four_isolated_cases_sixteen_assemblies_and_no_native_mix(self):
         config=self.config();cases=plan(config)
@@ -57,3 +77,15 @@ class LinearPanelTests(unittest.TestCase):
         validate_terminal_reference(reference,'ACGTTTACGT')
         with self.assertRaisesRegex(ValueError,'differs'):
             validate_terminal_reference(reference,'TCGTTTACGT')
+
+    def test_native_terminal_prefix_check_does_not_assign_repeat_type(self):
+        from pipeline.linear_cases import validate_terminal_reference
+        reference = {'topology': 'linear', 'terminal_repeat_evidence': {
+            'method': 'literal_terminal_inverted_prefix-v1',
+            'exact_terminal_inverted_prefix_bp': 4,
+            'repeat_classification': 'not_assigned'}}
+        validate_terminal_reference(reference, 'ACGTTTACGT')
+        with self.assertRaisesRegex(ValueError, 'differs'):
+            validate_terminal_reference(reference, 'TCGTTTACGT')
+        reference['terminal_repeat_evidence']['exact_terminal_inverted_prefix_bp'] = 0
+        validate_terminal_reference(reference, 'AACC')

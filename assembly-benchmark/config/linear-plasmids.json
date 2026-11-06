@@ -1,9 +1,10 @@
 {
   "schema_version": 1,
-  "profile_id": "s5-isolated-linear-ends-v1",
+  "profile_id": "s5-native-linear-streptomyces-v2",
   "references": [
-    "NC_003903.1",
-    "NC_004933.1"
+    "GCF_036177905.1",
+    "GCF_045162825.1",
+    "GCF_045210185.1"
   ],
   "simulation": {
     "model": "exact-linear-anchored-v1",
@@ -32,12 +33,12 @@
   "scenario_categories": [
     "S5"
   ],
-  "plassembler_no_chromosome": true,
+  "plassembler_no_chromosome": false,
   "linear_panel": {
     "read_profiles": [
       {
         "id": "standard",
-        "title": "standard reads",
+        "title": "standard read-length target",
         "length_mean": 10000,
         "length_sd": 5000,
         "length_min": 500,
@@ -45,15 +46,17 @@
         "linear_terminal_read_length": 10000
       },
       {
-        "id": "spanning",
-        "title": "repeat-spanning reads",
+        "id": "long",
+        "title": "long read-length target",
         "length_mean": 100000,
         "length_sd": 25000,
         "length_min": 20000,
         "length_max": 200000,
         "linear_terminal_read_length": 120000
       }
-    ]
+    ],
+    "scope": "native_genome",
+    "reference_panel": "references/streptomyces-linear-panel.json"
   },
   "report_scope": "single_batch"
 }

@@ -8,6 +8,12 @@ def reporting_role(case, family, policy):
     molecules = case.get('replicons', [])
     chromosomes = [m for m in molecules if m.get('molecule_type') == 'chromosome']
     plasmids = [m for m in molecules if m.get('molecule_type') == 'plasmid']
+    if family == 'S5':
+        if case.get('assembly_accession') not in policy.get('linear_assemblies', []):
+            return 'supplementary', 'Earlier isolated-plasmid control; replaced by the complete Streptomyces genome panel.'
+        if len(chromosomes) != 1 or any(m.get('topology') != 'linear' for m in molecules):
+            return 'supplementary', 'The active S5 panel requires the selected complete linear reference complement.'
+        return 'primary', None
     if len(chromosomes) != 1:
         return 'supplementary', 'The revised baseline requires one chromosome.'
     if family in {'S2', 'S3', 'S6'} and not plasmids:

@@ -1,123 +1,77 @@
-# S5: linear plasmids with terminal repeats
+# S5: complete linear Streptomyces genomes
 
-## Terminology and candidate examples
+The active panel replaces the isolated SCP1/SLP2 controls with the three complete
+assemblies selected by the user. It includes every deposited replicon in each
+assembly, rather than attaching a plasmid to an unrelated chromosome.
 
-The well-supported examples below have **terminal inverted repeats (TIRs)**:
-related sequences at opposite ends in opposite orientation. These are distinct
-from tandem repeats (adjacent repeated units in the same direction). Do not label
-the two structures interchangeably. This review did not establish a natural
-linear-plasmid example with terminal tandem arrays suitable for admission.
+| Species / strain | Requested chromosome | Chromosome length | Native plasmid | Plasmid length | RefSeq assembly |
+| --- | --- | --- | --- | --- | --- |
+| S. canus NBC_00277 | [CP108065.1](https://www.ncbi.nlm.nih.gov/nuccore/CP108065.1/) | 10,691,412 bp | CP108066.1 | 134,326 bp | GCF_036177905.1 |
+| S. prunicolor NBC_01021 | [CP108676.1](https://www.ncbi.nlm.nih.gov/nuccore/CP108676.1/) | 10,948,847 bp | None deposited | — | GCF_045162825.1 |
+| S. albidoflavus NBC 01661 | [CP109243.1](https://www.ncbi.nlm.nih.gov/nuccore/CP109243.1/) | 7,135,774 bp | CP109244.1 | 172,072 bp | GCF_045210185.1 |
 
-| Candidate | Pinned record | Record length | Documented terminal structure |
-| --- | --- | --- | --- |
-| Streptomyces coelicolor A3(2), SCP1 | [NC_003903.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_003903.1) | 356,023 bp | Long TIRs, approximately 81 kb in the cited physical/sequence study. |
-| Streptomyces lividans 1326, SLP2 | [NC_004933.1](https://www.ncbi.nlm.nih.gov/nuccore/NC_004933.1) | 50,410 bp | Short 44 bp TIRs; chromosome-shared terminal sequence is an additional confounder. |
+NCBI annotates all five records as linear. The pinned assembly reports link the
+requested GenBank records to identical-version RefSeq records (`NZ_CP…`). The
+backend uses those RefSeq accessions and retains the requested GenBank aliases.
+The reference inventory and sequence hashes are in
+[references/streptomyces-linear-panel.json](references/streptomyces-linear-panel.json).
+Unmodified NCBI metadata responses are retained under
+`references/ncbi/streptomyces-linear-20261106/`.
 
-Sources: [SCP1 terminal-repeat study](https://doi.org/10.1016/0147-619X(91)90052-X),
-[SLP2 characterisation](https://pubmed.ncbi.nlm.nih.gov/12622812/), and
-[SLP2/chromosome terminal homology](https://doi.org/10.1099/00221287-146-4-911).
-The literature repeat lengths are not new measurements of these exact RefSeq
-versions. NCBI summary metadata checked on 5 November 2026 confirm the pinned
-lengths and linear topology; the saved snapshot is
-`references/ncbi/linear-terminal-repeat-candidates.esummary.json`.
-These remain **candidates, not newly admitted gold standards**. SLP2 was already
-listed in METHODS.md; SCP1 adds a substantially longer terminal-repeat candidate.
+## Active backend configuration
 
-## Native-context extension; not yet executed
+`config/linear-plasmids.json` now selects the three complete assemblies through
+`pipeline/linear_cases.py`. Two read-length profiles produce six inputs and
+24 assembler executions: standard target lengths (10 kb mean, 50 kb ceiling) and
+long target lengths (100 kb mean, 200 kb ceiling), each with the existing four
+assembler configurations. No replacement runs have been submitted.
 
-Use a curated native reference complement. Keep reference ends fixed; linear
-reads must not wrap between ends. Contrast a short-TIR case with a long-TIR case,
-recording species, GC composition and chromosome context as confounders. A
-synthetic non-biological linear control can validate scoring independently.
-Do not mix unrelated species and label the result a native genome.
+Each input contains its complete deposited chromosome/plasmid complement.
+Plassembler uses its ordinary chromosome-aware workflow, retaining chromosome
+output; the old `--no_chromosome` mode is not used for these genomes.
 
-Expected output is a linear sequence/path retaining both terminal copies and
-the correct interior, without an artificial end-to-end join. A graph may contain
-shared repeat segments, so its visual shape need not be one straight line.
-Graph segment count or a repeated traversal alone cannot establish repeat collapse.
+The existing exact per-tool endpoints remain unchanged: plasmid recovery decides
+plasmid-containing cases; chromosome-only recovery is assessed for ordinary
+assemblers, while Plassembler has its separate no-plasmid control. Per-molecule
+chromosome and plasmid results must be shown separately. A plasmid pass alone
+must not be described as exact recovery of the complete genome.
 
-Assess separately:
+## Input and terminal checks
 
-- Full sequence, length, dedicated-copy recovery and orientation-aware ends.
-- Left/right terminal recovery and truncation, with versioned terminal intervals.
-- Repeat multiplicity, retained orientation, fragmentation and candidate false joins.
-- Assembler-reported circularity versus expected linear topology.
-- Raw graph segment and final contig length distributions.
+All five pinned sequences passed accession, length and ACGT-only checks. The
+reference preparer rechecks their sequence hashes and recorded terminal evidence.
+The error-free linear simulator retains fixed ends and never wraps reads across
+them. Two terminal reads cover each end, one per orientation; full breadth is required.
+The standard and long arms retain their declared 10 kb / 120 kb terminal-read
+lengths, capped to molecule length. These are the existing ideal-data controls.
 
-Before admission, verify terminal completeness, ambiguous bases, accession/version
-and strain provenance, including repeat coordinates in that exact sequence.
-Reverse complements remain equivalent; circular rotation does not. Sequence
-simulation does not reproduce terminal proteins, hairpin chemistry or library
-capture bias. The native-context extension has not been simulated or submitted here.
+Repeat type and repeat coordinates are **not yet assigned** for these new
+records. A literal exact inverted-prefix comparison of the deposited ends gives
+35 bp / 3 bp for the S. canus chromosome/plasmid, 48 bp for S. prunicolor, and
+0 bp / 0 bp for the S. albidoflavus chromosome/plasmid. These values are not
+estimates of full repeat length and do not exclude imperfect or offset repeats.
+The arms are therefore labelled **standard** and **long**, not “repeat-spanning”.
+Terminal inverted repeats and tandem arrays remain separate structures; do not
+assign either label without locating the relevant sequence intervals.
 
-## First executable backend profile
+Linear exact equivalence permits reverse complementation, not rotation. Sequence
+recovery, end truncation, repeat copy structure and reported circularity should
+remain distinguishable in the report. Repeat-specific mechanism claims require
+curated intervals in these exact versions.
 
-`config/linear-plasmids.json` is now wired into `benchmark.py` through
-`pipeline/linear_cases.py`, the shared simulator, task runner and Slurm submitter.
-It defines **four isolated-plasmid controls and 16 assembly tasks**: both plasmids
-with standard (10 kb mean / 50 kb maximum) and repeat-spanning (100 kb mean /
-200 kb maximum) read profiles, each assessed with Flye (default), Flye (`--meta`),
-Raven and Plassembler long. This initial execution scope supersedes the earlier
-unexecuted proposal above for these controls only; native-complement tests remain
-pending.
+## Historical controls
 
-The first batch contains no chromosome. The commonly used coelicolor M145
-chromosome is a plasmid-cured derivative, so combining it with SCP1 and claiming a
-native complement would be misleading ([original genome paper](https://doi.org/10.1038/417141a)).
-Plassembler explicitly uses `--no_chromosome`; in version 1.9.0 this skips its
-initial Flye stage and uses an artificial workflow placeholder. That placeholder
-is not an input reference, a retained biological chromosome or part of scoring.
+SCP1 and SLP2 are no longer active reference selections. Their original 16 runs,
+commands and scores remain historical/supplementary. Their exact configuration is
+retained as `config/linear-isolated-legacy.json`; their curation is in
+[LINEAR_ISOLATED_LEGACY.md](LINEAR_ISOLATED_LEGACY.md) and
+[references/linear-panel.json](references/linear-panel.json).
 
-### Pinned-record curation
-
-Both exact accession versions were downloaded and passed length and ACGT-only
-checks. Their sequence hashes and literal terminal-window comparisons are frozen
-in [references/linear-panel.json](references/linear-panel.json). Preparation checks
-these admitted sequence hashes again before simulation.
-
-- SCP1: 356,023 bp, with an exact terminal inverted prefix of **75,122 bp** in this
-  record. Comparing the literature-sized 81,000 bp terminal windows position by
-  position gives 4,321 differences. The historical approximate 81 kb claim is not
-  relabelled as a perfect repeat in this version.
-- SLP2: 50,410 bp, with an exact terminal inverted prefix of **14 bp**. Its
-  literature-sized 44 bp windows differ at eight positions. The published short
-  TIR is imperfect, rather than a 44 bp exact duplicate.
-
-These are ungapped, literal sequence comparisons at the fixed record ends, not
-independent physical-end validation or a reassembly of the original isolate.
-The admitted scope is **isolated linear reference-record simulation**.
-
-### Input admission and interpretation
-
-The versioned `exact-linear-anchored-v1` simulator never wraps linear ends. Two
-synthetic reads are anchored at each physical end, one per orientation: 10 kb
-for standard cases and 120 kb for spanning cases, clipped to molecule length.
-Remaining reads use random starts/strands and the declared lognormal profile.
-All reads are error-free; Q40 is a placeholder. The target depth is 30×. Full
-reference breadth and at least two reads touching each end are required before
-assembly. These deliberate anchors create ideal, end-complete inputs; they do
-not model terminal protein chemistry or library capture.
-
-The standard SCP1 read-length ceiling does not span its exact terminal repeat;
-the spanning case includes end reads longer than the repeat. Keep these conditions
-separate when interpreting a failure. SLP2 spanning reads are capped at its shorter
-molecule length. Exact linear scoring permits reverse complements but rejects
-rotation, terminal loss, extra copies and sequence changes. Tool-reported topology
-remains separate from the strict sequence endpoint.
-
-Run from assembly-benchmark:
+Plan from `assembly-benchmark` with:
 
 ```sh
-python benchmark.py --config config/linear-plasmids.json plan
-python benchmark.py --config config/linear-plasmids.json submit
+python3 benchmark.py --config config/linear-plasmids.json plan
 ```
 
-Pixi environments and the Slurm account/concurrency come from the existing cluster
-configuration. Each batch freezes its config, task list, source provenance, input
-admission and original execution files. Its initial report is batch-scoped;
-joining an expanded public cohort is a later explicit publication step.
-
-The default Pixi environment now includes the reporting Matplotlib version
-(3.10.8), so cluster preparation can run the full backend/reporting test suite.
-The first submission stopped during this environment check before simulation;
-it is retained as an unsuccessful setup attempt, not an assembler result.
+Planning does not simulate reads or submit jobs. Future execution must use fresh
+batch directories; do not overwrite the historical S5 batch.
