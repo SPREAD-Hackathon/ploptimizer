@@ -75,8 +75,8 @@ class ResultPageTests(unittest.TestCase):
         self.assertIn("Reported circular (source value: Y)", html)
         self.assertIn("Not reported circular (source value: N)", html)
         self.assertNotIn("Reported linear", html)
-        self.assertIn("not physical validation", html)
-        self.assertIn("intermediate contigs are not automatically final outputs", html)
+        self.assertNotIn("not physical validation", html)
+        self.assertNotIn("intermediate contigs are not automatically final outputs", html)
 
     def test_plassembler_chromosome_summary_row_is_outside_plasmid_output(self):
         artifact={'assembly_info':{'status':'available','source':{'kind':'plassembler_summary','role':'final'},'contigs':[{'id':'chromosome','length_bp':1000,'reported_circularity':'unknown'}]}}

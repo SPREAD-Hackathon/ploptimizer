@@ -223,10 +223,9 @@ export function GraphViewer({ artifact = {} }) {
           <title>{`${node.id}; ${node.length_bp == null ? 'length unknown' : node.length_bp + ' bp'}`}</title>
         </g>; })}
       </svg>
-      <p className="muted">A self-link or closed GFA path is graph evidence, not confirmation of a physical circular molecule. Assembler-reported circularity and its source are listed separately on this result page.</p>
       {selectedNode && <div className="graph-selection" aria-live="polite"><h3>Segment {selectedNode.id}</h3><p>Length: {selectedNode.length_bp == null ? 'not reported' : `${selectedNode.length_bp.toLocaleString()} bp`}. Recorded GFA coverage/count tags: {coverageDescription(selectedNode.reported_coverage_tags) || 'none collected'}.</p>
         <OriginEvidence origin={selectedOrigin} node={selectedNode} origins={origins} selectedInterval={selectedInterval} onSelectInterval={setSelectedInterval} />
-        <p>{graph.self_loop_segment_ids?.includes(selectedNode.id) ? 'An explicit GFA self-link was recorded for this segment.' : 'No explicit GFA self-link was recorded for this segment.'} This does not validate molecular topology.</p>
+        <p>{graph.self_loop_segment_ids?.includes(selectedNode.id) ? 'An explicit GFA self-link was recorded for this segment.' : 'No explicit GFA self-link was recorded for this segment.'}</p>
         <details open><summary>Incident link records ({related.length})</summary>{related.length ? <ul>{related.map((edge, index) => <li key={index}><code>{edge.source}{edge.source_orientation} → {edge.target}{edge.target_orientation}</code>; overlap {edge.overlap}</li>)}</ul> : <p>No incident link records.</p>}</details>
       </div>}
       {graph.paths?.length > 0 && <details><summary>Recorded GFA paths ({graph.paths.length})</summary><ul>{graph.paths.map((path, index) => <li key={index}><strong>{path.id}</strong>: <code>{path.steps.map(step => step.segment + step.orientation).join(', ')}</code></li>)}</ul></details>}

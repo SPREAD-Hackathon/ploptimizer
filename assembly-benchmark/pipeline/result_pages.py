@@ -52,7 +52,7 @@ def source_description(source):
 def contig_section(record, artifact):
     from .report import e
     info = artifact.get("assembly_info") or {}
-    body = '<h2 id="contigs">Contigs and assembler-reported circularity</h2><p>A tool’s circularity label is a reported claim, not physical validation. Reference topology, exact sequence recovery and graph self-links are separate evidence. The inventory applies only to its labelled source and workflow role; intermediate contigs are not automatically final outputs.</p>'
+    body = '<h2 id="contigs">Contigs and assembler-reported circularity</h2>'
     if info.get("status") == "available":
         body += source_description(info.get("source"))
         collapsed = len(info.get("contigs", [])) > 20
@@ -87,7 +87,7 @@ def contig_section(record, artifact):
         if collapsed:
             body += '</details>'
         if not info.get("contigs"):
-            body += '<p>The collected report contains no contig rows. It is not evidence of a physical topology.</p>'
+            body += '<p>The collected report contains no contig rows.</p>'
     else:
         if info.get("source", {}).get("file_sha256"):
             body += source_description(info["source"])
