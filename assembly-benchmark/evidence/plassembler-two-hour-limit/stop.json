@@ -1,0 +1,18 @@
+{
+  "batch_id": "20261106T104655",
+  "scenario_id": "s5-albidoflavus-nbc01661-native-length-long",
+  "tool": "plassembler",
+  "status": "timeout",
+  "execution_outcome": "did_not_complete",
+  "error": "Stopped at the user\u2019s request after exceeding two hours; Slurm CANCELLED at 2:11:30.",
+  "finished_at": "2026-11-06T13:06:50+00:00",
+  "elapsed_seconds": 7890,
+  "termination": {
+    "original_record_sha256": "e43a53e09d4fb910244a499577d11fa0f7d2f77f09f7b0b57eb162ed422eb4d9",
+    "original_time_limit_seconds": 14400,
+    "reason": "user_requested_stop_after_two_hours",
+    "scheduler_elapsed": "02:11:30",
+    "scheduler_state": "CANCELLED",
+    "slurm_task_id": "34519371_23"
+  }
+}

@@ -104,7 +104,7 @@ def explain_result(record, case=None, stderr_text=None):
     if state:
         evidence.append({"type": "scheduler", "text": "Scheduler state: " + state + ".", "source": "scheduler_state"})
     if status == "timeout":
-        return _finding("time_limit", "Run reached its time limit", "The recorded run did not finish within its time limit.", "This is an execution outcome, not a completed sequence failure.", evidence + observations, source="execution_state")
+        return _finding("time_limit", "Fail — did not complete", record.get("error") or "The run did not finish within its time limit.", "Execution did not complete; no final sequence assessment was made.", evidence + observations, source="execution_state")
     if status == "error":
         return _execution_error(record, state, evidence, observations)
     if status == "pass":

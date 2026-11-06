@@ -31,6 +31,8 @@ def _counts(rows):
     for row in rows:
         status = row["status"]
         key = status if status in {"pass", "fail"} else "errors" if status in ERRORS else "unscored"
+        if row.get("execution_outcome") == "did_not_complete":
+            key = "fail"
         counts[key] += 1
         counts["total"] += 1
     counts["denominator"] = counts["pass"] + counts["fail"]
@@ -129,6 +131,7 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
                          "title": case_title(case), "organism": case.get("organism", "Not recorded"),
                          "assembly_accession": case.get("assembly_accession") or case.get("reference_accession"), "tool": record["tool"],
                          "version": record.get("version") or "Version not recorded", "threads": record.get("threads"),
+                         "execution_outcome": record.get("execution_outcome"),
                          "run_id": record.get("run_id"), "status": record.get("status", "not_run"), "href": link})
     rows.sort(key=lambda r: (families.index(r["family"]), r["organism"], r["assembly_accession"] or "", r["scenario_id"], tools.index(r["tool"]), r["batch"], r["run_id"] or ""))
     family_models = []

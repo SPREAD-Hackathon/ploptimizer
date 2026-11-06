@@ -30,6 +30,8 @@ def molecule_label(molecule):
 
 
 def verdict(record):
+    if record.get("status") == "timeout" or record.get("execution_outcome") == "did_not_complete":
+        return "Fail — did not complete", record.get("error") or "The run exceeded its time limit."
     if record.get("report_evidence"):
         return record["report_evidence"]["heading"], record["report_evidence"]["description"]
     status = record["status"]

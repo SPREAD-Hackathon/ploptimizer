@@ -19,6 +19,12 @@ ENVIRONMENTS = {"flye": "flye", "flye-meta": "flye", "raven": "raven", "plassemb
 ENVIRONMENTS['miniasm-plus'] = 'miniasm-plus'
 
 
+def execution_timeout(tool, config):
+    """Cap Plassembler at two hours, honouring any shorter configured limit."""
+    configured = config["timeout_seconds"]
+    return min(configured, 7200) if tool == "plassembler" else configured
+
+
 def command(tool, reads, output, config, mode="default"):
     if mode not in ("default", "deterministic") or mode == "deterministic" and tool not in ("flye", "flye-meta"):
         raise ValueError("This tool has no supported deterministic mode")
@@ -70,7 +76,8 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
               "slurm_job_id": os.environ.get("SLURM_JOB_ID"),
               "slurm_array_task_id": os.environ.get("SLURM_ARRAY_TASK_ID"),
               "allocated_cpus": int(os.environ.get("SLURM_CPUS_PER_TASK", config["threads"])),
-              "host": platform.node(), "status": "running"}
+              "host": platform.node(), "status": "running",
+              "timeout_seconds": execution_timeout(tool, config)}
     if tool == "plassembler" and config.get("plassembler_no_chromosome"):
         record["workflow_mode"] = "plasmid_only_no_chromosome"
     if mode is not None:
@@ -85,6 +92,15 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
     save(result_path, record)
     start = time.monotonic()
     try:
+        if tool == "plassembler" and os.environ.get("SLURM_JOB_ID"):
+            # Lower only this array element's allocation, never the other tools.
+            array_job = os.environ.get("SLURM_ARRAY_JOB_ID")
+            array_task = os.environ.get("SLURM_ARRAY_TASK_ID")
+            job = f"{array_job}_{array_task}" if array_job and array_task else os.environ["SLURM_JOB_ID"]
+            limit = max(1, int(record["timeout_seconds"] // 60))
+            subprocess.run(["scontrol", "update", f"JobId={job}", f"TimeLimit={limit}"],
+                           check=True, capture_output=True, text=True, timeout=30)
+            record["slurm_time_limit_minutes"] = limit
         # Fail early if the execution directory cannot support multiprocessing sockets.
         temporary_root = os.environ.get("TMPDIR", str(ROOT / ".t" / str(os.getpid())))
         if not Path(temporary_root).resolve().is_relative_to(ROOT):
@@ -127,7 +143,11 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
         with (directory / "stdout.log").open("w") as stdout, (directory / "stderr.log").open("w") as stderr:
             process = subprocess.Popen(timed_argv, stdout=stdout, stderr=stderr, cwd=working_directory, start_new_session=True)
             try:
-                returncode = process.wait(timeout=config["timeout_seconds"])
+                remaining = record["timeout_seconds"]
+                if record.get("slurm_time_limit_minutes"):
+                    # Leave time to terminate children and persist the terminal record.
+                    remaining = max(0, remaining - (time.monotonic() - start) - 30)
+                returncode = process.wait(timeout=remaining)
             except subprocess.TimeoutExpired:
                 os.killpg(process.pid, signal.SIGTERM)
                 try:
@@ -136,7 +156,8 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
                     os.killpg(process.pid, signal.SIGKILL)
                     process.wait()
                 record["status"] = "timeout"
-                record["error"] = "Assembler exceeded configured timeout"
+                record["execution_outcome"] = "did_not_complete"
+                record["error"] = f'Assembler did not complete within the {record["timeout_seconds"] / 3600:g}-hour limit.'
                 return record
         record["exit_code"] = returncode
         if metrics.exists():

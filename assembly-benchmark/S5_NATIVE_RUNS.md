@@ -62,3 +62,20 @@ is rerun and no new reads are generated. See `MINIASM.md` and
 the raw Miniasm extension adds six outcomes. The subsequent Minipolish
 extension adds six more: **36 outcomes across six configurations** in total.
 See `MINIPOLISH.md` for the polishing continuation and separate provenance.
+
+## User-requested stop and future time limit
+
+Task `34519371_23` (long S. albidoflavus Plassembler) was cancelled at the
+user’s request after 2:11:30 on 6 November 2026. This was a manual stop under
+the original four-hour allocation, not an automatic two-hour timeout. The
+original running record is retained alongside its terminal record. See
+`evidence/plassembler-two-hour-limit/` for accounting and the stop provenance.
+No assembly is rerun and no final sequence verdict is inferred.
+
+The report displays **Fail — did not complete** and includes this execution
+in failure counts. The stored execution status remains `timeout`, with
+`execution_outcome: did_not_complete`, so the cause remains distinguishable
+from a completed sequence mismatch. Historical records are unchanged.
+Future Plassembler workers cap execution at two hours (or a shorter configured
+limit), lower their own Slurm allocation to that limit, and reserve cleanup
+time to write the terminal record. Other assemblers retain their limits.

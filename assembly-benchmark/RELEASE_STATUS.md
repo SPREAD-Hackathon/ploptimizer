@@ -980,3 +980,14 @@ pending its jobs and evidence. Prior entries above describe their release dates,
 not the current S5/S6 state. The S6 deployment began at Git head `d175ad1` and
 included parent S5 edits subsequently recorded in `ec685ea`. The deployment
 response supplies no source-commit field; these facts are retained separately.
+
+
+### Plassembler stop policy, 6 November 2026
+
+User-requested cancellation of S5 task `34519371_23` verified in Slurm at
+02:11:30. Terminal record and original backup preserved on BMRC; no rerun.
+Future Plassembler tasks are capped at two hours. Reporting now renders
+“Fail — did not complete” and counts explicit incomplete executions as failures,
+while retaining their execution subtype and leaving sequence assessment empty.
+74 targeted tests pass. These report changes await the S5 publication; they
+are not yet claimed live.

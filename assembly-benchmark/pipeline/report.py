@@ -20,7 +20,7 @@ from .result_pages import enrich_graph_artifacts, result_href, write_result_page
 LABELS = {"flye": "Flye (default)", "flye-meta": "Flye (--meta)", "raven": "Raven", "plassembler": "Plassembler long"}
 LABELS['miniasm'] = 'Miniasm (unpolished)'
 LABELS['miniasm-plus'] = 'Miniasm + Minipolish'
-STATUSES = {"pass": "Pass", "fail": "Fail", "not_run": "Not run", "pending": "Queued", "running": "Running", "error": "Job error", "timeout": "Timed out", "invalid_input": "Invalid input"}
+STATUSES = {"pass": "Pass", "fail": "Fail", "not_run": "Not run", "pending": "Queued", "running": "Running", "error": "Job error", "timeout": "Fail — did not complete", "invalid_input": "Invalid input"}
 CATEGORIES = {
     "S5": ("Linear plasmids and terminal repeats", "Linear references with standard and long read-length targets. Input sequences retain their recorded ends."),
     "S1": ("Error-free recovery", "Chromosome-only controls, individual native plasmids and complete deposited complements. These cases establish the baseline for each reference."),

@@ -68,7 +68,7 @@ class ExplanationTests(unittest.TestCase):
         self.assertEqual(explain_result({"status": "error", "scheduler_state": "OUT_OF_MEMORY"})["kind"], "resource_stop")
         result = explain_result({"status": "timeout", "scheduler_state": "TIMEOUT"})
         self.assertEqual(result["kind"], "time_limit")
-        self.assertIn("not a completed sequence failure", result["interpretation"])
+        self.assertIn("no final sequence assessment", result["interpretation"])
 
     def test_invalid_and_unfinished_have_no_scientific_failure_explanation(self):
         for status in ("not_run", "pending", "running"):
