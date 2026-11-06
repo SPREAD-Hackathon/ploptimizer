@@ -741,3 +741,12 @@ parameter changes or retries were submitted. The production report and headline
 cohort remain unchanged until the complete suite passes final QA, including the
 compact website's byte and file-count budgets. See
 `evidence/large-baseline-v3/s2-qa.json`.
+
+### 6 November — S3 scheduler concurrency increased
+
+Following the user’s request to accelerate progress, S3 array `34499396` was
+raised from four to eight simultaneous existing tasks. Slurm verified eight
+active tasks; every task still reserves four CPUs / 16 GB and retains its
+configured one- or four-thread assembler setting. No new tasks, input changes,
+parameter changes or assembly retries were introduced. The scheduler adjustment
+and verification are retained in `evidence/large-baseline-v3/scheduler-adjustment.json`.

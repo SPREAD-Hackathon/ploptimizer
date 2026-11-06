@@ -120,6 +120,27 @@
     }
   ],
   "phase": "S1 and S2 evidence complete and locally verified; S3 repeat assemblies running",
+  "scheduler_adjustment": {
+    "batch_id": "20261106T042113",
+    "initial_update_message": "34499396_31-33: Job has already finished",
+    "initial_update_returncode": 1,
+    "inputs_modes_commands_and_repeats_unchanged": true,
+    "job_id": "34499396",
+    "memory_per_task": "16G",
+    "new_assembly_jobs_submitted": 0,
+    "previous_array_throttle": 4,
+    "reason": "User requested faster progress; increase simultaneous existing tasks without changing per-run benchmark conditions.",
+    "reserved_cpus_per_task": 4,
+    "running_tasks_at_verification": 8,
+    "schema_version": 1,
+    "tool_threads_unchanged": [
+      1,
+      4
+    ],
+    "updated_at": "2026-11-06T07:08:22.612958+00:00",
+    "verification": "Update applied to pending/running tasks; scontrol confirms ArrayTaskThrottle=8.",
+    "verified_array_throttle": 8
+  },
   "schema_version": 1,
   "source_commit": "fa47838",
   "status": "running",

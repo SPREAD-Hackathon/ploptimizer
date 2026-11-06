@@ -33,7 +33,10 @@ The ignored `.cache/large-baseline-v3/checkpoint.json` prevents duplicate suite
 submissions. Authentication is checked before creating runs. Partial submissions
 require inspection. Every repeat has a fresh execution directory. Preparation
 jobs are ordered to avoid concurrent environment installation, and assembly
-arrays are ordered across batches, with at most four assembly tasks active.
+arrays are ordered across batches. The initial limit was four active assembly
+tasks; the S3 limit was raised to eight on 6 November following the user’s speed
+request. Per-run CPU reservations, tool thread counts, inputs and modes were
+unchanged. See `evidence/large-baseline-v3/scheduler-adjustment.json`.
 No assembler failures are silently retried with changed settings.
 
 Each batch has a dependency-linked evidence job after assembly/report completion.
