@@ -1,0 +1,99 @@
+{
+  "S2": [
+    {
+      "assembly_accession": "GCF_000010385.1",
+      "identical_recorded_chromosome_statistics": true,
+      "manifests": [
+        {
+          "path": "runs/20261106T042108/cases/s2-se11-pse11-1-depth-0p8/input.json",
+          "sha256": "973be8d8230c3132924964bcb7f2993c45af0cd695310ba4121ffcd62c1ae476"
+        },
+        {
+          "path": "runs/20261106T042108/cases/s2-se11-pse11-1-depth-1/input.json",
+          "sha256": "c77b9a2f1cfbb1391048039cd9bf28cf021e203d90665e0441019a56efe7aaec"
+        },
+        {
+          "path": "runs/20261106T042108/cases/s2-se11-pse11-1-depth-1p2/input.json",
+          "sha256": "96f6ac78ec8f72e0a45bbf0f67c2824b660e318fd43de4ae9a9c4f702c50b8fd"
+        },
+        {
+          "path": "runs/20261106T042108/cases/s2-se11-pse11-1-depth-3/input.json",
+          "sha256": "6ed1a3bde913a61b97f82f1af0caf8cdda69c040367706c0d138947aa4044784"
+        },
+        {
+          "path": "runs/20261106T042108/cases/s2-se11-pse11-1-depth-5/input.json",
+          "sha256": "b4dfece0241ac52f1a4b6ce974e8a853e574f33ffebc9aefe578a0ee23558bc7"
+        }
+      ],
+      "ratios": [
+        0.8,
+        1,
+        1.2,
+        3,
+        5
+      ],
+      "same_declared_inputs_except_relative_depth": true,
+      "truth_sha256": "c832da0cec8a590926fb24251cc56336d61bd9c453b2f8c3e89e6fe89a5418db"
+    },
+    {
+      "assembly_accession": "GCF_000016305.1",
+      "identical_recorded_chromosome_statistics": true,
+      "manifests": [
+        {
+          "path": "runs/20261106T042108/cases/s2-mgh78578-pkpn3-depth-0p8/input.json",
+          "sha256": "d231a5c103e8f3fc65fefee0ce296a087307a152f90ac35b03c0fc1bf8a3a0c0"
+        },
+        {
+          "path": "runs/20261106T042108/cases/s2-mgh78578-pkpn3-depth-1/input.json",
+          "sha256": "045cfa5505793ba3118e811d72cf43bbd3b5076a1c165ab5512d86cecab9bbdf"
+        },
+        {
+          "path": "runs/20261106T042108/cases/s2-mgh78578-pkpn3-depth-1p2/input.json",
+          "sha256": "03e05296256989837bb4e42e48744c804665c9617a63166d93751997b4517da9"
+        },
+        {
+          "path": "runs/20261106T042108/cases/s2-mgh78578-pkpn3-depth-3/input.json",
+          "sha256": "ea140c76fdfb5974da3c5de1dc082ae65f2cea186346bf93f68453414e56c6a4"
+        },
+        {
+          "path": "runs/20261106T042108/cases/s2-mgh78578-pkpn3-depth-5/input.json",
+          "sha256": "768d8caac14b9527b8849aaa0844a7626b85894be1cdecb99a04537ecec931e5"
+        }
+      ],
+      "ratios": [
+        0.8,
+        1,
+        1.2,
+        3,
+        5
+      ],
+      "same_declared_inputs_except_relative_depth": true,
+      "truth_sha256": "b3c26001161ae6c9dc8f64c5781631592bb066e07c7ed00fc50c4f1bad03fe6a"
+    }
+  ],
+  "S3": [
+    {
+      "S1_and_S3_reads_truth_and_origins_identical": true,
+      "S1_manifest_sha256": "01c5632cf1a5b6463067fbc98bb9f9b39cae9056c4ce0c27e08ef42fe1cda1d1",
+      "S3_manifest_sha256": "6ff018e70e679da32c9acc41fcab7bbc61cf3153d034feace065d0ea4bdd8065",
+      "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+      "repeat_execution_agreement": "pending; validate separately when all 120 runs finish",
+      "scenario_id": "s1-se11-large",
+      "truth_sha256": "c043f0073af048970d457c777b9f7a52722be72d6ffb6e84c63bb29337917ecb"
+    },
+    {
+      "S1_and_S3_reads_truth_and_origins_identical": true,
+      "S1_manifest_sha256": "25c12bd0ee3cd6a5099231d58b8996a0b4282b711628f41d23316157af64af99",
+      "S3_manifest_sha256": "70401a1819898d28f7fae24af537efbb6156c2455a70f800bf9a90994ea24025",
+      "reads_sha256": "0059aa25e07dba1d6a26f0dd75b945723f0b391757697e661e75a401acba2bcd",
+      "repeat_execution_agreement": "pending; validate separately when all 120 runs finish",
+      "scenario_id": "s1-mgh78578-large",
+      "truth_sha256": "e14695238df426869faf0a845b44309fe64f643aff887acb25e95536a8c341d4"
+    }
+  ],
+  "checked_at": "2026-11-06T05:22:07.812827+00:00",
+  "limitation": "S2 chromosome matching was checked through frozen generator controls and identical recorded statistics, not a separate chromosome-read extraction. S3 repeated execution agreement remains pending.",
+  "schema_version": 1,
+  "scope": "Frozen input manifests and declared simulation controls; no sequence analysis or new run",
+  "status": "pass"
+}
