@@ -30,7 +30,7 @@ def main(argv=None):
         if action in ("simulate", "run"):
             sub.add_argument("--scenario", required=True)
         if action == "run":
-            sub.add_argument("--tool", choices=("flye", "flye-meta", "raven", "plassembler"), required=True)
+            sub.add_argument("--tool", choices=("flye", "flye-meta", "raven", "plassembler", "miniasm"), required=True)
             sub.add_argument("--threads", type=int)
             sub.add_argument("--repeat", type=int)
             sub.add_argument("--mode", choices=("default", "deterministic"))
@@ -118,7 +118,9 @@ def main(argv=None):
             provenance.mkdir(parents=True, exist_ok=True)
             save(provenance / "references.json", audit)
             shutil.copy2(ROOT / "pixi.lock", provenance / "pixi.lock")
-            for env in ("default", "flye", "raven", "plassembler") + (("simulator",) if config.get("noisy_panel") else ()):
+            from pipeline.execution import ENVIRONMENTS
+            environments = list(dict.fromkeys(['default'] + [ENVIRONMENTS[t] for t in config['tools']] + (['simulator'] if config.get('noisy_panel') else [])))
+            for env in environments:
                 result = subprocess.check_output(["pixi", "list", "-e", env, "--json"], cwd=ROOT, text=True)
                 (provenance / (env + ".json")).write_text(result)
             sources = [ROOT / "benchmark.py", ROOT / "pixi.toml"] + list((ROOT / "pipeline").glob("*.py"))

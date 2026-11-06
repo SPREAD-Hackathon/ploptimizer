@@ -1,0 +1,9 @@
+{
+  "status": "pass",
+  "python_tests": 390,
+  "optional_skips": 11,
+  "real_tool_test": "Slurm34519744, artificial random DNA; one unitig; both graph and unitig inventory available.",
+  "benchmark_runs_submitted": 0,
+  "existing_S5_batch_unchanged": "20261106T104655",
+  "post_markdown_change_bundle_tests": 6
+}

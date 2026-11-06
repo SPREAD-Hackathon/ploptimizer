@@ -154,3 +154,6 @@ separate backend archive and size audit.
 [Static release safeguards and guarded deployment](STATIC_RELEASE.md).
 
 [Reporting saved base-mismatch counts](RECORDED_MISMATCH_COUNTS.md).
+
+[Miniasm integration](MINIASM.md): pinned minimap2 overlap and unpolished miniasm
+assembly adapter, graph/FASTA extraction and two-step command provenance.

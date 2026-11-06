@@ -18,6 +18,7 @@ from .evidence_model import (diagnostic_policy, alignment_classification, candid
 from .result_pages import enrich_graph_artifacts, result_href, write_result_pages
 
 LABELS = {"flye": "Flye (default)", "flye-meta": "Flye (--meta)", "raven": "Raven", "plassembler": "Plassembler long"}
+LABELS['miniasm'] = 'Miniasm (unpolished)'
 STATUSES = {"pass": "Pass", "fail": "Fail", "not_run": "Not run", "pending": "Queued", "running": "Running", "error": "Job error", "timeout": "Timed out", "invalid_input": "Invalid input"}
 CATEGORIES = {
     "S5": ("Linear plasmids and terminal repeats", "Linear references with standard and long read-length targets. Input sequences retain their recorded ends."),
@@ -403,6 +404,15 @@ def execution_evidence(record, case=None):
     public = {key: value for key, value in record.items() if key not in ("host", "assembly_file", "command", "graph_artifacts")}
     public["command"] = ["<workdir>" + str(value)[str(value).index("/runs/"):] if "/runs/" in str(value)
                          else str(value).replace(str(ROOT), "<workdir>") for value in record.get("command", [])]
+    if record.get('assembly_workflow'):
+        public['assembly_workflow'] = copy.deepcopy(record['assembly_workflow'])
+        for step in public['assembly_workflow'].get('steps', []):
+            def redact(value):
+                value = str(value)
+                return '<workdir>' + value[value.index('/runs/'):] if '/runs/' in value else value.replace(str(ROOT), '<workdir>')
+            step['command'] = [redact(arg) for arg in step.get('command', [])]
+            if step.get('stdout_file'):
+                step['stdout_file'] = redact(step['stdout_file'])
     if not public.get("explanation"):
         from .explanations import explain_result
         public["explanation"] = explain_result(record, case=case)

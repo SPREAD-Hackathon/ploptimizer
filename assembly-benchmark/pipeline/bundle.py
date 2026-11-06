@@ -226,8 +226,15 @@ def markdown_report(case, record, batch):
         lines += ['[Original NUCmer table: 1-based inclusive endpoints](./'+result_id(record)+'-original-show-coords.tsv)', '']
     else:
         lines += ['No NUCmer coordinate source is recorded for this result.', '']
-    lines += ['A general per-base difference-event table has not been collected.', '', '## Command', '', '```text',
-              shlex.join(str(arg) for arg in record.get('command',[])) or 'Not recorded', '```', '', '## Source provenance', '',
+    lines += ['A general per-base difference-event table has not been collected.', '', '## Command', '']
+    steps = record.get('assembly_workflow', {}).get('steps', [])
+    if steps:
+        for step in steps:
+            lines += [step['name'], '', '```text', shlex.join(step['command']) + ' > ' + shlex.quote(step['stdout_file']), '```', '']
+        lines += ['GFA segment sequences are copied into FASTA without polishing.', '']
+    else:
+        lines += ['```text', shlex.join(str(arg) for arg in record.get('command',[])) or 'Not recorded', '```', '']
+    lines += ['## Source provenance', '',
               f'- Source result: `../../batches/{batch}.json`', f'- Record identity: `{result_id(record)}`']
     for key in ('assembly_sha256','truth_sha256','reads_sha256'):
         if record.get(key):lines.append(f'- {key}: `{record[key]}`')

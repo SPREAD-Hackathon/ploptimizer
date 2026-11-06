@@ -293,6 +293,26 @@ def parse_flye_assembly_info(path, limits=None):
     return result
 
 
+def parse_miniasm_unitig_info(path, limits=None):
+    """Miniasm 0.3 names unitigs utgNNNNNNc/l (asm.c ma_ug_print)."""
+    graph = parse_gfa(path, limits)
+    source = {**graph['source'], 'kind': 'miniasm_gfa_unitig_names'}
+    result = {'status': graph['status'], 'source': source,
+              'format': 'Miniasm unitig identifiers in GFA', 'contigs': [],
+              'limits': graph['limits'], 'limitations': []}
+    if graph['status'] != 'available':
+        result['reason'] = graph.get('reason', 'GFA unavailable')
+        return result
+    for node in graph['nodes']:
+        match = re.fullmatch(r'utg[0-9]+([lc])', node['id'])
+        token = match.group(1) if match else '?'
+        result['contigs'].append({'id': node['id'], 'length_bp': node['length_bp'],
+            'reported_coverage': None, 'reported_circularity_raw': token,
+            'reported_circularity': {'c': 'circular', 'l': 'not_circular', '?': 'unknown'}[token],
+            'claim_scope': 'Miniasm unitig identifier suffix from ma_ug_print; coverage not reported.'})
+    return result
+
+
 def _partial_role(role):
     return isinstance(role, str) and bool(re.fullmatch(r"(?:initial_[A-Za-z0-9_-]+|partial_[A-Za-z0-9_-]+|[A-Za-z0-9_-]+_component)", role))
 
@@ -327,9 +347,11 @@ def build_graph_artifacts(execution_path, assembly_path, gfa_path=None, assembly
     else:
         raise ValueError("Only scored runs or explicitly admitted terminal error/timeout metadata can be collected")
     graph = parse_gfa(gfa_path, settings)
-    if assembly_info_kind not in {"flye", "plassembler"}:
+    if assembly_info_kind not in {"flye", "plassembler", "miniasm"}:
         raise ValueError("Unsupported assembly-information source kind")
-    info = (parse_plassembler_summary if assembly_info_kind == "plassembler" else parse_flye_assembly_info)(assembly_info_path, settings)
+    parser = {'flye': parse_flye_assembly_info, 'plassembler': parse_plassembler_summary,
+              'miniasm': parse_miniasm_unitig_info}[assembly_info_kind]
+    info = parser(assembly_info_path, settings)
     for item in (graph, info):
         item["source"]["role"] = source_role
     states = {graph["status"], info["status"]}
@@ -521,6 +543,7 @@ def _validate_metadata(document):
         _length(row["length_bp"], False)
         raw = row.get("reported_circularity_raw")
         known = {"Y": "circular", "N": "not_circular", "*": "unknown", "?": "unknown", "circular": "circular", "linear": "not_circular", "not_circular": "not_circular", "unknown": "unknown", "NA": "unknown"}
+        known.update({'c': 'circular', 'l': 'not_circular'})
         if raw is not None and known.get(raw) != row["reported_circularity"]:
             raise ValueError("Raw circularity token disagrees with the tool-claim label")
         if row["reported_circularity"] not in {"circular", "not_circular", "unknown"}:

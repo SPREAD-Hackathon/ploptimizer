@@ -1,0 +1,12 @@
+{
+  "graph_status": "available",
+  "scope": "Installation/integration test on artificial random DNA; not a benchmark result.",
+  "status": "pass",
+  "unitig_count": 1,
+  "unitig_inventory_status": "available",
+  "versions": {
+    "miniasm": "0.3-r179",
+    "minimap2": "2.31-r1302"
+  },
+  "workflow_steps": 2
+}

@@ -7,6 +7,7 @@ import re
 import signal
 import socket
 import subprocess
+import sys
 import tempfile
 import time
 from pathlib import Path
@@ -14,13 +15,15 @@ from pathlib import Path
 from .common import ROOT, digest, fingerprint, load, save
 from .scoring import evaluate
 
-ENVIRONMENTS = {"flye": "flye", "flye-meta": "flye", "raven": "raven", "plassembler": "plassembler"}
+ENVIRONMENTS = {"flye": "flye", "flye-meta": "flye", "raven": "raven", "plassembler": "plassembler", "miniasm": "miniasm"}
 
 
 def command(tool, reads, output, config, mode="default"):
     if mode not in ("default", "deterministic") or mode == "deterministic" and tool not in ("flye", "flye-meta"):
         raise ValueError("This tool has no supported deterministic mode")
     threads = str(config["threads"])
+    if tool == 'miniasm':
+        return [sys.executable, '-m', 'pipeline.miniasm', '--reads', str(reads), '--output', str(output), '--threads', threads]
     if tool in ("flye", "flye-meta"):
         return ["flye", "--nano-hq", str(reads), "--out-dir", str(output), "--threads", threads] + (["--meta"] if tool == "flye-meta" else []) + (["--deterministic"] if mode == "deterministic" else [])
     if tool == "raven":
@@ -83,9 +86,10 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
             raise ValueError("TMPDIR must stay inside the benchmark work area")
         Path(temporary_root).mkdir(parents=True, exist_ok=True)
         os.environ["TMPDIR"] = temporary_root
-        with tempfile.TemporaryDirectory(prefix="pymp-", dir=temporary_root) as temporary:
-            with socket.socket(socket.AF_UNIX) as probe:
-                probe.bind(str(Path(temporary) / "listener-12345678"))
+        if tool != 'miniasm':  # Miniasm/minimap2 do not create multiprocessing sockets.
+            with tempfile.TemporaryDirectory(prefix="pymp-", dir=temporary_root) as temporary:
+                with socket.socket(socket.AF_UNIX) as probe:
+                    probe.bind(str(Path(temporary) / "listener-12345678"))
         input_dir = batch / "cases" / case["id"]
         manifest = load(input_dir / "input.json")
         if manifest["status"] != "valid":
@@ -103,7 +107,7 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
         record["command"] = argv
         binary = "flye" if tool == "flye-meta" else tool
         version_cwd = {"cwd": working_directory} if tool == "raven" else {}
-        version = subprocess.run([binary, "--version"], capture_output=True, text=True, timeout=30, **version_cwd)
+        version = subprocess.run([binary, "-V" if tool == 'miniasm' else "--version"], capture_output=True, text=True, timeout=30, **version_cwd)
         record["version"] = (version.stdout + version.stderr).strip()
         if version.returncode:
             raise RuntimeError("Assembler version check failed")
@@ -159,6 +163,8 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
     except Exception as error:
         record.update(status="error", error=f"{type(error).__name__}: {error}")
     finally:
+        if tool == 'miniasm' and (directory / 'output/workflow.json').exists():
+            record['assembly_workflow'] = load(directory / 'output/workflow.json')
         record["elapsed_seconds"] = round(time.monotonic() - start, 3)
         record["finished_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
         save(result_path, record)

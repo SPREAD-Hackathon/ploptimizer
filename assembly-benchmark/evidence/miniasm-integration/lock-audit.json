@@ -1,0 +1,9 @@
+{
+  "existing_environments_unchanged": {
+    "default": true,
+    "flye": true,
+    "plassembler": true,
+    "raven": true,
+    "simulator": true
+  }
+}

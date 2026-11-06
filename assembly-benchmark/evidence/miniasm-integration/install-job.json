@@ -1,0 +1,9 @@
+{
+  "job_id": "34519744",
+  "remote_root": "/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-integration/source",
+  "scope": "Pixi installation and artificial-data smoke test only",
+  "previous_job_id": "34519707",
+  "previous_attempt": "Install succeeded; smoke stopped at temporary-directory admission before running tools.",
+  "fixture_review_job": "34519724",
+  "fixture_review": "Exact duplicate forward/reverse read pairs were all removed as contained reads. Smoke fixture now uses one orientation per unique fragment; assembler flags unchanged."
+}

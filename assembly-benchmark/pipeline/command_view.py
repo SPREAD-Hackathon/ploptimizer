@@ -8,6 +8,7 @@ SOURCES = {
     "flye-meta": ("Flye 2.9.6 manual", "https://github.com/mikolmogorov/Flye/blob/2.9.6/docs/USAGE.md"),
     "raven": ("Raven 1.8.3 command definitions", "https://github.com/lbcb-sci/raven/blob/1.8.3/RavenExe/src/main.cc"),
     "plassembler": ("Plassembler 1.9.0 command definitions", "https://github.com/gbouras13/plassembler/blob/v1.9.0/src/plassembler/__init__.py"),
+    'miniasm': ('Miniasm workflow documentation', 'https://github.com/lh3/miniasm#readme'),
 }
 FLAGS = {
     "flye": {
@@ -18,6 +19,9 @@ FLAGS = {
         "--deterministic": "Run the initial disjointig assembly stage single-threaded; later stages can still use the requested threads. This flag is tested for repeatability, not treated as a guarantee.",
     },
     "raven": {"-t": "Number of threads requested.", "-F": "Write the assembly graph in GFA format to this file."},
+    'miniasm': {'-x': 'Minimap2 preset: ava-ont computes all-versus-all Nanopore read overlaps.',
+                '-t': 'Number of minimap2 overlap threads. Miniasm layout is single-threaded.',
+                '-f': 'Read sequences used by miniasm to write unitig sequences.'},
     "plassembler": {
         "--longreads": "Input long-read FASTQ file.",
         "--outdir": "Directory for output files.",
@@ -40,18 +44,28 @@ def render_command(record, case=None, collapsed=True):
         if collapsed:
             return '<details class="command-used"><summary>Command used and flags</summary><p id="command-used">No command was recorded for this execution.</p></details>'
         return '<h3 id="command-used">Command used and flags</h3><p>No command was recorded for this execution.</p>'
-    command = execution_evidence(record, case)["command"]
+    evidence = execution_evidence(record, case)
+    command = evidence['command']
     tool = record.get("tool")
     definitions = FLAGS.get("flye" if tool == "flye-meta" else tool, {})
     body = ('<details class="command-used"><summary>Command used and flags</summary><div id="command-used">'
             if collapsed else '<h3 id="command-used">Command used and flags</h3><div>')
-    body += f'<p class="muted">Recorded tool version: {e(record.get("version") or "not recorded")}</p><pre class="recorded-command"><code>{e(shlex.join(command))}</code></pre>'
+    body += f'<p class="muted">Recorded tool version: {e(record.get("version") or "not recorded")}</p>'
+    steps = evidence.get('assembly_workflow', {}).get('steps', []) if tool == 'miniasm' else []
+    if steps:
+        for step in steps:
+            text = shlex.join(step['command']) + ' > ' + shlex.quote(step['stdout_file'])
+            body += f'<h4>{e(step["name"])}</h4><pre class="recorded-command"><code>{e(text)}</code></pre>'
+        body += '<p>Unitig sequences are copied from GFA segment records into FASTA. No polishing step is run.</p>'
+    else:
+        body += f'<pre class="recorded-command"><code>{e(shlex.join(command))}</code></pre>'
     if any("<workdir>" in arg for arg in command):
         body += '<p class="muted"><code>&lt;workdir&gt;</code> marks the benchmark work directory.</p>'
     body += '<dl class="command-options">'
     if tool == "plassembler" and len(command) > 1 and command[1] == "long":
         body += '<dt><code>long</code></dt><dd>Long-read-only workflow.</dd>'
-    for flag in dict.fromkeys(arg.split("=", 1)[0] for arg in command[1:] if arg.startswith("-")):
+    arguments = [arg for step in steps for arg in step['command'][1:]] if steps else command[1:]
+    for flag in dict.fromkeys(arg.split("=", 1)[0] for arg in arguments if arg.startswith("-")):
         body += f'<dt><code>{e(flag)}</code></dt><dd>{e(definitions.get(flag, "No description is included here; consult the tool documentation."))}</dd>'
     if tool == "raven":
         body += '<dt>Input file</dt><dd>The positional argument supplies the read file.</dd>'

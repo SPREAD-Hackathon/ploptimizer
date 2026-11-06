@@ -15,6 +15,7 @@ FAMILIES = {
     "S6": ("Simulated read errors", "Simulated read errors with plasmids ≥20 kb. Earlier small-plasmid noise tests remain supplementary."),
 }
 TOOLS = {"flye": "Flye (default)", "flye-meta": "Flye (--meta)", "raven": "Raven", "plassembler": "Plassembler long"}
+TOOLS['miniasm'] = 'Miniasm (unpolished)'
 ERRORS = {"error", "timeout", "invalid_input"}
 
 

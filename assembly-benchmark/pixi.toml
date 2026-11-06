@@ -14,6 +14,10 @@ flye = "==2.9.6"
 [feature.raven.dependencies]
 raven-assembler = "==1.8.3"
 
+[feature.miniasm.dependencies]
+miniasm = "==0.3"
+minimap2 = "==2.31"
+
 [feature.plassembler.dependencies]
 plassembler = "==1.9.0"
 flye = "==2.9.6"
@@ -29,6 +33,7 @@ default = []
 simulator = ["simulator"]
 flye = ["flye"]
 raven = ["raven"]
+miniasm = ["miniasm"]
 plassembler = ["plassembler"]
 
 [tasks]
