@@ -102,3 +102,22 @@ local checkpoint path separately from the remote evidence path. Regression tests
 cover that path and empty-output handling. Follow-up results and publication
 remain pending. Shared reads are retained until all dependent work finishes,
 in accordance with `READ_RETENTION.md`.
+
+## Verified 36-execution evidence completion
+
+All three batches are collected: 24 original, six raw Miniasm and six Miniasm +
+Minipolish executions. There are 35 completed exact-copy failures and one
+user-stopped Plassembler execution, displayed as “Fail — did not complete”.
+All six reused input manifests and all six raw-assembly bindings are verified.
+There are 34 completed NUCmer comparisons; the empty final FASTA needs no
+alignment invocation, and the stopped run has no final comparison. Saved PAF
+plots also retain the empty-output view.
+
+Three mapper version checks timed out during environment setup. Reporting-only
+repair jobs 34523256 and 34523479 completed those missing diagnostics; existing
+NUCmer alignments and assembler outputs were retained. The report's Miniasm
+format/source labels now validate, so their graphs are displayed. Updated
+snapshot/task bindings preserve their previous checksums and original records.
+
+Release evidence is in `evidence/s5-release/`. Production verification is recorded
+separately; collected evidence alone is not a claim of a live deployment.

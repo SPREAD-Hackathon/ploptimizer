@@ -22,6 +22,9 @@ class FinishBatchEvidenceTests(unittest.TestCase):
                     source = root / filename
                     source.parent.mkdir(parents=True,exist_ok=True)
                     source.write_text('Synthetic provenance')
+                comparison = batch / 'comparisons/large-baseline-v3/case/tool/comparison.json'
+                comparison.parent.mkdir(parents=True)
+                comparison.write_text(json.dumps({'status':'complete' if returncode == 0 else 'error'}))
                 original = execution.read_bytes()
                 graph = {'executions':[{'artifact':{'status':'available'}}]}
                 with patch.multiple(worker, ROOT=root,
@@ -32,7 +35,7 @@ class FinishBatchEvidenceTests(unittest.TestCase):
                      collect_lengths=lambda path:1,
                      collect_identities=lambda path:{'inventories':1},
                      publish=lambda *args,**kwargs:{'results':[{'status':'pass'}]},
-                     comparison_plan=lambda *args:{'tasks':[{}]},
+                     comparison_plan=lambda *args:{'tasks':[{'output_relative_path':'runs/example/comparisons/large-baseline-v3/case/tool'}]},
                      run_task=lambda *args:returncode):
                     result = worker.finish('example')
                 self.assertEqual(result['status'],expected_status)

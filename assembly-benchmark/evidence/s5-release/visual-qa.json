@@ -1,0 +1,73 @@
+{
+  "checks": [
+    {
+      "errors": [],
+      "hashOpen": null,
+      "hashY": null,
+      "heading": "Ploptimizer",
+      "name": "home-desktop",
+      "overflow": false,
+      "route": "/",
+      "status": 200
+    },
+    {
+      "errors": [],
+      "hashOpen": null,
+      "hashY": null,
+      "heading": "Ploptimizer",
+      "name": "home-mobile",
+      "overflow": false,
+      "route": "/",
+      "status": 200
+    },
+    {
+      "errors": [],
+      "hashOpen": true,
+      "hashY": 110.71875,
+      "heading": "Ploptimizer",
+      "name": "general-details",
+      "overflow": false,
+      "route": "/performance.html#317_GCF_002287885.2--raven",
+      "status": 200
+    },
+    {
+      "errors": [],
+      "hashOpen": null,
+      "hashY": null,
+      "heading": "Ploptimizer",
+      "name": "general-plots",
+      "overflow": false,
+      "route": "/aggregate.html",
+      "status": 200
+    },
+    {
+      "errors": [],
+      "hashY": 110.75,
+      "heading": "Ploptimizer",
+      "name": "s5-polished-graph",
+      "overflow": false,
+      "route": "/batches/20261106T123220/results/s5-canus-nbc00277-native-length-standard--miniasm-plus.html#assembly-graph",
+      "status": 200
+    },
+    {
+      "errors": [],
+      "hashOpen": null,
+      "hashY": null,
+      "heading": "Ploptimizer",
+      "name": "s5-incomplete",
+      "overflow": false,
+      "route": "/batches/20261106T104655/results/s5-albidoflavus-nbc01661-native-length-long--plassembler.html",
+      "status": 200
+    }
+  ],
+  "scope": "Batched final homepage, general details/plots, polished S5 graph and incomplete execution; desktop/mobile and both themes.",
+  "screenshots": {
+    "general-details.png": "349c37302084fcfb2c16e209161082a240d12d08ec3b6872bf519187e3b04bc1",
+    "general-plots.png": "aafdd199e1ecf14969c3fb25a066c552ac1bb31aa80750aa69e2c34729833f9d",
+    "home-desktop.png": "c7f27fa59ff1ec60062b614de20a5a128deed00ed0de3083372d85ebbeb58001",
+    "home-mobile.png": "c41dc87ca4045e662e3a989e4b78a9d77ebbfd242ce69334f1020e4b16ddcffe",
+    "s5-incomplete.png": "7943c57273ba94a4109940369abd24d4b74b236efeb37e42f0f67598e370d112",
+    "s5-polished-graph.png": "ee621c1b277d82d5310bf3e84c4f52b53b5b932531eebc575af1c32358a5b993"
+  },
+  "status": "pass"
+}

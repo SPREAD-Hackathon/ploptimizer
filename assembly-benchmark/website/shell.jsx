@@ -97,3 +97,19 @@ enhanceTables();
 
 import { enhanceMobileMatrices } from './mobile-matrix.js';
 enhanceMobileMatrices();
+
+// Reveal saved result details when an individual execution link targets them.
+function revealHashDetails() {
+  let target;
+  try { target = document.getElementById(decodeURIComponent(location.hash.slice(1))); } catch { return; }
+  if (!target) return;
+  let parent = target;
+  let revealed = false;
+  while (parent) {
+    if (parent.tagName === 'DETAILS' && !parent.open) { parent.open = true; revealed = true; }
+    parent = parent.parentElement;
+  }
+  if (revealed) target.scrollIntoView({block:'start'});
+}
+window.addEventListener('hashchange', revealHashDetails);
+revealHashDetails();

@@ -138,7 +138,7 @@ def _completed_plot(case,record,batch,root,manifest_bytes,manifest,task,artifact
     directory=_safe_path(root,relative)
     sidecar_bytes=_read(directory/'comparison.json')
     sidecar=json.loads(sidecar_bytes)
-    if sidecar.get('schema_version')!=1 or sidecar.get('status')!='complete' or sidecar.get('kind')!='reference_vs_existing_assembly' or sidecar.get('alignment_source')!='NUCmer':
+    if sidecar.get('schema_version')!=1 or sidecar.get('status') not in ('complete','not_applicable') or sidecar.get('kind')!='reference_vs_existing_assembly' or sidecar.get('alignment_source')!='NUCmer':
         raise SidecarError('invalid','Unsupported or incomplete comparison sidecar.')
     if any(sidecar.get(key)!=value for key,value in (('batch_id',batch),('scenario_id',record['scenario_id']),('tool',record['tool']),('original_exact_status',record['status']))):
         raise SidecarError('provenance_mismatch','Completed sidecar identity/outcome differs from this frozen execution.')
@@ -160,6 +160,12 @@ def _completed_plot(case,record,batch,root,manifest_bytes,manifest,task,artifact
     _verify(root/'provenance/compare_existing_outputs.py',sidecar.get('comparison_script_sha256'),1024*1024)
     _verify(root/'provenance/pixi.toml',environment.get('manifest_sha256'),1024*1024)
     _verify(root/'provenance/pixi.lock',environment.get('lock_sha256'),1024*1024)
+    if sidecar['status'] == 'not_applicable':
+        if inputs['assembly_sha256'] != hashlib.sha256(b'').hexdigest() or sidecar.get('queries') != [] or sidecar.get('alignments') != []:
+            raise SidecarError('invalid','Not-applicable comparison must identify a hash-verified empty assembly.')
+        return {'status':'not_applicable','source_kind':'recorded_show_coords','nucmer_status':'not_applicable',
+                'reason':'Final assembly FASTA is empty; NUCmer was not run.',
+                'input_hashes':copy.deepcopy(inputs)}
     outputs=sidecar.get('output_hashes') or {}
     coordinate_bytes=_verify(directory/'coordinates.tsv',outputs.get('coordinates.tsv'))
     for filename in ('nucmer.stdout.log','nucmer.stderr.log','show-coords.stderr.log'):

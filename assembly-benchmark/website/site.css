@@ -220,3 +220,6 @@ th[aria-sort="descending"] .table-sort svg path { d: path("M3 6 6 9 9 6"); }
   .overview-heatmap.matrix-mobile-ready .overview-cell strong,
   .overview-heatmap.matrix-mobile-ready .overview-cell small { white-space: normal; overflow-wrap: anywhere; }
 }
+
+/* Keep deep-linked broad results visible below the shared navigation. */
+details[id^="dataset-"], h3[id*="_GCF_"] { scroll-margin-top: 84px; }

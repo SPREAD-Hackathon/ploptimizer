@@ -3,8 +3,39 @@
   "assembly_count": 6,
   "batch_id": "20261106T111953",
   "config_fingerprint": "797715672b3fd329fc4902c5cf7454a9456688a022ec791ddccdfa452f05c2c3",
+  "evidence": {
+    "comparison_root": "comparisons/s5-miniasm-v1",
+    "coordinate_comparisons": {
+      "complete": 6
+    },
+    "diagnostics": {
+      "complete": 6
+    },
+    "expected_executions": 6,
+    "graph_identities": {
+      "identity_pairs": 15,
+      "inventories": 6
+    },
+    "graphs": {
+      "available": 6
+    },
+    "length_inventories": 6,
+    "outcomes": {
+      "fail": 6
+    },
+    "reporting_repair": {
+      "diagnostic_sha256": "ed8a29719db3f59266447b295c5e55268f367783a120c6806870843f7ee9b889",
+      "original_diagnostic_sha256": "717100a8b4ae113d1641d344ca8ebb02cfed0b78a1f8eb41571127d8f824119f",
+      "reason": "Retried one failed mapper version check and completed its missing diagnostic; existing NUCmer coordinates unchanged",
+      "repaired_at": "2026-11-06T13:28:53.008221+00:00"
+    },
+    "source_snapshot": "published/20261106T111953.json",
+    "status": "complete"
+  },
   "input_count": 6,
+  "input_reuse_verified": true,
   "input_source_batch": "20261106T104655",
+  "inputs_admitted": 6,
   "jobs": {
     "assemble": "34520447",
     "evidence": "34520449",
@@ -20,5 +51,5 @@
     "s5-albidoflavus-nbc01661-native-length-long"
   ],
   "schema_version": 1,
-  "status": "queued_after_s5"
+  "status": "evidence_complete"
 }

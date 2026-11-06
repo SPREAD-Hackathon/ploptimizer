@@ -3,14 +3,56 @@
   "assembly_count": 6,
   "batch_id": "20261106T123220",
   "config_fingerprint": "217406ec2de668d5082d4154419871c8eaeca51c81be8133f4986e508daa1b93",
+  "evidence": {
+    "comparison_root": "comparisons/s5-miniasm-plus-v1",
+    "coordinate_comparisons": {
+      "complete": 6
+    },
+    "diagnostics": {
+      "complete": 6
+    },
+    "expected_executions": 6,
+    "graph_identities": {
+      "identity_pairs": 15,
+      "inventories": 6
+    },
+    "graphs": {
+      "available": 6
+    },
+    "length_inventories": 6,
+    "outcomes": {
+      "fail": 6
+    },
+    "reporting_repair": {
+      "diagnostic_repairs": [
+        {
+          "diagnostic_sha256": "384cee733ddf5e270c7616dd8ce35e38c445397fb399e167eab102d22dc50520",
+          "original_diagnostic_sha256": "7f1de62efa049f6310f1ffb20fa5dca4e614ba938cfaccbe4906afd57b89f962",
+          "scenario_id": "s5-albidoflavus-nbc01661-native-length-long"
+        },
+        {
+          "diagnostic_sha256": "f26eb5ac5b4cfc9a1216551505979e01b65153b35062998b51269767210861e9",
+          "original_diagnostic_sha256": "f1dc1e1e24bf50b0cce86caca591f1c075a9947e1e82f7ac7f89f79681044866",
+          "scenario_id": "s5-albidoflavus-nbc01661-native-length-standard"
+        }
+      ],
+      "reason": "Retried failed mapper version checks and completed missing diagnostics; existing NUCmer coordinates unchanged",
+      "repaired_at": "2026-11-06T13:41:17.085196+00:00"
+    },
+    "source_snapshot": "published/20261106T123220.json",
+    "status": "complete"
+  },
   "input_count": 6,
+  "input_reuse_verified": true,
   "input_source_batch": "20261106T104655",
+  "inputs_admitted": 6,
   "jobs": {
     "assemble": "34522051",
     "evidence": "34522053",
     "report": "34522052",
     "reuse_inputs": "34522050"
   },
+  "raw_assembly_reuse_verified": true,
   "raw_source_batch": "20261106T111953",
   "scenario_ids": [
     "s5-canus-nbc00277-native-length-standard",
@@ -21,5 +63,5 @@
     "s5-albidoflavus-nbc01661-native-length-long"
   ],
   "schema_version": 1,
-  "status": "queued_after_s5"
+  "status": "evidence_complete"
 }

@@ -12,15 +12,20 @@ GenomicX colour, typography and spacing tokens in both themes.
 
 ## Layout and semantics
 
-The homepage is a compact scenario-family/assembler matrix of exact pass/fail
-counts. Blue/orange tones supplement explicit labels, with unscored outcomes
+The homepage leads with a general-performance completion summary, followed by
+the compact diagnostic scenario-family/assembler matrix of exact pass/fail
+counts. Both reuse the existing report tables, typography and GenomicX controls;
+this extension introduces no new visual identity or token system. Broad outcomes
+retain explicit pending and error labels and their own scoring caption. See
+[BROAD_PERFORMANCE.md](BROAD_PERFORMANCE.md) for the separate surface contract.
+Blue/orange tones supplement explicit diagnostic labels, with unscored outcomes
 separate. The table leads without lengthy interpretation or per-record diagnoses.
 Family pages list genome/tool/version records linking to individual evidence and
 graphs. Existing genome-case URLs remain concise input/result summaries. Use semantic table headers, visible status
 text and linked evidence. Prose, navigation and controls fit phone widths. Shared
 mobile navigation appears below 1050 px.
 
-Above 900 px, the homepage matrix shows Scenario family and all four assembler
+Above 900 px, the diagnostic homepage matrix shows Scenario family and all four assembler
 columns. The full table scrolls within its labelled region when needed; its
 top-left Scenario family header stays pinned with its row labels while assembler
 columns scroll. At 900 px and below, JavaScript progressively presents two fully

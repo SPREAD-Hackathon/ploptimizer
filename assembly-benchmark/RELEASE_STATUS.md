@@ -1006,3 +1006,26 @@ after that reporting block; all job IDs are unchanged. Fixed the collector's
 local/remote checkpoint variable collision and prepared the aggregate palette
 for six configurations. Nine targeted regression tests pass. Both follow-ups
 and production publication remain pending.
+
+
+### S5 and general-performance release preparation
+
+S5 now accounts for 36 executions with verified reused inputs/raw assemblies:
+35 completed exact failures and the explicit incomplete Plassembler execution.
+All requested existing evidence is collected; stopped/empty output states remain
+explicit. Reporting-only environment-version retries completed the three
+missing PAF diagnostics. Miniasm graph metadata validation and empty-output
+coordinate handling are fixed without changing scientific scores.
+
+The separate general benchmark is genuinely submitted as batch
+`20261106T134511`: 50 frozen published datasets, four workflows and 200 reported
+executions, plus 50 raw Miniasm intermediates. The publication freeze has 28
+outcomes; it is a partial cohort. Its homepage table, dataset details and
+`/aggregate` figures are separate from diagnostic exact-copy scores.
+
+429 scoped tests pass with 11 optional skips; additional freeze and failure-copy
+regressions pass. The fresh Impeccable reviewer disposition was “ship” for the
+bounded inherited GenomicX extension, with documentation completed. Final
+production checks are recorded in `evidence/s5-release/` and
+`evidence/broad-performance-v1/`; this preparation entry does not claim a
+deployment.

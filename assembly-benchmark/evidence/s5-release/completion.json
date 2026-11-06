@@ -1,0 +1,33 @@
+{
+  "batches": [
+    "20261106T104655",
+    "20261106T111953",
+    "20261106T123220"
+  ],
+  "executions": 36,
+  "headline": {
+    "fail": 36,
+    "pass": 0
+  },
+  "input_reuse_verified": true,
+  "limitations": [
+    "Stopped Plassembler run has no completed final sequence assessment or final dot plot.",
+    "One empty final FASTA has no NUCmer invocation; empty-output evidence is retained.",
+    "Output differences are confirmed where measured; software mechanisms remain unresolved."
+  ],
+  "mapper_metadata_repairs": {
+    "polished_job": "34523479",
+    "raw_job": "34523256"
+  },
+  "outcomes": {
+    "did_not_complete": 1,
+    "sequence_fail": 35
+  },
+  "raw_assembly_reuse_verified": true,
+  "source_snapshot_sha256": {
+    "20261106T104655": "8328aab76b6eadb5499a0e3ea28f28cb3590a40d7c332ad77f6ba4b6bfe5302a",
+    "20261106T111953": "e12c93344c5d7fc5b9bc8d8a64c8635dd833d86fa5302cb701dc843242f9cbb4",
+    "20261106T123220": "f3d7d6811860a6095cbf702515ed6eae4d6487125e72a0ee3bf2dd86df8e72e4"
+  },
+  "status": "evidence_complete_publication_pending"
+}

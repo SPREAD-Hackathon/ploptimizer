@@ -1,0 +1,4525 @@
+{
+  "admitted_inputs": 46,
+  "assessment": "wick-longest-alignment-v1",
+  "batch_id": "20261106T134511",
+  "completion_threshold": 0.99,
+  "dataset_count": 50,
+  "execution_state": "Submitted to Slurm; input admission gates all assembler tasks. Results pending.",
+  "expected_executions": 200,
+  "input_binding_errors": [],
+  "jobs": {
+    "assemble-flye": "34523743",
+    "assemble-miniasm": "34523747",
+    "assemble-miniasm-plus": "34523748",
+    "assemble-plassembler": "34523746",
+    "assemble-raven": "34523745",
+    "assess-flye": "34523749",
+    "assess-miniasm-plus": "34523753",
+    "assess-plassembler": "34523752",
+    "assess-raven": "34523750",
+    "inputs": "34523703",
+    "prepare": "34523702"
+  },
+  "panel_id": "wick-subset-50-v1",
+  "results": [
+    {
+      "alignment_count": 12,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/463_GCF_000017485.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/463_GCF_000017485.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/463_GCF_000017485.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/463_GCF_000017485.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": false,
+      "complete_chromosome": false,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg1394",
+          "source_contig_id": "Utg1394",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1396",
+          "source_contig_id": "Utg1396",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "463_GCF_000017485.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 186.189,
+      "execution_path": "runs/20261106T134511/results/463_GCF_000017485.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:56:22.635395+00:00",
+      "genome_outcome": "incomplete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 2979556,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 1858621,
+            "file": "results/463_GCF_000017485.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "32f0e4eb1664b263cb0699b4dd7c67d92090a21e2e346dd886c9b4ba564c21dd"
+          }
+        ],
+        "assessed_assembly_sha256": "32f0e4eb1664b263cb0699b4dd7c67d92090a21e2e346dd886c9b4ba564c21dd",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/463_GCF_000017485.1/raven/execution.json",
+        "execution_sha256": "c8daf4ba77043c6b3523c8ad99dd83f68711e039b899203f075796c2c5b416b6",
+        "input_manifest_sha256": "c86e003e958d83166f34650fcdce6bb43b5a0bdcf3cbdb79f534209386a2c155",
+        "mapper_stderr_file": "results/463_GCF_000017485.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "2a1fa7176d5f613900a691269832f3e4e888207dc23aff5c28f92ce0ca2cd41b",
+        "paf_file": "results/463_GCF_000017485.1/raven/performance/alignment.paf",
+        "paf_sha256": "ba280e9f60659b1479e560797592cba1f50e3c4abd5eb54239a61f6392654696",
+        "reads_sha256": "98b11847ae81958909b01c6c512a899aea08cac0e0a959bcfdd75a6c4826f6c5",
+        "tripled_reference_sha256": "61293ad22758c44de067fd6a3e6fe1c8d21e15ac32686dab2c0d3e34f20a5c53",
+        "truth_sha256": "16dae80543b898d049b7237dd454cf5be9cc8b26d2137175fe573165e2cb09d8",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 2,
+      "replicons": [
+        {
+          "accession": "NC_009707.1",
+          "alignment_count": 12,
+          "complete": false,
+          "contig_id": "Utg1394",
+          "contiguity": 0.47890419303823195,
+          "identity": 0.998612490077099,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 1845106,
+          "longest_alignment_span_bp": 883629,
+          "max_indel_bp": 301,
+          "molecule_type": "chromosome",
+          "name": "NC_009707.1",
+          "published_achieved_depth": 138.825,
+          "query_interval_0based_half_open": [
+            259608,
+            1143796
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            983128,
+            1866757
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:56:19.013294+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 171,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "flye",
+          "--nano-raw",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz",
+          "--out-dir",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/058_GCF_900478165.1/flye/output",
+          "--threads",
+          "4"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/058_GCF_900478165.1/flye/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/058_GCF_900478165.1/flye/output/assembly.fasta"
+        ]
+      },
+      "complete_all": false,
+      "complete_chromosome": false,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "contig_1",
+          "source_contig_id": "contig_1",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_10",
+          "source_contig_id": "contig_10",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_11",
+          "source_contig_id": "contig_11",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_12",
+          "source_contig_id": "contig_12",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_13",
+          "source_contig_id": "contig_13",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_14",
+          "source_contig_id": "contig_14",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_15",
+          "source_contig_id": "contig_15",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_16",
+          "source_contig_id": "contig_16",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_17",
+          "source_contig_id": "contig_17",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_18",
+          "source_contig_id": "contig_18",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_19",
+          "source_contig_id": "contig_19",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_2",
+          "source_contig_id": "contig_2",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_20",
+          "source_contig_id": "contig_20",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_21",
+          "source_contig_id": "contig_21",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_22",
+          "source_contig_id": "contig_22",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_23",
+          "source_contig_id": "contig_23",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_24",
+          "source_contig_id": "contig_24",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_25",
+          "source_contig_id": "contig_25",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_26",
+          "source_contig_id": "contig_26",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_27",
+          "source_contig_id": "contig_27",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_28",
+          "source_contig_id": "contig_28",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_29",
+          "source_contig_id": "contig_29",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_3",
+          "source_contig_id": "contig_3",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_30",
+          "source_contig_id": "contig_30",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_31",
+          "source_contig_id": "contig_31",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_32",
+          "source_contig_id": "contig_32",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_33",
+          "source_contig_id": "contig_33",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_34",
+          "source_contig_id": "contig_34",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_35",
+          "source_contig_id": "contig_35",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_36",
+          "source_contig_id": "contig_36",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_37",
+          "source_contig_id": "contig_37",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_38",
+          "source_contig_id": "contig_38",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_39",
+          "source_contig_id": "contig_39",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_4",
+          "source_contig_id": "contig_4",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_40",
+          "source_contig_id": "contig_40",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_41",
+          "source_contig_id": "contig_41",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_42",
+          "source_contig_id": "contig_42",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_43",
+          "source_contig_id": "contig_43",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_44",
+          "source_contig_id": "contig_44",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_45",
+          "source_contig_id": "contig_45",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_46",
+          "source_contig_id": "contig_46",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_47",
+          "source_contig_id": "contig_47",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_48",
+          "source_contig_id": "contig_48",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_49",
+          "source_contig_id": "contig_49",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_5",
+          "source_contig_id": "contig_5",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_6",
+          "source_contig_id": "contig_6",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_7",
+          "source_contig_id": "contig_7",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_8",
+          "source_contig_id": "contig_8",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_9",
+          "source_contig_id": "contig_9",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "058_GCF_900478165.1",
+      "elapsed_seconds": 114.351,
+      "execution_path": "runs/20261106T134511/results/058_GCF_900478165.1/flye/execution.json",
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:55:41.459112+00:00",
+      "genome_outcome": "incomplete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "peak_memory_kb": 8698668,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 127531,
+            "file": "results/058_GCF_900478165.1/flye/output/assembly.fasta",
+            "role": "final_assembly",
+            "sha256": "9aa310ba3155b2f3767100a44c0abab30bd28cc74c352084b024a62c0bceee32"
+          }
+        ],
+        "assessed_assembly_sha256": "9aa310ba3155b2f3767100a44c0abab30bd28cc74c352084b024a62c0bceee32",
+        "assessment_source_sha256": "263dc0e17aff89eefd18580387d25678c8be62fe96c1d2960fe71741485cb97d",
+        "execution_file": "results/058_GCF_900478165.1/flye/execution.json",
+        "execution_sha256": "6c49da9718386f0a1b4836a2c792e50537e555de902bb239f6e96270f6fcf76c",
+        "input_manifest_sha256": "fecbe823c860ca270e088099eb33246333d38e772f67ff69cd8f8faaa1927695",
+        "mapper_stderr_file": "results/058_GCF_900478165.1/flye/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "d91023239e93270b068e2b1b87c0d80a7575daeef3066064a15e5f79721e18e4",
+        "paf_file": "results/058_GCF_900478165.1/flye/performance/alignment.paf",
+        "paf_sha256": "d1690b7ca2faa723f96351c9568d8863efbbb80cb29022a4d65020f09a74d628",
+        "reads_sha256": "dd67e640f11fc494b6b1e2675f6145685454da1eb734374b10cd8696afc32cb8",
+        "tripled_reference_sha256": "3e4d57dcfa4bac2a922584d274c6e6b63faf4b9176e1724682b3af910f68145d",
+        "truth_sha256": "f6f22dc5cc8daf1844f51ff9fa5795a330e5948ac7d5047aa355a173ae055aa0",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 49,
+      "replicons": [
+        {
+          "accession": "NZ_LS483476.1",
+          "alignment_count": 171,
+          "complete": false,
+          "contig_id": "contig_49",
+          "contiguity": 0.0009718622943431273,
+          "identity": null,
+          "identity_measured": false,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 4384366,
+          "longest_alignment_span_bp": 4261,
+          "max_indel_bp": null,
+          "molecule_type": "chromosome",
+          "name": "NZ_LS483476.1",
+          "published_achieved_depth": 20.852,
+          "query_interval_0based_half_open": [
+            9,
+            4004
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            3178205,
+            3182466
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Recorded assembler execution process tree",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:55:40.305489+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "flye",
+      "track": "broad-performance",
+      "version": "2.9.6-b1802",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "flye": "2.9.6-b1802"
+      },
+      "workflow_steps": []
+    },
+    {
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/058_GCF_900478165.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz"
+        ]
+      },
+      "complete_all": null,
+      "complete_chromosome": null,
+      "completion_threshold": 0.99,
+      "dataset_id": "058_GCF_900478165.1",
+      "elapsed_seconds": 21.858,
+      "execution_path": "runs/20261106T134511/results/058_GCF_900478165.1/raven/execution.json",
+      "execution_status": "error",
+      "finished_at": "2026-11-06T13:54:08.246224+00:00",
+      "genome_outcome": "execution_error",
+      "peak_memory_kb": 3647744,
+      "phase_resources": {},
+      "provenance": {
+        "assessment_source_sha256": "263dc0e17aff89eefd18580387d25678c8be62fe96c1d2960fe71741485cb97d",
+        "execution_file": "results/058_GCF_900478165.1/raven/execution.json",
+        "execution_sha256": "38d319042d0537d2db61dd81fc5990c56cba5327bbe317a0f751235e0b27d066",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "reason": "Assembler exited with code 139",
+      "replicons": [],
+      "resource_scope": "Recorded assembler execution process tree",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:54:08.207827+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "plassembler",
+          "long",
+          "--longreads",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz",
+          "--outdir",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/058_GCF_900478165.1/plassembler/output",
+          "--threads",
+          "4",
+          "--skip_qc",
+          "--skip_mash",
+          "--raw_flag",
+          "--keep_chromosome",
+          "--prefix",
+          "benchmark",
+          "--chromosome",
+          "400000"
+        ]
+      },
+      "complete_all": null,
+      "complete_chromosome": null,
+      "completion_threshold": 0.99,
+      "dataset_id": "058_GCF_900478165.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 166.981,
+      "execution_path": "runs/20261106T134511/results/058_GCF_900478165.1/plassembler/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "error",
+      "finished_at": "2026-11-06T13:57:54.298595+00:00",
+      "genome_outcome": "execution_error",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 8698192,
+      "phase_resources": {},
+      "provenance": {
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/058_GCF_900478165.1/plassembler/execution.json",
+        "execution_sha256": "fab92bf451e6df1e61b5d3e9f31d4d883a9dcaa76768b52021d6d260fe3a2b24",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "reason": "Assembler exited with code 1",
+      "replicons": [],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:57:54.298099+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "plassembler",
+      "track": "broad-performance",
+      "version": "plassembler, version 1.9.0",
+      "versions": {
+        "plassembler": "plassembler, version 1.9.0"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 0,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/.pixi/envs/miniasm-plus/bin/python",
+          "-m",
+          "pipeline.minipolish",
+          "--reads",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz",
+          "--raw-graph",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/058_GCF_900478165.1/assembly.raw.gfa",
+          "--source-execution",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/058_GCF_900478165.1/execution.json",
+          "--output",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/058_GCF_900478165.1/miniasm-plus/output",
+          "--threads",
+          "4",
+          "--rounds",
+          "2"
+        ],
+        "reused_source_1": [
+          "minimap2",
+          "-x",
+          "ava-ont",
+          "-t",
+          "4",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz"
+        ],
+        "reused_source_2": [
+          "miniasm",
+          "-f",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/058_GCF_900478165.1/miniasm/output/overlaps.paf"
+        ],
+        "workflow_3": [
+          "minipolish",
+          "--threads",
+          "4",
+          "--rounds",
+          "2",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/058_GCF_900478165.1/assembly.raw.gfa"
+        ]
+      },
+      "complete_all": false,
+      "complete_chromosome": false,
+      "completion_threshold": 0.99,
+      "contig_sources": [],
+      "dataset_id": "058_GCF_900478165.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait. Sum of raw assembly and polishing worker times.",
+      "elapsed_seconds": 27.192,
+      "execution_path": "runs/20261106T134511/results/058_GCF_900478165.1/miniasm-plus/execution.json",
+      "execution_resource_scope": "Sequential pipeline total: recorded Miniasm workflow plus this polishing continuation; memory is the larger stage peak.",
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:59:41.742264+00:00",
+      "genome_outcome": "empty",
+      "mapper_invoked": false,
+      "mapping_reason": "Final assessed output is empty; mapper was not invoked.",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree. Larger peak from the two sequential phases.",
+      "peak_memory_kb": 2380996,
+      "phase_resources": {
+        "polishing_elapsed_seconds": 2.645,
+        "source_elapsed_seconds": 24.547,
+        "source_peak_memory_kb": 2380996
+      },
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 0,
+            "file": "results/058_GCF_900478165.1/miniasm-plus/output/assembly.fasta",
+            "role": "final_assembly",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ],
+        "assessed_assembly_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/058_GCF_900478165.1/miniasm-plus/execution.json",
+        "execution_sha256": "759de1d52675fb7a6a9252fa2d4453e7dc71f31bdbe747d93b03f43fd1ab4018",
+        "input_manifest_sha256": "fecbe823c860ca270e088099eb33246333d38e772f67ff69cd8f8faaa1927695",
+        "reads_sha256": "dd67e640f11fc494b6b1e2675f6145685454da1eb734374b10cd8696afc32cb8",
+        "truth_sha256": "f6f22dc5cc8daf1844f51ff9fa5795a330e5948ac7d5047aa355a173ae055aa0",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 0,
+      "replicons": [
+        {
+          "accession": "NZ_LS483476.1",
+          "alignment_count": 0,
+          "complete": false,
+          "contig_id": null,
+          "contiguity": 0.0,
+          "identity": null,
+          "identity_measured": false,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 4384366,
+          "longest_alignment_span_bp": 0,
+          "max_indel_bp": null,
+          "molecule_type": "chromosome",
+          "name": "NZ_LS483476.1",
+          "published_achieved_depth": 20.852,
+          "query_interval_0based_half_open": null,
+          "reference_interval_tripled_0based_half_open": null,
+          "source_relative_depth": 1.0,
+          "strand": null
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait. Miniasm + Minipolish sums the recorded raw and polishing worker times.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:59:41.602058+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "miniasm-plus",
+      "track": "broad-performance",
+      "version": "Miniasm 0.3-r179 + Minipolish v0.2.1",
+      "versions": {
+        "miniasm": "0.3-r179",
+        "miniasm-plus": "Miniasm 0.3-r179 + Minipolish v0.2.1",
+        "minimap2": "2.31-r1302",
+        "minipolish": "Minipolish v0.2.1",
+        "racon": "1.5.0"
+      },
+      "workflow_steps": [
+        {
+          "command": [
+            "minimap2",
+            "-x",
+            "ava-ont",
+            "-t",
+            "4",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz"
+          ],
+          "exit_code": 0,
+          "name": "Read-to-read overlaps",
+          "reused_source_stage": true
+        },
+        {
+          "command": [
+            "miniasm",
+            "-f",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/058_GCF_900478165.1/miniasm/output/overlaps.paf"
+          ],
+          "exit_code": 0,
+          "name": "Unpolished unitig assembly",
+          "reused_source_stage": true
+        },
+        {
+          "command": [
+            "minipolish",
+            "--threads",
+            "4",
+            "--rounds",
+            "2",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/058_GCF_900478165.1/reads.fastq.gz",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/058_GCF_900478165.1/assembly.raw.gfa"
+          ],
+          "name": "Minipolish (initial constituent-read polish and two full rounds)",
+          "status": "not_run_empty_source_assembly"
+        }
+      ]
+    },
+    {
+      "alignment_count": 3,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/443_GCF_001999945.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/443_GCF_001999945.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/443_GCF_001999945.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/443_GCF_001999945.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg1010",
+          "source_contig_id": "Utg1010",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "443_GCF_001999945.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 221.089,
+      "execution_path": "runs/20261106T134511/results/443_GCF_001999945.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:58:12.890443+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 3560024,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 4255663,
+            "file": "results/443_GCF_001999945.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "b7bc93d7ba0fb59726652426614c296e78ca86b649e8b647c12e5d989ce47f96"
+          }
+        ],
+        "assessed_assembly_sha256": "b7bc93d7ba0fb59726652426614c296e78ca86b649e8b647c12e5d989ce47f96",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/443_GCF_001999945.1/raven/execution.json",
+        "execution_sha256": "72a89443a15445a9957641a4ed95a87347d6df0674d640f1bef9c361acfa9852",
+        "input_manifest_sha256": "05708457e42851802cfc23daaf10bfdfcda93a2597d86464a2c6d97b31f3792c",
+        "mapper_stderr_file": "results/443_GCF_001999945.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "508e15c0d43242f8a5ff5b5be83b9b8436373fcd5e563ca0dab4c1ba37fbaaf7",
+        "paf_file": "results/443_GCF_001999945.1/raven/performance/alignment.paf",
+        "paf_sha256": "6dd23c2a399318c1b9ad6704348510b7b259a1776deb3a08bd20ebf9e49c8ea7",
+        "reads_sha256": "0afdbd6d107194c5b1b3ed11332827b6417bdd22f9c6b4311f6d38ed9d09db2e",
+        "tripled_reference_sha256": "40adb4e1b0fc2b4870fc550186c262347dc5bab53e056e15e3adfe4928bcfc30",
+        "truth_sha256": "242573599c1d0646592fd035b5b2054e171e9c6363231bc1249c9f4eb9e8210c",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 1,
+      "replicons": [
+        {
+          "accession": "NZ_CP019650.1",
+          "alignment_count": 3,
+          "complete": true,
+          "contig_id": "Utg1010",
+          "contiguity": 1.0,
+          "identity": 0.9999988250849993,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 4255625,
+          "longest_alignment_span_bp": 4255625,
+          "max_indel_bp": 3,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP019650.1",
+          "published_achieved_depth": 95.392,
+          "query_interval_0based_half_open": [
+            0,
+            4255624
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            4095241,
+            8350866
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:58:06.043334+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 3,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "flye",
+          "--nano-raw",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz",
+          "--out-dir",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/flye/output",
+          "--threads",
+          "4"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/flye/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/flye/output/assembly.fasta"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "contig_1",
+          "source_contig_id": "contig_1",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_2",
+          "source_contig_id": "contig_2",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_3",
+          "source_contig_id": "contig_3",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_4",
+          "source_contig_id": "contig_4",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "contig_5",
+          "source_contig_id": "contig_5",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "317_GCF_002287885.2",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 402.932,
+      "execution_path": "runs/20261106T134511/results/317_GCF_002287885.2/flye/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:57:40.538302+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 8618528,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 1287417,
+            "file": "results/317_GCF_002287885.2/flye/output/assembly.fasta",
+            "role": "final_assembly",
+            "sha256": "3a09e75ee8b7e36ac6600826b91355101dd19abb1e53d50d64a7215f49d6416e"
+          }
+        ],
+        "assessed_assembly_sha256": "3a09e75ee8b7e36ac6600826b91355101dd19abb1e53d50d64a7215f49d6416e",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/317_GCF_002287885.2/flye/execution.json",
+        "execution_sha256": "e7a0533932d7f96b6b9cc6254526bcef24ec7005dc6694d05d78d49fe7d08b22",
+        "input_manifest_sha256": "33cea6dacd30222e8a3a655a03beeb4e3d60fc3a68d34ec31e6c68260029b15d",
+        "mapper_stderr_file": "results/317_GCF_002287885.2/flye/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "09ff4b720f8413e6f080e1e9d3dbc0c548411db4558a20582f23beb66c3af68a",
+        "paf_file": "results/317_GCF_002287885.2/flye/performance/alignment.paf",
+        "paf_sha256": "d2b9efda9fe231274038cf39adc867345520c5b92d8196238e718dce82828f95",
+        "reads_sha256": "3f91aa22a0daefe99f0ffec74735bef1383fa1c5c3e7dc744da9d28511731579",
+        "tripled_reference_sha256": "c8b5b7cd6461924e50cee783ba72402c7f053ffa41bc2ad09398227c35f5138c",
+        "truth_sha256": "77fc43f5c45c317e5d3462771eb1df6f7b6e65a105e96acbc2d4c31f3014a45c",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 5,
+      "replicons": [
+        {
+          "accession": "NZ_CP016768.2",
+          "alignment_count": 3,
+          "complete": true,
+          "contig_id": "contig_5",
+          "contiguity": 1.0,
+          "identity": 0.9984508733827255,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 1238108,
+          "longest_alignment_span_bp": 1238108,
+          "max_indel_bp": 3,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP016768.2",
+          "published_achieved_depth": 29.825,
+          "query_interval_0based_half_open": [
+            0,
+            1236240
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            1181481,
+            2419589
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:57:38.591861+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "flye",
+      "track": "broad-performance",
+      "version": "2.9.6-b1802",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "flye": "2.9.6-b1802"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 2,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg618",
+          "source_contig_id": "Utg618",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "317_GCF_002287885.2",
+      "elapsed_seconds": 30.067,
+      "execution_path": "runs/20261106T134511/results/317_GCF_002287885.2/raven/execution.json",
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:51:26.720089+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "peak_memory_kb": 738892,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 1237621,
+            "file": "results/317_GCF_002287885.2/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "b1c4f644d73f9bd4b71452c2af599ce60e3cf7d55f42f0dc95352df4d75a2826"
+          }
+        ],
+        "assessed_assembly_sha256": "b1c4f644d73f9bd4b71452c2af599ce60e3cf7d55f42f0dc95352df4d75a2826",
+        "assessment_source_sha256": "263dc0e17aff89eefd18580387d25678c8be62fe96c1d2960fe71741485cb97d",
+        "execution_file": "results/317_GCF_002287885.2/raven/execution.json",
+        "execution_sha256": "aac8283538e5ccd1ff7359e37a82647af54eec59690037c9cfc995834bbb8d10",
+        "input_manifest_sha256": "33cea6dacd30222e8a3a655a03beeb4e3d60fc3a68d34ec31e6c68260029b15d",
+        "mapper_stderr_file": "results/317_GCF_002287885.2/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "24f453b0fce4cb906676c57ebc89ef68c05ea1b811068cbf0b1b9cd4c9d0ec10",
+        "paf_file": "results/317_GCF_002287885.2/raven/performance/alignment.paf",
+        "paf_sha256": "568d6ef121f921cfd22a2374fed5d636ebeae14e4af629222d28b74d057dc3a4",
+        "reads_sha256": "3f91aa22a0daefe99f0ffec74735bef1383fa1c5c3e7dc744da9d28511731579",
+        "tripled_reference_sha256": "c8b5b7cd6461924e50cee783ba72402c7f053ffa41bc2ad09398227c35f5138c",
+        "truth_sha256": "77fc43f5c45c317e5d3462771eb1df6f7b6e65a105e96acbc2d4c31f3014a45c",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 1,
+      "replicons": [
+        {
+          "accession": "NZ_CP016768.2",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg618",
+          "contiguity": 1.0,
+          "identity": 0.9994726040839667,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 1238108,
+          "longest_alignment_span_bp": 1238108,
+          "max_indel_bp": 6,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP016768.2",
+          "published_achieved_depth": 29.825,
+          "query_interval_0based_half_open": [
+            0,
+            1237583
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            958977,
+            2197085
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        }
+      ],
+      "resource_scope": "Recorded assembler execution process tree",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:51:25.013473+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 3,
+      "assessed_output_scope": "Final plasmids plus actual retained chromosome",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "plassembler",
+          "long",
+          "--longreads",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz",
+          "--outdir",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/plassembler/output",
+          "--threads",
+          "4",
+          "--skip_qc",
+          "--skip_mash",
+          "--raw_flag",
+          "--keep_chromosome",
+          "--prefix",
+          "benchmark",
+          "--chromosome",
+          "400000"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/plassembler/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/plassembler/performance/final-plasmids-and-retained-chromosome.fasta"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "retained_chromosome:chromosome",
+          "source_contig_id": "chromosome",
+          "source_role": "retained_chromosome"
+        }
+      ],
+      "dataset_id": "317_GCF_002287885.2",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 462.106,
+      "execution_path": "runs/20261106T134511/results/317_GCF_002287885.2/plassembler/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "pass",
+      "finished_at": "2026-11-06T13:58:43.216629+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 8616116,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 0,
+            "file": "results/317_GCF_002287885.2/plassembler/output/benchmark_plasmids.fasta",
+            "role": "final_assembly",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "bytes": 1256856,
+            "execution_hash_recorded": true,
+            "file": "results/317_GCF_002287885.2/plassembler/output/chromosome.fasta",
+            "role": "retained_chromosome",
+            "sha256": "3cc1f140df6db0a08661d8ab1cf95dcc11a816fdd6ae3830e20f1d70427e34be"
+          }
+        ],
+        "assessed_assembly_sha256": "af106816893284e7f432ca2bb75c8c4c7830647941b16aecc90dbbe2d18fd104",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/317_GCF_002287885.2/plassembler/execution.json",
+        "execution_sha256": "e3f2743e3a84f633ff9b4e137928bc19ee184f168b65fe1c6c4dcf0f7b7b284d",
+        "input_manifest_sha256": "33cea6dacd30222e8a3a655a03beeb4e3d60fc3a68d34ec31e6c68260029b15d",
+        "mapper_stderr_file": "results/317_GCF_002287885.2/plassembler/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "b23796fac6f665241e2354fdd08843f2dd92f704d645bede3ff62ea6232bd368",
+        "paf_file": "results/317_GCF_002287885.2/plassembler/performance/alignment.paf",
+        "paf_sha256": "e5b96246888a90295f25117ab4daf501048a6f011f3e5256f148757dabb8ad15",
+        "reads_sha256": "3f91aa22a0daefe99f0ffec74735bef1383fa1c5c3e7dc744da9d28511731579",
+        "tripled_reference_sha256": "c8b5b7cd6461924e50cee783ba72402c7f053ffa41bc2ad09398227c35f5138c",
+        "truth_sha256": "77fc43f5c45c317e5d3462771eb1df6f7b6e65a105e96acbc2d4c31f3014a45c",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 1,
+      "replicons": [
+        {
+          "accession": "NZ_CP016768.2",
+          "alignment_count": 3,
+          "complete": true,
+          "contig_id": "retained_chromosome:chromosome",
+          "contiguity": 1.0,
+          "identity": 0.9984508733827255,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 1238108,
+          "longest_alignment_span_bp": 1238108,
+          "max_indel_bp": 3,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP016768.2",
+          "published_achieved_depth": 29.825,
+          "query_interval_0based_half_open": [
+            0,
+            1236240
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            1181481,
+            2419589
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:58:41.293499+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "plassembler",
+      "track": "broad-performance",
+      "version": "plassembler, version 1.9.0",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "plassembler": "plassembler, version 1.9.0"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 2,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/.pixi/envs/miniasm-plus/bin/python",
+          "-m",
+          "pipeline.minipolish",
+          "--reads",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz",
+          "--raw-graph",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/317_GCF_002287885.2/assembly.raw.gfa",
+          "--source-execution",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/317_GCF_002287885.2/execution.json",
+          "--output",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/miniasm-plus/output",
+          "--threads",
+          "4",
+          "--rounds",
+          "2"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/miniasm-plus/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/miniasm-plus/output/assembly.fasta"
+        ],
+        "reused_source_1": [
+          "minimap2",
+          "-x",
+          "ava-ont",
+          "-t",
+          "4",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz"
+        ],
+        "reused_source_2": [
+          "miniasm",
+          "-f",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/miniasm/output/overlaps.paf"
+        ],
+        "workflow_3": [
+          "minipolish",
+          "--threads",
+          "4",
+          "--rounds",
+          "2",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/317_GCF_002287885.2/assembly.raw.gfa"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "utg000001c",
+          "source_contig_id": "utg000001c",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "utg000002c",
+          "source_contig_id": "utg000002c",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "317_GCF_002287885.2",
+      "elapsed_seconds": 50.021,
+      "execution_path": "runs/20261106T134511/results/317_GCF_002287885.2/miniasm-plus/execution.json",
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:51:54.828307+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "peak_memory_kb": 601896,
+      "phase_resources": {
+        "polishing_elapsed_seconds": 42.852,
+        "source_elapsed_seconds": 7.169,
+        "source_peak_memory_kb": 601896
+      },
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 1241571,
+            "file": "results/317_GCF_002287885.2/miniasm-plus/output/assembly.fasta",
+            "role": "final_assembly",
+            "sha256": "b2a41d3435705da1074d005698ab4bea57a3d5b6b34a854fdf20a43aab482617"
+          }
+        ],
+        "assessed_assembly_sha256": "b2a41d3435705da1074d005698ab4bea57a3d5b6b34a854fdf20a43aab482617",
+        "assessment_source_sha256": "263dc0e17aff89eefd18580387d25678c8be62fe96c1d2960fe71741485cb97d",
+        "execution_file": "results/317_GCF_002287885.2/miniasm-plus/execution.json",
+        "execution_sha256": "18bb5def51119783c4a02bb178e7a2ec67b3ae3352f8382b9412f3fea39b4501",
+        "input_manifest_sha256": "33cea6dacd30222e8a3a655a03beeb4e3d60fc3a68d34ec31e6c68260029b15d",
+        "mapper_stderr_file": "results/317_GCF_002287885.2/miniasm-plus/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "def4d61bf886c02ee0a918a4736501943f68636eb8786fe39f01b65506608c75",
+        "paf_file": "results/317_GCF_002287885.2/miniasm-plus/performance/alignment.paf",
+        "paf_sha256": "092dd4408b1abcfc2b7e3ad1039e79bad10ee5e682f3a8ea0fbae39c7cf93a65",
+        "reads_sha256": "3f91aa22a0daefe99f0ffec74735bef1383fa1c5c3e7dc744da9d28511731579",
+        "tripled_reference_sha256": "c8b5b7cd6461924e50cee783ba72402c7f053ffa41bc2ad09398227c35f5138c",
+        "truth_sha256": "77fc43f5c45c317e5d3462771eb1df6f7b6e65a105e96acbc2d4c31f3014a45c",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 2,
+      "replicons": [
+        {
+          "accession": "NZ_CP016768.2",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "utg000001c",
+          "contiguity": 1.0,
+          "identity": 0.9994289964794847,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 1238108,
+          "longest_alignment_span_bp": 1238108,
+          "max_indel_bp": 6,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP016768.2",
+          "published_achieved_depth": 29.825,
+          "query_interval_0based_half_open": [
+            0,
+            1237543
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            913677,
+            2151785
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        }
+      ],
+      "resource_scope": "Sequential pipeline total: recorded Miniasm workflow plus this polishing continuation; memory is the larger stage peak.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:51:53.048299+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "miniasm-plus",
+      "track": "broad-performance",
+      "version": "Miniasm 0.3-r179 + Minipolish v0.2.1",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "miniasm": "0.3-r179",
+        "miniasm-plus": "Miniasm 0.3-r179 + Minipolish v0.2.1",
+        "minimap2": "2.31-r1302",
+        "minipolish": "Minipolish v0.2.1",
+        "racon": "1.5.0"
+      },
+      "workflow_steps": [
+        {
+          "command": [
+            "minimap2",
+            "-x",
+            "ava-ont",
+            "-t",
+            "4",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz"
+          ],
+          "exit_code": 0,
+          "name": "Read-to-read overlaps",
+          "reused_source_stage": true
+        },
+        {
+          "command": [
+            "miniasm",
+            "-f",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/317_GCF_002287885.2/miniasm/output/overlaps.paf"
+          ],
+          "exit_code": 0,
+          "name": "Unpolished unitig assembly",
+          "reused_source_stage": true
+        },
+        {
+          "command": [
+            "minipolish",
+            "--threads",
+            "4",
+            "--rounds",
+            "2",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/317_GCF_002287885.2/reads.fastq.gz",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/317_GCF_002287885.2/assembly.raw.gfa"
+          ],
+          "exit_code": 0,
+          "name": "Minipolish (initial constituent-read polish and two full rounds)"
+        }
+      ]
+    },
+    {
+      "alignment_count": 2,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/384_GCF_004564215.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/384_GCF_004564215.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/384_GCF_004564215.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/384_GCF_004564215.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg1448",
+          "source_contig_id": "Utg1448",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1450",
+          "source_contig_id": "Utg1450",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "384_GCF_004564215.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 186.925,
+      "execution_path": "runs/20261106T134511/results/384_GCF_004564215.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:56:49.363963+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 3175592,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 3356438,
+            "file": "results/384_GCF_004564215.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "c6304de53264de0d671aad85df51bb36ddddb6aa34f122a8b3e1ac9e395ad886"
+          }
+        ],
+        "assessed_assembly_sha256": "c6304de53264de0d671aad85df51bb36ddddb6aa34f122a8b3e1ac9e395ad886",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/384_GCF_004564215.1/raven/execution.json",
+        "execution_sha256": "9ed8b79b8b2cca26fa5a8e01288b78dd5ce2904b90a712b2afc351174f8cd55e",
+        "input_manifest_sha256": "66f4b93ba49796bc45740a4521cc3430120adf6978e130fbdbc2a3205feb1ba1",
+        "mapper_stderr_file": "results/384_GCF_004564215.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "23efcff5806125e8e0454ceb3b615e9dce4dcb797a0dfffeff750bf99007e710",
+        "paf_file": "results/384_GCF_004564215.1/raven/performance/alignment.paf",
+        "paf_sha256": "f63977fd6cb2b7422357ded7e6a210d7665a3d734a7c50ea06c7c97d00fd806a",
+        "reads_sha256": "bbfe9c6f004c8c1460b4425bdf209e3cb83acd2a350cd7a321c17dc680a2f84c",
+        "tripled_reference_sha256": "e23ede4d9fe7527fa5cbdfd5b70d881c2afffcbe62ce9ff42cecbd567acc1517",
+        "truth_sha256": "1375e66d89647aef655add1b2897c3f9502aedd5730c6cdffeb86a4083fdf108",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 2,
+      "replicons": [
+        {
+          "accession": "NZ_CP024846.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg1450",
+          "contiguity": 1.0,
+          "identity": 0.9999906807585622,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 3326434,
+          "longest_alignment_span_bp": 3326434,
+          "max_indel_bp": 6,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP024846.1",
+          "published_achieved_depth": 78.84,
+          "query_interval_0based_half_open": [
+            0,
+            3326438
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            1781692,
+            5108126
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:56:44.594853+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 2,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/457_GCF_900637165.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/457_GCF_900637165.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/457_GCF_900637165.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/457_GCF_900637165.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg328",
+          "source_contig_id": "Utg328",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "457_GCF_900637165.1",
+      "elapsed_seconds": 110.311,
+      "execution_path": "runs/20261106T134511/results/457_GCF_900637165.1/raven/execution.json",
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:53:27.355202+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "peak_memory_kb": 1436352,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 3149439,
+            "file": "results/457_GCF_900637165.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "d3d7eabc28878914b2e3c25745d2587d50a8ea29f5a000d4e79cd222e72953dd"
+          }
+        ],
+        "assessed_assembly_sha256": "d3d7eabc28878914b2e3c25745d2587d50a8ea29f5a000d4e79cd222e72953dd",
+        "assessment_source_sha256": "263dc0e17aff89eefd18580387d25678c8be62fe96c1d2960fe71741485cb97d",
+        "execution_file": "results/457_GCF_900637165.1/raven/execution.json",
+        "execution_sha256": "84eb74d2574c2fab05363ed011be6ad5a7bdd58b66a9b33a1720bc4bd2d7bdc5",
+        "input_manifest_sha256": "f12068c01573a46754f681461c22f4d9672f1ae52583a4689dce48c192125fba",
+        "mapper_stderr_file": "results/457_GCF_900637165.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "72e522d2197ca6edac64fb4c351686832b3ccd7068259517840fab68754d5b45",
+        "paf_file": "results/457_GCF_900637165.1/raven/performance/alignment.paf",
+        "paf_sha256": "9ce868b352202fc32f3f3267dafc3f33fdf2dab85fbedb8e3a7be44f67b5dd6f",
+        "reads_sha256": "1b591bce295209f7611b620d27db94259860243919b5fc5a07f697717070412f",
+        "tripled_reference_sha256": "a4ad45f5febcf0d12cb11559931c8583ddff849fd29fb5c4614befb0a472eb53",
+        "truth_sha256": "09a5558ca4ada218ee6f5c21bb917bc0d2b515302ec0119e88c570f8f76654f7",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 1,
+      "replicons": [
+        {
+          "accession": "NZ_LR134350.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg328",
+          "contiguity": 1.0,
+          "identity": 0.9991385374053787,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 3148934,
+          "longest_alignment_span_bp": 3148934,
+          "max_indel_bp": 108,
+          "molecule_type": "chromosome",
+          "name": "NZ_LR134350.1",
+          "published_achieved_depth": 33.495,
+          "query_interval_0based_half_open": [
+            0,
+            3149401
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            2323773,
+            5472707
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        }
+      ],
+      "resource_scope": "Recorded assembler execution process tree",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:53:21.561138+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 2,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/.pixi/envs/miniasm-plus/bin/python",
+          "-m",
+          "pipeline.minipolish",
+          "--reads",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/457_GCF_900637165.1/reads.fastq.gz",
+          "--raw-graph",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/457_GCF_900637165.1/assembly.raw.gfa",
+          "--source-execution",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/457_GCF_900637165.1/execution.json",
+          "--output",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/457_GCF_900637165.1/miniasm-plus/output",
+          "--threads",
+          "4",
+          "--rounds",
+          "2"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/457_GCF_900637165.1/miniasm-plus/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/457_GCF_900637165.1/miniasm-plus/output/assembly.fasta"
+        ],
+        "reused_source_1": [
+          "minimap2",
+          "-x",
+          "ava-ont",
+          "-t",
+          "4",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/457_GCF_900637165.1/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/457_GCF_900637165.1/reads.fastq.gz"
+        ],
+        "reused_source_2": [
+          "miniasm",
+          "-f",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/457_GCF_900637165.1/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/457_GCF_900637165.1/miniasm/output/overlaps.paf"
+        ],
+        "workflow_3": [
+          "minipolish",
+          "--threads",
+          "4",
+          "--rounds",
+          "2",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/457_GCF_900637165.1/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/457_GCF_900637165.1/assembly.raw.gfa"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "utg000001c",
+          "source_contig_id": "utg000001c",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "utg000002c",
+          "source_contig_id": "utg000002c",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "457_GCF_900637165.1",
+      "elapsed_seconds": 186.521,
+      "execution_path": "runs/20261106T134511/results/457_GCF_900637165.1/miniasm-plus/execution.json",
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:54:44.322617+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "peak_memory_kb": 1576556,
+      "phase_resources": {
+        "polishing_elapsed_seconds": 162.681,
+        "source_elapsed_seconds": 23.84,
+        "source_peak_memory_kb": 1576556
+      },
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 3150132,
+            "file": "results/457_GCF_900637165.1/miniasm-plus/output/assembly.fasta",
+            "role": "final_assembly",
+            "sha256": "a274973a116f23b0c62c4e44fda524254699222625c3c25bd542fec5b5ceb3ef"
+          }
+        ],
+        "assessed_assembly_sha256": "a274973a116f23b0c62c4e44fda524254699222625c3c25bd542fec5b5ceb3ef",
+        "assessment_source_sha256": "263dc0e17aff89eefd18580387d25678c8be62fe96c1d2960fe71741485cb97d",
+        "execution_file": "results/457_GCF_900637165.1/miniasm-plus/execution.json",
+        "execution_sha256": "edce66a37bb449d75a59def00d3078a2a98de26155de32cf66956a42e5a5ab93",
+        "input_manifest_sha256": "f12068c01573a46754f681461c22f4d9672f1ae52583a4689dce48c192125fba",
+        "mapper_stderr_file": "results/457_GCF_900637165.1/miniasm-plus/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "4946f4f8909f8887cb2bb95d3993cc65e91a03d320880269e595c92c389659b3",
+        "paf_file": "results/457_GCF_900637165.1/miniasm-plus/performance/alignment.paf",
+        "paf_sha256": "4f25d57dc5ce10ea84c876d2aa8e6fd548467f98c41fd7f229b4a806dbdf9303",
+        "reads_sha256": "1b591bce295209f7611b620d27db94259860243919b5fc5a07f697717070412f",
+        "tripled_reference_sha256": "a4ad45f5febcf0d12cb11559931c8583ddff849fd29fb5c4614befb0a472eb53",
+        "truth_sha256": "09a5558ca4ada218ee6f5c21bb917bc0d2b515302ec0119e88c570f8f76654f7",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 2,
+      "replicons": [
+        {
+          "accession": "NZ_LR134350.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "utg000001c",
+          "contiguity": 1.0,
+          "identity": 0.9996225052885771,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 3148934,
+          "longest_alignment_span_bp": 3148934,
+          "max_indel_bp": 49,
+          "molecule_type": "chromosome",
+          "name": "NZ_LR134350.1",
+          "published_achieved_depth": 33.495,
+          "query_interval_0based_half_open": [
+            0,
+            3149318
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            811026,
+            3959960
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        }
+      ],
+      "resource_scope": "Sequential pipeline total: recorded Miniasm workflow plus this polishing continuation; memory is the larger stage peak.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:54:38.110499+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "miniasm-plus",
+      "track": "broad-performance",
+      "version": "Miniasm 0.3-r179 + Minipolish v0.2.1",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "miniasm": "0.3-r179",
+        "miniasm-plus": "Miniasm 0.3-r179 + Minipolish v0.2.1",
+        "minimap2": "2.31-r1302",
+        "minipolish": "Minipolish v0.2.1",
+        "racon": "1.5.0"
+      },
+      "workflow_steps": [
+        {
+          "command": [
+            "minimap2",
+            "-x",
+            "ava-ont",
+            "-t",
+            "4",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/457_GCF_900637165.1/reads.fastq.gz",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/457_GCF_900637165.1/reads.fastq.gz"
+          ],
+          "exit_code": 0,
+          "name": "Read-to-read overlaps",
+          "reused_source_stage": true
+        },
+        {
+          "command": [
+            "miniasm",
+            "-f",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/457_GCF_900637165.1/reads.fastq.gz",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/457_GCF_900637165.1/miniasm/output/overlaps.paf"
+          ],
+          "exit_code": 0,
+          "name": "Unpolished unitig assembly",
+          "reused_source_stage": true
+        },
+        {
+          "command": [
+            "minipolish",
+            "--threads",
+            "4",
+            "--rounds",
+            "2",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/457_GCF_900637165.1/reads.fastq.gz",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/raw_assemblies/457_GCF_900637165.1/assembly.raw.gfa"
+          ],
+          "exit_code": 0,
+          "name": "Minipolish (initial constituent-read polish and two full rounds)"
+        }
+      ]
+    },
+    {
+      "alignment_count": 4,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/470_GCF_002386365.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/470_GCF_002386365.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/470_GCF_002386365.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/470_GCF_002386365.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg160",
+          "source_contig_id": "Utg160",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg162",
+          "source_contig_id": "Utg162",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "470_GCF_002386365.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 315.368,
+      "execution_path": "runs/20261106T134511/results/470_GCF_002386365.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:59:12.759128+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 2903684,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 2408839,
+            "file": "results/470_GCF_002386365.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "683823cdca504bafa11ffe810e87e788b3ab206fbfa4d8190979553aaa074764"
+          }
+        ],
+        "assessed_assembly_sha256": "683823cdca504bafa11ffe810e87e788b3ab206fbfa4d8190979553aaa074764",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/470_GCF_002386365.1/raven/execution.json",
+        "execution_sha256": "1b8224257fa44a7979de6dddca44734ab64f9f7b38c3dbcd318d762a2b72b0fc",
+        "input_manifest_sha256": "65c270f7c0bd43b3a4c571e8a45bd6458892af3c362a6f2c13b4e49c76e078c9",
+        "mapper_stderr_file": "results/470_GCF_002386365.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "3b4c897826bd3d5b224e0bb1365a3243cef075872aca091ed6273f581fd42fb8",
+        "paf_file": "results/470_GCF_002386365.1/raven/performance/alignment.paf",
+        "paf_sha256": "188eac1f900af21e85b65d56e58da990f995b21cefe132c97fc0769eec57d1b7",
+        "reads_sha256": "a5b3383d92d0ab9ce48468c2e5c5ce4bc8c854ccd445bbfeaee29c352d461a37",
+        "tripled_reference_sha256": "aedd07e46bb71d4d18c4504570188249513a165dd90706abc71538800253d375",
+        "truth_sha256": "328a7c2e35393e3228e61ac4504593f495542ff019dc9cecf3173e36f80397d6",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 2,
+      "replicons": [
+        {
+          "accession": "NZ_CP023510.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg160",
+          "contiguity": 1.0,
+          "identity": 0.9999780521725183,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 2369230,
+          "longest_alignment_span_bp": 2369230,
+          "max_indel_bp": 16,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP023510.1",
+          "published_achieved_depth": 135.954,
+          "query_interval_0based_half_open": [
+            0,
+            2369229
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            1586699,
+            3955929
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        },
+        {
+          "accession": "NZ_CP023509.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg162",
+          "contiguity": 1.0,
+          "identity": 0.9998482626068484,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 39540,
+          "longest_alignment_span_bp": 39540,
+          "max_indel_bp": 4,
+          "molecule_type": "plasmid",
+          "name": "NZ_CP023509.1",
+          "published_achieved_depth": 137.294,
+          "query_interval_0based_half_open": [
+            0,
+            39538
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            9260,
+            48800
+          ],
+          "source_relative_depth": 1.04,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:59:09.376539+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 2,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/320_GCF_000612685.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/320_GCF_000612685.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/320_GCF_000612685.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/320_GCF_000612685.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg2576",
+          "source_contig_id": "Utg2576",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "320_GCF_000612685.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 242.279,
+      "execution_path": "runs/20261106T134511/results/320_GCF_000612685.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:58:39.821162+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 4245336,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 3952506,
+            "file": "results/320_GCF_000612685.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "23f2d52678f124daa892bc94d50e10f12b3bd488d3dcff8af5b7341cd921bc9f"
+          }
+        ],
+        "assessed_assembly_sha256": "23f2d52678f124daa892bc94d50e10f12b3bd488d3dcff8af5b7341cd921bc9f",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/320_GCF_000612685.1/raven/execution.json",
+        "execution_sha256": "0c9b64b75bc132ffb16fd9ef27a2449c097164acf6b9642f3f8091b76abd712a",
+        "input_manifest_sha256": "e7b272ec4f65fbecf9c5ec6f905db2c76d7e7ad1c056b28e4c7b0c11bb5aef26",
+        "mapper_stderr_file": "results/320_GCF_000612685.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "55a421e0b7dfa8865623a3f9ff31ce3a4a61ab26a7a0399f321b5856bdb68a31",
+        "paf_file": "results/320_GCF_000612685.1/raven/performance/alignment.paf",
+        "paf_sha256": "5d115045fa4d26aaa294b20f5b1d8c7569f216317d8ecf78fb9c683186da8d4c",
+        "reads_sha256": "f8b5d79a41525be15e1b327c054a63b0ab222ac8c907d68eb4faa5de3f5fb4f3",
+        "tripled_reference_sha256": "dd33d1077da472ceac063628a20a67a8004c1e5df242fc529a30cc96f1394038",
+        "truth_sha256": "e2dbd9420f85043a1a2107c48f5c5b9f74d8060ed7260848abe04ec59e6fb392",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 1,
+      "replicons": [
+        {
+          "accession": "NZ_HG916765.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg2576",
+          "contiguity": 1.0,
+          "identity": 0.9998616208974201,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 3952818,
+          "longest_alignment_span_bp": 3952818,
+          "max_indel_bp": 9,
+          "molecule_type": "chromosome",
+          "name": "NZ_HG916765.1",
+          "published_achieved_depth": 83.527,
+          "query_interval_0based_half_open": [
+            0,
+            3952466
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            2142654,
+            6095472
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:58:32.676650+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 2,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/195_GCF_001693335.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/195_GCF_001693335.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/195_GCF_001693335.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/195_GCF_001693335.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg308",
+          "source_contig_id": "Utg308",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "195_GCF_001693335.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 314.657,
+      "execution_path": "runs/20261106T134511/results/195_GCF_001693335.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:58:32.636010+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 2930688,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 1598213,
+            "file": "results/195_GCF_001693335.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "5f7fef067a567199eefa7a3ed92087d1064f1191da0597ee425baec7f11a571c"
+          }
+        ],
+        "assessed_assembly_sha256": "5f7fef067a567199eefa7a3ed92087d1064f1191da0597ee425baec7f11a571c",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/195_GCF_001693335.1/raven/execution.json",
+        "execution_sha256": "1be23062831a7268c4468d2167f33630e37c3045c27fbcf2f435077250dde917",
+        "input_manifest_sha256": "0a8f9ba79327f6306c0aacb4975a8a15bbb366c80f037d100b2c703c99e97ddd",
+        "mapper_stderr_file": "results/195_GCF_001693335.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "463af8cab7474e60e800cd600066e107c6ba58c16df8db013c70786ac29299f0",
+        "paf_file": "results/195_GCF_001693335.1/raven/performance/alignment.paf",
+        "paf_sha256": "c5a323e9eb377c93132d0a2d2885668fb2f570f583e4f4318739edd1df2c6e4a",
+        "reads_sha256": "a565ccc49e7815e318a41bf5eb76e63ee785a9330b229ecec338f6362f2da4d3",
+        "tripled_reference_sha256": "4f242e56438e897bf50efe15bc3e8a577ba980416c0c90945f88860fb1368504",
+        "truth_sha256": "ea6d533e35bd6b599e256b3461e52b01aab583060316bd712a639dcbe49e7138",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 1,
+      "replicons": [
+        {
+          "accession": "NZ_CP016503.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg308",
+          "contiguity": 1.0,
+          "identity": 0.9974694092556434,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 1594790,
+          "longest_alignment_span_bp": 1594790,
+          "max_indel_bp": 389,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP016503.1",
+          "published_achieved_depth": 155.727,
+          "query_interval_0based_half_open": [
+            0,
+            1598175
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            817447,
+            2412237
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:58:29.860691+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 3,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/233_GCF_000775995.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/233_GCF_000775995.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/233_GCF_000775995.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/233_GCF_000775995.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg1078",
+          "source_contig_id": "Utg1078",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "233_GCF_000775995.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 293.335,
+      "execution_path": "runs/20261106T134511/results/233_GCF_000775995.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:58:41.121263+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 4057236,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 2734662,
+            "file": "results/233_GCF_000775995.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "1a4dbf71bc686509822cadbd47d65514a4ed7dcaf57b5aa05fc39290c0e03f19"
+          }
+        ],
+        "assessed_assembly_sha256": "1a4dbf71bc686509822cadbd47d65514a4ed7dcaf57b5aa05fc39290c0e03f19",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/233_GCF_000775995.1/raven/execution.json",
+        "execution_sha256": "ceb73fe6e3f9eef8630deb819b5ac5c918b5d4306d0090835da596a0cff81141",
+        "input_manifest_sha256": "68da748ae07a36876024f0bf09284f9a96829e3c89d8c6571283bf8213d57eaa",
+        "mapper_stderr_file": "results/233_GCF_000775995.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "e51a49c248d9cec15bb63b61311452a3a1c962ae2f4a30fc8d3700227980008f",
+        "paf_file": "results/233_GCF_000775995.1/raven/performance/alignment.paf",
+        "paf_sha256": "3e6e098e4579910f38415320826d70db777fa5ee068a570bee47c60c9ff66106",
+        "reads_sha256": "8bbd8f9b2de6ca6b7b1880cb6dedd241ef0699d2d98db4d3767e45cc94b3702a",
+        "tripled_reference_sha256": "d1dc80aa84d82e71aaf4321669267b5ef5e081895db4085df18859c541758239",
+        "truth_sha256": "751190d55f0ea46353e4c5d07d363496969f4fc9a42a4aba21e8f3fb1f30d913",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 1,
+      "replicons": [
+        {
+          "accession": "NZ_CP009227.1",
+          "alignment_count": 3,
+          "complete": true,
+          "contig_id": "Utg1078",
+          "contiguity": 1.0,
+          "identity": 0.9789575072593872,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 2708067,
+          "longest_alignment_span_bp": 2708067,
+          "max_indel_bp": 3171,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP009227.1",
+          "published_achieved_depth": 91.036,
+          "query_interval_0based_half_open": [
+            0,
+            2734623
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            2663677,
+            5371744
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:58:36.314394+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 180,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/241_GCF_000024605.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/241_GCF_000024605.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/241_GCF_000024605.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/241_GCF_000024605.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": false,
+      "complete_chromosome": false,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg1862",
+          "source_contig_id": "Utg1862",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1864",
+          "source_contig_id": "Utg1864",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1866",
+          "source_contig_id": "Utg1866",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1868",
+          "source_contig_id": "Utg1868",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1870",
+          "source_contig_id": "Utg1870",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1872",
+          "source_contig_id": "Utg1872",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1876",
+          "source_contig_id": "Utg1876",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1878",
+          "source_contig_id": "Utg1878",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1880",
+          "source_contig_id": "Utg1880",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1886",
+          "source_contig_id": "Utg1886",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1890",
+          "source_contig_id": "Utg1890",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1892",
+          "source_contig_id": "Utg1892",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1894",
+          "source_contig_id": "Utg1894",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1896",
+          "source_contig_id": "Utg1896",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1898",
+          "source_contig_id": "Utg1898",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1902",
+          "source_contig_id": "Utg1902",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1904",
+          "source_contig_id": "Utg1904",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1906",
+          "source_contig_id": "Utg1906",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1910",
+          "source_contig_id": "Utg1910",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1912",
+          "source_contig_id": "Utg1912",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1916",
+          "source_contig_id": "Utg1916",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1918",
+          "source_contig_id": "Utg1918",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1920",
+          "source_contig_id": "Utg1920",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1922",
+          "source_contig_id": "Utg1922",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1924",
+          "source_contig_id": "Utg1924",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1928",
+          "source_contig_id": "Utg1928",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1932",
+          "source_contig_id": "Utg1932",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1934",
+          "source_contig_id": "Utg1934",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1936",
+          "source_contig_id": "Utg1936",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1942",
+          "source_contig_id": "Utg1942",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1946",
+          "source_contig_id": "Utg1946",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1952",
+          "source_contig_id": "Utg1952",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1954",
+          "source_contig_id": "Utg1954",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1956",
+          "source_contig_id": "Utg1956",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1958",
+          "source_contig_id": "Utg1958",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1960",
+          "source_contig_id": "Utg1960",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1962",
+          "source_contig_id": "Utg1962",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1964",
+          "source_contig_id": "Utg1964",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1966",
+          "source_contig_id": "Utg1966",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1968",
+          "source_contig_id": "Utg1968",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1972",
+          "source_contig_id": "Utg1972",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1974",
+          "source_contig_id": "Utg1974",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1976",
+          "source_contig_id": "Utg1976",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1978",
+          "source_contig_id": "Utg1978",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1984",
+          "source_contig_id": "Utg1984",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1988",
+          "source_contig_id": "Utg1988",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1990",
+          "source_contig_id": "Utg1990",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2014",
+          "source_contig_id": "Utg2014",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2016",
+          "source_contig_id": "Utg2016",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2020",
+          "source_contig_id": "Utg2020",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2026",
+          "source_contig_id": "Utg2026",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2028",
+          "source_contig_id": "Utg2028",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2032",
+          "source_contig_id": "Utg2032",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2036",
+          "source_contig_id": "Utg2036",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2040",
+          "source_contig_id": "Utg2040",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2056",
+          "source_contig_id": "Utg2056",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2060",
+          "source_contig_id": "Utg2060",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2072",
+          "source_contig_id": "Utg2072",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2074",
+          "source_contig_id": "Utg2074",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "241_GCF_000024605.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 44.531,
+      "execution_path": "runs/20261106T134511/results/241_GCF_000024605.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:56:25.465681+00:00",
+      "genome_outcome": "incomplete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 1989660,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 1304120,
+            "file": "results/241_GCF_000024605.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "e8a4ab1a7274f02a4ffe89fea041ca69e60ab8cdddf40640fb5feda0a1af2d03"
+          }
+        ],
+        "assessed_assembly_sha256": "e8a4ab1a7274f02a4ffe89fea041ca69e60ab8cdddf40640fb5feda0a1af2d03",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/241_GCF_000024605.1/raven/execution.json",
+        "execution_sha256": "8e42ed09460a41a79ef68d302417d086f9d644f58d87abeb9701f2b965a21db5",
+        "input_manifest_sha256": "9a8216b894d46ac174dfc74f181b0df51f90e866f7731bc95c8e08cb498ca8e6",
+        "mapper_stderr_file": "results/241_GCF_000024605.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "334acbc6f746ce5e180314a6d683c6cd190562c38f5218d48c577fa725497afe",
+        "paf_file": "results/241_GCF_000024605.1/raven/performance/alignment.paf",
+        "paf_sha256": "ab595850a0217770d5f32f2bdb12067a6e8d017e77927f740f738954463c9aa3",
+        "reads_sha256": "18b641452149bccde84107427c6ddb95cdfc937412f3492ed7d5f8e3d76cb856",
+        "tripled_reference_sha256": "5d6701c892c6838e570b274963dace13017c1d0ae1e9a69758a7094e2bc26d56",
+        "truth_sha256": "3c06b6ae4915e19e5f0db86c73ac81b501701e0ac34b2539feb90c79513e4512",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 59,
+      "replicons": [
+        {
+          "accession": "NC_013385.1",
+          "alignment_count": 180,
+          "complete": false,
+          "contig_id": "Utg1864",
+          "contiguity": 0.029553779123695483,
+          "identity": null,
+          "identity_measured": false,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 2129237,
+          "longest_alignment_span_bp": 62927,
+          "max_indel_bp": null,
+          "molecule_type": "chromosome",
+          "name": "NC_013385.1",
+          "published_achieved_depth": 32.39,
+          "query_interval_0based_half_open": [
+            0,
+            62344
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            879722,
+            942649
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        },
+        {
+          "accession": "NC_013386.1",
+          "alignment_count": 0,
+          "complete": false,
+          "contig_id": null,
+          "contiguity": 0.0,
+          "identity": null,
+          "identity_measured": false,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 27830,
+          "longest_alignment_span_bp": 0,
+          "max_indel_bp": null,
+          "molecule_type": "plasmid",
+          "name": "NC_013386.1",
+          "published_achieved_depth": 116.285,
+          "query_interval_0based_half_open": null,
+          "reference_interval_tripled_0based_half_open": null,
+          "source_relative_depth": 3.91,
+          "strand": null
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:56:23.277704+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 62,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/312_GCF_002776575.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/312_GCF_002776575.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/312_GCF_002776575.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/312_GCF_002776575.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": false,
+      "complete_chromosome": false,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg1080",
+          "source_contig_id": "Utg1080",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1084",
+          "source_contig_id": "Utg1084",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1086",
+          "source_contig_id": "Utg1086",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1088",
+          "source_contig_id": "Utg1088",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1092",
+          "source_contig_id": "Utg1092",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1094",
+          "source_contig_id": "Utg1094",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1102",
+          "source_contig_id": "Utg1102",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1104",
+          "source_contig_id": "Utg1104",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1108",
+          "source_contig_id": "Utg1108",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1110",
+          "source_contig_id": "Utg1110",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1112",
+          "source_contig_id": "Utg1112",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1126",
+          "source_contig_id": "Utg1126",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1132",
+          "source_contig_id": "Utg1132",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1138",
+          "source_contig_id": "Utg1138",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1144",
+          "source_contig_id": "Utg1144",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1176",
+          "source_contig_id": "Utg1176",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1196",
+          "source_contig_id": "Utg1196",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1198",
+          "source_contig_id": "Utg1198",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1202",
+          "source_contig_id": "Utg1202",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1204",
+          "source_contig_id": "Utg1204",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1218",
+          "source_contig_id": "Utg1218",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "312_GCF_002776575.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 13.634,
+      "execution_path": "runs/20261106T134511/results/312_GCF_002776575.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:56:29.332753+00:00",
+      "genome_outcome": "incomplete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 517176,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 1360664,
+            "file": "results/312_GCF_002776575.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "3717c67d6207d6d3e75d190c1cb47246c21116cb7d316b965d3f065749a0ae3e"
+          }
+        ],
+        "assessed_assembly_sha256": "3717c67d6207d6d3e75d190c1cb47246c21116cb7d316b965d3f065749a0ae3e",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/312_GCF_002776575.1/raven/execution.json",
+        "execution_sha256": "e4ff55181470e8374b2fac382a6ed2b9ee9bf242d933d9e09d6dc77b07858349",
+        "input_manifest_sha256": "438bb22189b00906cbcd1529aedbe645c2cbda2c97d2e3ab1f43fb0afca2ce8b",
+        "mapper_stderr_file": "results/312_GCF_002776575.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "39f5a0ce73f6cd7525eaafc97f02727c6cf81eb791e35b20b1a706c21fad2738",
+        "paf_file": "results/312_GCF_002776575.1/raven/performance/alignment.paf",
+        "paf_sha256": "a1d113c495b5588a87989fcef856c931397fa2b12096419bae12216be4073e89",
+        "reads_sha256": "87d32ff2eea6a8a84072d3b709fde4a6f5e18bb9ef02645e07c28a4ee106f05f",
+        "tripled_reference_sha256": "4ffe7f14d4a59ee88c478c5bc536f9321124056fda13daccdbb58d10117f3dcf",
+        "truth_sha256": "4075aa86a87a6cc082a3c5f1481a3a81144f030f0c0fdc62f03be6e316161d90",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 21,
+      "replicons": [
+        {
+          "accession": "NZ_CP022548.1",
+          "alignment_count": 60,
+          "complete": false,
+          "contig_id": "Utg1080",
+          "contiguity": 0.030851855609061285,
+          "identity": 0.9950397323295692,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 3864176,
+          "longest_alignment_span_bp": 119217,
+          "max_indel_bp": 39,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP022548.1",
+          "published_achieved_depth": 6.843,
+          "query_interval_0based_half_open": [
+            18,
+            119378
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            1150052,
+            1269269
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        },
+        {
+          "accession": "NZ_CP022549.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg1102",
+          "contiguity": 0.9933817956139771,
+          "identity": 0.9912443618997081,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 196579,
+          "longest_alignment_span_bp": 195278,
+          "max_indel_bp": 81,
+          "molecule_type": "plasmid",
+          "name": "NZ_CP022549.1",
+          "published_achieved_depth": 10.181,
+          "query_interval_0based_half_open": [
+            0,
+            195411
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            55391,
+            250669
+          ],
+          "source_relative_depth": 1.48,
+          "strand": "+"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:56:26.290352+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 11,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/455_GCF_002355315.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/455_GCF_002355315.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/455_GCF_002355315.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/455_GCF_002355315.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": false,
+      "complete_chromosome": false,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg4600",
+          "source_contig_id": "Utg4600",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg4602",
+          "source_contig_id": "Utg4602",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg4604",
+          "source_contig_id": "Utg4604",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "455_GCF_002355315.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 144.433,
+      "execution_path": "runs/20261106T134511/results/455_GCF_002355315.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:56:40.823600+00:00",
+      "genome_outcome": "incomplete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 2137908,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 6600166,
+            "file": "results/455_GCF_002355315.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "a4cb7320315f5fb06c4f29780dc84c43704f355a87819d860b53f8e2fd53928b"
+          }
+        ],
+        "assessed_assembly_sha256": "a4cb7320315f5fb06c4f29780dc84c43704f355a87819d860b53f8e2fd53928b",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/455_GCF_002355315.1/raven/execution.json",
+        "execution_sha256": "706d22fd9f837c925cd14637a1415b3d5457e917890fd9ca57a8e65339eb97f6",
+        "input_manifest_sha256": "e7c780de1e6ca6267e050adbc970520172ac9136739777912c6c12f8012fca85",
+        "mapper_stderr_file": "results/455_GCF_002355315.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "decf1657683dba67953f612d6a98323b89f48a0340f0cc1776a20597809a318c",
+        "paf_file": "results/455_GCF_002355315.1/raven/performance/alignment.paf",
+        "paf_sha256": "6335e7fcc5cfd23b344c811f359a62f18c2dd421ae94a1e69810d6ef9df4283f",
+        "reads_sha256": "238ec6f49b1bcdf2599c8786f6ee133b30373a02212282c0f6460d9e034be738",
+        "tripled_reference_sha256": "6cb90f7a87c184cce849402cd33f012dd1b936948f36541136b21eed12fec977",
+        "truth_sha256": "f66b16e47180ddec39470f07e794b1dc2ff4cc1ec1d0967a42aac1359cdd1525",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 3,
+      "replicons": [
+        {
+          "accession": "NZ_CP023466.1",
+          "alignment_count": 11,
+          "complete": false,
+          "contig_id": "Utg4602",
+          "contiguity": 0.5802911972520711,
+          "identity": 0.9992265997465691,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 6595804,
+          "longest_alignment_span_bp": 3827487,
+          "max_indel_bp": 598,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP023466.1",
+          "published_achieved_depth": 30.719,
+          "query_interval_0based_half_open": [
+            0,
+            3829302
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            1890435,
+            5717922
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:56:30.462780+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 2,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/154_GCF_000755705.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/154_GCF_000755705.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/154_GCF_000755705.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/154_GCF_000755705.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg98",
+          "source_contig_id": "Utg98",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "154_GCF_000755705.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 218.621,
+      "execution_path": "runs/20261106T134511/results/154_GCF_000755705.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:57:43.818837+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 1944672,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 1878433,
+            "file": "results/154_GCF_000755705.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "ffbf43a66f03de6002c60c1fbda70c4cb690f08defc87cd70487f551119b61cc"
+          }
+        ],
+        "assessed_assembly_sha256": "ffbf43a66f03de6002c60c1fbda70c4cb690f08defc87cd70487f551119b61cc",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/154_GCF_000755705.1/raven/execution.json",
+        "execution_sha256": "f74e731b6291b46cdea41284cc8735aba85ff61e0fb3675d4597fa6cebb3dda5",
+        "input_manifest_sha256": "b3dc8230fcdf7fc7a0215b22b423d292ce70828191d99f8a9202276743eb67d4",
+        "mapper_stderr_file": "results/154_GCF_000755705.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "1115bb1898f7faaff74438b64ad5bf4e83b962468efc30ba09ac62ce4383a605",
+        "paf_file": "results/154_GCF_000755705.1/raven/performance/alignment.paf",
+        "paf_sha256": "91961aaf759331b2021c0144072dc5a50f1f2c39c69076dfc6ea7da8ad379280",
+        "reads_sha256": "6964ec55cd4e7546a2f108f4244f34813a02b3fef1be4cdd804149774de39af3",
+        "tripled_reference_sha256": "2f0eb1a10a7a961bd39fce7fa0135eae0ffe7e981aa10b7aec5f50629c440870",
+        "truth_sha256": "41a3d17364dc7dcd980645864eb557fc9f051139e6f39ffeaf6e0273b469d824",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 1,
+      "replicons": [
+        {
+          "accession": "NZ_CP009415.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg98",
+          "contiguity": 1.0,
+          "identity": 0.9996966226113022,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 1878735,
+          "longest_alignment_span_bp": 1878735,
+          "max_indel_bp": 24,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP009415.1",
+          "published_achieved_depth": 79.094,
+          "query_interval_0based_half_open": [
+            0,
+            1878397
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            706354,
+            2585089
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:57:41.275861+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 3,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/428_GCF_900476435.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/428_GCF_900476435.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/428_GCF_900476435.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/428_GCF_900476435.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg1342",
+          "source_contig_id": "Utg1342",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "428_GCF_900476435.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 156.879,
+      "execution_path": "runs/20261106T134511/results/428_GCF_900476435.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:58:12.830656+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 3118420,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 4355181,
+            "file": "results/428_GCF_900476435.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "e694ffbbe52641da75dae6e9b96da8bdf7958abf7161d0de5db60a1cd2ea7415"
+          }
+        ],
+        "assessed_assembly_sha256": "e694ffbbe52641da75dae6e9b96da8bdf7958abf7161d0de5db60a1cd2ea7415",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/428_GCF_900476435.1/raven/execution.json",
+        "execution_sha256": "6d6d6a1b289a12fdaf8b7fbd111341a42a2644b77fe562f6a179efb9e527e00d",
+        "input_manifest_sha256": "8037828465ffa39f3268e9f5773dec263ef7448f15e4fb5c02211fcc5dd61aa4",
+        "mapper_stderr_file": "results/428_GCF_900476435.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "58977ac8d7623a286b8d87f20bcfc71e73e3074319b65fb259cb6a0f5cf88592",
+        "paf_file": "results/428_GCF_900476435.1/raven/performance/alignment.paf",
+        "paf_sha256": "763dcc2b7b17e51259aa75a915f1ccde1535a48cda92e2142f1ca9964cf1c29c",
+        "reads_sha256": "973baf78ec271af1b06845f8ec8b1cf9b32e9e251f7fb2d206cf2e19f41fcec0",
+        "tripled_reference_sha256": "d212d52fbf04f9ff4bda5e07bf910c6fa35ab0b8fca3c4e9cf67ca1bb5e716a0",
+        "truth_sha256": "a9ffc3fbba6e417354d0a0acc88becd061a7cdf17ece50a8fe6b3b5d9daf6595",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 1,
+      "replicons": [
+        {
+          "accession": "NZ_LS483452.1",
+          "alignment_count": 3,
+          "complete": true,
+          "contig_id": "Utg1342",
+          "contiguity": 0.9979995428970451,
+          "identity": 0.9958475017442604,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 4353505,
+          "longest_alignment_span_bp": 4344796,
+          "max_indel_bp": 605,
+          "molecule_type": "chromosome",
+          "name": "NZ_LS483452.1",
+          "published_achieved_depth": 30.628,
+          "query_interval_0based_half_open": [
+            0,
+            4355142
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            781339,
+            5126135
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:58:04.447541+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 3,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/259_GCF_000007725.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/259_GCF_000007725.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/259_GCF_000007725.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/259_GCF_000007725.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": false,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg160",
+          "source_contig_id": "Utg160",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "259_GCF_000007725.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 151.426,
+      "execution_path": "runs/20261106T134511/results/259_GCF_000007725.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:58:34.327953+00:00",
+      "genome_outcome": "chromosome_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 1720240,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 610690,
+            "file": "results/259_GCF_000007725.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "82f92b01428f8cf42f9e4d5e7faf523761f1e240d19f2abd304b8a6470718d79"
+          }
+        ],
+        "assessed_assembly_sha256": "82f92b01428f8cf42f9e4d5e7faf523761f1e240d19f2abd304b8a6470718d79",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/259_GCF_000007725.1/raven/execution.json",
+        "execution_sha256": "d2ec451c61b74d06ae154f5155585edcb6f1018658984b4eca8ccd1802ce4260",
+        "input_manifest_sha256": "1227c2231c109441af89ab92dd8106e8e6dc7ab00b91c0a614c486ccc5a0249e",
+        "mapper_stderr_file": "results/259_GCF_000007725.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "33e66ca2e63e07b5d0d5b6aaba96940782a26d9a55b37c00324b1d946672305b",
+        "paf_file": "results/259_GCF_000007725.1/raven/performance/alignment.paf",
+        "paf_sha256": "c169a8de1e7a94784a716dcf89aa910b281050c07e0e6fa48d1602c8d0149ba1",
+        "reads_sha256": "1f326e0268baf3fdc78336e5e0f7a69ab88313d9e2fda2195d35172ba5a271db",
+        "tripled_reference_sha256": "28928b6903abd4280e320260d79ff73fe6acbea563166416edf0ca11835c06ac",
+        "truth_sha256": "822051b385ba2bdaa1b5d835420246695d7a6c77337d3b6c710219e04a4b0800",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 1,
+      "replicons": [
+        {
+          "accession": "NC_004545.1",
+          "alignment_count": 3,
+          "complete": true,
+          "contig_id": "Utg160",
+          "contiguity": 1.0,
+          "identity": 0.9820572982780116,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 615980,
+          "longest_alignment_span_bp": 615980,
+          "max_indel_bp": 163,
+          "molecule_type": "chromosome",
+          "name": "NC_004545.1",
+          "published_achieved_depth": 191.651,
+          "query_interval_0based_half_open": [
+            0,
+            610654
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            103435,
+            719415
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        },
+        {
+          "accession": "NC_004555.1",
+          "alignment_count": 0,
+          "complete": false,
+          "contig_id": null,
+          "contiguity": 0.0,
+          "identity": null,
+          "identity_measured": false,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 2399,
+          "longest_alignment_span_bp": 0,
+          "max_indel_bp": null,
+          "molecule_type": "plasmid",
+          "name": "NC_004555.1",
+          "published_achieved_depth": 410.126,
+          "query_interval_0based_half_open": null,
+          "reference_interval_tripled_0based_half_open": null,
+          "source_relative_depth": 9.19,
+          "strand": null
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:58:33.406108+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 4,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/079_GCF_006542335.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/079_GCF_006542335.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/079_GCF_006542335.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/079_GCF_006542335.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg2530",
+          "source_contig_id": "Utg2530",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg2534",
+          "source_contig_id": "Utg2534",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "079_GCF_006542335.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 139.525,
+      "execution_path": "runs/20261106T134511/results/079_GCF_006542335.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:58:40.420997+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 2890336,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 2577089,
+            "file": "results/079_GCF_006542335.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "1804619c2195e043004ea3a615cd47ec0cf2823a48e46b97015605033067d3ce"
+          }
+        ],
+        "assessed_assembly_sha256": "1804619c2195e043004ea3a615cd47ec0cf2823a48e46b97015605033067d3ce",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/079_GCF_006542335.1/raven/execution.json",
+        "execution_sha256": "5709585074890ec292e522a030e274dbcd644ce82cc48338869632c27ac5490e",
+        "input_manifest_sha256": "02d49e06f74109a837c00af88695f0a2579bbc300a7862e4da98c1e50d8d177e",
+        "mapper_stderr_file": "results/079_GCF_006542335.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "76bb90f2f83d3b34f5eb1cd9587c1ebc9b21984a174b8464ef22b39bb23c4303",
+        "paf_file": "results/079_GCF_006542335.1/raven/performance/alignment.paf",
+        "paf_sha256": "431ca1acfd8e77fd7327a0ca7b57e167d785d57541b7c19c9180d1af4db5cd3e",
+        "reads_sha256": "78ea721e1d66c7d2c96e4002d41cd67228030d443702a22d9700767bdeaf4dfd",
+        "tripled_reference_sha256": "9fd1a0879555c733a4a9488c1be7ef03a473c3d73ffafa88fa147c24fe992e81",
+        "truth_sha256": "0e5cf6625ff4cee05d4afd86178fc383749bd7dd2689515e501df1e4c3ad768e",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 2,
+      "replicons": [
+        {
+          "accession": "NZ_CP032485.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg2530",
+          "contiguity": 1.0,
+          "identity": 0.9999685144131328,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 2477279,
+          "longest_alignment_span_bp": 2477279,
+          "max_indel_bp": 9,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP032485.1",
+          "published_achieved_depth": 85.883,
+          "query_interval_0based_half_open": [
+            0,
+            2477293
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            1009086,
+            3486365
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        },
+        {
+          "accession": "NZ_CP032486.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg2534",
+          "contiguity": 1.0,
+          "identity": 0.9999298069691652,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 99723,
+          "longest_alignment_span_bp": 99723,
+          "max_indel_bp": 2,
+          "molecule_type": "plasmid",
+          "name": "NZ_CP032486.1",
+          "published_achieved_depth": 82.149,
+          "query_interval_0based_half_open": [
+            0,
+            99720
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            45270,
+            144993
+          ],
+          "source_relative_depth": 0.97,
+          "strand": "+"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:58:36.281639+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 5,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/378_GCF_000341395.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/378_GCF_000341395.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/378_GCF_000341395.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/378_GCF_000341395.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg1398",
+          "source_contig_id": "Utg1398",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg1400",
+          "source_contig_id": "Utg1400",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "378_GCF_000341395.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 186.575,
+      "execution_path": "runs/20261106T134511/results/378_GCF_000341395.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:58:43.923055+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 2999988,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 4023586,
+            "file": "results/378_GCF_000341395.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "b3d0d2f5fb6566d8882f08a8b3dae8b615f33db7d2644db1344222df91e94505"
+          }
+        ],
+        "assessed_assembly_sha256": "b3d0d2f5fb6566d8882f08a8b3dae8b615f33db7d2644db1344222df91e94505",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/378_GCF_000341395.1/raven/execution.json",
+        "execution_sha256": "022004f01e78fd73c421f11d3cd4043aaa8644304ab150759daa72bab058f81e",
+        "input_manifest_sha256": "43a2cb097b070ed5451a5a36232b23a158c51312189c04d98047317ae354e7f0",
+        "mapper_stderr_file": "results/378_GCF_000341395.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "ad5b6844de7f3e4e667632ff410b4b0457c4e13c87121365e7847204b9b533e3",
+        "paf_file": "results/378_GCF_000341395.1/raven/performance/alignment.paf",
+        "paf_sha256": "3cb4ae528686fefbfe20467dad501e9c9c25d3dbb758f58488001b4d4722bef6",
+        "reads_sha256": "badae6b7a8238baa143dfaaceb98dc13ae9f47821877ef724c62557db3996007",
+        "tripled_reference_sha256": "a35afce5c395bca797bcc3364d28143b94ed247994a7fc41b424a1687ee00287",
+        "truth_sha256": "004ac379b8dc9e65a559ef3f9573b7d65bfc45bd51104286137f299103dfd71a",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 2,
+      "replicons": [
+        {
+          "accession": "NC_020304.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg1400",
+          "contiguity": 1.0,
+          "identity": 0.999994230921658,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 3986761,
+          "longest_alignment_span_bp": 3986761,
+          "max_indel_bp": 3,
+          "molecule_type": "chromosome",
+          "name": "NC_020304.1",
+          "published_achieved_depth": 71.081,
+          "query_interval_0based_half_open": [
+            0,
+            3986761
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            1402839,
+            5389600
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        },
+        {
+          "accession": "NC_020305.1",
+          "alignment_count": 3,
+          "complete": true,
+          "contig_id": "Utg1398",
+          "contiguity": 1.0,
+          "identity": 0.9998639566838081,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 36751,
+          "longest_alignment_span_bp": 36751,
+          "max_indel_bp": 2,
+          "molecule_type": "plasmid",
+          "name": "NC_020305.1",
+          "published_achieved_depth": 216.782,
+          "query_interval_0based_half_open": [
+            0,
+            36750
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            30986,
+            67737
+          ],
+          "source_relative_depth": 3.32,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:58:38.105751+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 23,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/444_GCF_004103615.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/444_GCF_004103615.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/444_GCF_004103615.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/444_GCF_004103615.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": false,
+      "complete_chromosome": false,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg12574",
+          "source_contig_id": "Utg12574",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg12586",
+          "source_contig_id": "Utg12586",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg12588",
+          "source_contig_id": "Utg12588",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg12590",
+          "source_contig_id": "Utg12590",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg12592",
+          "source_contig_id": "Utg12592",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg12594",
+          "source_contig_id": "Utg12594",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "444_GCF_004103615.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 164.866,
+      "execution_path": "runs/20261106T134511/results/444_GCF_004103615.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:58:52.291441+00:00",
+      "genome_outcome": "incomplete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 2732144,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 4742316,
+            "file": "results/444_GCF_004103615.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "2098dc7a20cf7a021dbaddf98fe6955191583c2d399f52886583a8e64c8e4899"
+          }
+        ],
+        "assessed_assembly_sha256": "2098dc7a20cf7a021dbaddf98fe6955191583c2d399f52886583a8e64c8e4899",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/444_GCF_004103615.1/raven/execution.json",
+        "execution_sha256": "1f202fe8d9781d39b3c9e0aeb7eb215d1d7d4b4059b9a9e37793e596caf87979",
+        "input_manifest_sha256": "6196e0f1f1c108c902f76cbfb98343ae83950c7ed587f8a804c854e884a6b4ab",
+        "mapper_stderr_file": "results/444_GCF_004103615.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "f898def18e9eb6bd04fb30c0907e58b1e6f8a4bda6bb645bfac031921bd4b190",
+        "paf_file": "results/444_GCF_004103615.1/raven/performance/alignment.paf",
+        "paf_sha256": "97490298ae5ba1a7a8c5d2ae3a63e8f6c01007b9173def300be8cc9d354ca4e0",
+        "reads_sha256": "ff8dac5006552be839f6d679f258e9c58fc87140e5c9a4d49feead7d8383b196",
+        "tripled_reference_sha256": "b717ca69d069174b0c4855351f65abef6ad739f7439d8eccebdd217cef221b3e",
+        "truth_sha256": "98e41b03babd5a83fd3747080756cec2e183fa9289cc5e7ca2e9f59e4f7b65c7",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 6,
+      "replicons": [
+        {
+          "accession": "NZ_CP035232.1",
+          "alignment_count": 21,
+          "complete": false,
+          "contig_id": "Utg12586",
+          "contiguity": 0.2851785887025646,
+          "identity": 0.9997724120553629,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 4744953,
+          "longest_alignment_span_bp": 1353159,
+          "max_indel_bp": 83,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP035232.1",
+          "published_achieved_depth": 51.773,
+          "query_interval_0based_half_open": [
+            0,
+            1353233
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            4083644,
+            5436803
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        },
+        {
+          "accession": "NZ_CP035233.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg12574",
+          "contiguity": 1.0,
+          "identity": 0.9993874894724754,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 65273,
+          "longest_alignment_span_bp": 65273,
+          "max_indel_bp": 26,
+          "molecule_type": "plasmid",
+          "name": "NZ_CP035233.1",
+          "published_achieved_depth": 124.752,
+          "query_interval_0based_half_open": [
+            0,
+            65297
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            40421,
+            105694
+          ],
+          "source_relative_depth": 2.35,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:58:41.335767+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 2,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/112_GCF_006337165.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/112_GCF_006337165.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/112_GCF_006337165.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/112_GCF_006337165.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg2858",
+          "source_contig_id": "Utg2858",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "112_GCF_006337165.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 79.842,
+      "execution_path": "runs/20261106T134511/results/112_GCF_006337165.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:58:51.479711+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 1882432,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 5081429,
+            "file": "results/112_GCF_006337165.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "5864a17408536be71820ba7afe10c54ff5da2641e4e7b0332b77946bcab5a40d"
+          }
+        ],
+        "assessed_assembly_sha256": "5864a17408536be71820ba7afe10c54ff5da2641e4e7b0332b77946bcab5a40d",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/112_GCF_006337165.1/raven/execution.json",
+        "execution_sha256": "69d56e05923275a1cf787b04ea5dfabea57ad80c8b3dd4636b146544d5b3e981",
+        "input_manifest_sha256": "10206e099de2a14e6acb025d21edb22499afc8938e353b1362502d6fc33a819f",
+        "mapper_stderr_file": "results/112_GCF_006337165.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "7f6a3f921545ef3021df7bc182a5610a9ddd7cd473141409c51dfa972b31e513",
+        "paf_file": "results/112_GCF_006337165.1/raven/performance/alignment.paf",
+        "paf_sha256": "9208743463d6f42cac26e3bb2dcd43fe97b118ccfe56143cd3f8868741fe4b7f",
+        "reads_sha256": "cdda05df37fd83a89e74d2d17a4c692b9b1d2918891ce83dc3f56081df29efb1",
+        "tripled_reference_sha256": "d0fa6714e8bc06bf40b2cdf718ef4f19d2688a4587a5e087571140ebf7ebc716",
+        "truth_sha256": "fd71800a184c1ec4311a6d1c41bf3d0396c8b30a2ef0eb66ea3780631fe8266d",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 1,
+      "replicons": [
+        {
+          "accession": "NZ_CP040896.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg2858",
+          "contiguity": 0.9998334969204794,
+          "identity": 0.9987369137879277,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 5086993,
+          "longest_alignment_span_bp": 5086146,
+          "max_indel_bp": 5,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP040896.1",
+          "published_achieved_depth": 22.461,
+          "query_interval_0based_half_open": [
+            0,
+            5081386
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            2523688,
+            7609834
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:58:44.371016+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    },
+    {
+      "alignment_count": 5,
+      "assessed_output_scope": "Final assembler FASTA",
+      "assessment": "wick-longest-alignment-v1",
+      "batch_id": "20261106T134511",
+      "commands": {
+        "assembly": [
+          "raven",
+          "-t",
+          "4",
+          "-F",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/225_GCF_001278035.1/raven/assembly_graph.gfa",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/cases/225_GCF_001278035.1/reads.fastq.gz"
+        ],
+        "mapper_version": [
+          "minimap2",
+          "--version"
+        ],
+        "mapping": [
+          "minimap2",
+          "-c",
+          "-t",
+          "1",
+          "-x",
+          "asm20",
+          "-r",
+          "10000",
+          "-g",
+          "10000",
+          "-z",
+          "1000,500",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/225_GCF_001278035.1/raven/performance/tripled-reference.fasta",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b/runs/20261106T134511/results/225_GCF_001278035.1/raven/stdout.log"
+        ]
+      },
+      "complete_all": true,
+      "complete_chromosome": true,
+      "completion_threshold": 0.99,
+      "contig_sources": [
+        {
+          "contig_id": "Utg802",
+          "source_contig_id": "Utg802",
+          "source_role": "final_assembly"
+        },
+        {
+          "contig_id": "Utg806",
+          "source_contig_id": "Utg806",
+          "source_role": "final_assembly"
+        }
+      ],
+      "dataset_id": "225_GCF_001278035.1",
+      "elapsed_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "elapsed_seconds": 254.287,
+      "execution_path": "runs/20261106T134511/results/225_GCF_001278035.1/raven/execution.json",
+      "execution_resource_scope": null,
+      "execution_status": "fail",
+      "finished_at": "2026-11-06T13:59:08.997386+00:00",
+      "genome_outcome": "fully_complete",
+      "mapper_invoked": true,
+      "mapper_version": "2.31-r1302",
+      "memory_scope": "GNU time peak resident memory of the assembler process tree.",
+      "peak_memory_kb": 3133808,
+      "phase_resources": {},
+      "provenance": {
+        "assembly_sources": [
+          {
+            "bytes": 4664289,
+            "file": "results/225_GCF_001278035.1/raven/stdout.log",
+            "role": "final_assembly",
+            "sha256": "c4148fe83669a3018250eb7ba87364b1bf306ce4dd697376ebe5d2dab137fddf"
+          }
+        ],
+        "assessed_assembly_sha256": "c4148fe83669a3018250eb7ba87364b1bf306ce4dd697376ebe5d2dab137fddf",
+        "assessment_source_sha256": "e2f769c7595971a830f738f11fbccc52090266d79f7d9cb7aecb7dda5f65abef",
+        "execution_file": "results/225_GCF_001278035.1/raven/execution.json",
+        "execution_sha256": "9aa746317735a178f5f72bd6c75c3d79959ada583cfdbf9301497005b6733879",
+        "input_manifest_sha256": "7d830089d85a9d664d75ac6f7b8f81b7d37d7ea200cb8368bfc3f191c43cba45",
+        "mapper_stderr_file": "results/225_GCF_001278035.1/raven/performance/alignment.stderr.log",
+        "mapper_stderr_sha256": "248b45a3b2ba25ed386f19f615a7f8c77a082f7858c6321ef80df6db7c9db687",
+        "paf_file": "results/225_GCF_001278035.1/raven/performance/alignment.paf",
+        "paf_sha256": "8ee653454c09109089cd64ae6f7a4ad9078f9f0019d0af76414e370893cbb8a7",
+        "reads_sha256": "6fb1c0ca1596315a68bd90bd6512d464d977caa1c3f9926a902544bca8f28ec4",
+        "tripled_reference_sha256": "b0aa160f4c9d33d2ff80e209ecf756b26fe980f2e8a019429c8815be80708469",
+        "truth_sha256": "8ebccfaf1b06f99fbb4ef4ad790bf9975d9bb5b9e8783aa9b080342123dcd03c",
+        "upstream_revision": "4bc676c4a5b01602abf1143bfefcaab4cc0dde97",
+        "upstream_source_sha256": "d6b161f7e8d1cefef83f0a2ac981dfdb1d021dd3d953f7f6b86794a6a7d54ebc"
+      },
+      "query_count": 2,
+      "replicons": [
+        {
+          "accession": "NZ_CP009452.1",
+          "alignment_count": 3,
+          "complete": true,
+          "contig_id": "Utg806",
+          "contiguity": 1.0,
+          "identity": 0.9999809989915893,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 4420776,
+          "longest_alignment_span_bp": 4420776,
+          "max_indel_bp": 3,
+          "molecule_type": "chromosome",
+          "name": "NZ_CP009452.1",
+          "published_achieved_depth": 68.796,
+          "query_interval_0based_half_open": [
+            0,
+            4420778
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            4162469,
+            8583245
+          ],
+          "source_relative_depth": 1.0,
+          "strand": "+"
+        },
+        {
+          "accession": "NZ_CP009453.1",
+          "alignment_count": 2,
+          "complete": true,
+          "contig_id": "Utg802",
+          "contiguity": 1.0,
+          "identity": 0.9999507071470529,
+          "identity_measured": true,
+          "identity_measurement_rule": "Longest alignment span >100,000 bp or >one quarter of the reference length.",
+          "length_bp": 243437,
+          "longest_alignment_span_bp": 243437,
+          "max_indel_bp": 5,
+          "molecule_type": "plasmid",
+          "name": "NZ_CP009453.1",
+          "published_achieved_depth": 60.432,
+          "query_interval_0based_half_open": [
+            0,
+            243437
+          ],
+          "reference_interval_tripled_0based_half_open": [
+            158555,
+            401992
+          ],
+          "source_relative_depth": 0.89,
+          "strand": "-"
+        }
+      ],
+      "resource_scope": "Workflow wall time including input verification and exact assessment; excludes downloads and scheduler wait.",
+      "schema_version": 1,
+      "started_at": "2026-11-06T13:59:00.302190+00:00",
+      "status": "complete",
+      "threads": 4,
+      "tool": "raven",
+      "track": "broad-performance",
+      "version": "1.8.3",
+      "versions": {
+        "assessment_minimap2": "2.31-r1302",
+        "raven": "1.8.3"
+      },
+      "workflow_steps": []
+    }
+  ],
+  "sampling_balance": {
+    "plasmids": 50,
+    "with_plasmids": 25,
+    "without_plasmids": 25
+  },
+  "schema_version": 1,
+  "selection": "references/performance-wick/selection-50.json",
+  "selection_seed": 20261106,
+  "source_results_sha256": "25cc83fda554c9297e283ba31f804c72db416cfca6a6afb7c5d976ea0b76ebcc",
+  "state": "running",
+  "tools": [
+    "flye",
+    "raven",
+    "plassembler",
+    "miniasm-plus"
+  ],
+  "track": "broad-performance"
+}

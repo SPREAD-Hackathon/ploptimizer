@@ -1,17 +1,22 @@
 {
-  "schema_version": 1,
-  "root_batch": "20261104T190455",
-  "primary_batches": [
-    "20261104T190455",
-    "20261104T193551",
-    "20261104T193612",
-    "20261104T210453",
-    "20261105T161510",
-    "20261106T042103",
-    "20261106T042108",
-    "20261106T042113",
-    "20261106T100403"
-  ],
+  "baseline_policy": {
+    "families": [
+      "S1",
+      "S2",
+      "S3",
+      "S6",
+      "S5"
+    ],
+    "id": "reference-scope-v4",
+    "linear_assemblies": [
+      "GCF_036177905.1",
+      "GCF_045162825.1",
+      "GCF_045210185.1"
+    ],
+    "minimum_plasmid_bp": 20000,
+    "scope": "Reporting classification of saved cases only; original inputs and scores unchanged"
+  },
+  "denominator": "pass + fail",
   "excluded_historical_batches": [
     "20261104T183058"
   ],
@@ -23,43 +28,49 @@
     "S5",
     "S6"
   ],
+  "headline_endpoint": "recorded_exact_status",
+  "notes": "Explicit first-release cohort. Historical pilot excluded. Archived overview includes only its batch. Repeatability and tolerant recovery are separate endpoints.",
+  "panel_statuses": {
+    "S5": {
+      "assembly_count": 36,
+      "batch_id": "20261106T104655",
+      "batch_ids": [
+        "20261106T104655",
+        "20261106T111953",
+        "20261106T123220"
+      ],
+      "completed_sequence_assessments": 35,
+      "did_not_complete": 1,
+      "state": "complete"
+    },
+    "S6": {
+      "assembly_count": 24,
+      "batch_id": "20261106T100403",
+      "state": "complete"
+    }
+  },
+  "primary_batches": [
+    "20261104T190455",
+    "20261104T193551",
+    "20261104T193612",
+    "20261104T210453",
+    "20261105T161510",
+    "20261106T042103",
+    "20261106T042108",
+    "20261106T042113",
+    "20261106T100403",
+    "20261106T104655",
+    "20261106T111953",
+    "20261106T123220"
+  ],
+  "root_batch": "20261104T190455",
+  "schema_version": 1,
   "tools": [
     "flye",
     "flye-meta",
     "raven",
-    "plassembler"
-  ],
-  "headline_endpoint": "recorded_exact_status",
-  "denominator": "pass + fail",
-  "notes": "Explicit first-release cohort. Historical pilot excluded. Archived overview includes only its batch. Repeatability and tolerant recovery are separate endpoints.",
-  "baseline_policy": {
-    "id": "reference-scope-v4",
-    "minimum_plasmid_bp": 20000,
-    "scope": "Reporting classification of saved cases only; original inputs and scores unchanged",
-    "families": [
-      "S1",
-      "S2",
-      "S3",
-      "S6",
-      "S5"
-    ],
-    "linear_assemblies": [
-      "GCF_036177905.1",
-      "GCF_045162825.1",
-      "GCF_045210185.1"
-    ]
-  },
-  "panel_statuses": {
-    "S5": {
-      "state": "submitted",
-      "config": "config/linear-plasmids.json",
-      "batch_id": "20261106T104655",
-      "assembly_count": 24
-    },
-    "S6": {
-      "state": "complete",
-      "batch_id": "20261106T100403",
-      "assembly_count": 24
-    }
-  }
+    "plassembler",
+    "miniasm",
+    "miniasm-plus"
+  ]
 }

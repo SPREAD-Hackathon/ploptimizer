@@ -12,6 +12,8 @@ export function matchesTableFilters(text, values, query, filters) {
   return terms.every(term => text.toLocaleLowerCase().includes(term)) && Object.entries(filters).every(([key, value]) => !value || values[key] === value);
 }
 const layouts = {
+  'performance-runs': {label:'General performance results', filters:[['dataset','Dataset',0],['assembler','Assembler',1],['completion','Completion',2]]},
+  'performance-inputs': {label:'Broad input datasets', filters:[['organism','Organism',1],['plasmids','Plasmid count',2]]},
   runs: {label:'Individual runs', filters:[['genome','Genome',0],['assembler','Assembler',1],['status','Exact status',3],['threads','Threads',2]]},
   case: {label:'Runs for this case', filters:[['assembler','Assembler',0],['status','Exact status',2],['threads','Threads',1]]},
   contigs: {label:'Output contigs', minimum:8, filters:[['origin','Reference origin',1],['topology','Reported circularity',3]]},

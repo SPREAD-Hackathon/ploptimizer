@@ -16,7 +16,7 @@ export function enhanceMobileMatrices(root = document) {
     label.textContent = 'Assembler';
     const select = document.createElement('select');
     select.className = 'gx-input';
-    select.setAttribute('aria-label', 'Assembler shown in scenario matrix');
+    select.setAttribute('aria-label', `Assembler shown in ${table.dataset.matrixLabel ?? 'scenario matrix'}`);
     if (!table.id) table.id = `scenario-matrix-${++ordinal}`;
     select.setAttribute('aria-controls', table.id);
     headers.slice(1).forEach((header, index) => {

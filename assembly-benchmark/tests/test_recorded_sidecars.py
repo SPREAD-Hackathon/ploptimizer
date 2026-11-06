@@ -72,6 +72,27 @@ class RecordedSidecarTests(unittest.TestCase):
         self.assertNotIn('/private/user',json.dumps(plot));self.assertNotIn('matches',plot['alignments'][0]);self.assertNotIn('mapq',plot['alignments'][0])
         self.assertEqual((self.directory/'comparison.json').read_bytes(),before)
 
+    def test_hash_verified_empty_output_needs_no_alignment_files(self):
+        empty_hash = sha(b'')
+        self.record['assembly_sha256'] = empty_hash
+        self.record['tolerant_assessment']['input_hashes']['assembly_sha256'] = empty_hash
+        manifest_path = self.source_root / 'tasks.json'
+        manifest = json.loads(manifest_path.read_text())
+        manifest['tasks'][0]['assembly_sha256'] = empty_hash
+        manifest_path.write_text(json.dumps(manifest))
+        self.sidecar.update(status='not_applicable', queries=[], alignments=[], alignment_count=0,
+                            comparison_manifest_sha256=sha(manifest_path.read_bytes()))
+        self.sidecar['input_hashes']['assembly_sha256'] = empty_hash
+        self.write_sidecar()
+        (self.directory / 'coordinates.tsv').unlink()
+        with patch('subprocess.run', side_effect=AssertionError('No tools')):
+            result = self.plot()
+        self.assertEqual(result['status'], 'not_applicable')
+        self.assertIn('NUCmer was not run', result['reason'])
+        self.sidecar['queries'] = [{'id':'unexpected', 'length':1}]
+        self.write_sidecar()
+        self.assertEqual(self.plot()['status'], 'invalid')
+
     def test_checksum_mismatch_is_not_a_plot(self):
         (self.directory/'coordinates.tsv').write_bytes(self.coords+b'changed');self.assertEqual(self.plot()['status'],'hash_mismatch')
 

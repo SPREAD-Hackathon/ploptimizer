@@ -185,6 +185,14 @@ class AttachmentTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.collect()
 
+    def test_miniasm_unitig_metadata_is_attachable_with_verified_sources(self):
+        self.gfa.write_text("S\tutg000001c\tACGT\nL\tutg000001c\t+\tutg000001c\t+\t0M\n")
+        result = self.collect(assembly_info_path=self.gfa, assembly_info_kind="miniasm")
+        self.assertEqual(result["assembly_info"]["format"], "Miniasm unitig identifiers in GFA")
+        attached = attach_graph_artifacts(self.record, self.execution)["graph_artifacts"]
+        self.assertEqual(attached["status"], "available")
+        self.assertEqual(attached["assembly_info"]["contigs"][0]["reported_circularity"], "circular")
+
     def test_plassembler_builder_uses_final_summary_parser(self):
         info = self.root / "benchmark_summary.tsv"
         info.write_text("contig\tlength\tcircularity\na\t4\tcircular\n")

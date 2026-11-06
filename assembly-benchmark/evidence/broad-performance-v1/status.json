@@ -1,0 +1,29 @@
+{
+  "admitted_inputs": 46,
+  "assessed_results": 28,
+  "assessment_errors": 0,
+  "batch_id": "20261106T134511",
+  "dataset_count": 50,
+  "expected_intermediate_executions": 50,
+  "expected_reported_executions": 200,
+  "input_binding_errors": [],
+  "jobs": {
+    "assemble-flye": "34523743",
+    "assemble-miniasm": "34523747",
+    "assemble-miniasm-plus": "34523748",
+    "assemble-plassembler": "34523746",
+    "assemble-raven": "34523745",
+    "assess-flye": "34523749",
+    "assess-miniasm-plus": "34523753",
+    "assess-plassembler": "34523752",
+    "assess-raven": "34523750",
+    "inputs": "34523703",
+    "prepare": "34523702"
+  },
+  "remote_root": "/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.b",
+  "result_path": "runs/20261106T134511/performance-results.json",
+  "schema_version": 1,
+  "selection_sha256": "1c19579c0e5d3ef069ad644c6d55ca569a99d49c91e3c84ef98995856d3564ab",
+  "status": "running",
+  "verified_execution_input_bindings": 130
+}

@@ -29,6 +29,9 @@ def command(tool, reads, output, config, mode="default"):
     if mode not in ("default", "deterministic") or mode == "deterministic" and tool not in ("flye", "flye-meta"):
         raise ValueError("This tool has no supported deterministic mode")
     threads = str(config["threads"])
+    input_mode = config.get("flye_input_mode", "nano-hq")
+    if input_mode not in {"nano-hq", "nano-raw"}:
+        raise ValueError("Unsupported Flye input mode")
     if tool == 'miniasm-plus':
         return [sys.executable, '-m', 'pipeline.minipolish', '--reads', str(reads),
                 '--raw-graph', config['miniasm_source_gfa'], '--source-execution', config['miniasm_source_execution'],
@@ -36,12 +39,12 @@ def command(tool, reads, output, config, mode="default"):
     if tool == 'miniasm':
         return [sys.executable, '-m', 'pipeline.miniasm', '--reads', str(reads), '--output', str(output), '--threads', threads]
     if tool in ("flye", "flye-meta"):
-        return ["flye", "--nano-hq", str(reads), "--out-dir", str(output), "--threads", threads] + (["--meta"] if tool == "flye-meta" else []) + (["--deterministic"] if mode == "deterministic" else [])
+        return ["flye", "--" + input_mode, str(reads), "--out-dir", str(output), "--threads", threads] + (["--meta"] if tool == "flye-meta" else []) + (["--deterministic"] if mode == "deterministic" else [])
     if tool == "raven":
         return ["raven", "-t", threads, "-F", str(output.parent / "assembly_graph.gfa"), str(reads)]
     if tool == "plassembler":
         return ["plassembler", "long", "--longreads", str(reads), "--outdir", str(output),
-                "--threads", threads, "--skip_qc", "--skip_mash", *( ["--no_chromosome"] if config.get("plassembler_no_chromosome") else ["--keep_chromosome"] ),
+                "--threads", threads, "--skip_qc", "--skip_mash", *(["--raw_flag"] if config.get("plassembler_raw_flag") else []), *( ["--no_chromosome"] if config.get("plassembler_no_chromosome") else ["--keep_chromosome"] ),
                 "--prefix", "benchmark", "--chromosome", str(config["plassembler_chromosome_threshold"])]
     raise ValueError(f"Unknown assembler: {tool}")
 

@@ -90,7 +90,7 @@ function assertCohortCounts(model, records, context) {
   const countsFor = rows => {
     const counts = {total: rows.length, pass: 0, fail: 0, errors: 0, unscored: 0, denominator: 0};
     for (const row of rows) {
-      const key = ['pass', 'fail'].includes(row.status) ? row.status : ['error', 'timeout', 'invalid_input'].includes(row.status) ? 'errors' : 'unscored';
+      const key = row.execution_outcome === 'did_not_complete' ? 'fail' : ['pass', 'fail'].includes(row.status) ? row.status : ['error', 'timeout', 'invalid_input'].includes(row.status) ? 'errors' : 'unscored';
       counts[key]++;
     }
     counts.denominator = counts.pass + counts.fail;
@@ -122,7 +122,8 @@ async function checkOverview(prefix) {
   assert.ok(!home.includes('assembler-result'), 'Per-run diagnoses must stay off the headline');
   assert.ok(!home.includes('class="matrix"'), 'The headline must aggregate families, not individual cases');
   assert.ok(![...home.matchAll(/href="([^"]+)"/g)].some(match => /(?:^|\/)results\//.test(match[1])), 'Headline links should open a family');
-  const cells = [...home.matchAll(/<td\b[^>]*class="([^"]*\boverview-cell\b[^"]*)"[^>]*>[\s\S]*?<\/td>/g)];
+  const diagnosticMatrix = home.match(/<table class="overview-heatmap">[\s\S]*?<\/table>/)?.[0] ?? '';
+  const cells = [...diagnosticMatrix.matchAll(/<td\b[^>]*class="([^"]*\boverview-cell\b[^"]*)"[^>]*>[\s\S]*?<\/td>/g)];
   const displayedFamilies = overview.scope === 'archived_batch' ? overview.families.filter(family => family.counts.total > 0) : overview.families;
   assert.equal(cells.length, displayedFamilies.length * overview.tools.length);
   let index = 0;
@@ -215,7 +216,7 @@ try {
           plasmids.every(m => Number.isInteger(m.length_bp) && m.length_bp >= policy.minimum_plasmid_bp));
       if (!eligible) { supplementary++; continue; }
       expected.total++;
-      expected[['pass', 'fail'].includes(row.status) ? row.status : ['error', 'timeout', 'invalid_input'].includes(row.status) ? 'errors' : 'unscored']++;
+      expected[row.execution_outcome === 'did_not_complete' ? 'fail' : ['pass', 'fail'].includes(row.status) ? row.status : ['error', 'timeout', 'invalid_input'].includes(row.status) ? 'errors' : 'unscored']++;
     }
   }
   expected.denominator = expected.pass + expected.fail;

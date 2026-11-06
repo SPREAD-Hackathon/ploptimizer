@@ -40,7 +40,29 @@ def render_bundle(bundle, output):
     if (bundle/'aggregates/index.json').is_file():
         from .aggregate_page import aggregate_page
         shutil.copytree(bundle/'aggregates', output/'data/aggregates', dirs_exist_ok=True)
-        (output/'aggregate.html').write_text(aggregate_page(load(bundle/'aggregates/index.json'), load(bundle/'aggregates/wick-figures.json')))
+        diagnostic_page = aggregate_page(load(bundle/'aggregates/index.json'), load(bundle/'aggregates/wick-figures.json'))
+        (output/'aggregate.html').write_text(diagnostic_page)
+        if (bundle/'performance/model.json').is_file():
+            (output/'diagnostic-plots.html').write_text(diagnostic_page.replace('Aggregate plots', 'Diagnostic scenario plots'))
+    if (bundle/'performance/model.json').is_file():
+        from .performance_pages import performance_page, methods_page, performance_aggregate_page, summary_fragment
+        performance = load(bundle/'performance/model.json')
+        plots = load(bundle/'performance/plots/index.json')
+        (output/'performance.html').write_text(performance_page(performance))
+        (output/'performance-methods.html').write_text(methods_page(performance))
+        (output/'aggregate.html').write_text(performance_aggregate_page(performance, plots))
+        destination = output/'data/performance'
+        destination.mkdir(parents=True, exist_ok=True)
+        for source in (bundle/'performance/plots').rglob('*'):
+            if source.is_file() and source.suffix in {'.svg', '.png', '.tsv'}:
+                target = destination/source.relative_to(bundle/'performance/plots')
+                target.parent.mkdir(parents=True,exist_ok=True)
+                shutil.copy2(source,target)
+        home = output/'index.html'
+        home.write_text(home.read_text().replace('<h1>Assembly benchmark</h1>', '<h1>Assembly benchmark</h1>' + summary_fragment(performance) + '<h2>Diagnostic scenarios</h2>', 1))
+        catalogue = output/'scenarios/index.html'
+        if (output/'diagnostic-plots.html').is_file():
+            catalogue.write_text(catalogue.read_text().replace('</main>', '<p><a href="/diagnostic-plots.html">Diagnostic scenario plots</a></p></main>'))
     home=output/'index.html'
     content=home.read_text().replace('</main>','<div class="downloads"><a href="data/summary.tsv">Execution summary TSV</a><a href="data/molecules.tsv">Molecule evidence TSV</a></div></main>')
     if (bundle/'evidence-availability.tsv').is_file():

@@ -1,0 +1,3015 @@
+{
+  "archive": {
+    "computed_md5": "e34a360b75e3543bed0879bff07f4f5e",
+    "download_url": "https://ndownloader.figshare.com/files/20188401",
+    "id": 20188401,
+    "name": "simulated_read_sets.tar",
+    "size": 207989719040
+  },
+  "header_bytes_fetched": 256512,
+  "members": [
+    {
+      "header_sha256": "eb5623c46b014025be496d55514d2855b28a44c3b219a41203ff39a3d556bf6a",
+      "name": "000_GCF_000025285.1.fastq.gz",
+      "offset": 512,
+      "size": 170542019
+    },
+    {
+      "header_sha256": "b63f7e937a43f0ce7ef49375b5bc0d04227b82c4f15288ede650774b1cc63295",
+      "name": "001_GCF_004328625.1.fastq.gz",
+      "offset": 170543104,
+      "size": 360186836
+    },
+    {
+      "header_sha256": "65af516a78e92ec06640b1712111599a52d2681de4651bd1fecc6636ae7824a3",
+      "name": "002_GCF_000176855.2.fastq.gz",
+      "offset": 530730496,
+      "size": 858352325
+    },
+    {
+      "header_sha256": "313499914259ad6ba85b69442d82ad4d3a3b28f2cf568f5a198f83e1dc960b92",
+      "name": "003_GCF_000015865.1.fastq.gz",
+      "offset": 1389083648,
+      "size": 560672766
+    },
+    {
+      "header_sha256": "66045b0a313deef87d9dea5c1fa6b8cd97fb844abde3fd530d111766b0574015",
+      "name": "004_GCF_001026985.1.fastq.gz",
+      "offset": 1949756928,
+      "size": 588202243
+    },
+    {
+      "header_sha256": "a1fabb211a1e8bd11eded54ea6c73e69bd96f67943dea9046b577ecbaad05801",
+      "name": "005_GCF_000819445.1.fastq.gz",
+      "offset": 2537959936,
+      "size": 186480663
+    },
+    {
+      "header_sha256": "77e70070954f40803d6bb37993ba7e5c44d8134a230ac911d4c33e0d4ec68303",
+      "name": "006_GCF_001029265.1.fastq.gz",
+      "offset": 2724441600,
+      "size": 116243051
+    },
+    {
+      "header_sha256": "2c1140fa6df0c1d6d222a9776be68cca2997783faabd3d8a30a93d46406dbff9",
+      "name": "007_GCF_002091395.1.fastq.gz",
+      "offset": 2840685568,
+      "size": 182648578
+    },
+    {
+      "header_sha256": "a7a3bcf936fac76217b428489e83bf28a92add5c1ec43ae3be69a2ee642057ec",
+      "name": "008_GCF_000089865.1.fastq.gz",
+      "offset": 3023334912,
+      "size": 38607529
+    },
+    {
+      "header_sha256": "992e0004d9a131c5583ef67eb857c446e404e101f1de1415b3aaa070e1bf1f54",
+      "name": "009_GCF_000144915.1.fastq.gz",
+      "offset": 3061943296,
+      "size": 38574045
+    },
+    {
+      "header_sha256": "3224cdf6bcf2ec23b259a76230999ca3254c87333871d7ff46576db1fbb0d162",
+      "name": "010_GCF_004535885.1.fastq.gz",
+      "offset": 3100517888,
+      "size": 754750504
+    },
+    {
+      "header_sha256": "8016eeae0496483adea17856ad882e1e007b95da748ba0c78048645e69213d4a",
+      "name": "011_GCF_001687565.2.fastq.gz",
+      "offset": 3855269376,
+      "size": 734282136
+    },
+    {
+      "header_sha256": "82abacc353f81f1e3d2eba74bc3dc72827d7270a6e0d04836d0e9239b650b378",
+      "name": "012_GCF_900475045.1.fastq.gz",
+      "offset": 4589552128,
+      "size": 455047488
+    },
+    {
+      "header_sha256": "0642159824e7e68fe373a4430cbdce572fe1b00a7efe58b8dfa23afb69f701af",
+      "name": "013_GCF_000195755.1.fastq.gz",
+      "offset": 5044600320,
+      "size": 752835487
+    },
+    {
+      "header_sha256": "074874dde060949c5ea8d8a0bec776d5f5a89c7b866ee6c3742c3f55fed3868d",
+      "name": "014_GCF_001643775.1.fastq.gz",
+      "offset": 5797436416,
+      "size": 214272454
+    },
+    {
+      "header_sha256": "bd3e3d16a6a2924884bdde238643fa0b3af580c74241f9aa4a2ec1d2b5c24fe0",
+      "name": "015_GCF_003074035.1.fastq.gz",
+      "offset": 6011709440,
+      "size": 181673140
+    },
+    {
+      "header_sha256": "76f41aaa2cb79ff9d7bd9f588a0f51807440bece03b271764fa17dcf8004da92",
+      "name": "016_GCF_003177035.1.fastq.gz",
+      "offset": 6193383424,
+      "size": 419689231
+    },
+    {
+      "header_sha256": "3c083eb279463019e0c03745678bd3cb4ae940e93e616b4703e2a77c3b1b6661",
+      "name": "017_GCF_000233435.1.fastq.gz",
+      "offset": 6613073408,
+      "size": 53132219
+    },
+    {
+      "header_sha256": "c74c42959d9071e2565a4fcb7ee7c260d00d96dc5b998d7f2b31e8a69ede6b3c",
+      "name": "018_GCF_000266885.1.fastq.gz",
+      "offset": 6666206208,
+      "size": 138196112
+    },
+    {
+      "header_sha256": "b9b730de372f00c3dccf33d1ab2bada455e9915d966c056224f1e567d1af9bf6",
+      "name": "019_GCF_900095295.1.fastq.gz",
+      "offset": 6804403200,
+      "size": 395405232
+    },
+    {
+      "header_sha256": "b00e6e4f0475d2a052b20fb1b48295bda229a13181befcf4c1c3dc49d60d8034",
+      "name": "020_GCF_000179575.2.fastq.gz",
+      "offset": 7199809024,
+      "size": 78132397
+    },
+    {
+      "header_sha256": "0225b5d7f62b3e2f0469ef0e39c7b9e0a35facefbbbf6e3228cbb19b333a98a7",
+      "name": "021_GCF_002285575.1.fastq.gz",
+      "offset": 7277942272,
+      "size": 476602208
+    },
+    {
+      "header_sha256": "79ba1592de5bf2c33392624fe0e26d96e4aba483c61424cf1798fcccbee4f23d",
+      "name": "022_GCF_003967175.1.fastq.gz",
+      "offset": 7754545152,
+      "size": 357278705
+    },
+    {
+      "header_sha256": "15644691518ff0faf9a983bc7663b470174272e0aa97fe2a0820b0d73129a877",
+      "name": "023_GCF_000737595.1.fastq.gz",
+      "offset": 8111824384,
+      "size": 34370822
+    },
+    {
+      "header_sha256": "d9b8f2df4944d62bf613582fc462a2e399692e652107667f88d7b54d379c1c75",
+      "name": "024_GCF_001277295.1.fastq.gz",
+      "offset": 8146195968,
+      "size": 460535494
+    },
+    {
+      "header_sha256": "09d534b29245845a8676c3533cc1ee64744d93d7150211df3f07b551c2c34ff1",
+      "name": "025_GCF_001889165.1.fastq.gz",
+      "offset": 8606732288,
+      "size": 607564514
+    },
+    {
+      "header_sha256": "ed67f3e24b8b93105062ee1471acc63d38ba39d690e0bf1b013d77e503476262",
+      "name": "026_GCF_003945385.1.fastq.gz",
+      "offset": 9214297600,
+      "size": 1136418364
+    },
+    {
+      "header_sha256": "fac2a3c11c29dacc0ba120f2df69aafb0c9013b749352fcd2892677b0bd4dd32",
+      "name": "027_GCF_003966365.1.fastq.gz",
+      "offset": 10350716928,
+      "size": 19324480
+    },
+    {
+      "header_sha256": "e57e40c5f9e8d81114aeb36f6aac0a4f0bba3c6fd8266388a630708f90e0770d",
+      "name": "028_GCF_002943525.1.fastq.gz",
+      "offset": 10370042368,
+      "size": 1270761265
+    },
+    {
+      "header_sha256": "9498063539a20aff4cf1d44a68b15d64ad8d0d6fd1099a1d386b5dd32eb75b38",
+      "name": "029_GCF_002849755.1.fastq.gz",
+      "offset": 11640804352,
+      "size": 222161503
+    },
+    {
+      "header_sha256": "80073b0d46fb70da748a0f247b29946d8b49ca5fb80cf7992c442e620b5c17bc",
+      "name": "030_GCF_000148385.1.fastq.gz",
+      "offset": 11862966784,
+      "size": 220594027
+    },
+    {
+      "header_sha256": "a32fc76266f23a7ffc7cc4deb2437b99aa5ba5f380725782423b9f02eeac84c5",
+      "name": "031_GCF_001661075.1.fastq.gz",
+      "offset": 12083561472,
+      "size": 967461841
+    },
+    {
+      "header_sha256": "2b27f414e7e900a63e5ad0f3280ce3aa5820078de45dd396a3e8effaea2fbace",
+      "name": "032_GCF_000478825.2.fastq.gz",
+      "offset": 13051023872,
+      "size": 777040579
+    },
+    {
+      "header_sha256": "673d60fb623df4cf34b81ac7223560d6b0ca548b1f716b2fdf1ed15e742988c4",
+      "name": "033_GCF_000724485.1.fastq.gz",
+      "offset": 13828065280,
+      "size": 194630494
+    },
+    {
+      "header_sha256": "41068883513bb6963126bcb4a8f920b417dbe3e5cec55c07b19932dcc4f78691",
+      "name": "034_GCF_000012965.1.fastq.gz",
+      "offset": 14022696448,
+      "size": 134209799
+    },
+    {
+      "header_sha256": "609a6e682e62f326abd04443f420bef8d525f918f3fbf2ed6de49649db250c4d",
+      "name": "035_GCF_000789355.1.fastq.gz",
+      "offset": 14156907008,
+      "size": 670272802
+    },
+    {
+      "header_sha256": "e30063af709ba706fc3469ae375afecf04278a4c98affecec718a28697809351",
+      "name": "036_GCF_001596135.1.fastq.gz",
+      "offset": 14827180544,
+      "size": 823663482
+    },
+    {
+      "header_sha256": "e38043c885ea285782e5bf6cf80c792c0fa07c612aa01c569f9424dddcd76ecc",
+      "name": "037_GCF_000017805.1.fastq.gz",
+      "offset": 15650844672,
+      "size": 841851741
+    },
+    {
+      "header_sha256": "b1c575ca407a24ccb6dc32b95aadd0f4036f3dfd7baef1e1d27c7ec8143d206b",
+      "name": "038_GCF_002105555.1.fastq.gz",
+      "offset": 16492697088,
+      "size": 161500251
+    },
+    {
+      "header_sha256": "ca4f13b8b6cb35db5612beb29cb4fc5f6a624d032738cc8c81f06203c1963d21",
+      "name": "039_GCF_000819565.1.fastq.gz",
+      "offset": 16654198272,
+      "size": 585153859
+    },
+    {
+      "header_sha256": "1fca4a66986fcba4240a81c86c18de0ee110b6bb5fa8f91e8191c5be924738ac",
+      "name": "040_GCF_004345065.1.fastq.gz",
+      "offset": 17239352832,
+      "size": 276103019
+    },
+    {
+      "header_sha256": "06a899027f4063ad92637beb174dd4a674c1e7b3a78f24c2a8a23633437dd086",
+      "name": "041_GCF_001620265.1.fastq.gz",
+      "offset": 17515456512,
+      "size": 77547683
+    },
+    {
+      "header_sha256": "d5a9a6e5c76f35f1bcb22015033533dd982cc6d0f532283d68cf2d5f5d9309f0",
+      "name": "042_GCF_000211475.1.fastq.gz",
+      "offset": 17593005056,
+      "size": 234880949
+    },
+    {
+      "header_sha256": "3e63a81211c2e5e1ea77a51ba3feeb6c3f894739a07b5f75658b6f14491d2372",
+      "name": "043_GCF_000213655.1.fastq.gz",
+      "offset": 17827886592,
+      "size": 389906603
+    },
+    {
+      "header_sha256": "2d1d9157a34c7f67a170839307b956c6bd572ecb32fa6d686007fbf29e83f5de",
+      "name": "044_GCF_003555545.1.fastq.gz",
+      "offset": 18217794048,
+      "size": 668561440
+    },
+    {
+      "header_sha256": "98d90cd936365329a69d00af657d08c27d90b4df3c70cc4e809c5562f2f004fd",
+      "name": "045_GCF_001548155.2.fastq.gz",
+      "offset": 18886356480,
+      "size": 494142935
+    },
+    {
+      "header_sha256": "d73ec9d914bf3d3dcff38fe289564310ab42ea52bbdb7e58bf324c01d2709674",
+      "name": "046_GCF_000010185.1.fastq.gz",
+      "offset": 19380499968,
+      "size": 269603910
+    },
+    {
+      "header_sha256": "c0c5c14ff7a696dae2245e615ea4417622fb53ee7d3cd40d90729acf2dccf2b3",
+      "name": "047_GCF_003063625.1.fastq.gz",
+      "offset": 19650104832,
+      "size": 1125285284
+    },
+    {
+      "header_sha256": "1a594fb544d88e86b7eef100cd7404163b2b84d588aca97728c8ebdae8b77b13",
+      "name": "048_GCF_000019405.1.fastq.gz",
+      "offset": 20775390720,
+      "size": 378673319
+    },
+    {
+      "header_sha256": "b737d6bb420bc77ab9396ab965a4c7189f154597af90cf8ab2866a575e54531c",
+      "name": "049_GCF_001702215.1.fastq.gz",
+      "offset": 21154064896,
+      "size": 49402589
+    },
+    {
+      "header_sha256": "95bae61b5d1e7681e258deb4a3bf4f21b6874d4afc4342ccce59829927ce1b00",
+      "name": "050_GCF_001548455.1.fastq.gz",
+      "offset": 21203468288,
+      "size": 530086921
+    },
+    {
+      "header_sha256": "22aee0c3c7d93aefe8d590b12f9d7da22467bff48a3fbf8555863344340ef45c",
+      "name": "051_GCF_003264795.1.fastq.gz",
+      "offset": 21733556224,
+      "size": 219156799
+    },
+    {
+      "header_sha256": "0afe3eba9073fb0922218176ca40b7932db4a2b9c415dbaf22b2b7c33ed58a77",
+      "name": "052_GCF_000024925.1.fastq.gz",
+      "offset": 21952713728,
+      "size": 849473070
+    },
+    {
+      "header_sha256": "124d0456d0ed2dcbe7b6a5a30a416855d21e99e06d4a1ad6bf8f5c8c177fc952",
+      "name": "053_GCF_001854225.1.fastq.gz",
+      "offset": 22802187776,
+      "size": 209589731
+    },
+    {
+      "header_sha256": "eb5ec4d3f83bd358c3462af7abc6b765a6de7002e348e9add2a99a9eb7d87265",
+      "name": "054_GCF_000011445.1.fastq.gz",
+      "offset": 23011778048,
+      "size": 13112516
+    },
+    {
+      "header_sha256": "db04da40138c63557972d3d0adab52eafc75dd20ef46d28cfdd610dc1b5885d7",
+      "name": "055_GCF_001548055.1.fastq.gz",
+      "offset": 23024891392,
+      "size": 267648918
+    },
+    {
+      "header_sha256": "4af4901bcedf640f7adb446f483e5dbb3de5c4f097f26be00a905653bf893794",
+      "name": "056_GCF_003585765.1.fastq.gz",
+      "offset": 23292540928,
+      "size": 457390676
+    },
+    {
+      "header_sha256": "aab27ebb0da38ee7374e3c505a25a2636771620ac24a2643d6e0b155e77e49e9",
+      "name": "057_GCF_000418515.1.fastq.gz",
+      "offset": 23749932544,
+      "size": 472170331
+    },
+    {
+      "header_sha256": "59fa717f885cc5e1820ff6cf33ad0d4fd3aedca8ed4ede77bfd0c9c9580a6f0d",
+      "name": "058_GCF_900478165.1.fastq.gz",
+      "offset": 24222103552,
+      "size": 243211496
+    },
+    {
+      "header_sha256": "c3a6aa2a9a0db0c1a5040a530f127ffc35a16bc32db59bbca7e9a7b1ce5a4f95",
+      "name": "059_GCF_000982825.1.fastq.gz",
+      "offset": 24465315840,
+      "size": 574555470
+    },
+    {
+      "header_sha256": "ea1464c24230f487c356303b40ad6efaf44c61d168d7b88b76c9bbce82ef1a36",
+      "name": "060_GCF_000189775.2.fastq.gz",
+      "offset": 25039872000,
+      "size": 327857739
+    },
+    {
+      "header_sha256": "ed04d32a3c6226ac8998c753f35d01d7c56f9105881d1632d8b25268fd7334ee",
+      "name": "061_GCF_000769655.1.fastq.gz",
+      "offset": 25367730688,
+      "size": 457320766
+    },
+    {
+      "header_sha256": "38b6a639aa3d4c12eb8169cfe9891210ba260befaf8ca63589ad875633033ce1",
+      "name": "062_GCF_000159455.2.fastq.gz",
+      "offset": 25825052160,
+      "size": 93466931
+    },
+    {
+      "header_sha256": "357585275c3d27b215d04deadb599aabcfb441d652d92dc5b5689050828d2c00",
+      "name": "063_GCF_000202835.1.fastq.gz",
+      "offset": 25918519808,
+      "size": 606533413
+    },
+    {
+      "header_sha256": "3d9e9392ad0f68b8628dd1f296232f49e567922baa5d1ffe2539803e2937cf44",
+      "name": "064_GCF_000183745.1.fastq.gz",
+      "offset": 26525053952,
+      "size": 215317579
+    },
+    {
+      "header_sha256": "43383d5a6c469971d925836fdbecdd3a75e85b6479872efe85892d269c222ebc",
+      "name": "065_GCF_003028855.1.fastq.gz",
+      "offset": 26740372480,
+      "size": 452489750
+    },
+    {
+      "header_sha256": "713b2f0fb2f017c2fc0a88e076f6f3fd4fb6c47fa028103d64322f380a5acccd",
+      "name": "066_GCF_000023265.1.fastq.gz",
+      "offset": 27192863232,
+      "size": 187321502
+    },
+    {
+      "header_sha256": "23a1f3b0dd0381bc59e5b858b13a8b0be866e123b35e6b29e1d1e67361dd2e5f",
+      "name": "067_GCF_900187315.1.fastq.gz",
+      "offset": 27380185600,
+      "size": 270442538
+    },
+    {
+      "header_sha256": "17c5a8fc8542865a902d203a2ced0d930256c05c859757e32837e795c434aa28",
+      "name": "068_GCF_001922405.1.fastq.gz",
+      "offset": 27650629120,
+      "size": 257004446
+    },
+    {
+      "header_sha256": "216500a1a9b6590c1ff68bfd9e39c79f6d23c76aacdbd78ac41a6ea4cb301a93",
+      "name": "069_GCF_000012485.1.fastq.gz",
+      "offset": 27907634176,
+      "size": 422963898
+    },
+    {
+      "header_sha256": "5a89c56f6b6c0b8db9fee7e51fc63af9a8dd7b70e700f66c71ec4307c35d0727",
+      "name": "070_GCF_003544835.1.fastq.gz",
+      "offset": 28330598912,
+      "size": 212277319
+    },
+    {
+      "header_sha256": "06acd616839c67e90e4d0be372c52a8ffa69f6c2a2099dc09d3c97b91674d185",
+      "name": "071_GCF_000025545.1.fastq.gz",
+      "offset": 28542877184,
+      "size": 372000712
+    },
+    {
+      "header_sha256": "be8ffbc62e876917fa3b1663726a6d28161cffebbfd02167512ce0e019a2e2bf",
+      "name": "072_GCF_000471025.2.fastq.gz",
+      "offset": 28914878464,
+      "size": 210991148
+    },
+    {
+      "header_sha256": "e2770bc51872b05bccb6f468012dda35e81658e580388f6bba81c82d332d922f",
+      "name": "073_GCF_000317695.1.fastq.gz",
+      "offset": 29125870592,
+      "size": 375583332
+    },
+    {
+      "header_sha256": "e29eef7d6ba1b91e4bbdee82a7d33a2a4304b68103aeeb1f1a4a3f04aa6d4c17",
+      "name": "074_GCF_000283275.1.fastq.gz",
+      "offset": 29501454848,
+      "size": 116127847
+    },
+    {
+      "header_sha256": "cc0fe2583ca70d0f9ec7eb97b68cb8dec2e91cf5dca6836228a3e5a7dd4cb1c3",
+      "name": "075_GCF_000247565.1.fastq.gz",
+      "offset": 29617583616,
+      "size": 117526610
+    },
+    {
+      "header_sha256": "97b55026b233767b84e2ec069c885289b77a51303fc01b3b1ca8a738b8235f38",
+      "name": "076_GCF_900476255.1.fastq.gz",
+      "offset": 29735111168,
+      "size": 280047488
+    },
+    {
+      "header_sha256": "05f6b07130c1c170ba7f4dd109c3f29e8883b17910a2575a2cf5c19ae0d0badc",
+      "name": "077_GCF_900169565.1.fastq.gz",
+      "offset": 30015159296,
+      "size": 750714441
+    },
+    {
+      "header_sha256": "9e93904bed90485e2fc57dd46330f84fb2a8003b914d0dcd069a543df9889181",
+      "name": "078_GCF_001693275.1.fastq.gz",
+      "offset": 30765874688,
+      "size": 549433295
+    },
+    {
+      "header_sha256": "e305f59f92a8adb2675336712540cfd613906d1359dec551da7f76ab54605209",
+      "name": "079_GCF_006542335.1.fastq.gz",
+      "offset": 31315308544,
+      "size": 235446940
+    },
+    {
+      "header_sha256": "3f52b608e8ddc58423ec771d6a1a1b4606d11792349953926c561e2566c7d5d1",
+      "name": "080_GCF_001560915.1.fastq.gz",
+      "offset": 31550756352,
+      "size": 108829789
+    },
+    {
+      "header_sha256": "d9ab2e69caac8950bec9edb0e4e3735dd299becb00f5cc52131dfb47bf971696",
+      "name": "081_GCF_000739375.1.fastq.gz",
+      "offset": 31659587072,
+      "size": 586724717
+    },
+    {
+      "header_sha256": "6363bf1277dcd017e8735e5d2cca99066861b907992931d00850fa6e40d93fc5",
+      "name": "082_GCF_002214165.1.fastq.gz",
+      "offset": 32246312448,
+      "size": 189770930
+    },
+    {
+      "header_sha256": "d234c1f0e6c39a74e6f5c723e10ff636fc9a4fa113da40a55a3a20d56776d3aa",
+      "name": "083_GCF_001953195.1.fastq.gz",
+      "offset": 32436084224,
+      "size": 618930244
+    },
+    {
+      "header_sha256": "ddec000039ec8f0ffdf118c5375cad8111fd4f0080f0d1242a6f9a6f6eda2abc",
+      "name": "084_GCF_000316605.1.fastq.gz",
+      "offset": 33055015424,
+      "size": 252623178
+    },
+    {
+      "header_sha256": "1bc9fbbb2957c5e5cf074879583ea8435a9c7dde2611ac0b8b7b736ab4f23d00",
+      "name": "085_GCF_000724605.1.fastq.gz",
+      "offset": 33307639296,
+      "size": 144193457
+    },
+    {
+      "header_sha256": "ee63ea0a1fca8f0a15fb9b064b85d14210e5a12a4f6b964b075f1b12b4851f17",
+      "name": "086_GCF_000190735.1.fastq.gz",
+      "offset": 33451833344,
+      "size": 358429965
+    },
+    {
+      "header_sha256": "df155d78cd76f86d0bf2b77fdbf0d90ca11779942f78c96ff8760f65bcae9d8f",
+      "name": "087_GCF_001281105.1.fastq.gz",
+      "offset": 33810264064,
+      "size": 143371079
+    },
+    {
+      "header_sha256": "b01e5cc3178ff53af69ef4bab815dbafa74f51020a657a06aa034a1dc088648c",
+      "name": "088_GCF_001714705.1.fastq.gz",
+      "offset": 33953635840,
+      "size": 289268745
+    },
+    {
+      "header_sha256": "7058f1bb546bfd4076272df0b3e71fce55358dadfd8368aa849089237f4ae754",
+      "name": "089_GCF_002998835.1.fastq.gz",
+      "offset": 34242905600,
+      "size": 527195677
+    },
+    {
+      "header_sha256": "8cc9a372e6d036ff8f03a839528879094fa3437e095cf9db633b294faa4b3fa2",
+      "name": "090_GCF_003314795.2.fastq.gz",
+      "offset": 34770102272,
+      "size": 727158621
+    },
+    {
+      "header_sha256": "b99185f59eabab7d30b917acacec8d0088f137f538346aadd1b161cade5cfdac",
+      "name": "091_GCF_003352005.1.fastq.gz",
+      "offset": 35497261568,
+      "size": 270390358
+    },
+    {
+      "header_sha256": "2efb7aaea184601784698af5d764467d5f52839a48508a755a70ca0cb646b4ae",
+      "name": "092_GCF_900637195.1.fastq.gz",
+      "offset": 35767652864,
+      "size": 267780919
+    },
+    {
+      "header_sha256": "5f3ff6a0d6dcf991efbb72c096bb1ed837ca2f2585e724536f6459fdc0dd83fd",
+      "name": "093_GCF_000235565.1.fastq.gz",
+      "offset": 36035434496,
+      "size": 68975205
+    },
+    {
+      "header_sha256": "2192672ca8abd5784c56beb4e998d4cfe2e8a4ec8cf681d565a4eceaa9bd97c3",
+      "name": "094_GCF_900198835.1.fastq.gz",
+      "offset": 36104410624,
+      "size": 86934650
+    },
+    {
+      "header_sha256": "fab48780008576b9d1c53a72eb6b5551d56735ac212b7cd3040c8095c791286f",
+      "name": "095_GCF_000008365.1.fastq.gz",
+      "offset": 36191346176,
+      "size": 54485749
+    },
+    {
+      "header_sha256": "573d6225eec6adacad9dae9a0202abbf28cd37535ecc20973d6cc2ff6912a029",
+      "name": "096_GCF_000212735.1.fastq.gz",
+      "offset": 36245832704,
+      "size": 1004928850
+    },
+    {
+      "header_sha256": "4fa0e3ca1a054eb2fba8011a3612116721657a9262d5e42f2a167868c4e49fb5",
+      "name": "097_GCF_000023445.1.fastq.gz",
+      "offset": 37250762240,
+      "size": 562116772
+    },
+    {
+      "header_sha256": "f404df610694d5fe59eb83eb9ce68f5a416ba6682cdc7fc0ce20085be54b8583",
+      "name": "098_GCF_000093165.1.fastq.gz",
+      "offset": 37812879872,
+      "size": 93794452
+    },
+    {
+      "header_sha256": "80dc780d859a09b982ffaec13b5d8d56218cda8e40f1406ca0d862513827a944",
+      "name": "099_GCF_002214585.1.fastq.gz",
+      "offset": 37906675200,
+      "size": 166711873
+    },
+    {
+      "header_sha256": "94ab0b4cd946ec27f8217579f3f1a8a3a0b3480d21111e795e646451f20d3a9e",
+      "name": "100_GCF_001969385.1.fastq.gz",
+      "offset": 38073388032,
+      "size": 273316095
+    },
+    {
+      "header_sha256": "ad037a41c0427078deced5d8831a2752a3ec6f07ce48166c8656418604ee98be",
+      "name": "101_GCF_000016885.1.fastq.gz",
+      "offset": 38346704896,
+      "size": 500302523
+    },
+    {
+      "header_sha256": "adce2e2f8e433413650b6b9743f0c1e4a3eae6b24a8edfcd42651a36a645b631",
+      "name": "102_GCF_001433955.1.fastq.gz",
+      "offset": 38847008256,
+      "size": 485816219
+    },
+    {
+      "header_sha256": "d18e849738dca61a254700104ab52345ea19398a075f3ab639a0ba4dc4518521",
+      "name": "103_GCF_003952345.1.fastq.gz",
+      "offset": 39332825088,
+      "size": 369771367
+    },
+    {
+      "header_sha256": "2c709d992a01edc2a46b2172a96f4cdaa94ad3161e0beb1eb7b034475cc42e00",
+      "name": "104_GCF_000027085.1.fastq.gz",
+      "offset": 39702597120,
+      "size": 953367481
+    },
+    {
+      "header_sha256": "2b5eb7fd635fb1d75b0f78097b6d2700bc29e742cc69ab3858c6a9bed893c42a",
+      "name": "105_GCF_003574215.1.fastq.gz",
+      "offset": 40655965184,
+      "size": 352456565
+    },
+    {
+      "header_sha256": "ef5445e229bf94e11246315a891e633ff66c1d076c25fc0f99f126731fbe11e9",
+      "name": "106_GCF_001708425.1.fastq.gz",
+      "offset": 41008422400,
+      "size": 606058144
+    },
+    {
+      "header_sha256": "76b0be4365c140ba1ae5e889208b27e0626479c8c34eac467458d12773864d13",
+      "name": "107_GCF_900660685.1.fastq.gz",
+      "offset": 41614481408,
+      "size": 77424898
+    },
+    {
+      "header_sha256": "dd959a82351b8eb042f6d281268e2536c61799a4438fc1e3f16433422549b1df",
+      "name": "108_GCF_900660485.1.fastq.gz",
+      "offset": 41691907072,
+      "size": 127023449
+    },
+    {
+      "header_sha256": "d1661b68bca6c37e83365b1875d38528f3d01e33752cb73fd030dfe387ce76ef",
+      "name": "109_GCF_003226855.1.fastq.gz",
+      "offset": 41818931200,
+      "size": 40675215
+    },
+    {
+      "header_sha256": "1c3acc956e51f98a601dcc62c44002cd78fa62b95642a18c96b69a2609932f8d",
+      "name": "110_GCF_002831605.1.fastq.gz",
+      "offset": 41859607040,
+      "size": 106218831
+    },
+    {
+      "header_sha256": "05f719324375485e8b4bdcdafcb4f70ad25dd7f6019421464b878b2e1d28485b",
+      "name": "111_GCF_003627035.1.fastq.gz",
+      "offset": 41965826560,
+      "size": 254482623
+    },
+    {
+      "header_sha256": "3262ed5b7a4f627683dd85f83a8a26b63c0ae5c947b6fc5426d289b0c8126544",
+      "name": "112_GCF_006337165.1.fastq.gz",
+      "offset": 42220310016,
+      "size": 126520160
+    },
+    {
+      "header_sha256": "bcfb65b65504c1050b2351190974b876d2eb5361e39f08ffb440f72678d3d52e",
+      "name": "113_GCF_002067135.1.fastq.gz",
+      "offset": 42346830848,
+      "size": 65497765
+    },
+    {
+      "header_sha256": "520457423199582ef3e7c4b54b39de8615b8befdabe307985f22635ea2728edf",
+      "name": "114_GCF_000967895.1.fastq.gz",
+      "offset": 42412329472,
+      "size": 123102863
+    },
+    {
+      "header_sha256": "677857e7531fbba90bd6d4621aaa49d24285c06115c67a94a39b30dc8bb03c1c",
+      "name": "115_GCF_000017245.1.fastq.gz",
+      "offset": 42535433216,
+      "size": 380565408
+    },
+    {
+      "header_sha256": "e38f89f5b0feba5e1a9d882c9fa032903250be5fc99f38b2d0a0d2d6aa9df51a",
+      "name": "116_GCF_001543105.1.fastq.gz",
+      "offset": 42915999232,
+      "size": 260850039
+    },
+    {
+      "header_sha256": "f19cb5d3649c5dab97a1d3c7359ae89b960834820a664dc53485b1698548bc06",
+      "name": "117_GCF_000304455.1.fastq.gz",
+      "offset": 43176849920,
+      "size": 107735826
+    },
+    {
+      "header_sha256": "1956e686235bf1fda9c5dc589190ccd8b48d8f8141bbf468b539a75174f0f80b",
+      "name": "118_GCF_000009765.2.fastq.gz",
+      "offset": 43284586496,
+      "size": 1721038591
+    },
+    {
+      "header_sha256": "aad69f97e6a4c1378fe08694dc1161fa841e51d72a9ac6ffddde94216f0b01cf",
+      "name": "119_GCF_003856375.1.fastq.gz",
+      "offset": 45005625856,
+      "size": 189862307
+    },
+    {
+      "header_sha256": "edd144f39f9fb1e9f9f89466f92b087e1f73bf5260b7699e35d251aeeed83db4",
+      "name": "120_GCF_002934965.1.fastq.gz",
+      "offset": 45195488768,
+      "size": 218535213
+    },
+    {
+      "header_sha256": "561f773d5edeefca999408bdcc20a1668562710f0e6099818abbcdad92ba3d41",
+      "name": "121_GCF_005080685.1.fastq.gz",
+      "offset": 45414024704,
+      "size": 537817837
+    },
+    {
+      "header_sha256": "e1fee791d541f8c2f49f0e60cf9b79f55eeae18a97c735d685bf40de547fc0de",
+      "name": "122_GCF_000154785.2.fastq.gz",
+      "offset": 45951843328,
+      "size": 780080110
+    },
+    {
+      "header_sha256": "691d81ee79d9f7a43449bec1cdfff7dfc97f4afc7b428b83d8f1ee189697d13c",
+      "name": "123_GCF_000969885.1.fastq.gz",
+      "offset": 46731923968,
+      "size": 359085702
+    },
+    {
+      "header_sha256": "5714fbc0b6f6da76b1d7abc533d3bd99dcd21246232df8be59f38f93e8b2d17a",
+      "name": "124_GCF_000246855.1.fastq.gz",
+      "offset": 47091010560,
+      "size": 1138536914
+    },
+    {
+      "header_sha256": "06d10052c74b9921cba55b793ac71f6774e0cb1b0edbc021fe4c932b86757a7e",
+      "name": "125_GCF_002795825.1.fastq.gz",
+      "offset": 48229548032,
+      "size": 354016391
+    },
+    {
+      "header_sha256": "1de2b638492b87b2187635154d1991629af903b04e884d987bd0091fb52e2a23",
+      "name": "126_GCF_000309885.1.fastq.gz",
+      "offset": 48583565312,
+      "size": 232606273
+    },
+    {
+      "header_sha256": "9fa71079aee56420545e39d53cc4aa6f909e60f35df4e652631f3a1c5d6ff53d",
+      "name": "127_GCF_004798705.1.fastq.gz",
+      "offset": 48816172544,
+      "size": 344844141
+    },
+    {
+      "header_sha256": "1f90558572c32d6953f408b7c27dd56b23a81765a503fd805b2339b9a27d4c7d",
+      "name": "128_GCF_001941565.1.fastq.gz",
+      "offset": 49161017344,
+      "size": 453263270
+    },
+    {
+      "header_sha256": "327d3ab2c2043e4f09517a7811dd434c91ae95bbad1ee796dbb0669fefe936d3",
+      "name": "129_GCF_000021985.1.fastq.gz",
+      "offset": 49614281216,
+      "size": 617857560
+    },
+    {
+      "header_sha256": "413a9b25d0b3ba87db42c9a493732ef278bfb5fae8c71729ae2366d9b6841cd1",
+      "name": "130_GCF_000215995.1.fastq.gz",
+      "offset": 50232139776,
+      "size": 171194577
+    },
+    {
+      "header_sha256": "c368bbc0574170f4e36dc8bd1d702f896bdc88f8eb8e3a42770e99b4ca6eae2e",
+      "name": "131_GCF_004135345.1.fastq.gz",
+      "offset": 50403335168,
+      "size": 738983754
+    },
+    {
+      "header_sha256": "b2223717972246b0e048a44361bfc3f166a02394be7ab680e25719de6d4ed5e7",
+      "name": "132_GCF_002934345.1.fastq.gz",
+      "offset": 51142319616,
+      "size": 661699953
+    },
+    {
+      "header_sha256": "bd637a54e6b24a100117d87080ee927e0f82940ea0bd9d96dee246e215c49d86",
+      "name": "133_GCF_001713375.1.fastq.gz",
+      "offset": 51804020224,
+      "size": 322752073
+    },
+    {
+      "header_sha256": "2f30ab1abea5e68f28ef400df17e33268171201b24b14488c2d8182ded1c8235",
+      "name": "134_GCF_001021385.1.fastq.gz",
+      "offset": 52126773248,
+      "size": 612566191
+    },
+    {
+      "header_sha256": "71ad878478fc09fc1449d10e60e28cf0a3e7a9bf680e6dc779facd4d3da7f046",
+      "name": "135_GCF_000344805.1.fastq.gz",
+      "offset": 52739340288,
+      "size": 1652284081
+    },
+    {
+      "header_sha256": "9eeef6c808669ed005489416455de88b26d78b0f680cb4573363b5d3876c6991",
+      "name": "136_GCF_000828815.1.fastq.gz",
+      "offset": 54391625216,
+      "size": 127600798
+    },
+    {
+      "header_sha256": "8a6d8334a19e6dabd1d6320cd80505e98d9fdb46837e55838ef85252ea572ae6",
+      "name": "137_GCF_002865995.1.fastq.gz",
+      "offset": 54519226880,
+      "size": 280645785
+    },
+    {
+      "header_sha256": "a8762759c6695e1ac9ec32fdfd7e98eb3d5ca824c7a70a6cce359a9e7e2f9dfc",
+      "name": "138_GCF_003611275.1.fastq.gz",
+      "offset": 54799873536,
+      "size": 309177035
+    },
+    {
+      "header_sha256": "519e606b18fd511007f6d73e676b69766b7c2fe232dcfbca960fc79c13745ef4",
+      "name": "139_GCF_004208635.1.fastq.gz",
+      "offset": 55109051392,
+      "size": 93649618
+    },
+    {
+      "header_sha256": "0b0a848f08d79c0bfea003d27905ecf7b7e693fa2063e6158feed72a0860fa85",
+      "name": "140_GCF_000438685.2.fastq.gz",
+      "offset": 55202701824,
+      "size": 56099416
+    },
+    {
+      "header_sha256": "31aac8a98682567843b2c8e8009e5cddaabe73a00ef8f8074803dce53366a5fa",
+      "name": "141_GCF_005960665.1.fastq.gz",
+      "offset": 55258802176,
+      "size": 439052209
+    },
+    {
+      "header_sha256": "8fd68f8a4e1690a6b808c5dca1efe32ba76369eac59fae4023caff5d1d259576",
+      "name": "142_GCF_002214505.1.fastq.gz",
+      "offset": 55697854976,
+      "size": 381641705
+    },
+    {
+      "header_sha256": "f5ca1d60c17d7af31009d45f21d6a0dea461d58489b2e8b27dc5fcfc4aec7884",
+      "name": "143_GCF_000812665.2.fastq.gz",
+      "offset": 56079497216,
+      "size": 213614651
+    },
+    {
+      "header_sha256": "fb1ab49f5dc3d5eea953a2b39471f7f8595ab890a6b615f6d03da11f6cc6213a",
+      "name": "144_GCF_003991565.1.fastq.gz",
+      "offset": 56293112832,
+      "size": 692740453
+    },
+    {
+      "header_sha256": "883cd6aaac973896fc7d17d247d4181fac48f73239e61fd59c1e36038b45971a",
+      "name": "145_GCF_000814825.1.fastq.gz",
+      "offset": 56985853952,
+      "size": 18035945
+    },
+    {
+      "header_sha256": "623243e18f1ecff8c8b16abe34f292b4ed088aae125ebd2f535a0e283990f5c2",
+      "name": "146_GCF_003071405.1.fastq.gz",
+      "offset": 57003890688,
+      "size": 730532120
+    },
+    {
+      "header_sha256": "6cb65284ec8feb7ac4393cee08e90e0763ece07b8f1a615e7b846141aaff4943",
+      "name": "147_GCF_002119605.1.fastq.gz",
+      "offset": 57734423552,
+      "size": 234120841
+    },
+    {
+      "header_sha256": "4452b1c317f8844171345d72b77d12be1cc9b676bd3fe763720b7eebb0582bb1",
+      "name": "148_GCF_003994415.1.fastq.gz",
+      "offset": 57968545280,
+      "size": 179095840
+    },
+    {
+      "header_sha256": "b41be719328ec168599378999d7ef56f7c20da46d0a34257da77ef94f182963f",
+      "name": "149_GCF_001713435.1.fastq.gz",
+      "offset": 58147641856,
+      "size": 750774206
+    },
+    {
+      "header_sha256": "1e108107ad80816b66939c44d0242d6c90dd27d4e035cf9d228c7a3289649108",
+      "name": "150_GCF_000233775.1.fastq.gz",
+      "offset": 58898416640,
+      "size": 34487033
+    },
+    {
+      "header_sha256": "77fca8eb698f21db5cf62486e650c004ce5dfd780fee9789b794c147668e45de",
+      "name": "151_GCF_900660725.1.fastq.gz",
+      "offset": 58932904448,
+      "size": 76877117
+    },
+    {
+      "header_sha256": "7061afb8da94de6b0fbcd4ab3fa4ebafcaabf2654d273608a3d95fa85446a518",
+      "name": "152_GCF_001902315.1.fastq.gz",
+      "offset": 59009782272,
+      "size": 485479313
+    },
+    {
+      "header_sha256": "371dbd54759fc3322b1ee845ab3257438b59e28ff2c06bd54a6c06af5ee7900d",
+      "name": "153_GCF_000016125.1.fastq.gz",
+      "offset": 59495262208,
+      "size": 234960469
+    },
+    {
+      "header_sha256": "84de4fb3c3b33cc8eb29565981af2137ac00dc8fee78b409b003b69362586100",
+      "name": "154_GCF_000755705.1.fastq.gz",
+      "offset": 59730223616,
+      "size": 145896614
+    },
+    {
+      "header_sha256": "6f588405d377ef0ae66d0584f9311e6e2b06bba5dfacd9f5aebf9ebb9b6f58ed",
+      "name": "155_GCF_000224085.1.fastq.gz",
+      "offset": 59876121088,
+      "size": 109774499
+    },
+    {
+      "header_sha256": "1589bee89c3ba8c1ead545075a41b16cee38baeb517a25ef65a1c61f3a9cb387",
+      "name": "156_GCF_003367355.1.fastq.gz",
+      "offset": 59985896448,
+      "size": 66805463
+    },
+    {
+      "header_sha256": "909f229e8f81af3a6834de4c4f89d4e283e9a514cb4673b2fab6523833d5d78d",
+      "name": "157_GCF_006542375.1.fastq.gz",
+      "offset": 60052702720,
+      "size": 180012814
+    },
+    {
+      "header_sha256": "89cdbc656a637d9e697c9d5fa14620ad5701c2a017bf79f336526bb62460ef73",
+      "name": "158_GCF_001019645.1.fastq.gz",
+      "offset": 60232716288,
+      "size": 444768996
+    },
+    {
+      "header_sha256": "74e7b331124e6ccb1b8cf58c145f315d890a9990a48969022b1b5cbf6a27ce8f",
+      "name": "159_GCF_000800475.2.fastq.gz",
+      "offset": 60677486080,
+      "size": 105740808
+    },
+    {
+      "header_sha256": "02abcdf7278cffdbf47185fce4fdc6a70fb8426c429750f7d3a7d00409c58665",
+      "name": "160_GCF_000025125.1.fastq.gz",
+      "offset": 60783227904,
+      "size": 177556253
+    },
+    {
+      "header_sha256": "eeb05ad82b175aa145ece4979ce875d9b41ee4b57787f3605ff47710dc736a36",
+      "name": "161_GCF_000092925.1.fastq.gz",
+      "offset": 60960784896,
+      "size": 105645234
+    },
+    {
+      "header_sha256": "9af39eb28da52eff688001dec0f273cd9a02e7cb8a74155695ef45bae61be47d",
+      "name": "162_GCF_002234495.1.fastq.gz",
+      "offset": 61066430976,
+      "size": 640877019
+    },
+    {
+      "header_sha256": "8a5a4b4f0dc7c466abfb3b2323d3f60d64a828f232695557b0e15f1125edff34",
+      "name": "163_GCF_001294605.1.fastq.gz",
+      "offset": 61707308544,
+      "size": 1055512509
+    },
+    {
+      "header_sha256": "c5f260ccc76da003263a4df3d20504e81c3b5859a9a0e53c8cf8f70c10b8f580",
+      "name": "164_GCF_003339775.1.fastq.gz",
+      "offset": 62762821632,
+      "size": 240144595
+    },
+    {
+      "header_sha256": "e78e558b0b75c3857bdd1eab62ea8fde7b674d1940b1dd1be9013f6785fcfe01",
+      "name": "165_GCF_002201795.1.fastq.gz",
+      "offset": 63002967040,
+      "size": 305922391
+    },
+    {
+      "header_sha256": "bf1fc330e1f3de595970b97d21da32a32d40d2bfbfab427b38e781dd2b7fa79b",
+      "name": "166_GCF_001022215.1.fastq.gz",
+      "offset": 63308890112,
+      "size": 1054257817
+    },
+    {
+      "header_sha256": "8d640ed9eb5b272bf1e3ddf54f3182b47a74aad9ec9cdc1a0a17ddbd487feab0",
+      "name": "167_GCF_004209775.1.fastq.gz",
+      "offset": 64363148800,
+      "size": 174465084
+    },
+    {
+      "header_sha256": "71194beabb517f5548a7762de532caae6e61c03c0d894f6a1737214136d0511f",
+      "name": "168_GCF_003668995.1.fastq.gz",
+      "offset": 64537614848,
+      "size": 560775451
+    },
+    {
+      "header_sha256": "b25f09743ee87e71072c112250feb30bed549cf067a6e2214a7b797a354f88f4",
+      "name": "169_GCF_003019255.1.fastq.gz",
+      "offset": 65098391040,
+      "size": 196765430
+    },
+    {
+      "header_sha256": "1a41b040c7d53beba3f47d2ed77ea600e3bb7e7b279fb56cf988d2ac794ef9d1",
+      "name": "170_GCF_000576555.1.fastq.gz",
+      "offset": 65295157248,
+      "size": 86320466
+    },
+    {
+      "header_sha256": "c33941b9eaea424bc4182b1f04fa9647aaee897b46814db8240e4ef9d9f6a8ac",
+      "name": "171_GCF_004010775.1.fastq.gz",
+      "offset": 65381478400,
+      "size": 336495104
+    },
+    {
+      "header_sha256": "ad9446a0b085f519807b176aeb7e97456cb9ca0496558b07bb7d6cf345a4b1ae",
+      "name": "172_GCF_003342675.1.fastq.gz",
+      "offset": 65717974016,
+      "size": 674377289
+    },
+    {
+      "header_sha256": "ae1170683f7c91c2aaa71acc83695dac45c137e3f1a1a173f18a60859a8eea0f",
+      "name": "173_GCF_003352065.1.fastq.gz",
+      "offset": 66392352256,
+      "size": 561543844
+    },
+    {
+      "header_sha256": "dae1ec3468c3c4ef90671f05706c23f48374dc455abb144bd8e58b1cd8e5e55b",
+      "name": "174_GCF_004355185.1.fastq.gz",
+      "offset": 66953896960,
+      "size": 510771556
+    },
+    {
+      "header_sha256": "381253ffb4653558acaafed2d3513f57d00b5a687c932ce951c91ed3d4be3c93",
+      "name": "175_GCF_000829195.1.fastq.gz",
+      "offset": 67464669184,
+      "size": 294057722
+    },
+    {
+      "header_sha256": "d1a979a84b29512776d1511dd0f8ef8ded7c6e4d1c774ae00508579c2c8c6b47",
+      "name": "176_GCF_900130075.1.fastq.gz",
+      "offset": 67758727680,
+      "size": 576972591
+    },
+    {
+      "header_sha256": "17784c25fdf9ebd2ab887960cf8e519ac0c0f9d581964111404a8ae6a40e3c13",
+      "name": "177_GCF_002080415.1.fastq.gz",
+      "offset": 68335700992,
+      "size": 836193092
+    },
+    {
+      "header_sha256": "303b95791638333299c45b71fb2e1c44305d9d86d7ab4bec92a8b61b97d5eadc",
+      "name": "178_GCF_000020625.1.fastq.gz",
+      "offset": 69171894784,
+      "size": 163135747
+    },
+    {
+      "header_sha256": "119bf287ae55b27f826f0ac64aa3ccc64b43dbdbc7faed5a836bb4ed9806890d",
+      "name": "179_GCF_001042715.1.fastq.gz",
+      "offset": 69335031296,
+      "size": 210364799
+    },
+    {
+      "header_sha256": "c3f23c326d011a3957401bdc9c2686cfaa1c0ab13e1de981836e51dd1d53fb0e",
+      "name": "180_GCF_000019845.1.fastq.gz",
+      "offset": 69545396736,
+      "size": 703182012
+    },
+    {
+      "header_sha256": "1153830acfc619a9db623a1be14e1d7c858e584088b9fa685857d0b0a2daccd3",
+      "name": "181_GCF_002101375.1.fastq.gz",
+      "offset": 70248579584,
+      "size": 663137612
+    },
+    {
+      "header_sha256": "9941139adf109eb6bada6fc763666f7a532bcf199bd85f1268e59849dd0f0fbd",
+      "name": "182_GCF_004771295.1.fastq.gz",
+      "offset": 70911717888,
+      "size": 110242670
+    },
+    {
+      "header_sha256": "443a9f9b0eff9c56c5c20bb5b19246fbb8a216cd84dce4bc81f9934dfc75a693",
+      "name": "183_GCF_001641305.1.fastq.gz",
+      "offset": 71021961216,
+      "size": 252616140
+    },
+    {
+      "header_sha256": "fb3f15c6a8b3b771a402c3dbae58e5118e0c40f980d5767fc8bbd69488bb10b2",
+      "name": "184_GCF_003367905.1.fastq.gz",
+      "offset": 71274577920,
+      "size": 275383360
+    },
+    {
+      "header_sha256": "bef29094017c237acd8af26b2ac494287a3955258d42671ef5dec1b351c968b5",
+      "name": "185_GCF_000828855.1.fastq.gz",
+      "offset": 71549962240,
+      "size": 122190658
+    },
+    {
+      "header_sha256": "3e4fdcf79c58bffc6f9b35b599ab2ee1671a3eb9a8de7f5c6bc2787b5edf92d5",
+      "name": "186_GCF_001077815.2.fastq.gz",
+      "offset": 71672153600,
+      "size": 106279382
+    },
+    {
+      "header_sha256": "3a4a30e93a12bf825ba2a39248b7a1dacb55c5f34aa30400baa14c88315530b7",
+      "name": "187_GCF_003149495.1.fastq.gz",
+      "offset": 71778433536,
+      "size": 880382652
+    },
+    {
+      "header_sha256": "b4c4ee6ccddf9bad704ea046a3a249ee07c71d04f8201c409a77262df8f95e0e",
+      "name": "188_GCF_000018085.1.fastq.gz",
+      "offset": 72658817024,
+      "size": 84962494
+    },
+    {
+      "header_sha256": "b6a7cf2666b5260b628e5b1561c077817e58c37bd236423b663a8544fda58249",
+      "name": "189_GCF_000521505.1.fastq.gz",
+      "offset": 72743780352,
+      "size": 246348603
+    },
+    {
+      "header_sha256": "713f51a85d8f0e5afb98bf9b6d41443e5934420b7b5396998988655f37cf3964",
+      "name": "190_GCF_003952845.1.fastq.gz",
+      "offset": 72990129664,
+      "size": 26506342
+    },
+    {
+      "header_sha256": "0e7b285714642217b7889c892b6123aceabb77f6da75322f564edf4554f4bc3b",
+      "name": "191_GCF_004353225.1.fastq.gz",
+      "offset": 73016636928,
+      "size": 328168488
+    },
+    {
+      "header_sha256": "ce9a9870a8656346e0eb9bd8a31e7ff80d52300b0d9a312ed1c7e6497dad9bee",
+      "name": "192_GCF_001880225.1.fastq.gz",
+      "offset": 73344806400,
+      "size": 20004411
+    },
+    {
+      "header_sha256": "582fbcdda7f6f9bef4dff8d121b0e1e1b42064107698006fca28a6ee0d79b395",
+      "name": "193_GCF_000319245.1.fastq.gz",
+      "offset": 73364811776,
+      "size": 53860236
+    },
+    {
+      "header_sha256": "0aa5421498f12f814213d4a0cc9e9300e6fb9b9992277b452fc2bb90f6b27b65",
+      "name": "194_GCF_003315775.1.fastq.gz",
+      "offset": 73418672640,
+      "size": 292862581
+    },
+    {
+      "header_sha256": "9b4e98f50f80334bf29066f546d12ecd983f051ac6a2efa83d362ffbeae11aa9",
+      "name": "195_GCF_001693335.1.fastq.gz",
+      "offset": 73711536128,
+      "size": 251651048
+    },
+    {
+      "header_sha256": "0da779bdf8c8dcec58384d44a3abd3effb55589fb960d117615343c5f388f082",
+      "name": "196_GCF_000157895.3.fastq.gz",
+      "offset": 73963187712,
+      "size": 569031640
+    },
+    {
+      "header_sha256": "990850f9bf9b68ae6f20ba451c2cb5774b7403553c4112684bc3055732d3a88a",
+      "name": "197_GCF_900070325.1.fastq.gz",
+      "offset": 74532219904,
+      "size": 32015830
+    },
+    {
+      "header_sha256": "d0a9b3ebd9cdd22ee602ea06d2b4472d1556d6813d433e303fd54698e283834e",
+      "name": "198_GCF_001266795.1.fastq.gz",
+      "offset": 74564236288,
+      "size": 108356363
+    },
+    {
+      "header_sha256": "6c50a0988996d3b19dd7b910de8f392bcb0dbb53b55d2035e9574e36dd74817a",
+      "name": "199_GCF_000013565.1.fastq.gz",
+      "offset": 74672593408,
+      "size": 774267292
+    },
+    {
+      "header_sha256": "754648c31ec6439411ca16a288d487b17630762cf29fc313236d91fbea61e284",
+      "name": "200_GCF_001696605.3.fastq.gz",
+      "offset": 75446861312,
+      "size": 785756133
+    },
+    {
+      "header_sha256": "20a750f7a07ed81d2dfabbb43643ac525d0bfa289d2ba9666fb82b391e47d2d7",
+      "name": "201_GCF_003641185.1.fastq.gz",
+      "offset": 76232617984,
+      "size": 275800445
+    },
+    {
+      "header_sha256": "503809c4a5be487829185b72a33e879e8728153c4e3b3c9d56f4977071587b74",
+      "name": "202_GCF_000145295.1.fastq.gz",
+      "offset": 76508419072,
+      "size": 90238049
+    },
+    {
+      "header_sha256": "1790dd18909858b07bf9d705ecf2df24c4c3fe749f02d2ca680846b9d81f0b47",
+      "name": "203_GCF_003390495.1.fastq.gz",
+      "offset": 76598658048,
+      "size": 559189105
+    },
+    {
+      "header_sha256": "19a401533cacc45cb59e1a97583fbc4992c090e9742c677473e3d3cbcc805bdf",
+      "name": "204_GCF_002224425.1.fastq.gz",
+      "offset": 77157848064,
+      "size": 189042007
+    },
+    {
+      "header_sha256": "3fda3d6ce4678a1781c5a4254ec5b5042a37611592141e7592e229f7d85e718a",
+      "name": "205_GCF_001005905.1.fastq.gz",
+      "offset": 77346890752,
+      "size": 34311371
+    },
+    {
+      "header_sha256": "195cdf3846a76cd419ad0a462971be21903bf8fea2c624ed383a56b769241733",
+      "name": "206_GCF_002078315.1.fastq.gz",
+      "offset": 77381202944,
+      "size": 105251768
+    },
+    {
+      "header_sha256": "47775d797a5e416bd5d30f7dc0f31ef41cd718061f0bb977407574772895e924",
+      "name": "207_GCF_003269425.1.fastq.gz",
+      "offset": 77486455296,
+      "size": 444839272
+    },
+    {
+      "header_sha256": "2862729c5404057d5cc946750c132b8d6227dc9a0d6d02064ed2966edc9a6369",
+      "name": "208_GCF_001021085.1.fastq.gz",
+      "offset": 77931295232,
+      "size": 81349228
+    },
+    {
+      "header_sha256": "426db3f9066980b4213845bbec7eae7217b7821f0ff4abd5439fda90362dc66d",
+      "name": "209_GCF_001483965.1.fastq.gz",
+      "offset": 78012645376,
+      "size": 526071995
+    },
+    {
+      "header_sha256": "ab93414be083fe91bc4893cb19159a39d2e8acecc14169422fab21f475e13659",
+      "name": "210_GCF_003932755.1.fastq.gz",
+      "offset": 78538718208,
+      "size": 673278332
+    },
+    {
+      "header_sha256": "e2018e082bc5a46fa527a62b53fdf04c086137bb0fa65ce1eeb1a93a943781e8",
+      "name": "211_GCF_000248095.2.fastq.gz",
+      "offset": 79211997184,
+      "size": 235026608
+    },
+    {
+      "header_sha256": "756c047cb31ccf99951d3afc5f66ac7c7fa98bae431a79e00fa6d048b5be1498",
+      "name": "212_GCF_000025845.1.fastq.gz",
+      "offset": 79447024640,
+      "size": 95455495
+    },
+    {
+      "header_sha256": "89abcd344970afcae0f041418c77d082b0c2886c01a333b884fdffeb024d6c88",
+      "name": "213_GCF_900239975.1.fastq.gz",
+      "offset": 79542480896,
+      "size": 133635778
+    },
+    {
+      "header_sha256": "ede7dfd38e5c83a4c88b0cb653e1d62699a86d6ba4c8dd6f6b67355a5da66813",
+      "name": "214_GCF_000442645.1.fastq.gz",
+      "offset": 79676117504,
+      "size": 457356437
+    },
+    {
+      "header_sha256": "36caafadd62ea34891909d150fbb1bb8d322b343f98d868be8503c0083602d37",
+      "name": "215_GCF_000632985.1.fastq.gz",
+      "offset": 80133474816,
+      "size": 9640554
+    },
+    {
+      "header_sha256": "18d3fad2b00f9dbf0436ff11af8c99ab06a87540b5c68c1eb36813629f595e0e",
+      "name": "216_GCF_001988935.1.fastq.gz",
+      "offset": 80143116288,
+      "size": 460676997
+    },
+    {
+      "header_sha256": "87367c5ce04c115373e78a441ee5849efa49c420c518259ee32c59ff0dff0b57",
+      "name": "217_GCF_004322775.1.fastq.gz",
+      "offset": 80603793920,
+      "size": 254865660
+    },
+    {
+      "header_sha256": "619a234027f662637b712a8388d0d42057a2d781054b2376e3745ca5df96f4cd",
+      "name": "218_GCF_001011155.1.fastq.gz",
+      "offset": 80858660352,
+      "size": 735350479
+    },
+    {
+      "header_sha256": "2e2e318d2f73e4c253491553b1308f8d217aae0f0325a6524f06ecbc2d289475",
+      "name": "219_GCF_002284915.1.fastq.gz",
+      "offset": 81594011648,
+      "size": 260756391
+    },
+    {
+      "header_sha256": "2d638472fa09664c332378e2ef735531849ca1064ac96f53136edb78bd53dbb7",
+      "name": "220_GCF_000017305.1.fastq.gz",
+      "offset": 81854768640,
+      "size": 559047906
+    },
+    {
+      "header_sha256": "ae881a6f89e4e1a25386548c1459b64cdffc70af617d062b649d4dde9e6c7868",
+      "name": "221_GCF_003433515.1.fastq.gz",
+      "offset": 82413817344,
+      "size": 301388058
+    },
+    {
+      "header_sha256": "ff601714b2a379b4f855aa7e9933d4a18a476cf8f182878a80f385cea5ead1d0",
+      "name": "222_GCF_000517565.1.fastq.gz",
+      "offset": 82715206144,
+      "size": 133339599
+    },
+    {
+      "header_sha256": "f8a76a67c48db3bc6a56c1c0f227fe49799258051e933d4ee81e00f11082a6ac",
+      "name": "223_GCF_003711225.1.fastq.gz",
+      "offset": 82848546304,
+      "size": 1166502819
+    },
+    {
+      "header_sha256": "1670fb96e5f8aeb590b943cf616662837e5ba28b60c6b550eca0506b88039672",
+      "name": "224_GCF_000410515.1.fastq.gz",
+      "offset": 84015049728,
+      "size": 735602283
+    },
+    {
+      "header_sha256": "74bd2eafe0310ea93f4b46059055be7bdefe48afe57a62fc2b29a0811b0edc90",
+      "name": "225_GCF_001278035.1.fastq.gz",
+      "offset": 84750652928,
+      "size": 322661182
+    },
+    {
+      "header_sha256": "1a75c8e9cbd650f91fdbb390d56f7ef1e9c0b7b723d605c54d4e0bd868b5fa7b",
+      "name": "226_GCF_000725285.1.fastq.gz",
+      "offset": 85073314816,
+      "size": 493057626
+    },
+    {
+      "header_sha256": "8db21a4ac071f9d27355f82e1a22a48fa2edb52c72d376125096de3e077747a1",
+      "name": "227_GCF_000831005.1.fastq.gz",
+      "offset": 85566373376,
+      "size": 921744726
+    },
+    {
+      "header_sha256": "55cdf2e5dbe33f73fedc4a42c6a3abd7ae1b53df2c4aaefdf44789b2fc980436",
+      "name": "228_GCF_002895405.1.fastq.gz",
+      "offset": 86488118784,
+      "size": 1334508111
+    },
+    {
+      "header_sha256": "94c688b66d830390cd29ca41c4b6f1c6de4b735bcc23a5f7c513a8c929063b1c",
+      "name": "229_GCF_002368355.1.fastq.gz",
+      "offset": 87822627840,
+      "size": 934053929
+    },
+    {
+      "header_sha256": "deab40e4c4751543bb022bef54592153c4583d3c6c5803b281ba05ef0bdcbcce",
+      "name": "230_GCF_000058485.1.fastq.gz",
+      "offset": 88756682752,
+      "size": 1015097508
+    },
+    {
+      "header_sha256": "e3af2d15098902c42366ec1969fcf184436af40115f169592509db1ddea15aac",
+      "name": "231_GCF_000067045.1.fastq.gz",
+      "offset": 89771781120,
+      "size": 35074693
+    },
+    {
+      "header_sha256": "6a87c37fbf6f8639a5be80d9686c7f3a9ee3880ed99e714c22f8d82e8b1afe2f",
+      "name": "232_GCF_000015305.1.fastq.gz",
+      "offset": 89806856704,
+      "size": 344052298
+    },
+    {
+      "header_sha256": "a3aa8167d9b3a6b2fbf1c1dd030eacdd8d14e367e9015b281a53f6dc9f50b0d9",
+      "name": "233_GCF_000775995.1.fastq.gz",
+      "offset": 90150909952,
+      "size": 271403913
+    },
+    {
+      "header_sha256": "524a336a3e0111fc189866a02746e1f604729cc916d93651694263b690193816",
+      "name": "234_GCF_900078695.1.fastq.gz",
+      "offset": 90422314496,
+      "size": 98575363
+    },
+    {
+      "header_sha256": "d2338e5894d11b9639c79688f37f0dd030e43496fa67cc3f83400ff290d4931f",
+      "name": "235_GCF_001652465.1.fastq.gz",
+      "offset": 90520890880,
+      "size": 173624284
+    },
+    {
+      "header_sha256": "5ca4fcde94c25617ad11da3fb1fdcbf6806479bf0d0ec4460f38a70a5c94b91d",
+      "name": "236_GCF_004358325.1.fastq.gz",
+      "offset": 90694515712,
+      "size": 205211764
+    },
+    {
+      "header_sha256": "6669c8dae8b346103b390598d35871f5bc05a7693102f16802b479915e5ac55e",
+      "name": "237_GCF_001266735.1.fastq.gz",
+      "offset": 90899728384,
+      "size": 22351817
+    },
+    {
+      "header_sha256": "5aea7d8235731597fd05d97e4269de7b64fe15202b7ba2026e0d2650cc9d053b",
+      "name": "238_GCF_000583875.1.fastq.gz",
+      "offset": 90922080768,
+      "size": 125533412
+    },
+    {
+      "header_sha256": "b9de1ccbce01090b03ea6a93a6bfbfdeb0ffc60df615853efc7c0598c85be6d1",
+      "name": "239_GCF_000024845.1.fastq.gz",
+      "offset": 91047614976,
+      "size": 40918150
+    },
+    {
+      "header_sha256": "aa9ef3fce9aef66a3eb8e4909a359890de2edcaa318334196b3d30d1fcb99ea2",
+      "name": "240_GCF_003795145.1.fastq.gz",
+      "offset": 91088534016,
+      "size": 392436929
+    },
+    {
+      "header_sha256": "0868b304ad37ed31f8d983df2329b936ee0ed36c7809db8b19b646fae00ed813",
+      "name": "241_GCF_000024605.1.fastq.gz",
+      "offset": 91480971776,
+      "size": 109993513
+    },
+    {
+      "header_sha256": "7f49f7f2885006f19c6f4ac3907aba6a44a195ae9e7fb780074b34d87774594f",
+      "name": "242_GCF_900324035.1.fastq.gz",
+      "offset": 91590966272,
+      "size": 1534207231
+    },
+    {
+      "header_sha256": "65a6915bd67b69b6953d66be1efa086127d00675e87a5be5c6577d3fe796cfa8",
+      "name": "243_GCF_002688565.1.fastq.gz",
+      "offset": 93125174272,
+      "size": 435592875
+    },
+    {
+      "header_sha256": "fc2b2aa6d107afa8d43163c99c9ccb7a61cf6264eb7602c6d5d0e0d373410a6e",
+      "name": "244_GCF_003544935.1.fastq.gz",
+      "offset": 93560768000,
+      "size": 309158406
+    },
+    {
+      "header_sha256": "79f4bc7f9c870d1f56eb8416eb9a37b6499480be667b3207611de89d06799978",
+      "name": "245_GCF_900116045.1.fastq.gz",
+      "offset": 93869927424,
+      "size": 198258036
+    },
+    {
+      "header_sha256": "58a065270d49a32a806add4371012f8b66735ff7b74fbfc69df53cec38b92701",
+      "name": "246_GCF_900120245.1.fastq.gz",
+      "offset": 94068186112,
+      "size": 361742355
+    },
+    {
+      "header_sha256": "bd9d8ce783ba41b017e812b09df0528e981327f923eead113c648a5983af2f81",
+      "name": "247_GCF_900095795.1.fastq.gz",
+      "offset": 94429929472,
+      "size": 155769935
+    },
+    {
+      "header_sha256": "6b436825d98ec3e350538e7ef32e2cd327f47e0760ce77ea42bd6b65d0cc51fb",
+      "name": "248_GCF_000022605.2.fastq.gz",
+      "offset": 94585700352,
+      "size": 38236657
+    },
+    {
+      "header_sha256": "767c07cb05a5c70f358e4bec8a27e5056d99b42ae3512c9b0e362f393f97731d",
+      "name": "249_GCF_000214175.1.fastq.gz",
+      "offset": 94623937536,
+      "size": 832114344
+    },
+    {
+      "header_sha256": "92a182989ec46b660dd914cc39ee6aa973df6f722eb1a76b3f925aad091a8a9e",
+      "name": "250_GCF_001617605.1.fastq.gz",
+      "offset": 95456052736,
+      "size": 257236658
+    },
+    {
+      "header_sha256": "cc48de46d04c7ae70902eb5cc27cc8adf994c80f83b2d899fca011bc7981b16b",
+      "name": "251_GCF_001547755.1.fastq.gz",
+      "offset": 95713290240,
+      "size": 238193691
+    },
+    {
+      "header_sha256": "89ab5fde5bb40980b67f25edba0f21f66a2fbefc09f93e490783e0db088eb9bc",
+      "name": "252_GCF_000010325.1.fastq.gz",
+      "offset": 95951484928,
+      "size": 216995754
+    },
+    {
+      "header_sha256": "8a373622ad8515d38e44989f7bc911a21affd4343582a25d150fd300ce63dd23",
+      "name": "253_GCF_000014005.1.fastq.gz",
+      "offset": 96168481280,
+      "size": 1045750401
+    },
+    {
+      "header_sha256": "d9b6d4d7bb7bd45701295b406e9f9f30ca99d280d85237bc042ee0e060d2bf45",
+      "name": "254_GCF_000471965.1.fastq.gz",
+      "offset": 97214232576,
+      "size": 97599363
+    },
+    {
+      "header_sha256": "b4192abd91d80b566dd9950ab787913369c05f820d3d504eb863b29b0674f9b4",
+      "name": "255_GCF_000184745.1.fastq.gz",
+      "offset": 97311832576,
+      "size": 884202832
+    },
+    {
+      "header_sha256": "db633e8127d5a66916f2674991dd88c9049ac82f78ecfc419251bf0b635ed1fc",
+      "name": "256_GCF_000283515.1.fastq.gz",
+      "offset": 98196036096,
+      "size": 83078389
+    },
+    {
+      "header_sha256": "08e70bb5b00046a5d521588a34e55c08e88b437b31ee305d5ac47f4052060887",
+      "name": "257_GCF_000196435.1.fastq.gz",
+      "offset": 98279115264,
+      "size": 189731049
+    },
+    {
+      "header_sha256": "237978862ffc95399dd13b5a9e2cc6e4664c9dc0bf402987d70ac440d0a07818",
+      "name": "258_GCF_000023905.1.fastq.gz",
+      "offset": 98468847104,
+      "size": 474125197
+    },
+    {
+      "header_sha256": "977eacf58fa135c916ed1060738c4a7872f1ed90329600237525796495916957",
+      "name": "259_GCF_000007725.1.fastq.gz",
+      "offset": 98942972928,
+      "size": 118094759
+    },
+    {
+      "header_sha256": "5b4d2f994932b3e09225456be10d581ccf346d156b76c6f6bac61d27aa400512",
+      "name": "260_GCF_002072655.1.fastq.gz",
+      "offset": 99061068288,
+      "size": 968735801
+    },
+    {
+      "header_sha256": "ccd4a565ef6a458e70319109121a6be9e927e02e79252fc6c97ec0e62e10738a",
+      "name": "261_GCF_000023785.1.fastq.gz",
+      "offset": 100029805056,
+      "size": 640060093
+    },
+    {
+      "header_sha256": "92e51b1079d350df40c45e00f320588805845aea306383d4971a2f40074c05e2",
+      "name": "262_GCF_000525655.1.fastq.gz",
+      "offset": 100669865984,
+      "size": 71036254
+    },
+    {
+      "header_sha256": "17acb1c177f2f2fc9b6a8b9e0abe770fec615980cc14eefef4287b6de83003ff",
+      "name": "263_GCF_900635295.1.fastq.gz",
+      "offset": 100740902912,
+      "size": 427855544
+    },
+    {
+      "header_sha256": "28cd6f76b1e9a502aa9669eeb0fb9cfb4e3ba7fd9dbfd2adf091c73b6733c390",
+      "name": "264_GCF_003024525.2.fastq.gz",
+      "offset": 101168759296,
+      "size": 217671317
+    },
+    {
+      "header_sha256": "2a4eb97e3ecc34595e2736bedf6ccf501976bfd59b43bd60192fe939fe7ff1d5",
+      "name": "265_GCF_003352085.1.fastq.gz",
+      "offset": 101386431488,
+      "size": 500108822
+    },
+    {
+      "header_sha256": "671a3287bc4fe0f74e637d5757d286e46b862da3366053c5afde162e208ae1b8",
+      "name": "266_GCF_003574965.1.fastq.gz",
+      "offset": 101886541312,
+      "size": 327376773
+    },
+    {
+      "header_sha256": "3e6db38d03d443aa54b32b1643bd370a8ad9b4133e4c9825418adebe35bdeeff",
+      "name": "267_GCF_000185805.1.fastq.gz",
+      "offset": 102213918720,
+      "size": 23033590
+    },
+    {
+      "header_sha256": "1db89ca0fb28165f7fafa15260ebb3816bcd9e74a54bfa4259c9a8b3b47f8254",
+      "name": "268_GCF_004102045.1.fastq.gz",
+      "offset": 102236953088,
+      "size": 276976558
+    },
+    {
+      "header_sha256": "de32b1dc85d88da964e4608419ca2519e72642f0fd7307e0762ce0e1bfddfa75",
+      "name": "269_GCF_000025905.1.fastq.gz",
+      "offset": 102513930240,
+      "size": 383326863
+    },
+    {
+      "header_sha256": "29bdc5516fa0d02a45bf223d6504fc2c1fc7648bb14e833228bf0ceabe4627c0",
+      "name": "270_GCF_002005485.1.fastq.gz",
+      "offset": 102897257984,
+      "size": 525254402
+    },
+    {
+      "header_sha256": "f89d59f74b0f6dcf3fc24aac85e88aba00e65cbbc45c6ba9e54a74afa7e0c491",
+      "name": "271_GCF_004795855.1.fastq.gz",
+      "offset": 103422513152,
+      "size": 711002531
+    },
+    {
+      "header_sha256": "785070f01d00ae7eb230cbf8fe01ff0f59accc6cca6408b79e5ecf9ebfa13828",
+      "name": "272_GCF_900039485.1.fastq.gz",
+      "offset": 104133516288,
+      "size": 142954898
+    },
+    {
+      "header_sha256": "32473a022846c7d9892e6997f509ec0401d2204b6fca4e5b706d294877b95a4f",
+      "name": "273_GCF_000025965.1.fastq.gz",
+      "offset": 104276471808,
+      "size": 278645219
+    },
+    {
+      "header_sha256": "868f97e52f131471f8dbfa23e124ffbb75479381dd2edd06681dd95e8cd5a8ba",
+      "name": "274_GCF_002905685.2.fastq.gz",
+      "offset": 104555117568,
+      "size": 1090560157
+    },
+    {
+      "header_sha256": "e71468d8d5a231f3a77e95f6b41cdf72fbd8c85872ebdfb74aaa8b7d2805c08c",
+      "name": "275_GCF_003971195.1.fastq.gz",
+      "offset": 105645678592,
+      "size": 60160251
+    },
+    {
+      "header_sha256": "ce9b534de1cf445e04059c0ff0016345be55afb728a8aaf48dd5f388fd97ede9",
+      "name": "276_GCF_001688845.2.fastq.gz",
+      "offset": 105705839616,
+      "size": 381890228
+    },
+    {
+      "header_sha256": "ffa302cdefeda90ec76952f302e711db3eced36b662c0d75ac4afe7a9d94f229",
+      "name": "277_GCF_003669035.1.fastq.gz",
+      "offset": 106087730688,
+      "size": 312170252
+    },
+    {
+      "header_sha256": "8ed6a97e69ff6c4e675cd73d4e4ebc60d8416a5b223c620f92f9bccb3e54e469",
+      "name": "278_GCF_003855655.1.fastq.gz",
+      "offset": 106399901696,
+      "size": 460439552
+    },
+    {
+      "header_sha256": "9fbc3a5c3f883864e58b3b8952cef9485806d54b533ab42f6350f08bdaff054f",
+      "name": "279_GCF_002257505.1.fastq.gz",
+      "offset": 106860341760,
+      "size": 34107747
+    },
+    {
+      "header_sha256": "bf18cfb22287efa601c204a019a8bdf341914f19f1937702c3c247a13ba69c3b",
+      "name": "280_GCF_002953655.1.fastq.gz",
+      "offset": 106894450176,
+      "size": 13768190
+    },
+    {
+      "header_sha256": "bab66edaf1972ca3d67dde08f8dae01ef3d561385e7ba1ac83f2dc01f42907c2",
+      "name": "281_GCF_002999135.1.fastq.gz",
+      "offset": 106908218880,
+      "size": 319009323
+    },
+    {
+      "header_sha256": "c117ede734d3dc7adf9648b40c52261346209588cd2c83de916b91f1d7550c6c",
+      "name": "282_GCF_006542745.1.fastq.gz",
+      "offset": 107227229184,
+      "size": 498732720
+    },
+    {
+      "header_sha256": "328e0f8530f247034badcb421a990a43ecc48bc2e2651e6b81b1221284cc532f",
+      "name": "283_GCF_002998295.1.fastq.gz",
+      "offset": 107725962752,
+      "size": 244204116
+    },
+    {
+      "header_sha256": "f56986840eef6c4d91ee950b8b06fa2f7fdfffab96b7a025f39accb8c00b820a",
+      "name": "284_GCF_001598035.1.fastq.gz",
+      "offset": 107970167808,
+      "size": 103129042
+    },
+    {
+      "header_sha256": "fcfc1c82ca16a4aac25aa60b83cfad863a827582b1a5de6b80703b436b14be8a",
+      "name": "285_GCF_002356455.1.fastq.gz",
+      "offset": 108073297408,
+      "size": 798832591
+    },
+    {
+      "header_sha256": "964e26e1b4898eb9622344ae84ff55de2ee20076dbab6fbf8394a44611fe7efd",
+      "name": "286_GCF_002237595.1.fastq.gz",
+      "offset": 108872130560,
+      "size": 209891351
+    },
+    {
+      "header_sha256": "723fb1c3fda16f143aaeba73d1f34f9734523ca48fd35e70bea0bc571980d58b",
+      "name": "287_GCF_002742645.2.fastq.gz",
+      "offset": 109082022912,
+      "size": 540987185
+    },
+    {
+      "header_sha256": "c1791d8054d96251e0955f8219dcd1c445ba49e27d3bd627326cd4d9ce8bef32",
+      "name": "288_GCF_001466725.1.fastq.gz",
+      "offset": 109623010816,
+      "size": 364520563
+    },
+    {
+      "header_sha256": "75f37e7662421b5dd3a8c0b7349f10bce43373824fc55c56dff7368389c24360",
+      "name": "289_GCF_001767295.1.fastq.gz",
+      "offset": 109987532288,
+      "size": 634665824
+    },
+    {
+      "header_sha256": "35fb9438fccfb8570590c2588df4f57c54b6b18c43d4816d8e01ddc2453d1a55",
+      "name": "290_GCF_000009865.1.fastq.gz",
+      "offset": 110622198784,
+      "size": 435954807
+    },
+    {
+      "header_sha256": "e385e872c87340dc71655fa3de3077a0ccd2ae9e8543e57a55e8fbf079a1b700",
+      "name": "291_GCF_000969985.1.fastq.gz",
+      "offset": 111058154496,
+      "size": 973541200
+    },
+    {
+      "header_sha256": "025392bbb1325ca248c533c3a7c0bfb8b1aeb8b9df1f6f160ba02b7d3236076d",
+      "name": "292_GCF_000186005.1.fastq.gz",
+      "offset": 112031696384,
+      "size": 157819317
+    },
+    {
+      "header_sha256": "dbf447962eb2a9a014126bf150b5e8ae2aed1ebfecc37730cf04dc0cf360d699",
+      "name": "293_GCF_000218625.1.fastq.gz",
+      "offset": 112189516288,
+      "size": 324446485
+    },
+    {
+      "header_sha256": "cdc1fc42c057cf6df2be61861d42cac91a6a59c23fc66df4b70bd9c5d077bfc4",
+      "name": "294_GCF_000828515.1.fastq.gz",
+      "offset": 112513963520,
+      "size": 12034713
+    },
+    {
+      "header_sha256": "028a9c9df7efc200eaaf9f0be458c2b727ac4202cd2aa92c0963bf73e2c0634d",
+      "name": "295_GCF_002355575.1.fastq.gz",
+      "offset": 112525999104,
+      "size": 18797950
+    },
+    {
+      "header_sha256": "757405f01559b4ee87932fa2af53b5174e386ddfa393683de3c3cfe8d4cdc65f",
+      "name": "296_GCF_001602115.1.fastq.gz",
+      "offset": 112544797696,
+      "size": 386791049
+    },
+    {
+      "header_sha256": "a8511ffb70a2a0fe198e99780e54f5520827aa4195960c545e15dbb39de21d3d",
+      "name": "297_GCF_002355275.1.fastq.gz",
+      "offset": 112931589632,
+      "size": 213395765
+    },
+    {
+      "header_sha256": "4908ecf81cd3cf28a6d2293c58aa8df024632c5ffb4b5878c47c411f6a5efaeb",
+      "name": "298_GCF_006064855.1.fastq.gz",
+      "offset": 113144986112,
+      "size": 373713315
+    },
+    {
+      "header_sha256": "c3982241acbe1f10f7ca605dc2b9e97213a1ef8a19cd6171115d6b89542449cb",
+      "name": "299_GCF_000277305.1.fastq.gz",
+      "offset": 113518700032,
+      "size": 162704072
+    },
+    {
+      "header_sha256": "15099dd9cd21f324ab4bc632c555ad2a1de46c7fa71293bcaa93a73fb9f19cca",
+      "name": "300_GCF_003346755.1.fastq.gz",
+      "offset": 113681404928,
+      "size": 154342487
+    },
+    {
+      "header_sha256": "18daadba124ae19e0d8b4be805090af0ddabf52e001b7524b9e0bad1b4cf4a18",
+      "name": "301_GCF_900475855.1.fastq.gz",
+      "offset": 113835748352,
+      "size": 576499137
+    },
+    {
+      "header_sha256": "15b2d7e7c473bc24cc5b486f8aa36b75f5d055520cccc374b43e6658fac352cc",
+      "name": "302_GCF_000231385.2.fastq.gz",
+      "offset": 114412248064,
+      "size": 196783321
+    },
+    {
+      "header_sha256": "8092e775466c2886603fdf5f56b9476945ce2dd6a9b2b91c7c79c35fba28a2b6",
+      "name": "303_GCF_000756615.1.fastq.gz",
+      "offset": 114609032192,
+      "size": 507922890
+    },
+    {
+      "header_sha256": "d439cfd77ba3f06c01c6b9010a4c251d82815e9b221fc1f84bac598b86ef93a1",
+      "name": "304_GCF_001582075.1.fastq.gz",
+      "offset": 115116955648,
+      "size": 382320317
+    },
+    {
+      "header_sha256": "6b4d325bd2e022537de66aefe65fdebc46fc571251ba31f75f541682c026abc1",
+      "name": "305_GCF_006874745.1.fastq.gz",
+      "offset": 115499276800,
+      "size": 121385900
+    },
+    {
+      "header_sha256": "b40aac135e3420070f619d23b0f24bc0f983939322f3b327af12816c9db47dff",
+      "name": "306_GCF_003795125.1.fastq.gz",
+      "offset": 115620663296,
+      "size": 262736454
+    },
+    {
+      "header_sha256": "d1def6702f05950f2500eed8b41f41d16d035639d178f79c03af24daff38da8b",
+      "name": "307_GCF_002290025.1.fastq.gz",
+      "offset": 115883400704,
+      "size": 337451979
+    },
+    {
+      "header_sha256": "11e4629c483d785af5760d16511a0539a712ced2fd40ed70d65175ed5f532b8c",
+      "name": "308_GCF_000145255.1.fastq.gz",
+      "offset": 116220853248,
+      "size": 472266035
+    },
+    {
+      "header_sha256": "dd8606c332fab93baa41dcf3bce49fa145a80629a68e1db835473fb81ce8ee4a",
+      "name": "309_GCF_001412595.2.fastq.gz",
+      "offset": 116693120000,
+      "size": 1131811831
+    },
+    {
+      "header_sha256": "78927ebe9b2aa22a2fbb909f0731556ddf8e383e2548ca7936e956d91b5a8661",
+      "name": "310_GCF_001713355.1.fastq.gz",
+      "offset": 117824932352,
+      "size": 581176532
+    },
+    {
+      "header_sha256": "e46ad389fdd28dfd2929a376b4041631e4cd879a9a6949cacbda657863a472df",
+      "name": "311_GCF_000317675.1.fastq.gz",
+      "offset": 118406109696,
+      "size": 261188742
+    },
+    {
+      "header_sha256": "ac804c1f3f8b2ef81b7461a3841cc5543281a09767a5e1bb312797c5a63f368f",
+      "name": "312_GCF_002776575.1.fastq.gz",
+      "offset": 118667299328,
+      "size": 29670136
+    },
+    {
+      "header_sha256": "66ca6733448cf8e2ac19251e6b48d032aef34b8cb75c2d62ce036a26e94b8339",
+      "name": "313_GCF_000025605.1.fastq.gz",
+      "offset": 118696970240,
+      "size": 163319553
+    },
+    {
+      "header_sha256": "d3cff45abadad3ce9942f7ac875417b3ee9f8a486ef98d5b318e19c1921dfc34",
+      "name": "314_GCF_900660755.1.fastq.gz",
+      "offset": 118860290560,
+      "size": 95992423
+    },
+    {
+      "header_sha256": "4a08aed4dd0f56915978b636dc7acedfb910b510f0fb24553a5dd00f5ca6c07f",
+      "name": "315_GCF_004323735.1.fastq.gz",
+      "offset": 118956283904,
+      "size": 320943243
+    },
+    {
+      "header_sha256": "2f1d39d4d86c4cb28d2dde106ae59ec30ee1ad3642895dec7e4a122e38afa119",
+      "name": "316_GCF_001187505.1.fastq.gz",
+      "offset": 119277228032,
+      "size": 1314288196
+    },
+    {
+      "header_sha256": "3a9c64deafaa7a78061635f88aa70171180724b8a903a3d6838989f1b7e1ebd3",
+      "name": "317_GCF_002287885.2.fastq.gz",
+      "offset": 120591517184,
+      "size": 45005738
+    },
+    {
+      "header_sha256": "b33fafb259ac797ec79d4f7757dfc2b538e3d7d25b1a893c4c0b75b63eabbe46",
+      "name": "318_GCF_000835165.1.fastq.gz",
+      "offset": 120636523520,
+      "size": 73789966
+    },
+    {
+      "header_sha256": "57f433f38ec10804f4805ea7c18780e7bb4286365fe5f490c84fd5a6f924aff5",
+      "name": "319_GCF_000348805.1.fastq.gz",
+      "offset": 120710314496,
+      "size": 77646343
+    },
+    {
+      "header_sha256": "da0819edad198d60ed515eaf1f9842c4b639ef9ec5f9d3c1caf457ef8c465299",
+      "name": "320_GCF_000612685.1.fastq.gz",
+      "offset": 120787961856,
+      "size": 366250918
+    },
+    {
+      "header_sha256": "538dc577c7adea00304a5d40b207376f7a08d3c3c77b55c0b2155b61cf365058",
+      "name": "321_GCF_003971255.1.fastq.gz",
+      "offset": 121154213376,
+      "size": 828344136
+    },
+    {
+      "header_sha256": "3407a06e81fca6b7726997eec8f9a7e4ac7f581b1343da66caf00a16210ad741",
+      "name": "322_GCF_002754075.1.fastq.gz",
+      "offset": 121982558208,
+      "size": 210136169
+    },
+    {
+      "header_sha256": "fd44141371494601d227461a00d9e83d62294a84a7431b047eb5c7f9cba6daea",
+      "name": "323_GCF_001938665.1.fastq.gz",
+      "offset": 122192695296,
+      "size": 643052737
+    },
+    {
+      "header_sha256": "f6415dcf4e54e67083bc1afe50b58a7b93ca91d71bab51cc6c55b2b0385bac16",
+      "name": "324_GCF_001677215.1.fastq.gz",
+      "offset": 122835748864,
+      "size": 741320620
+    },
+    {
+      "header_sha256": "d1e167ea1ec2d6f10b4e531ff4d8153a05e4c618d856bc14ae4824e6b41dccf5",
+      "name": "325_GCF_000789395.1.fastq.gz",
+      "offset": 123577070080,
+      "size": 428318125
+    },
+    {
+      "header_sha256": "9675d0735691e0a10c7344ef73c7e897d2c6a865ab2ed72fe02780b03754e47e",
+      "name": "326_GCF_001908275.1.fastq.gz",
+      "offset": 124005388800,
+      "size": 1278237820
+    },
+    {
+      "header_sha256": "5afc083bbf34984f2331b6be85c5ef58583d6929c08fe147ff8b9f1da5957223",
+      "name": "327_GCF_004564075.1.fastq.gz",
+      "offset": 125283627520,
+      "size": 464023679
+    },
+    {
+      "header_sha256": "704b8cb4c381db5847475c68d68fdc3acdca74f756dcb89f729ae63a531e1219",
+      "name": "328_GCF_002243645.1.fastq.gz",
+      "offset": 125747652096,
+      "size": 694081609
+    },
+    {
+      "header_sha256": "2e9a0c00210e389ca55777d24d7c316aa3958ea4cdecb731d5e1969101e915e7",
+      "name": "329_GCF_000017585.1.fastq.gz",
+      "offset": 126441734656,
+      "size": 64729740
+    },
+    {
+      "header_sha256": "f84cd534e959e4974e778b21ba765096a7b7cafbf80b639e3d57e526a0576f17",
+      "name": "330_GCF_002117445.1.fastq.gz",
+      "offset": 126506465280,
+      "size": 210703265
+    },
+    {
+      "header_sha256": "da3c311f0f0d9821d03c69455671c1e3eb0b97adaeab9b77da8c885e28c59019",
+      "name": "331_GCF_000020385.1.fastq.gz",
+      "offset": 126717169152,
+      "size": 152566401
+    },
+    {
+      "header_sha256": "693b3075c1c5e47b66f5e6adf09344a38ebef2d7d86a9b5bb8f775835e7e7417",
+      "name": "332_GCF_006274605.1.fastq.gz",
+      "offset": 126869736448,
+      "size": 200255301
+    },
+    {
+      "header_sha256": "603db666bac40b91decbc4027fc456ca58f36d2b271a971641a2b41fd4ea183a",
+      "name": "333_GCF_003589925.1.fastq.gz",
+      "offset": 127069992448,
+      "size": 1156951805
+    },
+    {
+      "header_sha256": "0fac28595281dedf2b0a6fcfdbe7281e18cc129e77af509440b6b33b27701ea2",
+      "name": "334_GCF_000500935.1.fastq.gz",
+      "offset": 128226945024,
+      "size": 7931112
+    },
+    {
+      "header_sha256": "98af202fbaafdd365eab6e34eb10fb348441fdc26c2170b230674343c41c97cd",
+      "name": "335_GCF_001654455.1.fastq.gz",
+      "offset": 128234876928,
+      "size": 1044863687
+    },
+    {
+      "header_sha256": "180ece2cec2916d1cb63703e93d7deb17892057729985d7e2e13f89c69b52ab3",
+      "name": "336_GCF_006351925.1.fastq.gz",
+      "offset": 129279741440,
+      "size": 593778780
+    },
+    {
+      "header_sha256": "5322e81cc44338ce6fa3c9e60c0d4712f269a675685e02153a4b17956d9342a3",
+      "name": "337_GCF_002896855.1.fastq.gz",
+      "offset": 129873521152,
+      "size": 605797850
+    },
+    {
+      "header_sha256": "abc525ab17f510ff81a5145acff36ddcad231ca78cbd8ba4b552de7b0fde29cf",
+      "name": "338_GCF_000761215.1.fastq.gz",
+      "offset": 130479319552,
+      "size": 1368765318
+    },
+    {
+      "header_sha256": "a2ded6e4d0f970c1d26e598d27193f74506e59fe058e408872755ec04e4c9b19",
+      "name": "339_GCF_000755585.2.fastq.gz",
+      "offset": 131848085504,
+      "size": 841767089
+    },
+    {
+      "header_sha256": "6f39525ac2ad839a84c2305d3aba9c5a441a275849c99911c8130288bbd2bdb4",
+      "name": "340_GCF_000046685.1.fastq.gz",
+      "offset": 132689853440,
+      "size": 16918688
+    },
+    {
+      "header_sha256": "3373fb13a05321cbe4f6f922554042db6f1e2f6dcb2808de16073927a6e86255",
+      "name": "341_GCF_002216145.1.fastq.gz",
+      "offset": 132706772992,
+      "size": 303083008
+    },
+    {
+      "header_sha256": "f0a51b452bd50dddf96bbffead96f38e1cc7df57a46e040f54f413c601abd8d0",
+      "name": "342_GCF_001304795.1.fastq.gz",
+      "offset": 133009856512,
+      "size": 160937213
+    },
+    {
+      "header_sha256": "32846548886f35f67ebe3aa5f4f925771862e3dab8f1c3629fdf17f219126431",
+      "name": "343_GCF_000833255.1.fastq.gz",
+      "offset": 133170794496,
+      "size": 155559912
+    },
+    {
+      "header_sha256": "e6510d30dde9c1074b7884d51463c77032789e7ee9737034c7c05daf00b62816",
+      "name": "344_GCF_004571195.1.fastq.gz",
+      "offset": 133326354944,
+      "size": 282384456
+    },
+    {
+      "header_sha256": "c8ffc2a615dc6e71e3114ad8b8cc99d331ffa172bb3f9de5bc6d2e314a44c527",
+      "name": "345_GCF_002002905.1.fastq.gz",
+      "offset": 133608740352,
+      "size": 608658962
+    },
+    {
+      "header_sha256": "d3d24d6c162ecc38dbed071a2d4e6360815fcb566494d76de06398d335979e06",
+      "name": "346_GCF_000550785.1.fastq.gz",
+      "offset": 134217400320,
+      "size": 128323745
+    },
+    {
+      "header_sha256": "6c37ef7d65585d51cca4e308f2affbe72fb8bfd6ef4aa8317db788a59c1e59c2",
+      "name": "347_GCF_000253275.1.fastq.gz",
+      "offset": 134345724928,
+      "size": 479548041
+    },
+    {
+      "header_sha256": "a8030a9f96739bfc256e86c95e31cec92f0b2a3d6766cd33a4dcd01b0ef2fda3",
+      "name": "348_GCF_001456155.1.fastq.gz",
+      "offset": 134825273856,
+      "size": 734380890
+    },
+    {
+      "header_sha256": "18dbd530e2da6b69c57be7b636ed6ee3bfd9d124ff0b60f0d7a1fae8043b647e",
+      "name": "349_GCF_000146025.2.fastq.gz",
+      "offset": 135559655424,
+      "size": 24276428
+    },
+    {
+      "header_sha256": "027607f365e3a103b0e900589f4ea31c600fa4effce9fb665372d9b4b08a0e9e",
+      "name": "350_GCF_001543345.1.fastq.gz",
+      "offset": 135583932416,
+      "size": 155942605
+    },
+    {
+      "header_sha256": "7d3f7e2997428083c36a37271f408d3459db50035d941cc466a80195305b99c2",
+      "name": "351_GCF_000155735.2.fastq.gz",
+      "offset": 135739875840,
+      "size": 923649401
+    },
+    {
+      "header_sha256": "9c02158a00468e4c4b08f2de37d6b92b75532268e22e989a64423e68caff5171",
+      "name": "352_GCF_001858005.1.fastq.gz",
+      "offset": 136663525888,
+      "size": 601156456
+    },
+    {
+      "header_sha256": "22948d5787feafc8510d898a3d3c6c24647ccfb832f8d3d491fe9d992cf5b0a6",
+      "name": "353_GCF_000092105.1.fastq.gz",
+      "offset": 137264683008,
+      "size": 395092712
+    },
+    {
+      "header_sha256": "ae6e1b25fd63a2d2440ad1baf8666186e330a5c4ba18c49c795b474ed33a7f4d",
+      "name": "354_GCF_000418305.1.fastq.gz",
+      "offset": 137659776512,
+      "size": 602317833
+    },
+    {
+      "header_sha256": "d21bd30abe4d4a2285b4d4c4a31fd5bd5438ceee95bbf6a81560402bfd4771d0",
+      "name": "355_GCF_900478185.1.fastq.gz",
+      "offset": 138262095360,
+      "size": 56200268
+    },
+    {
+      "header_sha256": "bc7d5437e2b3d59e92690d339c1161f26545bf3c2be81772031b04dda5c802a5",
+      "name": "356_GCF_002310475.1.fastq.gz",
+      "offset": 138318296576,
+      "size": 185429226
+    },
+    {
+      "header_sha256": "473da81e5c6c85d35aca7aa447e687e30a5439c784ab6f0493aabc0379cbd80c",
+      "name": "357_GCF_003609835.1.fastq.gz",
+      "offset": 138503726592,
+      "size": 285959017
+    },
+    {
+      "header_sha256": "aa082ee88511f70e018a31580ea161ff8969110d6c898274fe22506fbf345af7",
+      "name": "358_GCF_004135085.1.fastq.gz",
+      "offset": 138789686272,
+      "size": 283660019
+    },
+    {
+      "header_sha256": "288be212b0052af46554dbed09bd4d27efa7431a62638a9414473d720744df51",
+      "name": "359_GCF_003612855.1.fastq.gz",
+      "offset": 139073347072,
+      "size": 243410238
+    },
+    {
+      "header_sha256": "99543df338ce5f4743c96b8e4bd6cc0f3c3c0f31e69a75d3ff0ca74fae5bfeb4",
+      "name": "360_GCF_000067205.1.fastq.gz",
+      "offset": 139316758016,
+      "size": 413274053
+    },
+    {
+      "header_sha256": "eb9db55dac0428b4e882be29dcac4f3c30aaca74b9f32929d3116c968ec17fe7",
+      "name": "361_GCF_000225465.1.fastq.gz",
+      "offset": 139730032640,
+      "size": 48048897
+    },
+    {
+      "header_sha256": "128d5b16e4cbc1ae72c7bdef9054d3df450db1ab2adf7869ad1c4288cdfa968f",
+      "name": "362_GCF_000284335.1.fastq.gz",
+      "offset": 139778082304,
+      "size": 178828306
+    },
+    {
+      "header_sha256": "efcf2c5ede591f56f76ef0ba0b44ab67526a9af79e0f7058febd71cd334870a9",
+      "name": "363_GCF_002354895.1.fastq.gz",
+      "offset": 139956911616,
+      "size": 360408574
+    },
+    {
+      "header_sha256": "9bc27bcb919ee1826f9a69ddd4be8af5eef0c332c4d7ec5201a2e9d369dea077",
+      "name": "364_GCF_001310255.1.fastq.gz",
+      "offset": 140317320704,
+      "size": 621925908
+    },
+    {
+      "header_sha256": "111bf9a44dfd15c06b62461c06c50442c8bf624e3d83ac6810f1d85f679ad160",
+      "name": "365_GCF_003071325.1.fastq.gz",
+      "offset": 140939247616,
+      "size": 203440701
+    },
+    {
+      "header_sha256": "271df2829298956df1bd131fb12a8ad7f6f934b941493315df042a71188b8e20",
+      "name": "366_GCF_003330725.1.fastq.gz",
+      "offset": 141142689280,
+      "size": 1554420945
+    },
+    {
+      "header_sha256": "22a2803645d6052fcc2264dee437a394cf3cbc55380ca465978e122faf286dd1",
+      "name": "367_GCF_001013905.1.fastq.gz",
+      "offset": 142697111040,
+      "size": 1765693430
+    },
+    {
+      "header_sha256": "d9c2f9ef7e1937542c02c9dcd81d0d9507e90f5166c2d1b39ecbd0b019c5347f",
+      "name": "368_GCF_002849775.1.fastq.gz",
+      "offset": 144462804992,
+      "size": 448713854
+    },
+    {
+      "header_sha256": "120d0dae69017bb5fd3f099c1cc17bc8106d3d44c7330a0b3fc701275ea08f05",
+      "name": "369_GCF_002896875.1.fastq.gz",
+      "offset": 144911519744,
+      "size": 414617925
+    },
+    {
+      "header_sha256": "d99a18713ff2155e9b9e5d67a4c755841aa8b2ca9444c84436c1e91e9eab4b6e",
+      "name": "370_GCF_000020965.1.fastq.gz",
+      "offset": 145326138368,
+      "size": 314307235
+    },
+    {
+      "header_sha256": "e2943456dd7e8e7223a65d153ce1e0ec84b1a500e81e5dfd99f3fe0b0fee9234",
+      "name": "371_GCF_003850405.1.fastq.gz",
+      "offset": 145640446464,
+      "size": 496915101
+    },
+    {
+      "header_sha256": "e1506e2099fe0cb246b3e38bd2bcc1b9bfd712bfd55cc0d05d20a46d76b6b7b8",
+      "name": "372_GCF_000265505.1.fastq.gz",
+      "offset": 146137362432,
+      "size": 804007259
+    },
+    {
+      "header_sha256": "b4c925cf2928405006308471b387226466d7f4f19daac1a0a51155aff9237ebc",
+      "name": "373_GCF_000021945.1.fastq.gz",
+      "offset": 146941370368,
+      "size": 594878974
+    },
+    {
+      "header_sha256": "be305791f2498028d53355ed783f7510c1fb000a97d3aa6f281200151e574cbe",
+      "name": "374_GCF_001941645.1.fastq.gz",
+      "offset": 147536249856,
+      "size": 1462644550
+    },
+    {
+      "header_sha256": "a6dbc17905cc6c7b35865c1ca72b06afe4cde315b8d3a305d1f25dec57788248",
+      "name": "375_GCF_000152925.2.fastq.gz",
+      "offset": 148998895104,
+      "size": 448935123
+    },
+    {
+      "header_sha256": "e18b7438e661af48f18408b5f9aad6c50f831e9ee45e2466917a168e6859e836",
+      "name": "376_GCF_900086615.1.fastq.gz",
+      "offset": 149447831040,
+      "size": 109044302
+    },
+    {
+      "header_sha256": "87e4f94f8549d154626a995c1425527b8570bde1147106454f63aa8a73107e08",
+      "name": "377_GCF_000764535.1.fastq.gz",
+      "offset": 149556876288,
+      "size": 264668646
+    },
+    {
+      "header_sha256": "8f3fce646765e4a3e0c37c2019a5e4ce3a5bcafbe5b54b9e742f68cd4e410f9e",
+      "name": "378_GCF_000341395.1.fastq.gz",
+      "offset": 149821545472,
+      "size": 312227688
+    },
+    {
+      "header_sha256": "e3668bccff12ce6a448c1a16ad28c9712e99de380ab098267f8a7f61cf2e2815",
+      "name": "379_GCF_001717565.1.fastq.gz",
+      "offset": 150133773824,
+      "size": 173495657
+    },
+    {
+      "header_sha256": "79fc23356aa8405ba4cda1710024d698001b2874ccd77a0bc4fa0205c750d72e",
+      "name": "380_GCF_002263495.1.fastq.gz",
+      "offset": 150307270144,
+      "size": 928494838
+    },
+    {
+      "header_sha256": "6ad79e82ac3c5a02fa20658b324ddb35ec76b4b178e66a22324153d6f5c1b793",
+      "name": "381_GCF_002946835.1.fastq.gz",
+      "offset": 151235765760,
+      "size": 1070248951
+    },
+    {
+      "header_sha256": "a966fe052dcf0ddf1398330f4af9b2d75a4b2906e1de0b174bceae71acbc6cd7",
+      "name": "382_GCF_000011005.1.fastq.gz",
+      "offset": 152306015232,
+      "size": 92292150
+    },
+    {
+      "header_sha256": "d66bdbeff7bb321b8a1a52d5130d0b1e7951b2f8b1ee748ac05beb2dd8f38ab7",
+      "name": "383_GCF_000009985.1.fastq.gz",
+      "offset": 152398308352,
+      "size": 948890569
+    },
+    {
+      "header_sha256": "5a444847c7b8de895a9acf06e6965b66006a6aaa28b477676573297b03bd140e",
+      "name": "384_GCF_004564215.1.fastq.gz",
+      "offset": 153347199488,
+      "size": 295981616
+    },
+    {
+      "header_sha256": "9b5581bd9edca8589453a7493097a239ab71514cbc744560bdf47a9d72e30668",
+      "name": "385_GCF_000953735.1.fastq.gz",
+      "offset": 153643182080,
+      "size": 783851280
+    },
+    {
+      "header_sha256": "1e73f2a0cec23135ef72957492b4d7a55d6e78ae20a490b09b0d849797cd5616",
+      "name": "386_GCF_000016665.1.fastq.gz",
+      "offset": 154427034112,
+      "size": 1051892647
+    },
+    {
+      "header_sha256": "3805020da499440638608a312833f90bcfcd3b2dfa6937cd64464043065626a1",
+      "name": "387_GCF_000183425.1.fastq.gz",
+      "offset": 155478927360,
+      "size": 498615880
+    },
+    {
+      "header_sha256": "b179b619e00c4b28c017a931c2bf3d61005c92bede1f1ffccbb63f9ffc01b4d2",
+      "name": "388_GCF_003288255.1.fastq.gz",
+      "offset": 155977544192,
+      "size": 280645130
+    },
+    {
+      "header_sha256": "13dae2f3a266dd8ad077a9dac3dacbe55fb7387bd8766522b758249ea9612fe3",
+      "name": "389_GCF_003711105.1.fastq.gz",
+      "offset": 156258190336,
+      "size": 1164818966
+    },
+    {
+      "header_sha256": "c2516c1cfe5404a2adae9daddc16fae241d28d8e4dbfb57e57d84746d5cdf519",
+      "name": "390_GCF_001028705.1.fastq.gz",
+      "offset": 157423010304,
+      "size": 326799361
+    },
+    {
+      "header_sha256": "2917436207ea37155184424d4a994cef24539fd495e368ebc8cdfc7f5421e322",
+      "name": "391_GCF_000008625.1.fastq.gz",
+      "offset": 157749810688,
+      "size": 310115724
+    },
+    {
+      "header_sha256": "68ed8cde3b65e7a586eb36f77141140fa72504575eedef3bc0dc4e4575ff3c9a",
+      "name": "392_GCF_000511355.1.fastq.gz",
+      "offset": 158059927040,
+      "size": 743119127
+    },
+    {
+      "header_sha256": "1b61b7f844950fbfc8073a3e16be801a5b507f246613b4800024dbafc4524753",
+      "name": "393_GCF_001610835.1.fastq.gz",
+      "offset": 158803046912,
+      "size": 1589974323
+    },
+    {
+      "header_sha256": "4f2cbaccbbd068da5200a4b3f38ac0675a605b152305894d88c2a22b548168bf",
+      "name": "394_GCF_000269985.1.fastq.gz",
+      "offset": 160393021952,
+      "size": 685312936
+    },
+    {
+      "header_sha256": "2967d6f5b460ca6f8042300a685f7018c2884712243bb118abc4aa5fe90dc6f4",
+      "name": "395_GCF_003966675.1.fastq.gz",
+      "offset": 161078335488,
+      "size": 693329340
+    },
+    {
+      "header_sha256": "59847af13e4b8cb395b77d536597ade37d67cd255a01ae5b6929347f50ff883f",
+      "name": "396_GCF_002568625.1.fastq.gz",
+      "offset": 161771665408,
+      "size": 463824687
+    },
+    {
+      "header_sha256": "729eb65cc6beac518a499330ad063552f2c6edcbbbfd24bca94b200da92de263",
+      "name": "397_GCF_000204565.1.fastq.gz",
+      "offset": 162235490816,
+      "size": 593177494
+    },
+    {
+      "header_sha256": "95ce223a49293042e3d9a77122afe8c2aaffaf7175b4d4957070abfcd834d0bc",
+      "name": "398_GCF_001593605.1.fastq.gz",
+      "offset": 162828668928,
+      "size": 203394603
+    },
+    {
+      "header_sha256": "a92184c03fe5c82d118321b18de154986ce25d6c4183860506d3d626a9b11977",
+      "name": "399_GCF_001688645.2.fastq.gz",
+      "offset": 163032064512,
+      "size": 373010096
+    },
+    {
+      "header_sha256": "e1bacadd28c379547d792c9f7446290724d58eb3692d14c6b28f90a1fe691d2e",
+      "name": "400_GCF_003671915.1.fastq.gz",
+      "offset": 163405075456,
+      "size": 556882601
+    },
+    {
+      "header_sha256": "0f32268c4ed413e420aa6e8aeb06d044588b28111459e17b5509e4f156b4771f",
+      "name": "401_GCF_001444445.1.fastq.gz",
+      "offset": 163961958912,
+      "size": 135799267
+    },
+    {
+      "header_sha256": "9ebb775456e92346c31c2084e455edcda43055f0be16c24b478e5e8c42557859",
+      "name": "402_GCF_003071525.1.fastq.gz",
+      "offset": 164097758720,
+      "size": 402644581
+    },
+    {
+      "header_sha256": "a320c0da34e8ae7f30fab1948110a7ff60967129979eee2a1711c1b3e1395d1b",
+      "name": "403_GCF_000196655.1.fastq.gz",
+      "offset": 164500404224,
+      "size": 253194384
+    },
+    {
+      "header_sha256": "39ebf586bafb5c6b95b46936368993eabf3ee77afa1670fb2bc92029dd78bf20",
+      "name": "404_GCF_000155675.2.fastq.gz",
+      "offset": 164753599488,
+      "size": 762253847
+    },
+    {
+      "header_sha256": "371c172bb7e8dbaaa93ce6de49394c45805d8cc56cb7270718d7b4c777bca192",
+      "name": "405_GCF_003261575.2.fastq.gz",
+      "offset": 165515854336,
+      "size": 433875047
+    },
+    {
+      "header_sha256": "b3fa82b5d82a6130cb62a55fe4d3ad067b68e57a5866860dcd680d962dd0afe1",
+      "name": "406_GCF_002893845.1.fastq.gz",
+      "offset": 165949730304,
+      "size": 171130233
+    },
+    {
+      "header_sha256": "c07fe7531af2079092d33038ca0d5258c3afbae1d3cd8935ff50051361ecb86b",
+      "name": "407_GCF_002251005.2.fastq.gz",
+      "offset": 166120861184,
+      "size": 725885581
+    },
+    {
+      "header_sha256": "9bd783326a5a20e89467fdb34097887488a4edfc986fb5688a33d3e91a1feb12",
+      "name": "408_GCF_006970665.1.fastq.gz",
+      "offset": 166846747648,
+      "size": 1074064118
+    },
+    {
+      "header_sha256": "958f1b9f7e976630e292eed2a88ed177a978821e2aeb1fa28aa454242709e251",
+      "name": "409_GCF_000185205.1.fastq.gz",
+      "offset": 167920812544,
+      "size": 60487041
+    },
+    {
+      "header_sha256": "aedfd6bfdd0a0ee7f517afd50d3cd8a30f93ae8add228270cfd96dffd135cf1d",
+      "name": "410_GCF_003073475.1.fastq.gz",
+      "offset": 167981300224,
+      "size": 138632666
+    },
+    {
+      "header_sha256": "377410ba797fee92d20d8dbd0b9be31b2d0b9b7cb4dee22d1d72d78d030e7127",
+      "name": "411_GCF_000980815.1.fastq.gz",
+      "offset": 168119933440,
+      "size": 346400590
+    },
+    {
+      "header_sha256": "9a8655153faf0e5b8289a6b122e38307caaa398eb5bdafdc307cd5364f3173a1",
+      "name": "412_GCF_001874625.1.fastq.gz",
+      "offset": 168466334720,
+      "size": 959640603
+    },
+    {
+      "header_sha256": "32add8f2a1382f99d7cedfbcf5e547e12fe1c531ab33e557c3fb2c7790534c4c",
+      "name": "413_GCF_002808045.1.fastq.gz",
+      "offset": 169425976320,
+      "size": 22230800
+    },
+    {
+      "header_sha256": "7b3296a54bdd3c5f6b2ebf3fea137812deb54c499bcd5a190cbb5087ace26283",
+      "name": "414_GCF_000828475.1.fastq.gz",
+      "offset": 169448207872,
+      "size": 615485754
+    },
+    {
+      "header_sha256": "9b79e1ed8f5f91f210f16dfc0c97287e62391b890db250dce58199aecbec24c8",
+      "name": "415_GCF_000734895.2.fastq.gz",
+      "offset": 170063694336,
+      "size": 796468677
+    },
+    {
+      "header_sha256": "fd1056339829ef4a81407a197df209fa222fb7428d3a3032356d05bd311f8c4e",
+      "name": "416_GCF_001602155.1.fastq.gz",
+      "offset": 170860163584,
+      "size": 366632674
+    },
+    {
+      "header_sha256": "c0ceacc361ce7583a010b236a00c168515511b110406aef16c9bd0253a0fd49b",
+      "name": "417_GCF_003595525.1.fastq.gz",
+      "offset": 171226797056,
+      "size": 300708033
+    },
+    {
+      "header_sha256": "bda15c5cefcb818863d472e3c92585e7e137a649314c4a36f930b1ca8b688cec",
+      "name": "418_GCF_000300135.1.fastq.gz",
+      "offset": 171527505920,
+      "size": 332851800
+    },
+    {
+      "header_sha256": "0aadf796d09d49c0cf38b0e5a425148ecb4caf261d29ff1194ed0ad7d234a577",
+      "name": "419_GCF_004379315.1.fastq.gz",
+      "offset": 171860358656,
+      "size": 449695834
+    },
+    {
+      "header_sha256": "d7905df829e530a7dd5400adea4cd8d100a3f8a48d5949704b40e77baced82a2",
+      "name": "420_GCF_000328685.1.fastq.gz",
+      "offset": 172310055424,
+      "size": 516035857
+    },
+    {
+      "header_sha256": "6ccb4e47e68531df40793fd1c8465051a826aeff65837756d814d27df4bde4f8",
+      "name": "421_GCF_900638095.1.fastq.gz",
+      "offset": 172826092032,
+      "size": 145542111
+    },
+    {
+      "header_sha256": "c34986aa04acd1617e1648eac01ee6fb31c2cc4740ff1bad14780395bb0300ce",
+      "name": "422_GCF_005844005.1.fastq.gz",
+      "offset": 172971634688,
+      "size": 256422829
+    },
+    {
+      "header_sha256": "7eff91151ce4bce0a7b0175cf7607d92c3e06963247743d0d6bfb0ff78c06c54",
+      "name": "423_GCF_000231015.2.fastq.gz",
+      "offset": 173228058112,
+      "size": 147920521
+    },
+    {
+      "header_sha256": "ed1fb7e7ffb76525b568c14b05384e4ba6433d0e0b1eb86c844c8ebe2f880540",
+      "name": "424_GCF_000204155.1.fastq.gz",
+      "offset": 173375979520,
+      "size": 792176920
+    },
+    {
+      "header_sha256": "1e8fe755540eee7828dcf3eb9c97ba1e54df47f559f75082279278a5905631ce",
+      "name": "425_GCF_002157145.1.fastq.gz",
+      "offset": 174168157184,
+      "size": 635612687
+    },
+    {
+      "header_sha256": "68eb91b0c08269534467bb938cc6a35361b4bf0dc69a477890db2f4b26247a6b",
+      "name": "426_GCF_000018145.1.fastq.gz",
+      "offset": 174803770880,
+      "size": 203011193
+    },
+    {
+      "header_sha256": "99ca527d351be88c5b2bfe7412a936c786a7acf7ac944b665a913727bbb9f3e1",
+      "name": "427_GCF_006738645.1.fastq.gz",
+      "offset": 175006782976,
+      "size": 988395588
+    },
+    {
+      "header_sha256": "11a6bf4c99bd7f18f975c7dcb5a2bef4994333b5f9cf66cc2b7fcf37e238ca1f",
+      "name": "428_GCF_900476435.1.fastq.gz",
+      "offset": 175995179520,
+      "size": 187745534
+    },
+    {
+      "header_sha256": "8909a5e03d491683a37a81f3d4a566a19b1cb76787c7e86bde7c765e2a02fea3",
+      "name": "429_GCF_000015665.1.fastq.gz",
+      "offset": 176182925824,
+      "size": 71394304
+    },
+    {
+      "header_sha256": "b5d2c5eb69514e1d14527bdf2b164782598f6fad70af264e4be4f8fea92a7529",
+      "name": "430_GCF_000016985.1.fastq.gz",
+      "offset": 176254320640,
+      "size": 741764117
+    },
+    {
+      "header_sha256": "505f0cb3e9e9d3d0a986c166d785dd01d6b4494e5998f66810df0a85098f0c29",
+      "name": "431_GCF_000063505.1.fastq.gz",
+      "offset": 176996085760,
+      "size": 124581835
+    },
+    {
+      "header_sha256": "3318d0c5f94c97d8f1f1a0408fad0f3be373f0e9ce8aeb2d4f85fa6726c0f0a9",
+      "name": "432_GCF_004103695.1.fastq.gz",
+      "offset": 177120668160,
+      "size": 464690932
+    },
+    {
+      "header_sha256": "4c3baceeaa5e6873fe0267891e7e628c6bfc322a4a629ad16e12a38acd05629f",
+      "name": "433_GCF_000012145.1.fastq.gz",
+      "offset": 177585359872,
+      "size": 122689618
+    },
+    {
+      "header_sha256": "11ac9426c302ce2708703ede4e2fd4e5f0363250eb63c2c791f04f22b26df431",
+      "name": "434_GCF_002082605.1.fastq.gz",
+      "offset": 177708050432,
+      "size": 573867229
+    },
+    {
+      "header_sha256": "8290693fd98e1d97793bfccf7df92ff79ba187d192e76c7f2c97297b76d59a5d",
+      "name": "435_GCF_002162375.1.fastq.gz",
+      "offset": 178281918464,
+      "size": 874875280
+    },
+    {
+      "header_sha256": "cda5d585e6fa17fccb59c718ae4ed2592add9330f71a12384b92d6f5e37159b5",
+      "name": "436_GCF_000165715.2.fastq.gz",
+      "offset": 179156794368,
+      "size": 1027554346
+    },
+    {
+      "header_sha256": "ea164895552c32674226b410e2e33008805547f8d39b446815f0600b63bef950",
+      "name": "437_GCF_000222485.1.fastq.gz",
+      "offset": 180184349696,
+      "size": 1015005988
+    },
+    {
+      "header_sha256": "d82f9fd383ca719cd224b9d64eab1c3c453ac6b71bfb944e90cf42d7734ec50d",
+      "name": "438_GCF_003054475.1.fastq.gz",
+      "offset": 181199356416,
+      "size": 731136622
+    },
+    {
+      "header_sha256": "f558d66fad7ad21b30c681f36c727198e60b212fbe39e842a02461cb0d6d531e",
+      "name": "439_GCF_002953935.1.fastq.gz",
+      "offset": 181930493952,
+      "size": 499255245
+    },
+    {
+      "header_sha256": "26f13aab6057f6ab848e2c26f20d9496c395e9c3cc6085c4b2aba24589d778d9",
+      "name": "440_GCF_002024345.1.fastq.gz",
+      "offset": 182429749760,
+      "size": 249470650
+    },
+    {
+      "header_sha256": "f40ee88abcea26875e5d9893a45f4f39d68e1e7464f13b801aca65b22a401295",
+      "name": "441_GCF_000092505.1.fastq.gz",
+      "offset": 182679221248,
+      "size": 369050777
+    },
+    {
+      "header_sha256": "2fa2c79738d10b04f0dfedc2e086c203f5f5b82c0ac9f392dcfc23b0df56caa9",
+      "name": "442_GCF_001854365.1.fastq.gz",
+      "offset": 183048272896,
+      "size": 874321884
+    },
+    {
+      "header_sha256": "2207674e07f9b78ebe69f7decfc546b4c010b2681cbe21d38f45b25a426b6596",
+      "name": "443_GCF_001999945.1.fastq.gz",
+      "offset": 183922595328,
+      "size": 418392879
+    },
+    {
+      "header_sha256": "321b8b30e205c65c6aa381e592b557299fbf8eeb4dd51ec1cb12806d1e41138d",
+      "name": "444_GCF_004103615.1.fastq.gz",
+      "offset": 184340988928,
+      "size": 258923644
+    },
+    {
+      "header_sha256": "cd75b16995c38ef4ef152b3eb6b01baa11eecdb182b08dcee28a721c690f4b61",
+      "name": "445_GCF_000145275.1.fastq.gz",
+      "offset": 184599913472,
+      "size": 437423706
+    },
+    {
+      "header_sha256": "4a96e586b7a56f6bca182251763b585a026bb153529a306b389c4ece45ea908c",
+      "name": "446_GCF_000747585.1.fastq.gz",
+      "offset": 185037338112,
+      "size": 137962759
+    },
+    {
+      "header_sha256": "ab0a6f1efab487cda69f51eb2e6f300be07d12faf350b384b12778db9238a8aa",
+      "name": "447_GCF_004006235.1.fastq.gz",
+      "offset": 185175301632,
+      "size": 407777616
+    },
+    {
+      "header_sha256": "64892759075f88875a41663caf7f49ff8d2a11f83d716867655652d0a5d0ea1e",
+      "name": "448_GCF_000025085.1.fastq.gz",
+      "offset": 185583079936,
+      "size": 511792669
+    },
+    {
+      "header_sha256": "9c76385a5eb175013386a6940062d922fafc3a4daa3fec92c7772768acc14261",
+      "name": "449_GCF_000689415.1.fastq.gz",
+      "offset": 186094873600,
+      "size": 541478421
+    },
+    {
+      "header_sha256": "dfc3eb23abd8427ec3a661094bd0e950b4e37217f1eca030bacd191936a354ff",
+      "name": "450_GCF_000015565.1.fastq.gz",
+      "offset": 186636353024,
+      "size": 645659565
+    },
+    {
+      "header_sha256": "4c3ff70d6de3b70e7e3e6988272e3182b68cf8e37155298f41f2bbeb7bfdc94e",
+      "name": "451_GCF_000017285.1.fastq.gz",
+      "offset": 187282013184,
+      "size": 512368913
+    },
+    {
+      "header_sha256": "74f183a40479a8db5f8e77665a391eb1975183fafb6c739d44dc54c4b45698d0",
+      "name": "452_GCF_002838765.1.fastq.gz",
+      "offset": 187794382848,
+      "size": 169440609
+    },
+    {
+      "header_sha256": "c847b97b17906c38eac11ab693411f15b40641e35c0627d16bb330eba418efae",
+      "name": "453_GCF_001579845.1.fastq.gz",
+      "offset": 187963824128,
+      "size": 1056477142
+    },
+    {
+      "header_sha256": "433e35ea61ab1a9aa17674a48625fd7863064f96dbc0c88bd1c30a1cb5525624",
+      "name": "454_GCF_002838185.1.fastq.gz",
+      "offset": 189020301824,
+      "size": 114666774
+    },
+    {
+      "header_sha256": "929f4e9b6d92b723d6ee0fe987982c949753a3d83136a3b1ce8d718a094fe854",
+      "name": "455_GCF_002355315.1.fastq.gz",
+      "offset": 189134969344,
+      "size": 214225131
+    },
+    {
+      "header_sha256": "30d44fd1cb0f1e06c6749d4791b083f3e0aacca70c3a678057bc46939ecff62d",
+      "name": "456_GCF_001454945.1.fastq.gz",
+      "offset": 189349195264,
+      "size": 422842467
+    },
+    {
+      "header_sha256": "a06854f7899846ede32d4bce331565ffb57541f5364fb082b18c3e8c7499e63a",
+      "name": "457_GCF_900637165.1.fastq.gz",
+      "offset": 189772038656,
+      "size": 109479965
+    },
+    {
+      "header_sha256": "293f5189ed1abaa9175df326070f923f7924320a58156e75e680c7b2952afb24",
+      "name": "458_GCF_002109365.1.fastq.gz",
+      "offset": 189881519616,
+      "size": 328572539
+    },
+    {
+      "header_sha256": "817e98523040f2bfb799f9ef5f92c4578fe665d00f28111c0a8bc1f2ec76affc",
+      "name": "459_GCF_004214795.1.fastq.gz",
+      "offset": 190210093056,
+      "size": 550194326
+    },
+    {
+      "header_sha256": "12d30c281f239c7478d91e4589e74a3733a5af14ab9c15067a9646a5f7a33fe4",
+      "name": "460_GCF_000953355.1.fastq.gz",
+      "offset": 190760288256,
+      "size": 547736507
+    },
+    {
+      "header_sha256": "41be4a0e28494552c6ec6ae676ece8ed648bcc4204f1afcff62cae9ba3304f86",
+      "name": "461_GCF_002276165.1.fastq.gz",
+      "offset": 191308025344,
+      "size": 913773290
+    },
+    {
+      "header_sha256": "db78775f7930ad8d36eb205ce0c7cca6b6be56b89c5862b0004c6b3371b307d9",
+      "name": "462_GCF_000019905.1.fastq.gz",
+      "offset": 192221799424,
+      "size": 330476639
+    },
+    {
+      "header_sha256": "c8f0d11d77eab253179a0987516785adc520eb394a632c010ecc1e7ff86b88b4",
+      "name": "463_GCF_000017485.1.fastq.gz",
+      "offset": 192552276992,
+      "size": 272753254
+    },
+    {
+      "header_sha256": "47fc32797bc1b812f1224868e469c3adee89c7e5978720fff6cae12ba1c877f1",
+      "name": "464_GCF_000973125.1.fastq.gz",
+      "offset": 192825031168,
+      "size": 748523415
+    },
+    {
+      "header_sha256": "f0da551b8168e9931c618c491b8fcc66e796edc78cd91c9f577a5761664cd3e4",
+      "name": "465_GCF_003971565.1.fastq.gz",
+      "offset": 193573555200,
+      "size": 257639178
+    },
+    {
+      "header_sha256": "3f7f1e1adb28fb4f34839c96dead5ea0b15c9377784c9f97e56643acbd785606",
+      "name": "466_GCF_002355595.1.fastq.gz",
+      "offset": 193831195136,
+      "size": 549149176
+    },
+    {
+      "header_sha256": "27ac282400d40eb96d96da71abaccd2be927c7038236238dfdb42b3ed4b3957d",
+      "name": "467_GCF_900637275.1.fastq.gz",
+      "offset": 194380344832,
+      "size": 453941861
+    },
+    {
+      "header_sha256": "7adeafe8a9b37eeae7d14f19ab256336d0c91bf02c2a7bb110a74158029335f4",
+      "name": "468_GCF_004103755.1.fastq.gz",
+      "offset": 194834287616,
+      "size": 577028979
+    },
+    {
+      "header_sha256": "e34cf3aa3686141871c21fcf0bbe12b2691ca03fefb357b7492cd55becbc1625",
+      "name": "469_GCF_001008165.2.fastq.gz",
+      "offset": 195411317248,
+      "size": 633480948
+    },
+    {
+      "header_sha256": "94422761c0a08b72e365b4ed9740dca048f18fb8a8c5d111fe6dd34d7cb2d8a3",
+      "name": "470_GCF_002386365.1.fastq.gz",
+      "offset": 196044798976,
+      "size": 330336216
+    },
+    {
+      "header_sha256": "d614185392ce6a14fedf7752adbb893a31e95c096afab930f50eeb5c543dd799",
+      "name": "471_GCF_000027325.1.fastq.gz",
+      "offset": 196375135744,
+      "size": 74979216
+    },
+    {
+      "header_sha256": "916eee234574bc3080ad2ffc4e244cd6a8361357f50c6bbd3da5c05f66a37099",
+      "name": "472_GCF_002180235.1.fastq.gz",
+      "offset": 196450115584,
+      "size": 133667363
+    },
+    {
+      "header_sha256": "fab636adff6e759f20c75c7859b5fb8f0c4eb05f376aed316cb5ff2000aedae3",
+      "name": "473_GCF_002762175.1.fastq.gz",
+      "offset": 196583783936,
+      "size": 122366301
+    },
+    {
+      "header_sha256": "1320df4794c957e2138593f80bfcac1237c157426ec52c58322a29dfbcce45f5",
+      "name": "474_GCF_001717585.1.fastq.gz",
+      "offset": 196706150912,
+      "size": 327723464
+    },
+    {
+      "header_sha256": "09595cfc18dfc194ed5208a1b1331882bcef8b1ffb62567869b66ac5d9cbb0b2",
+      "name": "475_GCF_000832885.1.fastq.gz",
+      "offset": 197033874944,
+      "size": 1071546140
+    },
+    {
+      "header_sha256": "d114ce38954904e13180243bf33fa297fa423ee84e1b6995c18a6d351cfe6bb5",
+      "name": "476_GCF_000010405.1.fastq.gz",
+      "offset": 198105421824,
+      "size": 81796430
+    },
+    {
+      "header_sha256": "a94cf8ddb27c0195657750af984d5354c14c27674f01ea38eefea7d73c22337c",
+      "name": "477_GCF_000599545.1.fastq.gz",
+      "offset": 198187218944,
+      "size": 163628877
+    },
+    {
+      "header_sha256": "43ed7aa78017783cab061ee6899a660b8f8a9e501ef8fe37a75eb4fc182f8c94",
+      "name": "478_GCF_900683765.1.fastq.gz",
+      "offset": 198350848512,
+      "size": 76367089
+    },
+    {
+      "header_sha256": "8cd17c68090073d7f51414d65c625934b065a663e57d12109c0f82c84243fa79",
+      "name": "479_GCF_003569745.1.fastq.gz",
+      "offset": 198427216384,
+      "size": 742238854
+    },
+    {
+      "header_sha256": "97eef2360865ec413acca2d4371f96bce0190480e9da001cca1cb9ff4daa60c4",
+      "name": "480_GCF_003287015.1.fastq.gz",
+      "offset": 199169456128,
+      "size": 487661478
+    },
+    {
+      "header_sha256": "ce92ca2b81d4e0f4ad5175ff1cee08f6e5e701e61168e5fa17816bf3ec22c037",
+      "name": "481_GCF_000746585.1.fastq.gz",
+      "offset": 199657118208,
+      "size": 304821545
+    },
+    {
+      "header_sha256": "896874b680f64b298cacda0407472211c6957a14d9e4b3cfb33f6c2d4c469cc1",
+      "name": "482_GCF_001676725.1.fastq.gz",
+      "offset": 199961940480,
+      "size": 184654746
+    },
+    {
+      "header_sha256": "89f596bca2cef1a14166e06f8f0809e53860fa0f391eb32eee6642cb7404a8f4",
+      "name": "483_GCF_000087965.2.fastq.gz",
+      "offset": 200146595840,
+      "size": 123762904
+    },
+    {
+      "header_sha256": "286dc2ccba30678f8f1c10624c553f32c23eef806271f78109e60ea18722ae96",
+      "name": "484_GCF_000789255.1.fastq.gz",
+      "offset": 200270359552,
+      "size": 216034010
+    },
+    {
+      "header_sha256": "96086220147df36c3e84d95fadfa933f7ab86286fffdc0f81aeb94013ad0c48d",
+      "name": "485_GCF_001305655.1.fastq.gz",
+      "offset": 200486394368,
+      "size": 138108840
+    },
+    {
+      "header_sha256": "540a10632f1dc46551852b201ba844bbba76d7a0319d993249b0203242f7997f",
+      "name": "486_GCF_000521565.1.fastq.gz",
+      "offset": 200624503808,
+      "size": 104483714
+    },
+    {
+      "header_sha256": "9b4616578f9733406e9e5367eec44d591fbe682e81ca3e88ffd2eac667fa9c8d",
+      "name": "487_GCF_003963515.1.fastq.gz",
+      "offset": 200728988160,
+      "size": 678890221
+    },
+    {
+      "header_sha256": "948680ed6b17a6d1c338d14b3f9fe191e1c349212418dc2daa79cd3a384924b3",
+      "name": "488_GCF_002005225.1.fastq.gz",
+      "offset": 201407879168,
+      "size": 984884653
+    },
+    {
+      "header_sha256": "b04d8e0306ddc24722f23a20b643fa5c5da5b20b072e858a68a1e4fc63ad0610",
+      "name": "489_GCF_001787335.1.fastq.gz",
+      "offset": 202392764416,
+      "size": 490656359
+    },
+    {
+      "header_sha256": "58da8ef9797c16a3fcc8bfe87895ae2615d024d09289e6af5a1177db7b3cd297",
+      "name": "490_GCF_003008595.1.fastq.gz",
+      "offset": 202883421696,
+      "size": 726275590
+    },
+    {
+      "header_sha256": "bf27d52b50b6f368d01f3ff78b50efcce5cf65529668638e45de5d433e556beb",
+      "name": "491_GCF_001682385.1.fastq.gz",
+      "offset": 203609698304,
+      "size": 668960983
+    },
+    {
+      "header_sha256": "6fd2f6c1104d05d22422e6b6c83ea03fd0ec6c48edf93e1ac16125b3a690695d",
+      "name": "492_GCF_900683755.1.fastq.gz",
+      "offset": 204278660096,
+      "size": 650870749
+    },
+    {
+      "header_sha256": "4f50dc007c7da4ab689a2da0ca9fceca85ee932cae3c7f61b70d6c1edc3c5bed",
+      "name": "493_GCF_001007875.1.fastq.gz",
+      "offset": 204929531392,
+      "size": 467974991
+    },
+    {
+      "header_sha256": "2dcacbeacf8a2a14be7943e6c1ff31cad51b59f3dd9c4eeff163c63849ad6cb2",
+      "name": "494_GCF_001969365.1.fastq.gz",
+      "offset": 205397507072,
+      "size": 382898976
+    },
+    {
+      "header_sha256": "e64854fbbae923bd7d677266ad86c08c10a05efb7646ea6a54ca43a90ef17720",
+      "name": "495_GCF_000576185.2.fastq.gz",
+      "offset": 205780406784,
+      "size": 442353490
+    },
+    {
+      "header_sha256": "106b84360eb997b32c3c4a8432a1497d33da1bb10f86cd4a705a2c43768dfd76",
+      "name": "496_GCF_900079115.1.fastq.gz",
+      "offset": 206222760960,
+      "size": 61244301
+    },
+    {
+      "header_sha256": "eb443125a4bc422fc3d6eb7729ef4d5d668caf063c3fe3949426b3388b987614",
+      "name": "497_GCF_000702925.2.fastq.gz",
+      "offset": 206284005888,
+      "size": 294552371
+    },
+    {
+      "header_sha256": "1ec50c337db8b26c690bd000121daced61680e68763a1e11e48048df5c780618",
+      "name": "498_GCF_002549795.1.fastq.gz",
+      "offset": 206578558976,
+      "size": 763995570
+    },
+    {
+      "header_sha256": "7239f4b2f323817968d50072dd3bc5652d667ac71bb52ef643395fdf126a633a",
+      "name": "499_GCF_002101395.1.fastq.gz",
+      "offset": 207342555136,
+      "size": 647153068
+    }
+  ],
+  "next_offset": 207989708288,
+  "schema_version": 1,
+  "status": "complete"
+}

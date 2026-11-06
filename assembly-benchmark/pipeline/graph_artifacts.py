@@ -398,7 +398,7 @@ def _source_metadata(source):
     sha = source.get("file_sha256")
     if sha is not None and (not isinstance(sha, str) or not re.fullmatch(r"[0-9a-f]{64}", sha)):
         raise ValueError("Invalid source hash")
-    if source["kind"] not in {"gfa", "flye_assembly_info", "plassembler_summary"} or not re.fullmatch(r"[A-Za-z0-9_-]{1,64}", source.get("role", "unspecified")):
+    if source["kind"] not in {"gfa", "flye_assembly_info", "plassembler_summary", "miniasm_gfa_unitig_names"} or not re.fullmatch(r"[A-Za-z0-9_-]{1,64}", source.get("role", "unspecified")):
         raise ValueError("Unsupported source kind/role")
     if "bytes" in source and (not isinstance(source["bytes"], int) or isinstance(source["bytes"], bool) or source["bytes"] < 0):
         raise ValueError("Invalid source size")
@@ -474,7 +474,7 @@ def _validate_metadata(document):
     graph, info = document["graph"], document["assembly_info"]
     _keys(graph, {"status", "source", "format", "version", "nodes", "edges", "paths", "self_loop_segment_ids", "complete", "unsupported_record_counts", "limits", "limitations", "reason", "error_line"}, {"status"})
     _keys(info, {"status", "source", "format", "contigs", "columns", "limits", "limitations", "reason", "error_line"}, {"status"})
-    if graph.get("format") not in {None, "GFA1 S/L/P"} or info.get("format") not in {None, "Flye assembly_info.txt", "Plassembler summary.tsv"}:
+    if graph.get("format") not in {None, "GFA1 S/L/P"} or info.get("format") not in {None, "Flye assembly_info.txt", "Plassembler summary.tsv", "Miniasm unitig identifiers in GFA"}:
         raise ValueError("Unsupported source metadata format label")
     for metadata in (graph, info):
         if metadata["status"] not in STATUSES:

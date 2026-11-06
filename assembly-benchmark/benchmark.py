@@ -94,7 +94,7 @@ def main(argv=None):
             if args.single_batch:
                 document = load(source)
                 cohort = {"schema_version":1,"primary_batches":[args.batch],"families":["S3"] if document["config"].get("determinism") else list(dict.fromkeys(c["category"] for c in document["scenarios"])),"tools":document["config"]["tools"]}
-            print(export_bundle(snapshots, scoped(args.output), primary_batch=args.batch, cohort=cohort, replace=args.replace, artifact_root=scoped(args.recorded_artifacts) if args.recorded_artifacts else None, coordinate_roots=[scoped(path) for path in args.coordinate_sidecars]))
+            print(export_bundle(snapshots, scoped(args.output), primary_batch=args.batch, cohort=cohort, replace=args.replace, artifact_root=scoped(args.recorded_artifacts) if args.recorded_artifacts else None, coordinate_roots=[scoped(path) for path in args.coordinate_sidecars], performance_source=(ROOT / "performance/snapshot.json") if (ROOT / "performance/snapshot.json").is_file() and not args.single_batch else None))
         else:
             from pipeline.bundle_render import render_bundle
             print(render_bundle(scoped(args.bundle), scoped(args.output)))
