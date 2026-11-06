@@ -1,0 +1,325 @@
+{
+  "status": "pass",
+  "base_url": "https://ploptimizer-assembly-benchmark.vercel.app/",
+  "checked_files": 53,
+  "checks": [
+    {
+      "path": "index.html",
+      "bytes": 6534,
+      "matches_build": true,
+      "sha256": "2e15902177de939d3f4ebb0ac3fc8a4f4657177486d8b1f119f77da16c4a21b9"
+    },
+    {
+      "path": "scenarios/s6.html",
+      "bytes": 17906,
+      "matches_build": true,
+      "sha256": "6391740cde3cb94ee9e438496e8601ccafa7976f90423dc3ac335452bfe97124"
+    },
+    {
+      "path": "scenarios/s5.html",
+      "bytes": 7763,
+      "matches_build": true,
+      "sha256": "234ac517a2b8148c17046be79ab6123b359be60b97f3ea4beb70be10a35422c6"
+    },
+    {
+      "path": "data/summary.tsv",
+      "bytes": 69651,
+      "matches_build": true,
+      "sha256": "bead0a2782a8e983ba83faa354b27ea8911ceb6ff9febf5e3c8f5483c96de37a"
+    },
+    {
+      "path": "data/length-metrics.tsv",
+      "bytes": 192850,
+      "matches_build": true,
+      "sha256": "f56968d7c3e0f30087f7ce7680e6c1678cf70fdd4583cb14cec310dad024fb0a"
+    },
+    {
+      "path": "data/molecules.tsv",
+      "bytes": 142772,
+      "matches_build": true,
+      "sha256": "61a43bbff2e6992505baa42fe9632c26f06de8d2e87550d60f50cf11da12e4a0"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-generic-stress--raven.html",
+      "matches_build": true,
+      "bytes": 19147,
+      "sha256": "94b4a9d3945a7ae80733b15f64dad3a7e9fcd01380303e1bbdacabcffd2031f2"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped--plassembler.html",
+      "matches_build": true,
+      "bytes": 20393,
+      "sha256": "3c9ad153def72378c1611fff217ef6f109180bc186e82cc0d9c6513f36679dfb"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-generic-stress--raven-alignment.svg",
+      "matches_build": true,
+      "bytes": 54107,
+      "sha256": "df70d7f1ef7a434548b4ca1f1957fc262473c6e6ec31d9c67a2b2b060fb5fcbb"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-generic-stress--raven-alignments.tsv",
+      "matches_build": true,
+      "bytes": 12815,
+      "sha256": "aeb4d9fa90469f4fa3e4de54e72f80ebc5ca7b3c6b3dfb41ee01b48a2f345901"
+    },
+    {
+      "path": "data/results.tsv",
+      "bytes": 6760,
+      "matches_build": true,
+      "sha256": "2ca9687cb66f41f9af43535452f389ded9392eb78fdc1b462c82796947030d80"
+    },
+    {
+      "path": "data/evidence-availability.tsv",
+      "bytes": 61478,
+      "matches_build": true,
+      "sha256": "e126bf9af7c397a4589fe3cee9436d52d81a8b42725ecf15d99516a489d6a43d"
+    },
+    {
+      "path": "data/recovery-evidence.tsv",
+      "bytes": 31704,
+      "matches_build": true,
+      "sha256": "52123e39d750df87249b259c70d5c8a79f23f071d3af3e65b1bf87b9ee29d79f"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-mgh78578-pkpn3-seed-20261106-generic-stress--raven-alignment.svg",
+      "matches_build": true,
+      "bytes": 50634,
+      "sha256": "9a69b51db0aa5ec64fe75b6d334861aa08687ca18de6b0f8e225987897ee1abc"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-mgh78578-pkpn3-seed-20261106-generic-stress--raven-alignments.tsv",
+      "matches_build": true,
+      "bytes": 11585,
+      "sha256": "bbb6ed03f1963abb847a7ed9f7282473b61b6460aed64242fb1f03b80432f4fa"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped--flye-alignment.svg",
+      "matches_build": true,
+      "bytes": 50639,
+      "sha256": "1352b5ad42e4b666ec543576c8fdaa17bc5007440ca29f805b53cd139bdcc7d3"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped--flye-alignments.tsv",
+      "matches_build": true,
+      "bytes": 11692,
+      "sha256": "a26c9483abf81c0c5dae2dd2215202795992a96559c7265c96b12f8df7e80108"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped--flye-meta-alignment.svg",
+      "matches_build": true,
+      "bytes": 50637,
+      "sha256": "5d5ba1199717f096c910240fca63f78608dd1d0563d002465a29ce06ccb64022"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped--flye-meta-alignments.tsv",
+      "matches_build": true,
+      "bytes": 11689,
+      "sha256": "a34dea431e9f055ac018da115314c496d3ade9bd46078aec8bd3de4cebe8b831"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped--raven-alignment.svg",
+      "matches_build": true,
+      "bytes": 50636,
+      "sha256": "fe6ee3525a34ea8f59fa90bafdb64993ca28dbd248c956f9b15e8ea5ccfef2f2"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped--raven-alignments.tsv",
+      "matches_build": true,
+      "bytes": 11585,
+      "sha256": "d55df3aad995d508f79802830a90b98bf79b6371f4b0ba2feaa2612831204b17"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-generic-stress--flye-alignment.svg",
+      "matches_build": true,
+      "bytes": 51013,
+      "sha256": "b3b57a4677f32058769c6ac6baa36227659d1c7c5f840160c83601f05ba9acbc"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-generic-stress--flye-alignments.tsv",
+      "matches_build": true,
+      "bytes": 12041,
+      "sha256": "5dcb444942b76a116a55062d2d5e2e9e3fdc128d1ade4516203b0576d332922f"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-generic-stress--flye-meta-alignment.svg",
+      "matches_build": true,
+      "bytes": 52234,
+      "sha256": "ec0ba6b3ad91e79908319a1b1fce8727bca43473693b9562fa41c3e5c5644767"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-generic-stress--flye-meta-alignments.tsv",
+      "matches_build": true,
+      "bytes": 12279,
+      "sha256": "eeaa1af262c86a9836577429375502007822cb1bc8260f457607acdd091e1ad3"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-ont2023-shaped--flye-alignment.svg",
+      "matches_build": true,
+      "bytes": 51013,
+      "sha256": "9d4d409569a8824b1f5b6b3db3d9dec63e0fefbe653295e5c3db310245ca06c9"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-ont2023-shaped--flye-alignments.tsv",
+      "matches_build": true,
+      "bytes": 12041,
+      "sha256": "942d292c0d45753ba567062599ad8dfa986d8c128ef5fb1a1931cdaaa81e09e0"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-ont2023-shaped--flye-meta-alignment.svg",
+      "matches_build": true,
+      "bytes": 52844,
+      "sha256": "8a1bd02f068a3bd7d61460e804666152a04102fcf83a5d80ff05662758b91230"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-ont2023-shaped--flye-meta-alignments.tsv",
+      "matches_build": true,
+      "bytes": 12505,
+      "sha256": "036f168ee9f8c90637d509e304984aef66425ac4bea9bcd6f2fcff8e88545f07"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-ont2023-shaped--raven-alignment.svg",
+      "matches_build": true,
+      "bytes": 51608,
+      "sha256": "9a0fa8bdeaabf669b07c115bf88f5a60fc1954524cc3de86602daddcf7ccb260"
+    },
+    {
+      "path": "batches/20261106T100403/data/results/s6-se11-pse11-1-seed-20261106-ont2023-shaped--raven-alignments.tsv",
+      "matches_build": true,
+      "bytes": 12207,
+      "sha256": "f7b8957fa00f9b15b21190b58a05e1ce85e7e2ec748a0ee2e11faa159f4a5153"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-generic-stress--flye-meta.html",
+      "matches_build": true,
+      "bytes": 26128,
+      "sha256": "2dccce144fbc2d96feac7f79c30867f57377203241ac806553b58aa8a6d365bb"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-generic-stress--flye.html",
+      "matches_build": true,
+      "bytes": 26031,
+      "sha256": "72b5f54b1228849239598d71296fe8d974910659969d52ae858e3cc64e440bcb"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-generic-stress--plassembler.html",
+      "matches_build": true,
+      "bytes": 20393,
+      "sha256": "ae90da3238d49032e2ee7fe6f9e826ce83c757a30a816d7430655170a57de5fa"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-generic-stress--raven.html",
+      "matches_build": true,
+      "bytes": 18370,
+      "sha256": "2abbab7f32fd5ec0afd5f823bb79c61b16c99c01f6ba3a3b8b91ce2566dc8cdc"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-matched-exact--flye-meta.html",
+      "matches_build": true,
+      "bytes": 26277,
+      "sha256": "c119d1ae7a3fbe3eb40d8297b7b711f79f6e76b832fdbd307cf8c983ce5e36c1"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-matched-exact--flye.html",
+      "matches_build": true,
+      "bytes": 26180,
+      "sha256": "fab8b9287322a58d8ba88a89c8d1eb721ed305d9e2952723daeb4bcff626bf7d"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-matched-exact--plassembler.html",
+      "matches_build": true,
+      "bytes": 20388,
+      "sha256": "e0c9b517336fa90f57702b2f13d2883a1bd863c99df84adbac5cf35ce2cbbec0"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-matched-exact--raven.html",
+      "matches_build": true,
+      "bytes": 18350,
+      "sha256": "1f74c9c03a011a39124393a30b762f102e457d71678549e08bcd801cf0069dac"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped--flye-meta.html",
+      "matches_build": true,
+      "bytes": 26187,
+      "sha256": "5f83a068a82ad78fd1730edd7773fd6c258f5f2120c040a3cf020220c23f9052"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped--flye.html",
+      "matches_build": true,
+      "bytes": 26073,
+      "sha256": "43bf3ba248dbe4382fe00510d6510549341cfded334bae7f42b55102ae9d49ea"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped--raven.html",
+      "matches_build": true,
+      "bytes": 18364,
+      "sha256": "2d98c0fb2b9c4cb614b1e9e9ec09ee437b879027f00fabeac70e58fb259d7244"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-generic-stress--flye-meta.html",
+      "matches_build": true,
+      "bytes": 22432,
+      "sha256": "f531a44edd5a806c05f04a1b3956aa6dd42c56f721db13aac6e690c9cd8b67b4"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-generic-stress--flye.html",
+      "matches_build": true,
+      "bytes": 24219,
+      "sha256": "d416a5bee1163030a5dab2de8e50f169dad873a808fe8bf06772710136b1a82b"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-generic-stress--plassembler.html",
+      "matches_build": true,
+      "bytes": 18421,
+      "sha256": "e66c8d8dfafb971c9b1b4437179b87ec7df91f0dd6adcea59d78648da12a92c0"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-matched-exact--flye-meta.html",
+      "matches_build": true,
+      "bytes": 22401,
+      "sha256": "5e6ded63bcf4b5472a9efad5637371415ec926c8847074085d4074e898990605"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-matched-exact--flye.html",
+      "matches_build": true,
+      "bytes": 24192,
+      "sha256": "b927564d1300e831882b6884fd31e3338dd6d21954b28e754c5a8bfdffd6a1f1"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-matched-exact--plassembler.html",
+      "matches_build": true,
+      "bytes": 18416,
+      "sha256": "5619e1fc87c9f1a09c39e696d52db068a3cdbfd996e459b15022e4e04af073df"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-matched-exact--raven.html",
+      "matches_build": true,
+      "bytes": 18218,
+      "sha256": "61cb6056ad3f27ffdb53a687a36c6e2523f459f2c05ac765f4146ae8ef442c32"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-ont2023-shaped--flye-meta.html",
+      "matches_build": true,
+      "bytes": 22434,
+      "sha256": "e70ebeb3a5c1b66a39ffd276a17ef27ad0012f0abaafdb9b2906ecf39282a908"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-ont2023-shaped--flye.html",
+      "matches_build": true,
+      "bytes": 24219,
+      "sha256": "fc6b50a868465a7a20f74449455daff0ab140b12a50788b8b495071134da27fc"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-ont2023-shaped--plassembler.html",
+      "matches_build": true,
+      "bytes": 18421,
+      "sha256": "7ded4132d4eed30c2182cabe6d1f041a5fe7f7f06a96846ea9a9593344a8bee0"
+    },
+    {
+      "path": "batches/20261106T100403/results/s6-se11-pse11-1-seed-20261106-ont2023-shaped--raven.html",
+      "matches_build": true,
+      "bytes": 18235,
+      "sha256": "050e6a3bf3b182b1aab3b785983bf9615cda96890855ced040a4df71106d99a8"
+    }
+  ]
+}

@@ -30,11 +30,13 @@
     }
   },
   "readiness": "pass",
-  "publication": "pending_parent_coordination",
+  "publication": "verified_live",
   "limitations": [
     "Exact headline outcomes assess plasmids; chromosome assessments are separate.",
     "Two references and one noise seed; not a broad estimate of real-read performance.",
     "Binary tolerant endpoint is unvalidated for larger references; all 24 results explicitly unscored."
   ],
-  "scope": "Recorded metadata only; no additional sequence calculations or reruns."
+  "scope": "Recorded metadata only; no additional sequence calculations or reruns.",
+  "website": "https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s6",
+  "deployment_id": "dpl_DpRxjygqnHvG5eA2tTe3eQBD6TJG"
 }

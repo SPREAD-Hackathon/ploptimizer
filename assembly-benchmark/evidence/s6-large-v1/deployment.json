@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "verified_live",
+  "batch": "20261106T100403",
+  "deployment": {
+    "id": "dpl_DpRxjygqnHvG5eA2tTe3eQBD6TJG",
+    "url": "https://ploptimizer-assembly-benchmark-c84gi8a0s-happykhans-projects.vercel.app",
+    "productionUrl": "https://ploptimizer-assembly-benchmark.vercel.app",
+    "readyState": "READY",
+    "target": "production"
+  },
+  "build_start_head": "d175ad1",
+  "source_followup_commit": "ec685ea",
+  "source_note": "The frozen presentation build included the parent S5 submitted-state edits before their ec685ea commit. deploy-site returned no source_commit field; no inferred commit was substituted. Original S6 scientific jobs used 0662fa0.",
+  "bundle": ".cache/bundles/s6-large-cohort",
+  "bundle_manifest_sha256": "69ef0a830f1d623eaadd9eef805c066e95c96247f4fdc83c00e1ccb121a7ad2c",
+  "site": "dist",
+  "site_gate": "pass",
+  "live_files_verified": 53,
+  "website_bytes": 56642933,
+  "files": 1216,
+  "html_pages": 635,
+  "local_links_checked": 13260,
+  "tests": {
+    "count": 383,
+    "optional_skips": 11,
+    "status": "pass"
+  },
+  "visual_review": "Published S6 family page checked in browser: two genome rows, correct tool counts, 24 individual runs, filters and supplementary records."
+}

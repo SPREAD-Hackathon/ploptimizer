@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "status": "live_verified",
+  "url": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "source_commit": "0c0e616",
+  "deployment_id": "dpl_6NgfD9GVA5PgnNLXRRT48fbGBce3",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-qaeqjocoz-happykhans-projects.vercel.app",
+  "verified_at": "2026-11-06T10:33:23.478084+00:00",
+  "bundle": ".cache/bundles/s5-native-replacement",
+  "build_bytes": 53726200,
+  "source_records_preserved": 468,
+  "new_executions": 168,
+  "new_exact_outcomes": {
+    "pass": 72,
+    "fail": 96
+  },
+  "new_nucmer_plots": 168,
+  "public_files_verified": 1111,
+  "verification_failures": 0,
+  "verification_scope": "All publicly served pages/assets/downloads byte-for-byte; nine Vercel routing configuration files excluded from HTTP verification.",
+  "static_files_including_routing_configs": 1120,
+  "optional_skips": 11,
+  "retained_ready_deployments": 3,
+  "retained_deployments": [
+    "dpl_6NgfD9GVA5PgnNLXRRT48fbGBce3",
+    "dpl_99Ef3mRUf1xrE8o3Lh7Y86ihswEu",
+    "dpl_FHaGCGuX8kRj7xDTZREm9E7cZ477"
+  ],
+  "presentation_url": "https://docs.google.com/presentation/d/1t40OE2R48Z25i_XTfP6kt08CQtbcdX2DuZLyaTlvNCA/edit",
+  "presentation_slide_count": 12,
+  "repeatability": {
+    "within_setting_identical": 23,
+    "within_setting_groups": 24,
+    "across_threads_identical": 9,
+    "across_threads_groups": 12,
+    "deterministic_flye_within_identical": 8,
+    "deterministic_flye_within_groups": 8,
+    "deterministic_flye_across_identical": 4,
+    "deterministic_flye_across_groups": 4
+  },
+  "browser_checks": {
+    "status": "pass",
+    "base_url": "https://ploptimizer-assembly-benchmark.vercel.app",
+    "mobile_checks": [
+      {
+        "mobile_assembler": "Flye (default)",
+        "scroll": 390,
+        "viewport": 390
+      },
+      {
+        "mobile_assembler": "Flye (--meta)",
+        "scroll": 390,
+        "viewport": 390
+      },
+      {
+        "mobile_assembler": "Raven",
+        "scroll": 390,
+        "viewport": 390
+      },
+      {
+        "mobile_assembler": "Plassembler long",
+        "scroll": 390,
+        "viewport": 390
+      }
+    ],
+    "s3_record": "batches/20261106T042113/results/s1-se11-large--flye--mode-default-threads-1-repeat-1.html",
+    "loaded_images": 1,
+    "script_errors": [],
+    "pkpn5_positions_present": true
+  },
+  "limitations": [
+    "Recorded signature differences do not locate sequence differences; non-exact circular ends retain their recorded starts.",
+    "Many exact failures still lack reviewed per-base changes or a confirmed assembler-internal mechanism.",
+    "Real node-internal reference intervals remain unmeasured; whole-segment associations and contig alignments have different scopes.",
+    "Two controlled reference complements and synthetic reads do not establish general real-read performance.",
+    "Revised large-plasmid S6 is submitted; verified results remain pending. Native S5 references are configured but not run, with repeat intervals not yet curated."
+  ],
+  "label_change_tests": 20,
+  "prior_release_python_tests": 368,
+  "label_update": "Short Nanopore read-length challenge \u00b7 1.5 kb target mean; applied across S4 short-profile views without changing frozen records.",
+  "metric_label_update": "Readable molecule/contig labels and explicit units; copy-screen settings separate from recovery measurements; original field paths folded.",
+  "targeted_reporting_tests": 18,
+  "metric_label_browser_checks": {
+    "status": "pass",
+    "url": "https://ploptimizer-assembly-benchmark.vercel.app/batches/20261104T210453/results/s6-w-prk2-seed-20261105-generic-stress--flye",
+    "captures": [
+      {
+        "width": 1440,
+        "scroll": 1440
+      },
+      {
+        "width": 390,
+        "scroll": 390
+      }
+    ],
+    "source_fields_folded": true,
+    "settings_separate": true,
+    "script_errors": []
+  },
+  "python_tests": 380,
+  "final_focused_tests": 11,
+  "s6_scope_browser_checks": {
+    "status": "pass",
+    "base_url": "https://ploptimizer-assembly-benchmark.vercel.app",
+    "viewports": [
+      1440,
+      390
+    ],
+    "planned_panel_unrun": true,
+    "legacy_runs_supplementary": 12,
+    "historical_result_note_visible": true,
+    "script_errors": []
+  },
+  "s6_replacement": {
+    "status": "submitted",
+    "inputs": [
+      "SE11 chromosome + pSE11-1 (100,021 bp)",
+      "MGH78578 chromosome + pKPN3 (175,879 bp)"
+    ],
+    "scope": "Derived subsets; all other plasmids excluded.",
+    "historical_small_plasmid_noise_runs_supplementary": 12,
+    "batch": "20261106T100403",
+    "executions": 24,
+    "assessment": "continuous-evidence-v1; larger-plasmid tolerant binary outcomes unscored"
+  },
+  "overview_executions": {
+    "primary": 268,
+    "supplementary": 184,
+    "total": 452
+  },
+  "circularity_copy_update": "Removed generic circularity/physical-validation disclaimer paragraphs; retained reported values and source-stage labels.",
+  "chromosome_display": "Existing chromosome assessment panels shown inline alongside plasmids without a disclosure. Scores and endpoint membership unchanged.",
+  "s5_replacement": {
+    "status": "configured_not_run",
+    "assemblies": [
+      "GCF_036177905.1",
+      "GCF_045162825.1",
+      "GCF_045210185.1"
+    ],
+    "inputs": 6,
+    "planned_executions": 24,
+    "submitted_executions": 0,
+    "repeat_coordinates": "not_curated"
+  }
+}

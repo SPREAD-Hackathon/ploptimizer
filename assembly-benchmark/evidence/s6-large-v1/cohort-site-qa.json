@@ -1,0 +1,16 @@
+{
+  "errors": [],
+  "html_pages": 635,
+  "local_links_checked": 13260,
+  "policy": {
+    "max_file_bytes": 5242880,
+    "max_files": 1500,
+    "max_total_bytes": 67108864
+  },
+  "preserved_source_records": 492,
+  "public_files": 1204,
+  "schema_version": 1,
+  "status": "pass",
+  "total_files": 1216,
+  "website_bytes": 56642933
+}

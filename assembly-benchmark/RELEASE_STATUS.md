@@ -951,3 +951,32 @@ Desktop and phone checks confirm the new selection and historical labels.
 Current plus two previous READY deployments remain. Evidence:
 `evidence/s5-native-replacement/`. S6 separately shows 24 submitted executions;
 no partial S6 results have been admitted.
+
+### 6 November — larger-plasmid S6 completed and published
+
+Batch `20261106T100403` now contributes all 24 verified executions to the
+primary cohort. Its exact plasmid endpoint records 18 passes and 6 failures:
+Flye default, Flye `--meta` and Plassembler each pass 6/6; Raven fails 6/6.
+Chromosome assessment is separate. Six source manifests pass the frozen-input
+audit. All 24 diagnostics, graphs, length inventories and NUCmer comparisons
+completed, with no execution errors. Binary tolerant recovery remains explicitly
+unscored for all 24 records; its larger-reference endpoint is not validated.
+Earlier small-plasmid noise cases remain supplementary.
+
+Production is `dpl_DpRxjygqnHvG5eA2tTe3eQBD6TJG`. The compact site passes its
+release gate: 635 HTML pages, 13,260 local links, 56,642,933 bytes and 1,216
+files. All 24 new result pages and their deduplicated plot/coordinate assets,
+scenario/headline pages and representative downloads match live: 53 checks,
+zero failures. The S6 page was also visually inspected. The current plus two
+previous READY deployments remain. The current cohort has 292 primary and
+184 supplementary executions; the bundle preserves 492 source records,
+including excluded historical snapshots. The local suite passed 383 tests
+with 11 optional skips. Evidence: `evidence/s6-large-v1/`.
+
+The same release shows native S5 as **submitted**, batch `20261106T104655`:
+six inputs and 24 executions. Its reference repeat intervals are now measured
+as recorded in `LINEAR_TERMINAL_REPEATS.md`; S5 result publication remains
+pending its jobs and evidence. Prior entries above describe their release dates,
+not the current S5/S6 state. The S6 deployment began at Git head `d175ad1` and
+included parent S5 edits subsequently recorded in `ec685ea`. The deployment
+response supplies no source-commit field; these facts are retained separately.
