@@ -111,6 +111,12 @@ def run_task(manifest_path,index,nucmer='nucmer',show_coords='show-coords'):
     save(output/'comparison.json',result)
     try:
         execution,truth,assembly,hashes,score=prepare_inputs(root,task)
+        if assembly.stat().st_size == 0:
+            result.update(status='not_applicable', reason='Final assembly FASTA is empty; NUCmer was not run.',
+                          input_hashes=hashes, original_exact_status=score, queries=[], alignments=[], alignment_count=0,
+                          finished_at=datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds'))
+            save(output/'comparison.json',result)
+            return 0
         result.update(input_hashes=hashes,original_exact_status=score,
                       references=inventory(truth),queries=inventory(assembly))
         version=subprocess.run([nucmer,'--version'],capture_output=True,text=True,check=True,timeout=30)

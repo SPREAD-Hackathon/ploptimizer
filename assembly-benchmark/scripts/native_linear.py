@@ -76,14 +76,14 @@ def collect_panel(status_path=STATUS):
     record = load(batch / 'submission.json')
     cluster = record['cluster']
     remote = Path(cluster['remote_root'])
-    status_path = remote / 'runs' / batch.name / 'evidence_status.json'
+    remote_status_path = remote / 'runs' / batch.name / 'evidence_status.json'
     try:
-        ssh(cluster['host'], ['test', '-f', str(status_path)])
+        ssh(cluster['host'], ['test', '-f', str(remote_status_path)])
     except subprocess.CalledProcessError as error:
         if error.returncode != 1:
             raise
         return state
-    subprocess.run(['rsync', '-az', cluster['host'] + ':' + str(status_path), str(batch) + '/'], check=True)
+    subprocess.run(['rsync', '-az', cluster['host'] + ':' + str(remote_status_path), str(batch) + '/'], check=True)
     state['evidence'] = load(batch / 'evidence_status.json')
     if state['evidence']['status'] == 'complete':
         subprocess.run(['rsync', '-az', '--exclude=*.delta', cluster['host'] + ':' + str(remote / 'runs' / batch.name / 'comparisons') + '/', str(batch / 'comparisons') + '/'], check=True)

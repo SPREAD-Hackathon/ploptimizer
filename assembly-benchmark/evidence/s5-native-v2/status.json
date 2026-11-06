@@ -3,7 +3,39 @@
   "batch_id": "20261106T104655",
   "config": "config/linear-plasmids.json",
   "config_fingerprint": "e1ee75640714829162bb439501e17d99805895b3ec0ca9fca375f57cd570f9fa",
+  "evidence": {
+    "comparison_root": "comparisons/s5-native-v2",
+    "coordinate_comparisons": {
+      "complete": 22,
+      "not_applicable": 1
+    },
+    "diagnostics": {
+      "complete": 23,
+      "skipped": 1
+    },
+    "expected_executions": 24,
+    "graph_identities": {
+      "identity_pairs": 35,
+      "inventories": 23
+    },
+    "graphs": {
+      "available": 22,
+      "unsupported": 1
+    },
+    "length_inventories": 23,
+    "outcomes": {
+      "fail": 23,
+      "timeout": 1
+    },
+    "reporting_repair": {
+      "previous_record_sha256": "353b257e104ffd99a6ae64ba3b7d3e6ec2b21454dc37b9544ba291c901562d6e",
+      "reason": "One hash-verified empty final FASTA correctly has no NUCmer comparison"
+    },
+    "source_snapshot": "published/20261106T104655.json",
+    "status": "complete"
+  },
   "input_count": 6,
+  "inputs_admitted": 6,
   "jobs": {
     "assemble": "34519371",
     "evidence": "34519373",
@@ -21,5 +53,5 @@
     "s5-albidoflavus-nbc01661-native-length-long"
   ],
   "schema_version": 1,
-  "status": "submitted"
+  "status": "evidence_complete"
 }

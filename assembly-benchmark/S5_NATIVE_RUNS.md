@@ -79,3 +79,26 @@ from a completed sequence mismatch. Historical records are unchanged.
 Future Plassembler workers cap execution at two hours (or a shorter configured
 limit), lower their own Slurm allocation to that limit, and reserve cleanup
 time to write the terminal record. Other assemblers retain their limits.
+
+## Evidence collection checkpoint, 6 November 2026 13:20 UTC
+
+All 24 original executions are terminal: 23 completed sequence failures and the
+user-stopped Plassembler execution. Six frozen inputs are admitted. There are
+23 completed mapping assessments, 22 available graphs, one unsupported graph
+and 22 completed NUCmer comparisons. One final Plassembler FASTA is hash-verified
+empty, so its NUCmer comparison is not applicable; no alignment command was run
+for that empty file. The original reporting error and its reclassification are
+retained on BMRC. The original evidence stage is complete.
+
+The empty-output reporting error briefly blocked input staging for the two
+Miniasm follow-ups. No assembly task in either follow-up had started. After
+repairing the metadata classification, the existing staging, array and reporting
+job IDs were requeued with their original dependencies; no new jobs or duplicate
+assemblies were submitted. First-attempt reporting artefacts are preserved in
+`reporting-attempt-1/` within each remote follow-up batch.
+
+The local collector also had a checkpoint-path shadowing bug; it now retains the
+local checkpoint path separately from the remote evidence path. Regression tests
+cover that path and empty-output handling. Follow-up results and publication
+remain pending. Shared reads are retained until all dependent work finishes,
+in accordance with `READ_RETENTION.md`.

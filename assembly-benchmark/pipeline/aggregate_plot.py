@@ -5,7 +5,7 @@ import os
 from .common import ROOT, save, digest
 
 COLORS = {'pass': '#0072B2', 'fail': '#D55E00', 'error': '#6B7280', 'unscored': '#C3C8D0'}
-TOOL_COLORS = ['#0072B2', '#D55E00', '#009E73', '#CC79A7']
+TOOL_COLORS = ['#0072B2', '#D55E00', '#009E73', '#CC79A7', '#E69F00', '#666666']
 
 
 def write_aggregate_plots(data, output):

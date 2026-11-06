@@ -4,6 +4,7 @@ import importlib.util
 import json
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -55,3 +56,23 @@ class ExistingComparisonTests(unittest.TestCase):
             MODULE.inside(self.root,'../outside')
         with self.assertRaisesRegex(ValueError,'relative'):
             MODULE.inside(self.root,'/outside')
+
+    def test_empty_output_is_explicitly_not_applicable_without_running_nucmer(self):
+        environment = self.root / 'environment'
+        environment.mkdir()
+        for name in ('pixi.toml', 'pixi.lock'):
+            (environment / name).write_text('test environment')
+        assembly = self.root / 'empty.fasta'; assembly.write_bytes(b'')
+        truth = self.root / 'truth.fasta'; truth.write_text('>fixture\nACGT\n')
+        execution = self.root / 'execution.json'; execution.write_text('{}')
+        manifest = self.root / 'tasks.json'
+        manifest.write_text(json.dumps({'remote_root': str(self.root), 'environment_relative_path': 'environment',
+            'tasks': [{'batch': 'toy', 'scenario_id': 'toy', 'tool': 'tool', 'output_relative_path': 'output'}]}))
+        with patch.object(MODULE, 'prepare_inputs', return_value=(execution, truth, assembly, {'assembly_sha256': MODULE.digest(assembly)}, 'fail')), \
+             patch.object(MODULE.subprocess, 'run') as process:
+            self.assertEqual(MODULE.run_task(manifest, 0), 0)
+        process.assert_not_called()
+        result = MODULE.load(self.root / 'output/comparison.json')
+        self.assertEqual(result['status'], 'not_applicable')
+        self.assertIn('NUCmer was not run', result['reason'])
+        self.assertEqual(result['original_exact_status'], 'fail')

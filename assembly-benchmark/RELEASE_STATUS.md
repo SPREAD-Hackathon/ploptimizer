@@ -991,3 +991,18 @@ Future Plassembler tasks are capped at two hours. Reporting now renders
 while retaining their execution subtype and leaving sequence assessment empty.
 74 targeted tests pass. These report changes await the S5 publication; they
 are not yet claimed live.
+
+
+### Native S5 evidence checkpoint and reporting repair
+
+Original S5 evidence is complete for all 24 terminal executions (23 sequence
+failures, one explicit incomplete execution). An empty final Plassembler FASTA
+was initially treated as a NUCmer error; its zero-byte length and saved hash
+were verified, the original error was preserved, and the comparison is now
+correctly not applicable. No scientific output or score was changed.
+
+Requeued existing never-started Miniasm arrays and dependent generic stages
+after that reporting block; all job IDs are unchanged. Fixed the collector's
+local/remote checkpoint variable collision and prepared the aggregate palette
+for six configurations. Nine targeted regression tests pass. Both follow-ups
+and production publication remain pending.

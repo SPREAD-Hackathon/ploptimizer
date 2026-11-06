@@ -51,7 +51,10 @@ def finish(identifier, comparison_label='large-baseline-v3'):
         save(manifest, comparison_plan(batch.name, comparison_label, cluster))
         for index in range(len(load(manifest)['tasks'])):
             code = run_task(manifest, index)
-            comparison_counts['complete' if code == 0 else 'error'] += 1
+            task = load(manifest)['tasks'][index]
+            outcome = load(ROOT / task['output_relative_path'] / 'comparison.json')
+            comparison_counts['not_applicable' if code == 0 and outcome.get('status') == 'not_applicable'
+                              else 'complete' if code == 0 else 'error'] += 1
     expected = len(load(batch / 'tasks.json')['assemble'])
     status_counts = collections.Counter(row['status'] for row in snapshot['results'])
     complete = len(snapshot['results']) == expected and sum(status_counts.get(s,0) for s in ('pass','fail','error','timeout','invalid_input')) == expected
