@@ -764,3 +764,26 @@ The controller cluster configuration and example now use 1,000. Future suite
 submissions also omit artificial cross-batch assembly ordering, retaining input
 and environment-preparation dependencies. Actual scheduler verification and
 running-task count are in `evidence/large-baseline-v3/scheduler-policy-1000.json`.
+
+### 6 November, 07:53 UTC follow-up — final five S3 runs active; compact-site preparation
+
+S3 has 115 completed execution records and five one-thread Plassembler runs still
+active. A scheduler resource check confirms active CPU consumption; no execution
+failure or user action is indicated. The evidence job remains dependency-queued.
+No runs or alignments were duplicated and no benchmark parameters changed.
+
+Prepared public-asset deduplication for the larger report: byte-identical SVG/PNG
+figures and TSV tables share a content-addressed static file, while each result
+page, source binding and backend record remain distinct. Links are rewritten
+using their own base URL; external links and inert graph JSON are preserved.
+This is a presentation-only storage change, not a new biological calculation.
+
+An unpublished preflight containing the 348 historical/S1/S2 source records
+passes the gate: 48,813,775 bytes, 969 public files, 471 HTML pages, 9,439 local
+links, no errors. Sharing removes 359 duplicate files / 3,814,484 bytes. All 366
+Python tests pass (11 optional skips), plus HTTP E2E checks over 470 routes and
+348 result views. The HTTP checks now derive expected counts from the declared
+cohort and frozen source records and accept explicit repeat-mode identities,
+instead of hard-coding the original release totals. Production and its cohort
+remain unchanged until the complete suite and updated presentation are verified.
+See `evidence/large-baseline-v3/shared-assets-preflight.json`.

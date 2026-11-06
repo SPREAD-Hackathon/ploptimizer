@@ -8,7 +8,8 @@ import { gunzipSync } from 'node:zlib';
 const project = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const root = resolve(process.argv[2] ?? resolve(project, 'dist'));
 const backendRoot = process.argv[3] ? resolve(process.argv[3]) : null;
-const cohortConfig = JSON.parse(await readFile(resolve(project, 'config/overview.json'), 'utf8'));
+const bundleManifest = backendRoot ? JSON.parse(await readFile(resolve(backendRoot, 'manifest.json'), 'utf8')) : null;
+const cohortConfig = bundleManifest ? {...bundleManifest.cohort, root_batch: bundleManifest.primary_batch} : JSON.parse(await readFile(resolve(project, 'config/overview.json'), 'utf8'));
 const deploymentConfig = JSON.parse(await readFile(resolve(root, 'vercel.json'), 'utf8'));
 for (const source of ['/history', '/history.html', '/batches/:batch/history', '/batches/:batch/history.html']) {
   assert.ok(deploymentConfig.redirects.some(rule => rule.source === source && rule.destination === '/' && rule.permanent === true), `${source}: legacy navigation redirect required`);
@@ -167,8 +168,10 @@ async function checkOverview(prefix) {
       assert.ok(matches[0].includes(escaped(record.run_id ?? 'Single run')), `${route}: repeat identity missing`);
       if (overview.scope === 'primary_cohort') assert.ok(record.version && record.version !== 'Version not recorded', 'Completed cohort rows require recorded software versions');
       if (family.id === 'S3') {
-        assert.match(record.run_id, /^threads-(1|4)-repeat-[1-5]$/);
-        assert.equal(record.threads, Number(record.run_id.match(/^threads-(\d+)/)[1]));
+        const repeat = record.run_id.match(/^(?:mode-(?:default|deterministic)-)?threads-(\d+)-repeat-(\d+)$/);
+        assert.ok(repeat, 'Repeat identity must preserve its explicit mode, threads and replicate');
+        assert.equal(record.threads, Number(repeat[1]));
+        assert.ok(Number(repeat[2]) > 0);
       }
       const result = new URL('../' + record.href, base + route);
       assert.equal(await httpStatus(result.href), 200, `${route}: ${result.pathname}`);
@@ -191,12 +194,33 @@ async function checkOverview(prefix) {
 try {
   const primary = await checkOverview('');
   assert.equal(primary.scope, 'primary_cohort');
-  assert.deepEqual(Object.fromEntries(['total', 'pass', 'fail', 'errors', 'unscored', 'denominator'].map(key => [key, primary.counts[key]])),
-    {total: 128, pass: 44, fail: 80, errors: 4, unscored: 0, denominator: 124});
-  assert.equal(primary.all_counts.total, 284);
-  assert.equal(primary.supplementary_counts.total, 156);
-  assert.ok(primary.excluded_batches.includes('20261104T183058'));
-  assert.ok(!primary.included_batches.includes('20261104T183058'));
+  const expected = {total: 0, pass: 0, fail: 0, errors: 0, unscored: 0, denominator: 0};
+  let supplementary = 0;
+  for (const batch of cohortConfig.primary_batches) {
+    const source = JSON.parse(await readFile(resolve(project, 'published', batch + '.json'), 'utf8'));
+    const cases = new Map(source.scenarios.map(row => [row.id, row]));
+    for (const row of source.results) {
+      const scenario = cases.get(row.scenario_id);
+      const family = source.config.determinism ? 'S3' : scenario.category;
+      if (!cohortConfig.families.includes(family) || !cohortConfig.tools.includes(row.tool)) continue;
+      const policy = cohortConfig.baseline_policy;
+      const molecules = scenario.replicons ?? [];
+      const plasmids = molecules.filter(m => m.molecule_type === 'plasmid');
+      const eligible = !policy || !['S1', 'S2', 'S3'].includes(family) ||
+        (molecules.filter(m => m.molecule_type === 'chromosome').length === 1 &&
+         (family === 'S1' || plasmids.length > 0) &&
+         plasmids.every(m => Number.isInteger(m.length_bp) && m.length_bp >= policy.minimum_plasmid_bp));
+      if (!eligible) { supplementary++; continue; }
+      expected.total++;
+      expected[['pass', 'fail'].includes(row.status) ? row.status : ['error', 'timeout', 'invalid_input'].includes(row.status) ? 'errors' : 'unscored']++;
+    }
+  }
+  expected.denominator = expected.pass + expected.fail;
+  assert.deepEqual(Object.fromEntries(Object.keys(expected).map(key => [key, primary.counts[key]])), expected, 'Headline counts must match the frozen source cohort');
+  assert.equal(primary.all_counts.total, expected.total + supplementary);
+  assert.equal(primary.supplementary_counts.total, supplementary);
+  assert.deepEqual(primary.included_batches, cohortConfig.primary_batches);
+  for (const batch of cohortConfig.excluded_historical_batches ?? []) assert.ok(!primary.included_batches.includes(batch));
   const prefixes = ['', ...(await readdir(resolve(root, 'batches')).catch(() => [])).map(id => `/batches/${id}`)];
   assert.ok(!prefixes.includes('/batches/' + cohortConfig.root_batch), 'The primary report must not be duplicated in its own archive');
   let batchViews = 0;
@@ -206,8 +230,8 @@ try {
     if (!backendRoot && await httpStatus(base + await jsonRoute(prefix + '/data/results.json')) !== 200) continue;
     const data = backendRoot ? JSON.parse(await readFile(resolve(backendRoot, 'batches', batchId + '.json'), 'utf8')) : await jsonAt(prefix + '/data/results.json');
     const repeats = data.config.determinism;
-    const factor = repeats ? repeats.repeats * repeats.threads.length : 1;
-    assert.equal(data.results.length, data.scenarios.length * data.config.tools.length * factor);
+    const taskCount = repeats ? repeats.repeats * repeats.threads.length * data.config.tools.reduce((sum, tool) => sum + (repeats.modes?.[tool]?.length ?? 1), 0) : data.config.tools.length;
+    assert.equal(data.results.length, data.scenarios.length * taskCount);
     const frozen = JSON.parse(await readFile(resolve(project, 'published', data.batch + '.json'), 'utf8'));
     assert.deepEqual(data.config, frozen.config, 'Presentation must preserve the frozen configuration');
     const sourceRows = new Map(frozen.results.map(row => [JSON.stringify([row.scenario_id, row.tool, row.run_id]), row]));
@@ -249,5 +273,5 @@ try {
   assert.equal(assetInfo.packages['@genomicx/ui'], '0.10.1');
   const bundle = await textAt('/assets/genomicx.js');
   for (const marker of ['gx-theme-toggle', 'gx-nav-logo', 'gx-badge']) assert.ok(bundle.includes(marker));
-  console.log(`HTTP end-to-end checks passed: ${checkedPages.size} routes, ${resultViews} result views across ${batchViews} batch views; 128 primary and 156 supplementary executions; family/run/graph hierarchy and scientific metrics preserved.`);
+  console.log(`HTTP end-to-end checks passed: ${checkedPages.size} routes, ${resultViews} result views across ${batchViews} batch views; ${primary.counts.total} primary and ${primary.supplementary_counts.total} supplementary executions; family/run/graph hierarchy and scientific metrics preserved.`);
 } finally { await new Promise(resolve => server.close(resolve)); }

@@ -1,0 +1,40 @@
+{
+  "alignment_reruns": 0,
+  "assembly_reruns": 0,
+  "gate": {
+    "errors": [],
+    "html_pages": 471,
+    "local_links_checked": 9439,
+    "policy": {
+      "max_file_bytes": 5242880,
+      "max_files": 1500,
+      "max_total_bytes": 67108864
+    },
+    "preserved_source_records": 348,
+    "public_files": 969,
+    "schema_version": 1,
+    "status": "pass",
+    "total_files": 979,
+    "website_bytes": 48813775
+  },
+  "http_e2e": "470 routes, 348 result views, 8 batch views; frozen scientific fields preserved",
+  "optional_skips": 11,
+  "packaging": {
+    "backend_evidence": "Retained in the separate validated backend bundle; not deployed to Vercel.",
+    "batch": "20261104T190455",
+    "deduplicated_file_bytes": 3814484,
+    "deduplicated_file_count": 359,
+    "policy": "presentation-only",
+    "removed_download_bytes": 268453922,
+    "removed_download_count": 1404,
+    "schema_version": 2,
+    "shared_asset_groups": 83,
+    "website_bytes_after": 48680015,
+    "website_bytes_before": 323841333
+  },
+  "python_tests": 366,
+  "scientific_change": "None; only byte-identical public tables/figures share storage; backend records remain separate",
+  "scope": "Unpublished preflight of historical records plus completed S1/S2 only; S3 and production release remain pending",
+  "source_records": 348,
+  "status": "pass"
+}

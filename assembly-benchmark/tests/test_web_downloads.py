@@ -53,3 +53,35 @@ class WebDownloadTests(unittest.TestCase):
             self.assertEqual(backend.read_bytes(), b'unchanged backend')
             self.assertEqual(json.loads((root/'vercel.json').read_text())['redirects'][0]['source'], '/history')
             self.assertLess(audit['website_bytes_after'], audit['website_bytes_before'])
+
+    def test_identical_figures_and_tables_share_bytes_without_changing_records(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            self.fixture(root)
+            payloads = {'.svg':b'<svg xmlns="http://www.w3.org/2000/svg"><text>Saved plot</text></svg>',
+                        '.tsv':b'reference\tposition\nfixture\t12\n'}
+            for suffix, content in payloads.items():
+                for relative in ('data/results/original'+suffix,'batches/fixture/data/results/copy'+suffix):
+                    path = root / relative
+                    path.parent.mkdir(parents=True,exist_ok=True)
+                    path.write_bytes(content)
+            unique = root / 'data/results/unique.tsv'
+            unique.write_text('different observation\n')
+            inert = '<script type="application/json">{"source":"../data/results/original.svg"}</script>'
+            (root / 'results/example.html').write_text(inert+'<img src="../data/results/original.svg"><a href="../data/results/original.tsv?download=1#rows">Current run</a><a href="https://elsewhere.test/data/results/original.tsv">External</a>')
+            (root / 'batches/fixture/index.html').write_text("<base href='/batches/fixture/'><img src='data/results/copy.svg'><a href='data/results/copy.tsv'>Other run</a>")
+            audit = package_downloads(root)
+            self.assertEqual(audit['deduplicated_file_count'],2)
+            self.assertEqual(audit['shared_asset_groups'],2)
+            self.assertEqual(sorted(p.read_bytes() for p in (root / 'data/shared').iterdir()),sorted(payloads.values()))
+            self.assertEqual(unique.read_text(),'different observation\n')
+            page = (root / 'results/example.html').read_text()
+            self.assertIn(inert,page)
+            self.assertIn('Current run</a>',page)
+            self.assertIn('https://elsewhere.test/data/results/original.tsv',page)
+            self.assertIn('.tsv?download=1#rows',page)
+            self.assertIn("src='/data/shared/",(root / 'batches/fixture/index.html').read_text())
+            self.assertFalse((root / 'data/results/original.svg').exists())
+            self.assertFalse((root / 'batches/fixture/data/results/copy.svg').exists())
+            again = package_downloads(root)
+            self.assertEqual(again['deduplicated_file_count'],0)
