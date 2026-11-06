@@ -2,12 +2,12 @@
   "schema_version": 1,
   "status": "live_verified",
   "url": "https://ploptimizer-assembly-benchmark.vercel.app",
-  "source_commit": "8603e15",
-  "deployment_id": "dpl_99Ef3mRUf1xrE8o3Lh7Y86ihswEu",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-b0p9byg2e-happykhans-projects.vercel.app",
-  "verified_at": "2026-11-06T09:58:34.014994+00:00",
-  "bundle": ".cache/bundles/s6-large-scope",
-  "build_bytes": 53723873,
+  "source_commit": "0c0e616",
+  "deployment_id": "dpl_6NgfD9GVA5PgnNLXRRT48fbGBce3",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-qaeqjocoz-happykhans-projects.vercel.app",
+  "verified_at": "2026-11-06T10:33:23.478084+00:00",
+  "bundle": ".cache/bundles/s5-native-replacement",
+  "build_bytes": 53726200,
   "source_records_preserved": 468,
   "new_executions": 168,
   "new_exact_outcomes": {
@@ -22,9 +22,9 @@
   "optional_skips": 11,
   "retained_ready_deployments": 3,
   "retained_deployments": [
+    "dpl_6NgfD9GVA5PgnNLXRRT48fbGBce3",
     "dpl_99Ef3mRUf1xrE8o3Lh7Y86ihswEu",
-    "dpl_FHaGCGuX8kRj7xDTZREm9E7cZ477",
-    "dpl_3kf9T6X3RgksHXK8t1VLQtNLAceo"
+    "dpl_FHaGCGuX8kRj7xDTZREm9E7cZ477"
   ],
   "presentation_url": "https://docs.google.com/presentation/d/1t40OE2R48Z25i_XTfP6kt08CQtbcdX2DuZLyaTlvNCA/edit",
   "presentation_slide_count": 12,
@@ -73,7 +73,7 @@
     "Many exact failures still lack reviewed per-base changes or a confirmed assembler-internal mechanism.",
     "Real node-internal reference intervals remain unmeasured; whole-segment associations and contig alignments have different scopes.",
     "Two controlled reference complements and synthetic reads do not establish general real-read performance.",
-    "Revised large-plasmid S6 is a design proposal and has not run; the current tolerant evaluator is restricted to the historical small-plasmid references."
+    "Revised large-plasmid S6 is submitted; verified results remain pending. Native S5 references are configured but not run, with repeat intervals not yet curated."
   ],
   "label_change_tests": 20,
   "prior_release_python_tests": 368,
@@ -97,7 +97,7 @@
     "settings_separate": true,
     "script_errors": []
   },
-  "python_tests": 370,
+  "python_tests": 380,
   "final_focused_tests": 11,
   "s6_scope_browser_checks": {
     "status": "pass",
@@ -112,20 +112,34 @@
     "script_errors": []
   },
   "s6_replacement": {
-    "status": "design_only_not_run",
+    "status": "submitted",
     "inputs": [
       "SE11 chromosome + pSE11-1 (100,021 bp)",
       "MGH78578 chromosome + pKPN3 (175,879 bp)"
     ],
     "scope": "Derived subsets; all other plasmids excluded.",
     "historical_small_plasmid_noise_runs_supplementary": 12,
-    "execution_gate": "Larger-plasmid assessment and truth-control validation required before execution."
+    "batch": "20261106T100403",
+    "executions": 24,
+    "assessment": "continuous-evidence-v1; larger-plasmid tolerant binary outcomes unscored"
   },
   "overview_executions": {
-    "primary": 284,
-    "supplementary": 168,
+    "primary": 268,
+    "supplementary": 184,
     "total": 452
   },
   "circularity_copy_update": "Removed generic circularity/physical-validation disclaimer paragraphs; retained reported values and source-stage labels.",
-  "chromosome_display": "Existing chromosome assessment panels shown inline alongside plasmids without a disclosure. Scores and endpoint membership unchanged."
+  "chromosome_display": "Existing chromosome assessment panels shown inline alongside plasmids without a disclosure. Scores and endpoint membership unchanged.",
+  "s5_replacement": {
+    "status": "configured_not_run",
+    "assemblies": [
+      "GCF_036177905.1",
+      "GCF_045162825.1",
+      "GCF_045210185.1"
+    ],
+    "inputs": 6,
+    "planned_executions": 24,
+    "submitted_executions": 0,
+    "repeat_coordinates": "not_curated"
+  }
 }

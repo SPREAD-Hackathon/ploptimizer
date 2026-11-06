@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "base_url": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "s5_native_selection_visible": true,
+  "old_s5_runs_supplementary": 16,
+  "s5_replacement_explicitly_unrun": true,
+  "s6_submission_status_visible": true,
+  "legacy_case_note_visible": true,
+  "viewports": [
+    1440,
+    390
+  ]
+}

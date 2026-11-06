@@ -2,8 +2,8 @@
 
 ## Current production — revised large-plasmid suite live and verified
 
-https://ploptimizer-assembly-benchmark.vercel.app is live from source `8603e15`,
-deployment `dpl_99Ef3mRUf1xrE8o3Lh7Y86ihswEu`. All 1,111 publicly served
+https://ploptimizer-assembly-benchmark.vercel.app is live from source `0c0e616`,
+deployment `dpl_6NgfD9GVA5PgnNLXRRT48fbGBce3`. All 1,111 publicly served
 pages, assets and downloads match the reviewed build byte-for-byte, with zero
 failures. Nine Vercel routing configuration files are not public download targets.
 Live browser checks confirm the mobile assembler selector without page overflow,
@@ -934,3 +934,20 @@ Plassembler output-stage separation is unchanged. Six targeted tests, the
 confirm the chromosome is visible without interaction, and all 1,111 public
 files match the reviewed build. All 468 source records are preserved. Current
 plus two previous READY deployments remain. Evidence: `evidence/chromosome-inline/`.
+
+### 6 November — native Streptomyces linear panel replacement
+
+Active S5 now selects the complete assemblies linked to CP108065.1, CP108676.1
+and CP109243.1, including both deposited native linear plasmids. Six inputs /
+24 executions are configured; no new S5 jobs have been submitted. Repeat
+intervals remain uncurated, so read profiles are labelled standard and long.
+The 16 previous isolated linear-plasmid results remain supplementary.
+
+QA: 380 Python tests pass, 11 optional skips; 598 routes and 468 result views
+checked. All 468 source records and exact scores are preserved. The overview
+now has 268 primary / 184 supplementary executions. The compact build is
+53,726,200 bytes; all 1,111 public files match live, with zero failures.
+Desktop and phone checks confirm the new selection and historical labels.
+Current plus two previous READY deployments remain. Evidence:
+`evidence/s5-native-replacement/`. S6 separately shows 24 submitted executions;
+no partial S6 results have been admitted.
