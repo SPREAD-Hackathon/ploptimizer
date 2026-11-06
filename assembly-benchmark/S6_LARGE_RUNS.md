@@ -63,3 +63,24 @@ no cross-study assembly dependencies or parameter changes to improve scores.
 Retain original outputs and scientific failures. Do not rerun a terminal task
 silently. Publish only after accounting for all 24 executions and validating
 their source-fragment hashes and completed evidence.
+
+## Completed batch: 20261106T100403
+
+All 24 executions and the dependency-linked evidence job completed successfully.
+The exact **plasmid** endpoint records 18 passes and 6 failures: Flye (default),
+Flye (`--meta`) and Plassembler each pass all six conditions; Raven fails all
+six. Chromosome assessments are recorded separately and are not implied by a
+plasmid pass. These are two references and one noise seed, not a broad accuracy
+estimate or a ranking across real datasets.
+
+All six input manifests passed the frozen-source audit, including byte-identical
+matched-exact controls. There are 24 completed diagnostic records, 24 available
+graphs, 24 length inventories and 24 source-bound NUCmer coordinate comparisons.
+Read-only release readiness passed with no blockers; scientific failures remain
+in the report. All 24 binary tolerant assessments remain explicitly **unscored**
+because this larger-reference endpoint has not been validated. The saved
+continuous evidence and exact scores remain available separately.
+
+The collection controller skips the mutable generated cluster website. It copies
+stable source artefacts and the exact frozen snapshot; the website is rendered
+locally from that bundle. This avoids a collection race during remote publication.

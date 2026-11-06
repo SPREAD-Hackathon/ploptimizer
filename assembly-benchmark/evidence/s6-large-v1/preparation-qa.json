@@ -12,5 +12,13 @@
   "phase": "Read generation running; no assembly outcomes claimed.",
   "preparation_log_sha256": "967f3a69170e3c4a1ff9d9059864014f0f32b72de137ecc46dbd51c56f1264da",
   "status": "pass",
-  "submitted_source_commit": "0662fa0"
+  "submitted_source_commit": "0662fa0",
+  "post_collection_qa": {
+    "local_tests": 383,
+    "skipped_optional": 11,
+    "status": "pass",
+    "command": "python3 -m unittest discover -s tests -q",
+    "focused_collection_tests": 8,
+    "notes": "Source-only collection excludes mutable remote site; original scored outputs and frozen snapshot unchanged."
+  }
 }

@@ -6,6 +6,30 @@
   "config": "config/noisy-large.json",
   "config_fingerprint": "4fa8203f48ee90e54cdba9ac2becef6a52a382f849f83881957b97e2389cb4a3",
   "config_sha256": "816e3b3fee9f220420273a4f3f0cf23b66092132ad98d54d81b9d7524da94c50",
+  "evidence": {
+    "comparison_root": "comparisons/s6-large-v1",
+    "coordinate_comparisons": {
+      "complete": 24
+    },
+    "diagnostics": {
+      "complete": 24
+    },
+    "expected_executions": 24,
+    "graph_identities": {
+      "identity_pairs": 44,
+      "inventories": 24
+    },
+    "graphs": {
+      "available": 24
+    },
+    "length_inventories": 24,
+    "outcomes": {
+      "fail": 6,
+      "pass": 18
+    },
+    "source_snapshot": "published/20261106T100403.json",
+    "status": "complete"
+  },
   "input_audit": {
     "batch_id": "20261106T100403",
     "expected_inputs": 6,
@@ -100,6 +124,6 @@
       "truth_sha256": "c832da0cec8a590926fb24251cc56336d61bd9c453b2f8c3e89e6fe89a5418db"
     }
   },
-  "status": "running",
-  "updated_at": "2026-11-06T10:33:24.677259+00:00"
+  "status": "evidence_complete",
+  "updated_at": "2026-11-06T10:42:57.103774+00:00"
 }

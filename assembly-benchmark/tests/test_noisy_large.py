@@ -13,6 +13,21 @@ from pipeline.reads import exact_reads
 
 
 class NoisyLargeTests(unittest.TestCase):
+    def test_source_collection_skips_mutable_remote_site(self):
+        from pipeline.cluster import collect
+        with tempfile.TemporaryDirectory() as temporary:
+            batch=Path(temporary)/'batch';batch.mkdir()
+            save(batch/'submission.json',{'jobs':{'assemble':'123'},
+                 'cluster':{'host':'fixture','remote_root':'/fixture'}})
+            with patch('pipeline.cluster.ssh',return_value='123|COMPLETED|0:0'), \
+                 patch('pipeline.cluster.subprocess.run') as run:
+                run.return_value.returncode=0
+                collect(batch,include_site=False)
+            commands=[call.args[0] for call in run.call_args_list]
+            self.assertFalse(any('/site/' in part for command in commands for part in command))
+            self.assertTrue(any('/results/' in part for command in commands for part in command))
+            self.assertTrue((batch/'accounting.tsv').exists())
+
     def setUp(self):
         self.temporary=tempfile.TemporaryDirectory(dir=ROOT/'.cache')
         self.addCleanup(self.temporary.cleanup)

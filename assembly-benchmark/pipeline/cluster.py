@@ -126,7 +126,7 @@ def submit(config, cluster, scenario_id=None, after_job=None, assembly_after_job
     return submission
 
 
-def collect(batch):
+def collect(batch, include_site=True):
     submission = load(batch / "submission.json")
     cluster = submission["cluster"]
     if not re.fullmatch(r"[A-Za-z0-9_.@-]+", cluster["host"]) or not re.fullmatch(r"/[A-Za-z0-9_./-]+", cluster["remote_root"]):
@@ -145,7 +145,8 @@ def collect(batch):
     # Results and provenance only: avoid copying reads and large assembly intermediates.
     def exists(folder):
         return subprocess.run(["ssh", "-o", "BatchMode=yes", cluster["host"], shlex.join(["test", "-d", str(remote_batch / folder)])], capture_output=True).returncode == 0
-    for folder in ("results", "site", "logs", "provenance"):
+    folders = ("results", "site", "logs", "provenance") if include_site else ("results", "logs", "provenance")
+    for folder in folders:
         if exists(folder):
             target = batch / folder
             target.mkdir(exist_ok=True)

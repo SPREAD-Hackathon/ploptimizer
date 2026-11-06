@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "batch": "20261106T100403",
+  "source_snapshot": "published/20261106T100403.json",
+  "source_commit": "0662fa0be95069148b3b37bc917cc7b8742b7fa9",
+  "counts": {
+    "executions": 24,
+    "exact_plasmid_pass": 18,
+    "exact_plasmid_fail": 6,
+    "execution_errors": 0,
+    "binary_tolerant_unscored": 24,
+    "completed_nucmer_comparisons": 24
+  },
+  "by_tool": {
+    "flye": {
+      "pass": 6,
+      "fail": 0
+    },
+    "flye-meta": {
+      "pass": 6,
+      "fail": 0
+    },
+    "raven": {
+      "pass": 0,
+      "fail": 6
+    },
+    "plassembler": {
+      "pass": 6,
+      "fail": 0
+    }
+  },
+  "readiness": "pass",
+  "publication": "pending_parent_coordination",
+  "limitations": [
+    "Exact headline outcomes assess plasmids; chromosome assessments are separate.",
+    "Two references and one noise seed; not a broad estimate of real-read performance.",
+    "Binary tolerant endpoint is unvalidated for larger references; all 24 results explicitly unscored."
+  ],
+  "scope": "Recorded metadata only; no additional sequence calculations or reruns."
+}

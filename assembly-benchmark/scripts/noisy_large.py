@@ -113,7 +113,9 @@ def collect_panel():
     if not state or not state.get('batch_id'):
         raise ValueError('No submitted S6 batch is recorded')
     batch=ROOT/'runs'/state['batch_id']
-    collect(batch)
+    # The generated remote site is replaced during evidence publication. Collect
+    # stable source artefacts only; the web layer renders the frozen snapshot.
+    collect(batch, include_site=False)
     record=load(batch/'submission.json');cluster=record['cluster']
     remote=Path(cluster['remote_root'])
     state['input_audit']=input_audit(batch)

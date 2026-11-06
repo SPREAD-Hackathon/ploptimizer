@@ -1,0 +1,647 @@
+{
+  "batches": [
+    {
+      "assessment_counts": {
+        "unscored": 24
+      },
+      "batch": "20261106T100403",
+      "blockers": [],
+      "diagnostic_counts": {
+        "complete": 24
+      },
+      "executions_finished": true,
+      "jobs_finished": true,
+      "matched_snapshot_executions": 24,
+      "release_ready": true,
+      "review_items": [
+        {
+          "explanation": "No exact dedicated molecule; partial recovery and error cause are not yet classified; No exact dedicated molecule; partial recovery and error cause are not yet classified",
+          "finding": {
+            "confidence": "confirmed",
+            "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
+            "evidence": [
+              {
+                "source": "status",
+                "text": "Recorded outcome: fail.",
+                "type": "execution"
+              },
+              {
+                "metrics": {
+                  "alignment_identity": 0.9999500104977954,
+                  "candidate_flags": {
+                    "duplicated": false,
+                    "fragmented": false,
+                    "joined": false,
+                    "no_supported_alignment": false
+                  },
+                  "contig_count": 1,
+                  "recovered_fraction": 0.9999500104977954
+                },
+                "source": "diagnostics.evidence.replicons[NC_011419.1]",
+                "text": "pSE11-1: 100.00% retained reference coverage; 99.995% alignment identity; 1 supporting contig(s).",
+                "type": "mapping"
+              }
+            ],
+            "interpretation": "Mapped coverage does not establish exact sequence, complete boundaries or a unique dedicated copy. Differences and assignment remain unresolved unless separately reviewed.",
+            "kind": "near_full_non_exact",
+            "mechanism_confidence": "unresolved",
+            "schema_version": 1,
+            "source": "mapping_diagnostics",
+            "summary": "Near-full mapping; exact recovery failed",
+            "symptom": "Retained alignments cover most or all of the expected sequence, but the exact endpoint fails."
+          },
+          "scope": "Recorded endpoint/exit explanation; not necessarily a confirmed mechanism",
+          "status": "fail",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-matched-exact",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "No exact dedicated molecule; partial recovery and error cause are not yet classified; No exact dedicated molecule; partial recovery and error cause are not yet classified",
+          "finding": {
+            "confidence": "confirmed",
+            "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
+            "evidence": [
+              {
+                "source": "status",
+                "text": "Recorded outcome: fail.",
+                "type": "execution"
+              },
+              {
+                "metrics": {
+                  "alignment_identity": 0.9999500104977954,
+                  "candidate_flags": {
+                    "duplicated": false,
+                    "fragmented": false,
+                    "joined": false,
+                    "no_supported_alignment": false
+                  },
+                  "contig_count": 1,
+                  "recovered_fraction": 0.9999500104977954
+                },
+                "source": "diagnostics.evidence.replicons[NC_011419.1]",
+                "text": "pSE11-1: 100.00% retained reference coverage; 99.995% alignment identity; 1 supporting contig(s).",
+                "type": "mapping"
+              }
+            ],
+            "interpretation": "Mapped coverage does not establish exact sequence, complete boundaries or a unique dedicated copy. Differences and assignment remain unresolved unless separately reviewed.",
+            "kind": "near_full_non_exact",
+            "mechanism_confidence": "unresolved",
+            "schema_version": 1,
+            "source": "mapping_diagnostics",
+            "summary": "Near-full mapping; exact recovery failed",
+            "symptom": "Retained alignments cover most or all of the expected sequence, but the exact endpoint fails."
+          },
+          "scope": "Recorded endpoint/exit explanation; not necessarily a confirmed mechanism",
+          "status": "fail",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-generic-stress",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "No exact dedicated molecule; partial recovery and error cause are not yet classified; No exact dedicated molecule; partial recovery and error cause are not yet classified",
+          "finding": {
+            "confidence": "confirmed",
+            "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
+            "evidence": [
+              {
+                "source": "status",
+                "text": "Recorded outcome: fail.",
+                "type": "execution"
+              },
+              {
+                "metrics": {
+                  "alignment_identity": 0.9999800041991181,
+                  "candidate_flags": {
+                    "duplicated": false,
+                    "fragmented": false,
+                    "joined": false,
+                    "no_supported_alignment": false
+                  },
+                  "contig_count": 1,
+                  "recovered_fraction": 0.9999800041991181
+                },
+                "source": "diagnostics.evidence.replicons[NC_011419.1]",
+                "text": "pSE11-1: 100.00% retained reference coverage; 99.998% alignment identity; 1 supporting contig(s).",
+                "type": "mapping"
+              }
+            ],
+            "interpretation": "Mapped coverage does not establish exact sequence, complete boundaries or a unique dedicated copy. Differences and assignment remain unresolved unless separately reviewed.",
+            "kind": "near_full_non_exact",
+            "mechanism_confidence": "unresolved",
+            "schema_version": 1,
+            "source": "mapping_diagnostics",
+            "summary": "Near-full mapping; exact recovery failed",
+            "symptom": "Retained alignments cover most or all of the expected sequence, but the exact endpoint fails."
+          },
+          "scope": "Recorded endpoint/exit explanation; not necessarily a confirmed mechanism",
+          "status": "fail",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-ont2023-shaped",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "No exact dedicated molecule; partial recovery and error cause are not yet classified; No exact dedicated molecule; partial recovery and error cause are not yet classified",
+          "finding": {
+            "confidence": "confirmed",
+            "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
+            "evidence": [
+              {
+                "source": "status",
+                "text": "Recorded outcome: fail.",
+                "type": "execution"
+              },
+              {
+                "metrics": {
+                  "alignment_identity": 0.9999658856372847,
+                  "candidate_flags": {
+                    "duplicated": false,
+                    "fragmented": false,
+                    "joined": false,
+                    "no_supported_alignment": false
+                  },
+                  "contig_count": 1,
+                  "recovered_fraction": 0.9999658856372847
+                },
+                "source": "diagnostics.evidence.replicons[NC_009649.1]",
+                "text": "pKPN3: 100.00% retained reference coverage; 99.997% alignment identity; 1 supporting contig(s).",
+                "type": "mapping"
+              }
+            ],
+            "interpretation": "Mapped coverage does not establish exact sequence, complete boundaries or a unique dedicated copy. Differences and assignment remain unresolved unless separately reviewed.",
+            "kind": "near_full_non_exact",
+            "mechanism_confidence": "unresolved",
+            "schema_version": 1,
+            "source": "mapping_diagnostics",
+            "summary": "Near-full mapping; exact recovery failed",
+            "symptom": "Retained alignments cover most or all of the expected sequence, but the exact endpoint fails."
+          },
+          "scope": "Recorded endpoint/exit explanation; not necessarily a confirmed mechanism",
+          "status": "fail",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-matched-exact",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "No exact dedicated molecule; partial recovery and error cause are not yet classified; No exact dedicated molecule; partial recovery and error cause are not yet classified",
+          "finding": {
+            "confidence": "confirmed",
+            "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
+            "evidence": [
+              {
+                "source": "status",
+                "text": "Recorded outcome: fail.",
+                "type": "execution"
+              },
+              {
+                "metrics": {
+                  "alignment_identity": 0.9999658856372847,
+                  "candidate_flags": {
+                    "duplicated": false,
+                    "fragmented": false,
+                    "joined": false,
+                    "no_supported_alignment": false
+                  },
+                  "contig_count": 1,
+                  "recovered_fraction": 0.9999658856372847
+                },
+                "source": "diagnostics.evidence.replicons[NC_009649.1]",
+                "text": "pKPN3: 100.00% retained reference coverage; 99.997% alignment identity; 1 supporting contig(s).",
+                "type": "mapping"
+              }
+            ],
+            "interpretation": "Mapped coverage does not establish exact sequence, complete boundaries or a unique dedicated copy. Differences and assignment remain unresolved unless separately reviewed.",
+            "kind": "near_full_non_exact",
+            "mechanism_confidence": "unresolved",
+            "schema_version": 1,
+            "source": "mapping_diagnostics",
+            "summary": "Near-full mapping; exact recovery failed",
+            "symptom": "Retained alignments cover most or all of the expected sequence, but the exact endpoint fails."
+          },
+          "scope": "Recorded endpoint/exit explanation; not necessarily a confirmed mechanism",
+          "status": "fail",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-generic-stress",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "No exact dedicated molecule; partial recovery and error cause are not yet classified; No exact dedicated molecule; partial recovery and error cause are not yet classified",
+          "finding": {
+            "confidence": "confirmed",
+            "confidence_scope": "Recorded observation, not an assembly-internal mechanism",
+            "evidence": [
+              {
+                "source": "status",
+                "text": "Recorded outcome: fail.",
+                "type": "execution"
+              },
+              {
+                "metrics": {
+                  "alignment_identity": 0.9999829428186424,
+                  "candidate_flags": {
+                    "duplicated": false,
+                    "fragmented": false,
+                    "joined": false,
+                    "no_supported_alignment": false
+                  },
+                  "contig_count": 1,
+                  "recovered_fraction": 0.9999829428186424
+                },
+                "source": "diagnostics.evidence.replicons[NC_009649.1]",
+                "text": "pKPN3: 100.00% retained reference coverage; 99.998% alignment identity; 1 supporting contig(s).",
+                "type": "mapping"
+              }
+            ],
+            "interpretation": "Mapped coverage does not establish exact sequence, complete boundaries or a unique dedicated copy. Differences and assignment remain unresolved unless separately reviewed.",
+            "kind": "near_full_non_exact",
+            "mechanism_confidence": "unresolved",
+            "schema_version": 1,
+            "source": "mapping_diagnostics",
+            "summary": "Near-full mapping; exact recovery failed",
+            "symptom": "Retained alignments cover most or all of the expected sequence, but the exact endpoint fails."
+          },
+          "scope": "Recorded endpoint/exit explanation; not necessarily a confirmed mechanism",
+          "status": "fail",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-matched-exact",
+            "flye",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-matched-exact",
+            "flye-meta",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-matched-exact",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-matched-exact",
+            "plassembler",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-generic-stress",
+            "flye",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-generic-stress",
+            "flye-meta",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-generic-stress",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-generic-stress",
+            "plassembler",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-ont2023-shaped",
+            "flye",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-ont2023-shaped",
+            "flye-meta",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-ont2023-shaped",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-se11-pse11-1-seed-20261106-ont2023-shaped",
+            "plassembler",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-matched-exact",
+            "flye",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-matched-exact",
+            "flye-meta",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-matched-exact",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-matched-exact",
+            "plassembler",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-generic-stress",
+            "flye",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-generic-stress",
+            "flye-meta",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-generic-stress",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-generic-stress",
+            "plassembler",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped",
+            "flye",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped",
+            "flye-meta",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped",
+            "raven",
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "explanation": "Tolerant pass/fail is unscored for this panel; continuous alignment measurements are reported separately.",
+          "scope": "Unscored uncertainty must remain visible and outside pass/fail denominators",
+          "status": "tolerant_unscored",
+          "task": [
+            "s6-mgh78578-pkpn3-seed-20261106-ont2023-shaped",
+            "plassembler",
+            null,
+            null,
+            null
+          ]
+        }
+      ],
+      "snapshot_generated_at": "2026-11-06T10:41:17+00:00",
+      "stages": {
+        "assemble": {
+          "finished": true,
+          "state": "COMPLETED",
+          "state_counts": {
+            "COMPLETED": 24
+          },
+          "successful": true
+        },
+        "assessment": {
+          "finished": true,
+          "state": "COMPLETED",
+          "state_counts": {
+            "COMPLETED": 1
+          },
+          "successful": true
+        },
+        "evidence": {
+          "finished": true,
+          "state": "COMPLETED",
+          "state_counts": {
+            "COMPLETED": 1
+          },
+          "successful": true
+        },
+        "prepare": {
+          "finished": true,
+          "state": "COMPLETED",
+          "state_counts": {
+            "COMPLETED": 1
+          },
+          "successful": true
+        },
+        "report": {
+          "finished": true,
+          "state": "COMPLETED",
+          "state_counts": {
+            "COMPLETED": 1
+          },
+          "successful": true
+        },
+        "simulate": {
+          "finished": true,
+          "state": "COMPLETED",
+          "state_counts": {
+            "COMPLETED": 6
+          },
+          "successful": true
+        }
+      },
+      "status_counts": {
+        "fail": 6,
+        "pass": 18
+      },
+      "submitted_executions": 24,
+      "unsubmitted_not_run_rows": 0
+    }
+  ],
+  "generated_at": "2026-11-06T10:43:15+00:00",
+  "jobs_finished": true,
+  "release_ready": true,
+  "schema_version": 1,
+  "scope": "Evidence readiness only. Recorded scientific fails/tool errors can be reported; this does not certify scientific truth, frontend QA, deployment or a Git commit.",
+  "status": "ready"
+}
