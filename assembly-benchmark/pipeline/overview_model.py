@@ -1,6 +1,7 @@
 """Backend aggregation of frozen execution statuses; no rescoring."""
 import copy
 import re
+from .result_model import case_title
 from .common import ROOT, load
 from .identities import result_href
 from .cohort_policy import reporting_role
@@ -64,7 +65,7 @@ def _repeatability_groups(document, cases):
             if case is None:
                 raise ValueError("Repeatability comparison references an unknown scenario")
             result.append({**copy.deepcopy(group), "comparison": kind, "batch": document["batch"],
-                           "mode": group.get("mode", "default"), "title": case.get("title", case["id"]),
+                           "mode": group.get("mode", "default"), "title": case_title(case),
                            "organism": case.get("organism", "Not recorded"),
                            "assembly_accession": case.get("assembly_accession")})
     return result
@@ -123,7 +124,7 @@ def build_overview(documents, *, cohort=None, archived_batch=None, root_batch=No
             link = result_href(record, "" if archived_batch is not None or batch == root_batch else f"batches/{batch}/")
             role, reason = reporting_role(case, family, policy)
             rows.append({"cohort_role": role, "cohort_reason": reason, "batch": batch, "family": family, "scenario_id": record["scenario_id"],
-                         "title": case.get("title", case["id"]), "organism": case.get("organism", "Not recorded"),
+                         "title": case_title(case), "organism": case.get("organism", "Not recorded"),
                          "assembly_accession": case.get("assembly_accession") or case.get("reference_accession"), "tool": record["tool"],
                          "version": record.get("version") or "Version not recorded", "threads": record.get("threads"),
                          "run_id": record.get("run_id"), "status": record.get("status", "not_run"), "href": link})

@@ -18,7 +18,7 @@ from .contig_origins import build_contig_origins
 from .length_metrics import build_length_metrics, METRICS
 from .graph_contig_identity import load_graph_contig_identity
 from .graph_availability import graph_availability
-from .result_model import assessed_molecules, verdict
+from .result_model import assessed_molecules, verdict, case_title
 from .identities import result_slug as result_id
 from .recorded_coordinates import recorded_paf_plot
 from .recorded_sidecars import completed_sidecar_plot
@@ -168,7 +168,7 @@ def prepare_document(source, artifact_root=None, coordinate_roots=(), snapshot_h
 
 def markdown_report(case, record, batch):
     evidence = record['report_evidence']
-    lines = [f'# {case["title"]} — {record["tool"]}', '', f'**Exact outcome: {record["status"].upper()}**', '',
+    lines = [f'# {case_title(case)} — {record["tool"]}', '', f'**Exact outcome: {record["status"].upper()}**', '',
              evidence['description'], '', '## Recorded outcome', '',
              f'- Batch: `{batch}`', f'- Scenario: `{record["scenario_id"]}`',
              f'- Version: {record.get("version", "Not recorded")}',

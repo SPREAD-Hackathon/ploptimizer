@@ -7,6 +7,7 @@ import html
 import shutil
 from pathlib import Path
 
+from .result_model import case_title
 from .cases import plan
 from .assets import ensure_assets
 from .reviews import attach_sequence_review
@@ -181,7 +182,7 @@ def build(config, batch=None, output=None, document=None, include_history=True, 
         plasmids = [r for r in case["replicons"] if r["molecule_type"] == "plasmid"]
         sizes = ", ".join(f'{r["length_bp"] / 1000:.1f} kb' for r in plasmids) or "Negative control"
         noun = "plasmid" if len(plasmids) == 1 else "plasmids"
-        body += f'<tr data-category="{case["category"]}" data-species="{case["organism"].split()[0]}"><th scope="row"><a href="scenarios/{e(case["id"])}.html">{e(case["title"])}</a><span class="row-summary"><span class="category-label">{case["category"]}</span> · {len(plasmids)} {noun} · {e(sizes)}</span></th>'
+        body += f'<tr data-category="{case["category"]}" data-species="{case["organism"].split()[0]}"><th scope="row"><a href="scenarios/{e(case["id"])}.html">{e(case_title(case))}</a><span class="row-summary"><span class="category-label">{case["category"]}</span> · {len(plasmids)} {noun} · {e(sizes)}</span></th>'
         for tool in config["tools"]:
             row = next(r for r in results if r["scenario_id"] == case["id"] and r["tool"] == tool)
             body += f'<td data-tool="{tool}" data-status="{row["status"]}"><a class="result-link" href="{e(result_href(row))}">Exact: {badge(row["status"])}</a><span class="row-summary">{e(diagnostic_summary(row, case))}</span></td>'
@@ -194,11 +195,11 @@ def build(config, batch=None, output=None, document=None, include_history=True, 
         name, description = CATEGORIES[key]
         category += f'<h2>{key} · {e(name)}</h2><p>{e(description)}</p><ul class="scenario-list">'
         for case in (c for c in cases if c["category"] == key):
-            category += f'<li><a href="{case["id"]}.html">{e(case["title"])}</a><span>{e(case["truth_type"].replace("_", " "))}</span></li>'
+            category += f'<li><a href="{case["id"]}.html">{e(case_title(case))}</a><span>{e(case["truth_type"].replace("_", " "))}</span></li>'
         category += '</ul>'
     for case in cases:
         rows = [r for r in results if r["scenario_id"] == case["id"]]
-        (output / "scenarios" / (case["id"] + ".html")).write_text(page(case["title"], scenario_page(case, rows, batch, document.get("inputs", {}).get(case["id"]), output, document["batch"]), "../", "scenarios"))
+        (output / "scenarios" / (case["id"] + ".html")).write_text(page(case_title(case), scenario_page(case, rows, batch, document.get("inputs", {}).get(case["id"]), output, document["batch"]), "../", "scenarios"))
     category += '<p><a href="../index.html">Return to the results overview</a> to explore all scenario families.</p>'
     (output / "scenarios/index.html").write_text(page("Scenarios", category, "../", "scenarios", base_href=site_root(output) + "scenarios/"))
     methods = (ROOT / "website/methods.html").read_text()
@@ -221,7 +222,7 @@ def build(config, batch=None, output=None, document=None, include_history=True, 
 def scenario_page(case, rows, batch, manifest=None, output=None, batch_id=None):
     settings = case["simulation"]
     category_name, category_description = CATEGORIES[case["category"]]
-    body = f'<a class="back" href="{case["category"].lower()}.html">{case["category"]} family results</a><h1>{e(case["title"])}</h1><p class="intro">{case["category"]} · {e(category_name)} · {e(case["organism"])}</p><p>{e(category_description)}</p>'
+    body = f'<a class="back" href="{case["category"].lower()}.html">{case["category"]} family results</a><h1>{e(case_title(case))}</h1><p class="intro">{case["category"]} · {e(category_name)} · {e(case["organism"])}</p><p>{e(category_description)}</p>'
     if batch_id:
         body += f'<p class="muted">Batch <code>{e(batch_id)}</code></p>'
     if case['category'] == 'S5':
@@ -479,6 +480,6 @@ def write_release_overview(output, document, include_history=True, render_contex
     catalog += '</ul>'
     if document["scenarios"]:
         catalog += '<details><summary>Individual input cases in this batch</summary><ul class="scenario-list">'
-        catalog += ''.join(f'<li><a href="{e(case["id"])}.html">{e(case["title"])}</a></li>' for case in document["scenarios"]) + '</ul></details>'
+        catalog += ''.join(f'<li><a href="{e(case["id"])}.html">{e(case_title(case))}</a></li>' for case in document["scenarios"]) + '</ul></details>'
     (output / "scenarios/index.html").write_text(page("Scenario families", catalog, "../", "scenarios", base_href=site_root(output) + "scenarios/"))
     return model

@@ -5,6 +5,7 @@ import json
 import re
 import shutil
 
+from .result_model import case_title
 from .identities import result_slug, result_href
 
 
@@ -110,7 +111,7 @@ def result_body(case, record, artifact, output, family=None):
     from .command_view import render_command
     slug = result_slug(record)
     family_link = f'<a href="../scenarios/{e(family.lower())}.html">{e(family)} results</a> · ' if family else ''
-    body = f'<nav class="result-breadcrumb" aria-label="Result navigation">{family_link}<a href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Input details</a></nav><h1>{e(LABELS[record["tool"]])}</h1><p class="result-subtitle">{e(case["title"])}</p>'
+    body = f'<nav class="result-breadcrumb" aria-label="Result navigation">{family_link}<a href="../scenarios/{e(case["id"])}.html#{e(record["tool"])}">Input details</a></nav><h1>{e(LABELS[record["tool"]])}</h1><p class="result-subtitle">{e(case_title(case))}</p>'
     body += outcome_section(record)
     if record.get("tool") == "plassembler":
         scope = ['The score and graph cover final plasmids only.' + (' The input also contains a chromosome.' if any(m.get('molecule_type') == 'chromosome' for m in case.get('replicons', [])) else '')]

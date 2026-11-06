@@ -1,5 +1,16 @@
 """Backend endpoint descriptions from immutable saved scores."""
 
+def case_title(case):
+    """Clarify short simulated Nanopore reads without changing frozen cases."""
+    title = case.get("title", case["id"])
+    if case.get("category") == "S4" and case.get("read_length_profile") == "short":
+        mean = case.get("simulation", {}).get("length_mean")
+        if isinstance(mean, (int, float)) and mean > 0:
+            context = title.rsplit(" · ", 1)[0]
+            return f"{context} · Short Nanopore read-length challenge · {mean / 1000:g} kb target mean"
+    return title
+
+
 def assessed_molecules(record):
     """Select the molecules relevant to the recorded endpoint, not a new policy."""
     if record.get("report_evidence"):
