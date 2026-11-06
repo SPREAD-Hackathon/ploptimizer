@@ -1,0 +1,7 @@
+{
+  "job_id": "34519324",
+  "remote_root": "/well/aanensen/users/rva470/ploptimizer/assembly-benchmark",
+  "remote_output": "/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/s5-native-v2/repeat-check",
+  "status": "completed",
+  "script_sha256": "6b2d87bf438af1cf9a6884413182b90cfc4fb0faf8fa75c9619f8adf428f9b91"
+}

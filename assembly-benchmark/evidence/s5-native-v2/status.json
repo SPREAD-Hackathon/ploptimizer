@@ -1,0 +1,25 @@
+{
+  "assembly_count": 24,
+  "batch_id": "20261106T104655",
+  "config": "config/linear-plasmids.json",
+  "config_fingerprint": "e1ee75640714829162bb439501e17d99805895b3ec0ca9fca375f57cd570f9fa",
+  "input_count": 6,
+  "jobs": {
+    "assemble": "34519371",
+    "evidence": "34519373",
+    "prepare": "34519368",
+    "report": "34519372",
+    "simulate": "34519370"
+  },
+  "reference_panel_sha256": "11ea51f62ed1d962dd4ed83ad323e898aee0d88949e56deac62e2d0c6d57834d",
+  "scenario_ids": [
+    "s5-canus-nbc00277-native-length-standard",
+    "s5-canus-nbc00277-native-length-long",
+    "s5-prunicolor-nbc01021-native-length-standard",
+    "s5-prunicolor-nbc01021-native-length-long",
+    "s5-albidoflavus-nbc01661-native-length-standard",
+    "s5-albidoflavus-nbc01661-native-length-long"
+  ],
+  "schema_version": 1,
+  "status": "submitted"
+}

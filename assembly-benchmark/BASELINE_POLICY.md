@@ -35,7 +35,8 @@ both eligible saved controls and supplementary mixed-size results.
   available as supplementary small-plasmid noise tests, not the revised S6 panel.
 - S4 retains its existing scope and results. S5 now selects three complete
   Streptomyces assemblies; its 16 isolated SCP1/SLP2 executions remain historical
-  and supplementary. The replacement has not run.
+  and supplementary. The replacement is submitted as batch `20261106T104655`;
+  results enter the cohort only after evidence validation.
 
 Supplementary runs keep their original scenario identifiers, detailed pages,
 commands, plots, downloads and scores. They are not relabelled as new S4 runs or

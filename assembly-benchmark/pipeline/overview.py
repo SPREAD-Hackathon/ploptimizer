@@ -109,7 +109,10 @@ def render_family(model, family, prefix="../"):
     if family == "S2" and model.get("baseline_policy") and not item['counts']['total']:
         body += '<p>The revised larger-plasmid coverage panel has not been assessed.</p>'
     if family == "S5" and model.get("baseline_policy") and not item['counts']['total']:
-        body += '<p>The replacement panel has not been run. It selects complete assemblies of S. canus NBC_00277, S. prunicolor NBC_01021 and S. albidoflavus NBC 01661, including their deposited plasmids.</p>'
+        status = model.get('panel_statuses', {}).get('S5', {})
+        message = ('The 24-execution replacement panel has been submitted; results and dot plots are pending.'
+                   if status.get('state') == 'submitted' else 'The replacement panel has not been run.')
+        body += f'<p>{message} It selects complete assemblies of S. canus NBC_00277, S. prunicolor NBC_01021 and S. albidoflavus NBC 01661, including their deposited plasmids.</p>'
     if family == "S6" and model.get("baseline_policy") and not item['counts']['total']:
         status = model.get('panel_statuses', {}).get('S6', {})
         if status.get('state') == 'submitted':

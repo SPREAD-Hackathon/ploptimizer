@@ -51,11 +51,13 @@
   },
   "panel_statuses": {
     "S5": {
-      "state": "not_run",
-      "config": "config/linear-plasmids.json"
+      "state": "submitted",
+      "config": "config/linear-plasmids.json",
+      "batch_id": "20261106T104655",
+      "assembly_count": 24
     },
     "S6": {
-      "state": "submitted",
+      "state": "complete",
       "batch_id": "20261106T100403",
       "assembly_count": 24
     }

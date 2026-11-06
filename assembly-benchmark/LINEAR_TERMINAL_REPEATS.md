@@ -24,7 +24,7 @@ Unmodified NCBI metadata responses are retained under
 `pipeline/linear_cases.py`. Two read-length profiles produce six inputs and
 24 assembler executions: standard target lengths (10 kb mean, 50 kb ceiling) and
 long target lengths (100 kb mean, 200 kb ceiling), each with the existing four
-assembler configurations. No replacement runs have been submitted.
+assembler configurations. Submission status and job identifiers are recorded in `evidence/s5-native-v2/status.json`.
 
 Each input contains its complete deposited chromosome/plasmid complement.
 Plassembler uses its ordinary chromosome-aware workflow, retaining chromosome
@@ -45,14 +45,28 @@ them. Two terminal reads cover each end, one per orientation; full breadth is re
 The standard and long arms retain their declared 10 kb / 120 kb terminal-read
 lengths, capped to molecule length. These are the existing ideal-data controls.
 
-Repeat type and repeat coordinates are **not yet assigned** for these new
-records. A literal exact inverted-prefix comparison of the deposited ends gives
-35 bp / 3 bp for the S. canus chromosome/plasmid, 48 bp for S. prunicolor, and
-0 bp / 0 bp for the S. albidoflavus chromosome/plasmid. These values are not
-estimates of full repeat length and do not exclude imperfect or offset repeats.
-The arms are therefore labelled **standard** and **long**, not “repeat-spanning”.
-Terminal inverted repeats and tandem arrays remain separate structures; do not
-assign either label without locating the relevant sequence intervals.
+The pinned references have now been compared between complete left and right
+halves with NUCmer 4.0.1 (`--maxmatch --nosimplify --threads 1`, no delta filtering).
+The leading left-terminal inverted alignments are below. Coordinates are
+**1-based inclusive**; identity is rounded by `show-coords`.
+
+| Molecule | Left interval | Right interval | Aligned lengths (left / right) | Identity | Right-tip offset |
+| --- | --- | --- | --- | --- | --- |
+| CP108065.1 chromosome | 1–15,164 | 10,676,251–10,691,412 | 15,164 / 15,162 bp | 99.99% | 0 bp |
+| CP108066.1 plasmid | 1–502 | 133,817–134,326 | 502 / 510 bp | 86.13% | 0 bp |
+| CP108676.1 chromosome | 1–65,571 | 10,883,283–10,948,847 | 65,571 / 65,565 bp | 99.99% | 0 bp |
+| CP109243.1 chromosome | 1–25,460 | 7,109,024–7,134,484 | 25,460 / 25,461 bp | 99.99% | 1,290 bp |
+| CP109244.1 plasmid | — | — | No inter-arm alignment in this run | — | — |
+
+These are **inverted** alignments, not tandem arrays. The S. albidoflavus
+chromosome has an offset right-hand match; the remaining 1,290 bp stays visible
+in interpretation. The S. canus plasmid match has lower identity than the
+chromosome repeats. These boundaries are alignment endpoints. All 832 unfiltered
+inter-arm alignment rows, commands and sequence hashes are retained in
+`evidence/s5-native-v2/reference-repeat-alignments.json` (0-based half-open).
+
+The existing 10 kb / 100 kb mean read profiles are unchanged. They remain
+standard and long: the native genomes differ in repeat structure.
 
 Linear exact equivalence permits reverse complementation, not rotation. Sequence
 recovery, end truncation, repeat copy structure and reported circularity should
@@ -73,5 +87,6 @@ Plan from `assembly-benchmark` with:
 python3 benchmark.py --config config/linear-plasmids.json plan
 ```
 
-Planning does not simulate reads or submit jobs. Future execution must use fresh
-batch directories; do not overwrite the historical S5 batch.
+Planning does not simulate reads or submit jobs. The submitted native batch is
+`20261106T104655`; job IDs and collection commands are in `S5_NATIVE_RUNS.md`.
+Do not overwrite the historical S5 batch or resubmit this native panel.

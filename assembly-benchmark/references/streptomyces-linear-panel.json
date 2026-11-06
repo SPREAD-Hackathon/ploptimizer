@@ -3,7 +3,7 @@
   "curated_on": "2026-11-06",
   "scope": "Three complete deposited Streptomyces assemblies selected by the user; all deposited replicons included.",
   "metadata_sources": "references/ncbi/streptomyces-linear-20261106",
-  "terminal_repeat_scope": "Topology is taken from NCBI. Repeat coordinates/type remain uncurated; literal inverted-end prefix measurements are retained separately.",
+  "terminal_repeat_scope": "Pinned-sequence inter-arm alignments measured with NUCmer 4.0.1; boundaries are alignment endpoints. Offset right ends and lower identity retained explicitly; not a tandem-array census.",
   "assemblies": [
     {
       "assembly_accession": "GCF_036177905.1",
@@ -32,9 +32,33 @@
           "terminal_repeat_evidence": {
             "method": "literal_terminal_inverted_prefix-v1",
             "exact_terminal_inverted_prefix_bp": 35,
-            "repeat_classification": "not_assigned",
-            "repeat_coordinates_status": "not_curated",
-            "scope": "Literal comparison of the pinned sequence ends; no tandem-repeat or repeat-spanning classification assigned."
+            "repeat_classification": "inverted_terminal_alignment",
+            "repeat_coordinates_status": "alignment_boundaries_recorded",
+            "scope": "Literal exact-prefix measurement retained separately from unfiltered NUCmer inter-arm alignment boundaries.",
+            "inter_arm_alignment": {
+              "method": "nucmer-inter-arm-v1",
+              "mapper_version": "4.0.1",
+              "coordinate_system": "0-based half-open on the original reference",
+              "evidence_path": "evidence/s5-native-v2/reference-repeat-alignments.json",
+              "alignment_count": 227,
+              "selected_left_terminal_inverted_alignment": {
+                "aligned_left_bp": 15164,
+                "aligned_right_bp": 15162,
+                "identity_percent": 99.99,
+                "left_interval": [
+                  0,
+                  15164
+                ],
+                "left_terminal_offset_bp": 0,
+                "orientation": "inverted",
+                "right_interval": [
+                  10676250,
+                  10691412
+                ],
+                "right_terminal_offset_bp": 0,
+                "source_row": 1
+              }
+            }
           }
         },
         {
@@ -54,9 +78,33 @@
           "terminal_repeat_evidence": {
             "method": "literal_terminal_inverted_prefix-v1",
             "exact_terminal_inverted_prefix_bp": 3,
-            "repeat_classification": "not_assigned",
-            "repeat_coordinates_status": "not_curated",
-            "scope": "Literal comparison of the pinned sequence ends; no tandem-repeat or repeat-spanning classification assigned."
+            "repeat_classification": "inverted_terminal_alignment",
+            "repeat_coordinates_status": "alignment_boundaries_recorded",
+            "scope": "Literal exact-prefix measurement retained separately from unfiltered NUCmer inter-arm alignment boundaries.",
+            "inter_arm_alignment": {
+              "method": "nucmer-inter-arm-v1",
+              "mapper_version": "4.0.1",
+              "coordinate_system": "0-based half-open on the original reference",
+              "evidence_path": "evidence/s5-native-v2/reference-repeat-alignments.json",
+              "alignment_count": 1,
+              "selected_left_terminal_inverted_alignment": {
+                "aligned_left_bp": 502,
+                "aligned_right_bp": 510,
+                "identity_percent": 86.13,
+                "left_interval": [
+                  0,
+                  502
+                ],
+                "left_terminal_offset_bp": 0,
+                "orientation": "inverted",
+                "right_interval": [
+                  133816,
+                  134326
+                ],
+                "right_terminal_offset_bp": 0,
+                "source_row": 1
+              }
+            }
           }
         }
       ]
@@ -88,9 +136,33 @@
           "terminal_repeat_evidence": {
             "method": "literal_terminal_inverted_prefix-v1",
             "exact_terminal_inverted_prefix_bp": 48,
-            "repeat_classification": "not_assigned",
-            "repeat_coordinates_status": "not_curated",
-            "scope": "Literal comparison of the pinned sequence ends; no tandem-repeat or repeat-spanning classification assigned."
+            "repeat_classification": "inverted_terminal_alignment",
+            "repeat_coordinates_status": "alignment_boundaries_recorded",
+            "scope": "Literal exact-prefix measurement retained separately from unfiltered NUCmer inter-arm alignment boundaries.",
+            "inter_arm_alignment": {
+              "method": "nucmer-inter-arm-v1",
+              "mapper_version": "4.0.1",
+              "coordinate_system": "0-based half-open on the original reference",
+              "evidence_path": "evidence/s5-native-v2/reference-repeat-alignments.json",
+              "alignment_count": 162,
+              "selected_left_terminal_inverted_alignment": {
+                "aligned_left_bp": 65571,
+                "aligned_right_bp": 65565,
+                "identity_percent": 99.99,
+                "left_interval": [
+                  0,
+                  65571
+                ],
+                "left_terminal_offset_bp": 0,
+                "orientation": "inverted",
+                "right_interval": [
+                  10883282,
+                  10948847
+                ],
+                "right_terminal_offset_bp": 0,
+                "source_row": 1
+              }
+            }
           }
         }
       ]
@@ -122,9 +194,33 @@
           "terminal_repeat_evidence": {
             "method": "literal_terminal_inverted_prefix-v1",
             "exact_terminal_inverted_prefix_bp": 0,
-            "repeat_classification": "not_assigned",
-            "repeat_coordinates_status": "not_curated",
-            "scope": "Literal comparison of the pinned sequence ends; no tandem-repeat or repeat-spanning classification assigned."
+            "repeat_classification": "inverted_subterminal_alignment",
+            "repeat_coordinates_status": "alignment_boundaries_recorded",
+            "scope": "Literal exact-prefix measurement retained separately from unfiltered NUCmer inter-arm alignment boundaries.",
+            "inter_arm_alignment": {
+              "method": "nucmer-inter-arm-v1",
+              "mapper_version": "4.0.1",
+              "coordinate_system": "0-based half-open on the original reference",
+              "evidence_path": "evidence/s5-native-v2/reference-repeat-alignments.json",
+              "alignment_count": 442,
+              "selected_left_terminal_inverted_alignment": {
+                "aligned_left_bp": 25460,
+                "aligned_right_bp": 25461,
+                "identity_percent": 99.99,
+                "left_interval": [
+                  0,
+                  25460
+                ],
+                "left_terminal_offset_bp": 0,
+                "orientation": "inverted",
+                "right_interval": [
+                  7109023,
+                  7134484
+                ],
+                "right_terminal_offset_bp": 1290,
+                "source_row": 1
+              }
+            }
           }
         },
         {
@@ -144,9 +240,17 @@
           "terminal_repeat_evidence": {
             "method": "literal_terminal_inverted_prefix-v1",
             "exact_terminal_inverted_prefix_bp": 0,
-            "repeat_classification": "not_assigned",
-            "repeat_coordinates_status": "not_curated",
-            "scope": "Literal comparison of the pinned sequence ends; no tandem-repeat or repeat-spanning classification assigned."
+            "repeat_classification": "no_inter_arm_alignment_at_recorded_settings",
+            "repeat_coordinates_status": "alignment_boundaries_recorded",
+            "scope": "Literal exact-prefix measurement retained separately from unfiltered NUCmer inter-arm alignment boundaries.",
+            "inter_arm_alignment": {
+              "method": "nucmer-inter-arm-v1",
+              "mapper_version": "4.0.1",
+              "coordinate_system": "0-based half-open on the original reference",
+              "evidence_path": "evidence/s5-native-v2/reference-repeat-alignments.json",
+              "alignment_count": 0,
+              "selected_left_terminal_inverted_alignment": null
+            }
           }
         }
       ]

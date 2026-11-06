@@ -276,7 +276,9 @@ records are versioned under `reviews/evidence/`.
 
 `python benchmark.py --config config/linear-plasmids.json plan` expands three
 complete Streptomyces assemblies with all native replicons into six standard/long
-inputs and 24 assembly tasks. No replacement run has been submitted. The model
+inputs and 24 assembly tasks. Batch `20261106T104655` is submitted. Use
+`python3 scripts/native_linear.py collect` to collect existing evidence; see
+[S5_NATIVE_RUNS.md](S5_NATIVE_RUNS.md) for jobs and publication checks. The model
 requires full breadth and explicit terminal read support; Plassembler uses its
 chromosome-aware workflow. Reports stay batch-scoped. Historical isolated
 SCP1/SLP2 reproduction uses `config/linear-isolated-legacy.json`.

@@ -141,7 +141,7 @@ audited source checksums matched; historic Raven runs did not request GFA output
 The active S5 profile `config/linear-plasmids.json` selects the three complete
 Streptomyces assemblies linked by CP108065.1, CP108676.1 and CP109243.1, including
 their native plasmids. Six standard/long inputs define 24 assembly tasks; the
-replacement has not run. SCP1/SLP2 are historical controls. See
+replacement is submitted as batch `20261106T104655`. SCP1/SLP2 are historical controls. See
 [the active S5 reference selection](LINEAR_TERMINAL_REPEATS.md).
 
 Bundle-rendered websites publish pages, plots, compact interactive graph models

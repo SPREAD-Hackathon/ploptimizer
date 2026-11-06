@@ -118,6 +118,9 @@ def result_body(case, record, artifact, output, family=None):
         from .noisy_report import legacy_noise_note
         body += legacy_noise_note(case)
     body += outcome_section(record)
+    if family == 'S5':
+        from .linear_report import reference_repeat_table
+        body += reference_repeat_table(case)
     if record.get("tool") == "plassembler":
         scope = ['The score and graph cover final plasmids only.' + (' The input also contains a chromosome.' if any(m.get('molecule_type') == 'chromosome' for m in case.get('replicons', [])) else '')]
         if record.get('retained_chromosome_sha256'):
