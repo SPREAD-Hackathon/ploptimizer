@@ -49,3 +49,11 @@ The current live report remains a verified release while jobs are pending. Add
 new batches to the headline cohort only after checking their frozen snapshots,
 execution outcomes and evidence; then export/render, run the release gate and
 publish the compact site. Pending work must not be called complete.
+
+The first submission attempt was cancelled before any assembly started:
+preparation tests caught Python 3.12-only f-string syntax in the reporting layer
+under pinned Python 3.11. The compatibility fix was checked with the actual
+cluster interpreter (363 tests, 11 optional skips), and a Python 3.11 grammar
+regression check was added. Archived job IDs and Slurm accounting with unset
+assembly start times are retained in `evidence/large-baseline-v3/attempt-1*`.
+Replacement batches use fresh directories; there are no duplicate assembly runs.
