@@ -101,6 +101,19 @@ def collect_panel(status_path=STATUS):
                 reuse_verified = reuse_verified and row.get('source_manifest_sha256') == row.get('copied_manifest_sha256') == digest(batch / 'cases' / case / 'input.json')
                 reuse_verified = reuse_verified and all(row.get(key) == manifest[key] for key in ('reads_sha256', 'truth_sha256', 'origins_sha256'))
             state['input_reuse_verified'] = reuse_verified
+        if record.get('raw_source_batch'):
+            subprocess.run(['rsync', '-az', cluster['host'] + ':' + str(remote / 'runs' / batch.name / 'raw_assembly_reuse.json'), str(batch) + '/'], check=True)
+            raw_reuse = load(batch / 'raw_assembly_reuse.json')
+            rows = raw_reuse.get('assemblies', [])
+            raw_verified = raw_reuse.get('status') == 'complete' and len(rows) == 6
+            for row in rows:
+                source = ROOT / 'runs' / record['raw_source_batch'] / 'results' / row['scenario_id'] / 'miniasm' / 'execution.json'
+                final = load(batch / 'results' / row['scenario_id'] / 'miniasm-plus' / 'execution.json')
+                workflow = final.get('assembly_workflow', {})
+                raw_verified = raw_verified and source.exists() and digest(source) == row['source_execution_sha256'] == workflow.get('source_execution_sha256')
+                raw_verified = raw_verified and row['raw_gfa_sha256'] == workflow.get('source_raw_gfa_sha256')
+            state['raw_assembly_reuse_verified'] = raw_verified
+            reuse_verified = reuse_verified and raw_verified
         state['status'] = 'evidence_complete' if state['inputs_admitted'] == 6 and reuse_verified else 'needs_review'
     else:
         state['status'] = 'needs_review'

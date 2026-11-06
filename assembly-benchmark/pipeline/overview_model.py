@@ -16,6 +16,7 @@ FAMILIES = {
 }
 TOOLS = {"flye": "Flye (default)", "flye-meta": "Flye (--meta)", "raven": "Raven", "plassembler": "Plassembler long"}
 TOOLS['miniasm'] = 'Miniasm (unpolished)'
+TOOLS['miniasm-plus'] = 'Miniasm + Minipolish'
 ERRORS = {"error", "timeout", "invalid_input"}
 
 

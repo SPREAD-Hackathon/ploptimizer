@@ -1,0 +1,9 @@
+{
+  "status": "pass",
+  "python_tests": 394,
+  "optional_skips": 11,
+  "smoke_job": "34522038",
+  "scientific_outcomes": "Pending; installation fixture excluded.",
+  "post_formatting_command_tests": 5,
+  "post_formatting_bundle_tests": 6
+}

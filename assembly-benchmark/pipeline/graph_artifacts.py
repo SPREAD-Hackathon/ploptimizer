@@ -306,10 +306,11 @@ def parse_miniasm_unitig_info(path, limits=None):
     for node in graph['nodes']:
         match = re.fullmatch(r'utg[0-9]+([lc])', node['id'])
         token = match.group(1) if match else '?'
+        depth = next((tag['value'] for tag in node['reported_coverage_tags'] if tag['tag'] == 'dp'), None)
         result['contigs'].append({'id': node['id'], 'length_bp': node['length_bp'],
-            'reported_coverage': None, 'reported_circularity_raw': token,
+            'reported_coverage': depth, 'reported_circularity_raw': token,
             'reported_circularity': {'c': 'circular', 'l': 'not_circular', '?': 'unknown'}[token],
-            'claim_scope': 'Miniasm unitig identifier suffix from ma_ug_print; coverage not reported.'})
+            'claim_scope': 'Miniasm unitig identifier suffix from ma_ug_print; coverage from a dp tag when present.'})
     return result
 
 

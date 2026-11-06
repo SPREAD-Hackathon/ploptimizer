@@ -8,7 +8,7 @@ import subprocess
 from .common import digest, save
 
 
-def extract_unitigs(raw, graph, assembly):
+def extract_unitigs(raw, graph, assembly, require_length_tag=True):
     """Preserve sequences/links; retain miniasm a/x annotations in raw output."""
     seen = set()
     omitted = collections.Counter()
@@ -23,7 +23,7 @@ def extract_unitigs(raw, graph, assembly):
                         or not re.fullmatch(r'[ACGTRYSWKMBDHVNacgtryswkmbdhvn]+', fields[2])):
                     raise ValueError('Invalid, duplicate or sequence-less miniasm unitig')
                 lengths = [f for f in fields[3:] if f.startswith('LN:i:')]
-                if len(lengths) != 1 or int(lengths[0][5:]) != len(fields[2]):
+                if len(lengths) > 1 or (require_length_tag and not lengths) or (lengths and int(lengths[0][5:]) != len(fields[2])):
                     raise ValueError('Miniasm sequence and declared length disagree')
                 seen.add(fields[1])
                 fasta.write('>' + fields[1] + '\n' + fields[2] + '\n')

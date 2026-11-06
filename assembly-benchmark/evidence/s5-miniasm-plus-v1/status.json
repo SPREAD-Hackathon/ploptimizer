@@ -1,0 +1,25 @@
+{
+  "after_job": "34520449",
+  "assembly_count": 6,
+  "batch_id": "20261106T123220",
+  "config_fingerprint": "217406ec2de668d5082d4154419871c8eaeca51c81be8133f4986e508daa1b93",
+  "input_count": 6,
+  "input_source_batch": "20261106T104655",
+  "jobs": {
+    "assemble": "34522051",
+    "evidence": "34522053",
+    "report": "34522052",
+    "reuse_inputs": "34522050"
+  },
+  "raw_source_batch": "20261106T111953",
+  "scenario_ids": [
+    "s5-canus-nbc00277-native-length-standard",
+    "s5-canus-nbc00277-native-length-long",
+    "s5-prunicolor-nbc01021-native-length-standard",
+    "s5-prunicolor-nbc01021-native-length-long",
+    "s5-albidoflavus-nbc01661-native-length-standard",
+    "s5-albidoflavus-nbc01661-native-length-long"
+  ],
+  "schema_version": 1,
+  "status": "queued_after_s5"
+}

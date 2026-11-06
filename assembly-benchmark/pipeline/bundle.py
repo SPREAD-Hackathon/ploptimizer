@@ -230,8 +230,10 @@ def markdown_report(case, record, batch):
     steps = record.get('assembly_workflow', {}).get('steps', [])
     if steps:
         for step in steps:
-            lines += [step['name'], '', '```text', shlex.join(step['command']) + ' > ' + shlex.quote(step['stdout_file']), '```', '']
-        lines += ['GFA segment sequences are copied into FASTA without polishing.', '']
+            status_note = ' (reused source stage)' if step.get('reused_source_stage') else ' (not run: empty source assembly)' if step.get('status') == 'not_run_empty_source_assembly' else ''
+            lines += [step['name'] + status_note, '', '```text', shlex.join(step['command']) + ' > ' + shlex.quote(step['stdout_file']), '```', '']
+        lines += [('Final Minipolish GFA segment sequences are copied into FASTA; source overlap/assembly stages are reused with recorded provenance.'
+                   if record.get('tool') == 'miniasm-plus' else 'GFA segment sequences are copied into FASTA without polishing.'), '']
     else:
         lines += ['```text', shlex.join(str(arg) for arg in record.get('command',[])) or 'Not recorded', '```', '']
     lines += ['## Source provenance', '',

@@ -16,12 +16,17 @@ from .common import ROOT, digest, fingerprint, load, save
 from .scoring import evaluate
 
 ENVIRONMENTS = {"flye": "flye", "flye-meta": "flye", "raven": "raven", "plassembler": "plassembler", "miniasm": "miniasm"}
+ENVIRONMENTS['miniasm-plus'] = 'miniasm-plus'
 
 
 def command(tool, reads, output, config, mode="default"):
     if mode not in ("default", "deterministic") or mode == "deterministic" and tool not in ("flye", "flye-meta"):
         raise ValueError("This tool has no supported deterministic mode")
     threads = str(config["threads"])
+    if tool == 'miniasm-plus':
+        return [sys.executable, '-m', 'pipeline.minipolish', '--reads', str(reads),
+                '--raw-graph', config['miniasm_source_gfa'], '--source-execution', config['miniasm_source_execution'],
+                '--output', str(output), '--threads', threads, '--rounds', '2']
     if tool == 'miniasm':
         return [sys.executable, '-m', 'pipeline.miniasm', '--reads', str(reads), '--output', str(output), '--threads', threads]
     if tool in ("flye", "flye-meta"):
@@ -86,7 +91,7 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
             raise ValueError("TMPDIR must stay inside the benchmark work area")
         Path(temporary_root).mkdir(parents=True, exist_ok=True)
         os.environ["TMPDIR"] = temporary_root
-        if tool != 'miniasm':  # Miniasm/minimap2 do not create multiprocessing sockets.
+        if tool not in ('miniasm', 'miniasm-plus'):  # These workflows do not create multiprocessing sockets.
             with tempfile.TemporaryDirectory(prefix="pymp-", dir=temporary_root) as temporary:
                 with socket.socket(socket.AF_UNIX) as probe:
                     probe.bind(str(Path(temporary) / "listener-12345678"))
@@ -103,9 +108,13 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
             raise ValueError("Input checksum mismatch")
         record["reads_sha256"] = manifest["reads_sha256"]
         record["truth_sha256"] = manifest["truth_sha256"]
+        if tool == 'miniasm-plus':
+            source_directory = batch / 'raw_assemblies' / case['id']
+            settings['miniasm_source_gfa'] = str(source_directory / 'assembly.raw.gfa')
+            settings['miniasm_source_execution'] = str(source_directory / 'execution.json')
         argv = command(tool, reads, directory / "output", settings, mode or "default")
         record["command"] = argv
-        binary = "flye" if tool == "flye-meta" else tool
+        binary = 'minipolish' if tool == 'miniasm-plus' else "flye" if tool == "flye-meta" else tool
         version_cwd = {"cwd": working_directory} if tool == "raven" else {}
         version = subprocess.run([binary, "-V" if tool == 'miniasm' else "--version"], capture_output=True, text=True, timeout=30, **version_cwd)
         record["version"] = (version.stdout + version.stderr).strip()
@@ -163,9 +172,20 @@ def run(case, tool, batch, config, threads=None, repeat=None, mode=None):
     except Exception as error:
         record.update(status="error", error=f"{type(error).__name__}: {error}")
     finally:
-        if tool == 'miniasm' and (directory / 'output/workflow.json').exists():
+        if tool in ('miniasm', 'miniasm-plus') and (directory / 'output/workflow.json').exists():
             record['assembly_workflow'] = load(directory / 'output/workflow.json')
         record["elapsed_seconds"] = round(time.monotonic() - start, 3)
+        if tool == 'miniasm-plus' and record.get('assembly_workflow', {}).get('source_elapsed_seconds') is not None:
+            workflow = record['assembly_workflow']
+            record['polishing_elapsed_seconds'] = record['elapsed_seconds']
+            record['elapsed_seconds'] = round(record['elapsed_seconds'] + workflow['source_elapsed_seconds'], 3)
+            record['initial_miniasm_evaluation'] = workflow['source_evaluation']
+            record['resource_scope'] = workflow['resource_scope']
+            peaks = [p for p in (record.get('peak_memory_kb'), workflow.get('source_peak_memory_kb')) if p is not None]
+            if peaks:
+                record['peak_memory_kb'] = max(peaks)
+            versions = workflow['versions']
+            record['version'] = f'Miniasm {versions.get("miniasm", "unknown")} + {versions.get("minipolish", "Minipolish unknown")}'
         record["finished_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
         save(result_path, record)
     return record

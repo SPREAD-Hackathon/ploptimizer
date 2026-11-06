@@ -9,6 +9,7 @@ SOURCES = {
     "raven": ("Raven 1.8.3 command definitions", "https://github.com/lbcb-sci/raven/blob/1.8.3/RavenExe/src/main.cc"),
     "plassembler": ("Plassembler 1.9.0 command definitions", "https://github.com/gbouras13/plassembler/blob/v1.9.0/src/plassembler/__init__.py"),
     'miniasm': ('Miniasm workflow documentation', 'https://github.com/lh3/miniasm#readme'),
+    'miniasm-plus': ('Minipolish 0.2.1 workflow documentation', 'https://github.com/rrwick/Minipolish/tree/v0.2.1'),
 }
 FLAGS = {
     "flye": {
@@ -47,16 +48,23 @@ def render_command(record, case=None, collapsed=True):
     evidence = execution_evidence(record, case)
     command = evidence['command']
     tool = record.get("tool")
-    definitions = FLAGS.get("flye" if tool == "flye-meta" else tool, {})
+    definitions = FLAGS.get("flye" if tool == "flye-meta" else 'miniasm' if tool == 'miniasm-plus' else tool, {})
+    if tool == 'miniasm-plus':
+        definitions = {**definitions, '--threads': 'Threads used by Minipolish for alignment and Racon polishing.',
+                       '--rounds': 'Two full Racon rounds after the initial constituent-read polish, matching the upstream default.'}
     body = ('<details class="command-used"><summary>Command used and flags</summary><div id="command-used">'
             if collapsed else '<h3 id="command-used">Command used and flags</h3><div>')
     body += f'<p class="muted">Recorded tool version: {e(record.get("version") or "not recorded")}</p>'
-    steps = evidence.get('assembly_workflow', {}).get('steps', []) if tool == 'miniasm' else []
+    steps = evidence.get('assembly_workflow', {}).get('steps', []) if tool in ('miniasm', 'miniasm-plus') else []
     if steps:
         for step in steps:
             text = shlex.join(step['command']) + ' > ' + shlex.quote(step['stdout_file'])
-            body += f'<h4>{e(step["name"])}</h4><pre class="recorded-command"><code>{e(text)}</code></pre>'
-        body += '<p>Unitig sequences are copied from GFA segment records into FASTA. No polishing step is run.</p>'
+            reused = ' · reused source stage' if step.get('reused_source_stage') else ''
+            if step.get('status') == 'not_run_empty_source_assembly':
+                reused = ' · not run: source Miniasm assembly is empty'
+            body += f'<h4>{e(step["name"] + reused)}</h4><pre class="recorded-command"><code>{e(text)}</code></pre>'
+        body += ('<p>Final Minipolish GFA segment sequences are copied into the scored FASTA. Runtime includes the source Miniasm stages and polishing.</p>'
+                 if tool == 'miniasm-plus' else '<p>Unitig sequences are copied from GFA segment records into FASTA. No polishing step is run.</p>')
     else:
         body += f'<pre class="recorded-command"><code>{e(shlex.join(command))}</code></pre>'
     if any("<workdir>" in arg for arg in command):

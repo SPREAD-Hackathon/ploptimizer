@@ -1,0 +1,251 @@
+{
+  "allocated_cpus": 2,
+  "assembly_file": "results/artificial-linear/miniasm-plus/output/assembly.fasta",
+  "assembly_sha256": "f06827db22ecc0e4198e70782f199b7852b3e0f9432d201a6f6a31d96ab59507",
+  "assembly_workflow": {
+    "conversion": {
+      "assembly_sha256": "f06827db22ecc0e4198e70782f199b7852b3e0f9432d201a6f6a31d96ab59507",
+      "conversion": "FASTA copies S sequences verbatim; standard GFA retains H/S/L/P. Raw a/x annotations retained separately.",
+      "graph_sha256": "62807c08ccc9e4b57ae3be22131d952906605f24a09cc36c6d68e43269ec826f",
+      "raw_annotation_records": {},
+      "raw_gfa_sha256": "62807c08ccc9e4b57ae3be22131d952906605f24a09cc36c6d68e43269ec826f",
+      "unitig_count": 1
+    },
+    "polishing": "Minipolish: initial constituent-read polish plus two full Racon rounds; default ONT mapping preset.",
+    "reads_sha256": "d4fd5b2d0940c27a7b971a07170ab401fe990a72a13ad48df183581cbb87ef62",
+    "resource_scope": "Sequential pipeline total: recorded Miniasm workflow plus this polishing continuation; memory is the larger stage peak.",
+    "schema_version": 1,
+    "source_batch_id": "miniasm-install-smoke-34519744",
+    "source_elapsed_seconds": 1.177,
+    "source_evaluation": {
+      "contig_count": 1,
+      "endpoint": "Chromosome-only assembly contains exactly the expected chromosome",
+      "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+      "plasmid_passes": 0,
+      "plasmid_total": 0,
+      "replicons": [
+        {
+          "accession": "artificial",
+          "exact_contigs": [],
+          "extra_full_copy_contigs": [],
+          "length_bp": 40000,
+          "molecule_type": "chromosome",
+          "name": "artificial",
+          "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+          "recovered_fraction": null,
+          "status": "fail",
+          "topology_status": "not_assessed"
+        }
+      ],
+      "status": "fail",
+      "unclassified_contigs": [
+        "utg000001l"
+      ]
+    },
+    "source_execution_sha256": "6da46df5730786b0c7dc2be96633751b9af3acc69e94f2438b0c85d5d21e9dbe",
+    "source_peak_memory_kb": 26204,
+    "source_raw_gfa_sha256": "2c770a1786cfa2ead8f530585085c5143142c0cad979895ea99ee37e2afd5d12",
+    "status": "complete",
+    "steps": [
+      {
+        "command": [
+          "minimap2",
+          "-x",
+          "ava-ont",
+          "-t",
+          "2",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-integration/source/runs/miniasm-install-smoke-34519744/cases/artificial-linear/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-integration/source/runs/miniasm-install-smoke-34519744/cases/artificial-linear/reads.fastq.gz"
+        ],
+        "exit_code": 0,
+        "name": "Read-to-read overlaps",
+        "reused_source_stage": true,
+        "stderr_tail": "[M::mm_idx_gen::0.038*1.03] collected minimizers\n[M::mm_idx_gen::0.047*1.21] sorted minimizers\n[M::main::0.048*1.21] loaded/built the index for 129 target sequence(s)\n[M::mm_mapopt_update::0.048*1.21] mid_occ = 33\n[M::mm_idx_stat] kmer size: 15; skip: 5; is_hpc: 0; #seq: 129\n[M::mm_idx_stat::0.049*1.21] distinct minimizers: 13606 (1.23% are singletons); average occurrences: 25.825; average spacing: 2.937; total length: 1032000\n[M::worker_pipeline::0.989*1.94] mapped 129 sequences\n[M::main] Version: 2.31-r1302\n[M::main] CMD: minimap2 -x ava-ont -t 2 /gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-integration/source/runs/miniasm-install-smoke-34519744/cases/artificial-linear/reads.fastq.gz /gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-integration/source/runs/miniasm-install-smoke-34519744/cases/artificial-linear/reads.fastq.gz\n[M::main] Real time: 0.992 sec; CPU: 1.926 sec; Peak RSS: 0.025 GB\n",
+        "stdout_file": "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-integration/source/runs/miniasm-install-smoke-34519744/results/artificial-linear/miniasm/output/overlaps.paf"
+      },
+      {
+        "command": [
+          "miniasm",
+          "-f",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-integration/source/runs/miniasm-install-smoke-34519744/cases/artificial-linear/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-integration/source/runs/miniasm-install-smoke-34519744/results/artificial-linear/miniasm/output/overlaps.paf"
+        ],
+        "exit_code": 0,
+        "name": "Unpolished unitig assembly",
+        "reused_source_stage": true,
+        "stderr_tail": "[M::main] ===> Step 1: reading read mappings <===\n[M::ma_hit_read::0.003*1.27] read 3503 hits; stored 5392 hits and 129 sequences (1032000 bp)\n[M::main] ===> Step 2: 1-pass (crude) read selection <===\n[M::ma_hit_sub::0.004*1.24] 129 query sequences remain after sub\n[M::ma_hit_cut::0.004*1.23] 5392 hits remain after cut\n[M::ma_hit_flt::0.004*1.23] 5392 hits remain after filtering; crude coverage after filtering: 15.37\n[M::main] ===> Step 3: 2-pass (fine) read selection <===\n[M::ma_hit_sub::0.004*1.22] 129 query sequences remain after sub\n[M::ma_hit_cut::0.004*1.21] 5392 hits remain after cut\n[M::ma_hit_contained::0.004*1.21] 123 sequences and 5114 hits remain after containment removal\n[M::main] ===> Step 4: graph cleaning <===\n[M::ma_sg_gen] read 5114 arcs\n[M::main] ===> Step 4.1: transitive reduction <===\n[M::asg_arc_del_trans] transitively reduced 4870 arcs\n[M::asg_arc_del_multi] removed 0 multi-arcs\n[M::asg_arc_del_asymm] removed 0 asymmetric arcs\n[M::main] ===> Step 4.2: initial tip cutting and bubble popping <===\n[M::asg_cut_tip] cut 0 tips\n[M::asg_pop_bubble] popped 0 bubbles and trimmed 0 tips\n[M::main] ===> Step 4.3: cutting short overlaps (3 rounds in total) <===\n[M::asg_arc_del_short] removed 0 short overlaps\n[M::asg_arc_del_short] removed 0 short overlaps\n[M::asg_arc_del_short] removed 0 short overlaps\n[M::main] ===> Step 4.4: removing short internal sequences and bi-loops <===\n[M::asg_cut_internal] cut 0 internal sequences\n[M::asg_cut_biloop] cut 0 small bi-loops\n[M::asg_cut_tip] cut 0 tips\n[M::asg_pop_bubble] popped 0 bubbles and trimmed 0 tips\n[M::main] ===> Step 4.5: aggressively cutting short overlaps <===\n[M::asg_arc_del_short] removed 0 short overlaps\n[M::main] ===> Step 5: generating unitigs <===\n[M::main] Version: 0.3-r179\n[M::main] CMD: miniasm -f /gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-integration/source/runs/miniasm-install-smoke-34519744/cases/artificial-linear/reads.fastq.gz /gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-integration/source/runs/miniasm-install-smoke-34519744/results/artificial-linear/miniasm/output/overlaps.paf\n[M::main] Real time: 0.011 sec; CPU: 0.012 sec\n",
+        "stdout_file": "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-integration/source/runs/miniasm-install-smoke-34519744/results/artificial-linear/miniasm/output/assembly.raw.gfa"
+      },
+      {
+        "command": [
+          "minipolish",
+          "--threads",
+          "2",
+          "--rounds",
+          "2",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/runs/minipolish-smoke-34522038/cases/artificial-linear/reads.fastq.gz",
+          "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/runs/minipolish-smoke-34522038/raw_assemblies/artificial-linear/assembly.raw.gfa"
+        ],
+        "exit_code": 0,
+        "name": "Minipolish (initial constituent-read polish and two full rounds)",
+        "stderr_tail": "assembly-benchmark/.cache/miniasm-plus-integration/source/.pixi/envs/miniasm-plus/bin/minimap2 (v2.31-r1302)\nRacon found:    /gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.pixi/envs/miniasm-plus/bin/racon (v1.5.0)\n\n\n\u001b[93m\u001b[1m\u001b[4mLoading graph\u001b[0m\n\u001b[2m    Loading the miniasm GFA graph into memory.\u001b[0m\n\n/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/runs/minipolish-smoke-34522038/raw_assemblies/artificial-linear/assembly.raw.gfa\n  1 segments (38,494 bp)\n  0 links\n\n\n\u001b[93m\u001b[1m\u001b[4mInitial polishing round\u001b[0m\n\u001b[2m    The first round of polishing is done on a per-segment basis and only uses\u001b[0m\n\u001b[2mreads which are definitely associated with the segment (because the GFA\u001b[0m\n\u001b[2mindicated that they were used to make the segment).\u001b[0m\n\nRunning Racon on utg000001l:\n  reads:      /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/utg000001l_reads.fastq (123 reads)\n  input:      /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/utg000001l.fasta (38,494 bp)\n  alignments: /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/utg000001l.paf (123 alignments)\n  output:     /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/utg000001l_polished.fasta (38,494 bp)\n\n\n\n\u001b[93m\u001b[1m\u001b[4mFull polishing rounds\u001b[0m\n\u001b[2m    The assembly graph is now polished using all of the reads. Multiple rounds\u001b[0m\n\u001b[2mof polishing are done, and circular contigs are rotated between rounds.\u001b[0m\n\n\nRunning Racon on round_1:\n  reads:      /gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/runs/minipolish-smoke-34522038/cases/artificial-linear/reads.fastq.gz (129 reads)\n  input:      /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/round_1.fasta (38,494 bp)\n  alignments: /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/round_1.paf (129 alignments)\n  output:     /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/round_1_polished.fasta (38,491 bp)\n  fix ends:   38,491 bp -> 38,494 bp\n\n\nRunning Racon on round_2:\n  reads:      /gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/runs/minipolish-smoke-34522038/cases/artificial-linear/reads.fastq.gz (129 reads)\n  input:      /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/round_2.fasta (38,494 bp)\n  alignments: /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/round_2.paf (129 alignments)\n  output:     /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/round_2_polished.fasta (38,491 bp)\n  fix ends:   38,491 bp -> 38,494 bp\n\n\n\u001b[93m\u001b[1m\u001b[4mAssign read depths\u001b[0m\n\u001b[2m    The reads are aligned to the contigs one final time to calculate read depth\u001b[0m\n\u001b[2mvalues.\u001b[0m\n\nAligning reads:\n  reads:      /gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/runs/minipolish-smoke-34522038/cases/artificial-linear/reads.fastq.gz (129 reads)\n  contigs:    /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/depths.fasta (38,494 bp)\n  alignments: /well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.t/34522038/tmp9oos53dd/depths.paf (129 alignments)\n  mean depth: 26.699x\n\n",
+        "stdout_file": "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/runs/minipolish-smoke-34522038/results/artificial-linear/miniasm-plus/output/assembly.polished.gfa"
+      }
+    ],
+    "versions": {
+      "miniasm": "0.3-r179",
+      "minimap2": "2.31-r1302",
+      "minipolish": "Minipolish v0.2.1\ntput: No value for $TERM and no -T specified",
+      "racon": "1.5.0"
+    }
+  },
+  "batch_id": "minipolish-smoke-34522038",
+  "command": [
+    "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/.pixi/envs/miniasm-plus/bin/python",
+    "-m",
+    "pipeline.minipolish",
+    "--reads",
+    "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/runs/minipolish-smoke-34522038/cases/artificial-linear/reads.fastq.gz",
+    "--raw-graph",
+    "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/runs/minipolish-smoke-34522038/raw_assemblies/artificial-linear/assembly.raw.gfa",
+    "--source-execution",
+    "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/runs/minipolish-smoke-34522038/raw_assemblies/artificial-linear/execution.json",
+    "--output",
+    "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.cache/miniasm-plus-integration/source/runs/minipolish-smoke-34522038/results/artificial-linear/miniasm-plus/output",
+    "--threads",
+    "2",
+    "--rounds",
+    "2"
+  ],
+  "config_fingerprint": "4a8f8e0b3d70da746c3946089b7eb3a5c0b1016276072c58a04d71c320d0b430",
+  "elapsed_seconds": 3.701,
+  "evaluation": {
+    "contig_count": 1,
+    "endpoint": "Chromosome-only assembly contains exactly the expected chromosome",
+    "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+    "plasmid_passes": 0,
+    "plasmid_total": 0,
+    "replicons": [
+      {
+        "accession": "artificial",
+        "exact_contigs": [],
+        "extra_full_copy_contigs": [],
+        "length_bp": 40000,
+        "molecule_type": "chromosome",
+        "name": "artificial",
+        "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+        "recovered_fraction": null,
+        "status": "fail",
+        "topology_status": "not_assessed"
+      }
+    ],
+    "status": "fail",
+    "unclassified_contigs": [
+      "utg000001l"
+    ]
+  },
+  "exit_code": 0,
+  "finished_at": "2026-11-06T12:31:15.202849+00:00",
+  "host": "compa024.hpc.in.bmrc.ox.ac.uk",
+  "initial_miniasm_evaluation": {
+    "contig_count": 1,
+    "endpoint": "Chromosome-only assembly contains exactly the expected chromosome",
+    "limitations": "Sequence endpoint only. Circularity claims and partial/structural alignment metrics are not assessed. Extra contigs are retained, not automatically called plasmids.",
+    "plasmid_passes": 0,
+    "plasmid_total": 0,
+    "replicons": [
+      {
+        "accession": "artificial",
+        "exact_contigs": [],
+        "extra_full_copy_contigs": [],
+        "length_bp": 40000,
+        "molecule_type": "chromosome",
+        "name": "artificial",
+        "reason": "No exact dedicated molecule; partial recovery and error cause are not yet classified",
+        "recovered_fraction": null,
+        "status": "fail",
+        "topology_status": "not_assessed"
+      }
+    ],
+    "status": "fail",
+    "unclassified_contigs": [
+      "utg000001l"
+    ]
+  },
+  "peak_memory_kb": 26204,
+  "polishing_elapsed_seconds": 2.524,
+  "reads_sha256": "d4fd5b2d0940c27a7b971a07170ab401fe990a72a13ad48df183581cbb87ef62",
+  "resource_scope": "Sequential pipeline total: recorded Miniasm workflow plus this polishing continuation; memory is the larger stage peak.",
+  "runtime_source_sha256": {
+    "pipeline/__init__.py": "c2a88811591528eefd8cd4b7d07f0d164cf03d9b3ddd1fbf9a580234e5fa66cb",
+    "pipeline/aggregate_data.py": "95faa579f80cb19cc3f49d52729015258d63ceaf123fd3f0e049450503007550",
+    "pipeline/aggregate_page.py": "b8540f2d0c47a552f301c67895c46f9a0bda9140271da26975b134a36ab36abb",
+    "pipeline/aggregate_plot.py": "3877cde6c8cb1a70dbe7e6443df89c49538e32fa1757acde9480e8058524d75f",
+    "pipeline/assessments.py": "a240226cf26430fdfad0c500344245d5cc059ffc5b9e57afb0588eee9bbecd1a",
+    "pipeline/assets.py": "56ac6480e8e663275b70c7710e9393718ac926e506e182e5777349606714fbb6",
+    "pipeline/base_review.py": "303d0fc0e6f47fab20156ce988cccb56483b5888c24d730444b8e343b3dc5dcb",
+    "pipeline/base_review_records.py": "988f0846fbd72e21a4923a712d44d039bb113d35435fb732377b4fac5a6a94d2",
+    "pipeline/bundle.py": "5f84acef27bae42eee0e89b190ec3516d3a722758c354e4443a6f68a344bd54b",
+    "pipeline/bundle_plot.py": "a9fec0067a3638c2397b28f118061d8000322c5583ce98f3cfe9c0c5432676e7",
+    "pipeline/bundle_render.py": "145c891cb43beb34d77e1dc90558b09b5157aff5b8282190168030c28c3e176b",
+    "pipeline/cases.py": "d3ec146ebc8410ec479ba8e343075d1c5e197cfe8f709509168a9a0c338f4657",
+    "pipeline/cluster.py": "fdadda895eec33e99f7ce26324587e0776a3ea001f10b9218a048cbae459cb0e",
+    "pipeline/cohort_policy.py": "bd8e259c869b0ba8552768001a2313590fd01b4a6336a04cf8c3a6d287c53db7",
+    "pipeline/command_view.py": "e0eebf5bf7df884bec44788cc84b45577e925cc4b544c8b022f59f877a6882eb",
+    "pipeline/common.py": "dfdf74e2a4c7b09101457ee06a4baf88febab1908b86cf9588fe35b2d86b01d0",
+    "pipeline/contig_origins.py": "4a222bc4522de939448ebb5123ab22a718597406d61fb881ebcdf5ce815bcd27",
+    "pipeline/determinism.py": "473aa02d1abf0257ce435935d4a11fe3cb4774fad1672ce81b607cb2a9ccec70",
+    "pipeline/diagnostic_runs.py": "bd102e126f4bfc6c6bbf7fcb81441811caef507ded50580f94f64b9d9a017d34",
+    "pipeline/diagnostics.py": "cfc987c103061a567a1ffea2db0e51110e1de80637125a746ed1b5f9d4b9e76f",
+    "pipeline/evidence_model.py": "4a68c4b97c388b9e3a7091e64c414ffd81840cc91d8a4b164807c4b9d91569ac",
+    "pipeline/execution.py": "69c0d5e5533fdeb1e684c2663c4676bb2d9a4681856d3e23dbd490d4a63194ec",
+    "pipeline/expected_output.py": "ac50db64877b34b4a0faacbe9e4ea02c938e11d73945520e2be525013a6af038",
+    "pipeline/explanations.py": "d1eaef554e01a08f304c0b487af70864f41156853bfba9d289fe77ca47dd9307",
+    "pipeline/failure_details.py": "efaf4924b7b5986c447bd3532ec075d1cd49e37ed5e65726dab19b7436323200",
+    "pipeline/failure_summary.py": "7246f14d66db8df71c89ecd07d2f06b53b1addf47c6fb6552117c95b5606fe45",
+    "pipeline/follow.py": "783801fbd38fc8e309588271c54822739777c58eab337b66bd870cc08c5ea55c",
+    "pipeline/graph_artifacts.py": "6a9ecc9bfd713405f852c2a36b6f63bb6065bc84b0261c6e68eeecde0d535333",
+    "pipeline/graph_availability.py": "2ae8e496efe9f1f8674f3bd1baf8adb8d6f357a874fe4b9065de821cc313ba83",
+    "pipeline/graph_contig_identity.py": "085da50fe3914a7dedbbe22ce2155d3827df7a73a10fd473cec9f8f28578b018",
+    "pipeline/identities.py": "a51698c9616bc241833e52e05b392d1f13856ca981983ceba5e20f3c00bee393",
+    "pipeline/length_metrics.py": "2101b56e8da6d7eeadbac4b33b1a444a7658bacc7e441bb7a490e44ed73f5c4c",
+    "pipeline/length_view.py": "a2a9d2f39d07eaca58adb42938be3c7af3bb436d0f79a560098d8179fce9ce9c",
+    "pipeline/linear_cases.py": "8aff025a38b6c5782849c1bfbc21e50865bca13da0fbc0f0dc68ea378944f84c",
+    "pipeline/linear_report.py": "274c39473bd6749bea66d42f78b6df652ff42e16bb3273d5e71c89ea536ce509",
+    "pipeline/miniasm.py": "45e4084f1ba2dfd5af5772b53215a8d195f93e837a5ffdc67c3a5c07ba02d050",
+    "pipeline/minipolish.py": "ae4463370ae327597db6a3b999fb346b9008c66da7390c95a955dc6cc3b9ccae",
+    "pipeline/node_intervals.py": "f92fb57e6450dc7f3732192a847c5f4bbcb07a42064b7ab7e9eed991f80a50e1",
+    "pipeline/noisy_reads.py": "9914f61222a54c06b806dc4442ad677d4a6edd8ebf2f4e726055d9e576f68f0a",
+    "pipeline/noisy_report.py": "cb10e88ea9038511721cc7cf444428d66436f1f502b0894688e877daa253a370",
+    "pipeline/noisy_workflow.py": "32ddc63caea0c8755f0b2497ec5ce0ebc1d8355667ce68a032c296f3012fa9bc",
+    "pipeline/overview.py": "5e67b898267ddfcfc18e132d0b767a25af62f1d0888778be84d9db5e9716f28e",
+    "pipeline/overview_model.py": "d2084db136e25eee7d31c6226fb584d9227070cf275efae7baa7d3f00cd056ca",
+    "pipeline/publication.py": "a4d394aef26ecf34bde62a6ea5d889a2a91b9172766191ef612ef293b80ceb15",
+    "pipeline/reads.py": "b39498e810a685cc50b382c39d917008d7a9079d9402bde92bb841f25cddc644",
+    "pipeline/recorded_coordinates.py": "2c1e57e95f3a639103deb85e2856b8d1addd0904a8b05e9bdf36c9d2d93b6564",
+    "pipeline/recorded_mismatches.py": "a8396c21cebfa8d2af9be3c80f369ab64322aedcdcde9ad1b36213c7b798bf7d",
+    "pipeline/recorded_sidecars.py": "9f8f3828ebaa0b028628fce8bd1b41f017a8f4777b14b25e6fafea8d727bdff1",
+    "pipeline/reference_origins.py": "9371f2ea89acacf6505c6bc320516e1455b70086b29d10ce3c3c443a92ff873d",
+    "pipeline/repeat_report.py": "8692d6121b2610dbacef9abeae2f4005808c788d56782257299bdf9e48f936fb",
+    "pipeline/report.py": "b6b159f905bff86472d071cc816b94aa8ebf4d52104d77febd5b103b5af5c2e9",
+    "pipeline/result_model.py": "77b0f167ea12de4fec4ab4c799434c9d3cda202a2170704037b9ce6d47e1abf1",
+    "pipeline/result_pages.py": "37ba860f87110b5448ebfae2b86f6ce2f73ba18d4b5e27723064b80bcb1de6ee",
+    "pipeline/result_summary.py": "48c97a20de89f17186d4f0a7bbd0cb29a5465547f8e450990b3cc0c6fe99baaf",
+    "pipeline/reviews.py": "bcf01da35e02c82d7b127df0da937d370de2870846c21113ef5c3e14750b7bf6",
+    "pipeline/scoring.py": "73795a6bc484411ff9d2b28670543bb2bb1f148258b83dce573a7a66f80e96a0",
+    "pipeline/site_gate.py": "fd0c2fbd54296cefead41c238a33c3fb4838f67d1735f38f1e0d9ab8991603aa",
+    "pipeline/stage_notes.py": "20f08cb4ac6e768a35adb06a124a85c9fbc12f7a181bfc7cdddbc35f4fd7a8e6",
+    "pipeline/tolerant.py": "d0c62ac359f7104ba586a0e1d4383b723c4389ba6e199f41824c2e800ca9dd58",
+    "pipeline/web_downloads.py": "3d15c28e864004d718f3487006cf06c7298b7f65a593731e17fafa8f7d73c834"
+  },
+  "scenario_fingerprint": "4d7ab47d37c5a0f0aafba51b6944c2c6b9a217e6d65f2f1a0b55c1c23586d33d",
+  "scenario_id": "artificial-linear",
+  "slurm_array_task_id": null,
+  "slurm_job_id": "34522038",
+  "started_at": "2026-11-06T12:31:12.610980+00:00",
+  "status": "fail",
+  "threads": 2,
+  "tool": "miniasm-plus",
+  "truth_sha256": "5f07bad5956ee4b259b1c85e3572f72481b7818d506c09c9f701f9d408ee2ce3",
+  "version": "Miniasm 0.3-r179 + Minipolish Minipolish v0.2.1\ntput: No value for $TERM and no -T specified"
+}

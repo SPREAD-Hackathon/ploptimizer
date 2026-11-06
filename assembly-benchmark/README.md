@@ -157,3 +157,6 @@ separate backend archive and size audit.
 
 [Miniasm integration](MINIASM.md): pinned minimap2 overlap and unpolished miniasm
 assembly adapter, graph/FASTA extraction and two-step command provenance.
+
+[Miniasm + Minipolish](MINIPOLISH.md): paired polished workflow, reusing the
+frozen reads and raw Miniasm assemblies with separately recorded outcomes.

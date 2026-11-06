@@ -30,7 +30,7 @@ def main(argv=None):
         if action in ("simulate", "run"):
             sub.add_argument("--scenario", required=True)
         if action == "run":
-            sub.add_argument("--tool", choices=("flye", "flye-meta", "raven", "plassembler", "miniasm"), required=True)
+            sub.add_argument("--tool", choices=("flye", "flye-meta", "raven", "plassembler", "miniasm", "miniasm-plus"), required=True)
             sub.add_argument("--threads", type=int)
             sub.add_argument("--repeat", type=int)
             sub.add_argument("--mode", choices=("default", "deterministic"))

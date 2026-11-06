@@ -1,0 +1,8 @@
+{
+  "default": true,
+  "flye": true,
+  "miniasm": true,
+  "plassembler": true,
+  "raven": true,
+  "simulator": true
+}

@@ -79,6 +79,10 @@ and all three input-file hashes again from the recorded audit. Original reads,
 assemblies and scores are preserved.
 
 After both batches finish, admit the two snapshots and Miniasm column to the
-S5 overview. The resulting panel has **30 executions: six inputs × five tools**.
+S5 overview. With the subsequently authorised Minipolish continuation, the resulting panel
+has **36 executions: six inputs × six configurations**; see `MINIPOLISH.md`.
 The follow-up monitor covers collection, comparison-root ingestion, release QA,
 production deployment and live verification for both batches.
+
+The paired **Miniasm + Minipolish** workflow is queued separately. See
+[MINIPOLISH.md](MINIPOLISH.md) for versions, commands, source reuse and job IDs.

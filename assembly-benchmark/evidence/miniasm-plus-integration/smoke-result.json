@@ -1,0 +1,16 @@
+{
+  "elapsed_seconds": 3.701,
+  "graph_status": "available",
+  "polishing_elapsed_seconds": 2.524,
+  "scope": "Artificial installation fixture only; excluded from benchmark scores.",
+  "source_stages_reused": 2,
+  "status": "pass",
+  "unitig_count": 1,
+  "versions": {
+    "miniasm": "0.3-r179",
+    "minimap2": "2.31-r1302",
+    "minipolish": "Minipolish v0.2.1\ntput: No value for $TERM and no -T specified",
+    "racon": "1.5.0"
+  },
+  "workflow_stages": 3
+}

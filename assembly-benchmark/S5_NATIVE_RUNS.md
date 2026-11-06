@@ -59,4 +59,6 @@ The user authorised Miniasm on the same frozen S5 reads after this batch returns
 Six additional executions are queued as `20261106T111953`; no original assembler
 is rerun and no new reads are generated. See `MINIASM.md` and
 `evidence/s5-miniasm-v1/status.json` for the dependency chain. Once verified,
-the combined S5 comparison contains 30 outcomes across five configurations.
+the raw Miniasm extension adds six outcomes. The subsequent Minipolish
+extension adds six more: **36 outcomes across six configurations** in total.
+See `MINIPOLISH.md` for the polishing continuation and separate provenance.

@@ -67,7 +67,7 @@ def candidates(record):
                  ('output/unicycler_output/assembly.gfa', 'gfa', 'unicycler_component')]
     elif tool == 'raven':
         paths = [('graph.gfa', 'gfa', 'final'), ('assembly_graph.gfa', 'gfa', 'final')]
-    elif tool == 'miniasm':
+    elif tool in ('miniasm', 'miniasm-plus'):
         paths = [('output/assembly_graph.gfa', 'gfa', 'final')]
     else:
         return []
@@ -116,7 +116,7 @@ def select_artifacts(directory, record):
         for path, kind, stage in available:
             if stage == role and kind not in selected:
                 selected[kind] = path
-    if record.get('tool') == 'miniasm' and selected.get('gfa'):
+    if record.get('tool') in ('miniasm', 'miniasm-plus') and selected.get('gfa'):
         selected['assembly_info'] = selected['gfa']
     return selected, role or 'final', observed
 
@@ -155,7 +155,7 @@ def collect_execution(source_root, batch_id, relative):
         if len(parts) == 6 and record.get('run_id') != parts[4]:
             raise ValueError('Repeat identity does not match selected execution')
         selected, role, observed = select_artifacts(execution.parent, record)
-        if record.get('tool') not in {'flye', 'flye-meta', 'raven', 'plassembler', 'miniasm'}:
+        if record.get('tool') not in {'flye', 'flye-meta', 'raven', 'plassembler', 'miniasm', 'miniasm-plus'}:
             result = unavailable('Assembler graph layout is unsupported', execution_hash)
             result['status'] = 'unsupported'
         elif record.get('status') in {'error', 'timeout'}:
@@ -163,7 +163,7 @@ def collect_execution(source_root, batch_id, relative):
             declared_role = role
             role = 'partial_output' if role == 'final' else role
             options = {'source_role': role, 'allow_failed': True}
-            if record['tool'] == 'miniasm':
+            if record['tool'] in ('miniasm', 'miniasm-plus'):
                 options['assembly_info_kind'] = 'miniasm'
             if record['tool'] == 'plassembler' and declared_role == 'final':
                 options['assembly_info_kind'] = 'plassembler'
@@ -186,7 +186,7 @@ def collect_execution(source_root, batch_id, relative):
             else:
                 from pipeline.graph_artifacts import build_graph_artifacts
                 options = {'source_role': role}
-                if record['tool'] == 'miniasm':
+                if record['tool'] in ('miniasm', 'miniasm-plus'):
                     options['assembly_info_kind'] = 'miniasm'
                 if record['tool'] == 'plassembler' and role == 'final':
                     options['assembly_info_kind'] = 'plassembler'

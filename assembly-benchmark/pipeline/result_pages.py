@@ -118,6 +118,9 @@ def result_body(case, record, artifact, output, family=None):
         from .noisy_report import legacy_noise_note
         body += legacy_noise_note(case)
     body += outcome_section(record)
+    if record.get('tool') == 'miniasm-plus' and record.get('initial_miniasm_evaluation'):
+        initial = record['initial_miniasm_evaluation']
+        body += f'<p>Unpolished Miniasm endpoint: <strong>{e(initial["status"].capitalize())}</strong>. This result scores the final Minipolish output; the unpolished source is retained separately.</p>'
     if family == 'S5':
         from .linear_report import reference_repeat_table
         body += reference_repeat_table(case)
