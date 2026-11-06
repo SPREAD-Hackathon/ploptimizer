@@ -22,6 +22,7 @@ class ResultSummaryTests(unittest.TestCase):
         self.assertIn("Fail — fixture plasmid (100 bp) not recovered exactly", body)
         self.assertLess(body.index('<h3>fixture plasmid'), body.index('<h3>chromosome'))
         self.assertIn("supporting context", body)
+        self.assertNotIn('class="molecule-context"', body)
         self.assertIn("0.00%", body)
         self.assertIn("does not establish that the sequence is absent", body)
         self.assertIn("Not established by the saved evidence", body)

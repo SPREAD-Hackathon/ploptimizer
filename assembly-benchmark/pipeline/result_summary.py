@@ -70,13 +70,6 @@ def outcome_section(record):
         size = f'{length:,} bp' if isinstance(length, int) else 'Length not recorded'
         context = ' · supporting context' if accession not in relevant else ''
         fraction = row.get("recovered_fraction")
-        if context:
-            label = f'{molecule.get("name", "Molecule")} · supporting context'
-            if isinstance(fraction, (float, int)) and math.isfinite(fraction) and 0 <= fraction <= 1:
-                label += f' · {100 * fraction:.2f}% aligned'
-                if row.get("contig_count") is not None:
-                    label += f' across {row["contig_count"]} contig(s)'
-            body += f'<details class="molecule-context"><summary>{e(label)}</summary>'
         body += f'<section class="molecule-outcome"><h3>{e(molecule.get("name", accession or "Reference molecule"))}<small>{e(size + context)}</small></h3>'
         exact = molecule.get("exact_contigs", [])
         exact_text = " · ".join(exact) if exact else "No exact copy recorded"
@@ -94,8 +87,6 @@ def outcome_section(record):
         else:
             body += '<strong>Not measured</strong><p>No completed mapping measurement is recorded.</p>'
         body += '</div></div></section>'
-        if context:
-            body += '</details>'
     if mapped:
         body += '<p class="evidence-note">Bars show total aligned coverage, not genomic positions. An alignment is not an exact-copy test.</p>'
     if record["status"] == "fail":

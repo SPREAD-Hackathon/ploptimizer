@@ -54,8 +54,9 @@ table only; filtering never changes the benchmark's scientific totals.
 
 Individual results lead with the endpoint verdict and required molecule names.
 Show the saved exact-copy assessment beside total aligned reference coverage;
-coverage bars do not depict genomic coordinates. Keep chromosomes outside a
-plasmid endpoint as folded supporting context. State an unresolved software cause
+coverage bars do not depict genomic coordinates. Show existing chromosome
+assessments inline alongside plasmids, using the same molecule layout. Label supporting context where outside the plasmid endpoint; do
+not hide it in a dropdown. State an unresolved software cause
 plainly on failures, without implying that successful runs need a failure cause.
 Run metadata and the original assessment remain available in disclosures.
 
