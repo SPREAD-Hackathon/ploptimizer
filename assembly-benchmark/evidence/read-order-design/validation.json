@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "scope": "Design arithmetic and existing metadata provenance only; not a shuffle, assembly or sequence-comparison test.",
+  "source_batch": "20261106T042113",
+  "source_case": "s1-se11-large",
+  "source_read_hash_matches_frozen_publication": true,
+  "source_plasmids_all_at_least_20000_bp": true,
+  "proposed_executions": 48,
+  "executions_submitted": 0,
+  "proposal_sha256": "539a981fb0a65c79a5176f31f4595f5975ac00f047ddfe458eb9acb5edbda738"
+}

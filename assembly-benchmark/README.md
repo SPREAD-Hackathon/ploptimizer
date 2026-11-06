@@ -14,6 +14,15 @@ downloadable provenance. See [graph collection](GRAPH_COLLECTION.md) for source
 coverage and limits. Publication snapshots are versioned in `published/`; large
 run artefacts stay on BMRC.
 
+## Proposed read-order comparison
+
+[S7 · Read-order sensitivity](S7_READ_ORDER.md) compares outputs from identical
+read sets presented in original and shuffled orders, with repeats within each
+order. It measures output agreement rather than recovery against a reference.
+The bounded 48-execution pilot is specified in `config/read-order.proposed.json`;
+input permutation and reference-independent comparison require validation before
+execution. It has not been run.
+
 ## Aggregate plots
 
 [Aggregate results](https://ploptimizer-assembly-benchmark.vercel.app/aggregate)

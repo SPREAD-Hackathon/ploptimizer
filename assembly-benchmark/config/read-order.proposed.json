@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "id": "S7",
+  "title": "Read-order sensitivity",
+  "status": "design_only_not_run",
+  "warning": "Specification only; not an executable benchmark configuration. No shuffles or assemblies have been generated.",
+  "source": {
+    "batch": "20261106T042113",
+    "case_id": "s1-se11-large",
+    "input_manifest_sha256": "6ff018e70e679da32c9acc41fcab7bbc61cf3153d034feace065d0ea4bdd8065",
+    "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+    "truth_sha256_for_provenance_only": "c043f0073af048970d457c777b9f7a52722be72d6ffb6e84c63bb29337917ecb",
+    "minimum_plasmid_bp": 20000
+  },
+  "pilot": {
+    "orders": [
+      {
+        "id": "original",
+        "shuffle_seed": null
+      },
+      {
+        "id": "shuffle-1",
+        "shuffle_seed": 1
+      },
+      {
+        "id": "shuffle-2",
+        "shuffle_seed": 2
+      },
+      {
+        "id": "shuffle-3",
+        "shuffle_seed": 3
+      }
+    ],
+    "repeats_per_order": 3,
+    "threads": 4,
+    "mode": "default",
+    "tools": [
+      "flye",
+      "flye-meta",
+      "raven",
+      "plassembler"
+    ],
+    "proposed_executions": 48,
+    "input_policy": "Reuse the same frozen read set; freeze each permutation once and reuse identical bytes for its repeats.",
+    "later_extensions": [
+      "One-thread strata",
+      "Supported explicit deterministic modes",
+      "Second frozen larger-plasmid input"
+    ]
+  },
+  "input_admission": [
+    "Identical complete FASTQ record multiset, including duplicate multiplicities, names, sequences and quality strings.",
+    "Distinct verified order-sensitive record digests for original and shuffled orders.",
+    "Original compressed-file provenance plus per-order compressed-file hash, multiset hash, order hash, shuffle seed and implementation version."
+  ],
+  "primary_endpoint": "Output-to-output sequence agreement, independent of reference recovery.",
+  "comparison_levels": [
+    "Repeated outputs within each fixed input order",
+    "Outputs between different orders within a fixed tool/version/mode/thread setting"
+  ],
+  "normalisation": "Ignore output names, order and strand; retain duplicate contigs. Report end-sensitive and independently circular-normalised representation comparisons separately. Do not condition primary equivalence on reference matches.",
+  "verdicts": [
+    "No order effect observed",
+    "Order-associated output difference",
+    "Within-order variability; order-specific effect not established",
+    "Not assessed: incomplete execution or unverified input equivalence"
+  ],
+  "secondary_evidence": [
+    "Raw assembly byte agreement",
+    "Contig counts and total lengths",
+    "Output-to-output discrepancy plots/events when available",
+    "Graph comparison",
+    "Reference recovery, separately labelled"
+  ],
+  "implementation_gates": [
+    "Validate full-record permutation and multiplicity-preserving input equivalence checks.",
+    "Validate reference-independent output comparison, including circular representation and ambiguous topology cases.",
+    "Validate grouping and report denominators; reference recovery must not determine the S7 verdict."
+  ],
+  "execution_status": "Not submitted."
+}

@@ -2,25 +2,21 @@
 
 Updated 6 November 2026. All work stays inside `assembly-benchmark`.
 Current execution state is in `evidence/large-baseline-v3/status.json` and the
-ignored suite checkpoint. These priorities do not authorise additional panels or
-assembly retries beyond the current 168-execution suite.
+ignored suite checkpoint. The initial 168-execution suite is complete. New
+scenario designs below are proposals, not evidence of further execution.
 
-## 1. Finish and publish the running suite
+## 1. Completed revised-baseline release
 
-S1's two multiple-large-plasmid inputs are complete: eight executions, two exact
-passes and six exact failures. S2's larger-plasmid coverage panel is complete:
-40 executions, 30 exact passes and ten exact failures. Both have verified saved
-graphs, length inventories, mapping evidence and NUCmer coordinates. S3's 120
-repeatability executions are running, including explicit Flye deterministic
-modes at one and four threads. The scheduler cap is now 1,000 at the user's
-instruction; Slurm allocates resources.
+All 168 executions and their evidence jobs completed. S1: 2 exact passes / 6
+failures; S2: 30 passes / 10 failures; S3: 40 passes / 80 failures, separately
+from repeat agreement. All 168 have saved mapping, graphs, length inventories and
+NUCmer comparisons. S3 agreement is verified for all 24 within-setting and 12
+across-thread groups; the report and scientific slides were published and
+verified. See `CURRENT_RELEASE.json` and `evidence/large-baseline-v3/`.
 
-Account for all 168 terminal outcomes, preserve any execution errors separately,
-verify input hashes and complete repeat groups, and check agreement within each
-mode/thread group and across thread settings. Add the verified snapshots to the
-headline cohort while retaining historical small-plasmid runs as supplementary.
-Export/render the compact report, enforce its byte/file budgets, verify mobile
-navigation and downloads, deploy, and verify production bytes before completion.
+Historical small-plasmid results remain available separately. Later reporting
+scope corrections do not change the original outputs or scores. New proposed
+panels do not imply new simulations, assemblies or job submissions.
 
 ## 2. Make every failure explain its measured differences
 
@@ -95,3 +91,18 @@ are required before converting the proposal into an executable configuration.
 Exact recovery alone must not be used as a substitute for noisy-read accuracy and
 continuity. Matched clean failures must remain visible rather than being
 attributed to noise.
+
+## S7 — read-order sensitivity
+
+The requested [S7 specification](S7_READ_ORDER.md) keeps the read multiset fixed
+and compares assembler outputs across original and shuffled input orders. Repeats
+within each order distinguish ordinary variability from between-order differences.
+The bounded first proposal is 48 executions on one existing larger-plasmid input:
+four orders, three repeats, four configurations at fixed threads/default modes.
+`config/read-order.proposed.json` records the source provenance and design.
+
+Input multiset checks must retain duplicate records and quality strings. Primary
+output comparison must be reference-independent, including its treatment of
+circular starts; exact recovery remains supporting context. Permutation admission,
+independent comparison and grouping/reporting need validation before execution.
+No S7 read shuffles or assembly jobs have been generated.

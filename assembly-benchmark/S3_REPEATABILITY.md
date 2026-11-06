@@ -1,6 +1,20 @@
 # S3: repeatability, separately from recovery
 
-The [revised baseline policy](BASELINE_POLICY.md) requires one fixed input with plasmids all ≥20 kb. Both inputs in the existing profiles below contain small plasmids, so their measured comparisons are supplementary. The revised larger-plasmid S3 case is not assessed; these historical profiles are not replacement-baseline configurations.
+The [revised baseline policy](BASELINE_POLICY.md) uses fixed inputs with plasmids
+all ≥20 kb. The completed larger-plasmid batch `20261106T042113` contains 120
+executions, using `config/repeatability-large.json`: 24 within-mode/thread groups
+and 12 across-thread groups, all with verified identical input hashes. Normalised sequence signatures agree in 23/24
+within-setting groups and 9/12 across-thread groups. The deterministic Flye
+configurations agree in all 8 within-setting and 4 across-thread groups. Reference
+recovery (40 pass, 80 fail) is separate from this agreement assessment. See
+`evidence/large-baseline-v3/s3-repeatability-audit.json` for exact strata and limits.
+
+[S7 read-order sensitivity](S7_READ_ORDER.md) is the separate proposed comparison
+where the read multiset is fixed but record order changes. Its primary output
+comparison must be reference-independent; the truth-conditioned circular
+normalisation currently used by S3 must not be silently reused for that purpose.
+
+## Protocol and historical profiles
 
 Run the exact same frozen reads five times per tool, mode and thread count.
 Use fresh execution directories without shared checkpoints. Freeze versions,
@@ -9,13 +23,14 @@ dependencies and all other arguments. Record commands and scheduler CPUs.
 | Tool | Default 1 thread | Default 4 threads | Deterministic 1 thread | Deterministic 4 threads |
 | --- | --- | --- | --- | --- |
 | Flye 2.9.6 | 5 | 5 | 5 | 5 |
-| Flye uneven coverage 2.9.6 | 5 | 5 | 5 | 5 |
+| Flye (`--meta`) 2.9.6 | 5 | 5 | 5 | 5 |
 | Raven 1.8.3 | 5 | 5 | Not exposed | Not exposed |
 | Plassembler long 1.9.0 | 5 | 5 | Not exposed | Not exposed |
 
-New profile `config/determinism-modes.json`: 120 tasks across the two existing
-inputs (80 default, 40 flagged). Not submitted. Original configuration and frozen
-80-run batch unchanged. Default means existing benchmark arguments without an
+Historical small-plasmid proposal `config/determinism-modes.json`: 120 tasks
+across its two historical inputs (80 default, 40 flagged). That separate profile
+was not submitted. The original configuration and frozen 80-run batch are
+unchanged. Default means existing benchmark arguments without an
 added determinism flag, rather than every upstream default. Flye's flag makes
 initial disjointig assembly single-threaded; later stages can use requested threads.
 The upstream tracker reports residual variation, so test rather than assume it.
@@ -38,7 +53,8 @@ identical wrong outputs are repeatable, and different outputs can share a score.
 Existing default batch `20261104T193612`: 16/16 within-thread groups agree in
 normalised sequences, 15/16 in bytes. Across threads 7/8 agree in normalised
 sequences; W/pRK2 Flye uneven coverage differs. All eight agree in recovery
-outcomes. No flagged measurements exist. Finite agreement is not a guarantee.
+outcomes. No flagged measurements exist in that historical default-only batch. The completed
+larger-plasmid batch above includes flagged runs. Finite agreement is not a guarantee.
 
 Checked version-pinned capability sources:
 
