@@ -146,7 +146,17 @@ def prepare_document(source, artifact_root=None, coordinate_roots=(), snapshot_h
         summary = record['report_evidence']['failure_summary']
         from .stage_notes import attach_stage_facts
         attach_stage_facts(summary, record, document['batch'], artifact_root)
-        if summary and summary.get('evidence_kind') == 'saved_alignment_counts':
+        from .base_review_records import attach_base_review
+        attach_base_review(summary, record, document['batch'], artifact_root, plot)
+        if summary and summary.get('events'):
+            record['report_evidence']['failure_details']['recorded_change'].update(
+                status='reviewed', confidence='confirmed', description=summary['summary'],
+                source=summary['base_review_source'],
+                difference_event_table={'status':'recorded', 'records':copy.deepcopy(summary['events']),
+                                        'coordinate_system':'1-based positions; substitutions on reference-forward strand'})
+            record['report_evidence']['failure_details']['availability']['difference_events'] = {
+                'status':'recorded', 'source':summary['base_review_source']}
+        if summary and summary.get('evidence_kind') in ('saved_alignment_counts','direct_saved_sequence_comparison'):
             record['report_evidence']['description'] = summary['summary']
         record['report_evidence']['failure_details']['reported_circularity']['reference_origins']=contig_origins
     if document.get('determinism'):
@@ -163,12 +173,19 @@ def markdown_report(case, record, batch):
              f'- Version: {record.get("version", "Not recorded")}',
              f'- Endpoint: {(record.get("evaluation") or {}).get("endpoint", "Not recorded")}', '']
     count_summary = evidence.get('failure_summary') or {}
-    if count_summary.get('evidence_kind') == 'saved_alignment_counts':
+    if count_summary.get('evidence_kind') in ('saved_alignment_counts','direct_saved_sequence_comparison'):
         lines += ['## Saved alignment counts', '']
         for fact in count_summary['facts']:
             value = f"{fact['value']:,} bp" if fact['kind'] == 'bp' else str(fact['value'])
             lines.append(f"- {fact['label']}: {value} · source `{fact['source']}`")
-        lines += ['- Mismatch positions and base changes: not recorded.',
+        if count_summary.get('events'):
+            lines += ['','## Directly checked substitutions', '', 'Coordinates are 1-based; base changes use the reference-forward strand.', '']
+            for event in count_summary['events']:
+                lines.append(f"- {event['reference_id']}:{event['reference_position_1based']:,} {event['reference_base']} → {event['output_base_reference_forward']}; output {event['query_id']}:{event['query_position_1based']:,}.")
+            lines += ['', f"Base review: `{count_summary['base_review_source']}` (SHA-256 `{count_summary['base_review_sha256']}`).", '']
+        else:
+            lines.append('- Mismatch positions and base changes: not recorded.')
+        lines += [
                   '- Assembler-internal cause: unresolved.',
                   f"- Saved PAF SHA-256: `{count_summary['source_sha256']}`", '']
     for molecule in evidence['molecules']:

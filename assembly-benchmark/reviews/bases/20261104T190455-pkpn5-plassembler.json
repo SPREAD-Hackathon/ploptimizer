@@ -1,0 +1,126 @@
+{
+  "alignment_records": [
+    {
+      "block_length": 59643,
+      "edit_distance": 2,
+      "gap_free_aligned_bp": 59643,
+      "mapq": 60,
+      "matches": 59641,
+      "query_id": "1",
+      "query_interval": [
+        0,
+        59643
+      ],
+      "query_length": 88582,
+      "recorded_mismatches": 2,
+      "reference_id": "NC_009651.1",
+      "reference_interval": [
+        28939,
+        88582
+      ],
+      "reference_length": 88582,
+      "strand": "+"
+    },
+    {
+      "block_length": 28939,
+      "edit_distance": 0,
+      "gap_free_aligned_bp": 28939,
+      "mapq": 60,
+      "matches": 28939,
+      "query_id": "1",
+      "query_interval": [
+        59643,
+        88582
+      ],
+      "query_length": 88582,
+      "recorded_mismatches": 0,
+      "reference_id": "NC_009651.1",
+      "reference_interval": [
+        0,
+        28939
+      ],
+      "reference_length": 88582,
+      "strand": "+"
+    }
+  ],
+  "all_query_bases_aligned": true,
+  "batch_id": "20261104T190455",
+  "events": [
+    {
+      "output_base_reference_forward": "C",
+      "query_id": "1",
+      "query_position_1based": 11045,
+      "reference_base": "T",
+      "reference_id": "NC_009651.1",
+      "reference_position_1based": 39984,
+      "strand": "+",
+      "type": "substitution"
+    },
+    {
+      "output_base_reference_forward": "G",
+      "query_id": "1",
+      "query_position_1based": 48291,
+      "reference_base": "A",
+      "reference_id": "NC_009651.1",
+      "reference_position_1based": 77230,
+      "strand": "+",
+      "type": "substitution"
+    }
+  ],
+  "graph_checkpoints": [
+    {
+      "filename": "004_long_read_assembly.gfa",
+      "segments": [
+        {
+          "exact_final": false,
+          "exact_reference": true,
+          "id": "1",
+          "length_bp": 88582
+        }
+      ],
+      "sha256": "773763f9e5bc68c919fb12f4b9b57c3408031f57c8c8524bbfc25b54d0862a23"
+    },
+    {
+      "filename": "006_final_clean.gfa",
+      "segments": [
+        {
+          "exact_final": true,
+          "exact_reference": false,
+          "id": "1",
+          "length_bp": 88582
+        }
+      ],
+      "sha256": "e842f7e79d2d1aa12d311c6866853836fe6f47ceeb4d1bdfd8e4c11d9c8eda57"
+    }
+  ],
+  "hashes": {
+    "assembly_sha256": "daeb018173df95611293fc964a617b27be29703c05fbc9709dfff9756b2687d8",
+    "execution_sha256": "2e5b9049b2668ecd811de7cb0d80ed74736dc17efd4e89e9e09ca56d34e11890",
+    "paf_sha256": "82dc500019e0aacb829a8738362b7a8e425a2d87121830b24e029d23a604c63a",
+    "truth_sha256": "aa660d4c9964f7d7934a197966977b2e1fe4f94ed9748437bd2c44cf55d068e0"
+  },
+  "method": "Direct saved FASTA comparison along hash-bound saved gap-free PAF spans; no assembly or alignment rerun",
+  "query_id": "1",
+  "query_length": 88582,
+  "reference_id": "NC_009651.1",
+  "reference_length": 88582,
+  "scenario_id": "s1-mgh78578-pkpn5",
+  "schema_version": 1,
+  "stage_comparisons": {
+    "initial": {
+      "exact_reference_contigs": [
+        "contig_2"
+      ],
+      "sha256": "18659a283edbd68dc0189100e3d05a0cf0f6e2635d2a8ff5d6896f9f14b4798e"
+    },
+    "reconstructed": {
+      "exact_final_contigs": [
+        "1"
+      ],
+      "sha256": "50a5a69e86d41d96372081d2ccb24a4e9d7750419db9ab5f04c03d94f1d7e63b"
+    }
+  },
+  "status": "verified",
+  "strict_status": "fail",
+  "tool": "plassembler"
+}

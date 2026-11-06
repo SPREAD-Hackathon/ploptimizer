@@ -19,7 +19,8 @@ def failure_facts(record):
         return ''
     if not summary['facts']:
         return '<p class="failure-location">Difference location: not recorded in the saved evidence.</p>'
-    caption = 'Recorded in the saved alignment metadata.' if summary.get('evidence_kind') == 'saved_alignment_counts' else 'Confirmed by the saved review.'
+    caption = ('Directly checked against the original saved FASTA files.' if summary.get('evidence_kind') == 'direct_saved_sequence_comparison'
+               else 'Recorded in the saved alignment metadata.' if summary.get('evidence_kind') == 'saved_alignment_counts' else 'Confirmed by the saved review.')
     body = '<div class="failure-facts"><h3>Recorded difference</h3><p>' + caption + '</p><dl class="result-facts">'
     for fact in summary['facts']:
         if fact['kind'] == 'bp':
@@ -31,7 +32,12 @@ def failure_facts(record):
             value = '; '.join(f'{a:,}–{b:,} bp' for a,b in spans)
         body += f'<dt>{e(fact["label"])}</dt><dd>{e(value)}</dd>'
     body += '</dl>'
-    if summary['location_status'] == 'recorded':
+    if summary.get('events'):
+        body += '<h3>Confirmed substitutions</h3><p>Positions are 1-based. Changes are reference → output, on the reference-forward strand.</p><dl class="result-facts">'
+        for event in summary['events']:
+            body += f'<dt>{e(event["reference_id"])}:{event["reference_position_1based"]:,}</dt><dd><strong>{e(event["reference_base"])} → {e(event["output_base_reference_forward"])}</strong> · output {e(event["query_id"])}:{event["query_position_1based"]:,}</dd>'
+        body += '</dl>'
+    elif summary['location_status'] == 'recorded':
         body += '<p class="muted">Coordinates are 0-based; the end is excluded.</p>'
     if summary.get('base_changes_status') == 'not_recorded':
         body += '<p>Mismatch positions and base changes: not recorded.</p>'
@@ -40,6 +46,8 @@ def failure_facts(record):
     body += '</ul>'
     if summary.get('source_sha256'):
         body += '<p>Saved PAF SHA-256</p><code class="checksum">' + e(summary['source_sha256']) + '</code>'
+    if summary.get('base_review_source'):
+        body += '<p>Direct base review: ' + e(summary['base_review_source']) + '</p><code class="checksum">' + e(summary['base_review_sha256']) + '</code>'
     return body + '</details></div>'
 
 

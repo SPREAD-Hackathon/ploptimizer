@@ -1,5 +1,10 @@
 # Reporting saved base-mismatch counts
 
+For the pKPN5 acceptance case, the later [direct base review](BASE_REVIEW.md)
+now supplies verified positions and base changes. The count-only behaviour below
+still applies to records without such a review.
+
+
 The report now retains numeric `NM` counts and validates a restricted, gap-free
 `cg` operation count from already-produced PAF files. It does not run an aligner,
 inspect sequence letters, decode sequence-bearing tags or call variants.
@@ -27,8 +32,9 @@ substep introduced a difference.
 
 The pKPN5/Plassembler acceptance case has two recorded mismatches over a complete
 88,582 bp output, no gap operations in those saved alignments, and an exact
-initial Flye result. The report explicitly leaves mismatch positions, from/to
-bases and software-internal cause unresolved. Two mismatching bases do not by
+initial Flye result. The original count-only report left positions and from/to bases unresolved.
+The later source-bound direct review resolves those two fields for this result;
+the software-internal cause remains unresolved. Two mismatching bases do not by
 themselves identify two separate biological SNP events.
 
 This is metadata reporting. No new sequence analysis, simulation, assembly or
