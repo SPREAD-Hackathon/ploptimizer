@@ -23,7 +23,7 @@ def aggregate_page(index, attribution):
             body += f'<figure class="aggregate-figure"><h2>{e(figure["title"])}</h2><a href="{e(url)}"><img loading="lazy" src="{e(image_url)}" alt="{e(figure["title"])} for {e(group["family"])} {e(group["cohort_role"])}; {e(figure["caption"])}"></a><figcaption>{e(figure["caption"])} <a href="{e(url)}">SVG</a> · <a href="data/aggregates/{e(figure["png"])}">PNG</a></figcaption></figure>'
         body += '</details>'
     body += '''<h2>What differs from Wick’s assessment?</h2>
-<p>S2 and S3 larger-plasmid baselines are not assessed. Their historical small-plasmid results are supplementary. Plot formats are inspired by Wick and Holt; values are Ploptimizer measurements.</p>
+<p>Primary panels and supplementary historical results are shown separately. Plot formats are inspired by Wick and Holt; values are Ploptimizer measurements.</p>
 <p>Our exact-copy endpoint and retained-reference breadth answer different questions from his longest-single-alignment contiguity. The identity plots use our recorded alignment-weighted identity. We do not have compatible circularisation-gap/overlap or maximum-indel distributions, so those panels are not presented as measured results.</p>
 <details><summary>Wick and Holt’s original figures</summary><p>Original study results, not Ploptimizer measurements. Ryan R. Wick and Kathryn E. Holt; CC BY 4.0. Links are pinned to the reviewed repository revision.</p><ul>'''
     for figure in attribution['figures']:

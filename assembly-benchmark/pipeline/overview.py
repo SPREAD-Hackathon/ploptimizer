@@ -104,7 +104,7 @@ def render_family(model, family, prefix="../"):
     if item.get("supplementary_counts", {}).get("total"):
         body += '<p>Headline counts exclude supplementary small-plasmid inputs. Their original results remain below.</p>'
     if family == "S1" and model.get("baseline_policy"):
-        body += '<p>Available: chromosome-only and single larger-plasmid controls. The multiple-larger-plasmid baseline has not been assessed.</p>'
+        body += '<p>The baseline tests chromosome-only controls and recovery of one or several plasmids ≥20 kb. The tables show recorded results.</p>'
     if family == "S2" and model.get("baseline_policy") and not item['counts']['total']:
         body += '<p>The revised larger-plasmid coverage panel has not been assessed.</p>'
     if family == "S6":
