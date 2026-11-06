@@ -98,6 +98,24 @@ class NoisyReportTests(unittest.TestCase):
         self.assertNotIn('All batches', (output / 'index.html').read_text())
         self.assertIn("verified chemistry/basecaller", (output / "methods.html").read_text())
 
+    def test_copy_screen_settings_are_named_and_separate_from_observed_recovery(self):
+        value = {"replicons": [{"name": "pRK2", "length_bp": 5360,
+                 "reference_coverage": .998, "copy_screen": {
+                 "anchor_count": 64, "anchor_length_bp": 32, "possible_copy_guard": 16}}]}
+        original = copy.deepcopy(value)
+        text = metrics_table(value, "Tolerant recovery measurements")
+        main, settings = text.split('<details><summary>Additional-copy screening settings</summary>')
+        self.assertIn("pRK2 · Reference length", main)
+        self.assertIn("5,360 bp", main)
+        self.assertIn("99.8%", main)
+        self.assertNotIn("Reference markers selected", main)
+        self.assertNotIn("replicons[0]", main)
+        self.assertIn("pRK2 · Reference markers selected", settings)
+        self.assertIn("32 bp", settings)
+        self.assertIn("Matching markers that trigger review", settings)
+        self.assertIn("not an observed copy count", settings)
+        self.assertEqual(value, original)
+
     def test_per_replicon_tolerant_contract_and_stage_counts_render_without_metrics_wrapper(self):
         document = copy.deepcopy(self.document)
         document["assessment_stage"] = {"status_counts": {"complete": 1, "pending": 3}}

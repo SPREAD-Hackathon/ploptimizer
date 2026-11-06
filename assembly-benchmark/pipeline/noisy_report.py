@@ -6,6 +6,7 @@ import csv
 import datetime
 import json
 import math
+import re
 import shutil
 
 from .assets import ensure_assets
@@ -47,13 +48,81 @@ def numeric_metrics(value, prefix=""):
         yield prefix, format(value, ".8g")
 
 
+METRIC_LABELS = {
+    "anchor_count": ("Reference markers selected", "count", "Number of short reference sequences defined for the copy screen."),
+    "anchor_length_bp": ("Length of each marker", "bp", "Length of each reference marker used by the copy screen."),
+    "possible_copy_guard": ("Matching markers that trigger review", "count", "Review threshold for another contig; this is not an observed copy count."),
+    "matching_reference_anchors": ("Matching reference markers", "count", "Markers found in this contig; matches alone do not establish another complete copy."),
+    "length_bp": ("Reference length", "bp", ""),
+    "reference_coverage": ("Reference covered", "fraction", ""),
+    "reference_coverage_lower_bound": ("Reference coverage lower bound", "fraction", "Conservative coverage bound recorded by the tolerant evaluator."),
+    "alignment_identity": ("Alignment identity", "fraction", ""),
+    "alignment_identity_lower_bound": ("Alignment identity lower bound", "fraction", "Conservative identity bound recorded by the tolerant evaluator."),
+    "length_ratio": ("Contig length / reference length", "ratio", ""),
+    "aligned_reference_bp": ("Aligned reference bases", "bp", ""),
+    "reference_span_bp": ("Reference alignment span", "bp", ""),
+    "reference_start_0based": ("Reference start", "count", "0-based coordinate: the first reference base is position 0."),
+    "alignment_columns": ("Alignment columns", "count", ""),
+    "edit_distance": ("Sequence edits", "count", "Substitutions, insertions and deletions counted by the saved alignment."),
+    "matches": ("Matching bases", "count", ""),
+    "substitutions": ("Base substitutions", "count", ""),
+    "insertions": ("Inserted bases", "bp", ""),
+    "deletions": ("Deleted bases", "bp", ""),
+}
+
+
+def metric_display(value, path, raw):
+    """Name the recorded molecule/contig and format only explicitly known units."""
+    tokens = re.findall(r"([^.[\]]+)|\[(\d+)\]", path)
+    current, context = value, []
+    for index, (key, number) in enumerate(tokens):
+        if number:
+            current = current[int(number)]
+            name = (current.get("name") or current.get("accession") or current.get("contig")) if isinstance(current, dict) else None
+            collection = tokens[index - 1][0]
+            item_label = {"replicons": "Reference", "dedicated_candidates": "Candidate",
+                          "placements": "Alignment", "second_copy_evidence": "Additional-copy candidate",
+                          "ambiguous_evidence": "Unresolved candidate"}.get(collection, collection.replace("_", " ").capitalize())
+            context.append(str(name or f"{item_label} {int(number) + 1}"))
+        else:
+            current = current[key]
+            if index < len(tokens) - 1 and key not in ("replicons", "metrics", "copy_screen") and not isinstance(current, list):
+                context.append(key.replace("_", " ").capitalize())
+    key = tokens[-1][0]
+    title, unit, help_text = METRIC_LABELS.get(key, (key.replace("_", " ").capitalize(), None, ""))
+    if unit == "bp":
+        number = f"{current:,.0f} bp" if float(current).is_integer() else f"{current:,g} bp"
+    elif unit == "fraction":
+        number = f"{current * 100:.4f}".rstrip("0").rstrip(".") + "%"
+    elif unit == "ratio":
+        number = f"{current:.6g}×"
+    elif unit == "count":
+        number = f"{current:,}"
+    else:
+        number = raw
+    return " · ".join(part for part in context + [title] if part), number, help_text
+
+
 def metrics_table(value, label):
     rows = list(numeric_metrics(value))
     if not rows:
         return '<p>No continuous measurements have been recorded for this stage.</p>'
-    body = f'<div class="table-scroll" role="region" aria-label="{e(label)}" tabindex="0"><table><caption>Recorded field names and raw values are retained. Units and target-versus-observed definitions belong to the source JSON; no read-quality estimate is inferred.</caption><thead><tr><th scope="col">Recorded metric</th><th scope="col">Value</th></tr></thead><tbody>'
-    table = body + ''.join(f'<tr><th scope="row">{e(key)}</th><td>{e(number)}</td></tr>' for key, number in rows) + '</tbody></table></div>'
-    return f'<details><summary>{e(label)} ({len(rows)} fields)</summary>{table}</details>' if len(rows) > 30 else table
+    measurements, settings = [], []
+    for path, raw in rows:
+        title, number, help_text = metric_display(value, path, raw)
+        help_html = f'<small class="row-summary">{e(help_text)}</small>' if help_text else ""
+        row = f'<tr><th scope="row">{e(title)}{help_html}</th><td>{e(number)}</td></tr>'
+        (settings if ".copy_screen." in path else measurements).append(row)
+
+    def table(items, title, heading="Measurement"):
+        return f'<div class="table-scroll" role="region" aria-label="{e(title)}" tabindex="0"><table><thead><tr><th scope="col">{e(heading)}</th><th scope="col">Recorded value</th></tr></thead><tbody>' + ''.join(items) + '</tbody></table></div>'
+
+    body = table(measurements, label) if measurements else ""
+    if settings:
+        body += '<details><summary>Additional-copy screening settings</summary><p>Settings for screening other contigs for a possible additional copy; these are configuration values, not observed recovery measurements.</p>' + table(settings, "Additional-copy screening settings", "Setting") + '</details>'
+    raw_rows = ''.join(f'<tr><th scope="row">{e(path)}</th><td>{e(raw)}</td></tr>' for path, raw in rows)
+    body += '<details><summary>Source field names and values</summary><p>Recorded values before display formatting; no read-quality estimate is inferred.</p><div class="table-scroll" role="region" aria-label="Source field names and values" tabindex="0"><table><thead><tr><th scope="col">Source field</th><th scope="col">Raw value</th></tr></thead><tbody>' + raw_rows + '</tbody></table></div></details>'
+    return f'<details><summary>{e(label)} ({len(rows)} measurements)</summary>{body}</details>' if len(rows) > 30 else body
 
 
 def build_noisy(config, batch=None, output=None, document=None, include_history=True, render_context=None):

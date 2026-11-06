@@ -83,6 +83,12 @@ assembler mechanism from a measured mismatch. Keep the unresolved internal cause
 explicit and the exact-copy verdict separate from aligned coverage; presenting
 these facts does not change the scientific score.
 
+Continuous measurement tables use readable labels and recorded molecule/contig
+names. Show units beside values and format known coverage/identity fractions as
+percentages. Keep additional-copy screen configuration in a separate folded
+settings section; marker counts and thresholds are not observed copy counts.
+Original field paths and unformatted values remain in a folded source section.
+
 Each result also exposes its saved command and descriptions of only the flags
 present in that invocation. Command links open the disclosure directly. Preserve
 argument order and values, use shell-safe display quoting, and retain the public
