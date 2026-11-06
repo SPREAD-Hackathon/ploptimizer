@@ -89,6 +89,11 @@ percentages. Keep additional-copy screen configuration in a separate folded
 settings section; marker counts and thresholds are not observed copy counts.
 Original field paths and unformatted values remain in a folded source section.
 
+Use direct circularity labels, source names and workflow stages. Do not add
+repeated generic warnings about physical validation around contig inventories
+or graphs. Keep specific missing measurements or unresolved findings where they
+are needed to interpret a result.
+
 Each result also exposes its saved command and descriptions of only the flags
 present in that invocation. Command links open the disclosure directly. Preserve
 argument order and values, use shell-safe display quoting, and retain the public

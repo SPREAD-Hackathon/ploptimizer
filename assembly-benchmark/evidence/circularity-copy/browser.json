@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "url": "https://ploptimizer-assembly-benchmark.vercel.app/results/s1-mgh78578-pkpn5--plassembler",
+  "viewports": [
+    1440,
+    390
+  ],
+  "removed_copy_absent": true,
+  "reported_circularity_retained": true,
+  "original_raw_token": "circular"
+}

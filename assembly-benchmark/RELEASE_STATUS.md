@@ -2,8 +2,8 @@
 
 ## Current production — revised large-plasmid suite live and verified
 
-https://ploptimizer-assembly-benchmark.vercel.app is live from source `228398a`,
-deployment `dpl_3kf9T6X3RgksHXK8t1VLQtNLAceo`. All 1,111 publicly served
+https://ploptimizer-assembly-benchmark.vercel.app is live from source `ea89cd7`,
+deployment `dpl_FHaGCGuX8kRj7xDTZREm9E7cZ477`. All 1,111 publicly served
 pages, assets and downloads match the reviewed build byte-for-byte, with zero
 failures. Nine Vercel routing configuration files are not public download targets.
 Live browser checks confirm the mobile assembler selector without page overflow,
@@ -18,7 +18,7 @@ normalised sequence signatures. Deterministic Flye configurations agree in all
 in hash. Signature differences do not by themselves locate a sequence change.
 
 The overview includes the verified new snapshots while retaining historical
-supplementary results. The build is 53,905,547 bytes, below the unchanged 64 MiB
+supplementary results. The build is 53,766,735 bytes, below the unchanged 64 MiB
 budget. Current plus two previous READY deployments are retained. Large backend
 files stay outside the deployed presentation build. All 468 source records and
 original scores are preserved; no assemblies were retried or tuned during QA.
@@ -911,3 +911,15 @@ The overview has 284 primary / 168 supplementary executions; all-record scores
 and all 468 source records remain unchanged. Live desktop/phone checks and all
 1,111 public-file byte checks pass. Current plus two previous READY deployments
 remain. Evidence: `evidence/s6-large-scope/`.
+
+### 6 November — circularity copy simplified
+
+Removed the generic physical-validation paragraph above contig inventories and
+the equivalent graph footer/selection warnings. Reported circularity, raw tokens,
+source roles and graph links remain intact. The design guidance now favours
+direct labels and specific findings over repeated generic qualification.
+Eleven result-page tests, graph tests, the 598-route integration check and release
+gate pass; 468 source records are preserved. Live desktop/phone inspection
+confirms the copy removal, and all 1,111 public files match the reviewed build.
+Current plus two previous READY deployments remain. Evidence:
+`evidence/circularity-copy/`.

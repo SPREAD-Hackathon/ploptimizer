@@ -2,12 +2,12 @@
   "schema_version": 1,
   "status": "live_verified",
   "url": "https://ploptimizer-assembly-benchmark.vercel.app",
-  "source_commit": "228398a",
-  "deployment_id": "dpl_3kf9T6X3RgksHXK8t1VLQtNLAceo",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-rfzw7sd0m-happykhans-projects.vercel.app",
-  "verified_at": "2026-11-06T09:31:29.279101+00:00",
+  "source_commit": "ea89cd7",
+  "deployment_id": "dpl_FHaGCGuX8kRj7xDTZREm9E7cZ477",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-px98pu9vd-happykhans-projects.vercel.app",
+  "verified_at": "2026-11-06T09:47:49.124646+00:00",
   "bundle": ".cache/bundles/s6-large-scope",
-  "build_bytes": 53905547,
+  "build_bytes": 53766735,
   "source_records_preserved": 468,
   "new_executions": 168,
   "new_exact_outcomes": {
@@ -22,9 +22,9 @@
   "optional_skips": 11,
   "retained_ready_deployments": 3,
   "retained_deployments": [
+    "dpl_FHaGCGuX8kRj7xDTZREm9E7cZ477",
     "dpl_3kf9T6X3RgksHXK8t1VLQtNLAceo",
-    "dpl_5xRTJueBN2m595uoNhHNRDkbs4bn",
-    "dpl_Du5Cyog7UBQQbBDnkbQBbXMoJrLr"
+    "dpl_5xRTJueBN2m595uoNhHNRDkbs4bn"
   ],
   "presentation_url": "https://docs.google.com/presentation/d/1t40OE2R48Z25i_XTfP6kt08CQtbcdX2DuZLyaTlvNCA/edit",
   "presentation_slide_count": 12,
@@ -125,5 +125,6 @@
     "primary": 284,
     "supplementary": 168,
     "total": 452
-  }
+  },
+  "circularity_copy_update": "Removed generic circularity/physical-validation disclaimer paragraphs; retained reported values and source-stage labels."
 }
