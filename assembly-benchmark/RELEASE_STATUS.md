@@ -2,8 +2,8 @@
 
 ## Current production — revised large-plasmid suite live and verified
 
-https://ploptimizer-assembly-benchmark.vercel.app is live from source `ea89cd7`,
-deployment `dpl_FHaGCGuX8kRj7xDTZREm9E7cZ477`. All 1,111 publicly served
+https://ploptimizer-assembly-benchmark.vercel.app is live from source `8603e15`,
+deployment `dpl_99Ef3mRUf1xrE8o3Lh7Y86ihswEu`. All 1,111 publicly served
 pages, assets and downloads match the reviewed build byte-for-byte, with zero
 failures. Nine Vercel routing configuration files are not public download targets.
 Live browser checks confirm the mobile assembler selector without page overflow,
@@ -18,7 +18,7 @@ normalised sequence signatures. Deterministic Flye configurations agree in all
 in hash. Signature differences do not by themselves locate a sequence change.
 
 The overview includes the verified new snapshots while retaining historical
-supplementary results. The build is 53,766,735 bytes, below the unchanged 64 MiB
+supplementary results. The build is 53,723,873 bytes, below the unchanged 64 MiB
 budget. Current plus two previous READY deployments are retained. Large backend
 files stay outside the deployed presentation build. All 468 source records and
 original scores are preserved; no assemblies were retried or tuned during QA.
@@ -923,3 +923,14 @@ gate pass; 468 source records are preserved. Live desktop/phone inspection
 confirms the copy removal, and all 1,111 public files match the reviewed build.
 Current plus two previous READY deployments remain. Evidence:
 `evidence/circularity-copy/`.
+
+### 6 November — chromosome assessment displayed inline
+
+Removed the chromosome supporting-context disclosure. Existing chromosome
+assessment panels now use the same visible molecule layout as plasmids, while
+retaining their recorded status, alignment measurements and endpoint scope.
+Plassembler output-stage separation is unchanged. Six targeted tests, the
+598-route integration check and the release gate pass. Live 1440/390 px checks
+confirm the chromosome is visible without interaction, and all 1,111 public
+files match the reviewed build. All 468 source records are preserved. Current
+plus two previous READY deployments remain. Evidence: `evidence/chromosome-inline/`.

@@ -1,0 +1,27 @@
+{
+  "status": "pass",
+  "targeted_tests": 6,
+  "http_routes": 598,
+  "result_views": 468,
+  "source_records_preserved": 468,
+  "public_files_verified": 1111,
+  "browser": {
+    "status": "pass",
+    "base_url": "https://ploptimizer-assembly-benchmark.vercel.app",
+    "viewports": [
+      1440,
+      390
+    ],
+    "chromosome_visible_without_interaction": true,
+    "chromosome_details_ancestors": 0,
+    "existing_mapping_percentage_retained": true
+  },
+  "detector_findings": [],
+  "ready_deployments_retained": 3,
+  "ready_urls": [
+    "ploptimizer-assembly-benchmark-b0p9byg2e-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-px98pu9vd-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-rfzw7sd0m-happykhans-projects.vercel.app"
+  ],
+  "scope": "Existing chromosome assessment panels displayed inline; source scores and endpoint membership unchanged. Plassembler output-stage separation retained."
+}

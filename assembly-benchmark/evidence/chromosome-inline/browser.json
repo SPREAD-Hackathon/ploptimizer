@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "base_url": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "viewports": [
+    1440,
+    390
+  ],
+  "chromosome_visible_without_interaction": true,
+  "chromosome_details_ancestors": 0,
+  "existing_mapping_percentage_retained": true
+}
