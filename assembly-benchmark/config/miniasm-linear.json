@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "profile_id": "s5-native-linear-streptomyces-miniasm-v1",
+  "profile_id": "s5-native-linear-streptomyces-v2",
   "references": [
     "GCF_036177905.1",
     "GCF_045162825.1",

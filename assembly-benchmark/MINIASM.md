@@ -34,7 +34,10 @@ jobs consume the extracted FASTA through the existing evidence pipeline.
 `miniasm` is a supported tool ID and execution environment. The optional
 `config/miniasm-linear.json` profile selects the same three native Streptomyces
 reference complements and standard/long settings, with miniasm alone. Planning
-it produces six input cases and six executions. It has **not been submitted**.
+it produces six input cases and six executions. The Miniasm-only follow-up is
+**queued after S5** as batch `20261106T111953`; it reuses the original frozen
+inputs rather than running simulation. The input profile ID intentionally
+matches S5 so case definitions and fingerprints remain identical.
 
 ```sh
 pixi install --locked -e miniasm
@@ -53,3 +56,29 @@ The final test used artificial random DNA, produced one unitig, and verified
 both graph metadata and the unitig circularity inventory. It is an installation
 test, not a benchmark result; its outcome is excluded from scientific counts.
 Evidence: `evidence/miniasm-integration/`.
+
+## Queued matched-input follow-up
+
+Source batch: `20261106T104655` (24 original executions).
+Miniasm batch: `20261106T111953` (six additional executions).
+
+| Stage | Slurm job | Dependency |
+| --- | --- | --- |
+| Validate and reuse inputs | 34520446 | Original S5 evidence job 34519373 succeeds |
+| Six Miniasm tasks | 34520447 | Input reuse succeeds |
+| Batch report | 34520448 | Miniasm tasks finish |
+| Diagnostics, graphs, lengths and NUCmer plots | 34520449 | Assemblies and report finish |
+
+`python3 scripts/miniasm_followup.py submit` uses the durable checkpoint in
+`evidence/s5-miniasm-v1/status.json` and refuses duplicate/partial submissions.
+`python3 scripts/miniasm_followup.py collect` collects existing small artefacts.
+The input-reuse job validates all six admitted source manifests and FASTQ/truth/
+origin hashes before staging anything. It hard-links those frozen files and
+copies each manifest verbatim. Collection checks source/copy manifest hashes
+and all three input-file hashes again from the recorded audit. Original reads,
+assemblies and scores are preserved.
+
+After both batches finish, admit the two snapshots and Miniasm column to the
+S5 overview. The resulting panel has **30 executions: six inputs × five tools**.
+The follow-up monitor covers collection, comparison-root ingestion, release QA,
+production deployment and live verification for both batches.

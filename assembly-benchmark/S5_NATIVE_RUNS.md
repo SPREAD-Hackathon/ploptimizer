@@ -52,3 +52,11 @@ snapshot enter the overview cohort. Export/render must use the completed
 `runs/20261106T104655/comparisons/s5-native-v2` root. Publish through the compact
 site gate and verify live result pages, plots and downloads. Historical isolated
 SCP1/SLP2 runs remain supplementary with their original scores.
+
+## Miniasm-only extension
+
+The user authorised Miniasm on the same frozen S5 reads after this batch returns.
+Six additional executions are queued as `20261106T111953`; no original assembler
+is rerun and no new reads are generated. See `MINIASM.md` and
+`evidence/s5-miniasm-v1/status.json` for the dependency chain. Once verified,
+the combined S5 comparison contains 30 outcomes across five configurations.

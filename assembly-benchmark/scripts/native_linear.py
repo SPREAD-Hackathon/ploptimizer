@@ -69,8 +69,8 @@ def submit_panel():
     return state
 
 
-def collect_panel():
-    state = load(STATUS)
+def collect_panel(status_path=STATUS):
+    state = load(status_path)
     batch = ROOT / 'runs' / state['batch_id']
     collect(batch, include_site=False)
     record = load(batch / 'submission.json')
@@ -90,10 +90,21 @@ def collect_panel():
         subprocess.run(['rsync', '-az', cluster['host'] + ':' + str(remote / 'published' / (batch.name + '.json')), str(ROOT / 'published') + '/'], check=True)
         manifests = [load(batch / 'cases' / case / 'input.json') for case in state['scenario_ids']]
         state['inputs_admitted'] = sum(item['status'] == 'valid' for item in manifests)
-        state['status'] = 'evidence_complete' if state['inputs_admitted'] == 6 else 'needs_review'
+        reuse_verified = True
+        if record.get('input_source_batch'):
+            subprocess.run(['rsync', '-az', cluster['host'] + ':' + str(remote / 'runs' / batch.name / 'input_reuse.json'), str(batch) + '/'], check=True)
+            reuse = load(batch / 'input_reuse.json')
+            rows = {row['scenario_id']: row for row in reuse.get('inputs', [])}
+            reuse_verified = reuse.get('status') == 'complete' and len(rows) == 6
+            for case, manifest in zip(state['scenario_ids'], manifests):
+                row = rows.get(case, {})
+                reuse_verified = reuse_verified and row.get('source_manifest_sha256') == row.get('copied_manifest_sha256') == digest(batch / 'cases' / case / 'input.json')
+                reuse_verified = reuse_verified and all(row.get(key) == manifest[key] for key in ('reads_sha256', 'truth_sha256', 'origins_sha256'))
+            state['input_reuse_verified'] = reuse_verified
+        state['status'] = 'evidence_complete' if state['inputs_admitted'] == 6 and reuse_verified else 'needs_review'
     else:
         state['status'] = 'needs_review'
-    save(STATUS, state)
+    save(status_path, state)
     return state
 
 
