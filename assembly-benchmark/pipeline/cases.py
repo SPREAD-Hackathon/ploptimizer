@@ -21,6 +21,9 @@ def plan(config):
         return plan_linear(config)
     inventory = load(ROOT / "references/panel.json")["assemblies"]
     selected = config["references"]
+    minimum = config.get('minimum_plasmid_bp')
+    if minimum is not None and (type(minimum) is not int or minimum < 1):
+        raise ValueError('Minimum plasmid size must be a positive integer')
     known = {entry["assembly"]["assembly_accession"] for entry in inventory}
     if set(selected) - known:
         raise ValueError("Unknown reference accession in configuration")
@@ -34,13 +37,15 @@ def plan(config):
             raise ValueError(f"Reference is held, not a preferred candidate: {accession}")
         replicons = entry["replicons"]
         chromosome = [r for r in replicons if r["molecule_type"] == "chromosome"]
-        plasmids = [r for r in replicons if r["molecule_type"] == "plasmid"]
+        native_plasmids = [r for r in replicons if r["molecule_type"] == "plasmid"]
+        plasmids = [r for r in native_plasmids if minimum is None or r['length_bp'] >= minimum]
         if len(chromosome) != 1:
             raise ValueError("Pilot requires one chromosome")
         subsets = [("chromosome", [], "Chromosome only")]
         subsets += [(r["replicon_name"].lower(), [r], "Chromosome + " + r["replicon_name"]) for r in plasmids]
         if len(plasmids) > 1:
-            subsets.append(("native", plasmids, "Chromosome + all native plasmids"))
+            subsets.append(("large" if minimum is not None else "native", plasmids,
+                            f"Chromosome + all plasmids ≥{minimum:,} bp" if minimum is not None else "Chromosome + all native plasmids"))
         for suffix, subset, title in subsets:
             case = {
                 "id": f"s1-{LABELS[accession].lower()}-{suffix}",
@@ -48,7 +53,7 @@ def plan(config):
                 "category": "S1",
                 "assembly_accession": accession,
                 "organism": assembly["organism"],
-                "truth_type": "native_complement" if len(subset) == len(plasmids) else "derived_subset",
+                "truth_type": "native_complement" if len(subset) == len(native_plasmids) else "derived_subset",
                 "replicons": chromosome + subset,
                 "simulation": config["simulation"],
                 "profile_id": config["profile_id"],
@@ -82,6 +87,13 @@ def plan(config):
         result = [case for case in result if case["category"] in categories]
         if not result:
             raise ValueError("The configuration selects no scenarios")
+    selected_ids = config.get('scenario_ids')
+    if selected_ids is not None:
+        if not isinstance(selected_ids, list) or not selected_ids or any(not isinstance(value, str) for value in selected_ids) or len(set(selected_ids)) != len(selected_ids):
+            raise ValueError('Scenario selection requires unique identifiers')
+        if set(selected_ids) - {case['id'] for case in result}:
+            raise ValueError('Scenario selection contains unknown or excluded cases')
+        result = [case for case in result if case['id'] in selected_ids]
     return result
 
 

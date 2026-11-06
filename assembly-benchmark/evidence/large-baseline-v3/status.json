@@ -1,0 +1,50 @@
+{
+  "status": "ready_not_submitted",
+  "assembly_count": 168,
+  "panels": [
+    {
+      "family": "S1",
+      "config": "config/baseline-large.json",
+      "config_sha256": "cfe57da741698883726ba453017a4e99e996b104ad693df9aedf5aa607b7e2b9",
+      "config_fingerprint": "8697a2d1a8a0daae28bf68790ed06fc2f10055714be02dc8046ea9d61f1366a2",
+      "input_count": 2,
+      "assembly_count": 8,
+      "scenario_ids": [
+        "s1-se11-large",
+        "s1-mgh78578-large"
+      ]
+    },
+    {
+      "family": "S2",
+      "config": "config/coverage-large.json",
+      "config_sha256": "91e2db72abe9b47ed6338baa227b5b5171dd05a02e31546cf70ac5a44a67c71f",
+      "config_fingerprint": "d7ef5b7025d686c6b565bb26a40367cd2e0b5b6868854a11d2c5deb99c7dc4dd",
+      "input_count": 10,
+      "assembly_count": 40,
+      "scenario_ids": [
+        "s2-se11-pse11-1-depth-0p8",
+        "s2-se11-pse11-1-depth-1",
+        "s2-se11-pse11-1-depth-1p2",
+        "s2-se11-pse11-1-depth-3",
+        "s2-se11-pse11-1-depth-5",
+        "s2-mgh78578-pkpn3-depth-0p8",
+        "s2-mgh78578-pkpn3-depth-1",
+        "s2-mgh78578-pkpn3-depth-1p2",
+        "s2-mgh78578-pkpn3-depth-3",
+        "s2-mgh78578-pkpn3-depth-5"
+      ]
+    },
+    {
+      "family": "S3",
+      "config": "config/repeatability-large.json",
+      "config_sha256": "17c62af0784f206a94ff36b40bd1ed729fcf753b013e3f6741e29b4920bab3df",
+      "config_fingerprint": "e8414d5b835dabd47ed4ce911f3b589841cbec7165e85a2003cb327e7b1c4664",
+      "input_count": 2,
+      "assembly_count": 120,
+      "scenario_ids": [
+        "s1-se11-large",
+        "s1-mgh78578-large"
+      ]
+    }
+  ]
+}
