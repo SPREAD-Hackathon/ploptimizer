@@ -2,8 +2,8 @@
 
 ## Current production — revised large-plasmid suite live and verified
 
-https://ploptimizer-assembly-benchmark.vercel.app is live from source `1bfdc7b`,
-deployment `dpl_5xRTJueBN2m595uoNhHNRDkbs4bn`. All 1,111 publicly served
+https://ploptimizer-assembly-benchmark.vercel.app is live from source `228398a`,
+deployment `dpl_3kf9T6X3RgksHXK8t1VLQtNLAceo`. All 1,111 publicly served
 pages, assets and downloads match the reviewed build byte-for-byte, with zero
 failures. Nine Vercel routing configuration files are not public download targets.
 Live browser checks confirm the mobile assembler selector without page overflow,
@@ -18,7 +18,7 @@ normalised sequence signatures. Deterministic Flye configurations agree in all
 in hash. Signature differences do not by themselves locate a sequence change.
 
 The overview includes the verified new snapshots while retaining historical
-supplementary results. The build is 53,900,537 bytes, below the unchanged 64 MiB
+supplementary results. The build is 53,905,547 bytes, below the unchanged 64 MiB
 budget. Current plus two previous READY deployments are retained. Large backend
 files stay outside the deployed presentation build. All 468 source records and
 original scores are preserved; no assemblies were retried or tuned during QA.
@@ -27,6 +27,10 @@ The existing native 12-slide scientific deck now includes final S3 results and
 updated notes. Visual and structural QA pass, preserving the S1/S2 tables and
 historical pKPN5 case. See `evidence/large-baseline-v3/`, `LARGE_BASELINE_RUNS.md`
 and `CURRENT_RELEASE.json` for source bindings, denominators and verification.
+
+The revised S6 read-error panel is now a proposed larger-plasmid comparison, not
+an executed panel. Its 12 historical pRK2 runs remain supplementary. No new
+cluster jobs were submitted by the scope correction.
 
 Material limits: many failures still lack reviewed per-base differences or a
 confirmed software-internal mechanism; real within-node reference boundaries
@@ -886,3 +890,24 @@ final wording edit. Desktop/phone visual review, the 598-route integration check
 and the release gate pass. All 468 original source records remain unchanged; all
 1,111 publicly served pages/assets/downloads match the reviewed build. Current
 plus two previous READY deployments are retained. See `evidence/metric-labels/`.
+
+### 6 November — S6 separated from small-plasmid recovery
+
+Policy `large-plasmid-baseline-v3` applies the ≥20 kb input requirement to S6.
+The 12 historical W/pRK2 noise executions remain unchanged and supplementary.
+Individual pages identify the combined small-plasmid/noise challenge, and the
+current S6 page explicitly says the revised panel has not run. Planned inputs
+are SE11 chromosome + pSE11-1 (100,021 bp) and MGH78578 chromosome + pKPN3
+(175,879 bp), excluding all other plasmids. Their accession/length metadata match
+the pinned inventory. `config/noisy-large.proposed.json` is a non-executable
+design record: the current small-plasmid tolerant evaluator cannot be assumed
+valid for these larger references. Assessment and truth-control validation are
+required before submission. No reads, new alignments or assembly jobs were
+generated during this change.
+
+QA passes 370 Python tests (11 optional skips), plus 11 focused checks after final
+copy/empty-state refinement, 598 routes / 468 result views and the release gate.
+The overview has 284 primary / 168 supplementary executions; all-record scores
+and all 468 source records remain unchanged. Live desktop/phone checks and all
+1,111 public-file byte checks pass. Current plus two previous READY deployments
+remain. Evidence: `evidence/s6-large-scope/`.

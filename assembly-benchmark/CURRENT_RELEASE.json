@@ -2,12 +2,12 @@
   "schema_version": 1,
   "status": "live_verified",
   "url": "https://ploptimizer-assembly-benchmark.vercel.app",
-  "source_commit": "1bfdc7b",
-  "deployment_id": "dpl_5xRTJueBN2m595uoNhHNRDkbs4bn",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-nzkuo4eh7-happykhans-projects.vercel.app",
-  "verified_at": "2026-11-06T09:14:41.616140+00:00",
-  "bundle": ".cache/bundles/short-nanopore-label",
-  "build_bytes": 53900537,
+  "source_commit": "228398a",
+  "deployment_id": "dpl_3kf9T6X3RgksHXK8t1VLQtNLAceo",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-rfzw7sd0m-happykhans-projects.vercel.app",
+  "verified_at": "2026-11-06T09:31:29.279101+00:00",
+  "bundle": ".cache/bundles/s6-large-scope",
+  "build_bytes": 53905547,
   "source_records_preserved": 468,
   "new_executions": 168,
   "new_exact_outcomes": {
@@ -22,9 +22,9 @@
   "optional_skips": 11,
   "retained_ready_deployments": 3,
   "retained_deployments": [
+    "dpl_3kf9T6X3RgksHXK8t1VLQtNLAceo",
     "dpl_5xRTJueBN2m595uoNhHNRDkbs4bn",
-    "dpl_Du5Cyog7UBQQbBDnkbQBbXMoJrLr",
-    "dpl_BLTAw99T8G1U1C3JGWyBGrn5EJfX"
+    "dpl_Du5Cyog7UBQQbBDnkbQBbXMoJrLr"
   ],
   "presentation_url": "https://docs.google.com/presentation/d/1t40OE2R48Z25i_XTfP6kt08CQtbcdX2DuZLyaTlvNCA/edit",
   "presentation_slide_count": 12,
@@ -72,7 +72,8 @@
     "Recorded signature differences do not locate sequence differences; non-exact circular ends retain their recorded starts.",
     "Many exact failures still lack reviewed per-base changes or a confirmed assembler-internal mechanism.",
     "Real node-internal reference intervals remain unmeasured; whole-segment associations and contig alignments have different scopes.",
-    "Two controlled reference complements and synthetic reads do not establish general real-read performance."
+    "Two controlled reference complements and synthetic reads do not establish general real-read performance.",
+    "Revised large-plasmid S6 is a design proposal and has not run; the current tolerant evaluator is restricted to the historical small-plasmid references."
   ],
   "label_change_tests": 20,
   "prior_release_python_tests": 368,
@@ -95,5 +96,34 @@
     "source_fields_folded": true,
     "settings_separate": true,
     "script_errors": []
+  },
+  "python_tests": 370,
+  "final_focused_tests": 11,
+  "s6_scope_browser_checks": {
+    "status": "pass",
+    "base_url": "https://ploptimizer-assembly-benchmark.vercel.app",
+    "viewports": [
+      1440,
+      390
+    ],
+    "planned_panel_unrun": true,
+    "legacy_runs_supplementary": 12,
+    "historical_result_note_visible": true,
+    "script_errors": []
+  },
+  "s6_replacement": {
+    "status": "design_only_not_run",
+    "inputs": [
+      "SE11 chromosome + pSE11-1 (100,021 bp)",
+      "MGH78578 chromosome + pKPN3 (175,879 bp)"
+    ],
+    "scope": "Derived subsets; all other plasmids excluded.",
+    "historical_small_plasmid_noise_runs_supplementary": 12,
+    "execution_gate": "Larger-plasmid assessment and truth-control validation required before execution."
+  },
+  "overview_executions": {
+    "primary": 284,
+    "supplementary": 168,
+    "total": 452
   }
 }

@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "base_url": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "viewports": [
+    1440,
+    390
+  ],
+  "planned_panel_unrun": true,
+  "legacy_runs_supplementary": 12,
+  "historical_result_note_visible": true,
+  "script_errors": []
+}

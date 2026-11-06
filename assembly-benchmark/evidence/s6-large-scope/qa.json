@@ -29,5 +29,13 @@
     "script_errors": []
   },
   "detector_findings": [],
-  "execution_gate": "Larger-plasmid assessment and truth-control validation required before the design becomes executable."
+  "execution_gate": "Larger-plasmid assessment and truth-control validation required before the design becomes executable.",
+  "deployment_id": "dpl_3kf9T6X3RgksHXK8t1VLQtNLAceo",
+  "public_files_verified": 1111,
+  "ready_deployments_retained": 3,
+  "ready_urls": [
+    "ploptimizer-assembly-benchmark-rfzw7sd0m-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-nzkuo4eh7-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-exhaeterp-happykhans-projects.vercel.app"
+  ]
 }
