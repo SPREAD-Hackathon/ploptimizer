@@ -144,6 +144,8 @@ def prepare_document(source, artifact_root=None, coordinate_roots=(), snapshot_h
         from .failure_summary import failure_summary
         record['report_evidence']['failure_summary'] = failure_summary(record, plot)
         summary = record['report_evidence']['failure_summary']
+        from .stage_notes import attach_stage_facts
+        attach_stage_facts(summary, record, document['batch'], artifact_root)
         if summary and summary.get('evidence_kind') == 'saved_alignment_counts':
             record['report_evidence']['description'] = summary['summary']
         record['report_evidence']['failure_details']['reported_circularity']['reference_origins']=contig_origins

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "batch_id": "20261104T190455",
+  "scenario_id": "s1-mgh78578-pkpn5",
+  "tool": "plassembler",
+  "hashes": {
+    "assembly_sha256": "daeb018173df95611293fc964a617b27be29703c05fbc9709dfff9756b2687d8",
+    "truth_sha256": "aa660d4c9964f7d7934a197966977b2e1fe4f94ed9748437bd2c44cf55d068e0"
+  },
+  "execution_sha256": "2e5b9049b2668ecd811de7cb0d80ed74736dc17efd4e89e9e09ca56d34e11890",
+  "log_sha256": "ae7874bbb7f03f8934f13af70d767afc9ea8cad262816cead6c84f57190cbbc7",
+  "facts": [
+    {
+      "label": "Post-Flye processing (confirmed log)",
+      "value": "Plassembler selected reads, corrected them and ran a separate plasmid reconstruction. The final plasmid is not simply a copy of the initial Flye contig.",
+      "kind": "text",
+      "source": "stderr.log: long:1516\u20131596; 20:39:22\u201320:42:22 UTC"
+    },
+    {
+      "label": "What the stage comparison establishes",
+      "value": "An exact initial Flye assessment and a non-exact final output are recorded. The saved records do not identify which intervening step introduced the two differences.",
+      "kind": "text",
+      "source": "execution.json: initial_flye_evaluation; saved alignment counts"
+    }
+  ]
+}

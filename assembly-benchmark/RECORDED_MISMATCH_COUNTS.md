@@ -33,3 +33,17 @@ themselves identify two separate biological SNP events.
 
 This is metadata reporting. No new sequence analysis, simulation, assembly or
 cluster job is required or performed.
+
+## Saved process history for pKPN5
+
+A source-bound process note now accompanies the count facts. The saved run log
+records additional read processing and a separate plasmid reconstruction after
+initial Flye. The final plasmid therefore was not simply the initial exact Flye
+contig copied to the output. The note is bound to the execution, final assembly,
+reference and log hashes. It appears in backend JSON, standalone Markdown and
+the website, with the log hash in its evidence disclosure.
+
+This explains why the initial and final assessments describe different outputs.
+It does not identify a causal substep or the coordinates and nucleotide changes.
+Those remain unresolved. No new alignment, variant extraction, sequence analysis
+or cluster rerun was performed for this reporting change.
