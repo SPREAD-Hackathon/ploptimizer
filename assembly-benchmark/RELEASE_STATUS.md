@@ -680,3 +680,27 @@ The earlier count-only limitation is superseded for this case. Routine compariso
 Initial Flye is directly verified exact. Unicycler graph 004 also has exact circular reference equivalence. Graph 006 and the saved Unicycler final FASTA match the final Plassembler sequence. Graph bridging/cleanup occurs between the saved graph checkpoints; the particular responsible operation remains unresolved. See `BASE_REVIEW.md`, the hash-bound review in `reviews/bases/`, and the retained Unicycler log in `reviews/evidence/`.
 
 Source c0f2334 deployed as dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q. QA: 358 tests (11 optional skips), 11 focused checks, HTTP E2E 398 routes / 300 result views; final gate 399 HTML / 8,005 links / 300 original source records preserved. All 1,086 published files verified byte-for-byte. Build 47,329,638 bytes; current plus two previous READY deployments retained. No assembly or alignment reruns and no cluster jobs were submitted.
+
+## 2026-11-06 — Revised baseline suite running (not a completed release)
+
+The authorised 168-execution replacement suite is submitted with source
+`fa47838`. Current batches and assembly/evidence job IDs:
+
+- S1 `20261106T042103`: 8 assemblies, array `34499379`, evidence `34499381`.
+- S2 `20261106T042108`: 40 assemblies, array `34499388`, evidence `34499390`.
+- S3 `20261106T042113`: 120 assemblies, array `34499396`, evidence `34499398`.
+
+Preparation passed 364 tests under the actual pinned Python 3.11 interpreter
+(11 optional skips), and read generation is running. Assembly arrays are ordered
+across batches and limited to four active tasks. Evidence jobs collect saved
+graphs/lengths, run supplementary mapping, freeze source snapshots and run NUCmer.
+The current live release and headline cohort remain unchanged while these jobs
+are pending. Detailed status and the cancelled pre-assembly compatibility attempt
+are retained in `evidence/large-baseline-v3/`; see `LARGE_BASELINE_RUNS.md`.
+
+The follow-up `finish-large-plasmid-benchmark-panels` will collect and verify the
+suite before updating the live report. Publication must consume the completed
+NUCmer comparison roots for the new cases; ensure the plots actually select those
+NUCmer coordinates while preserving saved PAF evidence for mismatch counts. The
+specific software causes must not be inferred from recovery scores alone. Never
+silently relabel pending/error outcomes as passes or rerun with tuned parameters.
