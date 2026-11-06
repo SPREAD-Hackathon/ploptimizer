@@ -52,6 +52,30 @@
       "config": "config/coverage-large.json",
       "config_fingerprint": "d7ef5b7025d686c6b565bb26a40367cd2e0b5b6868854a11d2c5deb99c7dc4dd",
       "config_sha256": "91e2db72abe9b47ed6338baa227b5b5171dd05a02e31546cf70ac5a44a67c71f",
+      "evidence": {
+        "comparison_root": "comparisons/large-baseline-v3",
+        "coordinate_comparisons": {
+          "complete": 40
+        },
+        "diagnostics": {
+          "complete": 40
+        },
+        "expected_executions": 40,
+        "graph_identities": {
+          "identity_pairs": 75,
+          "inventories": 40
+        },
+        "graphs": {
+          "available": 40
+        },
+        "length_inventories": 40,
+        "outcomes": {
+          "fail": 10,
+          "pass": 30
+        },
+        "source_snapshot": "published/20261106T042108.json",
+        "status": "complete"
+      },
       "family": "S2",
       "input_count": 10,
       "jobs": {
@@ -95,9 +119,9 @@
       ]
     }
   ],
-  "phase": "S1 evidence complete and locally verified; S2 assemblies running; S3 queued",
+  "phase": "S1 and S2 evidence complete and locally verified; S3 repeat assemblies running",
   "schema_version": 1,
   "source_commit": "fa47838",
   "status": "running",
-  "updated_at": "2026-11-06T04:56:08.490808+00:00"
+  "updated_at": "2026-11-06T06:23:49.134943+00:00"
 }

@@ -1,0 +1,34 @@
+{
+  "alignment_reruns": 0,
+  "assembly_reruns": 0,
+  "available_graphs": 40,
+  "batch": "20261106T042108",
+  "completed_mapping_records": 40,
+  "completed_nucmer_plots": 40,
+  "gate": {
+    "errors": [],
+    "html_pages": 57,
+    "local_links_checked": 1132,
+    "policy": {
+      "max_file_bytes": 5242880,
+      "max_files": 1500,
+      "max_total_bytes": 67108864
+    },
+    "preserved_source_records": 40,
+    "public_files": 210,
+    "schema_version": 1,
+    "status": "pass",
+    "total_files": 213,
+    "website_bytes": 4629294
+  },
+  "input_audit": "input-audit.json",
+  "length_inventories": 40,
+  "original_snapshot_sha256": "b20182a58fd8bf6195001b735cbd0e8fda602a56517b31dfa06b6ef450bf34cd",
+  "original_source_records_preserved": 40,
+  "outcomes": {
+    "fail": 10,
+    "pass": 30
+  },
+  "scope": "S2 only; S3 and production update remain pending",
+  "status": "pass"
+}

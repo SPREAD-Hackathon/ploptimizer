@@ -726,3 +726,18 @@ local links pass the release gate, preserving all 8 original records. The update
 365-test suite passes with 11 optional skips. See
 `evidence/large-baseline-v3/s1-qa.json`. Publish only after the whole suite and final
 compact-site budget are verified.
+
+### 6 November, 06:20 UTC follow-up — S2 complete; S3 running
+
+S2 `20261106T042108` completed all 40 executions (30 exact pass, 10 exact fail)
+and its evidence job completed 40 mappings, graphs, length inventories and NUCmer
+comparisons. Its unchanged frozen snapshot is retained in `published/`.
+S2-only export selects all 40 recorded NUCmer plots; QA passes 57 HTML pages,
+1,132 links and all 40 preserved source records. Matched coverage controls and
+S1/S3 frozen input hashes are recorded in `input-audit.json`.
+
+S3 has started its independent repeats and remains incomplete. No duplicate runs,
+parameter changes or retries were submitted. The production report and headline
+cohort remain unchanged until the complete suite passes final QA, including the
+compact website's byte and file-count budgets. See
+`evidence/large-baseline-v3/s2-qa.json`.
