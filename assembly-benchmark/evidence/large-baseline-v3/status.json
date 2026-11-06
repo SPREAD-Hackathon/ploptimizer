@@ -162,13 +162,16 @@
     "verified_array_throttle": 1000
   },
   "schema_version": 1,
-  "status": "evidence_complete",
+  "status": "complete",
   "monitor": "finish-large-plasmid-benchmark-panels",
-  "phase": "All 168 executions and 168 coordinate comparisons complete; final report QA and publication in progress",
-  "updated_at": "2026-11-06T08:42:46.746802+00:00",
+  "phase": "Live report and scientific presentation verified; all 168 executions accounted for",
+  "updated_at": "2026-11-06T08:53:09.927973+00:00",
   "assembly_outcomes": {
     "pass": 72,
     "fail": 96
   },
-  "repeatability_audit": "evidence/large-baseline-v3/s3-repeatability-audit.json"
+  "repeatability_audit": "evidence/large-baseline-v3/s3-repeatability-audit.json",
+  "deployment_id": "dpl_BLTAw99T8G1U1C3JGWyBGrn5EJfX",
+  "publication_verification": "evidence/large-baseline-v3/publication.json",
+  "presentation_qa": "evidence/large-baseline-v3/presentation-qa.json"
 }

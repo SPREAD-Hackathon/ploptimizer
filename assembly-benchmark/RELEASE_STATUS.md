@@ -1,25 +1,44 @@
-# First reporting release: results and limits
+# Reporting release: results and limits
 
-## Current production — live and verified
+## Current production — revised large-plasmid suite live and verified
 
-The compact build is now live at https://ploptimizer-assembly-benchmark.vercel.app
-from source `c0f2334`, deployment `dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q`.
-The guarded archive deployment succeeded. All 1,086 published pages/assets/downloads
-passed byte-for-byte verification with zero failures. Browser checks confirmed
-recorded-difference facts and functioning scenario search/status filters. The
-47.3 MB local build replaces the earlier bulky production output. Live plus two
-previous READY versions are retained; exact team-billed storage is not claimed.
+https://ploptimizer-assembly-benchmark.vercel.app is live from source `0c306c7`,
+deployment `dpl_BLTAw99T8G1U1C3JGWyBGrn5EJfX`. All 1,111 publicly served
+pages, assets and downloads match the reviewed build byte-for-byte, with zero
+failures. Nine Vercel routing configuration files are not public download targets.
+Live browser checks confirm the mobile assembler selector without page overflow,
+S3 mode/thread tables, completed NUCmer plots and the retained pKPN5 base changes.
 
-Phone/tablet matrices now show Scenario family plus one complete selected
-assembler column, with a native selector at widths up to 900 px. Desktop retains
-the full comparison. The live390px Raven view has two complete cells per row and
-zero horizontal overflow.
+All 168 revised-suite executions and their evidence jobs completed: **72 exact
+passes / 96 exact failures**, with no execution errors. All 168 have mappings,
+graphs, length inventories and NUCmer plots. S3 repeatability is reported
+separately: 23/24 within-setting groups and 9/12 across-thread groups agree in
+normalised sequence signatures. Deterministic Flye configurations agree in all
+8 within-setting and 4 across-thread groups. All recorded comparison inputs agree
+in hash. Signature differences do not by themselves locate a sequence change.
 
-Earlier quota-blocked notes below are historical and have been superseded by this
-successful deployment. See `CURRENT_RELEASE.json` and `evidence/base-review-v1/`.
-The latest update directly checks existing sequences for the pKPN5 case; it
-does not add new node interval measurements, new assemblies or a confirmed
-software-internal causal assignment.
+The overview includes the verified new snapshots while retaining historical
+supplementary results. The build is 53,679,735 bytes, below the unchanged 64 MiB
+budget. Current plus two previous READY deployments are retained. Large backend
+files stay outside the deployed presentation build. All 468 source records and
+original scores are preserved; no assemblies were retried or tuned during QA.
+
+The existing native 12-slide scientific deck now includes final S3 results and
+updated notes. Visual and structural QA pass, preserving the S1/S2 tables and
+historical pKPN5 case. See `evidence/large-baseline-v3/`, `LARGE_BASELINE_RUNS.md`
+and `CURRENT_RELEASE.json` for source bindings, denominators and verification.
+
+Material limits: many failures still lack reviewed per-base differences or a
+confirmed software-internal mechanism; real within-node reference boundaries
+remain unmeasured; synthetic cases from two reference complements do not establish
+general real-read performance. Exact scores and repeat agreement answer separate
+questions. This completes the bounded run/report/presentation release.
+
+## Historical reporting releases and follow-up record
+
+Entries below retain their original dates and describe the release state at that
+time. Their pending-work and older production statements are superseded by the
+current production entry above.
 
 **Final evidence audit: 5 November 2026, 01:58 UTC (02:58 CET).** All existing
 submitted batches, required diagnostics and tolerant assessments have finished.

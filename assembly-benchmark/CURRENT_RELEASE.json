@@ -1,38 +1,78 @@
 {
-  "browser_checks": [
-    "Live390px scenario+Raven headers only",
-    "Six complete rows; no cell-content clipping",
-    "Matrix scrollWidth equals clientWidth348px",
-    "All4 assembler choices checked locally at390px",
-    "320px,800px and1440px layouts checked",
-    "Live pKPN5: 2 base mismatches, equal88582bp lengths, initial Flye exact, positions/base changes unknown"
-  ],
-  "build_bytes": 47329638,
-  "bundle": ".cache/bundles/base-review-v1",
-  "cluster_jobs_submitted": 0,
-  "deployment_id": "dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-5yzg26ezy-happykhans-projects.vercel.app",
-  "limitations": [
-    "Real node-internal reference intervals remain unmeasured",
-    "Many other exact failures still lack reviewed mismatch locations",
-    "The specific operation responsible for pKPN5 substitutions remains unresolved"
-  ],
-  "mobile_matrix": "Native assembler selector and two complete columns at <=900px; full comparison on desktop",
-  "original_source_records_preserved": 300,
-  "public_files_verified": 1086,
-  "reporting_update": "Direct existing FASTA review resolves pKPN5 substitutions and saved checkpoint comparisons; no assembly or aligner rerun",
-  "retained_deployments": [
-    "dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q",
-    "dpl_AzEuTLfdWVyGust6LHufoDKdz93o",
-    "dpl_7oQGUyEYZKfFeLyHsk2AjQTB6RCg"
-  ],
-  "retained_ready_deployments": 3,
   "schema_version": 1,
-  "source_commit": "c0f2334",
   "status": "live_verified",
   "url": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "source_commit": "0c306c7",
+  "deployment_id": "dpl_BLTAw99T8G1U1C3JGWyBGrn5EJfX",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-duk0uvoaj-happykhans-projects.vercel.app",
+  "verified_at": "2026-11-06T08:53:09.927973+00:00",
+  "bundle": ".cache/bundles/large-release-v3",
+  "build_bytes": 53679735,
+  "source_records_preserved": 468,
+  "new_executions": 168,
+  "new_exact_outcomes": {
+    "pass": 72,
+    "fail": 96
+  },
+  "new_nucmer_plots": 168,
+  "public_files_verified": 1111,
   "verification_failures": 0,
-  "verification_retries": 0,
-  "verification_scope": "All public files byte-for-byte",
-  "verified_at": "2026-11-06T01:24:44.948996+00:00"
+  "verification_scope": "All publicly served pages/assets/downloads byte-for-byte; nine Vercel routing configuration files excluded from HTTP verification.",
+  "static_files_including_routing_configs": 1120,
+  "python_tests": 368,
+  "optional_skips": 11,
+  "retained_ready_deployments": 3,
+  "retained_deployments": [
+    "dpl_BLTAw99T8G1U1C3JGWyBGrn5EJfX",
+    "dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q",
+    "dpl_AzEuTLfdWVyGust6LHufoDKdz93o"
+  ],
+  "presentation_url": "https://docs.google.com/presentation/d/1t40OE2R48Z25i_XTfP6kt08CQtbcdX2DuZLyaTlvNCA/edit",
+  "presentation_slide_count": 12,
+  "repeatability": {
+    "within_setting_identical": 23,
+    "within_setting_groups": 24,
+    "across_threads_identical": 9,
+    "across_threads_groups": 12,
+    "deterministic_flye_within_identical": 8,
+    "deterministic_flye_within_groups": 8,
+    "deterministic_flye_across_identical": 4,
+    "deterministic_flye_across_groups": 4
+  },
+  "browser_checks": {
+    "status": "pass",
+    "base_url": "https://ploptimizer-assembly-benchmark.vercel.app",
+    "mobile_checks": [
+      {
+        "mobile_assembler": "Flye (default)",
+        "scroll": 390,
+        "viewport": 390
+      },
+      {
+        "mobile_assembler": "Flye (--meta)",
+        "scroll": 390,
+        "viewport": 390
+      },
+      {
+        "mobile_assembler": "Raven",
+        "scroll": 390,
+        "viewport": 390
+      },
+      {
+        "mobile_assembler": "Plassembler long",
+        "scroll": 390,
+        "viewport": 390
+      }
+    ],
+    "s3_record": "batches/20261106T042113/results/s1-se11-large--flye--mode-default-threads-1-repeat-1.html",
+    "loaded_images": 1,
+    "script_errors": [],
+    "pkpn5_positions_present": true
+  },
+  "limitations": [
+    "Recorded signature differences do not locate sequence differences; non-exact circular ends retain their recorded starts.",
+    "Many exact failures still lack reviewed per-base changes or a confirmed assembler-internal mechanism.",
+    "Real node-internal reference intervals remain unmeasured; whole-segment associations and contig alignments have different scopes.",
+    "Two controlled reference complements and synthetic reads do not establish general real-read performance."
+  ]
 }

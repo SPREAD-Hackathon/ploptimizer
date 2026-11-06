@@ -1,0 +1,30 @@
+{
+  "status": "pass",
+  "base_url": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "mobile_checks": [
+    {
+      "mobile_assembler": "Flye (default)",
+      "scroll": 390,
+      "viewport": 390
+    },
+    {
+      "mobile_assembler": "Flye (--meta)",
+      "scroll": 390,
+      "viewport": 390
+    },
+    {
+      "mobile_assembler": "Raven",
+      "scroll": 390,
+      "viewport": 390
+    },
+    {
+      "mobile_assembler": "Plassembler long",
+      "scroll": 390,
+      "viewport": 390
+    }
+  ],
+  "s3_record": "batches/20261106T042113/results/s1-se11-large--flye--mode-default-threads-1-repeat-1.html",
+  "loaded_images": 1,
+  "script_errors": [],
+  "pkpn5_positions_present": true
+}
