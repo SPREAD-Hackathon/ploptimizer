@@ -223,3 +223,8 @@ th[aria-sort="descending"] .table-sort svg path { d: path("M3 6 6 9 9 6"); }
 
 /* Keep deep-linked broad results visible below the shared navigation. */
 details[id^="dataset-"], h3[id*="_GCF_"] { scroll-margin-top: 84px; }
+
+.read-order-report section[id] { scroll-margin-top: 84px; }
+.read-order-report .matrix { font-size: 13px; }
+.read-order-report .matrix th { white-space: nowrap; }
+.read-order-report .matrix td { text-align: center; min-width: 36px; }

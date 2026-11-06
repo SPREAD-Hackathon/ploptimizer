@@ -1,0 +1,20 @@
+{
+  "live_deployment": false,
+  "matrices": 4,
+  "page_level_overflow": false,
+  "private_report": "runs/20261106T134415/report/index.html",
+  "public_files": [
+    "index.html",
+    "runs.tsv",
+    "orders.tsv"
+  ],
+  "public_report": "evidence/read-order-v1/report/index.html",
+  "public_total_bytes": 60952,
+  "run_detail_entries": 48,
+  "scope": "Standalone report and metadata; the active parent publisher was not changed.",
+  "status": "pass",
+  "viewports": [
+    1280,
+    390
+  ]
+}

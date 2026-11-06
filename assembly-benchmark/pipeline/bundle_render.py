@@ -63,6 +63,9 @@ def render_bundle(bundle, output):
         catalogue = output/'scenarios/index.html'
         if (output/'diagnostic-plots.html').is_file():
             catalogue.write_text(catalogue.read_text().replace('</main>', '<p><a href="/diagnostic-plots.html">Diagnostic scenario plots</a></p></main>'))
+    if (bundle/'read_order/summary.json').is_file():
+        from .read_order_site import install_read_order
+        install_read_order(bundle, output, context['overview']['tools'])
     home=output/'index.html'
     content=home.read_text().replace('</main>','<div class="downloads"><a href="data/summary.tsv">Execution summary TSV</a><a href="data/molecules.tsv">Molecule evidence TSV</a></div></main>')
     if (bundle/'evidence-availability.tsv').is_file():

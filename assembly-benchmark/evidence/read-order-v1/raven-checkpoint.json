@@ -1,0 +1,147 @@
+{
+  "assessment": {
+    "complete": true,
+    "expected_runs": 12,
+    "observed_runs": 12,
+    "variants": 4,
+    "verdict": "Order-associated output difference",
+    "within_order": {
+      "original": {
+        "complete": true,
+        "identical": true,
+        "variants": 1
+      },
+      "shuffle-1": {
+        "complete": true,
+        "identical": true,
+        "variants": 1
+      },
+      "shuffle-2": {
+        "complete": true,
+        "identical": true,
+        "variants": 1
+      },
+      "shuffle-3": {
+        "complete": true,
+        "identical": true,
+        "variants": 1
+      }
+    }
+  },
+  "batch_id": "20261106T134415",
+  "completed_runs": 12,
+  "executions": [
+    {
+      "execution_sha256": "5b3e50218bbff0a5808cacb4b875cc46b6797a1fb51a4afddc7ac8ed3de459a5",
+      "scenario_id": "s7-se11-original-repeat-1"
+    },
+    {
+      "execution_sha256": "dbc89f95475a93242ca7181409792199527b5c7b21de05058f8be2c3c6dd04f7",
+      "scenario_id": "s7-se11-original-repeat-2"
+    },
+    {
+      "execution_sha256": "a51882ebec830ce622d4a4e8d81d6b16b9d8970acec6b4f8b9f357316c47e07c",
+      "scenario_id": "s7-se11-original-repeat-3"
+    },
+    {
+      "execution_sha256": "bdc6fe07e6334dd85263111ee2344a9d68f31604e4d4649ce02957f4b4b18a1a",
+      "scenario_id": "s7-se11-shuffle-1-repeat-1"
+    },
+    {
+      "execution_sha256": "bfa53653da4b9f3dd4e31a54807b3732c7d17a9fbce44d07ac2f5901fe6957de",
+      "scenario_id": "s7-se11-shuffle-1-repeat-2"
+    },
+    {
+      "execution_sha256": "11ab277f2f70cb8ec9ece66d3bd7d8594d45305854cce2d89a6175884169e4bd",
+      "scenario_id": "s7-se11-shuffle-1-repeat-3"
+    },
+    {
+      "execution_sha256": "0467151a0912625de331c2393e01c503f354c94f20e0c7475d2b3e0920dd66de",
+      "scenario_id": "s7-se11-shuffle-2-repeat-1"
+    },
+    {
+      "execution_sha256": "3248dfffdfc1828fb9ebe3faa8dd2c25a58a381911367d5a6f077e980d865152",
+      "scenario_id": "s7-se11-shuffle-2-repeat-2"
+    },
+    {
+      "execution_sha256": "d60be3ebd1915740415d8bf396631d4f93673140a29741f6b329dd535f2be77d",
+      "scenario_id": "s7-se11-shuffle-2-repeat-3"
+    },
+    {
+      "execution_sha256": "0ecac5a51c123fc9b01667c1ef0630a20605954e375a55b936c8acaaaae48f6a",
+      "scenario_id": "s7-se11-shuffle-3-repeat-1"
+    },
+    {
+      "execution_sha256": "a9c792db7dfc44083cbd3becd95cfcfb52b679667c2bbd55d271173ef5468005",
+      "scenario_id": "s7-se11-shuffle-3-repeat-2"
+    },
+    {
+      "execution_sha256": "ebb80549898684e60f485309a529482d94ee23557d3be0446f8ad4dc77e5cf10",
+      "scenario_id": "s7-se11-shuffle-3-repeat-3"
+    }
+  ],
+  "expected_runs": 12,
+  "input_admission_sha256": "67794064ccef9d7c14a953f8d27330f5d296a61e17114c56376d909ad2972ee3",
+  "output_sizes_by_order": {
+    "original": [
+      {
+        "bp": 5171167,
+        "contigs": 6
+      },
+      {
+        "bp": 5171167,
+        "contigs": 6
+      },
+      {
+        "bp": 5171167,
+        "contigs": 6
+      }
+    ],
+    "shuffle-1": [
+      {
+        "bp": 5151202,
+        "contigs": 4
+      },
+      {
+        "bp": 5151202,
+        "contigs": 4
+      },
+      {
+        "bp": 5151202,
+        "contigs": 4
+      }
+    ],
+    "shuffle-2": [
+      {
+        "bp": 5161023,
+        "contigs": 6
+      },
+      {
+        "bp": 5161023,
+        "contigs": 6
+      },
+      {
+        "bp": 5161023,
+        "contigs": 6
+      }
+    ],
+    "shuffle-3": [
+      {
+        "bp": 5151902,
+        "contigs": 4
+      },
+      {
+        "bp": 5151902,
+        "contigs": 4
+      },
+      {
+        "bp": 5151902,
+        "contigs": 4
+      }
+    ]
+  },
+  "panel_status": "other tools pending",
+  "status": "verified_tool_group",
+  "tool": "raven",
+  "version": "1.8.3"
+}

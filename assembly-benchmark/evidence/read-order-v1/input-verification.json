@@ -1,0 +1,10 @@
+{
+  "batch_id": "20261106T134415",
+  "input_admission_sha256": "67794064ccef9d7c14a953f8d27330f5d296a61e17114c56376d909ad2972ee3",
+  "original_compressed_hash_matches_source": true,
+  "records_per_order": 15397,
+  "replicates_share_reads_sha256": true,
+  "status": "pass",
+  "unique_order_sensitive_hashes": 4,
+  "unique_record_multiset_hashes": 1
+}

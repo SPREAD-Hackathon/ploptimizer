@@ -5,8 +5,10 @@ output? This is an output-to-output comparison, like S3. Reference recovery is
 supporting context and never determines the S7 verdict. Identical wrong assemblies
 can show no observed order effect.
 
-Status: **specified, not implemented or run**. The design record is
-`config/read-order.proposed.json`; it is not an executable configuration.
+Status: **implemented and completed: all 48 executions**, batch `20261106T134415`.
+The executable configuration is `config/read-order.json`; the original
+`config/read-order.proposed.json` is retained as the historical design.
+See `evidence/read-order-v1/status.json` for current execution state.
 
 ## Bounded first panel
 
@@ -17,7 +19,7 @@ that exact file for three independent assembler repeats.
 
 The first panel uses the existing four configurations at a fixed four-thread
 setting and their existing default-mode arguments: 4 orders × 3 repeats ×
-4 configurations = **48 proposed executions**. No jobs have been submitted.
+4 configurations = **48 executions**, submitted through Slurm on 6 November 2026.
 Keep versions, environments, input content and all other arguments fixed. Use
 fresh output directories without shared checkpoints. One-thread and explicit
 deterministic-mode comparisons are a later extension, not part of this pilot.
@@ -63,7 +65,9 @@ it must not silently establish a sequence change or physical topology.
 
 The current S3 signature canonicalises rotations only for exact reference-matched
 circles. **Do not reuse that truth-dependent rule as the S7 primary endpoint.**
-Implement and validate the independent comparison before running this panel.
+The S7 implementation uses its own reference-independent sequence signatures;
+its 12 local tests cover rotations, reverse complements, retained duplicate
+copies, exact cross-stage topology association, classification and reporting.
 
 ## Per-result evidence
 
@@ -76,3 +80,81 @@ Graph differences and optional reference-recovery scores remain separate evidenc
 Neither a signature difference nor a changed graph layout establishes a software
 mechanism. A finite panel also cannot prove that a tool is universally insensitive
 to read order. No result is implied by this specification.
+
+## Execution and backend output
+
+Run from `assembly-benchmark`:
+
+```sh
+python3 scripts/read_order.py plan
+python3 scripts/read_order.py submit
+python3 scripts/read_order.py collect
+```
+
+`submit` checkpoints job IDs and refuses a changed configuration or duplicate
+submission. The isolated remote source root is `assembly-benchmark/.s7`; it does
+not replace the main publisher or any prior batch. Preparation installs the
+pinned Pixi environments, runs nine S7 tests and admits the four frozen orders.
+Four independent 12-task arrays then reuse those orders. The scheduler cap is
+1000; Plassembler has a two-hour allocation and the other tools retain four hours.
+No source reads are simulated again and no parameters are tuned to outcomes.
+
+The shuffle sorts original record indices by a seeded SHA-256 key, with the
+original index breaking ties. It retains a compressed permutation index,
+compressed/uncompressed checksums and ordered/multiset record hashes. Repeats
+hard-link the same admitted order file. Reference origin rows remain keyed by
+read ID rather than reordered by position.
+
+The primary end-sensitive signature ignores contig names, output ordering and
+strand, while preserving sequence, length and duplicate-copy differences. A
+separate circular-representation signature allows rotations only where the tool
+reported topology for every contig; it stays unassessed for unknown topology.
+For Plassembler, the comparison includes its final plasmids and hash-verified
+retained chromosome. The chromosome’s saved initial Flye circularity label is
+associated only by complete sequence identity (including reverse complement);
+its name or a reference match is never used. The original end-sensitive
+signatures are unchanged and preserved. Byte/checksum and reference-recovery
+evidence remain separate.
+
+The report stage writes `summary.json`, `report/index.html`, `report/runs.tsv`
+and `report/orders.tsv`. Each tool has within-order summaries, a 12-by-12
+pairwise output agreement matrix, commands and execution status. This is a
+standalone backend report, ready for the website publisher to consume.
+These pairwise matrices compare saved sequence signatures; they are not alignment
+dot plots. Output-to-output coordinate alignments/event locations remain a
+separate follow-up for differing outputs. All 48 records and input bindings
+have now been collected and verified; see `evidence/read-order-v1/RESULTS.md`.
+
+Reads are temporary under `READ_RETENTION.md`; they remain available while
+S7 and any dependent diagnostics need them. No automatic cleanup is enabled.
+
+### Submitted jobs
+
+- assemble-flye: `34523670`
+- assemble-flye-meta: `34523671`
+- assemble-plassembler: `34523674`
+- assemble-raven: `34523672`
+- prepare: `34523669`
+- report: `34523675`
+
+## Completed outcome
+
+All 48 executions completed successfully as software executions. The secondary
+reference endpoint has 24 passes and 24 failures; these are not S7 verdicts.
+
+- Flye (default): seven end-sensitive variants, but one circular-normalised
+  output across all 12 runs. No order effect observed after allowing the
+  recorded circular starts to rotate.
+- Flye (`--meta`): seven end-sensitive and three circular-normalised variants.
+  Same-order repeats vary, so an order-specific effect is not established.
+- Raven: four end-sensitive outputs; all three repeats agree within each
+  order. Contig counts differ between four and six, establishing an output
+  difference beyond circular starts. No complete circular-label view is available.
+- Plassembler: three end-sensitive outputs, all caused by representations of
+  the retained chromosome; its final plasmid sequences match across orders.
+  Verified inherited chromosome topology yields one circular-normalised output
+  across all 12 runs. No sequence order effect observed under that comparison.
+
+Topology review job `34524603` used saved outputs only; no assembler or read
+generator was rerun. Its input/output hashes and the unchanged end-sensitive
+signatures are verified in `evidence/read-order-v1/release-qa.json`.

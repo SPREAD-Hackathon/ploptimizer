@@ -1,0 +1,68 @@
+{
+  "batch_id": "20261106T134415",
+  "category": "S7",
+  "circular_verdicts": {
+    "flye": "No order effect observed",
+    "flye-meta": "Within-order variability \u2014 order-specific effect not established",
+    "plassembler": "No order effect observed",
+    "raven": "Not assessed \u2014 incomplete executions or comparison evidence"
+  },
+  "config_fingerprint": "7a7b1b9170b922a60b89d10718577b6cd26a454a1f1981c73c22fda15b664cc1",
+  "config_sha256": "46e320de5ec5b298b48121b4a04763a672563314406cf05c24b56f098d806175",
+  "execution_counts": {
+    "completed": 48
+  },
+  "expected_executions": 48,
+  "input_orders": 4,
+  "interpretation": {
+    "flye": "No order effect observed after circular-start normalisation.",
+    "flye-meta": "Within-order variability remains after circular-start normalisation; order-specific effect not established.",
+    "plassembler": "End-sensitive differences are retained-chromosome start representations; circular-normalised outputs and final plasmids agree.",
+    "raven": "Four order-associated outputs; contig count changes from six to four."
+  },
+  "jobs": {
+    "assemble-flye": "34523670",
+    "assemble-flye-meta": "34523671",
+    "assemble-plassembler": "34523674",
+    "assemble-raven": "34523672",
+    "prepare": "34523669",
+    "report": "34523675",
+    "topology-review": "34524603"
+  },
+  "public_report": "evidence/read-order-v1/report/index.html",
+  "publication_status": "standalone_report_verified_not_live",
+  "qa": "evidence/read-order-v1/release-qa.json",
+  "remote_root": "/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7",
+  "repeats_per_order": 3,
+  "report": "runs/20261106T134415/report",
+  "schema_version": 1,
+  "source": {
+    "batch": "20261106T042113",
+    "case_id": "s1-se11-large",
+    "input_manifest_sha256": "6ff018e70e679da32c9acc41fcab7bbc61cf3153d034feace065d0ea4bdd8065",
+    "minimum_plasmid_bp": 20000,
+    "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+    "truth_sha256_for_provenance_only": "c043f0073af048970d457c777b9f7a52722be72d6ffb6e84c63bb29337917ecb"
+  },
+  "status": "results_complete",
+  "status_count_scope": "Stored record statuses; pass/fail here is the secondary reference endpoint, not S7 agreement.",
+  "status_counts": {
+    "fail": 24,
+    "pass": 24
+  },
+  "summary_sha256": "03a6ea0b5eeefa36085c47cf338bcb014f8fb99e7ae711b3a33b604cf4191bc0",
+  "tools": [
+    "flye",
+    "flye-meta",
+    "raven",
+    "plassembler"
+  ],
+  "topology_review_script_sha256": "d6fd59b52a97125e6703ea78eb5ef15e486e0759a56b57b6d19c051dbb92e7ed",
+  "topology_review_status": "complete",
+  "verdicts": {
+    "flye": "Within-order variability \u2014 order-specific effect not established",
+    "flye-meta": "Within-order variability \u2014 order-specific effect not established",
+    "plassembler": "Order-associated output difference",
+    "raven": "Order-associated output difference"
+  }
+}

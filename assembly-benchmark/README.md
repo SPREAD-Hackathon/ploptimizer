@@ -1,11 +1,12 @@
 # Long-read plasmid assembly benchmark
 
-**Status:** the first benchmark reporting release is complete. S1/S2, S3, S4 and
-the bounded S6 smoke batch have finished; documented uncertainties remain.
-See the [release results and limitations](RELEASE_STATUS.md). Python automation generates
-error-free reads, submits BMRC Slurm jobs through Pixi environments and builds a
-static results website. See [RUNNING.md](RUNNING.md) for the explicit pilot settings
-and commands. Broader study choices remain in the [decision list](DECISIONS.md).
+**Status:** S1–S6 have implemented benchmark panels and recorded runs. S7
+read-order sensitivity is implemented and all 48 executions and backend
+comparisons are complete. Its standalone report is ready; live-site publication
+is tracked separately. See the [scenario status](SCENARIO_STATUS.md) for the
+current distinction between implemented, executed and published work, and
+[release results](RELEASE_STATUS.md) for verified production releases.
+All code, configurations and reporting work stay inside this folder.
 
 **[Live results website](https://ploptimizer-assembly-benchmark.vercel.app)**:
 assembler/scenario matrix, scenario evidence and individual tool-execution pages
@@ -16,14 +17,16 @@ run artefacts stay on BMRC. Simulated reads are temporary working data under
 the [read retention policy](READ_RETENTION.md); cleanup awaits verified restoration
 and completion of every dependent job.
 
-## Proposed read-order comparison
+## Read-order comparison
 
-[S7 · Read-order sensitivity](S7_READ_ORDER.md) compares outputs from identical
-read sets presented in original and shuffled orders, with repeats within each
-order. It measures output agreement rather than recovery against a reference.
-The bounded 48-execution pilot is specified in `config/read-order.proposed.json`;
-input permutation and reference-independent comparison require validation before
-execution. It has not been run.
+[S7 · Read-order sensitivity](S7_READ_ORDER.md) is implemented in
+`pipeline/read_order.py`, with executable `config/read-order.json` and the
+`scripts/read_order.py` controller. Batch `20261106T134415` submits 48 executions:
+original order plus three frozen shuffles, three repeats per order and four
+assembler configurations. All 48 have completed, using the same complete
+read-record multiset in four distinct orders. Outputs are compared independently
+of reference recovery. See [S7 results](evidence/read-order-v1/RESULTS.md) and
+`evidence/read-order-v1/status.json`. Live-site integration remains separate.
 
 ## Aggregate plots
 
@@ -56,10 +59,10 @@ The [baseline policy](BASELINE_POLICY.md) separates ordinary recovery from small
 4. **S4:** smaller plasmids individually and alongside larger ones.
 
 Existing mixed-size and small-plasmid S1–S3 runs remain supplementary, with their
-original references, identifiers and scores. The revised baseline currently has
-chromosome-only and single larger-plasmid S1 controls. Multiple-larger-plasmid S1,
-larger-plasmid S2 and revised S3 are not assessed. This reporting change does not
-replace references or submit new biological computation.
+original references, identifiers and scores. The revised larger-plasmid suite
+has completed: eight multiple-plasmid S1 executions, 40 matched-coverage S2
+executions and 120 S3 repeats with mode/thread comparisons. Earlier chromosome-only
+and single-plasmid controls remain available. See `evidence/large-baseline-v3/`.
 
 ## Tools and references
 
@@ -103,7 +106,9 @@ The 1× S2 cases deliberately repeat baseline conditions; they are not independe
 biological replicates. S3 repeated/thread runs and S4 read-length challenges now have separate runnable
 profiles: `config/determinism.json` (80 executions) and
 `config/small-plasmids.json` (48 comparisons). They were submitted sequentially
-after S1/S2 to keep assembly concurrency at four. S4 finished with four separately
+after S1/S2 to keep that historical pilot’s assembly concurrency at four.
+Current submissions use the user-authorised cap of 1000 and leave resource
+scheduling to Slurm. S4 finished with four separately
 recorded tool errors; all 80 S3 executions and final diagnostics completed. All batches are linked
 on the site. Supplementary alignment diagnostics explain strict failures without
 changing their scores; see [RECOVERY_DIAGNOSTICS.md](RECOVERY_DIAGNOSTICS.md).
@@ -121,9 +126,11 @@ The [next error-bearing read design](REALISTIC_READS.md) proposes matched contro
 three simulation seeds and two error/quality packages. The expanded design remains non-executable in
 `config/realistic-reads.proposed.json`. The historical small-plasmid smoke implementation is frozen
 in `config/noisy-smoke.json`: three W/pRK2 read sets and 12 assembler comparisons.
-The revised S6 excludes small plasmids; `config/noisy-large.proposed.json` records
-SE11 + pSE11-1 and MGH78578 + pKPN3 as matched controls. It has not been run and
-requires larger-plasmid assessment validation before becoming executable.
+The revised S6 excludes small plasmids and has completed 24 executions using
+`config/noisy-large.json`, with matched SE11 + pSE11-1 and MGH78578 + pKPN3
+inputs. Exact outcomes and continuous recovery/accuracy measurements are reported;
+a tolerant binary endpoint remains unscored. The original proposed JSON is
+historical. See `S6_LARGE_RUNS.md` and `evidence/s6-large-v1/status.json`.
 Its source-paired Badread adapter, admission checks and separate tolerant endpoint
 passed Linux tests and real-reference controls. All three read sets passed
 admission; all 12 assembly comparisons and separate tolerant assessments completed.
@@ -143,7 +150,9 @@ audited source checksums matched; historic Raven runs did not request GFA output
 The active S5 profile `config/linear-plasmids.json` selects the three complete
 Streptomyces assemblies linked by CP108065.1, CP108676.1 and CP109243.1, including
 their native plasmids. Six standard/long inputs define 24 assembly tasks; the
-replacement is submitted as batch `20261106T104655`. SCP1/SLP2 are historical controls. See
+replacement batch `20261106T104655` has 24 terminal outcomes and complete
+evidence. Raw Miniasm and Miniasm + Minipolish add six executions each; their
+collection/publication checkpoints are separate. SCP1/SLP2 are historical controls. See
 [the active S5 reference selection](LINEAR_TERMINAL_REPEATS.md).
 
 Bundle-rendered websites publish pages, plots, compact interactive graph models

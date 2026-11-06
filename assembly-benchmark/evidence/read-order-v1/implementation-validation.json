@@ -1,0 +1,12 @@
+{
+  "command": "python3 -m unittest tests.test_read_order",
+  "implementation_files": {
+    "pipeline/read_order.py": "5fecde9bff84ae6ad8a041bc6b5a8cf8d7070772e88312e68170fc1980cba151",
+    "pipeline/read_order_report.py": "991ffccaef97fb403dc87278852bb1bccd1979350dd83844afe036a9358eef98",
+    "scripts/read_order.py": "bb0e66d8fe0e4735456658bff4e043f7d1a9d1718772af938eb5b69493864a8f",
+    "tests/test_read_order.py": "c58f7821a7b76a7ffe2e5d52844f59e3ea973583d408f269755c191fb77d9b9f"
+  },
+  "scope": "Synthetic FASTQ integrity, duplicates/quality preservation, deterministic permutations, shared repeats, reference-independent sequence/circular comparisons, verified inherited chromosome topology, outcome classification, backend/public export and idempotent submission. Actual 48-run verification is recorded separately in release-qa.json.",
+  "status": "pass",
+  "test_count": 12
+}

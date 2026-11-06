@@ -1,0 +1,8 @@
+{
+  "diagnostic_source_records": 528,
+  "general_published_results": 28,
+  "s7_agreement_runs_separate": 48,
+  "scope": "Every previous frozen bundle file retains its recordedchecksum; S7isametadata-onlyextension.",
+  "status": "pass",
+  "unchanged_prior_bundle_files": 2487
+}

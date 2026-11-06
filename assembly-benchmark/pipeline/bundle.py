@@ -251,7 +251,7 @@ def write_tsv(path, columns, rows):
         writer=csv.writer(stream,delimiter='\t');writer.writerow(columns);writer.writerows(rows)
 
 
-def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False, artifact_root=None, coordinate_roots=(), performance_source=None):
+def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False, artifact_root=None, coordinate_roots=(), performance_source=None, read_order_source=None):
     """Rebuild metadata products into a new directory; never overwrite arbitrary files."""
     from .bundle_plot import alignment_svg
     from .overview_model import build_overview
@@ -262,7 +262,7 @@ def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False, ar
         load_bundle(output)
         with tempfile.TemporaryDirectory(dir=output.parent, prefix='.bundle-staging-') as temporary:
             staging=Path(temporary)
-            replacement=export_bundle(snapshots,staging/'next',primary_batch=primary_batch,cohort=cohort,artifact_root=artifact_root,coordinate_roots=coordinate_roots,performance_source=performance_source)
+            replacement=export_bundle(snapshots,staging/'next',primary_batch=primary_batch,cohort=cohort,artifact_root=artifact_root,coordinate_roots=coordinate_roots,performance_source=performance_source,read_order_source=read_order_source)
             previous=staging/'previous';output.rename(previous)
             try:
                 replacement.rename(output)
@@ -334,6 +334,9 @@ def export_bundle(snapshots, output, *, primary_batch, cohort, replace=False, ar
     if performance_source is not None:
         from .performance_bundle import freeze_performance
         freeze_performance(performance_source, output/'performance')
+    if read_order_source is not None:
+        from .read_order_site import freeze_read_order
+        freeze_read_order(read_order_source, output/'read_order')
     counts=overview['counts']
     (output/'README.md').write_text(f'# Benchmark results bundle\n\nSchema: {VERSION}. Primary batch: {primary_batch}.\n\nHeadline cohort: {counts["pass"]} pass; {counts["fail"]} fail; {counts["errors"]} execution errors; {counts["unscored"]} unscored.\n\nSee summary.tsv, molecules.tsv, reports/<batch>/<result>.md and aggregates/ for cohort-separated figures, source tables and metric definitions. Tables include all source batches; headline counts use only the declared manifest cohort.\n\nExport repackages existing recorded evidence; it does not run assemblies, alignments or new assessments. Missing measurements stay missing.\n')
     files={str(path.relative_to(output)):digest(path) for path in sorted(output.rglob('*')) if path.is_file()}

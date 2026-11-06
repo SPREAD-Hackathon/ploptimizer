@@ -1,0 +1,38 @@
+{
+  "captures": [
+    {
+      "errors": [],
+      "height": 6655,
+      "matrices": 4,
+      "name": "desktop-full",
+      "overflow": false,
+      "regions": 5,
+      "status": 200,
+      "top": 0
+    },
+    {
+      "errors": [],
+      "height": 7124,
+      "matrices": 4,
+      "name": "mobile-full",
+      "overflow": false,
+      "regions": 5,
+      "status": 200,
+      "top": 0
+    }
+  ],
+  "review": {
+    "disposition": "ship",
+    "resolved_findings": [
+      "ActualconfigurationlabelsreplaceuniversalDefaultmode"
+    ],
+    "scope": "FullS7captures,rootdiscoverydetail;singlecopycorrectionresolvedinverdictpass"
+  },
+  "scientific_summary_sha256": "03a6ea0b5eeefa36085c47cf338bcb014f8fb99e7ae711b3a33b604cf4191bc0",
+  "scope": "GenomicXsiteintegration; desktop/mobilefull-pagecapturesandkeyboard-scrollcheck",
+  "screenshot_sha256": {
+    "desktop-full.png": "2fed3d1287dfe6d008b82ec11057891212ae14134bfb8f850c112021fdec21b2",
+    "mobile-full.png": "32668cf292d5afab79ddec14e085b373d8e066a190a81b06420b8cd9423e1cfa"
+  },
+  "status": "pass"
+}

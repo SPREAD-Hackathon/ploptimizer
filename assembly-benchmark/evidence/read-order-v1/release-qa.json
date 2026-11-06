@@ -1,0 +1,26 @@
+{
+  "batch_id": "20261106T134415",
+  "claim_scope": "All 48 execution records, admitted inputs, signatures and reference-independent comparison groups verified. Assembly outputs and commands were not changed. Software-internal mechanisms and discrepancy coordinates were not investigated.",
+  "configuration_sha256": "3fc14a0e0f264e1c07a94fd6f100ecd913306a611d5ea2c38f9ddef6d5f978fe",
+  "distinct_record_orders": 4,
+  "end_sensitive_signatures_unchanged_by_topology_review": true,
+  "executions_verified": 48,
+  "input_admission_sha256": "67794064ccef9d7c14a953f8d27330f5d296a61e17114c56376d909ad2972ee3",
+  "input_multiset_hashes": 1,
+  "input_orders": 4,
+  "original_normaliser_source_sha256": "4304a2adf302a2f894cb2f0eb6251b163f260eaa0f1cf5d14ba5302530c00ebb",
+  "records_per_order": 15397,
+  "report_normaliser_source_sha256": "5fecde9bff84ae6ad8a041bc6b5a8cf8d7070772e88312e68170fc1980cba151",
+  "retained_chromosome_topology_links_verified": 12,
+  "runs_per_tool": 12,
+  "status": "pass",
+  "summary_sha256": "03a6ea0b5eeefa36085c47cf338bcb014f8fb99e7ae711b3a33b604cf4191bc0",
+  "threads": 4,
+  "tool_versions": {
+    "flye": "2.9.6-b1802",
+    "flye-meta": "2.9.6-b1802",
+    "plassembler": "plassembler, version 1.9.0",
+    "raven": "1.8.3"
+  },
+  "unique_tool_order_repeat_identities": 48
+}

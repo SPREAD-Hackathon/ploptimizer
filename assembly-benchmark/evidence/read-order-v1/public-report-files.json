@@ -1,0 +1,19 @@
+{
+  "deployment_status": "Not deployed; verified standalone report and isolated preview only.",
+  "files": {
+    "index.html": {
+      "bytes": 51215,
+      "sha256": "7352afe38f624519a51e89974efa3bef57180b0119ff65764cbece55b7d3a761"
+    },
+    "orders.tsv": {
+      "bytes": 1219,
+      "sha256": "e0448fdf22be251fb47d1e7dfb7f0bd0790c46ce5a1bf1407cae4313d04d7f4d"
+    },
+    "runs.tsv": {
+      "bytes": 8518,
+      "sha256": "fdb39d7298e208250c5cddd6790ec52bec8a0a73970fd1433344d7a7f11a4b35"
+    }
+  },
+  "status": "pass",
+  "total_bytes": 60952
+}

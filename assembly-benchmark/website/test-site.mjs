@@ -122,7 +122,7 @@ async function checkOverview(prefix) {
   assert.ok(!home.includes('assembler-result'), 'Per-run diagnoses must stay off the headline');
   assert.ok(!home.includes('class="matrix"'), 'The headline must aggregate families, not individual cases');
   assert.ok(![...home.matchAll(/href="([^"]+)"/g)].some(match => /(?:^|\/)results\//.test(match[1])), 'Headline links should open a family');
-  const diagnosticMatrix = home.match(/<table class="overview-heatmap">[\s\S]*?<\/table>/)?.[0] ?? '';
+  const diagnosticMatrix = (home.match(/<table class="overview-heatmap">[\s\S]*?<\/table>/)?.[0] ?? '').replace(/<tr data-read-order="true">[\s\S]*?<\/tr>/g, '');
   const cells = [...diagnosticMatrix.matchAll(/<td\b[^>]*class="([^"]*\boverview-cell\b[^"]*)"[^>]*>[\s\S]*?<\/td>/g)];
   const displayedFamilies = overview.scope === 'archived_batch' ? overview.families.filter(family => family.counts.total > 0) : overview.families;
   assert.equal(cells.length, displayedFamilies.length * overview.tools.length);

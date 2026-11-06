@@ -40,6 +40,32 @@ JavaScript, retain the complete matrix in its labelled horizontal scrolling
 region. Choosing an assembler changes only the visible comparison column, never
 the results or scientific totals.
 
+The S7 read-order report is an ordinary extension of the same GenomicX shell,
+flat tables and blue/orange comparison tones; it establishes no new tokens or
+visual identity. Its labelled homepage row links to `/scenarios/s7.html` and
+configuration anchors; the Scenarios catalogue provides another entry point.
+Keep output-agreement labels distinct from the surrounding recovery counts.
+The summary table shows ends-retained and circular representation verdicts
+side by side, with circularity unavailable stated explicitly. The homepage
+names circular-start normalisation when that view is complete and the
+ends-retained fallback otherwise; colour alone never establishes the endpoint.
+
+Within S7, four 12-by-12 matrices show ends-retained pairwise agreement using
+visible `=` / `≠` / `—` labels as well as blue / orange / neutral tones. Their
+dense type is scoped to this report (13px), rather than a new global type size.
+The summary and four matrices occupy five labelled, keyboard-focusable
+horizontal scrolling regions, contained within the page on phones. Preserve
+the shared visible focus outline and keyboard scrolling. Configuration anchors
+clear the navigation (84px scroll margin). Do not apply the homepage's
+single-assembler mobile selector to these pairwise matrices.
+
+Each configuration section names its actual configuration, including Flye
+`--meta`, rather than a universal default-mode label. Native disclosures keep
+all 48 run summaries, versions and recorded commands available without
+expanding the initial readout. Two TSV links provide the run table and input
+evidence; backend JSON is not exposed by the public report. These readout
+controls disclose evidence without changing the saved comparisons or totals.
+
 Individual-run and case-run lists, repeatability groups, and long contig/length
 inventories progressively add table navigation. Keep the headline count matrix
 unchanged. Place labelled search and relevant distinct-value filters above each

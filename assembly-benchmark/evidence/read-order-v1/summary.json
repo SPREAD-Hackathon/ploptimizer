@@ -1,0 +1,3755 @@
+{
+  "batch_id": "20261106T134415",
+  "category": "S7",
+  "complete": true,
+  "endpoint": "Output agreement across orders and repeats; reference-independent.",
+  "expected_executions": 48,
+  "input_admission": {
+    "algorithm": "read-order-sha256-sort-v1",
+    "config_sha256": "3fc14a0e0f264e1c07a94fd6f100ecd913306a611d5ea2c38f9ddef6d5f978fe",
+    "generator_source_sha256": "4304a2adf302a2f894cb2f0eb6251b163f260eaa0f1cf5d14ba5302530c00ebb",
+    "orders": [
+      {
+        "algorithm": "read-order-sha256-sort-v1",
+        "id": "original",
+        "permutation_encoding": "gzip of zero-based unsigned 64-bit big-endian source record indices",
+        "permutation_sha256": "418c587278bc79605003493edfd9e88dbe4ce3934caad78cedb3f48b68ca42b1",
+        "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+        "record_count": 15397,
+        "record_multiset_sha256": "a102246fcd9cf430a23fc3694afca2075c76fdf5a50612d49a6c94af043e187b",
+        "record_order_sha256": "8dd01e6035fb8908cb5e160292025fa73bd26becb8908200454d95a65a5e2b01",
+        "shuffle_seed": null,
+        "uncompressed_bytes": 308816722,
+        "uncompressed_sha256": "66f144b4656890e0b16c4854cadf26405a60f9f901fd4859cbf9567e561d38e8"
+      },
+      {
+        "algorithm": "read-order-sha256-sort-v1",
+        "id": "shuffle-1",
+        "permutation_encoding": "gzip of zero-based unsigned 64-bit big-endian source record indices",
+        "permutation_sha256": "1265b67c7a6e646a72508f517ce2a3cbc16b1fe87274726933ce4b4a065c5194",
+        "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+        "record_count": 15397,
+        "record_multiset_sha256": "a102246fcd9cf430a23fc3694afca2075c76fdf5a50612d49a6c94af043e187b",
+        "record_order_sha256": "780bb628a5460daf2b7b50a2ecc13503ef37e88cdad30fe5d3c537a261612ad7",
+        "shuffle_seed": 1,
+        "uncompressed_bytes": 308816722,
+        "uncompressed_sha256": "99a484f0091deaf0eab38ff48c8bbb868a6b70a28e080e4bfb936440b6896780"
+      },
+      {
+        "algorithm": "read-order-sha256-sort-v1",
+        "id": "shuffle-2",
+        "permutation_encoding": "gzip of zero-based unsigned 64-bit big-endian source record indices",
+        "permutation_sha256": "db34ff09660d47cefcfaf065a3c1398110e0ac2d1abc398e414edca8dd1b2051",
+        "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+        "record_count": 15397,
+        "record_multiset_sha256": "a102246fcd9cf430a23fc3694afca2075c76fdf5a50612d49a6c94af043e187b",
+        "record_order_sha256": "773891e4701e001893e4027535684dad4d7032bf0105faf8610151386f8cc01c",
+        "shuffle_seed": 2,
+        "uncompressed_bytes": 308816722,
+        "uncompressed_sha256": "b51a786164ac549d206c6a40f683e49d55e277af8b9e8eac7af49b0e73488b9c"
+      },
+      {
+        "algorithm": "read-order-sha256-sort-v1",
+        "id": "shuffle-3",
+        "permutation_encoding": "gzip of zero-based unsigned 64-bit big-endian source record indices",
+        "permutation_sha256": "a44785a197a46a9296a4e7fe8f11efbfd3c46284420502c57e33fcdcddcdba8b",
+        "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+        "record_count": 15397,
+        "record_multiset_sha256": "a102246fcd9cf430a23fc3694afca2075c76fdf5a50612d49a6c94af043e187b",
+        "record_order_sha256": "0edce02ed0f2ea2168ab681e4434efaa70394d8afd0d7309a12bf719933c789a",
+        "shuffle_seed": 3,
+        "uncompressed_bytes": 308816722,
+        "uncompressed_sha256": "7ffa89aae19cb39caf31bbf9aa5eb3bbe4a346e805710c1928a5b79282f357be"
+      }
+    ],
+    "platform": "Linux-4.18.0-553.174.1.el8_10.x86_64-x86_64-with-glibc2.28",
+    "python": "3.11.18 (main, Oct 26 2026, 11:35:17) [GCC 15.3.0]",
+    "schema_version": 1,
+    "source": {
+      "batch": "20261106T042113",
+      "case_id": "s1-se11-large",
+      "input_manifest_sha256": "6ff018e70e679da32c9acc41fcab7bbc61cf3153d034feace065d0ea4bdd8065",
+      "minimum_plasmid_bp": 20000,
+      "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+      "truth_sha256_for_provenance_only": "c043f0073af048970d457c777b9f7a52722be72d6ffb6e84c63bb29337917ecb"
+    },
+    "status": "valid"
+  },
+  "reference_recovery": "Secondary only; never used to decide S7 agreement.",
+  "report_producer_sha256": "5fecde9bff84ae6ad8a041bc6b5a8cf8d7070772e88312e68170fc1980cba151",
+  "schema_version": 1,
+  "status_counts": {
+    "fail": 24,
+    "pass": 24
+  },
+  "tools": [
+    {
+      "circular_representation": {
+        "complete": true,
+        "expected_runs": 12,
+        "observed_runs": 12,
+        "variants": 1,
+        "verdict": "No order effect observed",
+        "within_order": {
+          "original": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-1": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-2": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-3": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          }
+        }
+      },
+      "end_sensitive": {
+        "complete": true,
+        "expected_runs": 12,
+        "observed_runs": 12,
+        "variants": 7,
+        "verdict": "Within-order variability \u2014 order-specific effect not established",
+        "within_order": {
+          "original": {
+            "complete": true,
+            "identical": false,
+            "variants": 2
+          },
+          "shuffle-1": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-2": {
+            "complete": true,
+            "identical": false,
+            "variants": 2
+          },
+          "shuffle-3": {
+            "complete": true,
+            "identical": false,
+            "variants": 2
+          }
+        }
+      },
+      "mode": "default",
+      "runs": [
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-1/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-1/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "f025b8896a8397638ab8a175f5b7b122f2d56142332ea92046c6e4ab1799b96c",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 1,
+          "scenario": "s7-se11-original-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "7d241ba84a8e2bc9add0c8719960d715ecbefd2c379f2633924f303f5c46743a"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "d445f16690e9bebe2ebce5a2a8f27aabc75d7a1e4d066a27cf965b3645309c08"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "b434530e0e4e84587323430d122b04136c6b96f0d9c66dfd78b8b89d022916d9"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "c4a6fed487879949e26754d1b4fc3de203b98ec7547c79eeb0d4d266d55646ab",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "a99cdbb4696b8c9ddfaef91501a6617240896a62260519a78004d0d9917b2f55"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 0,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-2/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-2/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "31c9f7b1f85af6a57b6f00df2ac3d05055114f254e384da07f3f2712afb7fc40",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 2,
+          "scenario": "s7-se11-original-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "acc9af7c9a73b33e499919b0a91b3562b8bddf4d82b91a2848d7bdead63d39ca"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "543a5d2070a971d830957d87dbc321d4c5662c00b8ea79375c1f3246de091260"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "b434530e0e4e84587323430d122b04136c6b96f0d9c66dfd78b8b89d022916d9"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "1b4c877a9f582f19d96754e10d6e42604f10f459861e15be683d482d4026b1da"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "6ffad10fe606b5ae2b0621e8414142d561176746ca934324174fbdaca331d74c",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "e72a5e7aa28d30fa8ed83848f0b1c4b2249d422ebea0f9feb2c8203922b05049"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 1,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-3/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-3/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "f3a372befd0d23a24a9fd7c8dc531ce0a4f08a578a5b42790e58f11149a89762",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 3,
+          "scenario": "s7-se11-original-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "7d241ba84a8e2bc9add0c8719960d715ecbefd2c379f2633924f303f5c46743a"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "d445f16690e9bebe2ebce5a2a8f27aabc75d7a1e4d066a27cf965b3645309c08"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "b434530e0e4e84587323430d122b04136c6b96f0d9c66dfd78b8b89d022916d9"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "c4a6fed487879949e26754d1b4fc3de203b98ec7547c79eeb0d4d266d55646ab",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "a99cdbb4696b8c9ddfaef91501a6617240896a62260519a78004d0d9917b2f55"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 2,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-1/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-1/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "8a773e611b36944bc1520b1dbef3ca6f39ebd5819591e53a41a662df051aed17",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-1-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2a83dddba73b41c13b5341a973cab310155b24e495ed5f23f59ecd67b1358d52"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "79182541daf36fd04b0f2ea7eb6b8cd8d8ee0b6e1d391f6fef38a034f5b0d1e3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ac5160c5a489721b47ce17d333db51f2f8f7daf43a34af082539702f65abbcfc"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "24a2b6911d3a783230b41bfc9037e0784efc2d49cfc5cbe959045202bf92bc5a"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "46e34ad3bdc554ff777990123af7bc1d3a9dee9838148812ca1f52dfccb4727b",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "b681f4809fa954d1ee82332f38acbaa793096d69dcdc6ecf9a94d518601532cc"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 3,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-2/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-2/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "e9014f3571c6d76ce84d60146c79478290a2fa4572f9fbbea5c33e6a9a85bada",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-1-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2a83dddba73b41c13b5341a973cab310155b24e495ed5f23f59ecd67b1358d52"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "79182541daf36fd04b0f2ea7eb6b8cd8d8ee0b6e1d391f6fef38a034f5b0d1e3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ac5160c5a489721b47ce17d333db51f2f8f7daf43a34af082539702f65abbcfc"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "24a2b6911d3a783230b41bfc9037e0784efc2d49cfc5cbe959045202bf92bc5a"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "46e34ad3bdc554ff777990123af7bc1d3a9dee9838148812ca1f52dfccb4727b",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "b681f4809fa954d1ee82332f38acbaa793096d69dcdc6ecf9a94d518601532cc"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 4,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-3/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-3/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "e56978fd59b6173481160a97a3e20b7ec2efb51b25a5ac9bcef25516a079b8ff",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-1-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2a83dddba73b41c13b5341a973cab310155b24e495ed5f23f59ecd67b1358d52"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "79182541daf36fd04b0f2ea7eb6b8cd8d8ee0b6e1d391f6fef38a034f5b0d1e3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ac5160c5a489721b47ce17d333db51f2f8f7daf43a34af082539702f65abbcfc"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "24a2b6911d3a783230b41bfc9037e0784efc2d49cfc5cbe959045202bf92bc5a"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "46e34ad3bdc554ff777990123af7bc1d3a9dee9838148812ca1f52dfccb4727b",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "b681f4809fa954d1ee82332f38acbaa793096d69dcdc6ecf9a94d518601532cc"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 5,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-1/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-1/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "89a0476d6c77fda4dcab72b6c317e38ff6f74a702417ddc73e8197f00e5ba385",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-2-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "e77fb3b30515fbf8e42b67be45abbad69824efd1714f88422c731cdd10a422c7"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "64565bfbf1f41382125af8b61bc50cb78d5d3a51aa4d81162dd949c414649ed3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "2d04c13cde26f8f8faa48e4cc90c1586c90e2271a56d0e3f74bc6d7897cc7b5f"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "9c1cf30ca7054d3bdd933b1f887e55460f47c63304d61b578b792827ce080091",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "0e78839a00ac0971318d02d7ac552d39659e5777c221e2ef4b6311968c7f7069"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 6,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-2/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-2/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "1210402cfb6bc0ad51971f05c9e188ae4803aecf7e0a573271d5ba345e0a136b",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-2-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "e77fb3b30515fbf8e42b67be45abbad69824efd1714f88422c731cdd10a422c7"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "64565bfbf1f41382125af8b61bc50cb78d5d3a51aa4d81162dd949c414649ed3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "d2fc964535b586d5282d0833351591817e1c704e2a5741053e10c1fc14446f5a"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "21a002fef4e894c4e366a84c0a51091640f642d616745467fa0988e368f8e4e7",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "6ec3d84c904c1ad75af590336a561b9b310b9216d32b0036ce067691061ed838"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 7,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-3/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-3/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "2457ff5b472d14fb1b9b5d121a9383112d69540c63ef82ca698d6c12523bab6f",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-2-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "e77fb3b30515fbf8e42b67be45abbad69824efd1714f88422c731cdd10a422c7"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "64565bfbf1f41382125af8b61bc50cb78d5d3a51aa4d81162dd949c414649ed3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "d2fc964535b586d5282d0833351591817e1c704e2a5741053e10c1fc14446f5a"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "21a002fef4e894c4e366a84c0a51091640f642d616745467fa0988e368f8e4e7",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "6ec3d84c904c1ad75af590336a561b9b310b9216d32b0036ce067691061ed838"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 8,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-1/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-1/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "f0dbf8a01b557c673958073a5c90895c180baf919d573b5bc561af84215956c8",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-3-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "51d7016416e0a2822a38ead0d56b28eafe339e2cd04eb544a64862960ee9f68e"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "353824965d8fd8efeb64d606f5f2f01832ca18ab63243902e3a73ca7cb76a616"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ef606ffb9f681b59e04760667c3f8d9ccff38d4476effe120dc0f347954b7c3c"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "1b4c877a9f582f19d96754e10d6e42604f10f459861e15be683d482d4026b1da"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "996ce10d2857c3f65acfb6804701ec321025d55b2c54fa0661a8d4149eee4e15",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "9affc3137df5ef0e65ea9a66a321176170699a488949084cc43d05168cf66de8"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 9,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-2/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-2/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "fa90c4d4be12b4967d522b344e8591133a232f588bca673fa27f2e59676eceea",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-3-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "abcfd94a63284b1ef7da9c2102b9919b510c4121de3e317779b1244e6f179875"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "461f0199b53ede4fca9bdcc5b2befd0d94bbe493baac27c9f1df39f23d447e9e"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ef606ffb9f681b59e04760667c3f8d9ccff38d4476effe120dc0f347954b7c3c"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "1b4c877a9f582f19d96754e10d6e42604f10f459861e15be683d482d4026b1da"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "3f8cd553713e89f745085dd7055951a28facefef2ba8cd161908231240ee49ac",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "1a115c067fe3198c4619d8341c0dac864231dcf819dcda96be61931914079fbb"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 10,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-3/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-3/flye/output",
+            "--threads",
+            "4"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "58312c773cace417734a8ff6d59e15c3ab9dbbcb3aa4f752b70deb7270b968c2",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-3-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f7fcf0dee983315497410d41d593ce3b2aef8f68fb4aaf1a2f885c49ec3aa8d2",
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "abcfd94a63284b1ef7da9c2102b9919b510c4121de3e317779b1244e6f179875"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "461f0199b53ede4fca9bdcc5b2befd0d94bbe493baac27c9f1df39f23d447e9e"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ef606ffb9f681b59e04760667c3f8d9ccff38d4476effe120dc0f347954b7c3c"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "1b4c877a9f582f19d96754e10d6e42604f10f459861e15be683d482d4026b1da"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "3f8cd553713e89f745085dd7055951a28facefef2ba8cd161908231240ee49ac",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "1a115c067fe3198c4619d8341c0dac864231dcf819dcda96be61931914079fbb"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "pass",
+          "tool": "flye",
+          "tool_index": 11,
+          "version": "2.9.6-b1802"
+        }
+      ],
+      "threads": 4,
+      "tool": "flye"
+    },
+    {
+      "circular_representation": {
+        "complete": true,
+        "expected_runs": 12,
+        "observed_runs": 12,
+        "variants": 3,
+        "verdict": "Within-order variability \u2014 order-specific effect not established",
+        "within_order": {
+          "original": {
+            "complete": true,
+            "identical": false,
+            "variants": 2
+          },
+          "shuffle-1": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-2": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-3": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          }
+        }
+      },
+      "end_sensitive": {
+        "complete": true,
+        "expected_runs": 12,
+        "observed_runs": 12,
+        "variants": 7,
+        "verdict": "Within-order variability \u2014 order-specific effect not established",
+        "within_order": {
+          "original": {
+            "complete": true,
+            "identical": false,
+            "variants": 2
+          },
+          "shuffle-1": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-2": {
+            "complete": true,
+            "identical": false,
+            "variants": 2
+          },
+          "shuffle-3": {
+            "complete": true,
+            "identical": false,
+            "variants": 2
+          }
+        }
+      },
+      "mode": "default",
+      "runs": [
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-1/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-1/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "f14a7dfb6f06b6f3bdc941a3f566fdf74312adc56ed9a3069e6892e45da4f323",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 1,
+          "scenario": "s7-se11-original-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "b4f47e710c8ac41ed4334f0b35bb1d18e881c5dd87e2f3938575eb9904123d44",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 21344,
+                "sha256": "5ada10c5a2d95a9ada8ee6cdfc213c6480e2e12f62b3bb3cbe873eca80db0476"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "7d241ba84a8e2bc9add0c8719960d715ecbefd2c379f2633924f303f5c46743a"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "d445f16690e9bebe2ebce5a2a8f27aabc75d7a1e4d066a27cf965b3645309c08"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "b434530e0e4e84587323430d122b04136c6b96f0d9c66dfd78b8b89d022916d9"
+              },
+              {
+                "length_bp": 1480197,
+                "sha256": "e51b0210dd8198cb0e5274c543e44d7059da6eeed2ae19353088c749629f8761"
+              },
+              {
+                "length_bp": 3385418,
+                "sha256": "68809f333bddc3f3c8154ba08d1ce6e9f9c0bd15780f0504d2aa67e94fc9ae54"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "b943905f8205bca63b0ced19b9923df1bc7588fd49ef32a74708d468256772b5",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "e02b36559f30a3cff87a9483cdb698f323065bc0b4743ce578078a146764b489"
+              }
+            ],
+            "total_length_bp": 5138693
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 0,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-2/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-2/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "bf6c712fcad6fd91d3fed870892732ede95b8e59f15a23aa52d44425b8823f66",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 2,
+          "scenario": "s7-se11-original-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "1e5ad92857f625784d529cb95e9f569b618aedfbe342484ea9eec5b355a4db26",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 22527,
+                "sha256": "d9bfddf7edff8286a8ac8363208d47ce6cbe86d6107d376d13850734b4dac56a"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "acc9af7c9a73b33e499919b0a91b3562b8bddf4d82b91a2848d7bdead63d39ca"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "543a5d2070a971d830957d87dbc321d4c5662c00b8ea79375c1f3246de091260"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "b434530e0e4e84587323430d122b04136c6b96f0d9c66dfd78b8b89d022916d9"
+              },
+              {
+                "length_bp": 1480218,
+                "sha256": "dfc0c30b97ac087b80d71e25183c8a7a82131cf10434ee6f755bdbe72a501084"
+              },
+              {
+                "length_bp": 3385605,
+                "sha256": "d76e249931d29c21cdb37c96eab5472ea416ed34101c8edd8761a9209f5ef9f3"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "72a1de2c537d7ccc249116273c832def9861d3edf86727a92228cf65521664c8",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "4c42df31a7d71c3852367ce82bc043ffe382b797f63437a18af1145ffafb8a4b"
+              }
+            ],
+            "total_length_bp": 5140084
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 1,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-3/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-3/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "da5dd7f90d7c24e5dd24e6789115051aa3bdd99ca190e6cc18eece5424a10fe7",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 3,
+          "scenario": "s7-se11-original-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "b4f47e710c8ac41ed4334f0b35bb1d18e881c5dd87e2f3938575eb9904123d44",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 21344,
+                "sha256": "5ada10c5a2d95a9ada8ee6cdfc213c6480e2e12f62b3bb3cbe873eca80db0476"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "7d241ba84a8e2bc9add0c8719960d715ecbefd2c379f2633924f303f5c46743a"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "d445f16690e9bebe2ebce5a2a8f27aabc75d7a1e4d066a27cf965b3645309c08"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "b434530e0e4e84587323430d122b04136c6b96f0d9c66dfd78b8b89d022916d9"
+              },
+              {
+                "length_bp": 1480197,
+                "sha256": "e51b0210dd8198cb0e5274c543e44d7059da6eeed2ae19353088c749629f8761"
+              },
+              {
+                "length_bp": 3385418,
+                "sha256": "68809f333bddc3f3c8154ba08d1ce6e9f9c0bd15780f0504d2aa67e94fc9ae54"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "b943905f8205bca63b0ced19b9923df1bc7588fd49ef32a74708d468256772b5",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "e02b36559f30a3cff87a9483cdb698f323065bc0b4743ce578078a146764b489"
+              }
+            ],
+            "total_length_bp": 5138693
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 2,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-1/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-1/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "fed239e6d8a76b5d236aab880360105dcaea0627240434f7a6774c17076fc1d1",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-1-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "af09b9abf779ea608ca73f58f248a729a9c1f4ec3c318056b42bce99ed84ce5d",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 21298,
+                "sha256": "7c0240810131db1cf6863d95ca96315a01f0dbecbbc48b7efec65a6740a6f8a0"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "2a83dddba73b41c13b5341a973cab310155b24e495ed5f23f59ecd67b1358d52"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "79182541daf36fd04b0f2ea7eb6b8cd8d8ee0b6e1d391f6fef38a034f5b0d1e3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ac5160c5a489721b47ce17d333db51f2f8f7daf43a34af082539702f65abbcfc"
+              },
+              {
+                "length_bp": 1480132,
+                "sha256": "23c66110106ffea458b39fff259dd97763112fb4a05f3071ec143f20565ce644"
+              },
+              {
+                "length_bp": 3385690,
+                "sha256": "5a36c814e321b7f7d6291ec9a5af097f70faabde7c89f4047d630d7710397d5c"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "e5c75aa3b04e594a4af6d76e8e6f4b9b644b42a70b10f7d380bdec6081fbf942",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "f09cc0bebf83d3d0dd59785addc560182dd7ad950ca4803a974e60377d959643"
+              }
+            ],
+            "total_length_bp": 5138854
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 3,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-2/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-2/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "4af306bbac39ea46fd3c6622a1f04e7a89cb06f99d69b0e144dd43bbcb797311",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-1-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "af09b9abf779ea608ca73f58f248a729a9c1f4ec3c318056b42bce99ed84ce5d",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 21298,
+                "sha256": "7c0240810131db1cf6863d95ca96315a01f0dbecbbc48b7efec65a6740a6f8a0"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "2a83dddba73b41c13b5341a973cab310155b24e495ed5f23f59ecd67b1358d52"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "79182541daf36fd04b0f2ea7eb6b8cd8d8ee0b6e1d391f6fef38a034f5b0d1e3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ac5160c5a489721b47ce17d333db51f2f8f7daf43a34af082539702f65abbcfc"
+              },
+              {
+                "length_bp": 1480132,
+                "sha256": "23c66110106ffea458b39fff259dd97763112fb4a05f3071ec143f20565ce644"
+              },
+              {
+                "length_bp": 3385690,
+                "sha256": "5a36c814e321b7f7d6291ec9a5af097f70faabde7c89f4047d630d7710397d5c"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "e5c75aa3b04e594a4af6d76e8e6f4b9b644b42a70b10f7d380bdec6081fbf942",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "f09cc0bebf83d3d0dd59785addc560182dd7ad950ca4803a974e60377d959643"
+              }
+            ],
+            "total_length_bp": 5138854
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 4,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-3/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-3/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "0461519683007ab74949fb0642715f5c8b319c4145cf938e475d31dd631563a4",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-1-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "af09b9abf779ea608ca73f58f248a729a9c1f4ec3c318056b42bce99ed84ce5d",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 21298,
+                "sha256": "7c0240810131db1cf6863d95ca96315a01f0dbecbbc48b7efec65a6740a6f8a0"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "2a83dddba73b41c13b5341a973cab310155b24e495ed5f23f59ecd67b1358d52"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "79182541daf36fd04b0f2ea7eb6b8cd8d8ee0b6e1d391f6fef38a034f5b0d1e3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ac5160c5a489721b47ce17d333db51f2f8f7daf43a34af082539702f65abbcfc"
+              },
+              {
+                "length_bp": 1480132,
+                "sha256": "23c66110106ffea458b39fff259dd97763112fb4a05f3071ec143f20565ce644"
+              },
+              {
+                "length_bp": 3385690,
+                "sha256": "5a36c814e321b7f7d6291ec9a5af097f70faabde7c89f4047d630d7710397d5c"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "e5c75aa3b04e594a4af6d76e8e6f4b9b644b42a70b10f7d380bdec6081fbf942",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "f09cc0bebf83d3d0dd59785addc560182dd7ad950ca4803a974e60377d959643"
+              }
+            ],
+            "total_length_bp": 5138854
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 5,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-1/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-1/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "674d04e0d7c7d48516e2797c11ac3fe5ee43ac304dd4a00d53a46d83a1e1d6d2",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-2-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "b4f47e710c8ac41ed4334f0b35bb1d18e881c5dd87e2f3938575eb9904123d44",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 21344,
+                "sha256": "5ada10c5a2d95a9ada8ee6cdfc213c6480e2e12f62b3bb3cbe873eca80db0476"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "e77fb3b30515fbf8e42b67be45abbad69824efd1714f88422c731cdd10a422c7"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "64565bfbf1f41382125af8b61bc50cb78d5d3a51aa4d81162dd949c414649ed3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "d2fc964535b586d5282d0833351591817e1c704e2a5741053e10c1fc14446f5a"
+              },
+              {
+                "length_bp": 1480197,
+                "sha256": "e51b0210dd8198cb0e5274c543e44d7059da6eeed2ae19353088c749629f8761"
+              },
+              {
+                "length_bp": 3385418,
+                "sha256": "68809f333bddc3f3c8154ba08d1ce6e9f9c0bd15780f0504d2aa67e94fc9ae54"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "c8da11e3e07cd45a745c5eca33322b6f14c9d533120fa7c2721dd8051d260af1",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "2c371bd18b8c546080b1042e6c88aa7f80f755657b899e10cb2c9c0939690b3d"
+              }
+            ],
+            "total_length_bp": 5138693
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 6,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-2/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-2/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "f6a78d7308f4a649288e95bd152d0063b4089eacd1e34aff0aba4fa4eeda9c00",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-2-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "b4f47e710c8ac41ed4334f0b35bb1d18e881c5dd87e2f3938575eb9904123d44",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 21344,
+                "sha256": "5ada10c5a2d95a9ada8ee6cdfc213c6480e2e12f62b3bb3cbe873eca80db0476"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "e77fb3b30515fbf8e42b67be45abbad69824efd1714f88422c731cdd10a422c7"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "64565bfbf1f41382125af8b61bc50cb78d5d3a51aa4d81162dd949c414649ed3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "2d04c13cde26f8f8faa48e4cc90c1586c90e2271a56d0e3f74bc6d7897cc7b5f"
+              },
+              {
+                "length_bp": 1480197,
+                "sha256": "e51b0210dd8198cb0e5274c543e44d7059da6eeed2ae19353088c749629f8761"
+              },
+              {
+                "length_bp": 3385418,
+                "sha256": "68809f333bddc3f3c8154ba08d1ce6e9f9c0bd15780f0504d2aa67e94fc9ae54"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "be79ec3745bb53aee6852f3ea1bc01b381b1a29a7b4697a938f8eb9ac59acc1c",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "c3fe9ba3bdb8e6c29d4943c281a805f49e0d234ef0319782a36f505c5e724d39"
+              }
+            ],
+            "total_length_bp": 5138693
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 7,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-3/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-3/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "d8879fac92db0316dcd7c56332e7dc62a7022e311f6d6544111a5448f74a0ed1",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-2-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "b4f47e710c8ac41ed4334f0b35bb1d18e881c5dd87e2f3938575eb9904123d44",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 21344,
+                "sha256": "5ada10c5a2d95a9ada8ee6cdfc213c6480e2e12f62b3bb3cbe873eca80db0476"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "e77fb3b30515fbf8e42b67be45abbad69824efd1714f88422c731cdd10a422c7"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "64565bfbf1f41382125af8b61bc50cb78d5d3a51aa4d81162dd949c414649ed3"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "d2fc964535b586d5282d0833351591817e1c704e2a5741053e10c1fc14446f5a"
+              },
+              {
+                "length_bp": 1480197,
+                "sha256": "e51b0210dd8198cb0e5274c543e44d7059da6eeed2ae19353088c749629f8761"
+              },
+              {
+                "length_bp": 3385418,
+                "sha256": "68809f333bddc3f3c8154ba08d1ce6e9f9c0bd15780f0504d2aa67e94fc9ae54"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "c8da11e3e07cd45a745c5eca33322b6f14c9d533120fa7c2721dd8051d260af1",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "2c371bd18b8c546080b1042e6c88aa7f80f755657b899e10cb2c9c0939690b3d"
+              }
+            ],
+            "total_length_bp": 5138693
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 8,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-1/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-1/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "47f7f5836fa7e3b5cbe50eb93e10a36bfe8c047ccb9038d6b195699529ccbb57",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-3-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "1e5ad92857f625784d529cb95e9f569b618aedfbe342484ea9eec5b355a4db26",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 22527,
+                "sha256": "d9bfddf7edff8286a8ac8363208d47ce6cbe86d6107d376d13850734b4dac56a"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "51d7016416e0a2822a38ead0d56b28eafe339e2cd04eb544a64862960ee9f68e"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "353824965d8fd8efeb64d606f5f2f01832ca18ab63243902e3a73ca7cb76a616"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ef606ffb9f681b59e04760667c3f8d9ccff38d4476effe120dc0f347954b7c3c"
+              },
+              {
+                "length_bp": 1480218,
+                "sha256": "dfc0c30b97ac087b80d71e25183c8a7a82131cf10434ee6f755bdbe72a501084"
+              },
+              {
+                "length_bp": 3385605,
+                "sha256": "d76e249931d29c21cdb37c96eab5472ea416ed34101c8edd8761a9209f5ef9f3"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "d54acdeaf7ea91697043580ef31c01495a59cdee4ee3f1d86b2d71415331f8b6",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "b3d09b11ce1a896011729a6b9bbe4a63371831f5a397dde77b59e61dc5294cc9"
+              }
+            ],
+            "total_length_bp": 5140084
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 9,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-2/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-2/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "eb603c2bb859a091f1e18e4e9180f91694c0338ebfb879b8d632bdce6a8fb9fc",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-3-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "1e5ad92857f625784d529cb95e9f569b618aedfbe342484ea9eec5b355a4db26",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 22527,
+                "sha256": "d9bfddf7edff8286a8ac8363208d47ce6cbe86d6107d376d13850734b4dac56a"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "abcfd94a63284b1ef7da9c2102b9919b510c4121de3e317779b1244e6f179875"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "461f0199b53ede4fca9bdcc5b2befd0d94bbe493baac27c9f1df39f23d447e9e"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ef606ffb9f681b59e04760667c3f8d9ccff38d4476effe120dc0f347954b7c3c"
+              },
+              {
+                "length_bp": 1480218,
+                "sha256": "dfc0c30b97ac087b80d71e25183c8a7a82131cf10434ee6f755bdbe72a501084"
+              },
+              {
+                "length_bp": 3385605,
+                "sha256": "d76e249931d29c21cdb37c96eab5472ea416ed34101c8edd8761a9209f5ef9f3"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "2774e7183912b795a7804131c748f4b25a8decbdfa56a38916b3d4eaba5147ef",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "5f674d9680e13cba8aa67c3faf0de35542ca63ca4ec7f5599abb4e0ee938bac5"
+              }
+            ],
+            "total_length_bp": 5140084
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 10,
+          "version": "2.9.6-b1802"
+        },
+        {
+          "command": [
+            "flye",
+            "--nano-hq",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-3/reads.fastq.gz",
+            "--out-dir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-3/flye-meta/output",
+            "--threads",
+            "4",
+            "--meta"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "d4ee8c650bbd054c30fb6f1c3d3aef664cda35b308549f7eee4695a0622ef06b",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-3-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "pass",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "1e5ad92857f625784d529cb95e9f569b618aedfbe342484ea9eec5b355a4db26",
+            "circularity_unknown_contigs": [],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 22527,
+                "sha256": "d9bfddf7edff8286a8ac8363208d47ce6cbe86d6107d376d13850734b4dac56a"
+              },
+              {
+                "length_bp": 60555,
+                "sha256": "51d7016416e0a2822a38ead0d56b28eafe339e2cd04eb544a64862960ee9f68e"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "353824965d8fd8efeb64d606f5f2f01832ca18ab63243902e3a73ca7cb76a616"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "ef606ffb9f681b59e04760667c3f8d9ccff38d4476effe120dc0f347954b7c3c"
+              },
+              {
+                "length_bp": 1480218,
+                "sha256": "dfc0c30b97ac087b80d71e25183c8a7a82131cf10434ee6f755bdbe72a501084"
+              },
+              {
+                "length_bp": 3385605,
+                "sha256": "d76e249931d29c21cdb37c96eab5472ea416ed34101c8edd8761a9209f5ef9f3"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "d54acdeaf7ea91697043580ef31c01495a59cdee4ee3f1d86b2d71415331f8b6",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "b3d09b11ce1a896011729a6b9bbe4a63371831f5a397dde77b59e61dc5294cc9"
+              }
+            ],
+            "total_length_bp": 5140084
+          },
+          "status": "pass",
+          "tool": "flye-meta",
+          "tool_index": 11,
+          "version": "2.9.6-b1802"
+        }
+      ],
+      "threads": 4,
+      "tool": "flye-meta"
+    },
+    {
+      "circular_representation": {
+        "complete": false,
+        "expected_runs": 12,
+        "observed_runs": 0,
+        "variants": 0,
+        "verdict": "Not assessed \u2014 incomplete executions or comparison evidence",
+        "within_order": {
+          "original": {
+            "complete": false,
+            "identical": null,
+            "variants": 0
+          },
+          "shuffle-1": {
+            "complete": false,
+            "identical": null,
+            "variants": 0
+          },
+          "shuffle-2": {
+            "complete": false,
+            "identical": null,
+            "variants": 0
+          },
+          "shuffle-3": {
+            "complete": false,
+            "identical": null,
+            "variants": 0
+          }
+        }
+      },
+      "end_sensitive": {
+        "complete": true,
+        "expected_runs": 12,
+        "observed_runs": 12,
+        "variants": 4,
+        "verdict": "Order-associated output difference",
+        "within_order": {
+          "original": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-1": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-2": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-3": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          }
+        }
+      },
+      "mode": "default",
+      "runs": [
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-1/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-1/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "5b3e50218bbff0a5808cacb4b875cc46b6797a1fb51a4afddc7ac8ed3de459a5",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 1,
+          "scenario": "s7-se11-original-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2294",
+              "final:Utg2296",
+              "final:Utg2298",
+              "final:Utg2300",
+              "final:Utg2302",
+              "final:Utg2304"
+            ],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 60548,
+                "sha256": "66b79a31333756134f11918bbd47e61e48b15b2d98c8177a45abe8dced12d565"
+              },
+              {
+                "length_bp": 91155,
+                "sha256": "d97b0113368d1a1968b39f08d6cdb93590a8bbef9a44b33577a15f2fc8357596"
+              },
+              {
+                "length_bp": 100016,
+                "sha256": "fe17fd912efa6eb243949985133040c7be20f27ea984589afd4e704e760f8572"
+              },
+              {
+                "length_bp": 391091,
+                "sha256": "dc83725b3b43f47b087ba1e908d75870d359946dd9e6fffcbf914e138ca69fb4"
+              },
+              {
+                "length_bp": 1126791,
+                "sha256": "b2e02e992d3689a3ad30f60da1cd00aa6f2a1b22e92ce979a9d6724f12122a74"
+              },
+              {
+                "length_bp": 3401566,
+                "sha256": "7d8324807224808418bac4098f3790ea8a23065ea23724b46a113cbe6a93e34c"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "9274631acc6f9dba0354ec9c835793c29e91026de26a0fffc4a1331c48887ab2",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "dfab6b540efbc3778cb0caa2ab54e387340419fd4e2f04782e0b39f98b3c3db2"
+              }
+            ],
+            "total_length_bp": 5171167
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 0,
+          "version": "1.8.3"
+        },
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-2/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-2/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "dbc89f95475a93242ca7181409792199527b5c7b21de05058f8be2c3c6dd04f7",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 2,
+          "scenario": "s7-se11-original-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2294",
+              "final:Utg2296",
+              "final:Utg2298",
+              "final:Utg2300",
+              "final:Utg2302",
+              "final:Utg2304"
+            ],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 60548,
+                "sha256": "66b79a31333756134f11918bbd47e61e48b15b2d98c8177a45abe8dced12d565"
+              },
+              {
+                "length_bp": 91155,
+                "sha256": "d97b0113368d1a1968b39f08d6cdb93590a8bbef9a44b33577a15f2fc8357596"
+              },
+              {
+                "length_bp": 100016,
+                "sha256": "fe17fd912efa6eb243949985133040c7be20f27ea984589afd4e704e760f8572"
+              },
+              {
+                "length_bp": 391091,
+                "sha256": "dc83725b3b43f47b087ba1e908d75870d359946dd9e6fffcbf914e138ca69fb4"
+              },
+              {
+                "length_bp": 1126791,
+                "sha256": "b2e02e992d3689a3ad30f60da1cd00aa6f2a1b22e92ce979a9d6724f12122a74"
+              },
+              {
+                "length_bp": 3401566,
+                "sha256": "7d8324807224808418bac4098f3790ea8a23065ea23724b46a113cbe6a93e34c"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "9274631acc6f9dba0354ec9c835793c29e91026de26a0fffc4a1331c48887ab2",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "dfab6b540efbc3778cb0caa2ab54e387340419fd4e2f04782e0b39f98b3c3db2"
+              }
+            ],
+            "total_length_bp": 5171167
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 1,
+          "version": "1.8.3"
+        },
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-3/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-3/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "a51882ebec830ce622d4a4e8d81d6b16b9d8970acec6b4f8b9f357316c47e07c",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 3,
+          "scenario": "s7-se11-original-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2294",
+              "final:Utg2296",
+              "final:Utg2298",
+              "final:Utg2300",
+              "final:Utg2302",
+              "final:Utg2304"
+            ],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 60548,
+                "sha256": "66b79a31333756134f11918bbd47e61e48b15b2d98c8177a45abe8dced12d565"
+              },
+              {
+                "length_bp": 91155,
+                "sha256": "d97b0113368d1a1968b39f08d6cdb93590a8bbef9a44b33577a15f2fc8357596"
+              },
+              {
+                "length_bp": 100016,
+                "sha256": "fe17fd912efa6eb243949985133040c7be20f27ea984589afd4e704e760f8572"
+              },
+              {
+                "length_bp": 391091,
+                "sha256": "dc83725b3b43f47b087ba1e908d75870d359946dd9e6fffcbf914e138ca69fb4"
+              },
+              {
+                "length_bp": 1126791,
+                "sha256": "b2e02e992d3689a3ad30f60da1cd00aa6f2a1b22e92ce979a9d6724f12122a74"
+              },
+              {
+                "length_bp": 3401566,
+                "sha256": "7d8324807224808418bac4098f3790ea8a23065ea23724b46a113cbe6a93e34c"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "9274631acc6f9dba0354ec9c835793c29e91026de26a0fffc4a1331c48887ab2",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "dfab6b540efbc3778cb0caa2ab54e387340419fd4e2f04782e0b39f98b3c3db2"
+              }
+            ],
+            "total_length_bp": 5171167
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 2,
+          "version": "1.8.3"
+        },
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-1/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-1/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "bdc6fe07e6334dd85263111ee2344a9d68f31604e4d4649ce02957f4b4b18a1a",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-1-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2294",
+              "final:Utg2296",
+              "final:Utg2298",
+              "final:Utg2300"
+            ],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60550,
+                "sha256": "88936849724b182ae4cbd15accdb29fb6b9c2f4d14acbc7fda94bcce35a61c8a"
+              },
+              {
+                "length_bp": 91152,
+                "sha256": "2aa2fe80ae26b0fb32f459b49cc8581e7e2958d18fd211b1fde8460ade2cc5d8"
+              },
+              {
+                "length_bp": 100016,
+                "sha256": "037795f095d610d9537d1f7b5d34e062034f88b7345fec3955b3f71dd8840b9c"
+              },
+              {
+                "length_bp": 4899484,
+                "sha256": "fe744256459a4484ca6f9340f10c726194eab68fb2f66d5584d03a81bf1ecf6b"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "8ab3cf1ae7c99a87543bec9f22bd85d35e230e0c47053172aee983bd301ffd23",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "b045e9397ef88d4ea0eece7746a5aca0d2550cf094241f24eb6f7c9a84e3c8fc"
+              }
+            ],
+            "total_length_bp": 5151202
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 3,
+          "version": "1.8.3"
+        },
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-2/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-2/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "bfa53653da4b9f3dd4e31a54807b3732c7d17a9fbce44d07ac2f5901fe6957de",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-1-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2294",
+              "final:Utg2296",
+              "final:Utg2298",
+              "final:Utg2300"
+            ],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60550,
+                "sha256": "88936849724b182ae4cbd15accdb29fb6b9c2f4d14acbc7fda94bcce35a61c8a"
+              },
+              {
+                "length_bp": 91152,
+                "sha256": "2aa2fe80ae26b0fb32f459b49cc8581e7e2958d18fd211b1fde8460ade2cc5d8"
+              },
+              {
+                "length_bp": 100016,
+                "sha256": "037795f095d610d9537d1f7b5d34e062034f88b7345fec3955b3f71dd8840b9c"
+              },
+              {
+                "length_bp": 4899484,
+                "sha256": "fe744256459a4484ca6f9340f10c726194eab68fb2f66d5584d03a81bf1ecf6b"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "8ab3cf1ae7c99a87543bec9f22bd85d35e230e0c47053172aee983bd301ffd23",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "b045e9397ef88d4ea0eece7746a5aca0d2550cf094241f24eb6f7c9a84e3c8fc"
+              }
+            ],
+            "total_length_bp": 5151202
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 4,
+          "version": "1.8.3"
+        },
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-3/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-3/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "11ab277f2f70cb8ec9ece66d3bd7d8594d45305854cce2d89a6175884169e4bd",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-1-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2294",
+              "final:Utg2296",
+              "final:Utg2298",
+              "final:Utg2300"
+            ],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60550,
+                "sha256": "88936849724b182ae4cbd15accdb29fb6b9c2f4d14acbc7fda94bcce35a61c8a"
+              },
+              {
+                "length_bp": 91152,
+                "sha256": "2aa2fe80ae26b0fb32f459b49cc8581e7e2958d18fd211b1fde8460ade2cc5d8"
+              },
+              {
+                "length_bp": 100016,
+                "sha256": "037795f095d610d9537d1f7b5d34e062034f88b7345fec3955b3f71dd8840b9c"
+              },
+              {
+                "length_bp": 4899484,
+                "sha256": "fe744256459a4484ca6f9340f10c726194eab68fb2f66d5584d03a81bf1ecf6b"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "8ab3cf1ae7c99a87543bec9f22bd85d35e230e0c47053172aee983bd301ffd23",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "b045e9397ef88d4ea0eece7746a5aca0d2550cf094241f24eb6f7c9a84e3c8fc"
+              }
+            ],
+            "total_length_bp": 5151202
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 5,
+          "version": "1.8.3"
+        },
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-1/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-1/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "0467151a0912625de331c2393e01c503f354c94f20e0c7475d2b3e0920dd66de",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-2-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2294",
+              "final:Utg2296",
+              "final:Utg2298",
+              "final:Utg2300",
+              "final:Utg2302",
+              "final:Utg2304"
+            ],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 60548,
+                "sha256": "66b79a31333756134f11918bbd47e61e48b15b2d98c8177a45abe8dced12d565"
+              },
+              {
+                "length_bp": 91150,
+                "sha256": "9ced8628fddea7c70c316985d0072b1b93c0d596724c2229ff527ea905ade9c3"
+              },
+              {
+                "length_bp": 100015,
+                "sha256": "a1e5fa0bff89e3a789481fe1d563f9faa59cce87097757ff5e85937a93eb1f00"
+              },
+              {
+                "length_bp": 381239,
+                "sha256": "f316bae3a4772a45fcafc236082cd2c530dd88bb2aa9176ef46b2aa9330fbdd9"
+              },
+              {
+                "length_bp": 1126522,
+                "sha256": "c2be479b83130aa21409de41e1968cdb5ffd3e28253571159b97eacf7ebcb6e8"
+              },
+              {
+                "length_bp": 3401549,
+                "sha256": "91a66db6be689c159f2e04b1ed56057b0d5136bcfa965f2a5f41a1692570b5bc"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "e70c4b3d04e06deb7cb917bf3b188ab42081fe15613a17b00a5eca5f0e022c5e",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "8f2cf11e9759f46f3d91230a8a816983f81f5d9e13c5d7541f76d9eceeb975f5"
+              }
+            ],
+            "total_length_bp": 5161023
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 6,
+          "version": "1.8.3"
+        },
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-2/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-2/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "3248dfffdfc1828fb9ebe3faa8dd2c25a58a381911367d5a6f077e980d865152",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-2-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2294",
+              "final:Utg2296",
+              "final:Utg2298",
+              "final:Utg2300",
+              "final:Utg2302",
+              "final:Utg2304"
+            ],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 60548,
+                "sha256": "66b79a31333756134f11918bbd47e61e48b15b2d98c8177a45abe8dced12d565"
+              },
+              {
+                "length_bp": 91150,
+                "sha256": "9ced8628fddea7c70c316985d0072b1b93c0d596724c2229ff527ea905ade9c3"
+              },
+              {
+                "length_bp": 100015,
+                "sha256": "a1e5fa0bff89e3a789481fe1d563f9faa59cce87097757ff5e85937a93eb1f00"
+              },
+              {
+                "length_bp": 381239,
+                "sha256": "f316bae3a4772a45fcafc236082cd2c530dd88bb2aa9176ef46b2aa9330fbdd9"
+              },
+              {
+                "length_bp": 1126522,
+                "sha256": "c2be479b83130aa21409de41e1968cdb5ffd3e28253571159b97eacf7ebcb6e8"
+              },
+              {
+                "length_bp": 3401549,
+                "sha256": "91a66db6be689c159f2e04b1ed56057b0d5136bcfa965f2a5f41a1692570b5bc"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "e70c4b3d04e06deb7cb917bf3b188ab42081fe15613a17b00a5eca5f0e022c5e",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "8f2cf11e9759f46f3d91230a8a816983f81f5d9e13c5d7541f76d9eceeb975f5"
+              }
+            ],
+            "total_length_bp": 5161023
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 7,
+          "version": "1.8.3"
+        },
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-3/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-3/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "d60be3ebd1915740415d8bf396631d4f93673140a29741f6b329dd535f2be77d",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-2-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2294",
+              "final:Utg2296",
+              "final:Utg2298",
+              "final:Utg2300",
+              "final:Utg2302",
+              "final:Utg2304"
+            ],
+            "contig_count": 6,
+            "contigs": [
+              {
+                "length_bp": 60548,
+                "sha256": "66b79a31333756134f11918bbd47e61e48b15b2d98c8177a45abe8dced12d565"
+              },
+              {
+                "length_bp": 91150,
+                "sha256": "9ced8628fddea7c70c316985d0072b1b93c0d596724c2229ff527ea905ade9c3"
+              },
+              {
+                "length_bp": 100015,
+                "sha256": "a1e5fa0bff89e3a789481fe1d563f9faa59cce87097757ff5e85937a93eb1f00"
+              },
+              {
+                "length_bp": 381239,
+                "sha256": "f316bae3a4772a45fcafc236082cd2c530dd88bb2aa9176ef46b2aa9330fbdd9"
+              },
+              {
+                "length_bp": 1126522,
+                "sha256": "c2be479b83130aa21409de41e1968cdb5ffd3e28253571159b97eacf7ebcb6e8"
+              },
+              {
+                "length_bp": 3401549,
+                "sha256": "91a66db6be689c159f2e04b1ed56057b0d5136bcfa965f2a5f41a1692570b5bc"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "e70c4b3d04e06deb7cb917bf3b188ab42081fe15613a17b00a5eca5f0e022c5e",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "8f2cf11e9759f46f3d91230a8a816983f81f5d9e13c5d7541f76d9eceeb975f5"
+              }
+            ],
+            "total_length_bp": 5161023
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 8,
+          "version": "1.8.3"
+        },
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-1/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-1/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "0ecac5a51c123fc9b01667c1ef0630a20605954e375a55b936c8acaaaae48f6a",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-3-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2286",
+              "final:Utg2294",
+              "final:Utg2298",
+              "final:Utg2300"
+            ],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60548,
+                "sha256": "66b79a31333756134f11918bbd47e61e48b15b2d98c8177a45abe8dced12d565"
+              },
+              {
+                "length_bp": 91153,
+                "sha256": "bb63552d6e718cc45033a269a6a5ba50dcc127b9b006352a69ec1c5c1702ecd4"
+              },
+              {
+                "length_bp": 100016,
+                "sha256": "4627dcccbbaa00b9ea4ae537151fc23ea2331be5a5b3b055c2704c3415b6532f"
+              },
+              {
+                "length_bp": 4900185,
+                "sha256": "934919f2f8f0aec7a905f69a7a9d6fa5fd45cf2b974fb76c410afa27287bc014"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "60be2ac94be64610baa2f614966cf0ce15d0ae1861e3d9dc5e829c3b78a7c5c9",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "dc58397723e68bbae04585f082793c2debab1488b8da21a0ebbe49b3cb927115"
+              }
+            ],
+            "total_length_bp": 5151902
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 9,
+          "version": "1.8.3"
+        },
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-2/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-2/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "a9c792db7dfc44083cbd3becd95cfcfb52b679667c2bbd55d271173ef5468005",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-3-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2286",
+              "final:Utg2294",
+              "final:Utg2298",
+              "final:Utg2300"
+            ],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60548,
+                "sha256": "66b79a31333756134f11918bbd47e61e48b15b2d98c8177a45abe8dced12d565"
+              },
+              {
+                "length_bp": 91153,
+                "sha256": "bb63552d6e718cc45033a269a6a5ba50dcc127b9b006352a69ec1c5c1702ecd4"
+              },
+              {
+                "length_bp": 100016,
+                "sha256": "4627dcccbbaa00b9ea4ae537151fc23ea2331be5a5b3b055c2704c3415b6532f"
+              },
+              {
+                "length_bp": 4900185,
+                "sha256": "934919f2f8f0aec7a905f69a7a9d6fa5fd45cf2b974fb76c410afa27287bc014"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "60be2ac94be64610baa2f614966cf0ce15d0ae1861e3d9dc5e829c3b78a7c5c9",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "dc58397723e68bbae04585f082793c2debab1488b8da21a0ebbe49b3cb927115"
+              }
+            ],
+            "total_length_bp": 5151902
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 10,
+          "version": "1.8.3"
+        },
+        {
+          "command": [
+            "raven",
+            "-t",
+            "4",
+            "-F",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-3/raven/assembly_graph.gfa",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-3/reads.fastq.gz"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "ebb80549898684e60f485309a529482d94ee23557d3be0446f8ad4dc77e5cf10",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-3-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": null,
+            "circularity_unknown_contigs": [
+              "final:Utg2286",
+              "final:Utg2294",
+              "final:Utg2298",
+              "final:Utg2300"
+            ],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60548,
+                "sha256": "66b79a31333756134f11918bbd47e61e48b15b2d98c8177a45abe8dced12d565"
+              },
+              {
+                "length_bp": 91153,
+                "sha256": "bb63552d6e718cc45033a269a6a5ba50dcc127b9b006352a69ec1c5c1702ecd4"
+              },
+              {
+                "length_bp": 100016,
+                "sha256": "4627dcccbbaa00b9ea4ae537151fc23ea2331be5a5b3b055c2704c3415b6532f"
+              },
+              {
+                "length_bp": 4900185,
+                "sha256": "934919f2f8f0aec7a905f69a7a9d6fa5fd45cf2b974fb76c410afa27287bc014"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "60be2ac94be64610baa2f614966cf0ce15d0ae1861e3d9dc5e829c3b78a7c5c9",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final assembly contigs",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "dc58397723e68bbae04585f082793c2debab1488b8da21a0ebbe49b3cb927115"
+              }
+            ],
+            "total_length_bp": 5151902
+          },
+          "status": "fail",
+          "tool": "raven",
+          "tool_index": 11,
+          "version": "1.8.3"
+        }
+      ],
+      "threads": 4,
+      "tool": "raven"
+    },
+    {
+      "circular_representation": {
+        "complete": true,
+        "expected_runs": 12,
+        "observed_runs": 12,
+        "variants": 1,
+        "verdict": "No order effect observed",
+        "within_order": {
+          "original": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-1": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-2": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-3": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          }
+        }
+      },
+      "end_sensitive": {
+        "complete": true,
+        "expected_runs": 12,
+        "observed_runs": 12,
+        "variants": 3,
+        "verdict": "Order-associated output difference",
+        "within_order": {
+          "original": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-1": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-2": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          },
+          "shuffle-3": {
+            "complete": true,
+            "identical": true,
+            "variants": 1
+          }
+        }
+      },
+      "mode": "default",
+      "runs": [
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-1/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-1/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "0f6c6f055ffe55ed0e4b5f3a2f7a69a29b89cce9dbc9fd611e541b444ed688a5",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 1,
+          "scenario": "s7-se11-original-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "a99cdbb4696b8c9ddfaef91501a6617240896a62260519a78004d0d9917b2f55",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "405a3a686928a163323acb196c9a0aa1a1871db44218bdad37d1e7040cbd706b",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "1e4bd0e7f8270e4fee1d03a4250d2625fba00eacf8831387b2bf018a5ca3bc32",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "0318de4b7de8fc08a38be61bc814ba5af67ee196f4973748a63b668e7ef56ea6"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 0,
+          "version": "plassembler, version 1.9.0"
+        },
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-2/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-2/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "ef411fa7e32f5facaeb005bbd77a758b4ceff27b5ce2055a276a7c03a59002fe",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 2,
+          "scenario": "s7-se11-original-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "a99cdbb4696b8c9ddfaef91501a6617240896a62260519a78004d0d9917b2f55",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "405a3a686928a163323acb196c9a0aa1a1871db44218bdad37d1e7040cbd706b",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "1e4bd0e7f8270e4fee1d03a4250d2625fba00eacf8831387b2bf018a5ca3bc32",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "0318de4b7de8fc08a38be61bc814ba5af67ee196f4973748a63b668e7ef56ea6"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 1,
+          "version": "plassembler, version 1.9.0"
+        },
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-original-repeat-3/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-original-repeat-3/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "fa5b29f3ed7b8bb8aa9c82403d9f3c4f79f8131fab9c66306a610d3e052b0d21",
+          "order_id": "original",
+          "reads_sha256": "9e684588df304fce50eb7e098fe7d84d8bd2c7a2ba68495a7e709e628a13051c",
+          "repeat": 3,
+          "scenario": "s7-se11-original-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "a99cdbb4696b8c9ddfaef91501a6617240896a62260519a78004d0d9917b2f55",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "405a3a686928a163323acb196c9a0aa1a1871db44218bdad37d1e7040cbd706b",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "1e4bd0e7f8270e4fee1d03a4250d2625fba00eacf8831387b2bf018a5ca3bc32",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "0318de4b7de8fc08a38be61bc814ba5af67ee196f4973748a63b668e7ef56ea6"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 2,
+          "version": "plassembler, version 1.9.0"
+        },
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-1/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-1/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "bbd47e3b30d3c1f8dad7986b2e69248906d4efb2762400f8507db26fb25c9f77",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-1-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "b681f4809fa954d1ee82332f38acbaa793096d69dcdc6ecf9a94d518601532cc",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "671666f86cda1df10935a4ff26bf037d7e4ac0833297c84598308890de78de26",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "24a2b6911d3a783230b41bfc9037e0784efc2d49cfc5cbe959045202bf92bc5a",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "24a2b6911d3a783230b41bfc9037e0784efc2d49cfc5cbe959045202bf92bc5a"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "6eb6b19752a1bd21bd651da9bfce07c2697973fad80cf330d743a096463934bb",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "03ad9a70ee9803fe27012501d2beda67e6bd6ca73d4f8eec04b653341a82e951"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 3,
+          "version": "plassembler, version 1.9.0"
+        },
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-2/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-2/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "a231009409f054b93f18b0069fafea555f044b394456a9fe038e99059df51fd5",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-1-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "b681f4809fa954d1ee82332f38acbaa793096d69dcdc6ecf9a94d518601532cc",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "671666f86cda1df10935a4ff26bf037d7e4ac0833297c84598308890de78de26",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "24a2b6911d3a783230b41bfc9037e0784efc2d49cfc5cbe959045202bf92bc5a",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "24a2b6911d3a783230b41bfc9037e0784efc2d49cfc5cbe959045202bf92bc5a"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "6eb6b19752a1bd21bd651da9bfce07c2697973fad80cf330d743a096463934bb",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "03ad9a70ee9803fe27012501d2beda67e6bd6ca73d4f8eec04b653341a82e951"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 4,
+          "version": "plassembler, version 1.9.0"
+        },
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-1-repeat-3/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-1-repeat-3/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "770b3b143047530d6ec280060acb70f4d26f5d2570790e08420a8a196fceffc5",
+          "order_id": "shuffle-1",
+          "reads_sha256": "9dc02f87774865b76fa1a4216c9bdcd5ca4089ff0312a1455c894b3910ec3686",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-1-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "b681f4809fa954d1ee82332f38acbaa793096d69dcdc6ecf9a94d518601532cc",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "671666f86cda1df10935a4ff26bf037d7e4ac0833297c84598308890de78de26",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "24a2b6911d3a783230b41bfc9037e0784efc2d49cfc5cbe959045202bf92bc5a",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "24a2b6911d3a783230b41bfc9037e0784efc2d49cfc5cbe959045202bf92bc5a"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "6eb6b19752a1bd21bd651da9bfce07c2697973fad80cf330d743a096463934bb",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "03ad9a70ee9803fe27012501d2beda67e6bd6ca73d4f8eec04b653341a82e951"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 5,
+          "version": "plassembler, version 1.9.0"
+        },
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-1/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-1/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "39ffcaf3f7394f974d94ad76a6bf20bc3fdc51cf174bbfb99c343ca84dda83e0",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-2-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "6ec3d84c904c1ad75af590336a561b9b310b9216d32b0036ce067691061ed838",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "619bdced1fbe206c8d0ac9f69e5496b99b2f94cfe44902c69073645707d19310",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "1e4bd0e7f8270e4fee1d03a4250d2625fba00eacf8831387b2bf018a5ca3bc32",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "0318de4b7de8fc08a38be61bc814ba5af67ee196f4973748a63b668e7ef56ea6"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 6,
+          "version": "plassembler, version 1.9.0"
+        },
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-2/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-2/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "9fc892528be0d08caff0445c951920b98fd82d9a084d307223c07f72ce6f3c7e",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-2-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "6ec3d84c904c1ad75af590336a561b9b310b9216d32b0036ce067691061ed838",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "619bdced1fbe206c8d0ac9f69e5496b99b2f94cfe44902c69073645707d19310",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "1e4bd0e7f8270e4fee1d03a4250d2625fba00eacf8831387b2bf018a5ca3bc32",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "0318de4b7de8fc08a38be61bc814ba5af67ee196f4973748a63b668e7ef56ea6"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 7,
+          "version": "plassembler, version 1.9.0"
+        },
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-2-repeat-3/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-2-repeat-3/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "ab9bde0585ee44e587ee69ab7d9e8bb465411ac241e3b2a5f20a41ed4a4965ea",
+          "order_id": "shuffle-2",
+          "reads_sha256": "c287d8c8256335c7b73d9f1f4a2560d4534f8cb2d80c72985b1df63fb183e964",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-2-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "6ec3d84c904c1ad75af590336a561b9b310b9216d32b0036ce067691061ed838",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "619bdced1fbe206c8d0ac9f69e5496b99b2f94cfe44902c69073645707d19310",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "3687d11c2585d0e9648a11e363b4efc096daf48f85a16a195c7a2a1c612de254"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "1e4bd0e7f8270e4fee1d03a4250d2625fba00eacf8831387b2bf018a5ca3bc32",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "0318de4b7de8fc08a38be61bc814ba5af67ee196f4973748a63b668e7ef56ea6"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 8,
+          "version": "plassembler, version 1.9.0"
+        },
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-1/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-1/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "2adad8c391ec00179781c1c676873d5b65c9dd0eb63f1a55db83be37b14fb108",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 1,
+          "scenario": "s7-se11-shuffle-3-repeat-1",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "9affc3137df5ef0e65ea9a66a321176170699a488949084cc43d05168cf66de8",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "06ff65fb3de4edc3e9f5f064e818373a3f19899da838b31bb99891752372980d",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "1b4c877a9f582f19d96754e10d6e42604f10f459861e15be683d482d4026b1da",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "1b4c877a9f582f19d96754e10d6e42604f10f459861e15be683d482d4026b1da"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "80ab649e1bd589fe0bf606873e88650ccb60bfa9d5201c6b5467d90a057bfe9b",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "38d55fb8cd465fade1277ef955ce1a2b4bee9e78db40acd8be52e31fb5c7ece1"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 9,
+          "version": "plassembler, version 1.9.0"
+        },
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-2/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-2/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "8d75a0b09397820516b6bfb5861a05b67ff773d1cf971d19380c5f51c10c7b10",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 2,
+          "scenario": "s7-se11-shuffle-3-repeat-2",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "1a115c067fe3198c4619d8341c0dac864231dcf819dcda96be61931914079fbb",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "671666f86cda1df10935a4ff26bf037d7e4ac0833297c84598308890de78de26",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "1b4c877a9f582f19d96754e10d6e42604f10f459861e15be683d482d4026b1da",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "1b4c877a9f582f19d96754e10d6e42604f10f459861e15be683d482d4026b1da"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "80ab649e1bd589fe0bf606873e88650ccb60bfa9d5201c6b5467d90a057bfe9b",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "38d55fb8cd465fade1277ef955ce1a2b4bee9e78db40acd8be52e31fb5c7ece1"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 10,
+          "version": "plassembler, version 1.9.0"
+        },
+        {
+          "command": [
+            "plassembler",
+            "long",
+            "--longreads",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/cases/s7-se11-shuffle-3-repeat-3/reads.fastq.gz",
+            "--outdir",
+            "/gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/.s7/runs/20261106T134415/results/s7-se11-shuffle-3-repeat-3/plassembler/output",
+            "--threads",
+            "4",
+            "--skip_qc",
+            "--skip_mash",
+            "--keep_chromosome",
+            "--prefix",
+            "benchmark",
+            "--chromosome",
+            "1000000"
+          ],
+          "comparison_error": null,
+          "error": null,
+          "execution_sha256": "4e4832839a18485fb277e1f1371b5811bb9960098f96c7bdfff54f46e20059a8",
+          "order_id": "shuffle-3",
+          "reads_sha256": "1345eac7d077c4ea30249c91193534cf7f196d092b6af980897dc3b9fd9bdd8a",
+          "repeat": 3,
+          "scenario": "s7-se11-shuffle-3-repeat-3",
+          "scheduler_state": "COMPLETED",
+          "secondary_reference_status": "fail",
+          "signature": {
+            "circular_policy": "Rotations ignored only for tool-reported circular contigs; unavailable when any contig topology is unknown.",
+            "circular_representation_sha256": "f3230f77bc65eebc6fd738c5fab4caee59c54c99b76a932e05d219d5dedf22e9",
+            "circularity_source_evidence": [
+              {
+                "initial_assembly_sha256": "1a115c067fe3198c4619d8341c0dac864231dcf819dcda96be61931914079fbb",
+                "initial_contigs": [
+                  "contig_1"
+                ],
+                "initial_info_sha256": "671666f86cda1df10935a4ff26bf037d7e4ac0833297c84598308890de78de26",
+                "reported_circularity": "circular",
+                "retained_contig": "chromosome",
+                "retained_sequence_sha256": "1b4c877a9f582f19d96754e10d6e42604f10f459861e15be683d482d4026b1da",
+                "sequence_identity": "Exact complete sequence, allowing reverse complement only",
+                "source": "Initial Flye assembly_info.txt, associated by verified sequence identity; no reference used."
+              }
+            ],
+            "circularity_unknown_contigs": [],
+            "contig_count": 4,
+            "contigs": [
+              {
+                "length_bp": 60555,
+                "sha256": "2e54a5c3c70416151d92c99f8efd2decb836a384983e4749f3f21bf8d0f7e750"
+              },
+              {
+                "length_bp": 91158,
+                "sha256": "7c090ff735e0550937bb069b04484ba23941f397c4c88a8e16baafb6377cc6b9"
+              },
+              {
+                "length_bp": 100021,
+                "sha256": "92660ddd346e6cdbcd3b8b0a72be799c1aabac654ddbb61d462fa4c380ee06c1"
+              },
+              {
+                "length_bp": 4887515,
+                "sha256": "1b4c877a9f582f19d96754e10d6e42604f10f459861e15be683d482d4026b1da"
+              }
+            ],
+            "end_sensitive_policy": "Names/order/strand ignored; ends, sequence and duplicate copies retained.",
+            "end_sensitive_sha256": "80ab649e1bd589fe0bf606873e88650ccb60bfa9d5201c6b5467d90a057bfe9b",
+            "method": "reference-independent-contig-multiset-v1",
+            "schema_version": 1,
+            "scope": "Final plasmids plus retained chromosome",
+            "source_files": [
+              {
+                "role": "final",
+                "sha256": "46aafc561dcf6a36a5dc0a8c49181917932ac262f645a2fc133594d2538fa006"
+              },
+              {
+                "role": "retained_chromosome",
+                "sha256": "38d55fb8cd465fade1277ef955ce1a2b4bee9e78db40acd8be52e31fb5c7ece1"
+              }
+            ],
+            "total_length_bp": 5139249
+          },
+          "status": "fail",
+          "tool": "plassembler",
+          "tool_index": 11,
+          "version": "plassembler, version 1.9.0"
+        }
+      ],
+      "threads": 4,
+      "tool": "plassembler"
+    }
+  ]
+}
