@@ -704,3 +704,25 @@ NUCmer comparison roots for the new cases; ensure the plots actually select thos
 NUCmer coordinates while preserving saved PAF evidence for mismatch counts. The
 specific software causes must not be inferred from recovery scores alone. Never
 silently relabel pending/error outcomes as passes or rerun with tuned parameters.
+
+### 6 November, 04:50 UTC follow-up — S1 complete; suite still running
+
+S1 `20261106T042103` completed all 8 executions (2 exact pass, 6 exact fail),
+8 supplementary mappings, 8 saved graphs, 8 length inventories and 8 NUCmer
+comparisons. Its frozen snapshot is retained unchanged in `published/`.
+S2 is assembling; S3 remains dependency-queued. No new biological runs or retries
+were submitted during this follow-up, and the live release remains unchanged.
+
+Repaired comparison provenance packaging: copied existing environment manifests
+and the unchanged comparison script into S1's provenance directory and updated
+the evidence worker to package them for subsequent batches. No alignments or
+assemblies were rerun. Export now selects explicitly supplied, validated completed
+NUCmer coordinates for plotting while retaining separate PAF evidence for mismatch
+counts and direct base reviews. Invalid NUCmer sidecars retain a valid saved PAF
+fallback. Regression checks cover this separation.
+
+S1-only QA: all 8 plots consume recorded NUCmer coordinates; 17 HTML pages / 308
+local links pass the release gate, preserving all 8 original records. The updated
+365-test suite passes with 11 optional skips. See
+`evidence/large-baseline-v3/s1-qa.json`. Publish only after the whole suite and final
+compact-site budget are verified.

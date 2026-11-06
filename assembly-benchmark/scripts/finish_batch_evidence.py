@@ -1,6 +1,7 @@
 """Compute-node postprocessing for a newly completed benchmark batch."""
 import argparse
 import collections
+import shutil
 import sys
 from pathlib import Path
 
@@ -31,6 +32,12 @@ def finish(identifier):
     snapshot = publish(config, batch, deploy=False, make_latest=False)
     comparison_root = batch / 'comparisons' / 'large-baseline-v3'
     comparison_root.mkdir(parents=True, exist_ok=True)
+    provenance = comparison_root / 'provenance'
+    provenance.mkdir(exist_ok=True)
+    for source in [ROOT / 'environments/coordinate-comparison/pixi.toml',
+                   ROOT / 'environments/coordinate-comparison/pixi.lock',
+                   ROOT / 'scripts/compare_existing_outputs.py']:
+        shutil.copy2(source, provenance / source.name)
     cluster = comparison_root / 'source-root.json'
     save(cluster, {'remote_root':str(ROOT)})
     manifest = comparison_root / 'tasks.json'

@@ -18,6 +18,10 @@ class FinishBatchEvidenceTests(unittest.TestCase):
                 execution.write_text('{"status":"pass"}')
                 (batch / 'config.json').write_text('{}')
                 (batch / 'tasks.json').write_text('{"assemble":[{}]}')
+                for filename in ('environments/coordinate-comparison/pixi.toml','environments/coordinate-comparison/pixi.lock','scripts/compare_existing_outputs.py'):
+                    source = root / filename
+                    source.parent.mkdir(parents=True,exist_ok=True)
+                    source.write_text('Synthetic provenance')
                 original = execution.read_bytes()
                 graph = {'executions':[{'artifact':{'status':'available'}}]}
                 with patch.multiple(worker, ROOT=root,
@@ -34,4 +38,5 @@ class FinishBatchEvidenceTests(unittest.TestCase):
                 self.assertEqual(result['status'],expected_status)
                 self.assertEqual(result['coordinate_comparisons'],{'complete' if returncode == 0 else 'error':1})
                 self.assertEqual(execution.read_bytes(),original)
+                self.assertEqual((batch / 'comparisons/large-baseline-v3/provenance/pixi.lock').read_text(),'Synthetic provenance')
                 self.assertEqual(json.loads((batch / 'evidence_status.json').read_text())['status'],expected_status)

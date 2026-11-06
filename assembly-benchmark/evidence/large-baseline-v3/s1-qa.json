@@ -1,0 +1,36 @@
+{
+  "alignment_reruns": 0,
+  "assembly_reruns": 0,
+  "available_graphs": 8,
+  "batch": "20261106T042103",
+  "completed_mapping_records": 8,
+  "completed_nucmer_plots": 8,
+  "gate": {
+    "errors": [],
+    "html_pages": 17,
+    "local_links_checked": 308,
+    "policy": {
+      "max_file_bytes": 5242880,
+      "max_files": 1500,
+      "max_total_bytes": 67108864
+    },
+    "preserved_source_records": 8,
+    "public_files": 74,
+    "schema_version": 1,
+    "status": "pass",
+    "total_files": 77,
+    "website_bytes": 2049426
+  },
+  "length_inventories": 8,
+  "metadata_repair": "Copied existing pinned environment and comparison-script files into S1 comparison provenance; no calculations or scientific records changed. Future evidence jobs package these files automatically.",
+  "optional_skips": 11,
+  "original_snapshot_sha256": "e3b14ec6cb38cfce80b330142575f08b91ce7ef7b94666e95c72c8033795053b",
+  "original_source_records_preserved": 8,
+  "outcomes": {
+    "fail": 6,
+    "pass": 2
+  },
+  "python_tests": 365,
+  "scope": "S1 only; complete suite and production update remain pending",
+  "status": "pass"
+}

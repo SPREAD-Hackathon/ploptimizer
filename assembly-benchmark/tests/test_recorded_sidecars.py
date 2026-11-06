@@ -75,6 +75,23 @@ class RecordedSidecarTests(unittest.TestCase):
     def test_checksum_mismatch_is_not_a_plot(self):
         (self.directory/'coordinates.tsv').write_bytes(self.coords+b'changed');self.assertEqual(self.plot()['status'],'hash_mismatch')
 
+    def test_explicit_completed_nucmer_plot_preserves_separate_paf_count_evidence(self):
+        from pipeline.bundle import prepare_document
+        paf = copy.deepcopy(self.plot())
+        paf['source_kind'] = 'recorded_paf'
+        document = json.loads(self.snapshot.read_text())
+        original = copy.deepcopy(document)
+        with patch('pipeline.bundle.recorded_paf_plot',return_value=paf), patch('pipeline.failure_summary.failure_summary',return_value=None) as count_summary:
+            prepared = prepare_document(document,artifact_root=self.runs,coordinate_roots=[self.source_root],snapshot_hash=self.snapshot_hash)
+        evidence = prepared['results'][0]['report_evidence']
+        self.assertEqual(evidence['dotplot']['source_kind'],'recorded_show_coords')
+        self.assertEqual(count_summary.call_args.args[1],paf)
+        self.assertEqual(document,original)
+        (self.directory/'coordinates.tsv').write_bytes(self.coords+b'changed')
+        with patch('pipeline.bundle.recorded_paf_plot',return_value=paf):
+            prepared = prepare_document(document,artifact_root=self.runs,coordinate_roots=[self.source_root],snapshot_hash=self.snapshot_hash)
+        self.assertEqual(prepared['results'][0]['report_evidence']['dotplot']['source_kind'],'recorded_paf')
+
     def test_inconsistent_canonical_rows_are_rejected(self):
         self.sidecar['alignments'][0]['query_interval']=[0,10];self.write_sidecar();self.assertEqual(self.plot()['status'],'invalid')
 

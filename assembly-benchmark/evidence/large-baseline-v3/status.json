@@ -8,6 +8,30 @@
       "config": "config/baseline-large.json",
       "config_fingerprint": "8697a2d1a8a0daae28bf68790ed06fc2f10055714be02dc8046ea9d61f1366a2",
       "config_sha256": "cfe57da741698883726ba453017a4e99e996b104ad693df9aedf5aa607b7e2b9",
+      "evidence": {
+        "comparison_root": "comparisons/large-baseline-v3",
+        "coordinate_comparisons": {
+          "complete": 8
+        },
+        "diagnostics": {
+          "complete": 8
+        },
+        "expected_executions": 8,
+        "graph_identities": {
+          "identity_pairs": 29,
+          "inventories": 8
+        },
+        "graphs": {
+          "available": 8
+        },
+        "length_inventories": 8,
+        "outcomes": {
+          "fail": 6,
+          "pass": 2
+        },
+        "source_snapshot": "published/20261106T042103.json",
+        "status": "complete"
+      },
       "family": "S1",
       "input_count": 2,
       "jobs": {
@@ -71,15 +95,9 @@
       ]
     }
   ],
-  "phase": "Preparation passed on Python 3.11; read generation running; assembly/evidence jobs dependency-linked",
+  "phase": "S1 evidence complete and locally verified; S2 assemblies running; S3 queued",
   "schema_version": 1,
   "source_commit": "fa47838",
   "status": "running",
-  "updated_at": "2026-11-06T04:23:50.542373+00:00",
-  "validation": {
-    "cancelled_attempt_assembly_starts": 0,
-    "cluster_python_tests": 364,
-    "historical_case_definitions_unchanged": true,
-    "optional_skips": 11
-  }
+  "updated_at": "2026-11-06T04:56:08.490808+00:00"
 }

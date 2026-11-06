@@ -129,9 +129,9 @@ def prepare_document(source, artifact_root=None, coordinate_roots=(), snapshot_h
         coordinate_plot=recorded_paf_plot(case,record,document['batch'],artifact_root) if artifact_root is not None else None
         plot=reviewed_plot if reviewed_plot['status']=='available' or coordinate_plot is None else coordinate_plot
         sidecar_plot=None
-        if plot['status']!='available' and coordinate_roots:
+        if coordinate_roots:
             sidecar_plot=completed_sidecar_plot(case,record,document['batch'],coordinate_roots,artifact_root,snapshot_hash)
-            if sidecar_plot['status']!='not_applicable':
+            if sidecar_plot['status']=='available' or plot['status']!='available' and sidecar_plot['status']!='not_applicable':
                 plot=sidecar_plot
         contig_origins=build_contig_origins(case,record,graph,plot)
         lengths=build_length_metrics(record,graph,document['batch'],artifact_root)
@@ -142,12 +142,13 @@ def prepare_document(source, artifact_root=None, coordinate_roots=(), snapshot_h
             'length_metrics':lengths, 'graph_availability':graph_availability(record,graph),
             'failure_details':detail_record(record,molecules,plot,coordinate_plot,sidecar_plot)}
         from .failure_summary import failure_summary
-        record['report_evidence']['failure_summary'] = failure_summary(record, plot)
+        count_plot = coordinate_plot if coordinate_plot and coordinate_plot['status']=='available' else plot
+        record['report_evidence']['failure_summary'] = failure_summary(record, count_plot)
         summary = record['report_evidence']['failure_summary']
         from .stage_notes import attach_stage_facts
         attach_stage_facts(summary, record, document['batch'], artifact_root)
         from .base_review_records import attach_base_review
-        attach_base_review(summary, record, document['batch'], artifact_root, plot)
+        attach_base_review(summary, record, document['batch'], artifact_root, count_plot)
         if summary and summary.get('events'):
             record['report_evidence']['failure_details']['recorded_change'].update(
                 status='reviewed', confidence='confirmed', description=summary['summary'],
