@@ -1,0 +1,13 @@
+{
+  "policy": "Current plus two previous READY deployments",
+  "removed": [
+    "dpl_Am3MNaXNNdDMhRCaN839Bbgh9ez3",
+    "dpl_2wpnqUZHbQKVYmJ9aRhsTtb3PLsZ"
+  ],
+  "retained": [
+    "dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q",
+    "dpl_AzEuTLfdWVyGust6LHufoDKdz93o",
+    "dpl_7oQGUyEYZKfFeLyHsk2AjQTB6RCg"
+  ],
+  "status": "complete"
+}

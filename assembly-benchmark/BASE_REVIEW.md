@@ -65,3 +65,7 @@ existing recorded count. Sequence files remain outside the static website.
 The web-independent JSON and Markdown report and the result page all consume the
 same prepared event records. A mismatch location is a verified observation;
 the software-internal cause remains unresolved.
+
+The retained `reviews/evidence/20261104T190455-pkpn5-unicycler.log` supplies
+the checkpoint order and bridging/cleanup log context. Its checksum and relevant
+line numbers are recorded in `evidence/base-review-v1/checkpoint-log.json`.

@@ -1,17 +1,4 @@
 {
-  "schema_version": 1,
-  "status": "live_verified",
-  "verified_at": "2026-11-06T01:10:15.348116+00:00",
-  "url": "https://ploptimizer-assembly-benchmark.vercel.app",
-  "deployment_id": "dpl_AzEuTLfdWVyGust6LHufoDKdz93o",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-3yrv213d8-happykhans-projects.vercel.app",
-  "source_commit": "44ab2d8",
-  "bundle": ".cache/bundles/stage-history-v1",
-  "build_bytes": 47328355,
-  "public_files_verified": 2,
-  "verification_failures": 0,
-  "original_source_records_preserved": 300,
-  "retained_ready_deployments": 4,
   "browser_checks": [
     "Live390px scenario+Raven headers only",
     "Six complete rows; no cell-content clipping",
@@ -20,14 +7,32 @@
     "320px,800px and1440px layouts checked",
     "Live pKPN5: 2 base mismatches, equal88582bp lengths, initial Flye exact, positions/base changes unknown"
   ],
+  "build_bytes": 47329638,
+  "bundle": ".cache/bundles/base-review-v1",
+  "cluster_jobs_submitted": 0,
+  "deployment_id": "dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-5yzg26ezy-happykhans-projects.vercel.app",
   "limitations": [
     "Real node-internal reference intervals remain unmeasured",
-    "Many exact failures still lack reviewed mismatch locations",
-    "Software-internal causes remain unresolved"
+    "Many other exact failures still lack reviewed mismatch locations",
+    "The specific operation responsible for pKPN5 substitutions remains unresolved"
   ],
-  "cluster_jobs_submitted": 0,
   "mobile_matrix": "Native assembler selector and two complete columns at <=900px; full comparison on desktop",
-  "verification_retries": 1,
-  "reporting_update": "Source-bound post-Flye process history; no base-level analysis",
-  "verification_scope": "Target changed result page and site manifest verified byte-for-byte; full local gate passed"
+  "original_source_records_preserved": 300,
+  "public_files_verified": 1086,
+  "reporting_update": "Direct existing FASTA review resolves pKPN5 substitutions and saved checkpoint comparisons; no assembly or aligner rerun",
+  "retained_deployments": [
+    "dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q",
+    "dpl_AzEuTLfdWVyGust6LHufoDKdz93o",
+    "dpl_7oQGUyEYZKfFeLyHsk2AjQTB6RCg"
+  ],
+  "retained_ready_deployments": 3,
+  "schema_version": 1,
+  "source_commit": "c0f2334",
+  "status": "live_verified",
+  "url": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "verification_failures": 0,
+  "verification_retries": 0,
+  "verification_scope": "All public files byte-for-byte",
+  "verified_at": "2026-11-06T01:24:44.948996+00:00"
 }

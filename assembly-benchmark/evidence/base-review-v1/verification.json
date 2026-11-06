@@ -1,0 +1,33 @@
+{
+  "aligner_reruns": 0,
+  "assembly_reruns": 0,
+  "cluster_jobs_submitted": 0,
+  "deployment_id": "dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q",
+  "exact_score": "fail (unchanged)",
+  "focused_tests": 11,
+  "gate": {
+    "errors": [],
+    "html_pages": 399,
+    "local_links_checked": 8005,
+    "policy": {
+      "max_file_bytes": 5242880,
+      "max_files": 1500,
+      "max_total_bytes": 67108864
+    },
+    "preserved_source_records": 300,
+    "public_files": 1092,
+    "schema_version": 1,
+    "status": "pass",
+    "total_files": 1103,
+    "website_bytes": 47329638
+  },
+  "http_e2e_routes": 398,
+  "new_analysis": "Direct comparison of existing FASTA sequences along saved gap-free PAF spans; circular equivalence of existing stage outputs and graphs",
+  "optional_skips": 11,
+  "publication_failures": 0,
+  "published_files_verified": 1086,
+  "python_tests": 358,
+  "result_views": 300,
+  "source_commit": "c0f2334",
+  "status": "live_verified"
+}

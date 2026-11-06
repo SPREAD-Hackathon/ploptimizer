@@ -1,0 +1,22 @@
+{
+  "excerpts": [
+    {
+      "line_1based": 165,
+      "text": "Saving /gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/runs/20261104T190455/results/s1-mgh78578-pkpn5/plassembler/output/unicycler_output/004_long_read_assembly.gfa"
+    },
+    {
+      "line_1based": 274,
+      "text": "Applying bridges (2026-11-04 20:41:53)"
+    },
+    {
+      "line_1based": 290,
+      "text": "Saving /gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/runs/20261104T190455/results/s1-mgh78578-pkpn5/plassembler/output/unicycler_output/005_bridges_applied.gfa"
+    },
+    {
+      "line_1based": 297,
+      "text": "Saving /gpfs3/well/aanensen/users/rva470/ploptimizer/assembly-benchmark/runs/20261104T190455/results/s1-mgh78578-pkpn5/plassembler/output/unicycler_output/006_final_clean.gfa"
+    }
+  ],
+  "sha256": "c1ce1adbf14e6ed26b8c87eec51bcb033d5e67bae582b342654d2d83ad1fa588",
+  "source": "reviews/evidence/20261104T190455-pkpn5-unicycler.log"
+}

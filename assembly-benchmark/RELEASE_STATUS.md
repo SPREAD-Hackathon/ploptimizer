@@ -3,7 +3,7 @@
 ## Current production — live and verified
 
 The compact build is now live at https://ploptimizer-assembly-benchmark.vercel.app
-from source `5d39bf6`, deployment `dpl_7oQGUyEYZKfFeLyHsk2AjQTB6RCg`.
+from source `c0f2334`, deployment `dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q`.
 The guarded archive deployment succeeded. All 1,086 published pages/assets/downloads
 passed byte-for-byte verification with zero failures. Browser checks confirmed
 recorded-difference facts and functioning scenario search/status filters. The
@@ -16,9 +16,10 @@ the full comparison. The live390px Raven view has two complete cells per row and
 zero horizontal overflow.
 
 Earlier quota-blocked notes below are historical and have been superseded by this
-successful deployment. See `CURRENT_RELEASE.json` and `evidence/compact-live-v1/`.
-This publishes reporting improvements; it does not add new node interval
-measurements, new assemblies, or software-internal failure explanations.
+successful deployment. See `CURRENT_RELEASE.json` and `evidence/base-review-v1/`.
+The latest update directly checks existing sequences for the pKPN5 case; it
+does not add new node interval measurements, new assemblies or a confirmed
+software-internal causal assignment.
 
 **Final evidence audit: 5 November 2026, 01:58 UTC (02:58 CET).** All existing
 submitted batches, required diagnostics and tolerant assessments have finished.
@@ -671,3 +672,11 @@ Evidence: `evidence/mismatch-counts-v2/`.
 Source `44ab2d8`, deployment `dpl_AzEuTLfdWVyGust6LHufoDKdz93o`. The pKPN5 report now explains that additional read processing and separate plasmid reconstruction followed the exact initial Flye assessment. The note is bound to saved execution, assembly, reference and log hashes. The report does not identify a causal substep, changed positions or nucleotide changes. No sequence analysis or cluster jobs were performed.
 
 QA: 353 tests passed (11 optional skips), local gate 399 pages / 8,005 links / 300 original records preserved; target production page and site manifest matched local bytes. Current static build is 47,328,355 bytes.
+
+## 2026-11-06 — pKPN5 base changes directly verified and published
+
+The earlier count-only limitation is superseded for this case. Routine comparison of existing saved FASTAs confirms NC_009651.1 substitutions 39,984 T → C and 77,230 A → G (1-based reference-forward coordinates), at final output positions 11,045 and 48,291. Both molecules are 88,582 bp; the exact score remains fail.
+
+Initial Flye is directly verified exact. Unicycler graph 004 also has exact circular reference equivalence. Graph 006 and the saved Unicycler final FASTA match the final Plassembler sequence. Graph bridging/cleanup occurs between the saved graph checkpoints; the particular responsible operation remains unresolved. See `BASE_REVIEW.md`, the hash-bound review in `reviews/bases/`, and the retained Unicycler log in `reviews/evidence/`.
+
+Source c0f2334 deployed as dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q. QA: 358 tests (11 optional skips), 11 focused checks, HTTP E2E 398 routes / 300 result views; final gate 399 HTML / 8,005 links / 300 original source records preserved. All 1,086 published files verified byte-for-byte. Build 47,329,638 bytes; current plus two previous READY deployments retained. No assembly or alignment reruns and no cluster jobs were submitted.
