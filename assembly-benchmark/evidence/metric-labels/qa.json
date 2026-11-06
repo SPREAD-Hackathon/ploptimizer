@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "source_commit": "1bfdc7b",
+  "targeted_tests": 18,
+  "final_wording_tests": 6,
+  "http_routes": 598,
+  "result_views": 468,
+  "source_records_preserved": 468,
+  "detector_findings": [],
+  "visual_review": "Desktop and 390 px phone captures inspected; readable labels and units, settings separate, source fields folded, no page overflow.",
+  "ready_deployments_retained": 3,
+  "ready_urls": [
+    "ploptimizer-assembly-benchmark-nzkuo4eh7-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-exhaeterp-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-duk0uvoaj-happykhans-projects.vercel.app"
+  ]
+}

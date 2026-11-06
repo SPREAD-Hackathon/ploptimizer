@@ -2,8 +2,8 @@
 
 ## Current production — revised large-plasmid suite live and verified
 
-https://ploptimizer-assembly-benchmark.vercel.app is live from source `c45ff47`,
-deployment `dpl_Du5Cyog7UBQQbBDnkbQBbXMoJrLr`. All 1,111 publicly served
+https://ploptimizer-assembly-benchmark.vercel.app is live from source `1bfdc7b`,
+deployment `dpl_5xRTJueBN2m595uoNhHNRDkbs4bn`. All 1,111 publicly served
 pages, assets and downloads match the reviewed build byte-for-byte, with zero
 failures. Nine Vercel routing configuration files are not public download targets.
 Live browser checks confirm the mobile assembler selector without page overflow,
@@ -18,7 +18,7 @@ normalised sequence signatures. Deterministic Flye configurations agree in all
 in hash. Signature differences do not by themselves locate a sequence change.
 
 The overview includes the verified new snapshots while retaining historical
-supplementary results. The build is 53,682,715 bytes, below the unchanged 64 MiB
+supplementary results. The build is 53,900,537 bytes, below the unchanged 64 MiB
 budget. Current plus two previous READY deployments are retained. Large backend
 files stay outside the deployed presentation build. All 468 source records and
 original scores are preserved; no assemblies were retried or tuned during QA.
@@ -871,3 +871,18 @@ Nineteen targeted reporting tests and the Python compatibility check pass; the
 preserved. The live 390 px result label was visually reviewed. All 1,111 public
 pages/assets/downloads match the reviewed build. Current plus two previous READY
 deployments are retained. Evidence: `evidence/short-nanopore-label/`.
+
+### 6 November — readable measurement labels published
+
+Continuous measurement tables now use readable labels and saved molecule/contig
+names, explicit base-pair units and percentages for known coverage/identity
+fractions. Additional-copy screening configuration is folded separately from
+recovery measurements: reference markers selected, marker length and the
+matching-marker threshold for review are not presented as observed copy counts.
+Original field paths and source values remain in a folded source section.
+
+Eighteen targeted checks pass, with six measurement-report tests rerun after the
+final wording edit. Desktop/phone visual review, the 598-route integration check
+and the release gate pass. All 468 original source records remain unchanged; all
+1,111 publicly served pages/assets/downloads match the reviewed build. Current
+plus two previous READY deployments are retained. See `evidence/metric-labels/`.

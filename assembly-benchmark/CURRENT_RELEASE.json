@@ -2,12 +2,12 @@
   "schema_version": 1,
   "status": "live_verified",
   "url": "https://ploptimizer-assembly-benchmark.vercel.app",
-  "source_commit": "c45ff47",
-  "deployment_id": "dpl_Du5Cyog7UBQQbBDnkbQBbXMoJrLr",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-exhaeterp-happykhans-projects.vercel.app",
-  "verified_at": "2026-11-06T09:03:02.298275+00:00",
+  "source_commit": "1bfdc7b",
+  "deployment_id": "dpl_5xRTJueBN2m595uoNhHNRDkbs4bn",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-nzkuo4eh7-happykhans-projects.vercel.app",
+  "verified_at": "2026-11-06T09:14:41.616140+00:00",
   "bundle": ".cache/bundles/short-nanopore-label",
-  "build_bytes": 53682715,
+  "build_bytes": 53900537,
   "source_records_preserved": 468,
   "new_executions": 168,
   "new_exact_outcomes": {
@@ -22,9 +22,9 @@
   "optional_skips": 11,
   "retained_ready_deployments": 3,
   "retained_deployments": [
+    "dpl_5xRTJueBN2m595uoNhHNRDkbs4bn",
     "dpl_Du5Cyog7UBQQbBDnkbQBbXMoJrLr",
-    "dpl_BLTAw99T8G1U1C3JGWyBGrn5EJfX",
-    "dpl_DAup8G3GKC6scMu3qm8k6Wb4Mi2q"
+    "dpl_BLTAw99T8G1U1C3JGWyBGrn5EJfX"
   ],
   "presentation_url": "https://docs.google.com/presentation/d/1t40OE2R48Z25i_XTfP6kt08CQtbcdX2DuZLyaTlvNCA/edit",
   "presentation_slide_count": 12,
@@ -76,5 +76,24 @@
   ],
   "label_change_tests": 20,
   "prior_release_python_tests": 368,
-  "label_update": "Short Nanopore read-length challenge \u00b7 1.5 kb target mean; applied across S4 short-profile views without changing frozen records."
+  "label_update": "Short Nanopore read-length challenge \u00b7 1.5 kb target mean; applied across S4 short-profile views without changing frozen records.",
+  "metric_label_update": "Readable molecule/contig labels and explicit units; copy-screen settings separate from recovery measurements; original field paths folded.",
+  "targeted_reporting_tests": 18,
+  "metric_label_browser_checks": {
+    "status": "pass",
+    "url": "https://ploptimizer-assembly-benchmark.vercel.app/batches/20261104T210453/results/s6-w-prk2-seed-20261105-generic-stress--flye",
+    "captures": [
+      {
+        "width": 1440,
+        "scroll": 1440
+      },
+      {
+        "width": 390,
+        "scroll": 390
+      }
+    ],
+    "source_fields_folded": true,
+    "settings_separate": true,
+    "script_errors": []
+  }
 }

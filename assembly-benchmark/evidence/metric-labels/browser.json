@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "url": "https://ploptimizer-assembly-benchmark.vercel.app/batches/20261104T210453/results/s6-w-prk2-seed-20261105-generic-stress--flye",
+  "captures": [
+    {
+      "width": 1440,
+      "scroll": 1440
+    },
+    {
+      "width": 390,
+      "scroll": 390
+    }
+  ],
+  "source_fields_folded": true,
+  "settings_separate": true,
+  "script_errors": []
+}
