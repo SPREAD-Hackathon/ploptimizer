@@ -1,0 +1,12 @@
+{
+  "source_commit": "44ab2d8",
+  "deployment_id": "dpl_AzEuTLfdWVyGust6LHufoDKdz93o",
+  "python_tests": 353,
+  "optional_skips": 11,
+  "gate": "pass",
+  "source_records_preserved": 300,
+  "sequence_analyses": 0,
+  "cluster_jobs": 0,
+  "backend_json_and_markdown_stage_note": true,
+  "locations_and_base_changes": "unresolved"
+}

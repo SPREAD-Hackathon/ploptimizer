@@ -665,3 +665,9 @@ HTTP checks of 398 routes/300 results passed. Production byte checks covered all
 both initial and final evidence are retained. Desktop/phone UI review approved
 the reporting scope. Current plus two previous READY deployments are retained.
 Evidence: `evidence/mismatch-counts-v2/`.
+
+## 2026-11-06 — Saved post-Flye process history published
+
+Source `44ab2d8`, deployment `dpl_AzEuTLfdWVyGust6LHufoDKdz93o`. The pKPN5 report now explains that additional read processing and separate plasmid reconstruction followed the exact initial Flye assessment. The note is bound to saved execution, assembly, reference and log hashes. The report does not identify a causal substep, changed positions or nucleotide changes. No sequence analysis or cluster jobs were performed.
+
+QA: 353 tests passed (11 optional skips), local gate 399 pages / 8,005 links / 300 original records preserved; target production page and site manifest matched local bytes. Current static build is 47,328,355 bytes.

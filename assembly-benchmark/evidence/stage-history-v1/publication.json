@@ -1,0 +1,15 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "route": "results/s1-mgh78578-pkpn5--plassembler.html",
+      "sha256": "85d90078103d171a431d0e4e4a9004bec3dd54aa98f72c690ebf2d022e441e59",
+      "status": "pass"
+    },
+    {
+      "route": "site-manifest.json",
+      "sha256": "82fae2c81394ad393cefb11dcf4856ae4b0bc737dae2990d6d057dd0ec7e243a",
+      "status": "pass"
+    }
+  ]
+}

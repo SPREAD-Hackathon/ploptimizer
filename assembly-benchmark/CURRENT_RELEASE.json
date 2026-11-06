@@ -1,22 +1,17 @@
 {
   "schema_version": 1,
   "status": "live_verified",
-  "verified_at": "2026-11-05T20:40:29.966624+00:00",
+  "verified_at": "2026-11-06T01:10:15.348116+00:00",
   "url": "https://ploptimizer-assembly-benchmark.vercel.app",
-  "deployment_id": "dpl_7oQGUyEYZKfFeLyHsk2AjQTB6RCg",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-fd71vtawj-happykhans-projects.vercel.app",
-  "source_commit": "5d39bf6",
-  "bundle": ".cache/bundles/mismatch-report-v2",
-  "build_bytes": 47327419,
-  "public_files_verified": 1086,
+  "deployment_id": "dpl_AzEuTLfdWVyGust6LHufoDKdz93o",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-3yrv213d8-happykhans-projects.vercel.app",
+  "source_commit": "44ab2d8",
+  "bundle": ".cache/bundles/stage-history-v1",
+  "build_bytes": 47328355,
+  "public_files_verified": 2,
   "verification_failures": 0,
   "original_source_records_preserved": 300,
-  "retained_ready_deployments": 3,
-  "retained_deployments": [
-    "ploptimizer-assembly-benchmark-fd71vtawj-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-bfd2urvha-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-6mteyhyxk-happykhans-projects.vercel.app"
-  ],
+  "retained_ready_deployments": 4,
   "browser_checks": [
     "Live390px scenario+Raven headers only",
     "Six complete rows; no cell-content clipping",
@@ -33,5 +28,6 @@
   "cluster_jobs_submitted": 0,
   "mobile_matrix": "Native assembler selector and two complete columns at <=900px; full comparison on desktop",
   "verification_retries": 1,
-  "reporting_update": "Allowlisted saved alignment edit counts; no new sequences processed or alignments run"
+  "reporting_update": "Source-bound post-Flye process history; no base-level analysis",
+  "verification_scope": "Target changed result page and site manifest verified byte-for-byte; full local gate passed"
 }
