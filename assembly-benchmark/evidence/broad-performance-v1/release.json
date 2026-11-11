@@ -1,0 +1,214 @@
+{
+  "schema_version": 1,
+  "status": "live_verified",
+  "verified_at": "2026-11-11T15:40:14.226492+00:00",
+  "deployment_id": "dpl_E1YYePmpy2M9CsPSdyoUB24gQ2az",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-yo2wwo76e-happykhans-projects.vercel.app",
+  "url": "https://ploptimizer-assembly-benchmark.vercel.app",
+  "source_commit": "2017d75",
+  "source_results_sha256": "c1f32640b49e17f6594f08357bbbafec578e011f459caf573a7d4d79d222cc35",
+  "bundle_manifest_sha256": "414ee2f72de705ebbfc75e2a54e06b446f8cec954bc9f6e1d1676126b22e4fe9",
+  "general_results": 200,
+  "admitted_inputs": 50,
+  "reported_input_bindings": 200,
+  "assessment_bindings": 200,
+  "raw_intermediate_input_bindings": 50,
+  "outcomes": {
+    "fully_complete": 108,
+    "incomplete": 46,
+    "execution_error": 30,
+    "empty": 3,
+    "chromosome_complete": 8,
+    "did_not_complete": 5
+  },
+  "prior_general_outcomes_unchanged": 28,
+  "diagnostic_records_unchanged": 528,
+  "s5_executions_preserved": 36,
+  "read_order_executions_preserved": 48,
+  "read_order_summary_sha256": "03a6ea0b5eeefa36085c47cf338bcb014f8fb99e7ae711b3a33b604cf4191bc0",
+  "live_verification": {
+    "status": "pass",
+    "base_url": "https://ploptimizer-assembly-benchmark.vercel.app",
+    "batch": "20261104T190455",
+    "generated_at": null,
+    "checked_files": 1391,
+    "failures": []
+  },
+  "site_gate": {
+    "errors": [],
+    "html_pages": 711,
+    "local_links_checked": 15117,
+    "policy": {
+      "max_file_bytes": 5242880,
+      "max_files": 1500,
+      "max_total_bytes": 67108864
+    },
+    "preserved_source_records": 528,
+    "public_files": 1404,
+    "schema_version": 1,
+    "status": "pass",
+    "total_files": 1420,
+    "website_bytes": 63635503
+  },
+  "ui_qa": {
+    "status": "pass",
+    "checks": [
+      {
+        "route": "index.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "performance.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "aggregate.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "performance-methods.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s5.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s7.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "index.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "performance.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "aggregate.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "performance-methods.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s5.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s7.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "index.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "performance.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "aggregate.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "performance-methods.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s5.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s7.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "index.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "performance.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "aggregate.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "performance-methods.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s5.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s7.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      }
+    ],
+    "page_errors": []
+  },
+  "tsv_rows_verified": {
+    "execution-metrics.tsv": 200,
+    "input-properties.tsv": 50
+  },
+  "retained_ready_deployments": [
+    "ploptimizer-assembly-benchmark-yo2wwo76e-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-es8b9if95-happykhans-projects.vercel.app",
+    "ploptimizer-assembly-benchmark-dohnwcv6k-happykhans-projects.vercel.app"
+  ],
+  "archived_preflight_attempts_preserved": 14,
+  "no_assembly_or_sequence_analysis_performed_for_release": true
+}

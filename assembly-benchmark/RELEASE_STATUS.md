@@ -1133,3 +1133,27 @@ with no binding errors. There are 186 completed assessment records; the 14
 dependent assessments remain pending while recovery executions finish. Forty-three
 scoped regression tests pass. The full release gate has not passed, and the live
 28/200 partial report, S5 and S7 remain unchanged.
+
+
+### 11 November: complete general benchmark verified live
+
+The general report now records all **200 reported outcomes across 50 admitted
+inputs**. All 200 execution/input and assessment/execution bindings verify; the
+50 raw Miniasm intermediate input bindings also verify. Terminal accounting covers
+every slot, including nine failure reports reconciled from retained terminal
+assembly metadata. All 14 archived preflight attempts retain their original hashes.
+No assemblies, input reads, scores or prior attempts were replaced for release.
+
+Production deployment `dpl_E1YYePmpy2M9CsPSdyoUB24gQ2az`, source `2017d75`, is
+verified at https://ploptimizer-assembly-benchmark.vercel.app/. Anonymous byte
+checks pass for all 1,391 report files selected by the verifier, including pages,
+figures and TSV downloads.
+Execution and input TSVs contain 200 and 50 rows respectively. The site gate
+passes at 63,635,503 bytes, 1,420 files, 711 HTML pages and 15,117 local links.
+Sixty-five scoped regressions and 24 desktop/mobile dark/light route checks pass.
+
+The original 28 general outcomes and all 528 diagnostic result objects are
+unchanged. Complete S5/S6, historical supplementary sources and the 48-run S7
+agreement report are preserved. S7 secondary reference recovery remains separate
+from output agreement. Current plus two previous READY deployments are retained.
+See `CURRENT_RELEASE.json` and `evidence/broad-performance-v1/release.json`.

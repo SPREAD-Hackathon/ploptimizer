@@ -1,34 +1,36 @@
 {
-  "build_bytes": 62411919,
-  "bundle": ".cache/bundles/s7-release",
-  "bundle_manifest_sha256": "f50ce15635e1f89d3d9d54a3f1dbebeb50bb9f380b9bee70a372b66a636883b8",
-  "deployment_id": "dpl_F85Jn4dBawzk3DXorSSnFvpNGrHY",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-es8b9if95-happykhans-projects.vercel.app",
+  "build_bytes": 63635503,
+  "bundle": ".cache/bundles/general-200-release",
+  "bundle_manifest_sha256": "414ee2f72de705ebbfc75e2a54e06b446f8cec954bc9f6e1d1676126b22e4fe9",
+  "deployment_id": "dpl_E1YYePmpy2M9CsPSdyoUB24gQ2az",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-yo2wwo76e-happykhans-projects.vercel.app",
   "general_benchmark": {
     "batch_id": "20261106T134511",
     "datasets": 50,
     "expected_executions": 200,
     "published_outcomes": {
-      "chromosome_complete": 1,
-      "empty": 1,
-      "execution_error": 2,
-      "fully_complete": 18,
-      "incomplete": 6
+      "fully_complete": 108,
+      "incomplete": 46,
+      "execution_error": 30,
+      "empty": 3,
+      "chromosome_complete": 8,
+      "did_not_complete": 5
     },
-    "published_results": 28,
-    "state": "running"
+    "published_results": 200,
+    "state": "complete",
+    "admitted_inputs": 50,
+    "verified_execution_input_bindings": 200,
+    "verified_assessment_execution_bindings": 200
   },
-  "general_monitor": "finish-general-assembler-benchmark",
-  "local_links_checked": 14773,
+  "local_links_checked": 15117,
   "material_limitations": [
-    "General benchmark is a partial28/200publication, not a final comparison.",
     "Stopped S5Plassembler run has no completed final sequence assessment or final plot.",
     "Graph reference colouring remains grey where no validated association or interval evidence is recorded.",
     "Software-internal causes are unresolved unless supported by retained evidence."
   ],
   "optional_skips": 0,
-  "public_files_verified": 7,
-  "python_tests": 28,
+  "public_files_verified": 1391,
+  "python_tests": 65,
   "read_order": {
     "batch_id": "20261106T134415",
     "executions": 48,
@@ -40,9 +42,9 @@
     "url": "https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s7"
   },
   "retained_deployments": [
+    "ploptimizer-assembly-benchmark-yo2wwo76e-happykhans-projects.vercel.app",
     "ploptimizer-assembly-benchmark-es8b9if95-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-dohnwcv6k-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-c84gi8a0s-happykhans-projects.vercel.app"
+    "ploptimizer-assembly-benchmark-dohnwcv6k-happykhans-projects.vercel.app"
   ],
   "retained_ready_deployments": 3,
   "s5_executions": 36,
@@ -52,13 +54,14 @@
     "did_not_complete": 1
   },
   "schema_version": 1,
-  "source_commit": "c2ec6a8",
+  "source_commit": "2017d75",
   "source_records_preserved": 528,
   "static_files_including_routing_configs": 1420,
   "status": "live_verified",
-  "test_scope": "Targeted S7, read-order, bundle and performance-web regressions",
+  "test_scope": "40 performance, 3 preflight recovery, 16 read-order and 6 bundle regressions",
   "url": "https://ploptimizer-assembly-benchmark.vercel.app",
   "verification_failures": 0,
-  "verification_scope": "Verified the new S7 page, homepage and catalogue links, both TSV downloads and shared runtime assets. All prior frozen data and scores remain unchanged.",
-  "verified_at": "2026-11-06T14:56:23.706300+00:00"
+  "verification_scope": "Anonymous byte equality for all1391 report files selected by the publication verifier, including general pages, figures and TSV downloads;24 desktop/mobile dark/light route checks;200reported slots/50inputs verified;all528 diagnostic result objects and original28 general outcomes unchanged;S5/S6 and48-runS7 preserved.",
+  "verified_at": "2026-11-11T15:40:14.226492+00:00",
+  "completed_monitor": "finish-general-assembler-benchmark"
 }
