@@ -138,7 +138,7 @@ def collect():
     state = load(STATUS); batch = ROOT / 'runs' / state['batch_id']; submission = load(batch / 'submission.json')
     cluster = submission['cluster']; host = cluster['host']; remote = Path(cluster['remote_root']) / 'runs' / batch.name
     recovery = {'jobs': {}, 'task_job_overrides': {}}
-    for name in ('assessment-recovery.json', 'missing-slot-recovery.json'):
+    for name in ('assessment-recovery.json', 'missing-slot-recovery.json', 'preflight-recovery.json'):
         path = batch / name
         if path.exists():
             saved = load(path)

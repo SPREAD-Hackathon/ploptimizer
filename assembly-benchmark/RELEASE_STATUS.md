@@ -1117,3 +1117,19 @@ path too long; future scripts now use the unique individual Slurm job ID alone.
 Already submitted jobs retain their original scripts and attempts. Reconcile
 these infrastructure attempts explicitly before any publication; do not rerun
 genuine assembler failures or silently overwrite metadata. Production unchanged.
+
+### 11 November: socket preflight attempts preserved and repaired
+
+All 14 socket-path failures were verified to precede input consumption and tool
+invocation. Their original execution and assessment files were archived unchanged
+under the batch's `infrastructure_attempts` directory before recovery. The durable
+plan and hashes are in `runs/20261106T134511/preflight-recovery.json`.
+Recovery arrays are 35263201/35263204 (Flye), 35263205/35263206
+(Plassembler), and 35263214/35263215 (Raven), for execution/assessment respectively.
+Do not submit these slots again. Genuine software and resource failures are retained.
+
+Collection verifies all 50 admitted inputs and all 200 execution/input bindings,
+with no binding errors. There are 186 completed assessment records; the 14
+dependent assessments remain pending while recovery executions finish. Forty-three
+scoped regression tests pass. The full release gate has not passed, and the live
+28/200 partial report, S5 and S7 remain unchanged.
