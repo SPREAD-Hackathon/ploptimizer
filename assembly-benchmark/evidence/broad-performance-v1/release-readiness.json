@@ -1,0 +1,311 @@
+{
+  "schema_version": 1,
+  "batch_id": "20261106T134511",
+  "status": "locally_verified_not_live",
+  "checked_at": "2026-11-11T15:35:13.285950+00:00",
+  "reported_slots": 200,
+  "admitted_inputs": 50,
+  "execution_input_bindings": 200,
+  "assessment_execution_bindings": 200,
+  "raw_intermediate_input_bindings": 50,
+  "terminal_scheduler_audit": {
+    "unaccounted": [],
+    "metadata_reconciliations": [
+      {
+        "index": 6,
+        "tool": "flye",
+        "original_assessment_job": "34523749_6",
+        "terminal_assembly_evidence": [
+          "34523743_6",
+          "OUT_OF_MEMORY",
+          "00:04:08",
+          "0:125",
+          ""
+        ]
+      },
+      {
+        "index": 6,
+        "tool": "plassembler",
+        "original_assessment_job": "34523752_6",
+        "terminal_assembly_evidence": [
+          "34523746_6",
+          "OUT_OF_MEMORY",
+          "00:05:05",
+          "0:125",
+          ""
+        ]
+      },
+      {
+        "index": 23,
+        "tool": "flye",
+        "original_assessment_job": "34523749_23",
+        "terminal_assembly_evidence": [
+          "34523743_23",
+          "OUT_OF_MEMORY",
+          "00:11:28",
+          "0:125",
+          ""
+        ]
+      },
+      {
+        "index": 23,
+        "tool": "plassembler",
+        "original_assessment_job": "34523752_23",
+        "terminal_assembly_evidence": [
+          "34523746_23",
+          "OUT_OF_MEMORY",
+          "00:13:08",
+          "0:125",
+          ""
+        ]
+      },
+      {
+        "index": 31,
+        "tool": "plassembler",
+        "original_assessment_job": "34523752_31",
+        "terminal_assembly_evidence": [
+          "34523746_31",
+          "COMPLETED",
+          "01:07:47",
+          "0:0",
+          ""
+        ]
+      },
+      {
+        "index": 35,
+        "tool": "flye",
+        "original_assessment_job": "34523749_35",
+        "terminal_assembly_evidence": [
+          "34523743_35",
+          "TIMEOUT",
+          "04:00:03",
+          "0:0",
+          ""
+        ]
+      },
+      {
+        "index": 37,
+        "tool": "plassembler",
+        "original_assessment_job": "34523752_37",
+        "terminal_assembly_evidence": [
+          "34523746_37",
+          "COMPLETED",
+          "00:02:25",
+          "0:0",
+          ""
+        ]
+      },
+      {
+        "index": 42,
+        "tool": "flye",
+        "original_assessment_job": "34523749_42",
+        "terminal_assembly_evidence": [
+          "34523743_42",
+          "OUT_OF_MEMORY",
+          "00:04:32",
+          "0:125",
+          ""
+        ]
+      },
+      {
+        "index": 42,
+        "tool": "plassembler",
+        "original_assessment_job": "34523752_42",
+        "terminal_assembly_evidence": [
+          "34523746_42",
+          "OUT_OF_MEMORY",
+          "00:04:21",
+          "0:125",
+          ""
+        ]
+      }
+    ],
+    "raw_input_bindings": 50,
+    "reported_input_bindings": 200
+  },
+  "original_diagnostic_records_preserved": 528,
+  "read_order_executions_preserved": 48,
+  "read_order_summary_sha256": "03a6ea0b5eeefa36085c47cf338bcb014f8fb99e7ae711b3a33b604cf4191bc0",
+  "preflight_archived_attempts_verified": 14,
+  "scope_tests_passed": 65,
+  "outcomes": {
+    "fully_complete": 108,
+    "incomplete": 46,
+    "execution_error": 30,
+    "empty": 3,
+    "chromosome_complete": 8,
+    "did_not_complete": 5
+  },
+  "site_gate": {
+    "errors": [],
+    "html_pages": 711,
+    "local_links_checked": 15117,
+    "policy": {
+      "max_file_bytes": 5242880,
+      "max_files": 1500,
+      "max_total_bytes": 67108864
+    },
+    "preserved_source_records": 528,
+    "public_files": 1404,
+    "schema_version": 1,
+    "status": "pass",
+    "total_files": 1420,
+    "website_bytes": 63635503
+  },
+  "ui_qa": {
+    "status": "pass",
+    "checks": [
+      {
+        "route": "index.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "performance.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "aggregate.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "performance-methods.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s5.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s7.html",
+        "width": 1440,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "index.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "performance.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "aggregate.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "performance-methods.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s5.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s7.html",
+        "width": 1440,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "index.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "performance.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "aggregate.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "performance-methods.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s5.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s7.html",
+        "width": 390,
+        "theme": "dark",
+        "status": "pass"
+      },
+      {
+        "route": "index.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "performance.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "aggregate.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "performance-methods.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s5.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      },
+      {
+        "route": "scenarios/s7.html",
+        "width": 390,
+        "theme": "light",
+        "status": "pass"
+      }
+    ],
+    "page_errors": []
+  },
+  "detector_notes": [
+    "218table-scroll wrapper padding warnings do not measure padding in inherited table cells; checked visible cells are padded.",
+    "1662em-dash occurrences represent missing-value markers in folded data, not prose style changes."
+  ],
+  "bundle": ".cache/bundles/general-200-release",
+  "bundle_manifest_sha256": "414ee2f72de705ebbfc75e2a54e06b446f8cec954bc9f6e1d1676126b22e4fe9"
+}

@@ -1,6 +1,6 @@
 {
   "admitted_inputs": 50,
-  "assessed_results": 186,
+  "assessed_results": 200,
   "assessment_errors": 0,
   "batch_id": "20261106T134511",
   "dataset_count": 50,
@@ -24,7 +24,7 @@
   "result_path": "runs/20261106T134511/performance-results.json",
   "schema_version": 1,
   "selection_sha256": "1c19579c0e5d3ef069ad644c6d55ca569a99d49c91e3c84ef98995856d3564ab",
-  "status": "running",
-  "verified_assessment_execution_bindings": 186,
+  "status": "complete",
+  "verified_assessment_execution_bindings": 200,
   "verified_execution_input_bindings": 200
 }

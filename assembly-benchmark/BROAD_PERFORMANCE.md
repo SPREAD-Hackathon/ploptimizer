@@ -51,9 +51,10 @@ releases its own assembler tasks through Slurm. Raw Miniasm is an intermediate,
 not an additional reported workflow. The four primary arrays are recorded in
 `evidence/broad-performance-v1/status.json`.
 
-The current publication freeze contains 28 of 200 outcomes. This is a partial
-cohort, not a completed comparison or a final ranking. Read the frozen snapshot
-for its exact counts; running jobs can be ahead of the published report.
+The frozen reporting input now accounts for all 200 outcomes and all 50 admitted
+inputs, with verified execution/input and assessment/execution bindings. Completed
+sequence outcomes remain separate from software/resource failures. Freezing is
+not deployment: `CURRENT_RELEASE.json` identifies the actual live publication.
 
 From this directory, collect existing small metadata and freeze the report input:
 
