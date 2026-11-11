@@ -1099,3 +1099,21 @@ not running jobs. See `evidence/broad-performance-v1/recovery-status.json` for
 the exact inventory and repair receipts. The submission cap remains 1,000.
 Forty performance regression tests pass. Production remains the labelled
 28/200 partial publication; this checkpoint is not a completed release.
+
+
+### 11 November: missing-stage recovery submitted
+
+The 42 existing-output assessments were submitted as arrays 35260986,
+35261010 and 35261011 and are now collected. Missing canonical slots have a
+separate durable plan in `runs/20261106T134511/missing-slot-recovery.json`: two
+input transfers, 41 reported workflows and 24 raw intermediate phases, followed
+by dependent assessments. No recorded original workflow was rerun.
+
+Latest collection: 50 admitted inputs and 174 assessed records; the final gate
+remains blocked. Twelve newly recorded executions failed before input binding
+with `AF_UNIX path too long`. These are infrastructure failures, not sequence
+outcomes. The recovery wrapper's extra array-index suffix made its temporary
+path too long; future scripts now use the unique individual Slurm job ID alone.
+Already submitted jobs retain their original scripts and attempts. Reconcile
+these infrastructure attempts explicitly before any publication; do not rerun
+genuine assembler failures or silently overwrite metadata. Production unchanged.

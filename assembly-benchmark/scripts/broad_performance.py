@@ -137,7 +137,15 @@ def accounting_states(accounting):
 def collect():
     state = load(STATUS); batch = ROOT / 'runs' / state['batch_id']; submission = load(batch / 'submission.json')
     cluster = submission['cluster']; host = cluster['host']; remote = Path(cluster['remote_root']) / 'runs' / batch.name
-    accounting = ssh(host, ['sacct', '-j', ','.join(submission['jobs'].values()), '--parsable2', '--noheader', '--format=JobID,State,Elapsed,ExitCode,MaxRSS'])
+    recovery = {'jobs': {}, 'task_job_overrides': {}}
+    for name in ('assessment-recovery.json', 'missing-slot-recovery.json'):
+        path = batch / name
+        if path.exists():
+            saved = load(path)
+            recovery['jobs'].update({name + ':' + k: v for k, v in saved.get('jobs', {}).items()})
+            recovery['task_job_overrides'].update(saved.get('task_job_overrides', {}))
+    job_ids = list(submission['jobs'].values()) + list(recovery['jobs'].values())
+    accounting = ssh(host, ['sacct', '-j', ','.join(job_ids), '--parsable2', '--noheader', '--format=JobID,State,Elapsed,ExitCode,MaxRSS'])
     (batch / 'accounting.tsv').write_text(accounting + '\n')
     include = ['--include=*/', '--include=execution.json', '--include=performance.json', '--include=workflow.json', '--include=input.json', '--include=input_error.json', '--include=read-download.json', '--include=preparation.json', '--include=reference-archive.json', '--include=reuse.json', '--include=resources.txt', '--exclude=*']
     subprocess.run(['rsync', '-az', '--prune-empty-dirs'] + include + [host + ':' + str(remote) + '/', str(batch) + '/'], check=True)
@@ -159,8 +167,10 @@ def collect():
             if result['status'] == 'pending':
                 assembly_job = submission['jobs'].get('assemble-' + tool)
                 assessment_job = submission['jobs'].get('assess-' + tool)
-                assembly_state = states.get(f'{assembly_job}_{index}', [])
-                assessment_state = states.get(f'{assessment_job}_{index}', [])
+                assembly_id = recovery['task_job_overrides'].get('assemble-' + tool + ':' + str(index), f'{assembly_job}_{index}')
+                assembly_state = states.get(assembly_id, [])
+                assessment_id = recovery.get('task_job_overrides', {}).get('assess-' + tool + ':' + str(index), f'{assessment_job}_{index}')
+                assessment_state = states.get(assessment_id, [])
                 input_state = states.get(f"{submission['jobs'].get('inputs')}_{index}", [])
                 terminal = ('FAILED', 'CANCELLED', 'TIMEOUT', 'OUT_OF_MEMORY', 'NODE_FAIL', 'BOOT_FAIL', 'DEADLINE', 'PREEMPTED')
                 if assessment_state and assessment_state[1].startswith(terminal):
