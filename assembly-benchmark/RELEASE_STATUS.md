@@ -1082,3 +1082,20 @@ assessment from inventing a missing execution, distinguish scheduler failures
 from measured outcomes, and require current assessment/execution hashes before
 a complete release. Thirty-seven performance regression tests pass. This is
 not a completed 200-outcome release or a deployment.
+
+
+### 11 November: connection restored; metadata reports reconciled
+
+Collection now verifies 117/200 assessment records and 48/50 admitted inputs.
+Nine missing failure reports were recovered exclusively from terminal execution
+and scheduler metadata: eight execution errors and one timeout. Original
+execution bytes remain unchanged, and each new report binds their hashes. No
+sequence files were read, no alignments or assemblies rerun, and no jobs submitted.
+The reports were copied to the cluster and verified byte-for-byte before collection.
+
+No original suite jobs remain active. The 83 remaining slots comprise 42 saved
+executions lacking assessment and 41 slots with no execution record. They are
+not running jobs. See `evidence/broad-performance-v1/recovery-status.json` for
+the exact inventory and repair receipts. The submission cap remains 1,000.
+Forty performance regression tests pass. Production remains the labelled
+28/200 partial publication; this checkpoint is not a completed release.

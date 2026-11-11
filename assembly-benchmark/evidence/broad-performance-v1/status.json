@@ -1,6 +1,6 @@
 {
   "admitted_inputs": 48,
-  "assessed_results": 97,
+  "assessed_results": 117,
   "assessment_errors": 0,
   "batch_id": "20261106T134511",
   "dataset_count": 50,
@@ -25,6 +25,6 @@
   "schema_version": 1,
   "selection_sha256": "1c19579c0e5d3ef069ad644c6d55ca569a99d49c91e3c84ef98995856d3564ab",
   "status": "running",
-  "verified_assessment_execution_bindings": 97,
+  "verified_assessment_execution_bindings": 117,
   "verified_execution_input_bindings": 159
 }
