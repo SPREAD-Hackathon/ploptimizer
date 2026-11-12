@@ -1,6 +1,25 @@
 # Reporting release: results and limits
 
-## Current production — revised large-plasmid suite live and verified
+## Current production — beta Standard added, 12 November 2026
+
+[Simulated Standard beta](https://ploptimizer-assembly-benchmark.vercel.app/beta/)
+is live with **110 outcomes across 55 inputs, five reference genomes and five
+sampling seeds**. All executions and assessments completed: 35 fully complete,
+two chromosome-complete and 73 incomplete outcomes under the 99% longest-alignment
+criterion. All 200 molecule measurements were independently checked against saved
+PAFs. These beta records remain separate from historical denominators.
+
+Live desktop/mobile checks and all 13 selected page/artifact byte comparisons
+pass. The 200-outcome general report and historical S5/S6/48-run S7 remain
+available; 1,378 historical public files are unchanged, with a beta homepage link.
+
+Deployment `dpl_9yg7qWm43YrJWjXCL38YbPcaivTR` uses Nextflow source
+[`1ccb96e`](https://github.com/happykhan/assembler-benchmark-nextflow/commit/1ccb96e).
+The build is 63,962,520 bytes and 1,425 files, within existing limits. Current
+plus two previous READY deployments are retained. `CURRENT_RELEASE.json` records
+the live deployment and preserved historical identities.
+
+## Earlier production — revised large-plasmid suite live and verified
 
 https://ploptimizer-assembly-benchmark.vercel.app is live from source `0c0e616`,
 deployment `dpl_6NgfD9GVA5PgnNLXRRT48fbGBce3`. All 1,111 publicly served
