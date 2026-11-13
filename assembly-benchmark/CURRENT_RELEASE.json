@@ -1,9 +1,9 @@
 {
-  "build_bytes": 63962520,
+  "build_bytes": 64486710,
   "bundle": ".cache/bundles/general-200-release",
   "bundle_manifest_sha256": "414ee2f72de705ebbfc75e2a54e06b446f8cec954bc9f6e1d1676126b22e4fe9",
-  "deployment_id": "dpl_9yg7qWm43YrJWjXCL38YbPcaivTR",
-  "deployment_url": "https://ploptimizer-assembly-benchmark-kik70logi-happykhans-projects.vercel.app",
+  "deployment_id": "dpl_13Pmcb3FZkDWPTDra9wJvJU1WmLF",
+  "deployment_url": "https://ploptimizer-assembly-benchmark-hffvun2ds-happykhans-projects.vercel.app",
   "general_benchmark": {
     "batch_id": "20261106T134511",
     "datasets": 50,
@@ -22,15 +22,15 @@
     "verified_execution_input_bindings": 200,
     "verified_assessment_execution_bindings": 200
   },
-  "local_links_checked": 15132,
+  "local_links_checked": 15585,
   "material_limitations": [
     "Stopped S5Plassembler run has no completed final sequence assessment or final plot.",
     "Graph reference colouring remains grey where no validated association or interval evidence is recorded.",
     "Software-internal causes are unresolved unless supported by retained evidence."
   ],
-  "optional_skips": 2,
-  "public_files_verified": 13,
-  "python_tests": 190,
+  "optional_skips": 0,
+  "public_files_verified": 99,
+  "python_tests": 115,
   "read_order": {
     "batch_id": "20261106T134415",
     "executions": 48,
@@ -42,9 +42,9 @@
     "url": "https://ploptimizer-assembly-benchmark.vercel.app/scenarios/s7"
   },
   "retained_deployments": [
+    "ploptimizer-assembly-benchmark-hffvun2ds-happykhans-projects.vercel.app",
     "ploptimizer-assembly-benchmark-kik70logi-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-yo2wwo76e-happykhans-projects.vercel.app",
-    "ploptimizer-assembly-benchmark-es8b9if95-happykhans-projects.vercel.app"
+    "ploptimizer-assembly-benchmark-yo2wwo76e-happykhans-projects.vercel.app"
   ],
   "retained_ready_deployments": 3,
   "s5_executions": 36,
@@ -54,15 +54,15 @@
     "did_not_complete": 1
   },
   "schema_version": 1,
-  "source_commit": "1ccb96e",
+  "source_commit": "3ea435079c5fb41d21d6a700aa6c47bdba9f17d1",
   "source_records_preserved": 528,
   "static_files_including_routing_configs": 1425,
   "status": "live_verified",
   "test_scope": "192 ordinary Nextflow repository tests: 190 passed, two explicit skips. Final end-to-end run, 282 terminal Slurm jobs, 200 saved-PAF molecule checks, and live desktop/mobile beta checks passed.",
   "url": "https://ploptimizer-assembly-benchmark.vercel.app",
   "verification_failures": 0,
-  "verification_scope": "Existing general 200-outcome report and historical S5/S6/48-run S7 preserved. Beta Standard 110 outcomes/55 inputs/200 molecule measurements verified; live desktop/mobile checks and byte equality for 13 selected pages/downloads/figures pass. Historical public files unchanged except homepage beta link.",
-  "verified_at": "2026-11-12T19:48:28.662887+00:00",
+  "verification_scope": "All 1,500 static source payload hashes verified with Vercel; 1,409 base files unchanged; the homepage alone adds a pilot entry. 99 live HTTP byte comparisons (90 pilot files and nine established files), 15,585 local links and 16 live desktop/mobile checks pass. Pilot contains seven measured results and eleven inapplicable combinations from three inputs; no full panel run.",
+  "verified_at": "2026-11-13T11:50:00.644866+00:00",
   "completed_monitor": "finish-general-assembler-benchmark",
   "historical_source_commit": "2017d75",
   "source_repository": "https://github.com/happykhan/assembler-benchmark-nextflow",
@@ -106,5 +106,30 @@
   },
   "historical_public_files_verified": 1391,
   "historical_source_repository": "https://github.com/SPREAD-Hackathon/ploptimizer",
-  "composition": "Preserved historical website plus native Nextflow beta Standard overlay"
+  "composition": "Preserved general 200-outcome report, S5/S6/S7 and 110-outcome Standard beta, plus clearly labelled Nextflow pilot at /pilot/.",
+  "pilot_reports": {
+    "status": "live_verified",
+    "url": "https://ploptimizer-assembly-benchmark.vercel.app/pilot/",
+    "kind": "pilot",
+    "source_repository": "https://github.com/happykhan/assembler-benchmark-nextflow",
+    "source_commit": "3ea435079c5fb41d21d6a700aa6c47bdba9f17d1",
+    "current_entries": 18,
+    "measured_results": 7,
+    "not_applicable": 11,
+    "unique_inputs": 3,
+    "technical_repeat_results": 3,
+    "full_panel": false,
+    "scope": "Small workflow-validation selection; not a full scientific panel or an assembler ranking. 3 technical-repeat results reuse the same prepared input; they are not independent biological samples. The real-read pilot uses a declared subset and a matched reference comparator, not independently established error-free truth.",
+    "public_files": 90,
+    "http_files_verified": 90,
+    "desktop_mobile_checks": 16,
+    "site_catalogue_sha256": "2bd4bcfe01b68980c1d0e3ef69ff1cc3225fb701a300baba7fe7615a3f05d758",
+    "scientific_source_catalogue_sha256": "0bae4bb4229919f92c4e5f9200f97aa5168ce35770eb80f510ea4efa452443c6",
+    "publication_evidence": "https://github.com/happykhan/assembler-benchmark-nextflow/tree/main/evidence/pilot-publication-v1"
+  },
+  "published_file_count": 1500,
+  "existing_base_files_preserved": 1409,
+  "provider_source_payload_files_verified": 1500,
+  "historical_python_tests": 190,
+  "historical_optional_skips": 2
 }

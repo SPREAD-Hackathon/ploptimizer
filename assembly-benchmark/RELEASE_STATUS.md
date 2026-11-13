@@ -1,6 +1,28 @@
 # Reporting release: results and limits
 
-## Current production — beta Standard added, 12 November 2026
+## Current production — Nextflow pilot reports added, 13 November 2026
+
+[Nextflow pilot reports](https://ploptimizer-assembly-benchmark.vercel.app/pilot/)
+are live and linked from the homepage. The reports explicitly label **seven
+measured results, eleven inapplicable combinations and three prepared inputs**.
+Three measured results are technical repeats on the same input; the real-read
+pilot is a declared subset with a matched comparator reference. This is workflow
+validation, not a full scientific panel or an assembler ranking. Labels are
+included in every pilot page and JSON/TSV measurement export.
+
+The general 200-outcome report, S5/S6, 48-run S7 and 110-outcome Standard beta are
+preserved. All 1,409 existing base files are unchanged; the homepage adds the
+pilot entry. Byte-identical pilot figures/downloads are shared with relative
+links. The combined static build has 1,500 files, 64,486,710 bytes, and a maximum
+file size of 2,024,664 bytes. Provider source hashes match all build files.
+
+All 90 pilot files and nine established pages/downloads pass live HTTP byte
+checks. All 15,585 local links and 16 live desktop/mobile checks pass. The
+Nextflow repository suite passes 115 tests and CI. Current production is
+`dpl_13Pmcb3FZkDWPTDra9wJvJU1WmLF`; it and the two previous READY deployments
+are retained. Scientific inputs and operational run data were not deleted.
+
+## Previous publication — beta Standard added, 12 November 2026
 
 [Simulated Standard beta](https://ploptimizer-assembly-benchmark.vercel.app/beta/)
 is live with **110 outcomes across 55 inputs, five reference genomes and five
